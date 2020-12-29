@@ -19,6 +19,37 @@ class EventsRepository extends ServiceEntityRepository
         parent::__construct($registry, Events::class);
     }
 
+
+    // On recupère les 3 events futurs
+    public function findNext3Events($date)
+    {
+        $query = $this->createQueryBuilder('e')
+            ->select('e')
+            ->where('e.date_event >= :date')
+            ->setParameter('date', $date)
+            ->orderBy('e.date_event', 'ASC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
+        return $query;
+    }
+
+    // On récupère un nombre d'events passés, dépendant des events futurs trouvés dans la méthode du haut
+    public function findLastEvents($date, $combien)
+    {
+        $query = $this->createQueryBuilder('e')
+            ->select('e')
+            ->where('e.date_event < :date')
+            ->setParameter('date', $date)
+            ->orderBy('e.date_event', 'DESC')
+            ->setMaxResults($combien)
+            ->getQuery()
+            ->getResult();
+        return $query;
+    }
+
+
+
     // /**
     //  * @return Events[] Returns an array of Events objects
     //  */
