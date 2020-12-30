@@ -20,8 +20,8 @@ class EventsRepository extends ServiceEntityRepository
     }
 
 
-    // On recupère les 3 events futurs
-    public function findNext3Events($date)
+    // On recupère les 3 events futurs, ou moins s'il y en a moins
+    public function findEventsToCome($date)
     {
         $query = $this->createQueryBuilder('e')
             ->select('e')
@@ -35,7 +35,7 @@ class EventsRepository extends ServiceEntityRepository
     }
 
     // On récupère un nombre d'events passés, dépendant des events futurs trouvés dans la méthode du haut
-    public function findLastEvents($date, $combien)
+    public function findCompletedEvents($date, $combien)
     {
         $query = $this->createQueryBuilder('e')
             ->select('e')
