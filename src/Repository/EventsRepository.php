@@ -20,7 +20,7 @@ class EventsRepository extends ServiceEntityRepository
     }
 
 
-    // On recupère les 3 events futurs, ou moins s'il y en a moins
+    // On recupère jusqu'à 3 events futurs
     public function findEventsToCome($date)
     {
         $query = $this->createQueryBuilder('e')

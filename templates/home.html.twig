@@ -11,9 +11,37 @@
     {{ dump('Evènements passés:', completedEvents) }}
     {{ dump('Evènements futurs:', eventsToCome) }}
 
-<div class="example-wrapper">
+<div class="wrapper">
     <h1>HomePage</h1>
 
+    <section class="infos">
+
+    </section>
+
+    <section class="articles">
+
+    </section>
+
+    <section class="events">
+
+        <div class="sous-section">
+            {% if not eventsToCome is empty %}
+                <h2>Futurs</h2>
+                {% for eventToCome in eventsToCome %}
+                    {{ eventToCome.titre }}
+                {% endfor %}
+            {% endif %}
+        </div>
+            
+        <div class="sous-section">
+            {% if not completedEvents is empty %}
+                <h2>Passés</h2>
+                {% for completedEvent in completedEvents|reverse %}
+                    {{ completedEvent.titre }}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </section>
     
 </div>
 {% endblock %}
