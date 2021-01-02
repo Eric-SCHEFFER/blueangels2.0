@@ -1,47 +1,64 @@
 {% extends 'components/base.html.twig' %}
-
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/cards.css') }}">
+{% endblock %}
 {% block title %}HomePage{% endblock %}
-
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-    {{ dump('Evènements passés:', completedEvents) }}
-    {{ dump('Evènements futurs:', eventsToCome) }}
+    {# Variables transmises #}
+    {# {{ dump('Evènements passés:', completedEvents) }} #}
+    {# {{ dump('Evènements futurs:', eventsToCome) }} #}
+    
+    
 
 <div class="wrapper">
     <h1>HomePage</h1>
 
     <section class="infos">
+        <h2>Infos</h2>
 
     </section>
+<hr>
 
     <section class="articles">
+        <h2>Articles</h2>
 
     </section>
+<hr>
 
     <section class="events">
+        <h2>Évènements</h2>
 
-        <div class="sous-section">
-            {% if not eventsToCome is empty %}
-                <h2>Futurs</h2>
-                {% for eventToCome in eventsToCome %}
-                    {{ eventToCome.titre }}
-                {% endfor %}
-            {% endif %}
-        </div>
-            
-        <div class="sous-section">
+        {# Évènements passés #}
+        <span class="bloc-cards">
             {% if not completedEvents is empty %}
-                <h2>Passés</h2>
                 {% for completedEvent in completedEvents|reverse %}
-                    {{ completedEvent.titre }}
+                    <span class="card-event completed">
+                        {{ completedEvent.titre }}
+                        <div>
+                            {{ completedEvent.getImagesEvents()[0].getNom() }}
+                            {{ completedEvent.getImagesEvents()[0].getImagesCategorie().getNom() }}
+                        </div>
+                    </span>
                 {% endfor %}
             {% endif %}
-        </div>
+        </span>
+
+        {# Évènements futurs #}
+        <span class="bloc-cards">
+            {% if not eventsToCome is empty %}
+                {% for eventToCome in eventsToCome %}
+                    <span class="card-event">
+                        {{ eventToCome.titre }}
+                        <div>
+                            {# {{ dump(eventToCome.imagesEvents[0]) }} #}
+                        </div>
+                    </span>
+                {% endfor %}
+            {% endif %}
+        </span>
+
     </section>
-    
+    <hr>
 </div>
 {% endblock %}

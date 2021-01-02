@@ -40,7 +40,7 @@ class Events
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity=ImagesEvents::class, mappedBy="event")
+     * @ORM\OneToMany(targetEntity=ImagesEvents::class, mappedBy="event", orphanRemoval=true, cascade={"persist"})
      */
     private $imagesEvents;
 

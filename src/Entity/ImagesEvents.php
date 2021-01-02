@@ -27,6 +27,11 @@ class ImagesEvents
      */
     private $event;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=ImagesCategories::class, inversedBy="imagesEvents")
+     */
+    private $images_categorie;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +57,18 @@ class ImagesEvents
     public function setEvent(?Events $event): self
     {
         $this->event = $event;
+
+        return $this;
+    }
+
+    public function getImagesCategorie(): ?ImagesCategories
+    {
+        return $this->images_categorie;
+    }
+
+    public function setImagesCategorie(?ImagesCategories $images_categorie): self
+    {
+        $this->images_categorie = $images_categorie;
 
         return $this;
     }
