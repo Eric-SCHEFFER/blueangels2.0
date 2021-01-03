@@ -1,3 +1,7 @@
+.card-event {
+   border: solid gray 1px;
+}
+
 .completed {
    color: rgb(145, 145, 145);
 }

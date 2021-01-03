@@ -33,13 +33,14 @@
         <span class="bloc-cards">
             {% if not completedEvents is empty %}
                 {% for completedEvent in completedEvents|reverse %}
-                    <span class="card-event completed">
+                    <div class="card-event completed">
                         {{ completedEvent.titre }}
                         <div>
+                            {# On récupère la première image, et sa catégorie, associées à l'event #}
                             {{ completedEvent.getImagesEvents()[0].getNom() }}
                             {{ completedEvent.getImagesEvents()[0].getImagesCategorie().getNom() }}
                         </div>
-                    </span>
+                    </div>
                 {% endfor %}
             {% endif %}
         </span>
@@ -48,12 +49,14 @@
         <span class="bloc-cards">
             {% if not eventsToCome is empty %}
                 {% for eventToCome in eventsToCome %}
-                    <span class="card-event">
+                    <div class="card-event">
                         {{ eventToCome.titre }}
                         <div>
-                            {# {{ dump(eventToCome.imagesEvents[0]) }} #}
+                            {# TODO: Même principe que dans les events passés pour récupérer les infos #}
+                            {{ eventToCome.getImagesEvents()[0].getNom() }}
+                            {{ eventToCome.getImagesEvents()[0].getImagesCategorie().getNom() }}
                         </div>
-                    </span>
+                    </div>
                 {% endfor %}
             {% endif %}
         </span>
