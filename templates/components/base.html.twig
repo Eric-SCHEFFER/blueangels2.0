@@ -2,11 +2,21 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('css/base.css') }}">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <header>
+            {% include 'components/enteteEtNavbar.html.twig' %}
+        </header>
+        <main>
+            {% block body %}{% endblock %}
+        </main>
+        <footer>
+            {% include 'components/footer.html.twig' %}
+        </footer>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

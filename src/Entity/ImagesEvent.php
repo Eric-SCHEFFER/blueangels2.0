@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ImagesEventsRepository;
+use App\Repository\ImagesEventRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ImagesEventsRepository::class)
+ * @ORM\Entity(repositoryClass=ImagesEventRepository::class)
  */
-class ImagesEvents
+class ImagesEvent
 {
     /**
      * @ORM\Id
@@ -28,9 +28,9 @@ class ImagesEvents
     private $event;
 
     /**
-     * @ORM\ManyToOne(targetEntity=ImagesCategories::class, inversedBy="imagesEvents")
+     * @ORM\ManyToOne(targetEntity=CategoriesImage::class, inversedBy="imagesEvents")
      */
-    private $images_categorie;
+    private $categories_image;
 
     public function getId(): ?int
     {
@@ -61,14 +61,14 @@ class ImagesEvents
         return $this;
     }
 
-    public function getImagesCategorie(): ?ImagesCategories
+    public function getCategoriesImage(): ?CategoriesImage
     {
-        return $this->images_categorie;
+        return $this->categories_image;
     }
 
-    public function setImagesCategorie(?ImagesCategories $images_categorie): self
+    public function setCategoriesImage(?CategoriesImage $categories_image): self
     {
-        $this->images_categorie = $images_categorie;
+        $this->categories_image = $categories_image;
 
         return $this;
     }

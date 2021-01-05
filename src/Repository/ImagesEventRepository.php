@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\ImagesEvents;
+use App\Entity\ImagesEvent;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method ImagesEvents|null find($id, $lockMode = null, $lockVersion = null)
- * @method ImagesEvents|null findOneBy(array $criteria, array $orderBy = null)
- * @method ImagesEvents[]    findAll()
- * @method ImagesEvents[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method ImagesEvent|null find($id, $lockMode = null, $lockVersion = null)
+ * @method ImagesEvent|null findOneBy(array $criteria, array $orderBy = null)
+ * @method ImagesEvent[]    findAll()
+ * @method ImagesEvent[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ImagesEventsRepository extends ServiceEntityRepository
+class ImagesEventRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, ImagesEvents::class);
+        parent::__construct($registry, ImagesEvent::class);
     }
 
     // /**
-    //  * @return ImagesEvents[] Returns an array of ImagesEvents objects
+    //  * @return ImagesEvent[] Returns an array of ImagesEvent objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class ImagesEventsRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?ImagesEvents
+    public function findOneBySomeField($value): ?ImagesEvent
     {
         return $this->createQueryBuilder('i')
             ->andWhere('i.exampleField = :val')

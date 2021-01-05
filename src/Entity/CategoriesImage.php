@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\ImagesCategoriesRepository;
+use App\Repository\CategoriesImageRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ImagesCategoriesRepository::class)
+ * @ORM\Entity(repositoryClass=CategoriesImageRepository::class)
  */
-class ImagesCategories
+class CategoriesImage
 {
     /**
      * @ORM\Id
@@ -25,7 +25,7 @@ class ImagesCategories
     private $nom;
 
     /**
-     * @ORM\OneToMany(targetEntity=ImagesEvents::class, mappedBy="images_categorie")
+     * @ORM\OneToMany(targetEntity=ImagesEvent::class, mappedBy="categories_image")
      */
     private $imagesEvents;
 
@@ -52,29 +52,29 @@ class ImagesCategories
     }
 
     /**
-     * @return Collection|ImagesEvents[]
+     * @return Collection|ImagesEvent[]
      */
     public function getImagesEvents(): Collection
     {
         return $this->imagesEvents;
     }
 
-    public function addImagesEvent(ImagesEvents $imagesEvent): self
+    public function addImagesEvent(ImagesEvent $imagesEvent): self
     {
         if (!$this->imagesEvents->contains($imagesEvent)) {
             $this->imagesEvents[] = $imagesEvent;
-            $imagesEvent->setImagesCategorie($this);
+            $imagesEvent->setCategoriesImage($this);
         }
 
         return $this;
     }
 
-    public function removeImagesEvent(ImagesEvents $imagesEvent): self
+    public function removeImagesEvent(ImagesEvent $imagesEvent): self
     {
         if ($this->imagesEvents->removeElement($imagesEvent)) {
             // set the owning side to null (unless already changed)
-            if ($imagesEvent->getImagesCategorie() === $this) {
-                $imagesEvent->setImagesCategorie(null);
+            if ($imagesEvent->getCategoriesImage() === $this) {
+                $imagesEvent->setCategoriesImage(null);
             }
         }
 

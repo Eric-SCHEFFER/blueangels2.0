@@ -1,5 +1,14 @@
+.bloc-cards {
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+}
+
 .card-event {
    border: solid gray 1px;
+   width: auto;
+   padding: 20px;
+   margin: 20px;
 }
 
 .completed {

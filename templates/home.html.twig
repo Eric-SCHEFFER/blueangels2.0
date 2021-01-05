@@ -3,6 +3,7 @@
 	<link rel="stylesheet" href="{{ asset('css/cards.css') }}">
 {% endblock %}
 {% block title %}HomePage{% endblock %}
+
 {% block body %}
 
     {# Variables transmises #}
@@ -15,53 +16,69 @@
     <h1>HomePage</h1>
 
     <section class="infos">
+        {# TODO:  #}
         <h2>Infos</h2>
 
     </section>
 <hr>
 
+
     <section class="articles">
+        {# TODO: On affiche les 3 derniers articles par ordre inverse chronologique. (les plus anciens vers la gauche)
+           Chaque article est cliquable, et renvoi vers la page de l'article
+           On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
+        #}
         <h2>Articles</h2>
 
     </section>
 <hr>
 
-    <section class="events">
-        <h2>Évènements</h2>
 
-        {# Évènements passés #}
-        <span class="bloc-cards">
+    <section class="events">
+        {# On affiche jusqu'à 3 events futurs (les plus anciens vers la gauche)
+           S'il y en a moins ou pas (soit N), on complète à gauche 3 - N events passés.
+           Chaque Event est cliquable, et renvoi vers la page de l'event
+           On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
+        #}
+        <h2>Évènements</h2>
+        
+        <div class="bloc-cards">
+
+            {# Évènements passés #}
             {% if not completedEvents is empty %}
                 {% for completedEvent in completedEvents|reverse %}
                     <div class="card-event completed">
-                        {{ completedEvent.titre }}
+                        {{ completedEvent.nom }}
                         <div>
-                            {# On récupère la première image, et sa catégorie, associées à l'event #}
-                            {{ completedEvent.getImagesEvents()[0].getNom() }}
-                            {{ completedEvent.getImagesEvents()[0].getImagesCategorie().getNom() }}
+                            {% if not completedEvent.getImagesEvents() is empty %}
+                                {# On récupère la première image, et sa catégorie, associées à l'event #}
+                                <div>{{ completedEvent.getImagesEvents()[0].getNom() }}</div>
+                                <div>{{ completedEvent.getImagesEvents()[0].getCategoriesImage().getNom() }}</div>
+                            {% endif %}
                         </div>
                     </div>
                 {% endfor %}
             {% endif %}
-        </span>
 
-        {# Évènements futurs #}
-        <span class="bloc-cards">
+            {# Évènements futurs #}
             {% if not eventsToCome is empty %}
                 {% for eventToCome in eventsToCome %}
                     <div class="card-event">
-                        {{ eventToCome.titre }}
+                        {{ eventToCome.nom }}
                         <div>
-                            {# TODO: Même principe que dans les events passés pour récupérer les infos #}
-                            {{ eventToCome.getImagesEvents()[0].getNom() }}
-                            {{ eventToCome.getImagesEvents()[0].getImagesCategorie().getNom() }}
+                            {% if not eventToCome.getImagesEvents() is empty %}
+                                {# Même principe que dans les events passés pour récupérer les infos #}
+                                <div>{{ eventToCome.getImagesEvents()[0].getNom() }}</div>
+                                <div>{{ eventToCome.getImagesEvents()[0].getCategoriesImage().getNom() }}</div>
+                            {% endif %}
                         </div>
                     </div>
                 {% endfor %}
             {% endif %}
-        </span>
+
+        </div>
 
     </section>
-    <hr>
+<hr>
 </div>
 {% endblock %}

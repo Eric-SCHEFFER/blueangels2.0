@@ -1,0 +1,12 @@
+<nav>
+   <ul>
+      <li>
+         <a href="{{ path('home') }}">
+               {% if menu_courant is defined and menu_courant == 'home' %}
+                  active
+               {% endif %}
+               Accueil
+         </a>
+      </li>
+   </ul>
+</nav>

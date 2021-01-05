@@ -22,12 +22,7 @@ class Events
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $titre;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $date_event;
+    private $nom;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -35,12 +30,17 @@ class Events
     private $hook;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="datetime")
+     */
+    private $date_event;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
      */
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity=ImagesEvents::class, mappedBy="event", orphanRemoval=true, cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=ImagesEvent::class, mappedBy="event")
      */
     private $imagesEvents;
 
@@ -54,26 +54,14 @@ class Events
         return $this->id;
     }
 
-    public function getTitre(): ?string
+    public function getNom(): ?string
     {
-        return $this->titre;
+        return $this->nom;
     }
 
-    public function setTitre(string $titre): self
+    public function setNom(string $nom): self
     {
-        $this->titre = $titre;
-
-        return $this;
-    }
-
-    public function getDateEvent(): ?\DateTimeInterface
-    {
-        return $this->date_event;
-    }
-
-    public function setDateEvent(\DateTimeInterface $date_event): self
-    {
-        $this->date_event = $date_event;
+        $this->nom = $nom;
 
         return $this;
     }
@@ -90,12 +78,24 @@ class Events
         return $this;
     }
 
+    public function getDateEvent(): ?\DateTimeInterface
+    {
+        return $this->date_event;
+    }
+
+    public function setDateEvent(\DateTimeInterface $date_event): self
+    {
+        $this->date_event = $date_event;
+
+        return $this;
+    }
+
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
@@ -103,14 +103,14 @@ class Events
     }
 
     /**
-     * @return Collection|ImagesEvents[]
+     * @return Collection|ImagesEvent[]
      */
     public function getImagesEvents(): Collection
     {
         return $this->imagesEvents;
     }
 
-    public function addImagesEvent(ImagesEvents $imagesEvent): self
+    public function addImagesEvent(ImagesEvent $imagesEvent): self
     {
         if (!$this->imagesEvents->contains($imagesEvent)) {
             $this->imagesEvents[] = $imagesEvent;
@@ -120,7 +120,7 @@ class Events
         return $this;
     }
 
-    public function removeImagesEvent(ImagesEvents $imagesEvent): self
+    public function removeImagesEvent(ImagesEvent $imagesEvent): self
     {
         if ($this->imagesEvents->removeElement($imagesEvent)) {
             // set the owning side to null (unless already changed)
