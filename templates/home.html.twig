@@ -41,14 +41,16 @@
            On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
         #}
         <h2>Évènements</h2>
-        
+        {# Provisoire, pour tester les dates #}
+        <p>Nous sommes le {{ today|date("d-m-Y") }}</p>
         <div class="bloc-cards">
 
             {# Évènements passés #}
             {% if not completedEvents is empty %}
                 {% for completedEvent in completedEvents|reverse %}
                     <div class="card-event completed">
-                        {{ completedEvent.nom }}
+                        <div>{{ completedEvent.nom }}</div>
+                        <div>Le {{ completedEvent.getDateEvent()|date("d-m-Y") }}</div>
                         <div>
                             {% if not completedEvent.getImagesEvents() is empty %}
                                 {# On récupère la première image, et sa catégorie, associées à l'event #}
@@ -64,7 +66,8 @@
             {% if not eventsToCome is empty %}
                 {% for eventToCome in eventsToCome %}
                     <div class="card-event">
-                        {{ eventToCome.nom }}
+                        <div>{{ eventToCome.nom }}</div>
+                        <div>Le {{ eventToCome.getDateEvent()|date("d-m-Y") }}</div>
                         <div>
                             {% if not eventToCome.getImagesEvents() is empty %}
                                 {# Même principe que dans les events passés pour récupérer les infos #}
