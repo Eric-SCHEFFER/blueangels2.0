@@ -22,8 +22,7 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
-        $date = mktime(0, 0, 0, date("m"), date("d") - 1, date("Y")); // Pour tester une autre date
-        $today = date('Y-m-d', $date);
+        $today = new DateTime('2021-01-20'); // Pour tester une autre date
         $events = $this->getEvents($today);
         return $this->render('home.html.twig', [
             'eventsToCome' => $events[0],
