@@ -33,9 +33,7 @@ class AppFixtures extends Fixture
         // $product = new Product();
         // $manager->persist($product);
 
-        $lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In a nisl sed quam rutrum posuere nec ut lectus. Sed et blandit urna, nec pellentesque lacus. Cras justo ex, maximus sed sem id, gravida sollicitudin ligula. Sed nec sodales mauris. Vivamus magna metus, interdum in neque vel, posuere varius nibh. Suspendisse venenatis orci eu gravida rhoncus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi non est id libero tincidunt molestie. Ut pulvinar enim nisi, eget hendrerit justo blandit et. Nullam sit amet sagittis arcu. Ut vitae lorem congue, eleifend mauris et, fermentum est.
-
-        Nam fermentum quam nisi, ut dignissim eros mattis et. Sed at lorem ligula. Mauris commodo congue euismod. Sed blandit rutrum ante sit amet aliquam. Donec semper placerat ullamcorper. Proin quis aliquam dolor. Nam et elit risus. Cras ligula diam, fringilla sit amet pretium vitae, sollicitudin quis purus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque imperdiet enim sit amet mattis aliquam.';
+        $lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
 
 
         // Events
@@ -44,7 +42,7 @@ class AppFixtures extends Fixture
             $event->setNom('Évènement ' . $i);
             $event->setHook('Hook de l\'évènement ' . $i);
             $event->setDateEvent(new DateTime('2021-01-' . $i));
-            $event->setDescription('Description de l\'évènement ' . $i . ' ' . $lorem);
+            $event->setDescription('Description de l\'évènement ' . $i . ' ' . str_repeat($lorem, 100));
             $manager->persist($event);
         }
         $manager->flush();
@@ -81,7 +79,7 @@ class AppFixtures extends Fixture
             $article->setTitre('Article ' . $i);
             $article->setHook('Hook de l\'article ' . $i);
             $article->setCreatedAt(new DateTime('2021-01-' . $i));
-            $article->setContenu('Description de l\'article ' . $i . ' ' . $lorem);
+            $article->setContenu('Description de l\'article ' . $i . ' ' . str_repeat($lorem, 100));
             $manager->persist($article);
         }
         $manager->flush();
@@ -92,6 +90,16 @@ class AppFixtures extends Fixture
             $imagesArticle->setNom('image-article' . $i . '.jpg');
             $imagesArticle->setArticles($this->articlesRepository->findOneBy(['titre' => 'Article ' . $i]));
             $manager->persist($imagesArticle);
+        }
+
+        // Communique
+        for ($i = 1; $i <= 20; $i++) {
+            $communique = new Communique();
+            $communique->setTitre('Communiqué ' . $i);
+            $communique->setHook('Hook du communiqué ' . $i);
+            $communique->setCreatedAt(new DateTime('2021-01-' . $i));
+            $communique->setContenu('Contenu du communiqué ' . $i . ' ' . str_repeat($lorem, 100));
+            $manager->persist($communique);
         }
         $manager->flush();
     }
