@@ -22,7 +22,9 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
-        $events = $this->getEvents();
+        $date = mktime(0, 0, 0, date("m"), date("d") - 1, date("Y")); // Pour tester une autre date
+        $today = date('Y-m-d', $date);
+        $events = $this->getEvents($today);
         return $this->render('home.html.twig', [
             'eventsToCome' => $events[0],
             'completedEvents' => $events[1],
@@ -30,15 +32,13 @@ class HomeController extends AbstractController
         ]);
     }
 
-
+    
 
     // On recupère jusqu'à 3 events futurs
     // $countEventsToCome = nombre d'évènements récupérés
     // S'il y a moins de 3 events futurs (Si $countEventsToCome<3), on récupère aussi 3-$countEventsToCome évènements passés
-    private function getEvents()
+    private function getEvents($today)
     {
-        $date  = mktime(0, 0, 0, date("m"), date("d") - 1, date("Y")); // Pour tester une autre date
-        $today = date('Y-m-d', $date);
         $eventsToCome = $this->eventsRepository->findEventsToCome($today);
         $completedEvents = [];
         $countEventsToCome = count($eventsToCome);
@@ -49,6 +49,16 @@ class HomeController extends AbstractController
             $eventsToCome,
             $completedEvents,
             $today
+        ];
+    }
+
+    // On récupère les 3 derniers articles
+    private function getArticles()
+    {
+
+        return [
+
+            $lastArticles
         ];
     }
 }

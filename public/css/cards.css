@@ -4,7 +4,7 @@
    flex-wrap: wrap;
 }
 
-.card-event {
+.card-event, .card-article {
    border: solid gray 1px;
    width: auto;
    padding: 20px;
