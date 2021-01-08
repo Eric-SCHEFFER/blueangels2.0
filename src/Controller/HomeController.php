@@ -5,16 +5,21 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-
 use App\Repository\EventsRepository;
+use App\Repository\ArticlesRepository;
+use App\Repository\CommuniqueRepository;
 use DateTime;
 
 class HomeController extends AbstractController
 {
-    public function __construct(EventsRepository $eventsRepository)
-    {
+    public function __construct(
+        EventsRepository $eventsRepository,
+        ArticlesRepository $articlesRepository,
+        CommuniqueRepository $communiqueRepository
+    ) {
         $this->eventsRepository = $eventsRepository;
+        $this->articlesRepository = $articlesRepository;
+        $this->communiqueRepository = $communiqueRepository;
     }
 
     /**
@@ -23,15 +28,22 @@ class HomeController extends AbstractController
     public function index(): Response
     {
         $today = new DateTime('2021-01-20'); // Pour tester une autre date
+        // On récupère les events
         $events = $this->getEvents($today);
+        // On récupère les articles
+        $articles = $this->articlesRepository->findBy([], ['created_at' => 'DESC'], 3, 0);
+        // On récupère les communiqués
+        $communiques = $this->communiqueRepository->findBy([], ['created_at' => 'DESC'], 3, 0);
         return $this->render('home.html.twig', [
             'eventsToCome' => $events[0],
             'completedEvents' => $events[1],
             'today' => $events[2],
+            'articles' => $articles,
+            'communiques' => $communiques,
         ]);
     }
 
-    
+
 
     // On recupère jusqu'à 3 events futurs
     // $countEventsToCome = nombre d'évènements récupérés
@@ -48,16 +60,6 @@ class HomeController extends AbstractController
             $eventsToCome,
             $completedEvents,
             $today
-        ];
-    }
-
-    // On récupère les 3 derniers articles
-    private function getArticles()
-    {
-
-        return [
-
-            $lastArticles
         ];
     }
 }

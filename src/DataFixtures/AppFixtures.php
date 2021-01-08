@@ -93,7 +93,7 @@ class AppFixtures extends Fixture
         }
 
         // Communique
-        for ($i = 1; $i <= 20; $i++) {
+        for ($i = 1; $i <= 3; $i++) {
             $communique = new Communique();
             $communique->setTitre('Communiqué ' . $i);
             $communique->setHook('Hook du communiqué ' . $i);

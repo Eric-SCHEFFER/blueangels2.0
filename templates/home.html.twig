@@ -6,29 +6,45 @@
 
 {% block body %}
 
-    {# Variables transmises #}
-    {# {{ dump('Evènements passés:', completedEvents) }} #}
-    {# {{ dump('Evènements futurs:', eventsToCome) }} #}
-    
-    
-
 <div class="wrapper">
     <h1>HomePage</h1>
-
-    <section class="infos">
-        {# TODO:  #}
+    
+    <section class="communique">
+        {# On affiche les 3 derniers communiqués par ordre de création. (les plus récents à droite)
+           Chaque communiqués est cliquable, et renvoi vers la page de l'communiqués
+           On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
+        #}
         <h2>Communiqués</h2>
-
+        <div class="bloc-cards">
+            {% for communique in communiques|reverse %}
+                <div class="card-article">
+                    <div>{{ communique.getTitre() }}</div>
+                    <div>{{ communique.getCreatedAt()|date("d-m-Y") }}</div>
+                    <div>{{ communique.getHook() }}</div>
+                </div>
+            {% endfor %}
+        </div>
     </section>
 <hr>
 
 
     <section class="articles">
-        {# TODO: On affiche les 3 derniers articles par ordre chronologique. (les plus récents à gauche)
+        {# On affiche les 3 derniers articles par ordre de création. (les plus récents à droite)
            Chaque article est cliquable, et renvoi vers la page de l'article
            On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
         #}
-        <h2>Articles</h2>
+        <h2>Derniers articles</h2>
+        <div class="bloc-cards">
+            {% for article in articles|reverse %}
+                <div class="card-article">
+                    <div>{{ article.getTitre() }}</div>
+                    <div>{{ article.getCreatedAt()|date("d-m-Y") }}</div>
+                    <div>{{ article.getHook() }}</div>
+                </div>
+            {% endfor %}
+        </div>
+
+
 
     </section>
 <hr>
@@ -49,7 +65,7 @@
             {% if not completedEvents is empty %}
                 {% for completedEvent in completedEvents|reverse %}
                     <div class="card-event completed">
-                        <div>{{ completedEvent.nom }}</div>
+                        <div>{{ completedEvent.getNom() }}</div>
                         <div>Le {{ completedEvent.getDateEvent()|date("d-m-Y") }}</div>
                         <div>
                             {% if not completedEvent.getImagesEvents() is empty %}
@@ -66,7 +82,7 @@
             {% if not eventsToCome is empty %}
                 {% for eventToCome in eventsToCome %}
                     <div class="card-event">
-                        <div>{{ eventToCome.nom }}</div>
+                        <div>{{ eventToCome.getNom() }}</div>
                         <div>Le {{ eventToCome.getDateEvent()|date("d-m-Y") }}</div>
                         <div>
                             {% if not eventToCome.getImagesEvents() is empty %}
@@ -80,7 +96,6 @@
             {% endif %}
 
         </div>
-
     </section>
 <hr>
 </div>
