@@ -27,9 +27,11 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
-        $today = new DateTime('2021-01-20'); // Pour tester une autre date
-        // On récupère les events
+        $today = new DateTime('2020-12-31'); // Pour tester d'autres dates du jour
+        // On récupère les 3 events
         $events = $this->getEvents($today);
+        // On récupère le nbre total d'events futurs
+        $countTotalEventsToCome = $this->eventsRepository->countTotalEventsToCome($today);
         // On récupère les articles
         $articles = $this->articlesRepository->findBy([], ['created_at' => 'DESC'], 3, 0);
         // On récupère les communiqués
@@ -37,7 +39,8 @@ class HomeController extends AbstractController
         return $this->render('home.html.twig', [
             'eventsToCome' => $events[0],
             'completedEvents' => $events[1],
-            'today' => $events[2],
+            'today' => $today,
+            'countTotalEventsToCome' => $countTotalEventsToCome,
             'articles' => $articles,
             'communiques' => $communiques,
         ]);
@@ -59,7 +62,6 @@ class HomeController extends AbstractController
         return [
             $eventsToCome,
             $completedEvents,
-            $today
         ];
     }
 }

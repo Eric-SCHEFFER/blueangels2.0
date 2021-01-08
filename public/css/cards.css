@@ -6,7 +6,8 @@
 
 .card-event, .card-article {
    border: solid gray 1px;
-   width: auto;
+   width: 250px;
+   min-width: 200px;
    padding: 20px;
    margin: 20px;
 }

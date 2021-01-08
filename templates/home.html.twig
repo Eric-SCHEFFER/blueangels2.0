@@ -10,7 +10,7 @@
     <h1>HomePage</h1>
     
     <section class="communique">
-        {# On affiche les 3 derniers communiqués par ordre de création. (les plus récents à droite)
+        {# On affiche les 3 derniers communiqués par ordre de création.
            Chaque communiqués est cliquable, et renvoi vers la page de l'communiqués
            On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
         #}
@@ -29,7 +29,7 @@
 
 
     <section class="articles">
-        {# On affiche les 3 derniers articles par ordre de création. (les plus récents à droite)
+        {# On affiche les 3 derniers articles par ordre de création.
            Chaque article est cliquable, et renvoi vers la page de l'article
            On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
         #}
@@ -51,32 +51,16 @@
 
 
     <section class="events">
-        {# On affiche jusqu'à 3 events futurs (les plus anciens vers la gauche)
+        {# On affiche jusqu'à 3 events futurs
            S'il y en a moins ou pas (soit N), on complète à gauche 3 - N events passés.
            Chaque event est cliquable, et renvoi vers la page de l'event
            On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
         #}
-        <h2>Évènements</h2>
+        <h2>Évènements à venir: {{ countTotalEventsToCome[0][1] }}</h2>
         {# Provisoire, pour tester les dates #}
         <p>Nous sommes le {{ today|date("d-m-Y") }}</p>
         <div class="bloc-cards">
 
-            {# Évènements passés #}
-            {% if not completedEvents is empty %}
-                {% for completedEvent in completedEvents|reverse %}
-                    <div class="card-event completed">
-                        <div>{{ completedEvent.getNom() }}</div>
-                        <div>Le {{ completedEvent.getDateEvent()|date("d-m-Y") }}</div>
-                        <div>
-                            {% if not completedEvent.getImagesEvents() is empty %}
-                                {# On récupère la première image, et sa catégorie, associées à l'event #}
-                                <div>{{ completedEvent.getImagesEvents()[0].getNom() }}</div>
-                                <div>{{ completedEvent.getImagesEvents()[0].getCategoriesImage().getNom() }}</div>
-                            {% endif %}
-                        </div>
-                    </div>
-                {% endfor %}
-            {% endif %}
 
             {# Évènements futurs #}
             {% if not eventsToCome is empty %}
@@ -84,6 +68,11 @@
                     <div class="card-event">
                         <div>{{ eventToCome.getNom() }}</div>
                         <div>Le {{ eventToCome.getDateEvent()|date("d-m-Y") }}</div>
+                        {# Si la date de l'event est à "today +1" #}
+                        {% if eventToCome.getDateEvent()|date("d-m-Y") == today|date_modify("+1 day")|date("d-m-Y") %}
+                            <div>C'est demain</div>
+                        
+                        {% endif %}
                         <div>
                             {% if not eventToCome.getImagesEvents() is empty %}
                                 {# Même principe que dans les events passés pour récupérer les infos #}
@@ -91,6 +80,24 @@
                                 <div>{{ eventToCome.getImagesEvents()[0].getCategoriesImage().getNom() }}</div>
                             {% endif %}
                         </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            {# Évènements passés #}
+            {% if not completedEvents is empty %}
+                {% for completedEvent in completedEvents %}
+                    <div class="card-event completed">
+                        {% if not completedEvent.getImagesEvents() is empty %}
+                            {# On récupère la première image #}
+                            <div>{{ completedEvent.getImagesEvents()[0].getNom() }}</div>
+                            {# Categorie #}
+                            {# <div>{{ completedEvent.getImagesEvents()[0].getCategoriesImage().getNom() }}</div> #}
+                        {% endif %}
+
+                        <div>{{ completedEvent.getNom() }}</div>
+                        <div>Le {{ completedEvent.getDateEvent()|date("d-m-Y") }}</div>
+                        
                     </div>
                 {% endfor %}
             {% endif %}

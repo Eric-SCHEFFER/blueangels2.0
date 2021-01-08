@@ -17,3 +17,5 @@
 
 /.env
 /migrations/
+/public/upload/
+/public/images/

@@ -20,6 +20,19 @@ class EventsRepository extends ServiceEntityRepository
     }
 
 
+    // On compte la totalité des events futurs
+    public function countTotalEventsToCome($date)
+    {
+        $query = $this->createQueryBuilder('e')
+            ->select('e')
+            ->where('e.date_event >= :date')
+            ->setParameter('date', $date)
+            ->select('count(e.id)')
+            ->getQuery()
+            ->getResult();
+        return $query;
+    }
+
     // On recupère jusqu'à 3 events futurs
     public function findEventsToCome($date)
     {
