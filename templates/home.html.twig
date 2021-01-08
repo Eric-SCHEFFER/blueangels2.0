@@ -16,7 +16,7 @@
         #}
         <h2>Communiqués</h2>
         <div class="bloc-cards">
-            {% for communique in communiques|reverse %}
+            {% for communique in communiques %}
                 <div class="card-article">
                     <div>{{ communique.getTitre() }}</div>
                     <div>{{ communique.getCreatedAt()|date("d-m-Y") }}</div>
@@ -35,7 +35,7 @@
         #}
         <h2>Derniers articles</h2>
         <div class="bloc-cards">
-            {% for article in articles|reverse %}
+            {% for article in articles %}
                 <div class="card-article">
                     <div>{{ article.getTitre() }}</div>
                     <div>{{ article.getCreatedAt()|date("d-m-Y") }}</div>
