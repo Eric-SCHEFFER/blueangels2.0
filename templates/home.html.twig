@@ -66,20 +66,27 @@
             {% if not eventsToCome is empty %}
                 {% for eventToCome in eventsToCome %}
                     <div class="card-event">
+                        {% if not eventToCome.getImagesEvents() is empty %}
+                            <div class="image">
+                                <img src="{{ asset('images/2020-03-08_flyer_affiche_stage_bachata.jpg') }}" alt="">
+                            </div>
+
+
+                            {# On récupère la première image #}
+                            <div>{{ eventToCome.getImagesEvents()[0].getNom() }}</div>
+                            {# Categorie #}
+                            {# <div>{{ eventToCome.getImagesEvents()[0].getCategoriesImage().getNom() }}</div> #}
+                        {% endif %}
+
+
+
                         <div>{{ eventToCome.getNom() }}</div>
                         <div>Le {{ eventToCome.getDateEvent()|date("d-m-Y") }}</div>
                         {# Si la date de l'event est à "today +1" #}
                         {% if eventToCome.getDateEvent()|date("d-m-Y") == today|date_modify("+1 day")|date("d-m-Y") %}
-                            <div>C'est demain</div>
-                        
+                            {# Utiliser data attributes qui seront récupérés dans un js, ou l'on pourra styler #}
+                            <div></div>
                         {% endif %}
-                        <div>
-                            {% if not eventToCome.getImagesEvents() is empty %}
-                                {# Même principe que dans les events passés pour récupérer les infos #}
-                                <div>{{ eventToCome.getImagesEvents()[0].getNom() }}</div>
-                                <div>{{ eventToCome.getImagesEvents()[0].getCategoriesImage().getNom() }}</div>
-                            {% endif %}
-                        </div>
                     </div>
                 {% endfor %}
             {% endif %}
@@ -89,15 +96,16 @@
                 {% for completedEvent in completedEvents %}
                     <div class="card-event completed">
                         {% if not completedEvent.getImagesEvents() is empty %}
+                            <div class="image">
+                                <img src="{{ asset('images/rail.jpg') }}" alt="">
+                            </div>
                             {# On récupère la première image #}
                             <div>{{ completedEvent.getImagesEvents()[0].getNom() }}</div>
                             {# Categorie #}
                             {# <div>{{ completedEvent.getImagesEvents()[0].getCategoriesImage().getNom() }}</div> #}
                         {% endif %}
-
                         <div>{{ completedEvent.getNom() }}</div>
                         <div>Le {{ completedEvent.getDateEvent()|date("d-m-Y") }}</div>
-                        
                     </div>
                 {% endfor %}
             {% endif %}
