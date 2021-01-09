@@ -73,7 +73,7 @@
 
 
                             {# On récupère la première image #}
-                            <div>{{ eventToCome.getImagesEvents()[0].getNom() }}</div>
+                            {# <div>{{ eventToCome.getImagesEvents()[0].getNom() }}</div> #}
                             {# Categorie #}
                             {# <div>{{ eventToCome.getImagesEvents()[0].getCategoriesImage().getNom() }}</div> #}
                         {% endif %}
@@ -81,6 +81,7 @@
 
 
                         <div>{{ eventToCome.getNom() }}</div>
+                        <div>{{ eventToCome.getHook() }}</div>
                         <div>Le {{ eventToCome.getDateEvent()|date("d-m-Y") }}</div>
                         {# Si la date de l'event est à "today +1" #}
                         {% if eventToCome.getDateEvent()|date("d-m-Y") == today|date_modify("+1 day")|date("d-m-Y") %}
