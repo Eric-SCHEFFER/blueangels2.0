@@ -69,28 +69,23 @@
                         {% if not eventToCome.getImagesEvents() is empty %}
                             <div class="image">
                                 <img src="{{ asset('images/2020-03-08_flyer_affiche_stage_bachata.jpg') }}" alt="">
+                                <h3 class="titre">{{ eventToCome.getNom() }}</h3>
                             </div>
-
-
-                            {# On récupère la première image #}
-                            {# <div>{{ eventToCome.getImagesEvents()[0].getNom() }}</div> #}
-                            {# Categorie #}
-                            {# <div>{{ eventToCome.getImagesEvents()[0].getCategoriesImage().getNom() }}</div> #}
                         {% endif %}
 
-
-
-                        <div>{{ eventToCome.getNom() }}</div>
-                        <div>{{ eventToCome.getHook() }}</div>
-                        <div>Le {{ eventToCome.getDateEvent()|date("d-m-Y") }}</div>
-                        {# Si la date de l'event est à "today +1" #}
-                        {% if eventToCome.getDateEvent()|date("d-m-Y") == today|date_modify("+1 day")|date("d-m-Y") %}
-                            {# Utiliser data attributes qui seront récupérés dans un js, ou l'on pourra styler #}
-                            <div></div>
-                        {% endif %}
+                        <div class="text">
+                            
+                            <div>{{ eventToCome.getHook() }}</div>
+                            <div>Le {{ eventToCome.getDateEvent()|date("d-m-Y") }}</div>
+                        </div>
+                        
                     </div>
                 {% endfor %}
             {% endif %}
+
+
+
+
 
             {# Évènements passés #}
             {% if not completedEvents is empty %}
@@ -112,6 +107,19 @@
             {% endif %}
 
         </div>
+
+
+{# Si la date de l'event est à "today +1" #}
+{# {% if eventToCome.getDateEvent()|date("d-m-Y") == today|date_modify("+1 day")|date("d-m-Y") %} #}
+{# Utiliser data attributes qui seront récupérés dans un js, ou l'on pourra styler #}
+{# <div></div> #}
+{# {% endif %} #}
+
+
+{# On récupère la première image #}
+{# <div>{{ eventToCome.getImagesEvents()[0].getNom() }}</div> #}
+{# Categorie #}
+{# <div>{{ eventToCome.getImagesEvents()[0].getCategoriesImage().getNom() }}</div> #}
     </section>
 <hr>
 </div>

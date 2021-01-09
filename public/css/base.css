@@ -1,12 +1,21 @@
 html {
    box-sizing: border-box;
-   color: white;
+   color: rgb(184, 184, 184);
    background-color: black;
+   font-family: 'Quicksand', sans-serif;
 }
 
 html, body {
    padding: 0;
    margin: 0;
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+   font-weight: 300;
+   text-transform: uppercase;
+   
 }
 
 ul {
