@@ -33,16 +33,16 @@
    height: 100%;
    object-fit: cover;
    object-position: top;
-   filter: blur(1px);
 }
 
 .titre {
    position: relative;
-   bottom: 120px;
+   bottom: 47px;
    text-align: center;
    font-weight: 700;
    color: rgb(255, 255, 255);
-   background: inherit;
+   background-color: rgba(0, 0, 0, 0.8);
+   text-shadow: #000 1px 2px 2px;
 }
 
 
