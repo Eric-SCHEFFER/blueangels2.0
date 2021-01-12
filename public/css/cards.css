@@ -5,10 +5,10 @@
 }
 
 .card-event, .card-article {
-   border: solid rgb(72, 255, 0) 1px;
+   /* border: solid rgb(72, 255, 0) 1px; */
    width: 240px;
    height: auto;
-   padding: 9px;
+   padding: 9px 9px 12px 9px;
    margin: 30px;
    background-color: rgb(255, 255, 255);
    border-radius: 4px;
@@ -19,13 +19,11 @@
 }
 
 .image {
-   border: solid rgb(255, 0, 0) 1px;
+   /* border: solid rgb(255, 0, 0) 1px; */
    width: 100%;
    height: 160px;
    overflow: hidden;
    border-radius: 4px;
-   
-   
 }
 
 .image img {
@@ -36,18 +34,62 @@
 }
 
 .titre {
-   position: relative;
-   bottom: 47px;
+   /* border: solid rgb(204, 0, 255) 1px; */
+   font-weight: 600;
    text-align: center;
-   font-weight: 700;
-   color: rgb(255, 255, 255);
-   background-color: rgba(0, 0, 0, 0.8);
-   text-shadow: #000 1px 2px 2px;
+   color: rgb(49, 49, 49);
+   margin: 15px 0 5px 0;
+
 }
 
+.infos {
+   margin: 15px auto 2px auto;
+   color: rgb(112, 112, 112);
+}
 
-.text {
-   padding: 20px 6px 20px 6px;
+.info-jour {
+   position: relative;
+   float: right;
+   font-weight: 600;
+}
+ .center {
+   text-align: center;
+ }
+
+.green {
+   color: rgb(4, 133, 0);
+}
+
+.yellow {
+   color: rgb(0, 123, 224);
+}
+
+.hook, .description {
+   margin: 4px 0 4px 0;
+}
+
+.hook {
+   /* border: solid rgb(110, 226, 255) 1px; */
+   text-align: center;
+   color: rgb(83, 83, 83);
+   white-space: nowrap;
+   overflow: hidden;
+   font-weight: 600;
+   margin-bottom: 10px;;
+   text-overflow: ellipsis;
+}
+
+.description {
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+}
+
+.bloc-text {
+   /* border: solid rgb(177, 255, 177) 1px; */
+   padding: 0 3px 0 3px;
    color: rgb(68, 68, 68);
+   overflow: hidden;
+   text-overflow: ellipsis;
    
 }

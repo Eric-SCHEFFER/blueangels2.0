@@ -1,6 +1,7 @@
 {% extends 'components/base.html.twig' %}
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('css/cards.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cards.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
 {% endblock %}
 {% block title %}HomePage{% endblock %}
 
@@ -69,14 +70,26 @@
                         {% if not eventToCome.getImagesEvents() is empty %}
                             <div class="image">
                                 <img src="{{ asset('images/2020-03-08_flyer_affiche_stage_bachata.jpg') }}" alt="">
-                                <h3 class="titre">{{ eventToCome.getNom() }}</h3>
+                                
                             </div>
                         {% endif %}
-
-                        <div class="text">
-                            
-                            <div>{{ eventToCome.getHook() }}</div>
-                            <div>Le {{ eventToCome.getDateEvent()|date("d-m-Y") }}</div>
+                        
+                        <div class="bloc-text">
+                            <h3 class="titre">{{ eventToCome.getNom() }}</h3>
+                            <p class="hook">{{ eventToCome.getHook() }}</p>
+                            <div class="bouton">Voir</div>
+                            <div class="infos">
+                                {{ eventToCome.getDateEvent()|date("d-m-Y") }}
+                                {% if eventToCome.getDateEvent()|date("d-m-Y") == today|date("d-m-Y") %}
+                                    <span class="info-jour green">Aujourd'hui</span>
+                                {% elseif eventToCome.getDateEvent()|date("d-m-Y") == today|date_modify("+1 day")|date("d-m-Y") %}
+                                    <span class="info-jour yellow">Demain</span>
+                                {% elseif eventToCome.getDateEvent()|date("d-m-Y") == today|date_modify("+2 day")|date("d-m-Y") %}
+                                    <span class="info-jour yellow">J-2</span>
+                                {% elseif eventToCome.getDateEvent()|date("d-m-Y") == today|date_modify("+3 day")|date("d-m-Y") %}
+                                    <span class="info-jour yellow">J-3</span>
+                                {% endif %}
+                            </div>
                         </div>
                         
                     </div>
