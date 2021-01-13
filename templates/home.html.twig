@@ -57,10 +57,37 @@
            Chaque event est cliquable, et renvoi vers la page de l'event
            On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
         #}
-        <h2>Évènements à venir: {{ countTotalEventsToCome[0][1] }}</h2>
+        <h2>Évènements</h2>
+        <p>{{ countTotalEventsToCome[0][1] }} évènement à venir</p>
         {# Provisoire, pour tester les dates #}
         <p>Nous sommes le {{ today|date("d-m-Y") }}</p>
         <div class="bloc-cards">
+
+
+            {# Évènements passés #}
+            {% if not completedEvents is empty %}
+                {% for completedEvent in completedEvents|reverse %}
+                    <div class="card-wraper">
+                        <div class="termine">Évènement terminé</div>
+                        <div class="card-event card-event-grise">
+                            {% if not completedEvent.getImagesEvents() is empty %}
+
+                                <div class="image">
+                                    <img src="{{ asset('images/2020-03-08_flyer_affiche_stage_bachata.jpg') }}" alt="">
+                                </div>
+                            {% endif %}
+                            <div class="bloc-text">
+                                <h3 class="titre">{{ completedEvent.getNom() }}</h3>
+                                <p class="hook">{{ completedEvent.getHook() }}</p>
+                                <div class="bouton">Voir</div>
+                                <div class="infos">
+                                    {{ completedEvent.getDateEvent()|date("d-m-Y") }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                {% endfor %}
+            {% endif %}
 
 
             {# Évènements futurs #}
@@ -70,10 +97,8 @@
                         {% if not eventToCome.getImagesEvents() is empty %}
                             <div class="image">
                                 <img src="{{ asset('images/2020-03-08_flyer_affiche_stage_bachata.jpg') }}" alt="">
-                                
                             </div>
                         {% endif %}
-                        
                         <div class="bloc-text">
                             <h3 class="titre">{{ eventToCome.getNom() }}</h3>
                             <p class="hook">{{ eventToCome.getHook() }}</p>
@@ -83,38 +108,14 @@
                                 {% if eventToCome.getDateEvent()|date("d-m-Y") == today|date("d-m-Y") %}
                                     <span class="info-jour green">Aujourd'hui</span>
                                 {% elseif eventToCome.getDateEvent()|date("d-m-Y") == today|date_modify("+1 day")|date("d-m-Y") %}
-                                    <span class="info-jour yellow">Demain</span>
+                                    <span class="info-jour blue">Demain</span>
                                 {% elseif eventToCome.getDateEvent()|date("d-m-Y") == today|date_modify("+2 day")|date("d-m-Y") %}
-                                    <span class="info-jour yellow">J-2</span>
+                                    <span class="info-jour blue">J-2</span>
                                 {% elseif eventToCome.getDateEvent()|date("d-m-Y") == today|date_modify("+3 day")|date("d-m-Y") %}
-                                    <span class="info-jour yellow">J-3</span>
+                                    <span class="info-jour blue">J-3</span>
                                 {% endif %}
                             </div>
                         </div>
-                        
-                    </div>
-                {% endfor %}
-            {% endif %}
-
-
-
-
-
-            {# Évènements passés #}
-            {% if not completedEvents is empty %}
-                {% for completedEvent in completedEvents %}
-                    <div class="card-event completed">
-                        {% if not completedEvent.getImagesEvents() is empty %}
-                            <div class="image">
-                                <img src="{{ asset('images/rail.jpg') }}" alt="">
-                            </div>
-                            {# On récupère la première image #}
-                            <div>{{ completedEvent.getImagesEvents()[0].getNom() }}</div>
-                            {# Categorie #}
-                            {# <div>{{ completedEvent.getImagesEvents()[0].getCategoriesImage().getNom() }}</div> #}
-                        {% endif %}
-                        <div>{{ completedEvent.getNom() }}</div>
-                        <div>Le {{ completedEvent.getDateEvent()|date("d-m-Y") }}</div>
                     </div>
                 {% endfor %}
             {% endif %}

@@ -60,8 +60,39 @@
    color: rgb(4, 133, 0);
 }
 
-.yellow {
+.blue {
    color: rgb(0, 123, 224);
+}
+
+.red {
+   color: rgb(221, 0, 0);
+}
+
+.card-wraper {
+   position: relative;
+}
+
+.termine {
+   z-index: 1;
+   position: absolute;
+   text-align: center;
+   top: 150px;
+   left: 75px;
+   width: auto;
+   height: auto;
+   color: rgb(255, 255, 255);
+   border: 1px rgb(255, 255, 255) solid;
+   padding: 10px;
+   border-radius: 6px;
+   font-weight: 600;
+   text-shadow: #000 2px 2px 1px;
+   box-shadow: #000 2px 2px 2px;
+   transform: rotate(-20deg);
+   
+}
+
+.card-event-grise {
+   opacity: .6;
 }
 
 .hook, .description {
