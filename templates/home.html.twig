@@ -65,30 +65,39 @@
 
         <div class="bloc-cards">
 
+            {# TODO:  Affichage des évènements annulés #}
+
             {# Évènements futurs #}
             {% if not eventsToCome is empty %}
                 {% for eventToCome in eventsToCome %}
-                    <div class="card-event">
-                        {% if not eventToCome.getImagesEvents() is empty %}
-                            <div class="image">
-                                <img src="{{ asset('images/2020-03-08_flyer_affiche_stage_bachata.jpg') }}" alt="">
-                            </div>
+                    <div class="card-wraper">
+                        {% if eventToCome.getAnnule() %}
+                            <div class="tampon-oblique tampon-oblique-red">Évènement annulé</div>
+                            <div class="card-event card-event-grise">
+                            {% else %}
+                            <div class="card-event">
                         {% endif %}
-                        <div class="bloc-text">
-                            <h3 class="titre">{{ eventToCome.getNom() }}</h3>
-                            <p class="hook">{{ eventToCome.getHook() }}</p>
-                            <div class="bouton">Voir</div>
-                            <div class="infos">
-                                <i class="fas fa-calendar-alt"></i> {{ eventToCome.getDateEvent()|date("d-m-Y") }}
-                                {% if eventToCome.getDateEvent()|date("d-m-Y") == today|date("d-m-Y") %}
-                                    <span class="info-jour green">Aujourd'hui</span>
-                                {% elseif eventToCome.getDateEvent()|date("d-m-Y") == today|date_modify("+1 day")|date("d-m-Y") %}
-                                    <span class="info-jour blue">Demain</span>
-                                {% elseif eventToCome.getDateEvent()|date("d-m-Y") == today|date_modify("+2 day")|date("d-m-Y") %}
-                                    <span class="info-jour blue">J-2</span>
-                                {% elseif eventToCome.getDateEvent()|date("d-m-Y") == today|date_modify("+3 day")|date("d-m-Y") %}
-                                    <span class="info-jour blue">J-3</span>
-                                {% endif %}
+                            {% if not eventToCome.getImagesEvents() is empty %}
+                                <div class="image">
+                                    <img src="{{ asset('images/2020-03-08_flyer_affiche_stage_bachata.jpg') }}" alt="">
+                                </div>
+                            {% endif %}
+                            <div class="bloc-text">
+                                <h3 class="titre">{{ eventToCome.getNom() }}</h3>
+                                <p class="hook">{{ eventToCome.getHook() }}</p>
+                                <div class="bouton">Voir</div>
+                                <div class="infos">
+                                    <i class="fas fa-calendar-alt"></i> {{ eventToCome.getDateEvent()|date("d-m-Y") }}
+                                    {% if eventToCome.getDateEvent()|date("d-m-Y") == today|date("d-m-Y") %}
+                                        <span class="info-jour green">Aujourd'hui</span>
+                                    {% elseif eventToCome.getDateEvent()|date("d-m-Y") == today|date_modify("+1 day")|date("d-m-Y") %}
+                                        <span class="info-jour blue">Demain</span>
+                                    {% elseif eventToCome.getDateEvent()|date("d-m-Y") == today|date_modify("+2 day")|date("d-m-Y") %}
+                                        <span class="info-jour blue">J+2</span>
+                                    {% elseif eventToCome.getDateEvent()|date("d-m-Y") == today|date_modify("+3 day")|date("d-m-Y") %}
+                                        <span class="info-jour blue">J+3</span>
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -99,10 +108,13 @@
             {% if not completedEvents is empty %}
                 {% for completedEvent in completedEvents %}
                     <div class="card-wraper">
-                        <div class="termine">Évènement terminé</div>
+                        {% if completedEvent.getAnnule() %}
+                            <div class="tampon-oblique tampon-oblique-red">Évènement annulé</div>
+                        {% else %}
+                            <div class="tampon-oblique">Évènement terminé</div>
+                        {% endif %}
                         <div class="card-event card-event-grise">
                             {% if not completedEvent.getImagesEvents() is empty %}
-
                                 <div class="image">
                                     <img src="{{ asset('images/2020-03-08_flyer_affiche_stage_bachata.jpg') }}" alt="">
                                 </div>

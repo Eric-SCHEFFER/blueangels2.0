@@ -44,6 +44,11 @@ class Events
      */
     private $imagesEvents;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $annule;
+
     public function __construct()
     {
         $this->imagesEvents = new ArrayCollection();
@@ -128,6 +133,18 @@ class Events
                 $imagesEvent->setEvent(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAnnule(): ?bool
+    {
+        return $this->annule;
+    }
+
+    public function setAnnule(?bool $annule): self
+    {
+        $this->annule = $annule;
 
         return $this;
     }

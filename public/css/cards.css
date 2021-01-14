@@ -81,15 +81,13 @@ section {
    color: rgb(0, 123, 224);
 }
 
-.red {
-   color: rgb(221, 0, 0);
-}
+
 
 .card-wraper {
    position: relative;
 }
 
-.termine {
+.tampon-oblique {
    z-index: 1;
    position: absolute;
    text-align: center;
@@ -105,9 +103,12 @@ section {
    text-shadow: #000 2px 2px 1px;
    box-shadow: #000 2px 2px 2px;
    transform: rotate(-20deg);
-   
 }
 
+.tampon-oblique-red {
+   color: rgb(221, 0, 0);
+   border: 1px rgb(221, 0, 0) solid;
+}
 .card-event-grise {
    opacity: .6;
 }
