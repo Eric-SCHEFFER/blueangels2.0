@@ -65,33 +65,6 @@
 
         <div class="bloc-cards">
 
-            {# Évènements passés #}
-            {% if not completedEvents is empty %}
-                {% for completedEvent in completedEvents|reverse %}
-                    <div class="card-wraper">
-                        <div class="termine">Évènement terminé</div>
-                        <div class="card-event card-event-grise">
-                            {% if not completedEvent.getImagesEvents() is empty %}
-
-                                <div class="image">
-                                    <img src="{{ asset('images/2020-03-08_flyer_affiche_stage_bachata.jpg') }}" alt="">
-                                </div>
-                            {% endif %}
-                            <div class="bloc-text">
-                                <h3 class="titre">{{ completedEvent.getNom() }}</h3>
-                                <p class="hook">{{ completedEvent.getHook() }}</p>
-                                <div class="bouton">Voir</div>
-                                <div class="infos">
-                                    <i class="fas fa-calendar-alt"></i> {{ completedEvent.getDateEvent()|date("d-m-Y") }}
-                                    <span class="info-jour">Terminé</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>    
-                {% endfor %}
-            {% endif %}
-
-
             {# Évènements futurs #}
             {% if not eventsToCome is empty %}
                 {% for eventToCome in eventsToCome %}
@@ -121,11 +94,40 @@
                     </div>
                 {% endfor %}
             {% endif %}
+
+            {# Évènements passés #}
+            {% if not completedEvents is empty %}
+                {% for completedEvent in completedEvents %}
+                    <div class="card-wraper">
+                        <div class="termine">Évènement terminé</div>
+                        <div class="card-event card-event-grise">
+                            {% if not completedEvent.getImagesEvents() is empty %}
+
+                                <div class="image">
+                                    <img src="{{ asset('images/2020-03-08_flyer_affiche_stage_bachata.jpg') }}" alt="">
+                                </div>
+                            {% endif %}
+                            <div class="bloc-text">
+                                <h3 class="titre">{{ completedEvent.getNom() }}</h3>
+                                <p class="hook">{{ completedEvent.getHook() }}</p>
+                                <div class="bouton">Voir</div>
+                                <div class="infos">
+                                    <i class="fas fa-calendar-alt"></i> {{ completedEvent.getDateEvent()|date("d-m-Y") }}
+                                    <span class="info-jour">Terminé</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                {% endfor %}
+            {% endif %}
+
+
+            
         </div>
         <div class="boutonsPassesFuturs">
             <div class="bouton bt2">Tous les évènements passés</div>
             {% if aVenir > 3 %}
-                <div class="bouton bt2">Tous les évènements à venir ( {{ aVenir -3 }} en plus)</div>
+                <div class="bouton bt2">Tous les évènements à venir (+ {{ aVenir -3 }} )</div>
             {% endif %}
         </div>
 
