@@ -1,4 +1,16 @@
+section {
+   /* border: solid rgb(72, 255, 0) 1px; */
+}
+
+.main-bloc-cards {
+   /* border: solid rgb(17, 0, 255) 1px; */
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+}
+
 .bloc-cards {
+   /* border: solid rgb(255, 217, 0) 1px; */
    display: flex;
    justify-content: center;
    flex-wrap: wrap;
@@ -58,6 +70,11 @@
 
 .green {
    color: rgb(4, 133, 0);
+}
+
+.infos i {
+   position: relative;
+   bottom: 1px;
 }
 
 .blue {

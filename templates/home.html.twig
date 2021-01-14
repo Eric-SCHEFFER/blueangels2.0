@@ -1,5 +1,6 @@
 {% extends 'components/base.html.twig' %}
 {% block stylesheets %}
+    {# <link rel="stylesheet" href="{{ asset('css/home.css') }}"> #}
     <link rel="stylesheet" href="{{ asset('css/cards.css') }}">
     <link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
 {% endblock %}
@@ -26,7 +27,7 @@
             {% endfor %}
         </div>
     </section>
-<hr>
+    <hr>
 
 
     <section class="articles">
@@ -48,7 +49,7 @@
 
 
     </section>
-<hr>
+    <hr>
 
 
     <section class="events">
@@ -57,13 +58,12 @@
            Chaque event est cliquable, et renvoi vers la page de l'event
            On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
         #}
-        <h2>Évènements</h2>
-        <p>{{ countTotalEventsToCome[0][1] }} évènement à venir</p>
+        {% set aVenir = countTotalEventsToCome[0][1] %}
+        <h2>Évènements à venir</h2>
         {# Provisoire, pour tester les dates #}
         <p>Nous sommes le {{ today|date("d-m-Y") }}</p>
-        <div class="main-bloc-cards">
-        <div class="bloc-cards">
 
+        <div class="bloc-cards">
 
             {# Évènements passés #}
             {% if not completedEvents is empty %}
@@ -82,7 +82,8 @@
                                 <p class="hook">{{ completedEvent.getHook() }}</p>
                                 <div class="bouton">Voir</div>
                                 <div class="infos">
-                                    {{ completedEvent.getDateEvent()|date("d-m-Y") }}
+                                    <i class="fas fa-calendar-alt"></i> {{ completedEvent.getDateEvent()|date("d-m-Y") }}
+                                    <span class="info-jour">Terminé</span>
                                 </div>
                             </div>
                         </div>
@@ -105,7 +106,7 @@
                             <p class="hook">{{ eventToCome.getHook() }}</p>
                             <div class="bouton">Voir</div>
                             <div class="infos">
-                                {{ eventToCome.getDateEvent()|date("d-m-Y") }}
+                                <i class="fas fa-calendar-alt"></i> {{ eventToCome.getDateEvent()|date("d-m-Y") }}
                                 {% if eventToCome.getDateEvent()|date("d-m-Y") == today|date("d-m-Y") %}
                                     <span class="info-jour green">Aujourd'hui</span>
                                 {% elseif eventToCome.getDateEvent()|date("d-m-Y") == today|date_modify("+1 day")|date("d-m-Y") %}
@@ -120,7 +121,12 @@
                     </div>
                 {% endfor %}
             {% endif %}
-    </div>
+        </div>
+        <div class="boutonsPassesFuturs">
+            <div class="bouton bt2">Tous les évènements passés</div>
+            {% if aVenir > 3 %}
+                <div class="bouton bt2">Tous les évènements à venir ( {{ aVenir -3 }} en plus)</div>
+            {% endif %}
         </div>
 
 
@@ -136,6 +142,6 @@
 {# Categorie #}
 {# <div>{{ eventToCome.getImagesEvents()[0].getCategoriesImage().getNom() }}</div> #}
     </section>
-<hr>
+    <hr>
 </div>
 {% endblock %}
