@@ -1,14 +1,10 @@
-.events .bloc-cards {
+.articles .bloc-cards {
    display: flex;
    justify-content: center;
    flex-wrap: wrap;
 }
 
-.events .card-wraper {
-   position: relative;
-}
-
-.events .tampon-oblique {
+.articles .tampon-oblique {
    z-index: 1;
    position: absolute;
    text-align: center;
@@ -26,98 +22,79 @@
    transform: rotate(-20deg);
 }
 
-.events .tampon-oblique-red {
+.articles .tampon-oblique-red {
    color: rgb(221, 0, 0);
    border: 1px rgb(221, 0, 0) solid;
 }
 
-.events .card-event {
+.articles .card-article {
    width: 240px;
    height: auto;
-   padding: 9px 9px 12px 9px;
+   padding: 8px;
    margin: 30px;
    background-color: rgb(255, 255, 255);
    border-radius: 4px;
 }
 
-.events .completed {
-   color: rgb(177, 164, 90);
-}
-
-.events .image {
-   width: 100%;
-   height: 160px;
+.articles .image {
+   width: 100px;
+   height: 100px;
    overflow: hidden;
    border-radius: 4px;
 }
 
-.events .image img {
+.articles .image img {
    width: 100%;
    height: 100%;
    object-fit: cover;
    object-position: top;
 }
 
-.events .titre {
-   font-weight: 600;
-   text-align: center;
-   color: rgb(49, 49, 49);
-   margin: 15px 0 5px 0;
+.articles .titre {
+   font-weight: 300;
+   margin: 5px 0 5px 0;
 }
 
-.events .infos {
-   margin: 15px auto 2px auto;
-   color: rgb(112, 112, 112);
+.articles .infos {
+   color: rgb(153, 153, 153);
+   font-size: .9em;
 }
 
-.events .info-jour {
-   position: relative;
-   float: right;
-   font-weight: 600;
-}
-
-.events  .events .center {
+ .articles .center {
    text-align: center;
  }
 
-.events .green {
+.articles .green {
    color: rgb(4, 133, 0);
 }
 
-.events .blue {
+.articles .blue {
    color: rgb(0, 123, 224);
 }
 
-.events .infos i {
+.articles .infos i {
    position: relative;
    bottom: 1px;
 }
 
-.events .card-event-grise {
-   opacity: .6;
-}
 
-.events .hook, .description {
-   margin: 4px 0 4px 0;
-}
-
-.events .hook {
-   text-align: center;
-   color: rgb(83, 83, 83);
+.articles .hook {
    white-space: nowrap;
    overflow: hidden;
-   font-weight: 600;
-   margin-bottom: 10px;;
    text-overflow: ellipsis;
+   margin-bottom: 6px;
+   text-transform: uppercase;
+   color: rgb(111, 111, 111);
+   font-size: .9em;
 }
 
-.events .description {
+.articles .contenu {
    white-space: nowrap;
    overflow: hidden;
    text-overflow: ellipsis;
 }
 
-.events .bloc-text {
+.articles .bloc-text {
    padding: 0 3px 0 3px;
    color: rgb(68, 68, 68);
    overflow: hidden;
