@@ -1,87 +1,8 @@
-section {
-   /* border: solid rgb(72, 255, 0) 1px; */
-}
-
-.main-bloc-cards {
-   /* border: solid rgb(17, 0, 255) 1px; */
-   display: flex;
-   justify-content: center;
-   flex-wrap: wrap;
-}
-
 .bloc-cards {
-   /* border: solid rgb(255, 217, 0) 1px; */
    display: flex;
    justify-content: center;
    flex-wrap: wrap;
 }
-
-.card-event, .card-article {
-   /* border: solid rgb(72, 255, 0) 1px; */
-   width: 240px;
-   height: auto;
-   padding: 9px 9px 12px 9px;
-   margin: 30px;
-   background-color: rgb(255, 255, 255);
-   border-radius: 4px;
-}
-
-.completed {
-   color: rgb(177, 164, 90);
-}
-
-.image {
-   /* border: solid rgb(255, 0, 0) 1px; */
-   width: 100%;
-   height: 160px;
-   overflow: hidden;
-   border-radius: 4px;
-}
-
-.image img {
-   width: 100%;
-   height: 100%;
-   object-fit: cover;
-   object-position: top;
-}
-
-.titre {
-   /* border: solid rgb(204, 0, 255) 1px; */
-   font-weight: 600;
-   text-align: center;
-   color: rgb(49, 49, 49);
-   margin: 15px 0 5px 0;
-
-}
-
-.infos {
-   margin: 15px auto 2px auto;
-   color: rgb(112, 112, 112);
-}
-
-.info-jour {
-   position: relative;
-   float: right;
-   font-weight: 600;
-}
- .center {
-   text-align: center;
- }
-
-.green {
-   color: rgb(4, 133, 0);
-}
-
-.infos i {
-   position: relative;
-   bottom: 1px;
-}
-
-.blue {
-   color: rgb(0, 123, 224);
-}
-
-
 
 .card-wraper {
    position: relative;
@@ -109,6 +30,69 @@ section {
    color: rgb(221, 0, 0);
    border: 1px rgb(221, 0, 0) solid;
 }
+
+.card-event, .card-article {
+   width: 240px;
+   height: auto;
+   padding: 9px 9px 12px 9px;
+   margin: 30px;
+   background-color: rgb(255, 255, 255);
+   border-radius: 4px;
+}
+
+.completed {
+   color: rgb(177, 164, 90);
+}
+
+.image {
+   width: 100%;
+   height: 160px;
+   overflow: hidden;
+   border-radius: 4px;
+}
+
+.image img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   object-position: top;
+}
+
+.titre {
+   font-weight: 600;
+   text-align: center;
+   color: rgb(49, 49, 49);
+   margin: 15px 0 5px 0;
+}
+
+.infos {
+   margin: 15px auto 2px auto;
+   color: rgb(112, 112, 112);
+}
+
+.info-jour {
+   position: relative;
+   float: right;
+   font-weight: 600;
+}
+
+ .center {
+   text-align: center;
+ }
+
+.green {
+   color: rgb(4, 133, 0);
+}
+
+.blue {
+   color: rgb(0, 123, 224);
+}
+
+.infos i {
+   position: relative;
+   bottom: 1px;
+}
+
 .card-event-grise {
    opacity: .6;
 }
@@ -118,7 +102,6 @@ section {
 }
 
 .hook {
-   /* border: solid rgb(110, 226, 255) 1px; */
    text-align: center;
    color: rgb(83, 83, 83);
    white-space: nowrap;
@@ -135,10 +118,8 @@ section {
 }
 
 .bloc-text {
-   /* border: solid rgb(177, 255, 177) 1px; */
    padding: 0 3px 0 3px;
    color: rgb(68, 68, 68);
    overflow: hidden;
    text-overflow: ellipsis;
-   
 }
