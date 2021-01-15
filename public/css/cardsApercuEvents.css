@@ -12,6 +12,8 @@
    z-index: 1;
    position: absolute;
    text-align: center;
+   text-transform: uppercase;
+   font-size: .9em;
    top: 150px;
    left: 75px;
    width: auto;
@@ -20,7 +22,7 @@
    border: 1px rgb(255, 255, 255) solid;
    padding: 10px;
    border-radius: 6px;
-   font-weight: 600;
+   font-weight: 400;
    text-shadow: #000 2px 2px 1px;
    box-shadow: #000 2px 2px 2px;
    transform: rotate(-20deg);
@@ -32,9 +34,10 @@
 }
 
 .events .card-event {
-   width: 240px;
+   min-width: 240px;
    height: auto;
-   padding: 9px 9px 12px 9px;
+   padding: 0;
+   border: 1px solid rgb(255, 255, 255);
    margin: 30px;
    background-color: rgb(255, 255, 255);
    border-radius: 4px;
@@ -59,21 +62,23 @@
 }
 
 .events .titre {
-   font-weight: 600;
+   font-weight: 500;
    text-align: center;
-   color: rgb(49, 49, 49);
+   color: rgb(0, 0, 0);
    margin: 15px 0 5px 0;
 }
 
 .events .infos {
    margin: 15px auto 2px auto;
    color: rgb(112, 112, 112);
+   font-size: .9em;
+   font-weight: 400;
 }
 
 .events .info-jour {
    position: relative;
    float: right;
-   font-weight: 600;
+   
 }
 
 .events  .events .center {
@@ -103,12 +108,13 @@
 
 .events .hook {
    text-align: center;
-   color: rgb(83, 83, 83);
+   color: rgb(0, 0, 0);
    white-space: nowrap;
    overflow: hidden;
-   font-weight: 600;
+   font-weight: 300;
    margin-bottom: 10px;;
    text-overflow: ellipsis;
+   text-transform: uppercase;
 }
 
 .events .description {
@@ -118,7 +124,7 @@
 }
 
 .events .bloc-text {
-   padding: 0 3px 0 3px;
+   padding: 0 9px 4px 9px;
    color: rgb(68, 68, 68);
    overflow: hidden;
    text-overflow: ellipsis;

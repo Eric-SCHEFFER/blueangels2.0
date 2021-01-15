@@ -28,17 +28,19 @@
 }
 
 .articles .card-article {
-   width: 240px;
+   
+   min-width: 300px;
    height: auto;
-   padding: 8px;
+   padding: 0;
    margin: 30px;
+   border: solid 1px rgb(255, 255, 255);
    background-color: rgb(255, 255, 255);
    border-radius: 4px;
 }
 
 .articles .image {
-   width: 100px;
-   height: 100px;
+   width: 70px;
+   height: 70px;
    overflow: hidden;
    border-radius: 4px;
 }
