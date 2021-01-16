@@ -28,9 +28,11 @@
 }
 
 .articles .card-article {
-   
+   display: flex;
+   justify-content: left;
    min-width: 300px;
-   height: auto;
+   width: 300px;
+   height: 120px;
    padding: 0;
    margin: 30px;
    border: solid 1px rgb(255, 255, 255);
@@ -39,9 +41,11 @@
 }
 
 .articles .image {
-   width: 70px;
-   height: 70px;
-   overflow: hidden;
+   min-width: 120px;
+   max-width: 120px;
+   min-height: 120px;
+   max-height: 120px;
+   /* overflow: hidden; */
    border-radius: 4px;
 }
 
@@ -50,21 +54,29 @@
    height: 100%;
    object-fit: cover;
    object-position: top;
+   border-radius: 4px;
 }
 
 .articles .titre {
-   font-weight: 300;
-   margin: 5px 0 5px 0;
+   font-weight: 500;
+   margin: 0 0 3px 0;
+   font-size: 1em;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
 }
 
 .articles .infos {
    color: rgb(153, 153, 153);
-   font-size: .9em;
+   font-size: .8em;
+   position: absolute;
+   top: 98px;
 }
 
- .articles .center {
-   text-align: center;
- }
+.articles .infos i {
+   position: relative;
+   bottom: 1px;
+}
 
 .articles .green {
    color: rgb(4, 133, 0);
@@ -74,31 +86,31 @@
    color: rgb(0, 123, 224);
 }
 
-.articles .infos i {
-   position: relative;
-   bottom: 1px;
-}
-
-
 .articles .hook {
    white-space: nowrap;
    overflow: hidden;
+   text-align: center;
    text-overflow: ellipsis;
-   margin-bottom: 6px;
    text-transform: uppercase;
    color: rgb(111, 111, 111);
    font-size: .9em;
+   font-weight: 500;
+   padding: 4px 0 8px 0;
 }
 
 .articles .contenu {
    white-space: nowrap;
    overflow: hidden;
    text-overflow: ellipsis;
+   color: rgb(111, 111, 111);
 }
 
 .articles .bloc-text {
-   padding: 0 3px 0 3px;
+   position: relative;
+   padding: 8px 11px 4px 11px;
+   width: 100%;
    color: rgb(68, 68, 68);
    overflow: hidden;
    text-overflow: ellipsis;
+   /* border: solid red 1px; */
 }

@@ -30,3 +30,7 @@ ul {
    /* border: solid red 1px; */
    margin: 0 20px 0 20px;
 }
+
+.center {
+   text-align: center;
+}
