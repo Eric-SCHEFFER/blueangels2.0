@@ -6,7 +6,8 @@
    height: auto;
    border-radius: 6px;
    color: rgb(219, 219, 219);
-   background-color: #2c70b8;
+   /* background-color: #2c70b8; */
+   background-color: #225d91;
    font-weight: 800;
    text-transform: uppercase;
 }

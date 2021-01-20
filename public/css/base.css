@@ -1,7 +1,7 @@
 html {
    box-sizing: border-box;
    color: rgb(184, 184, 184);
-   background-color: black;
+   background-color: #000000;
    font-family: 'Quicksand', sans-serif;
 }
 
@@ -28,8 +28,8 @@ a {
 }
 
 .wrapper {
-   border: solid red 1px;
-   margin: 0 20px 0 20px;
+   /* border: solid red 1px; */
+   margin: 0 0 0 0;
 }
 
 .center {

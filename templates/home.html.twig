@@ -1,6 +1,6 @@
 {% extends 'components/base.html.twig' %}
 {% block stylesheets %}
-    {# <link rel="stylesheet" href="{{ asset('css/home.css') }}"> #}
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cardApercuCommunique.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cardApercuArticle.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cardApercuEvent.css') }}">
@@ -13,7 +13,7 @@
 <div class="wrapper">
     <h1>HomePage</h1>
 {# ================================================================= #}    
-    <section class="communique">
+    <section class="communiques">
         {# TODO: #}
         {#
             On affiche les derniers communiqués par ordre de création (minimum: aucun, maximum: 3)
@@ -30,7 +30,6 @@
             {% endfor %}
         </div>
     </section>
-    <hr>
 
 {# ================================================================= #}
     <section class="articles">
@@ -70,7 +69,6 @@
 
 
     </section>
-    <hr>
 
 {# ================================================================= #}
     <section class="events">
@@ -176,6 +174,5 @@
             {% endif %}
         </div>
     </section>
-    <hr>
 </div>
 {% endblock %}
