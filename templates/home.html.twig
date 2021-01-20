@@ -1,8 +1,9 @@
 {% extends 'components/base.html.twig' %}
 {% block stylesheets %}
     {# <link rel="stylesheet" href="{{ asset('css/home.css') }}"> #}
-    <link rel="stylesheet" href="{{ asset('css/cardsApercuArticles.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/cardsApercuEvents.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cardApercuCommunique.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cardApercuArticle.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cardApercuEvent.css') }}">
     <link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
 {% endblock %}
 {% block title %}HomePage{% endblock %}
@@ -13,9 +14,10 @@
     <h1>HomePage</h1>
 {# ================================================================= #}    
     <section class="communique">
-        {# On affiche les 3 derniers communiqués par ordre de création.
-           Chaque communiqués est cliquable, et renvoi vers la page de l'communiqués
-           On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
+        {# TODO: #}
+        {#
+            On affiche les derniers communiqués par ordre de création (minimum: aucun, maximum: 3)
+            Chaque communiqués est cliquable, et renvoi vers la page du communiqué
         #}
         <h2>Communiqués</h2>
         <div class="bloc-cards">
@@ -32,9 +34,10 @@
 
 {# ================================================================= #}
     <section class="articles">
-        {# On affiche les 4 derniers articles par ordre de création.
-           Chaque article est cliquable, et renvoi vers la page de l'article
-           On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
+        {#
+            On affiche les 3 derniers articles par ordre de création.
+            Chaque article est cliquable, et renvoi vers la page de l'article
+            On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
         #}
         <h2>Derniers articles</h2>
         <div class="bloc-cards">
@@ -71,8 +74,17 @@
 
 {# ================================================================= #}
     <section class="events">
-        {% set aVenir = countTotalEventsToCome[0][1] %}
-        <h2>Évènements à venir</h2>
+        {#
+            On tente d'afficher les 3 évènements futurs. S'il y en a moins ou aucun, on complète avec des évènements passés grisés.
+            Il y a dans la mesure du possible, toujours 3 évènements d'affichés.
+            Chaque évènement est cliquable, et renvoi vers la page de l'évènement
+        #}
+        {% set countAVenir = countTotalEventsToCome[0][1] %}
+        {% if countAVenir == 0 %}
+            <h2>Évènements à venir: aucun</h2>
+            {% else %}
+                <h2>Évènements à venir</h2>
+        {% endif %}
         {# Provisoire, pour tester les dates #}
         <p>Nous sommes le {{ today|date("d-m-Y") }}</p>
 
@@ -125,7 +137,7 @@
             {% if not completedEvents is empty %}
                 {% for completedEvent in completedEvents %}
                     <div class="card-wraper">
-                        {# Si c'est un event annulé, on affiche le tampon annulé, sinon, on affiche le tempo terminé #}
+                        {# Si c'est un event annulé, on affiche le tampon annulé, sinon, on affiche le tempon terminé #}
                         {% if completedEvent.getAnnule() %}
                             <div class="tampon-oblique tampon-oblique-red">Évènement annulé</div>
                         {% else %}
@@ -159,8 +171,8 @@
 
         <div class="boutonsPassesFuturs">
             <div class="bouton bt2">Tous les évènements passés</div>
-            {% if aVenir > 3 %}
-                <div class="bouton bt2">Tous des évènements à venir (+ {{ aVenir -3 }} )</div>
+            {% if countAVenir > 3 %}
+                <div class="bouton bt2">Tous les évènements à venir (+ {{ countAVenir -3 }} )</div>
             {% endif %}
         </div>
     </section>

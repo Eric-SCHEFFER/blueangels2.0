@@ -78,14 +78,6 @@
    bottom: 1px;
 }
 
-.articles .green {
-   color: rgb(4, 133, 0);
-}
-
-.articles .blue {
-   color: rgb(0, 123, 224);
-}
-
 .articles .hook {
    white-space: nowrap;
    overflow: hidden;

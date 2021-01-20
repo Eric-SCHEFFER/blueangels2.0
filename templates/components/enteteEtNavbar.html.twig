@@ -7,6 +7,22 @@
                {% endif %}
                Accueil
          </a>
+         <li>
+            <a href="{{ path('home') }}">
+                  {% if menu_courant is defined and menu_courant == 'home' %}
+                     active
+                  {% endif %}
+                  À propos
+            </a>
+            <li>
+               <a href="{{ path('home') }}">
+                     {% if menu_courant is defined and menu_courant == 'home' %}
+                        active
+                     {% endif %}
+                     Contact
+               </a>
+            </li>
+         </li>
       </li>
    </ul>
 </nav>

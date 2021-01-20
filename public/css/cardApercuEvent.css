@@ -80,14 +80,6 @@
    float: right;
 }
 
-.events .green {
-   color: rgb(4, 133, 0);
-}
-
-.events .blue {
-   color: rgb(0, 123, 224);
-}
-
 .events .infos i {
    position: relative;
    bottom: 1px;
