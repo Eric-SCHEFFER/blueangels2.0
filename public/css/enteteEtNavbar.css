@@ -1,3 +1,78 @@
+.header-wrapper {
+   display: flex;
+   justify-content: space-between;
+   border: 1px blue solid;
+   margin: 8px 8px 0 8px;
+   height: 250px;
+}
+
+.logo-wrapper {
+   display: flex;
+   border: 1px red solid;
+   margin: 12px 0 0 18px;
+   height: 100px;
+}
+
+.logo {
+   height: 100%;
+   border: 1px white solid;
+   position: relative;
+}
+
+.logo img {
+   height: 100%;
+}
+
+.textes-a-cote-logo {
+   border: 1px rgb(0, 255, 34) solid;
+   text-transform: uppercase;
+   margin-left: 20px;
+   position: relative;
+}
+
+.textes-a-cote-logo h1 {
+   text-align: left;
+   font-size: 1em;
+   margin: 0;
+   font-weight: 400;
+}
+
+.danses-latino-rock-a-erstein {
+   font-size: .9em;
+
+}
+
+.nom-des-danses {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   border: 1px rgb(225, 0, 255) solid;
+   position: relative;
+   top: 30px;
+
+}
+
+.nom-des-danses p {
+   margin: 0;
+}
+
+.groupe-danses-1 {
+   text-align: right;
+   margin: 0 10px 0 0;
+   border: 1px rgb(255, 238, 0) solid;
+}
+
+.groupe-danses-2 {
+   margin: 0 0 0 10px;
+   border: 1px rgb(0, 255, 221) solid;
+}
+
+
 nav {
    border: 1px orange solid;
+}
+
+nav ul, nav li{
+   padding: 0;
+   margin: 0;
 }

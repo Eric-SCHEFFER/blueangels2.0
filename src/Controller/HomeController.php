@@ -27,7 +27,7 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
-        $today = new DateTime('2021-01-17'); // Pour tester d'autres dates du jour
+        $today = new DateTime('2021-01-21'); // Pour tester d'autres dates du jour
         // On récupère les 3 events
         $events = $this->getEvents($today);
         // On récupère le nbre total d'events futurs
