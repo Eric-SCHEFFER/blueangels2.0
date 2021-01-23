@@ -10,6 +10,16 @@ html, body {
    margin: 0;
 }
 
+header {
+   /* border: white solid 1px; */
+   position: relative;
+   background-image: url("../images/ardian-lumi-6Woj_wozqmA-unsplash.jpg");
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: cover;
+   background-position: 100% 100%;
+}
+
 h1, h2, h3, h4, h5, h6 {
    font-weight: 300;
    text-transform: uppercase;
@@ -35,11 +45,19 @@ a {
 .center {
    text-align: center;
 }
-
+/* ================== colors ================ */
 .green {
    color: rgb(4, 133, 0);
 }
 
+.red {
+   color: rgb(189, 1, 1);
+}
+
 .blue {
    color: rgb(0, 123, 224);
+}
+
+.blue-pastel {
+   color: rgb(31, 163, 252);
 }

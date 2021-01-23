@@ -1,21 +1,44 @@
 .header-wrapper {
+   position: relative;
    display: flex;
    justify-content: space-between;
-   border: 1px blue solid;
-   margin: 8px 8px 0 8px;
+   /* border: 1px blue solid; */
+   margin: 0;
    height: 250px;
+   background-color: rgba(0, 0, 0, 0.185);
+   padding: 25px;
+   background: inherit;
 }
 
 .logo-wrapper {
    display: flex;
-   border: 1px red solid;
-   margin: 12px 0 0 18px;
+   border: 1px rgba(104, 104, 104, 0.541) solid;
+   padding: 18px;
    height: 100px;
+   position: relative;
+   background: inherit;
+   overflow: hidden;
+   z-index: 1;
+   border-radius: 4px;
+}
+
+/* Pour un effet de verre dépoli */
+.logo-wrapper::before {
+   z-index: -1;
+   content: "";
+   position: absolute;
+   background: inherit;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   filter: blur(9px);
+   box-shadow: inset 0 0 2000px rgba(129, 129, 129, 0.3);
 }
 
 .logo {
    height: 100%;
-   border: 1px white solid;
+   /* border: 1px white solid; */
    position: relative;
 }
 
@@ -24,10 +47,12 @@
 }
 
 .textes-a-cote-logo {
-   border: 1px rgb(0, 255, 34) solid;
+   /* border: 1px rgb(0, 255, 34) solid; */
    text-transform: uppercase;
    margin-left: 20px;
    position: relative;
+   color: #ffffff;
+   text-shadow: 1px 1px #000000;
 }
 
 .textes-a-cote-logo h1 {
@@ -38,7 +63,6 @@
 }
 
 .danses-latino-rock-a-erstein {
-   font-size: .9em;
 
 }
 
@@ -46,10 +70,11 @@
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
-   border: 1px rgb(225, 0, 255) solid;
+   /* border: 1px rgb(225, 0, 255) solid; */
    position: relative;
    top: 30px;
-
+   font-weight: 600;
+   font-size: 1.1em;
 }
 
 .nom-des-danses p {
@@ -59,12 +84,12 @@
 .groupe-danses-1 {
    text-align: right;
    margin: 0 10px 0 0;
-   border: 1px rgb(255, 238, 0) solid;
+   /* border: 1px rgb(255, 238, 0) solid; */
 }
 
 .groupe-danses-2 {
    margin: 0 0 0 10px;
-   border: 1px rgb(0, 255, 221) solid;
+   /* border: 1px rgb(0, 255, 221) solid; */
 }
 
 
