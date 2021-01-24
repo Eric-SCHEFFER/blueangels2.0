@@ -4,26 +4,29 @@
    justify-content: space-between;
    /* border: 1px blue solid; */
    margin: 0;
-   height: 250px;
+   height: 140px;
    background-color: rgba(0, 0, 0, 0.185);
    padding: 25px;
    background: inherit;
 }
 
-.logo-wrapper {
-   display: flex;
+.logo-wrapper, nav {
    border: 1px rgba(104, 104, 104, 0.541) solid;
    padding: 18px;
-   height: 100px;
-   position: relative;
    background: inherit;
    overflow: hidden;
    z-index: 1;
    border-radius: 4px;
 }
 
+.logo-wrapper {
+   position: relative;
+   display: flex;
+   height: 100px;
+}
+
 /* Pour un effet de verre dépoli */
-.logo-wrapper::before {
+.logo-wrapper::before, nav::before {
    z-index: -1;
    content: "";
    position: absolute;
@@ -92,12 +95,30 @@
    /* border: 1px rgb(0, 255, 221) solid; */
 }
 
-
+/* =================== menu ===================== */
 nav {
-   border: 1px orange solid;
+   height: 15px;
+   color: #fff;
+   text-transform: uppercase;
+   font-size: .9em;
+   width: 40%;
+   position: sticky;
+   top: 20px;
+   bottom: 2px;
 }
 
-nav ul, nav li{
+nav ul{
    padding: 0;
    margin: 0;
+}
+
+nav ul {
+   /* border: linen 1px solid; */
+   display: flex;
+   justify-content: space-between;
+}
+
+nav li {
+   padding: 0 10px 0 10px;
+   /* border: red 1px solid; */
 }

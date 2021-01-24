@@ -33,8 +33,17 @@ ul {
 }
 
 a {
+   display: inline-block;
    color: inherit;
-   text-decoration: none; 
+   text-decoration: none;
+}
+
+a:hover {
+   text-decoration: underline #ffd900 1px solid;
+}
+
+a::first-letter {
+   color: #ffd900;
 }
 
 .wrapper {
@@ -45,6 +54,7 @@ a {
 .center {
    text-align: center;
 }
+
 /* ================== colors ================ */
 .green {
    color: rgb(4, 133, 0);
