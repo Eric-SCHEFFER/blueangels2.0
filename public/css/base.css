@@ -13,6 +13,7 @@ html, body {
 header {
    /* border: white solid 1px; */
    position: relative;
+   width: 100%;
    background-image: url("../images/ardian-lumi-6Woj_wozqmA-unsplash.jpg");
    background-repeat: no-repeat;
    background-attachment: fixed;
@@ -39,11 +40,12 @@ a {
 }
 
 a:hover {
-   text-decoration: underline #ffd900 1px solid;
+   text-decoration: underline #17a2ff 3px solid;
 }
 
 a::first-letter {
-   color: #ffd900;
+   font-weight: 600;
+   color: #17a2ff;
 }
 
 .wrapper {

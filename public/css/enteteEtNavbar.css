@@ -1,10 +1,8 @@
 .header-wrapper {
    position: relative;
-   display: flex;
-   justify-content: space-between;
-   /* border: 1px blue solid; */
+   border: 1px blue solid;
    margin: 0;
-   height: 140px;
+   height: auto;
    background-color: rgba(0, 0, 0, 0.185);
    padding: 25px;
    background: inherit;
@@ -12,21 +10,21 @@
 
 .logo-wrapper, nav {
    border: 1px rgba(104, 104, 104, 0.541) solid;
-   padding: 18px;
-   background: inherit;
-   overflow: hidden;
-   z-index: 1;
    border-radius: 4px;
 }
 
 .logo-wrapper {
+   background: inherit;
    position: relative;
+   padding: 40px 22px 40px 22px;
    display: flex;
    height: 100px;
+   overflow: hidden;
+   z-index: 1;
 }
 
 /* Pour un effet de verre dépoli */
-.logo-wrapper::before, nav::before {
+.logo-wrapper::before {
    z-index: -1;
    content: "";
    position: absolute;
@@ -51,10 +49,11 @@
 
 .textes-a-cote-logo {
    /* border: 1px rgb(0, 255, 34) solid; */
+   top: -15px;
    text-transform: uppercase;
-   margin-left: 20px;
-   position: relative;
+   margin-left: 30px;
    color: #ffffff;
+   position: relative;
    text-shadow: 1px 1px #000000;
 }
 
@@ -65,8 +64,14 @@
    font-weight: 400;
 }
 
-.danses-latino-rock-a-erstein {
+.nom-asso {
+   font-size: 2.6em;
+   line-height: 1em;
+}
 
+.danses-latino-rock-a-erstein {
+   font-size: .9em;
+   letter-spacing: .3em;
 }
 
 .nom-des-danses {
@@ -75,9 +80,9 @@
    justify-content: center;
    /* border: 1px rgb(225, 0, 255) solid; */
    position: relative;
-   top: 30px;
+   top: 10px;
    font-weight: 600;
-   font-size: 1.1em;
+   font-size: 1.3em;
 }
 
 .nom-des-danses p {
@@ -97,14 +102,18 @@
 
 /* =================== menu ===================== */
 nav {
+   z-index: 5;
    height: 15px;
-   color: #fff;
+   color: rgb(0, 0, 0);
    text-transform: uppercase;
    font-size: .9em;
-   width: 40%;
-   position: sticky;
-   top: 20px;
-   bottom: 2px;
+   width: 45%;
+   position: absolute;
+   top: 55px;
+   right: 50px;
+   background-color: white;
+   font-weight: 500;
+   padding: 18px;
 }
 
 nav ul{
