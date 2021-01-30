@@ -44,7 +44,7 @@
                   {% if menu_courant is defined and menu_courant == 'home' %}
                      active
                   {% endif %}
-                  À propos
+                  Danses
             </a>
          </li>
          <li>
@@ -53,6 +53,14 @@
                      active
                   {% endif %}
                   Tarifs
+            </a>
+         </li>
+         <li>
+            <a href="{{ path('home') }}">
+                  {% if menu_courant is defined and menu_courant == 'home' %}
+                     active
+                  {% endif %}
+                  À propos
             </a>
          </li>
          <li>

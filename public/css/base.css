@@ -14,11 +14,14 @@ header {
    /* border: white solid 1px; */
    position: relative;
    width: 100%;
-   background-image: url("../images/jeison-higuita-wW3RUwLYfy0-unsplash.jpg");
+   height: auto;
+   background-image: url("../images/ardian-lumi-6Woj_wozqmA-unsplash.jpg");
+   background-color: rgb(0, 0, 0);
    background-repeat: no-repeat;
    background-attachment: fixed;
    background-size: cover;
-   background-position: 100% 100%;
+   background-position: bottom right;
+   overflow: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
