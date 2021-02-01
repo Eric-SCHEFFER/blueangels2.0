@@ -19,13 +19,25 @@
             On affiche les derniers communiqués par ordre de création (minimum: aucun, maximum: 3)
             Chaque communiqués est cliquable, et renvoi vers la page du communiqué
         #}
-        <h2>Communiqués</h2>
+        <h2>Infos</h2>
         <div class="bloc-cards">
             {% for communique in communiques %}
-                <div class="card-article">
-                    <div>{{ communique.getTitre() }}</div>
-                    <div>{{ communique.getCreatedAt()|date("d-m-Y") }}</div>
-                    <div>{{ communique.getHook() }}</div>
+                <div class="card-communique">
+                    <div class="titre">
+                        {{ communique.getTitre() }}
+                    </div> 
+                    <div class="hook">
+                        {{ communique.getHook() }}
+                    </div>
+                    <div class="flex"> 
+                        <div class="date">
+                            <i class="fas fa-calendar-alt"></i>
+                            {{ communique.getCreatedAt()|date("d-m-Y") }}
+                        </div>
+                        <a class="lire-communique bouton bt-extra-small" href="">
+                            Lire
+                        </a>
+                    </div>
                 </div>
             {% endfor %}
         </div>

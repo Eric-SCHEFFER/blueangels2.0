@@ -4,29 +4,6 @@
    flex-wrap: wrap;
 }
 
-.articles .tampon-oblique {
-   z-index: 1;
-   position: absolute;
-   text-align: center;
-   top: 150px;
-   left: 75px;
-   width: auto;
-   height: auto;
-   color: rgb(255, 255, 255);
-   border: 1px rgb(255, 255, 255) solid;
-   padding: 10px;
-   border-radius: 6px;
-   font-weight: 600;
-   text-shadow: #000 2px 2px 1px;
-   box-shadow: #000 2px 2px 2px;
-   transform: rotate(-20deg);
-}
-
-.articles .tampon-oblique-red {
-   color: rgb(221, 0, 0);
-   border: 1px rgb(221, 0, 0) solid;
-}
-
 .articles .card-article {
    display: flex;
    justify-content: left;

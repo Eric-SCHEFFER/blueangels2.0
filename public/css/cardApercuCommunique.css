@@ -1,0 +1,79 @@
+.communiques {
+   padding-top: 0;
+   padding-bottom: 0;
+}
+
+.communiques h2 {
+   font-size: 1.1em;
+   margin: auto;
+   width: max-content;
+   text-align: center;
+   padding: 2px;
+   border-radius: 2px;
+}
+
+.communiques .bloc-cards {
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   /* border: rgb(255, 0, 0) 1px solid; */
+}
+
+.communiques .card-communique {
+   display: flex;
+   justify-content: left;
+   flex-direction: column;
+   width: 250px;
+   height: auto;
+   padding: 2px;
+   margin: 30px;
+   /* border: yellow 1px solid; */
+}
+
+.communiques .titre {
+   text-transform: uppercase;
+   padding: 0 4px 0 4px;
+   margin: 0;
+   background-color: #ffffff;
+   color: #272727;
+   white-space: nowrap;
+   width: max-content;
+   border-radius: 2px;
+}
+
+.communiques .hook {
+   text-transform: uppercase;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   font-size: .9em;
+   padding: 6px 0 2px 0;
+}
+
+.communiques .contenu {
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   font-size: .9em;
+   padding: 0 0 6px 0;
+}
+
+.communiques .flex {
+   display: flex;
+   justify-content: left;
+   align-items: flex-end;
+}
+
+.communiques .date {
+   font-size: .8em;
+   color: rgb(85, 85, 85);
+}
+
+.communiques a.lire-communique {
+   text-decoration: none;
+   margin-left: 12px;
+}
+
+.communiques a.lire-communique::first-letter {
+   color: inherit;
+}
