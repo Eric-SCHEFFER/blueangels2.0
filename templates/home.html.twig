@@ -19,11 +19,11 @@
             On affiche les derniers communiqués par ordre de création (minimum: aucun, maximum: 3)
             Chaque communiqués est cliquable, et renvoi vers la page du communiqué
         #}
-        <h2>Infos</h2>
         <div class="bloc-cards">
             {% for communique in communiques %}
                 <div class="card-communique">
                     <div class="titre">
+                        <i class="fas fa-exclamation-triangle"></i>
                         {{ communique.getTitre() }}
                     </div> 
                     <div class="hook">

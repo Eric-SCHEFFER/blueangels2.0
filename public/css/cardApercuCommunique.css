@@ -3,14 +3,14 @@
    padding-bottom: 0;
 }
 
-.communiques h2 {
+/* .communiques h2 {
    font-size: 1.1em;
    margin: auto;
    width: max-content;
    text-align: center;
    padding: 2px;
    border-radius: 2px;
-}
+} */
 
 .communiques .bloc-cards {
    display: flex;
@@ -26,7 +26,7 @@
    width: 250px;
    height: auto;
    padding: 2px;
-   margin: 30px;
+   margin: 30px 30px 30px 30px;
    /* border: yellow 1px solid; */
 }
 
@@ -34,11 +34,15 @@
    text-transform: uppercase;
    padding: 0 4px 0 4px;
    margin: 0;
-   background-color: #ffffff;
-   color: #272727;
+   /* background-color: #ffffff; */
+   /* color: #272727; */
    white-space: nowrap;
    width: max-content;
    border-radius: 2px;
+}
+
+.communiques .titre i {
+   color: #ffff00;
 }
 
 .communiques .hook {
@@ -47,7 +51,7 @@
    overflow: hidden;
    text-overflow: ellipsis;
    font-size: .9em;
-   padding: 6px 0 2px 0;
+   padding: 6px 0 6px 0;
 }
 
 .communiques .contenu {
@@ -71,7 +75,6 @@
 
 .communiques a.lire-communique {
    text-decoration: none;
-   margin-left: 12px;
 }
 
 .communiques a.lire-communique::first-letter {
