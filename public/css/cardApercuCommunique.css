@@ -41,10 +41,6 @@
    border-radius: 2px;
 }
 
-.communiques .titre i {
-   color: #ffff00;
-}
-
 .communiques .hook {
    text-transform: uppercase;
    white-space: nowrap;

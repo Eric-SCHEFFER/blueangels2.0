@@ -23,7 +23,7 @@
             {% for communique in communiques %}
                 <div class="card-communique">
                     <div class="titre">
-                        <i class="fas fa-exclamation-triangle"></i>
+                        <i class="fas fa-info-circle fa-lg white"></i>
                         {{ communique.getTitre() }}
                     </div> 
                     <div class="hook">
@@ -39,44 +39,6 @@
         </div>
     </section>
 
-{# ================================================================= #}
-    <section class="articles">
-        {#
-            On affiche les 3 derniers articles par ordre de création.
-            Chaque article est cliquable, et renvoi vers la page de l'article
-            On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
-        #}
-        <h2>Derniers articles</h2>
-        <div class="bloc-cards">
-            {% for article in articles %}
-                <div class="card-article">
-                    {% if not article.getImagesArticles()[0].getNom() is empty %}
-                        <div class="image">
-                            <img src="{{ asset('images/8.jpg') }}" alt="">
-                        </div>
-                    {% endif %}
-                    <div class="bloc-text">
-                        <h3 class="titre">{{ article.getTitre() }}</h3>
-                        <div class="hook">{{ article.getHook() }}</div>
-                        <div class="center">
-                            <div class="bouton bt-medium">
-                                Voir
-                            </div>
-                        </div>
-                        <div class="infos">
-                            <i class="fas fa-calendar-alt"></i>
-                            {{ article.getCreatedAt()|date("d-m-Y") }}
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-        <div class="boutonsPassesFuturs">
-            <div class="bouton">Tous les articles</div>
-        </div>
-
-
-    </section>
 
 {# ================================================================= #}
     <section class="events">
@@ -182,5 +144,44 @@
             {% endif %}
         </div>
     </section>
+
+{# ================================================================= #}
+    <section class="articles">
+        {#
+            On affiche les 3 derniers articles par ordre de création.
+            Chaque article est cliquable, et renvoi vers la page de l'article
+            On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
+        #}
+        <h2>Derniers articles</h2>
+        <div class="bloc-cards">
+            {% for article in articles %}
+                <div class="card-article">
+                    {% if not article.getImagesArticles()[0].getNom() is empty %}
+                        <div class="image">
+                            <img src="{{ asset('images/8.jpg') }}" alt="">
+                        </div>
+                    {% endif %}
+                    <div class="bloc-text">
+                        <h3 class="titre">{{ article.getTitre() }}</h3>
+                        <div class="hook">{{ article.getHook() }}</div>
+                        <div class="center">
+                            <div class="bouton bt-medium">
+                                Voir
+                            </div>
+                        </div>
+                        <div class="infos">
+                            <i class="fas fa-calendar-alt"></i>
+                            {{ article.getCreatedAt()|date("d-m-Y") }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="boutonsPassesFuturs">
+            <div class="bouton">Tous les articles</div>
+        </div>
+    </section>
+
+
 </div>
 {% endblock %}

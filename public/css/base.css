@@ -8,6 +8,7 @@ html {
 html, body {
    padding: 0;
    margin: 0;
+   position: relative;
 }
 
 header {
@@ -22,6 +23,18 @@ header {
    background-size: cover;
    background-position: bottom right;
    overflow: hidden;
+}
+
+main {
+   /* Ajuster les px si le footer flotte trop haut, et pour éviter l'apparition du scrolL vertical */
+   min-height: calc(100vh - 310px);
+}
+
+footer {
+   position: relative;
+   width: 100%;
+   background-color: rgb(39, 39, 39);
+   
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -54,6 +67,8 @@ a::first-letter {
 .wrapper {
    /* border: solid red 1px; */
    margin: 0 0 0 0;
+   position: relative;
+   height: 100%;
 }
 
 .center {
@@ -71,6 +86,10 @@ a::first-letter {
 
 .blue {
    color: rgb(0, 123, 224);
+}
+
+.white {
+   color: #ffffff;
 }
 
 .blue-pastel {
