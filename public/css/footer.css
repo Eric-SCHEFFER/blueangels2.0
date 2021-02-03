@@ -1,3 +1,45 @@
 .footer {
+   display: flex;
+   justify-content: space-around;
+   flex-wrap: wrap;
+   align-items: baseline;
+   position: relative;
+   padding: 40px;
+   width: auto;
+   min-height: 90px;
    overflow: hidden;
+   background: inherit;
+   z-index: 0;
+   color: #FFFFFF;
+   /* border: solid 1px blue; */
+}
+
+.blocMentions {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   padding: 8px;
+   /* border: solid 1px blue; */
+}
+
+.h6-blocMentions {
+   margin: 20px 0 10px 0;
+}
+
+.blocMentionsNiv-1 {
+   display: flex;
+   flex-direction: row;
+   justify-content: baseline;
+   flex-wrap: wrap;
+   /* border: solid 1px rgb(255, 0, 0); */
+}
+
+.blocMentionsNiv-2 {
+   font-size: .8em;
+   display: flex;
+   flex-direction: column;
+   justify-content: baseline;
+   padding: 0 4px 0 4px;
+   /* border: solid 1px rgb(229, 255, 0); */
 }
