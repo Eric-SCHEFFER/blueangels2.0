@@ -36,8 +36,8 @@ margin: 10px;
 .bt-extra-small {
    font-size: .8em;
    padding: 2px;
-   width: 50px;
-   border-radius: 2px;
+   width: max-content;
+   border-radius: 50%;
 }
 
 .boutonsPassesFuturs {

@@ -22,18 +22,18 @@
         <div class="bloc-cards">
             {% for communique in communiques %}
                 <div class="card-communique">
-                    <div class="titre">
-                        <i class="fas fa-info-circle fa-lg white"></i>
-                        {{ communique.getTitre() }}
-                    </div> 
-                    <div class="hook">
-                        {{ communique.getHook() }}
-                    </div>
-                    <div class="flex"> 
-                        <a class="lire-communique bouton bt-extra-small" href="">
-                            Lire
-                        </a>
-                    </div>
+                    <a class="lire-communique" href="">
+                        <div class="titre">
+                            <i class="fas fa-info-circle fa-lg white"></i>
+                            {{ communique.getTitre() }}
+                        </div> 
+                        <div class="hook">
+                            {{ communique.getHook() }}
+                        </div>
+                        <div class="flex"> 
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </a>
                 </div>
             {% endfor %}
         </div>
