@@ -27,7 +27,7 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
-        $today = new DateTime('2021-01-21'); // Pour tester d'autres dates du jour
+        $today = new DateTime('2021-01-17'); // Pour tester d'autres dates du jour
         // On récupère les 3 events
         $events = $this->getEvents($today);
         // On récupère le nbre total d'events futurs
@@ -35,7 +35,7 @@ class HomeController extends AbstractController
         // On récupère les articles
         $articles = $this->articlesRepository->findBy([], ['created_at' => 'DESC'], 3, 0);
         // On récupère les communiqués
-        $communiques = $this->communiqueRepository->findBy([], ['created_at' => 'DESC'], 1, 0);
+        $communiques = $this->communiqueRepository->findBy([], ['created_at' => 'DESC'], 2, 0);
         return $this->render('home.html.twig', [
             'eventsToCome' => $events[0],
             'completedEvents' => $events[1],

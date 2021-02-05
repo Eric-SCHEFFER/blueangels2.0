@@ -17,12 +17,16 @@
    border-radius: 4px;
 }
 
+.articles .card-article:hover img {
+   transform: scale(1.12);
+}
+
 .articles .image {
    min-width: 120px;
    max-width: 120px;
    min-height: 120px;
    max-height: 120px;
-   /* overflow: hidden; */
+   overflow: hidden;
    border-radius: 4px;
 }
 
@@ -32,6 +36,7 @@
    object-fit: cover;
    object-position: top;
    border-radius: 4px;
+   transition: 0.4s ease;
 }
 
 .articles .titre {
@@ -60,7 +65,6 @@
    overflow: hidden;
    text-align: center;
    text-overflow: ellipsis;
-   text-transform: uppercase;
    color: rgb(111, 111, 111);
    font-size: .8em;
    font-weight: 500;

@@ -1,14 +1,24 @@
 html {
    box-sizing: border-box;
    color: rgb(184, 184, 184);
-   background-color: #000000;
+   background-color: #1b1b1b;
    font-family: 'Quicksand', sans-serif;
+   scroll-behavior: smooth;
 }
 
 html, body {
    padding: 0;
    margin: 0;
    position: relative;
+}
+
+a:hover {
+   text-decoration: underline #17a2ff 3px solid;
+}
+
+a::first-letter {
+   font-weight: 600;
+   color: #17a2ff;
 }
 
 header {
@@ -45,6 +55,10 @@ h1, h2, h3, h4, h5, h6 {
    text-align: center;
 }
 
+h1 {
+   margin-top: 30px;
+}
+
 ul {
    list-style-type: none;
 }
@@ -55,20 +69,21 @@ a {
    text-decoration: none;
 }
 
-a:hover {
-   text-decoration: underline #17a2ff 3px solid;
-}
-
-a::first-letter {
-   font-weight: 600;
-   color: #17a2ff;
-}
-
 .wrapper {
    /* border: solid red 1px; */
    margin: 0 0 0 0;
    position: relative;
    height: 100%;
+}
+
+.wrapper a::first-letter {
+   color: inherit;
+   font-size: inherit;
+   font-weight: inherit;
+}
+
+.wrapper a:hover {
+   text-decoration: none;
 }
 
 .center {

@@ -43,6 +43,10 @@
    border-radius: 4px;
 }
 
+.events .card-event:hover img {
+   transform: scale(1.12);
+}
+
 .events .completed {
    color: rgb(177, 164, 90);
 }
@@ -59,6 +63,7 @@
    height: 100%;
    object-fit: cover;
    object-position: top;
+   transition: 0.4s ease;
 }
 
 .events .titre {
@@ -90,18 +95,13 @@
 }
 
 .events .hook {
-   margin: 4px 0 4px 0;
-}
-
-.events .hook {
    text-align: center;
    color: rgb(0, 0, 0);
    white-space: nowrap;
    overflow: hidden;
    font-weight: 300;
-   margin-bottom: 10px;
    text-overflow: ellipsis;
-   text-transform: uppercase;
+   margin: 4px 0 10px 10px;
 }
 
 .events .description {
@@ -111,7 +111,7 @@
 }
 
 .events .bloc-text {
-   padding: 0 9px 4px 9px;
+   padding: 0 12px 10px 12px;
    color: rgb(68, 68, 68);
    overflow: hidden;
    text-overflow: ellipsis;

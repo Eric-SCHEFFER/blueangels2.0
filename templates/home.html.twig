@@ -16,25 +16,32 @@
     <section class="communiques">
         {# TODO: #}
         {#
-            On affiche les derniers communiqués par ordre de création (minimum: aucun, maximum: 3)
+            On affiche les derniers communiqués par ordre inverse de création (minimum: aucun, maximum: 3)
             Chaque communiqués est cliquable, et renvoi vers la page du communiqué
         #}
         <div class="bloc-cards">
+            {% set countAVenir = countTotalEventsToCome[0][1] %}
+            {# Affiche le nbre d'events à venir dans une notification #}
+            <a class="events-notification" href="#events" title="Évènements à venir">
+                <i class="fas fa-calendar-alt fa-lg"></i>
+                <span class="events-notification-number">
+                    <div class="events-notification-number-value">
+                        {{ countAVenir }}
+                    </div>
+                </span>
+            </a>
             {% for communique in communiques %}
-                <div class="card-communique">
-                    <a class="lire-communique" href="">
-                        <div class="titre">
-                            <i class="fas fa-info-circle fa-lg white"></i>
-                            {{ communique.getTitre() }}
-                        </div> 
-                        <div class="hook">
-                            {{ communique.getHook() }}
-                        </div>
-                        <div class="flex"> 
-                            <i class="fas fa-arrow-right"></i>
-                        </div>
-                    </a>
-                </div>
+                <a class="card-communique" href="" title="Communiqué important">
+                    <div class="titre">
+                        {{ communique.getTitre() }}
+                    </div> 
+                    <div class="hook">
+                        {{ communique.getHook() }}
+                    </div>
+                    <div class="bouton bt-extra-small-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>    
+                </a>
             {% endfor %}
         </div>
     </section>
@@ -50,7 +57,7 @@
         <h2>Derniers articles</h2>
         <div class="bloc-cards">
             {% for article in articles %}
-                <div class="card-article">
+                <a class="card-article" href="">
                     {% if article.getImagesArticles()[0].getNom() is not empty %}
                         <div class="image">
                             <img src="{{ asset('images/8.jpg') }}" alt="">
@@ -69,26 +76,26 @@
                             {{ article.getCreatedAt()|date("d-m-Y") }}
                         </div>
                     </div>
-                </div>
+                </a>
             {% endfor %}
         </div>
         <div class="boutonsPassesFuturs">
-            <div class="bouton">Tous les articles</div>
+            <a class="bouton" href="">Tous les articles</a>
         </div>
     </section>
 
 {# ================================================================= #}
-    <section class="events">
+    <section class="events" id="events">
         {#
             On tente d'afficher les 3 évènements futurs. S'il y en a moins ou aucun, on complète avec des évènements passés grisés.
             Il y a dans la mesure du possible, toujours 3 évènements d'affichés.
             Chaque évènement est cliquable, et renvoi vers la page de l'évènement
         #}
-        {% set countAVenir = countTotalEventsToCome[0][1] %}
+        
         {% if countAVenir == 0 %}
             <h2>Évènements à venir: aucun</h2>
             {% else %}
-                <h2>Évènements à venir</h2>
+                <h2>Évènements à venir: {{ countAVenir }}</h2>
         {% endif %}
         {# Provisoire, pour tester les dates #}
         <p>Nous sommes le {{ today|date("d-m-Y") }}</p>
@@ -102,9 +109,9 @@
                         {# Si c'est un event annulé, on affiche le tampon annulé, et on grise la carte #}
                         {% if eventToCome.getAnnule() %}
                             <div class="tampon-oblique tampon-oblique-red">Évènement annulé</div>
-                            <div class="card-event card-event-grise">
+                            <a class="card-event card-event-grise" href="">
                             {% else %}
-                            <div class="card-event">
+                            <a class="card-event" href="">
                         {% endif %}
                             {% if not eventToCome.getImagesEvents() is empty %}
                                 <div class="image">
@@ -133,7 +140,7 @@
                                     {% endif %}
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 {% endfor %}
             {% endif %}
@@ -148,7 +155,7 @@
                         {% else %}
                             <div class="tampon-oblique">Évènement terminé</div>
                         {% endif %}
-                        <div class="card-event card-event-grise">
+                        <a class="card-event card-event-grise" href="">
                             {% if not completedEvent.getImagesEvents() is empty %}
                                 <div class="image">
                                     <img src="{{ asset('images/rail.jpg') }}" alt="">
@@ -168,16 +175,16 @@
                                     <span class="info-jour">Terminé</span>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>    
                 {% endfor %}
             {% endif %}
         </div>
 
         <div class="boutonsPassesFuturs">
-            <div class="bouton bt2">Tous les évènements passés</div>
+            <a class="bouton bt2" href="">Évènements passés</a>
             {% if countAVenir > 3 %}
-                <div class="bouton bt2">Tous les évènements à venir (+ {{ countAVenir -3 }} )</div>
+                <a class="bouton bt2" href="">Tous les évènements à venir (+ {{ countAVenir -3 }} )</a>
             {% endif %}
         </div>
     </section>
