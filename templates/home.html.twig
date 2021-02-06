@@ -23,7 +23,8 @@
             {% set countAVenir = countTotalEventsToCome[0][1] %}
             {# Affiche le nbre d'events à venir dans une notification #}
             <a class="events-notification" href="#events" title="Évènements à venir">
-                <i class="fas fa-calendar-alt fa-lg"></i>
+                {# <i class="fas fa-calendar-alt fa-lg"></i> #}
+                Évènements à venir:
                 <span class="events-notification-number">
                     <div class="events-notification-number-value">
                         {{ countAVenir }}
@@ -109,9 +110,9 @@
                         {# Si c'est un event annulé, on affiche le tampon annulé, et on grise la carte #}
                         {% if eventToCome.getAnnule() %}
                             <div class="tampon-oblique tampon-oblique-red">Évènement annulé</div>
-                            <a class="card-event card-event-grise" href="">
+                            <a class="card-event card-event-grise" href="{{ path('event_', {id: eventToCome.id}) }}">
                             {% else %}
-                            <a class="card-event" href="">
+                            <a class="card-event" href="{{ path('event_', {id: eventToCome.id}) }}">
                         {% endif %}
                             {% if not eventToCome.getImagesEvents() is empty %}
                                 <div class="image">
@@ -155,7 +156,7 @@
                         {% else %}
                             <div class="tampon-oblique">Évènement terminé</div>
                         {% endif %}
-                        <a class="card-event card-event-grise" href="">
+                        <a class="card-event card-event-grise" href="{{ path('event_', {id: eventToCome.id}) }}">
                             {% if not completedEvent.getImagesEvents() is empty %}
                                 <div class="image">
                                     <img src="{{ asset('images/rail.jpg') }}" alt="">
