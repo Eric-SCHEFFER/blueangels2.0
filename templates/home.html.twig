@@ -30,7 +30,10 @@
             </a>
 
             {% for communique in communiques %}
-                <a class="card-communique" href="" title="Communiqué important">
+                <a class="card-communique" href="" title="Mise à jour: {{ communique.getCreatedAt()|date("d-m-Y") }}">
+                    {# <div class="date">
+                        {{ communique.getCreatedAt()|date("d-m-Y") }}
+                    </div> #}
                     <div class="titre">
                         {{ communique.getTitre() }}:
                     </div> 
