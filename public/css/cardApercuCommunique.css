@@ -1,57 +1,42 @@
 .communiques {
-   padding-top: 0;
-   padding-bottom: 0;
+   display: flex;
+   justify-content: center;
+   position: relative;
+   padding: 0;
+   /* border: yellow 1px solid; */
 }
-
-/* .communiques h2 {
-   font-size: 1.1em;
-   margin: auto;
-   width: max-content;
-   text-align: center;
-   padding: 2px;
-   border-radius: 2px;
-} */
 
 .communiques .bloc-cards {
    display: flex;
-   justify-content: center;
-   flex-wrap: wrap;
+   flex-direction: column;
    align-items: center;
-   padding: 20px 0 20px 0;
-   /* border: rgb(255, 0, 0) 1px solid; */
+   padding: 0px 0 0 0;
+   /* border: #ff0000 1px solid; */
+   border-radius: 3px;
+   padding: 0;
+   color: rgb(214, 214, 214);
+   max-width: 300px;
+}
+
+.communiques .events-notification,
+.communiques .card-communique {
+   font-size: .9em;
+   padding: 3px 0 3px 0;
+   /* border: rgb(17, 0, 255) 1px solid; */
+   width: max-content;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+}
+
+.communiques .events-notification i,
+.communiques .card-communique i {
+   position: relative;
+   left: 4px;
 }
 
 .communiques .events-notification {
-   /* border: 1px solid fuchsia; */
-   font-size: .9em;
-   text-transform: uppercase;
-}
-
-.communiques .events-notification-number {
-   display: inline-block;
-   position: relative;
-   background-color: #225d91;
-   width: 1.4em;
-   height: 1.4em;
-   border-radius: 50%;
-   font-weight: 600;
-}
-
-.communiques .events-notification-number-value {
-   position: relative;
-   left: 5px;
-   top: 1px;
-}
-
-.communiques .card-communique {
-   display: flex;
-   align-items: center;
-   flex-direction: row;
-   max-width: 350px;
-   height: auto;
-   padding: 2px;
-   margin: 0 30px 0 30px;
-   /* border: yellow 1px solid; */
+   text-transform: capitalize;
 }
 
 .communiques .card-communique:hover,
@@ -62,15 +47,9 @@
 
 .communiques .titre {
    text-transform: uppercase;
-   padding: 0 4px 0 4px;
-   margin: 0;
-   white-space: nowrap;
+   padding: 0 4px 0 0;
    width: max-content;
    border-radius: 2px;
-}
-
-.communiques .titre::after {
-   content: ":";
 }
 
 .communiques .hook {
@@ -78,6 +57,4 @@
    white-space: nowrap;
    overflow: hidden;
    text-overflow: ellipsis;
-   font-size: .9em;
-   padding: 6px 6px 6px 0;
 }

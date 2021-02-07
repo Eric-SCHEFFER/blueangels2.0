@@ -22,30 +22,29 @@
         <div class="bloc-cards">
             {% set countAVenir = countTotalEventsToCome[0][1] %}
             {# Affiche le nbre d'events à venir dans une notification #}
-            <a class="events-notification" href="#events" title="Évènements à venir">
-                {# <i class="fas fa-calendar-alt fa-lg"></i> #}
-                Évènements à venir:
-                <span class="events-notification-number">
-                    <div class="events-notification-number-value">
-                        {{ countAVenir }}
-                    </div>
+            <a class="events-notification" href="#events" title="Évènements à venir: {{ countAVenir }}">
+                Évènements à venir: {{ countAVenir }}
+                <span class="bt-extra-small-arrow bt-color">
+                    <i class="fas fa-arrow-right fa-sm"></i>
                 </span>
             </a>
+
             {% for communique in communiques %}
                 <a class="card-communique" href="" title="Communiqué important">
                     <div class="titre">
-                        {{ communique.getTitre() }}
+                        {{ communique.getTitre() }}:
                     </div> 
                     <div class="hook">
                         {{ communique.getHook() }}
                     </div>
-                    <div class="bouton bt-extra-small-arrow">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>    
+                    <span class="bt-extra-small-arrow bt-color">
+                        <i class="fas fa-arrow-right fa-sm"></i>
+                    </span>
                 </a>
             {% endfor %}
         </div>
     </section>
+
 
 
 {# ================================================================= #}

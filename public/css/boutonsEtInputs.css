@@ -5,8 +5,7 @@
    width: auto;
    height: auto;
    border-radius: 6px;
-   color: rgb(219, 219, 219);
-   /* background-color: #2c70b8; */
+   color: rgb(209, 209, 209);
    background-color: #225d91;
    font-weight: 800;
    text-transform: uppercase;
@@ -34,10 +33,10 @@ margin: 10px;
 }
 
 .bt-extra-small-arrow {
-   font-size: .8em;
-   padding: 3px 2px 2px 3px;
+   padding: 0;
    width: 18px;
    height: 18px;
+   margin-left: 8px;
    border-radius: 50%;
 }
 
@@ -50,6 +49,12 @@ margin: 10px;
 .bouton:hover {
    cursor: pointer;
    color: #fff;
+}
+
+/* ============= Colors ================== */
+
+.bt-color {
+   background-color: #225d91;
 }
 
 .bt-grise {
