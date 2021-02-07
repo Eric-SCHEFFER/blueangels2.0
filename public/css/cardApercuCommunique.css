@@ -1,4 +1,5 @@
 .communiques {
+   position: relative;
    display: flex;
    justify-content: center;
    position: relative;
@@ -7,6 +8,7 @@
 }
 
 .communiques .bloc-cards {
+   position: relative;
    display: flex;
    flex-direction: column;
    align-items: center;

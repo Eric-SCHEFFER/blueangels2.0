@@ -158,7 +158,7 @@
                         {% else %}
                             <div class="tampon-oblique">Évènement terminé</div>
                         {% endif %}
-                        <a class="card-event card-event-grise" href="{{ path('event_', {id: eventToCome.id}) }}">
+                        <a class="card-event card-event-grise" href="{{ path('event_', {id: completedEvent.id}) }}">
                             {% if not completedEvent.getImagesEvents() is empty %}
                                 <div class="image">
                                     <img src="{{ asset('images/rail.jpg') }}" alt="">

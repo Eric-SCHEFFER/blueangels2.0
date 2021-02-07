@@ -12,7 +12,7 @@ html, body {
    position: relative;
 }
 
-a:hover {
+a:hover, .active {
    text-decoration: underline #17a2ff 3px solid;
 }
 
