@@ -15,7 +15,7 @@
    border-radius: 3px;
    padding: 0;
    color: rgb(214, 214, 214);
-   max-width: 300px;
+   width: 300px;
 }
 
 .communiques .events-notification,
@@ -48,13 +48,22 @@
 .communiques .titre {
    text-transform: uppercase;
    padding: 0 4px 0 0;
-   width: max-content;
-   border-radius: 2px;
+   max-width: 120px;
+   overflow: hidden;
+   white-space: nowrap;
+   text-overflow: ellipsis;
 }
 
 .communiques .hook {
    text-transform: capitalize;
+   max-width: 146px;
    white-space: nowrap;
    overflow: hidden;
    text-overflow: ellipsis;
+   margin-right: 6px;
 }
+
+/* .communiques .date {
+   font-style: italic;
+   color: #575757;
+} */

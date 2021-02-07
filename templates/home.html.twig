@@ -30,16 +30,16 @@
             </a>
 
             {% for communique in communiques %}
-                <a class="card-communique" href="" title="Mise à jour: {{ communique.getCreatedAt()|date("d-m-Y") }}">
-                    {# <div class="date">
-                        {{ communique.getCreatedAt()|date("d-m-Y") }}
-                    </div> #}
+                <a class="card-communique" href="" title="{{ communique.getTitre() }} - {{ communique.getHook() }} - Mise à jour: {{ communique.getCreatedAt()|date("d-m-Y") }}">
                     <div class="titre">
                         {{ communique.getTitre() }}:
                     </div> 
                     <div class="hook">
                         {{ communique.getHook() }}
                     </div>
+                    {# <div class="date">
+                        {{ communique.getCreatedAt()|date("d-m-Y") }}
+                    </div> #}
                     <span class="bt-extra-small-arrow bt-color">
                         <i class="fas fa-arrow-right fa-sm"></i>
                     </span>
