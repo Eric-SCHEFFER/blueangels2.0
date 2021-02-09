@@ -20,9 +20,41 @@
         </div>
         <div class="textes">
             <div class="info-bar">
-                <div class="date">
-                    <i class="fas fa-calendar-alt"></i>
-                    {{ event.getDateEvent | date("d-m-Y") }}
+                <div class="date-wrapper">
+                    <div class="date">
+                        <i class="fas fa-calendar-alt"></i>
+                        {{ event.getDateEvent | date("d-m-Y") }}
+                    </div>
+                    {% if event.getDateEvent() == today %}
+                        <div class="green">
+                            Aujourd'hui
+                        </div>
+                        {% elseif event.getDateEvent() == today|date_modify("+1 day") %}
+                            <div class="blue">
+                                Demain
+                            </div>
+                        {% elseif event.getDateEvent() == today|date_modify("+2 day") %}
+                            <div class="blue">
+                                J-2
+                            </div>
+                        {% elseif event.getDateEvent() == today|date_modify("+3 day") %}
+                            <div class="blue">
+                                J-3
+                            </div>
+                        {% elseif event.getDateEvent() == today|date_modify("+3 day") %}
+                            <div class="blue">
+                                J-3
+                            </div>
+                        {% elseif event.getDateEvent() < today %}
+                        <div>
+                            Évènement terminé
+                        </div>
+                    {% endif %}
+                    {% if event.getAnnule() %}
+                    <div class="red">
+                        Évènement annulé
+                    </div>
+                    {% endif %}
                 </div>
                 <div class="contact">
                     <a class="bouton bt-small" href="">Contact</a>

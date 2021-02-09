@@ -27,11 +27,13 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
-        $today = new DateTime('2021-01-18'); // Pour tester d'autres dates du jour
+        $today = new DateTime('2021-01-02'); // Pour tester d'autres dates du jour
         // On récupère les 3 events
         $events = $this->getEvents($today);
         // On récupère le nbre total d'events futurs
         $countTotalEventsToCome = $this->eventsRepository->countTotalEventsToCome($today);
+        // On récupère le nbre total d'events passés
+        $countTotalCompletedEvents = $this->eventsRepository->countTotalCompletedEvents($today);
         // On récupère les articles
         $articles = $this->articlesRepository->findBy([], ['created_at' => 'DESC'], 3, 0);
         // On récupère les communiqués
@@ -42,6 +44,7 @@ class HomeController extends AbstractController
             'completedEvents' => $events[1],
             'today' => $today,
             'countTotalEventsToCome' => $countTotalEventsToCome,
+            'countTotalCompletedEvents' => $countTotalCompletedEvents,
             'articles' => $articles,
             'communiques' => $communiques,
         ]);

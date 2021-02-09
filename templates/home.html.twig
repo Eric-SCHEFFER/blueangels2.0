@@ -11,7 +11,6 @@
 {% block body %}
 
 <div class="wrapper">
-    <h1>Accueil</h1>
 {# ================================================================= #}    
     <section class="communiques">
         {# TODO: #}
@@ -21,13 +20,14 @@
         #}
         <div class="bloc-cards">
             {% set countAVenir = countTotalEventsToCome[0][1] %}
+            {% set countPasse = countTotalCompletedEvents[0][1] %}
             {# Affiche le nbre d'events à venir dans une notification #}
-            <a class="events-notification" href="#events" title="Évènements à venir: {{ countAVenir }}">
+            {# <a class="events-notification" href="#events" title="Évènements à venir: {{ countAVenir }}">
                 Évènements à venir: {{ countAVenir }}
                 <span class="bt-extra-small-arrow bt-color">
                     <i class="fas fa-arrow-right fa-sm"></i>
                 </span>
-            </a>
+            </a> #}
 
             {% for communique in communiques %}
                 <a class="card-communique" href="" title="{{ communique.getTitre() }} - {{ communique.getHook() }} - Mise à jour: {{ communique.getCreatedAt()|date("d-m-Y") }}">
@@ -51,43 +51,7 @@
 
 
 {# ================================================================= #}
-    <section class="articles">
-        {#
-            On affiche les 3 derniers articles par ordre de création.
-            Chaque article est cliquable, et renvoi vers la page de l'article
-            On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
-        #}
-        <h2>Derniers articles</h2>
-        <div class="bloc-cards">
-            {% for article in articles %}
-                <a class="card-article" href="">
-                    {% if article.getImagesArticles()[0].getNom() is not empty %}
-                        <div class="image">
-                            <img src="{{ asset('images/8.jpg') }}" alt="">
-                        </div>
-                    {% endif %}
-                    <div class="bloc-text">
-                        <h3 class="titre">{{ article.getTitre() }}</h3>
-                        <div class="hook">{{ article.getHook() }}</div>
-                        <div class="center">
-                            <div class="bouton bt-inline-bloc">
-                                Voir
-                            </div>
-                        </div>
-                        <div class="infos">
-                            <i class="fas fa-calendar-alt"></i>
-                            {{ article.getCreatedAt()|date("d-m-Y") }}
-                        </div>
-                    </div>
-                </a>
-            {% endfor %}
-        </div>
-        <div class="boutonsPassesFuturs">
-            <a class="bouton" href="">Tous les articles</a>
-        </div>
-    </section>
 
-{# ================================================================= #}
     <section class="events" id="events">
         {#
             On tente d'afficher les 3 évènements futurs. S'il y en a moins ou aucun, on complète avec des évènements passés grisés.
@@ -95,11 +59,8 @@
             Chaque évènement est cliquable, et renvoi vers la page de l'évènement
         #}
         
-        {% if countAVenir == 0 %}
-            <h2>Évènements à venir: aucun</h2>
-            {% else %}
-                <h2>Évènements à venir: {{ countAVenir }}</h2>
-        {% endif %}
+        
+        <h2>Évènements</h2>
         {# Provisoire, pour tester les dates #}
         <p>Nous sommes le {{ today|date("d-m-Y") }}</p>
 
@@ -132,13 +93,13 @@
                                 {# Date, et mentions couleurs du nbr de jours avant l'event #}
                                 <div class="infos">
                                     <i class="fas fa-calendar-alt"></i> {{ eventToCome.getDateEvent()|date("d-m-Y") }}
-                                    {% if eventToCome.getDateEvent()|date("d-m-Y") == today|date("d-m-Y") %}
+                                    {% if eventToCome.getDateEvent() == today %}
                                         <span class="info-jour green">Aujourd'hui</span>
-                                    {% elseif eventToCome.getDateEvent()|date("d-m-Y") == today|date_modify("+1 day")|date("d-m-Y") %}
+                                    {% elseif eventToCome.getDateEvent() == today|date_modify("+1 day") %}
                                         <span class="info-jour blue">Demain</span>
-                                    {% elseif eventToCome.getDateEvent()|date("d-m-Y") == today|date_modify("+2 day")|date("d-m-Y") %}
+                                    {% elseif eventToCome.getDateEvent() == today|date_modify("+2 day") %}
                                         <span class="info-jour blue">J-2</span>
-                                    {% elseif eventToCome.getDateEvent()|date("d-m-Y") == today|date_modify("+3 day")|date("d-m-Y") %}
+                                    {% elseif eventToCome.getDateEvent() == today|date_modify("+3 day") %}
                                         <span class="info-jour blue">J-3</span>
                                     {% endif %}
                                 </div>
@@ -185,13 +146,54 @@
         </div>
 
         <div class="boutonsPassesFuturs">
-            <a class="bouton bt2" href="">Évènements passés</a>
+            {% if countPasse > 0 %}
+                <a class="bouton bt2" href="">Évènements passés</a>
+            {% endif %}
             {% if countAVenir > 3 %}
-                <a class="bouton bt2" href="">Tous les évènements à venir (+ {{ countAVenir -3 }} )</a>
+                <a class="bouton bt2" href="">Tous les évènements à venir ({{ countAVenir  }})</a>
             {% endif %}
         </div>
     </section>
 
+
+{# ================================================================= #}
+    <section class="articles">
+        {#
+            On affiche les 3 derniers articles par ordre de création.
+            Chaque article est cliquable, et renvoi vers la page de l'article
+            On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
+        #}
+        <h2>Articles</h2>
+        <div class="bloc-cards">
+            {% for article in articles %}
+                <a class="card-article" href="">
+                    {% if article.getImagesArticles()[0].getNom() is not empty %}
+                        <div class="image">
+                            <img src="{{ asset('images/8.jpg') }}" alt="">
+                        </div>
+                    {% endif %}
+                    <div class="bloc-text">
+                        <h3 class="titre">{{ article.getTitre() }}</h3>
+                        <div class="hook">{{ article.getHook() }}</div>
+                        <div class="center">
+                            <div class="bouton bt-inline-bloc">
+                                Voir
+                            </div>
+                        </div>
+                        <div class="infos">
+                            <i class="fas fa-calendar-alt"></i>
+                            {{ article.getCreatedAt()|date("d-m-Y") }}
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+        <div class="boutonsPassesFuturs">
+            <a class="bouton" href="">Tous les articles</a>
+        </div>
+    </section>
+
+{# ================================================================= #}
 
 
 

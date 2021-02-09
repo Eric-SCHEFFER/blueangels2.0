@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Events;
 use App\Repository\ImagesEventRepository;
-
+use DateTime;
 
 class EventController extends AbstractController
 {
@@ -19,9 +19,11 @@ class EventController extends AbstractController
         $repo = $this->getDoctrine()->getRepository(Events::class);
         $event = $repo->find($id);
         $images = $imagesEventRepository->findBy(['event' => $event]);
+        $today = new DateTime('2021-01-02');
         return $this->render('event/index.html.twig', [
             'event' => $event,
             'images' => $images,
+            'today' => $today,
         ]);
     }
 }
