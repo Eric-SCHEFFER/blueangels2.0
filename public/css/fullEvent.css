@@ -1,0 +1,53 @@
+.full-event {
+   max-width: 1200px;
+   width: 100%;
+   margin: 60px auto 60px auto;
+   background-color: black;
+   /* border: solid rgb(208, 255, 0) 1px; */
+   border-radius: 12px;
+}
+
+.full-event .image {
+   position: relative;
+   max-width: 450px;
+   background-color: #000000;
+   border-radius: 12px 12px 0 0;
+   margin: auto;
+}
+
+.full-event .image img {
+   background-color: #000000;
+   position: relative;
+   height: 100%;
+   width: 100%;
+   border-radius: 12px;
+}
+
+.full-event .info-bar {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   /* border: solid rebeccapurple 1px; */
+   color: rgb(136, 136, 136);
+   margin-bottom: 40px;
+}
+
+.full-event .date {
+
+}
+
+.full-event .contact {
+   font-size: 1.1em;
+}
+
+.full-event .textes {
+   background-color: white;
+   color: #000000;
+   border-radius: 0 0 12px 12px;
+   /* border: solid rgb(0, 68, 255) 1px; */
+   padding: 4%;
+}
+
+.full-event .hook {
+   margin-bottom: 30px;
+}

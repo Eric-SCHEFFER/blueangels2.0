@@ -1,7 +1,8 @@
 {% extends 'components/base.html.twig' %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/event.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/cardEvent.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fullEvent.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
     
 {% endblock %}
 {% block title %}
@@ -13,10 +14,29 @@
 
 <div class="wrapper">
     <h1>{{ event.nom }}</h1>
-    
-    <p class="test">coucou</p>
+    <section class="full-event">
+        <div class="image">
+            <img src="{{ asset('images/2020-03-08_flyer_affiche_stage_bachata.jpg') }}" alt="">
+        </div>
+        <div class="textes">
+            <div class="info-bar">
+                <div class="date">
+                    <i class="fas fa-calendar-alt"></i>
+                    {{ event.getDateEvent | date("d-m-Y") }}
+                </div>
+                <div class="contact">
+                    <a class="bouton bt-small" href="">Contact</a>
+                </div>
+            </div>
+            <h2 class="hook">
+                {{ event.hook }}
+            </h2>
+            <div>
+                {{ event.description }}
+            </div>
+        </div>
+    </section>
 
-    <p class="test2">coucou2</p>
 
 
 </div>

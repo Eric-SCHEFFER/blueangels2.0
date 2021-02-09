@@ -1,13 +1,13 @@
 .bouton {
    text-align: center;
    /* margin: auto; */
-   padding: 10px 18px 10px 18px;
-   width: auto;
+   padding: 8px;
+   width: max-content;
    height: auto;
    border-radius: 6px;
    color: rgb(209, 209, 209);
    background-color: #225d91;
-   font-weight: 800;
+   font-weight: 500;
    text-transform: uppercase;
 }
 
@@ -27,8 +27,8 @@ margin: 10px;
 
 .bt-small {
    font-size: .8em;
-   padding: 4px;
-   width: 60px;
+   padding: 6px;
+   width: max-content;
    border-radius: 4px;
 }
 
