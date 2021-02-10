@@ -11,6 +11,10 @@
 {% block body %}
 
 <div class="wrapper">
+    <div class="bienvenue">
+        <p>L'association de danses latino-rock "{{ SiteName }}" vous souhaite la bienvenue</p>
+    </div>
+
 {# ================================================================= #}    
     <section class="communiques">
         {# TODO: #}
@@ -29,22 +33,22 @@
                 </span>
             </a> #}
 
-            {% for communique in communiques %}
+            {# {% for communique in communiques %}
                 <a class="card-communique" href="" title="{{ communique.getTitre() }} - {{ communique.getHook() }} - Mise à jour: {{ communique.getCreatedAt()|date("d-m-Y") }}">
                     <div class="titre">
                         {{ communique.getTitre() }}:
                     </div> 
                     <div class="hook">
                         {{ communique.getHook() }}
-                    </div>
+                    </div> #}
                     {# <div class="date">
                         {{ communique.getCreatedAt()|date("d-m-Y") }}
                     </div> #}
-                    <span class="bt-extra-small-arrow bt-color">
+                    {# <span class="bt-extra-small-arrow bt-color">
                         <i class="fas fa-arrow-right fa-sm"></i>
                     </span>
-                </a>
-            {% endfor %}
+                </a> #}
+            {# {% endfor %} #}
         </div>
     </section>
 
@@ -60,7 +64,7 @@
         #}
         
         
-        <h2>Évènements</h2>
+        <h1>Évènements</h1>
         {# Provisoire, pour tester les dates #}
         <p>Nous sommes le {{ today|date("d-m-Y") }}</p>
 
@@ -163,7 +167,7 @@
             Chaque article est cliquable, et renvoi vers la page de l'article
             On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
         #}
-        <h2>Articles</h2>
+        <h1>Articles</h1>
         <div class="bloc-cards">
             {% for article in articles %}
                 <a class="card-article" href="">

@@ -2,6 +2,11 @@ section {
    padding: 20px 0 40px 0;
 }
 
+.bienvenue {
+   text-align: center;
+   font-size: 1.1em;
+   padding: 0 12px 0 12px;
+}
 .communiques {
    /* background-color: #182534; */
 }
