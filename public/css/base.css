@@ -12,14 +12,13 @@ html, body {
    position: relative;
 }
 
-a:hover, .active {
-   text-decoration: underline #17a2ff 3px solid;
+a:hover {
+   color: rgb(255, 255, 255);
 }
 
-a::first-letter {
-   font-weight: 600;
-   color: #17a2ff;
-}
+/* a::first-letter {
+   font-weight: 800;
+} */
 
 header {
    /* border: white solid 1px; */
@@ -100,7 +99,11 @@ a {
 }
 
 .blue {
-   color: rgb(0, 123, 224);
+   color: #007BFF;
+}
+
+.bg-blue {
+   background-color: #007BFF;
 }
 
 .white {
@@ -111,3 +114,6 @@ a {
    color: rgb(31, 163, 252);
 }
 
+.bg-blue-pastel {
+   background-color: rgb(31, 163, 252);
+}

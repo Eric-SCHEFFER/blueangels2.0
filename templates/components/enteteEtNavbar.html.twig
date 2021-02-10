@@ -1,35 +1,19 @@
 <div class="header-wrapper">
-   <div class="logo-wrapper">
-      
-         <a class="logo" href="{{ path('home') }}">
-            <img src="{{ asset('images/logo_ba_6.png') }}" alt="logo blue angels">
-         </a>
-         <a class="textes-a-cote-logo" href="{{ path('home') }}">
-            <div class="nom-asso">
-               <h1>
-                  Les blue angels
-               </h1>
+   <div class="header-panel">
+      <a href="{{ path('home') }}">
+         <div class="logo-panel">
+            <div class="logo-image">
+               <img src="{{ asset('images/logo_ba_6.png') }}" alt="logo blue angels">
             </div>
-            <div class="danses-latino-rock-a-erstein">
-               <h1>
-                  Danses latino-rock à erstein
-               </h1>
-            </div>
-            <div class="nom-des-danses">
-               <div class="groupe-danses-1">
-                  <p>Salsa</p>
-                  <p>Cha-Cha</p>
-               </div>
-               <div class="groupe-danses-2">
-                  <p>Bachata</p>
-                  <p>rock 'n' Roll</p>
-               </div>
-            </div>
-         </a>
+            <h1 class="logo-titre">
+               Les blue angels
+            </h1>
+         </div>
+      </a>
    </div>
 
  {# ================= Menu ==================== #}
-   <nav>
+   <nav class="bg-blue">
       <ul>
          <li>
             <a href="{{ path('home') }}"

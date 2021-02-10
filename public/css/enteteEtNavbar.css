@@ -1,35 +1,33 @@
 .header-wrapper {
    position: relative;
-   /* border: 1px blue solid; */
    margin: 0;
    height: 100%;
    padding: 25px;
    background: inherit;
 }
 
-.logo-wrapper, nav {
+.header-panel, nav {
    border: 1px rgba(104, 104, 104, 0.541) solid;
    border-radius: 4px;
 }
 
-.logo-wrapper {
+.header-panel {
    background: inherit;
    position: relative;
    padding: 28px 22px 46px 28px;
    display: flex;
-   height: 100px;
+   height: 77px;
    overflow: hidden;
    z-index: 1;
 }
 
-.logo-wrapper a {
-   
+.header-panel a {
    display: inline-block;
    text-decoration: none;
 }
 
 /* Pour un effet de verre dépoli */
-.logo-wrapper::before {
+.header-panel::before {
    z-index: -1;
    content: "";
    position: absolute;
@@ -42,83 +40,61 @@
    box-shadow: inset 0 0 2000px rgba(46, 46, 46, 0.582);
 }
 
-.logo {
-   height: 100%;
-   /* border: 1px white solid; */
-   position: relative;
+.logo-panel {
+   display: flex;
+   /* border: 1px rgb(21, 255, 0) solid; */
+   align-items: center;
 }
 
-.logo img {
-   height: 100%;
+.logo-image {
+   width: 90px;
+   /* border: 1px rgb(0, 47, 255) solid; */
 }
 
-.textes-a-cote-logo {
-   /* border: 1px rgb(0, 255, 34) solid; */
-   top: -4px;
-   text-transform: uppercase;
-   margin-left: 30px;
-   color: #ffffff;
-   position: relative;
-   text-shadow: 1px 1px #000000;
+.logo-image img {
+   width: 100%;
 }
 
-.textes-a-cote-logo h1 {
-   text-align: left;
-   font-size: 1em;
+.logo-titre {
    margin: 0;
-   font-weight: 400;
-}
-
-.nom-asso {
-   font-size: 2.6em;
+   padding: 0;
+   width: 175px;
+   margin-left: 20px;
+   color: #ffffff;
+   text-shadow: 1px 1px #000000;
+   font-size: 2.5em;
    line-height: 1em;
 }
 
-.danses-latino-rock-a-erstein {
-   font-size: .9em;
-   letter-spacing: .3em;
-}
-
-.nom-des-danses {
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: center;
-   /* border: 1px rgb(225, 0, 255) solid; */
-   position: relative;
-   top: 10px;
-   font-weight: 600;
-   font-size: 1.3em;
-}
-
-.nom-des-danses p {
-   margin: 0;
-}
-
-.groupe-danses-1 {
-   text-align: right;
-   margin: 0 10px 0 0;
-   /* border: 1px rgb(255, 238, 0) solid; */
-}
-
-.groupe-danses-2 {
-   margin: 0 0 0 10px;
-   /* border: 1px rgb(0, 255, 221) solid; */
-}
 
 /* =================== menu ===================== */
 nav {
    z-index: 5;
    height: 15px;
-   color: rgb(0, 0, 0);
    text-transform: uppercase;
    font-size: .9em;
-   width: 41%;
+   width: 55%;
    position: absolute;
    top: 55px;
    right: 53px;
-   background-color: white;
    font-weight: 500;
-   padding: 18px;
+   padding: 20px;
+   color: #ffffff;
+}
+
+nav a {
+   position: relative;
+}
+
+nav a:hover::before, .active::before {
+   display: inline-block;
+   content: "";
+   position: absolute;
+   top: -20px;
+   width: 100%;
+   border-top: 2px  white solid;
+   border-bottom: 2px  white solid;;
+   border-radius: 6px;
 }
 
 nav ul{
@@ -133,7 +109,7 @@ nav ul {
 }
 
 nav li {
+   position: relative;
    padding: 0 15px 0 15px;
    /* border: red 1px solid; */
 }
-
