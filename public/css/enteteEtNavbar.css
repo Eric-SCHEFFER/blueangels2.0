@@ -80,21 +80,27 @@ nav {
    font-weight: 500;
    padding: 20px;
    color: #ffffff;
+   overflow: hidden;
 }
 
 nav a {
    position: relative;
 }
 
-nav a:hover::before, .active::before {
-   display: inline-block;
+nav a::before, .active::before {
    content: "";
+   top: 35px;
+   transition: top .1s;
+   display: inline-block;
    position: absolute;
-   top: -20px;
    width: 100%;
    border-top: 2px  white solid;
    border-bottom: 2px  white solid;;
    border-radius: 6px;
+}
+
+nav a:hover::before, .active::before {
+   top: 27px;
 }
 
 nav ul{

@@ -7,6 +7,10 @@
    border-radius: 12px;
 }
 
+.full-event h2 {
+   color: #000;
+}
+
 .full-event .image {
    position: relative;
    height: 70vh;
