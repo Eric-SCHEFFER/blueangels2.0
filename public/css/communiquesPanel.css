@@ -1,93 +1,34 @@
 .communiques-panel {
-   position: relative;
-   max-width: 840px;
-   margin: auto;
-   border: yellow 1px solid;
+   /* border: yellow 1px solid; */
+   font-size: .9em;
+   padding: 0;
+   margin-top: 40px;
 }
 
 .communiques-panel h3.titre {
-   margin: auto;
-   padding: 0;
-   font-size: .9em;
-   width: max-content;
-   background-color: white;
+   margin: 0;
+   font-size: inherit;
+   /* border: yellow 1px solid; */
 }
 
 .communiques-panel .cards-wrapper {
    display: flex;
    justify-content: center;
    flex-wrap: wrap;
-   
-
 }
 
 .communiques-panel .card {
-   width: 240px;
-   border: rgb(255, 0, 221) 1px solid;
-
-}
-
-
-
-
-/* .communiques .bloc-cards {
-   position: relative;
    display: flex;
    flex-direction: column;
    align-items: center;
-   padding: 0px 0 0 0;
-   border: #ff0000 1px solid;
-   border-radius: 3px;
-   padding: 0;
-   color: rgb(214, 214, 214);
-   width: 300px;
+   width: 240px;
+   margin: 10px;
+   padding: 6px;
+   border-radius: 4px;
+   /* border: rgb(255, 0, 221) 1px solid; */
 }
 
-.communiques .events-notification,
-.communiques .card-communique {
-   font-size: .9em;
-   padding: 3px 0 3px 0;
-   border: rgb(17, 0, 255) 1px solid;
-   width: max-content;
-   display: flex;
-   flex-direction: row;
-   justify-content: center;
-}
-
-.communiques .events-notification i,
-.communiques .card-communique i {
-   position: relative;
-   left: 4px;
-}
-
-.communiques .events-notification {
-   text-transform: capitalize;
-}
-
-.communiques .card-communique:hover,
-.communiques .events-notification:hover {
-   text-decoration: none;
-   color: #ffffff;
-}
-
-.communiques .titre {
+.communiques-panel .card .titre {
    text-transform: uppercase;
-   padding: 0 4px 0 0;
-   max-width: 120px;
-   overflow: hidden;
-   white-space: nowrap;
-   text-overflow: ellipsis;
+   color: white;
 }
-
-.communiques .hook {
-   text-transform: capitalize;
-   max-width: 146px;
-   white-space: nowrap;
-   overflow: hidden;
-   text-overflow: ellipsis;
-} */
-
-/* .communiques .date {
-   font-style: italic;
-   color: #575757;
-} */

@@ -14,76 +14,35 @@
     <div class="bienvenue-panel">
         <p>L'association de danses latino-rock "{{ SiteName }}" vous souhaite la bienvenue</p>
     </div>
-
-    <div class="communiques-panel bg-blue">
-        <h3 class="titre blue">
+{# ================================================================= #}
+    <div class="communiques-panel">
+        <h3 class="titre">
             Communiqués
         </h3>
         <div class="cards-wrapper">
             {% for communique in communiques %}
                 <a href="">
-                    <div class="card">
+                    <div class="card bg-blue">
                         <div class="titre">
-                            {{ communique.getTitre() }}:
+                            {{ communique.getTitre() }}
                         </div> 
                         <div class="hook">
                             {{ communique.getHook() }}
                         </div>
                         <div class="date">
+                            <i class="fas fa-calendar-alt"></i>
                             {{ communique.getCreatedAt()|date("d-m-Y") }}
                         </div>
-
-
-                            
-                        
-
-
                     </div>
                 </a>
             {% endfor %}
         </div>
     </div>
-
-{# ================================================================= #}    
-    {# <section class="communiques"> #}
-        {# TODO: #}
-        {#
-            On affiche les derniers communiqués par ordre inverse de création (minimum: aucun, maximum: 3)
-            Chaque communiqués est cliquable, et renvoi vers la page du communiqué
-        #}
-        {# <div class="bloc-cards"> #}
-            {% set countAVenir = countTotalEventsToCome[0][1] %}
-            {% set countPasse = countTotalCompletedEvents[0][1] %}
-            {# Affiche le nbre d'events à venir dans une notification #}
-            {# <a class="events-notification" href="#events" title="Évènements à venir: {{ countAVenir }}">
-                Évènements à venir: {{ countAVenir }}
-                <span class="bt-extra-small-arrow bt-color">
-                    <i class="fas fa-arrow-right fa-sm"></i>
-                </span>
-            </a> #}
-
-            {# {% for communique in communiques %}
-                <a class="card-communique" href="" title="{{ communique.getTitre() }} - {{ communique.getHook() }} - Mise à jour: {{ communique.getCreatedAt()|date("d-m-Y") }}">
-                    <div class="titre">
-                        {{ communique.getTitre() }}:
-                    </div> 
-                    <div class="hook">
-                        {{ communique.getHook() }}
-                    </div> #}
-                    {# <div class="date">
-                        {{ communique.getCreatedAt()|date("d-m-Y") }}
-                    </div> #}
-                    {# <span class="bt-extra-small-arrow bt-color">
-                        <i class="fas fa-arrow-right fa-sm"></i>
-                    </span>
-                </a> #}
-            {# {% endfor %} #}
-        {# </div> #}
-    {# </section> #}
+{# ================================================================= #}   
 
 
-
-{# ================================================================= #}
+{% set countAVenir = countTotalEventsToCome[0][1] %}
+{% set countPasse = countTotalCompletedEvents[0][1] %}
 
     <section class="events" id="events">
         {#
@@ -92,13 +51,11 @@
             Chaque évènement est cliquable, et renvoi vers la page de l'évènement
         #}
         
-        
         <h1>Évènements</h1>
         {# Provisoire, pour tester les dates #}
         <p>Nous sommes le {{ today|date("d-m-Y") }}</p>
 
         <div class="bloc-cards">
-
             {# On affiche les evènements futurs #}
             {% if not eventsToCome is empty %}
                 {% for eventToCome in eventsToCome %}
@@ -141,7 +98,7 @@
                     </div>
                 {% endfor %}
             {% endif %}
-
+            {# ====================================================== #}
             {# On affiche les évènements passés #}
             {% if not completedEvents is empty %}
                 {% for completedEvent in completedEvents %}

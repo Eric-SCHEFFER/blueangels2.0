@@ -8,6 +8,10 @@ section {
    padding: 0 12px 0 12px;
 }
 
+.bienvenue-panel p {
+   margin: 0;
+}
+
 .articles {
    /* background-color: #203246; */
 }
