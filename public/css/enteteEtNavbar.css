@@ -100,10 +100,10 @@ nav a::before, .active::before {
 }
 
 nav a:hover::before, .active::before {
-   top: 27px;
+   top: 31px;
 }
 
-nav ul{
+nav ul {
    padding: 0;
    margin: 0;
 }

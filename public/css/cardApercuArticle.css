@@ -41,6 +41,7 @@
 
 .articles .titre {
    font-weight: 500;
+   color: #000;
    margin: 0 0 3px 0;
    font-size: 1em;
    white-space: nowrap;

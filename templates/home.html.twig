@@ -1,7 +1,7 @@
 {% extends 'components/base.html.twig' %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/cardApercuCommunique.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/communiquesPanel.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cardApercuArticle.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cardApercuEvent.css') }}">
     <link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
@@ -11,20 +11,47 @@
 {% block body %}
 
 <div class="wrapper">
-    <div class="accueil-panel">
-        <div class="bienvenue">
-            <p>L'association de danses latino-rock "{{ SiteName }}" vous souhaite la bienvenue</p>
+    <div class="bienvenue-panel">
+        <p>L'association de danses latino-rock "{{ SiteName }}" vous souhaite la bienvenue</p>
+    </div>
+
+    <div class="communiques-panel bg-blue">
+        <h3 class="titre blue">
+            Communiqués
+        </h3>
+        <div class="cards-wrapper">
+            {% for communique in communiques %}
+                <a href="">
+                    <div class="card">
+                        <div class="titre">
+                            {{ communique.getTitre() }}:
+                        </div> 
+                        <div class="hook">
+                            {{ communique.getHook() }}
+                        </div>
+                        <div class="date">
+                            {{ communique.getCreatedAt()|date("d-m-Y") }}
+                        </div>
+
+
+                            
+                        
+
+
+                    </div>
+                </a>
+            {% endfor %}
         </div>
     </div>
 
 {# ================================================================= #}    
-    <section class="communiques">
+    {# <section class="communiques"> #}
         {# TODO: #}
         {#
             On affiche les derniers communiqués par ordre inverse de création (minimum: aucun, maximum: 3)
             Chaque communiqués est cliquable, et renvoi vers la page du communiqué
         #}
-        <div class="bloc-cards">
+        {# <div class="bloc-cards"> #}
             {% set countAVenir = countTotalEventsToCome[0][1] %}
             {% set countPasse = countTotalCompletedEvents[0][1] %}
             {# Affiche le nbre d'events à venir dans une notification #}
@@ -51,8 +78,8 @@
                     </span>
                 </a> #}
             {# {% endfor %} #}
-        </div>
-    </section>
+        {# </div> #}
+    {# </section> #}
 
 
 
