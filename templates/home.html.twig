@@ -21,20 +21,18 @@
         </h3>
         <div class="cards-wrapper">
             {% for communique in communiques %}
-                <a href="">
-                    <div class="card bg-blue">
-                        <div class="titre">
-                            {{ communique.getTitre() }}
-                        </div> 
-                        <div class="hook">
-                            {{ communique.getHook() }}
-                        </div>
-                        <div class="date">
-                            <i class="fas fa-calendar-alt"></i>
-                            {{ communique.getCreatedAt()|date("d-m-Y") }}
-                        </div>
+                <a class="card bg-blue" href="">
+                    <div class="titre">
+                        {{ communique.getTitre() }}
+                    </div> 
+                    <div class="hook">
+                        {{ communique.getHook() }}
                     </div>
-                </a>
+                    <div class="date">
+                        <i class="fas fa-calendar-alt"></i>
+                        {{ communique.getCreatedAt()|date("d-m-Y") }}
+                    </div>
+                </a>    
             {% endfor %}
         </div>
     </div>

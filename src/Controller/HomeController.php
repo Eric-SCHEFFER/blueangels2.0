@@ -37,7 +37,7 @@ class HomeController extends AbstractController
         // On récupère les articles
         $articles = $this->articlesRepository->findBy([], ['created_at' => 'DESC'], 3, 0);
         // On récupère les communiqués
-        $communiques = $this->communiqueRepository->findBy([], ['created_at' => 'DESC'], 1  , 0);
+        $communiques = $this->communiqueRepository->findBy([], ['created_at' => 'DESC'], 3  , 0);
         return $this->render('home.html.twig', [
             'menu_courant' => 'home',
             'eventsToCome' => $events[0],
