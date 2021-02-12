@@ -15,9 +15,14 @@
         <p>L'association de danses latino-rock "{{ SiteName }}" vous souhaite la bienvenue</p>
     </div>
 {# ================================================================= #}
+{% if communiques|length > 0 %}
     <div class="communiques-panel">
         <h3 class="titre">
-            Communiqués
+            {% if communiques|length == 1 %}
+                Communiqué
+                {% else %}
+                Communiqués
+            {% endif %}
         </h3>
         <div class="cards-wrapper">
             {% for communique in communiques %}
@@ -36,6 +41,7 @@
             {% endfor %}
         </div>
     </div>
+{% endif %}        
 {# ================================================================= #}   
 
 
