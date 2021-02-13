@@ -89,18 +89,18 @@ nav a {
 
 nav a::before, .active::before {
    content: "";
-   top: 35px;
-   transition: top .1s;
+   top: 31px;
+   transition: width .1s;
    display: inline-block;
    position: absolute;
-   width: 100%;
-   border-top: 2px  white solid;
-   border-bottom: 2px  white solid;;
+   width: 0;
+   border-top: 2px white solid;
+   border-bottom: 2px white solid;;
    border-radius: 6px;
 }
 
 nav a:hover::before, .active::before {
-   top: 31px;
+   width: 100%;
 }
 
 nav ul {
