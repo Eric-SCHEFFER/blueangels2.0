@@ -45,6 +45,24 @@
          <li>
             <a href="{{ path('home') }}"
                class="
+               {% if menu_courant is defined and menu_courant == 'tarifs' %}
+                  active
+               {% endif %}">
+               Évènements
+            </a>
+         </li>
+         <li>
+            <a href="{{ path('home') }}"
+               class="
+               {% if menu_courant is defined and menu_courant == 'tarifs' %}
+                  active
+               {% endif %}">
+               Articles
+            </a>
+         </li>
+         <li>
+            <a href="{{ path('home') }}"
+               class="
                {% if menu_courant is defined and menu_courant == 'qui_sommes_nous' %}
                   active
                {% endif %}">

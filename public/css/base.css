@@ -25,6 +25,7 @@ a:hover {
 
 header {
    /* border: white solid 1px; */
+   display: block;
    position: relative;
    width: 100%;
    height: auto;
@@ -34,7 +35,7 @@ header {
    background-attachment: fixed;
    background-size: cover;
    background-position: bottom right;
-   overflow: hidden;
+   /* overflow: hidden; */
 }
 
 main {
