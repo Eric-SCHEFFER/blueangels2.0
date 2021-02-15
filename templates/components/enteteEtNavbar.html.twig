@@ -14,7 +14,7 @@
 
  {# ================= Menu ==================== #}
    <nav class="bg-blue">
-      <ul>
+      <ul class="ulMenuGeneral">
          <li>
             <a href="{{ path('home') }}"
                class="
@@ -26,12 +26,12 @@
          </li>
          <li>
             <button
-               class="dropdown"
-               onclick="myFunction()">
+               class="btDropdown"
+               onclick="developperMenu()">
                Danses
                <i class="fa fa-caret-down"></i>
             </button>
-            <ul class="dropdown-content">
+            <ul class="dropdown-content" id ="dropdown">
                <li>
                   <a href="{{ path('home') }}">
                      Salsa
