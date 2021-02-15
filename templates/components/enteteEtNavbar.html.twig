@@ -25,13 +25,29 @@
             </a>
          </li>
          <li>
-            <a href="{{ path('home') }}"
-               class="
-               {% if menu_courant is defined and menu_courant == 'danses' %}
-                  active
-               {% endif %}">
+            <button
+               class="dropdown"
+               onclick="myFunction()">
                Danses
-            </a>
+               <i class="fa fa-caret-down"></i>
+            </button>
+            <ul class="dropdown-content">
+               <li>
+                  <a href="{{ path('home') }}">
+                     Salsa
+                  </a>
+               </li>
+               <li>
+                  <a href="{{ path('home') }}">
+                     Bachata
+                  </a>
+               </li>
+               <li>
+                  <a href="{{ path('home') }}">
+                     Chacha
+                  </a>
+               </li>
+            </ul>
          </li>
          <li>
             <a href="{{ path('home') }}"

@@ -6,8 +6,8 @@
    background: inherit;
 }
 
-.header-panel, nav {
-   border: 1px rgba(104, 104, 104, 0.541) solid;
+.header-panel {
+   border: 1px #6868688a solid;
    border-radius: 4px;
 }
 
@@ -80,33 +80,32 @@ nav {
    font-weight: 500;
    padding: 0;
    color: #ffffff;
-   overflow: hidden;
+   border-radius: 4px;
 }
 
-nav a {
+nav a,
+nav .dropdown {
    position: relative;
-   /* border: solid rgb(0, 225, 255) 1px; */
+   /* border: solid #00e1ff 1px; */
    width: 100%;
-   height: 100%;
    text-align: center;
    line-height: 50px;
    padding: 0;
 }
 
-nav a::before, .active::before {
-   content: "";
-   top: 50px;
-   left: 0;
-   transition: top .2s;
-   position: absolute;
-   width: 100%;
-   border-top: 3px white solid;
-   border-bottom: 3px white solid;;
-   border-radius: 6px;
+nav .dropdown {
+   background-color: inherit;
+   color: inherit;
+   font-size: inherit;
+   text-transform: inherit;
+   border: inherit;
 }
 
-nav a:hover::before, .active::before {
-   top: 44px;
+nav a:hover,
+nav .active,
+nav ul .dropdown-content a:hover {
+   background-color: #3d3d3d;
+   border-radius: 4px;
 }
 
 nav ul {
@@ -116,6 +115,15 @@ nav ul {
    padding: 0;
    margin: 0;
    height: 100%;
+}
+
+nav ul .dropdown-content {
+   flex-direction: column;
+}
+
+nav ul .dropdown-content a {
+   background-color: rgb(25, 59, 99);
+   border-radius: 4px;
 }
 
 nav li {

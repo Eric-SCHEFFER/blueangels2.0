@@ -23,6 +23,10 @@ a:hover {
    text-decoration: none;
 }
 
+button {
+   cursor: pointer;
+}
+
 header {
    /* border: white solid 1px; */
    display: block;
