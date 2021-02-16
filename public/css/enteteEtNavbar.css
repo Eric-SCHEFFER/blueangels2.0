@@ -122,12 +122,18 @@ nav ul.ulMenuGeneral {
 nav ul.dropdown-content {
    flex-direction: column;
    display: none;
+   position: absolute;
+   right: 0;
+   width: 100%;
 }
 
 nav ul.dropdown-content a {
    background-color: #007BFF;
-   border-radius: 4px;
    display: block;
+   width: 100%;
+   min-width: max-content;
+   padding: 0 6px 0 6px;
+   font-size: .9em;
 }
 
 nav li {

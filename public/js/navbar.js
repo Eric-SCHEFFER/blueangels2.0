@@ -1,13 +1,31 @@
-function developperMenu() {
-   document.getElementById("dropdown").classList.toggle("show");
+function toggleMenu(iDMenu) {
+   let dropDownTarget = document.getElementById(iDMenu);
+   let dropdowns = document.getElementsByClassName('dropdown-content');
+   let i;
+   for (i = 0; i < dropdowns.length; i++) {
+      let openDropdown = dropdowns[i];
+      // On ferme tous les menus dropdown ouvert, exepté celui du bouton cliqué
+      if (openDropdown != dropDownTarget) {
+         if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+         }
+      }
+   }
+   // Bascule On/Off du menu dropdown au clic sur le bouton
+   dropDownTarget.classList.toggle("show");
  }
+
  
- // Close the dropdown if the user clicks outside of it
+ // Ferme le menu dropdown si on clique n'importe où sauf sur son bouton
  window.onclick = function(e) {
    if (!e.target.matches('.btDropdown')) {
-   let dropdown = document.getElementById("dropdown");
-     if (dropdown.classList.contains('show')) {
-      dropdown.classList.remove('show');
-     }
+      let dropdowns = document.getElementsByClassName('dropdown-content');
+      let i;
+      for (i = 0; i < dropdowns.length; i++) {
+         let openDropdown = dropdowns[i];
+         if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+         }
+      }
    }
- }
+ } 

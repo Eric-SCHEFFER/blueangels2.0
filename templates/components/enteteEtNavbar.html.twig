@@ -27,11 +27,11 @@
          <li>
             <button
                class="btDropdown"
-               onclick="developperMenu()">
+               onclick="toggleMenu('menuDanses')">
                Danses
                <i class="fa fa-caret-down"></i>
             </button>
-            <ul class="dropdown-content" id ="dropdown">
+            <ul class="dropdown-content" id ="menuDanses">
                <li>
                   <a href="{{ path('home') }}">
                      Salsa
@@ -59,13 +59,24 @@
             </a>
          </li>
          <li>
-            <a href="{{ path('home') }}"
-               class="
-               {% if menu_courant is defined and menu_courant == 'tarifs' %}
-                  active
-               {% endif %}">
+            <button
+               class="btDropdown"
+               onclick="toggleMenu('menuEvenements')">
                Évènements
-            </a>
+               <i class="fa fa-caret-down"></i>
+            </button>
+            <ul class="dropdown-content" id ="menuEvenements">
+               <li>
+                  <a href="{{ path('home') }}">
+                     Évènements à venir
+                  </a>
+               </li>
+               <li>
+                  <a href="{{ path('home') }}">
+                     Évènements terminés depuis très longtemps
+                  </a>
+               </li>
+            </ul>
          </li>
          <li>
             <a href="{{ path('home') }}"
