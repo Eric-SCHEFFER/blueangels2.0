@@ -1,3 +1,4 @@
+// On ouvre ou ferme un sous-menu au clic sur son bouton
 function toggleMenu(iDMenu) {
    let dropDownTarget = document.getElementById(iDMenu);
    let dropdowns = document.getElementsByClassName('dropdown-content');

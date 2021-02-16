@@ -24,6 +24,8 @@
                Accueil
             </a>
          </li>
+
+         {# ======== Sous-menu /ON =========== #}
          <li>
             <button
                class="btDropdown"
@@ -49,15 +51,9 @@
                </li>
             </ul>
          </li>
-         <li>
-            <a href="{{ path('home') }}"
-               class="
-               {% if menu_courant is defined and menu_courant == 'tarifs' %}
-                  active
-               {% endif %}">
-               Tarifs
-            </a>
-         </li>
+         {# ======== Sous-menu /OFF =========== #}
+
+         {# ======== Sous-menu /ON =========== #}
          <li>
             <button
                class="btDropdown"
@@ -78,6 +74,18 @@
                </li>
             </ul>
          </li>
+         {# ======== Sous-menu /OFF =========== #}
+
+         <li>
+            <a href="{{ path('home') }}"
+               class="
+               {% if menu_courant is defined and menu_courant == 'tarifs' %}
+                  active
+               {% endif %}">
+               Tarifs
+            </a>
+         </li>
+
          <li>
             <a href="{{ path('home') }}"
                class="
@@ -87,6 +95,7 @@
                Articles
             </a>
          </li>
+         
          <li>
             <a href="{{ path('home') }}"
                class="
@@ -96,6 +105,7 @@
                Qui sommes-nous ?
             </a>
          </li>
+
          <li>
             <a href="{{ path('home') }}"
                class="
@@ -105,6 +115,8 @@
                Contact
             </a>
          </li>
+
+         
       </ul>
    </nav>
 </div> 
