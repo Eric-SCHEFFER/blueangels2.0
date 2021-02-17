@@ -81,12 +81,13 @@ nav {
    padding: 0;
    color: #ffffff;
    border-radius: 4px;
+   /* border: solid #fbff00 1px */
 }
 
 nav a,
 nav .btDropdown {
    position: relative;
-   /* border: solid #00e1ff 1px; */
+   /* border: solid #ff0000 1px; */
    width: 100%;
    text-align: center;
    line-height: 50px;
@@ -112,12 +113,13 @@ nav .btDropdown:hover {
 }
 
 nav ul.ulMenuGeneral {
-   /* border: linen 1px solid; */
+   /* border: rgb(255, 0, 242) 1px solid; */
    display: flex;
    justify-content: space-between;
    padding: 0;
    margin: 0;
    height: 100%;
+   border-radius: 4px;
 }
 
 nav ul.dropdown-content {
@@ -174,7 +176,6 @@ nav li {
       max-height: 90vh;
       overflow-y: scroll;
       overflow-x: hidden;
-      border-radius: 6px;
    }
 
    nav li, nav a, nav .btDropdown {
