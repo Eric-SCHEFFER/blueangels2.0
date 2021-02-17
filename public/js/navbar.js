@@ -14,11 +14,11 @@ function toggleMenu(iDMenu) {
    }
    // Bascule On/Off du menu dropdown au clic du le bouton
    dropDownTarget.classList.toggle("show");
- }
+}
 
- 
- // Ferme le menu dropdown si on clique n'importe où sauf sur son bouton
- window.onclick = function(e) {
+
+// Ferme le menu dropdown si on clique n'importe où sauf sur son bouton
+window.onclick = function (e) {
    if (!e.target.matches('.btDropdown')) {
       let dropdowns = document.getElementsByClassName('dropdown-content');
       let i;
@@ -29,4 +29,22 @@ function toggleMenu(iDMenu) {
          }
       }
    }
- } 
+}
+
+
+//  ================= Menu burger =====================
+
+//  ============ Fonctions ===============
+
+function appuiIconeBurger() {
+   nav.classList.toggle('visible');
+}
+
+
+//  ============ Affectation des objets ===============
+let nav = document.getElementById('nav');
+
+
+
+//  ============ Démarrage ===============
+document.getElementById("burger").addEventListener("click", appuiIconeBurger);

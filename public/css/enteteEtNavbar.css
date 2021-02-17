@@ -27,6 +27,7 @@
 }
 
 /* Pour un effet de verre dépoli */
+
 .header-panel::before {
    z-index: -1;
    content: "";
@@ -66,8 +67,8 @@
    line-height: 1em;
 }
 
-
 /* =================== menu ===================== */
+
 nav {
    z-index: 5;
    height: 50px;
@@ -84,10 +85,9 @@ nav {
    /* border: solid #fbff00 1px */
 }
 
-nav a,
-nav .btDropdown {
+nav a, nav .btDropdown {
    position: relative;
-   /* border: solid #ff0000 1px; */
+   /* border: solid #fbff00 1px; */
    width: 100%;
    text-align: center;
    line-height: 50px;
@@ -102,10 +102,7 @@ nav .btDropdown {
    border: inherit;
 }
 
-nav a:hover,
-nav .active,
-nav ul.dropdown-content a:hover,
-nav .btDropdown:hover {
+nav a:hover, nav .active, nav ul.dropdown-content a:hover, nav .btDropdown:hover {
    background-color: #d1d1d1;
    color: #007BFF;
    border-radius: 4px;
@@ -151,74 +148,116 @@ nav li {
    margin: 0;
    height: 100%;
    width: 100%;
+   /* border: red solid 1px; */
+   /* min-width: max-content; */
 }
 
 .show {
    display: block !important;
- }
+}
 
- /* ================ Petits écrans ================ */
+/* ================ Moyens écrans ================ */
 
- @media screen and (max-width: 1510px) {
+@media screen and (max-width: 1300px) {
    nav {
-      /* display: none; */
+      
+   }
+}
+
+/* ================ Petits écrans ================ */
+
+@media screen and (max-width: 1510px) {
+   nav {
       position: fixed;
       width: 100%;
       max-width: 230px;
-      left: 0;
+      right: -310px;
       top: 0;
       height: auto;
+      border-radius: 8px 0 0 8px;
+      transition: right .3s;
+      border-right: solid blue 80px;
    }
-
+   nav.visible {
+      right: 0;
+   }
+   nav a:hover, nav .active, nav .btDropdown:hover {
+      background-color: inherit;
+      color: inherit;
+   }
    nav ul.ulMenuGeneral {
       display: block;
       width: inherit;
-      max-height: 90vh;
+      max-height: 85vh;
       overflow-y: scroll;
       overflow-x: hidden;
+      border-radius: 8px 0 0 8px;
    }
-
    nav li, nav a, nav .btDropdown {
       width: inherit;
+      min-width: initial;
    }
-
    nav ul, nav li, nav a, nav .btDropdown {
       background-color: inherit;
       height: auto;
    }
-
-    nav ul.dropdown-content {
+   nav ul.dropdown-content {
       z-index: 10;
       position: relative;
    }
-
    nav ul.dropdown-content a {
       min-width: 150px;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
    }
- }
+   nav ul.dropdown-content a:hover {
+      background-color: #0052aa;
+      color: inherit;
+   }
+   /* ================ Burger ================ */
+   #burger {
+      z-index: 10000;
+      display: block;
+      position: fixed;
+      right: 30px;
+      top: 30px;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      background-color: hsla(211, 100%, 50%, 0.3);
+      border-radius: 50%;
+   }
+   #burgerBarre1, #burgerBarre2, #burgerBarre3 {
+      height: 3px;
+      width: 30px;
+      background-color: white;
+      position: absolute;
+      border-radius: 4px;
+      transition-duration: .3s;
+      transition-timing-function: ease;
+      left: 10px;
+   }
+   #burgerBarre1 {
+      top: 14px;
+      transition-property: transform, top;
+   }
+   #burgerBarre2 {
+      top: 23px;
+      transition-property: left;
+   }
+   #burgerBarre3 {
+      top: 32px;
+      transition-property: transform, top;
+   }
+}
 
-
-
- @media screen and (max-width: 460px) {
+@media screen and (max-width: 460px) {
    .header-wrapper {
       padding: 20px;
    }
-
    .logo-titre {
       width: 42px;
       font-size: 1.9em;
    }
-
-  
-
-  
-
-   nav ul.dropdown-content a {
-      
-   }
-
-
- }
+}
