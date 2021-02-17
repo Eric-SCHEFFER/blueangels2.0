@@ -108,6 +108,7 @@ nav .btDropdown:hover {
    background-color: #d1d1d1;
    color: #007BFF;
    border-radius: 4px;
+   transition: all .6s;
 }
 
 nav ul.ulMenuGeneral {
@@ -128,24 +129,95 @@ nav ul.dropdown-content {
 }
 
 nav ul.dropdown-content a {
-   background-color: #007BFF;
+   background-color: #0052aa;
    display: block;
-   width: 100%;
+   /* width: 100%; */
    min-width: max-content;
-   padding: 0 6px 0 6px;
+   padding: 0 12px 0 12px;
    font-size: .9em;
    text-align: left;
 }
 
+nav ul {
+   background-color: inherit;
+}
+
 nav li {
+   /* background-color: inherit; */
    position: relative;
    padding: 0;
    margin: 0;
-   /* border: red 1px solid; */
    height: 100%;
    width: 100%;
 }
 
 .show {
    display: block !important;
+ }
+
+ /* ================ Petits écrans ================ */
+
+ @media screen and (max-width: 1510px) {
+   nav {
+      /* display: none; */
+      position: fixed;
+      width: 100%;
+      max-width: 230px;
+      left: 0;
+      top: 0;
+      height: auto;
+   }
+
+   nav ul.ulMenuGeneral {
+      display: block;
+      width: inherit;
+      max-height: 90vh;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      border-radius: 6px;
+   }
+
+   nav li, nav a, nav .btDropdown {
+      width: inherit;
+   }
+
+   nav ul, nav li, nav a, nav .btDropdown {
+      background-color: inherit;
+      height: auto;
+   }
+
+    nav ul.dropdown-content {
+      z-index: 10;
+      position: relative;
+   }
+
+   nav ul.dropdown-content a {
+      min-width: 150px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+   }
+ }
+
+
+
+ @media screen and (max-width: 460px) {
+   .header-wrapper {
+      padding: 20px;
+   }
+
+   .logo-titre {
+      width: 42px;
+      font-size: 1.9em;
+   }
+
+  
+
+  
+
+   nav ul.dropdown-content a {
+      
+   }
+
+
  }
