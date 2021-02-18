@@ -64,8 +64,6 @@ function closeMenuBurger() {
    oBodyDark.classList.remove('bgDark');
 }
 
-
-
 //  ============ Affectation des objets ===============
 let oBody = document.getElementById("bodyId");
 let oBodyDark = document.getElementById("bodyDark");
@@ -75,13 +73,10 @@ let oburgerBarre1 = document.getElementById("burgerBarre1");
 let oburgerBarre2 = document.getElementById("burgerBarre2");
 let oburgerBarre3 = document.getElementById("burgerBarre3");
 
-
-
-
-//  ============ Démarrage ===============
+//  ============ Détection clic sur burger ===============
 document.getElementById("burger").addEventListener("click", appuiIconeBurger);
 
-// ==== ON DETECTE LE CLIC AILLEURS QUE SUR LE BURGER, ET LE FOND DU MENU, POUR FERMER LE MENUBURGER ====
+// ==== Détection clic ailleurs que sur le burger, et le fond du nav, pour fermer le menuburger ====
 document.addEventListener('click', function (event) {
    if (oNav.classList.contains('visible')) {
       let onCliqueSurBurger = oBurger.contains(event.target);
