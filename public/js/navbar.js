@@ -37,14 +37,55 @@ window.onclick = function (e) {
 //  ============ Fonctions ===============
 
 function appuiIconeBurger() {
-   nav.classList.toggle('visible');
+   if (oNav.classList.contains('visible')) {
+      closeMenuBurger();
+   } else {
+      openMenuBurger();
+   }
+}
+
+function openMenuBurger() {
+   oNav.classList.add('visible');
+   oBody.classList.add('no-click-no-scroll');
+   oNav.classList.add('restore-click');
+   oBurger.classList.add('restore-click');
+   oburgerBarre1.classList.add('burgerBarre1-menu-ouvert');
+   oburgerBarre2.classList.add('burgerBarre2-menu-ouvert');
+   oburgerBarre3.classList.add('burgerBarre3-menu-ouvert');
+
+}
+
+function closeMenuBurger() {
+   oNav.classList.remove('visible');
+   oBody.classList.remove('no-click-no-scroll');
+   oburgerBarre1.classList.remove('burgerBarre1-menu-ouvert');
+   oburgerBarre2.classList.remove('burgerBarre2-menu-ouvert');
+   oburgerBarre3.classList.remove('burgerBarre3-menu-ouvert');
 }
 
 
+
 //  ============ Affectation des objets ===============
-let nav = document.getElementById('nav');
+let oBody = document.getElementById("bodyId");
+let oNav = document.getElementById('nav');
+let oBurger = document.getElementById("burger");
+let oburgerBarre1 = document.getElementById("burgerBarre1");
+let oburgerBarre2 = document.getElementById("burgerBarre2");
+let oburgerBarre3 = document.getElementById("burgerBarre3");
+
 
 
 
 //  ============ Démarrage ===============
 document.getElementById("burger").addEventListener("click", appuiIconeBurger);
+
+// ==== ON DETECTE LE CLIC AILLEURS QUE SUR LE BURGER, ET LE FOND DU MENU, POUR FERMER LE MENUBURGER ====
+document.addEventListener('click', function (event) {
+   if (oNav.classList.contains('visible')) {
+      let onCliqueSurBurger = oBurger.contains(event.target);
+      let onCliqueDansVideMenu = oNav.contains(event.target);
+      if (!onCliqueSurBurger && !onCliqueDansVideMenu) {
+         closeMenuBurger();
+      }
+   }
+});

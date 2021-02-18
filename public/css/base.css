@@ -12,6 +12,15 @@ html, body {
    position: relative;
 }
 
+.no-click-no-scroll {
+   overflow: hidden;
+   pointer-events: none;
+}
+
+.restore-click {
+   pointer-events: initial;
+}
+
 a {
    display: inline-block;
    color: inherit;

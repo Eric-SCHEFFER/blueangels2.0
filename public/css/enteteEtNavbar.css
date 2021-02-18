@@ -70,7 +70,7 @@
 /* =================== menu ===================== */
 
 nav {
-   z-index: 5;
+   z-index: 5000;
    height: 50px;
    text-transform: uppercase;
    font-size: .9em;
@@ -176,11 +176,12 @@ nav li {
       height: auto;
       border-radius: 8px 0 0 8px;
       transition: right .3s;
-      border-right: solid blue 80px;
+      padding-right: 80px;
    }
    nav.visible {
       right: 0;
    }
+  
    nav a:hover, nav .active, nav .btDropdown:hover {
       background-color: inherit;
       color: inherit;
@@ -228,27 +229,37 @@ nav li {
       background-color: hsla(211, 100%, 50%, 0.3);
       border-radius: 50%;
    }
+   
    #burgerBarre1, #burgerBarre2, #burgerBarre3 {
       height: 3px;
       width: 30px;
       background-color: white;
       position: absolute;
       border-radius: 4px;
-      transition-duration: .3s;
-      transition-timing-function: ease;
       left: 10px;
+      transition: all .3s;
    }
    #burgerBarre1 {
       top: 14px;
-      transition-property: transform, top;
    }
    #burgerBarre2 {
       top: 23px;
-      transition-property: left;
+      left: 10px;
    }
    #burgerBarre3 {
       top: 32px;
-      transition-property: transform, top;
+   }
+
+   .burgerBarre1-menu-ouvert {
+      transform: rotate(45deg) !important;
+      top: 22px !important;
+   }
+   .burgerBarre2-menu-ouvert {
+      left: 80px !important;
+   }
+   .burgerBarre3-menu-ouvert {
+      transform: rotate(-45deg) !important;
+      top: 22px !important;
    }
 }
 
