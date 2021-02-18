@@ -52,7 +52,7 @@ function openMenuBurger() {
    oburgerBarre1.classList.add('burgerBarre1-menu-ouvert');
    oburgerBarre2.classList.add('burgerBarre2-menu-ouvert');
    oburgerBarre3.classList.add('burgerBarre3-menu-ouvert');
-
+   oBodyDark.classList.add('bgDark');
 }
 
 function closeMenuBurger() {
@@ -61,12 +61,14 @@ function closeMenuBurger() {
    oburgerBarre1.classList.remove('burgerBarre1-menu-ouvert');
    oburgerBarre2.classList.remove('burgerBarre2-menu-ouvert');
    oburgerBarre3.classList.remove('burgerBarre3-menu-ouvert');
+   oBodyDark.classList.remove('bgDark');
 }
 
 
 
 //  ============ Affectation des objets ===============
 let oBody = document.getElementById("bodyId");
+let oBodyDark = document.getElementById("bodyDark");
 let oNav = document.getElementById('nav');
 let oBurger = document.getElementById("burger");
 let oburgerBarre1 = document.getElementById("burgerBarre1");
