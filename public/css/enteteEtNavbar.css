@@ -70,7 +70,7 @@
 /* =================== menu ===================== */
 
 nav {
-   z-index: 2000;
+   z-index: 5000;
    height: 50px;
    text-transform: uppercase;
    font-size: .9em;
@@ -82,18 +82,15 @@ nav {
    padding: 0;
    color: #ffffff;
    border-radius: 4px;
-   /* border: solid #fbff00 1px; */
+   /* border: solid #fbff00 1px */
 }
 
-.ulMenuGeneral>li>a, .ulMenuGeneral>li>.btDropdown {
+nav a, nav .btDropdown {
    position: relative;
-   display: flex;
-   justify-content: center;
-   align-items: center;
+   /* border: solid #fbff00 1px; */
    width: 100%;
-   height: 100%;
-   text-align: center !important;
-   /* line-height: 50px; */
+   text-align: center;
+   line-height: 50px;
    padding: 0;
 }
 
@@ -123,12 +120,10 @@ nav ul.ulMenuGeneral {
 }
 
 nav ul.dropdown-content {
+   flex-direction: column;
    display: none;
    position: absolute;
    left: -38px;
-   top: 51px;
-   line-height: 3em;
-   min-height: 100%;
    min-width: 100%;
 }
 
@@ -137,7 +132,6 @@ nav ul.dropdown-content a {
    display: block;
    /* width: 100%; */
    min-width: max-content;
-   height: 40px;
    padding: 0 12px 0 12px;
    font-size: .9em;
    text-align: left;
@@ -147,45 +141,34 @@ nav ul {
    background-color: inherit;
 }
 
-.ulMenuGeneral>li {
+nav li {
    /* background-color: inherit; */
    position: relative;
-   display: flex;
-   justify-content: center;
-   align-items: center;
    padding: 0;
    margin: 0;
    height: 100%;
-   /* border: rgb(0, 255, 55) solid 1px; */
    width: 100%;
+   /* border: red solid 1px; */
+   /* min-width: max-content; */
 }
 
 .show {
    display: block !important;
-   transition: all 2s !important;
 }
 
 /* ================ Moyens écrans ================ */
 
-@media screen and (max-width: 1510px) {
-
-   .logo-titre {
-      width: 42px;
-      font-size: 1.9em;
-   }
-   
+@media screen and (max-width: 1300px) {
    nav {
-      font-size: .8em;
+      
    }
 }
 
 /* ================ Petits écrans ================ */
 
-@media screen and (max-width: 1180px) {
-
+@media screen and (max-width: 1510px) {
    nav {
       position: fixed;
-      font-size: .9em;
       width: 100%;
       max-width: 230px;
       right: -310px;
@@ -193,41 +176,49 @@ nav ul {
       height: auto;
       border-radius: 8px 0 0 8px;
       transition: right .3s;
-      padding: 30px 80px 20px 0;
+      padding: 40px 80px 20px 0;
    }
    nav.visible {
       right: 0;
    }
-
-   nav .ulMenuGeneral {
-      display: block !important;
-      position: relative !important;
-      border: solid yellow 1px;
-   }
-
-   .ulMenuGeneral li {
-      display: block !important;
-      position: relative !important;
-      height: 50px;
-      border: red 1px solid;
-      
-   }
-
-   nav ul.dropdown-content {
-      position: relative !important;
-      border: violet solid 1px;
-   }
-
-   nav a {
-      position: relative !important;
-      display: block !important;
-      border: turquoise solid 1px;
-   }
   
-   
+   nav a:hover, nav .active, nav .btDropdown:hover {
+      background-color: inherit;
+      color: inherit;
+   }
+   nav ul.ulMenuGeneral {
+      display: block;
+      width: inherit;
+      max-height: 85vh;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      border-radius: 8px 0 0 8px;
+   }
+   nav li, nav a, nav .btDropdown {
+      width: inherit;
+      min-width: initial;
+   }
+   nav ul, nav li, nav a, nav .btDropdown {
+      background-color: inherit;
+      height: auto;
+   }
+   nav ul.dropdown-content {
+      z-index: 10;
+      position: relative;
+   }
+   nav ul.dropdown-content a {
+      min-width: 150px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+   }
+   nav ul.dropdown-content a:hover {
+      background-color: #0052aa;
+      color: inherit;
+   }
    /* ================ Burger ================ */
    #burger {
-      z-index: 2100;
+      z-index: 10000;
       display: block;
       position: fixed;
       right: 30px;
@@ -253,6 +244,7 @@ nav ul {
    }
    #burgerBarre2 {
       top: 23px;
+      left: 10px;
    }
    #burgerBarre3 {
       top: 32px;
@@ -263,8 +255,7 @@ nav ul {
       top: 22px !important;
    }
    .burgerBarre2-menu-ouvert {
-      top: -50px !important;
-      transform: rotate(360deg) !important;
+      left: 80px !important;
    }
    .burgerBarre3-menu-ouvert {
       transform: rotate(-45deg) !important;
@@ -276,5 +267,8 @@ nav ul {
    .header-wrapper {
       padding: 20px;
    }
-
+   .logo-titre {
+      width: 42px;
+      font-size: 1.9em;
+   }
 }
