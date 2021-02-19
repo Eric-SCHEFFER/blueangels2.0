@@ -122,6 +122,16 @@
             </a>
          </li>
 
+         <li>
+            <a href="{{ path('home') }}"
+               class="
+               {% if menu_courant is defined and menu_courant == 'admin' %}
+                  active
+               {% endif %}">
+               Admin
+            </a>
+         </li>
+
          
       </ul>
    </nav>
