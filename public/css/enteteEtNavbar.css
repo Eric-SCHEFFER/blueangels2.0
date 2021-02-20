@@ -85,7 +85,10 @@ nav {
    /* border: solid #fbff00 1px */
 }
 
-nav a, nav .btDropdown {
+nav .nom-lien {}
+
+nav a,
+nav .btDropdown {
    position: relative;
    /* border: solid #fbff00 1px; */
    width: 100%;
@@ -102,11 +105,27 @@ nav .btDropdown {
    border: inherit;
 }
 
-nav a:hover, nav .active, nav ul.dropdown-content a:hover, nav .btDropdown:hover {
-   background-color: #d1d1d1;
-   color: #007BFF;
+nav a:hover::before,
+nav .active::before,
+nav .btDropdown:hover::before,
+nav ul.dropdown-content a:hover::before {
+   content: "";
+   position: absolute;
+   display: block;
+   height: 8px;
+   width: 8px;
+   text-align: center;
    border-radius: 4px;
+   background-color: white;
+   top: 40px;
+   left: 48%;
    transition: all .6s;
+
+}
+
+nav ul.dropdown-content a:hover::before {
+   left: 26px;
+   top: 44%;
 }
 
 nav ul.ulMenuGeneral {
@@ -128,11 +147,11 @@ nav ul.dropdown-content {
 }
 
 nav ul.dropdown-content a {
-   background-color: #0052aa;
+   background-color: #007BFF;
    display: block;
    /* width: 100%; */
    min-width: max-content;
-   padding: 0 12px 0 12px;
+   padding: 0 12px 0 40px;
    font-size: .9em;
    text-align: left;
 }
@@ -174,31 +193,57 @@ nav li {
       right: -310px;
       top: 0;
       height: auto;
-      border-radius: 8px 0 0 8px;
+      border-radius: 0 0 0 8px;
       transition: right .3s;
-      padding: 40px 80px 20px 0;
+      padding: 34px 80px 20px 0;
    }
    nav.visible {
       right: 0;
    }
-  
-   nav a:hover, nav .active, nav .btDropdown:hover {
-      background-color: inherit;
-      color: inherit;
+
+   nav a,
+   nav .btDropdown {
+      text-align: left;
+      padding-left: 40px;
    }
+
+   nav a:hover::before,
+   nav .active::before,
+   nav .btDropdown:hover::before {
+      content: "";
+      position: absolute;
+      display: block;
+      height: 8px;
+      width: 8px;
+      border-radius: 4px;
+      background-color: white;
+      top: 21px;
+      left: 26px;
+      transition: all .6s;
+}
+
+nav ul.dropdown-content a:hover::before {
+   left: 37px;
+   top: 43%ù
+}
+    
    nav ul.ulMenuGeneral {
       display: block;
       width: inherit;
       max-height: 85vh;
       overflow-y: scroll;
       overflow-x: hidden;
-      border-radius: 8px 0 0 8px;
    }
-   nav li, nav a, nav .btDropdown {
+   nav li,
+   nav a,
+   nav .btDropdown {
       width: inherit;
       min-width: initial;
+      background-color: inherit;
+      height: auto;
    }
-   nav ul, nav li, nav a, nav .btDropdown {
+   nav ul
+    {
       background-color: inherit;
       height: auto;
    }
@@ -208,14 +253,12 @@ nav li {
    }
    nav ul.dropdown-content a {
       min-width: 150px;
+      padding-left: 50px;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
    }
-   nav ul.dropdown-content a:hover {
-      background-color: #0052aa;
-      color: inherit;
-   }
+ 
    /* ================ Burger ================ */
    #burger {
       z-index: 10000;
@@ -228,9 +271,17 @@ nav li {
       cursor: pointer;
       background-color: hsla(211, 100%, 50%, 0.3);
       border-radius: 50%;
+      border: solid 1px transparent;
+      transition: border .6s;
+   }
+
+   #burger:hover {
+      border: rgb(153, 153, 153) solid 1px;
    }
    
-   #burgerBarre1, #burgerBarre2, #burgerBarre3 {
+   #burgerBarre1,
+   #burgerBarre2,
+   #burgerBarre3 {
       height: 3px;
       width: 30px;
       background-color: white;
@@ -244,7 +295,6 @@ nav li {
    }
    #burgerBarre2 {
       top: 23px;
-      left: 10px;
    }
    #burgerBarre3 {
       top: 32px;
@@ -255,7 +305,7 @@ nav li {
       top: 22px !important;
    }
    .burgerBarre2-menu-ouvert {
-      left: 80px !important;
+      display: none !important;
    }
    .burgerBarre3-menu-ouvert {
       transform: rotate(-45deg) !important;
