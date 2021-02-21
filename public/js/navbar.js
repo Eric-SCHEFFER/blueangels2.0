@@ -19,6 +19,7 @@ function toggleMenu(iDMenu) {
 
 // Ferme le menu dropdown si on clique n'importe où sauf sur son bouton
 window.onclick = function (e) {
+   // TODO: Rajouter dans cette condition, l'exclusion du clic dans un lien du menu nav
    if (!e.target.matches('.btDropdown')) {
       let dropdowns = document.getElementsByClassName('dropdown-content');
       let i;

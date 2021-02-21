@@ -95,37 +95,21 @@ nav .btDropdown {
    text-align: center;
    line-height: 50px;
    padding: 0;
+   color: #dcdcdc;
 }
 
 nav .btDropdown {
    background-color: inherit;
-   color: inherit;
    font-size: inherit;
    text-transform: inherit;
    border: inherit;
 }
 
-nav a:hover::before,
-nav .active::before,
-nav .btDropdown:hover::before,
-nav ul.dropdown-content a:hover::before {
-   content: "";
-   position: absolute;
-   display: block;
-   height: 8px;
-   width: 8px;
-   text-align: center;
-   border-radius: 4px;
-   background-color: white;
-   top: 40px;
-   left: 48%;
-   transition: all .6s;
-
-}
-
-nav ul.dropdown-content a:hover::before {
-   left: 26px;
-   top: 44%;
+nav a:hover,
+nav .active,
+nav .btDropdown:hover,
+nav ul.dropdown-content a:hover {
+   color: rgb(255, 255, 255) !important;
 }
 
 nav ul.ulMenuGeneral {
@@ -142,18 +126,23 @@ nav ul.dropdown-content {
    flex-direction: column;
    display: none;
    position: absolute;
-   left: -38px;
+   left: 0;
+   padding: 0 20px 0 20px;
    min-width: 100%;
+   background-color: #0067d4;
+   border-radius: 4px;
+   border: yellow 1px solid;
 }
 
 nav ul.dropdown-content a {
-   background-color: #007BFF;
+   
    display: block;
    /* width: 100%; */
    min-width: max-content;
-   padding: 0 12px 0 40px;
+   padding: 0 0 0 0;
    font-size: .9em;
    text-align: left;
+   border: red 1px solid;
 }
 
 nav ul {
@@ -167,7 +156,7 @@ nav li {
    margin: 0;
    height: 100%;
    width: 100%;
-   /* border: red solid 1px; */
+   border: rgb(60, 255, 0) solid 1px;
    /* min-width: max-content; */
 }
 
@@ -206,27 +195,7 @@ nav li {
       text-align: left;
       padding-left: 40px;
    }
-
-   nav a:hover::before,
-   nav .active::before,
-   nav .btDropdown:hover::before {
-      content: "";
-      position: absolute;
-      display: block;
-      height: 8px;
-      width: 8px;
-      border-radius: 4px;
-      background-color: white;
-      top: 21px;
-      left: 26px;
-      transition: all .6s;
-}
-
-nav ul.dropdown-content a:hover::before {
-   left: 37px;
-   top: 43%ù
-}
-    
+     
    nav ul.ulMenuGeneral {
       display: block;
       width: inherit;
@@ -250,14 +219,19 @@ nav ul.dropdown-content a:hover::before {
    nav ul.dropdown-content {
       z-index: 10;
       position: relative;
+      padding-left: 0;
+      left: 0;
+      max-width: 230px !important;
    }
    nav ul.dropdown-content a {
       min-width: 150px;
+      max-width: 220px;
       padding-left: 50px;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
    }
+   
  
    /* ================ Burger ================ */
    #burger {
