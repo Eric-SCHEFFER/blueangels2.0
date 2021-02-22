@@ -10,7 +10,7 @@ use App\Repository\ArticlesRepository;
 use App\Repository\CommuniqueRepository;
 use DateTime;
 
-class HomeController extends AbstractController
+class EventsToComeController extends AbstractController
 {
     public function __construct(
         EventsRepository $eventsRepository,
@@ -23,7 +23,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/home", name="home")
+     * @Route("/events_to_come", name="events_to_come")
      */
     public function index(): Response
     {
@@ -38,7 +38,7 @@ class HomeController extends AbstractController
         $articles = $this->articlesRepository->findBy([], ['created_at' => 'DESC'], 3, 0);
         // On récupère les communiqués
         $communiques = $this->communiqueRepository->findBy([], ['created_at' => 'DESC'], 1, 0);
-        return $this->render('home.html.twig', [
+        return $this->render('EventsToCome/index.html.twig', [
             'menu_courant' => 'home',
             'eventsToCome' => $events[0],
             'completedEvents' => $events[1],
@@ -69,3 +69,6 @@ class HomeController extends AbstractController
         ];
     }
 }
+
+
+

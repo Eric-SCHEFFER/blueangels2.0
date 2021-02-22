@@ -1,0 +1,74 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/eventsToCome.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/cardApercuEvent.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+
+{% endblock %}
+{% block title %}
+	{{ SiteName }}:
+{% endblock %}
+
+{% block body %}
+
+	<div class="wrapper">
+        {% set countAVenir = countTotalEventsToCome[0][1] %}
+
+        <h1>Évènements à venir:
+            {% if countAVenir == 0 %}
+                aucun
+                {% else %}
+                    {{ countAVenir }}   
+            {% endif %}
+        </h1>
+
+		<section class="events" id="events">
+			<div class="bloc-cards">
+                {# On affiche les evènements futurs #}
+                {% if not eventsToCome is empty %}
+                    {% for eventToCome in eventsToCome %}
+                        <div class="card-wraper">
+                            {# Si c'est un event annulé, on affiche le tampon annulé, et on grise la carte #}
+                            {% if eventToCome.getAnnule() %}
+                                <div class="tampon-oblique tampon-oblique-red">Évènement annulé</div>
+                                <a class="card-event card-event-grise" href="{{ path('event_', {id: eventToCome.id}) }}">
+                                {% else %}
+                                <a class="card-event" href="{{ path('event_', {id: eventToCome.id}) }}">
+                            {% endif %}
+                                {% if not eventToCome.getImagesEvents() is empty %}
+                                    <div class="image">
+                                        <img src="{{ asset('images/2020-03-08_flyer_affiche_stage_bachata.jpg') }}" alt="">
+                                    </div>
+                                {% endif %}
+                                <div class="bloc-text">
+                                    <h3 class="titre">{{ eventToCome.getNom() }}</h3>
+                                    <p class="hook">{{ eventToCome.getHook() }}</p>
+                                    <div class="center">
+                                        <div class="bouton bt-inline-bloc">
+                                            Voir
+                                        </div>
+                                    </div>
+                                    {# Date, et mentions couleurs du nbr de jours avant l'event #}
+                                    <div class="infos">
+                                        <i class="fas fa-calendar-alt"></i> {{ eventToCome.getDateEvent()|date("d-m-Y") }}
+                                        {% if eventToCome.getDateEvent() == today %}
+                                            <span class="info-jour green">Aujourd'hui</span>
+                                        {% elseif eventToCome.getDateEvent() == today|date_modify("+1 day") %}
+                                            <span class="info-jour blue">Demain</span>
+                                        {% elseif eventToCome.getDateEvent() == today|date_modify("+2 day") %}
+                                            <span class="info-jour blue">J-2</span>
+                                        {% elseif eventToCome.getDateEvent() == today|date_modify("+3 day") %}
+                                            <span class="info-jour blue">J-3</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {# ====================================================== #}
+    
+            </div>
+        </section>
+    </div>
+{% endblock %}

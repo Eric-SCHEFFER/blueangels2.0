@@ -58,7 +58,14 @@
             Chaque évènement est cliquable, et renvoi vers la page de l'évènement
         #}
         
-        <h1>Évènements à venir</h1>
+        <h1>Évènements à venir:
+            {% if countAVenir == 0 %}
+                aucun
+                {% else %}
+                    {{ countAVenir }}   
+            {% endif %}
+        </h1>
+
         {# Provisoire, pour tester les dates #}
         {# <p>Nous sommes le {{ today|date("d-m-Y") }}</p> #}
 
@@ -106,48 +113,15 @@
                 {% endfor %}
             {% endif %}
             {# ====================================================== #}
-            {# On affiche les évènements passés #}
-            {% if not completedEvents is empty %}
-                {% for completedEvent in completedEvents %}
-                    <div class="card-wraper">
-                        {# Si c'est un event annulé, on affiche le tampon annulé, sinon, on affiche le tempon terminé #}
-                        {% if completedEvent.getAnnule() %}
-                            <div class="tampon-oblique tampon-oblique-red">Évènement annulé</div>
-                        {% else %}
-                            <div class="tampon-oblique">Évènement terminé</div>
-                        {% endif %}
-                        <a class="card-event card-event-grise" href="{{ path('event_', {id: completedEvent.id}) }}">
-                            {% if not completedEvent.getImagesEvents() is empty %}
-                                <div class="image">
-                                    <img src="{{ asset('images/rail.jpg') }}" alt="">
-                                </div>
-                            {% endif %}
-                            <div class="bloc-text">
-                                <h3 class="titre">{{ completedEvent.getNom() }}</h3>
-                                <p class="hook">{{ completedEvent.getHook() }}</p>
-                                <div class="center">
-                                    <div class="bouton bt-inline-bloc">
-                                        Voir
-                                    </div>
-                                </div>
-                                {# Date, et mention terminé #}
-                                <div class="infos">
-                                    <i class="fas fa-calendar-alt"></i> {{ completedEvent.getDateEvent()|date("d-m-Y") }}
-                                    <span class="info-jour">Terminé</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>    
-                {% endfor %}
-            {% endif %}
+
         </div>
 
         <div class="boutonsPassesFuturs">
-            {% if countPasse > 0 %}
-                <a class="bouton bt2" href="">Évènements terminés</a>
+            {% if (countPasse > 0) and (countAVenir == 0) %}
+                <a class="bouton bt2" href="">Évènements passés</a>
             {% endif %}
             {% if countAVenir > 3 %}
-                <a class="bouton bt2" href="">Tous les évènements à venir ({{ countAVenir  }})</a>
+                <a class="bouton bt2" href="{{ path('events_to_come') }}">Tous les évènements à venir ({{ countAVenir  }})</a>
             {% endif %}
         </div>
     </section>
