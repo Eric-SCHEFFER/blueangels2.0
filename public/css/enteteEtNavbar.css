@@ -96,6 +96,7 @@ nav .btDropdown {
    line-height: 50px;
    padding: 0;
    color: #dcdcdc;
+   transition: all .3s;
 }
 
 nav .btDropdown {
@@ -109,7 +110,7 @@ nav a:hover,
 nav .active,
 nav .btDropdown:hover,
 nav ul.dropdown-content a:hover {
-   color: rgb(255, 255, 255) !important;
+   transition: all .3s;
 }
 
 nav ul.ulMenuGeneral {
@@ -123,9 +124,8 @@ nav ul.ulMenuGeneral {
 }
 
 nav ul.dropdown-content {
-   flex-direction: column;
-   display: none;
    position: absolute;
+   display: none;  
    left: 0;
    padding: 0 20px 0 20px;
    min-width: 100%;
@@ -135,13 +135,13 @@ nav ul.dropdown-content {
 }
 
 nav ul.dropdown-content a {
-   
    display: block;
    /* width: 100%; */
    min-width: max-content;
-   padding: 0 0 0 0;
+   padding: 0;
    font-size: .9em;
    text-align: left;
+   transition: all .3s;
    /* border: red 1px solid; */
 }
 
@@ -249,8 +249,10 @@ nav li {
       transition: border .6s;
    }
 
-   #burger:hover {
-      border: rgb(153, 153, 153) solid 1px;
+   #burger:hover #burgerBarre1,
+   #burger:hover #burgerBarre2,
+   #burger:hover #burgerBarre3 {
+      background-color: white;
    }
    
    #burgerBarre1,
@@ -258,7 +260,7 @@ nav li {
    #burgerBarre3 {
       height: 3px;
       width: 30px;
-      background-color: white;
+      background-color: rgb(211, 211, 211);
       position: absolute;
       border-radius: 4px;
       left: 10px;
