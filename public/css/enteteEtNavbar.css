@@ -110,7 +110,8 @@ nav a:hover,
 nav .active,
 nav .btDropdown:hover,
 nav ul.dropdown-content a:hover {
-   transition: all .3s;
+   font-size: 1.2em;
+   color: #ffffff;
 }
 
 nav ul.ulMenuGeneral {
