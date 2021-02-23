@@ -6,20 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\EventsRepository;
-use App\Repository\ArticlesRepository;
-use App\Repository\CommuniqueRepository;
 use DateTime;
 
 class EventsToComeController extends AbstractController
 {
     public function __construct(
-        EventsRepository $eventsRepository,
-        ArticlesRepository $articlesRepository,
-        CommuniqueRepository $communiqueRepository
+        EventsRepository $eventsRepository
     ) {
         $this->eventsRepository = $eventsRepository;
-        $this->articlesRepository = $articlesRepository;
-        $this->communiqueRepository = $communiqueRepository;
     }
 
     /**
@@ -27,7 +21,7 @@ class EventsToComeController extends AbstractController
      */
     public function index(): Response
     {
-        $today = new DateTime('2021-01-01'); // Pour tester d'autres dates du jour
+        $today = new DateTime('2021-01-20'); // Pour tester d'autres dates du jour
         // On récupère tous les events futurs
         $events = $this->eventsRepository->findAllEventsToCome($today);
         // On récupère le nbre total d'events futurs

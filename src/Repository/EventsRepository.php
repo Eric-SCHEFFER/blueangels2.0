@@ -59,6 +59,19 @@ class EventsRepository extends ServiceEntityRepository
         return $query;
     }
 
+    // On recupère tous les events passés
+    public function findAllCompletedEvents($date)
+    {
+        $query = $this->createQueryBuilder('e')
+            ->select('e')
+            ->where('e.date_event < :date')
+            ->setParameter('date', $date)
+            ->orderBy('e.date_event', 'DESC')
+            ->getQuery()
+            ->getResult();
+        return $query;
+    }
+
     // On recupère jusqu'à 3 events futurs
     public function findEventsToCome($date)
     {
