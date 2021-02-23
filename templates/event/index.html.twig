@@ -25,27 +25,23 @@
                         <i class="fas fa-calendar-alt"></i>
                         {{ event.getDateEvent | date("d-m-Y") }}
                     </div>
-                    {% if event.getDateEvent() == today %}
+                    {% if event.getDateEvent()|date("Y-m-d") == today|date("Y-m-d") %}
                         <div class="green">
                             Aujourd'hui
                         </div>
-                        {% elseif event.getDateEvent() == today|date_modify("+1 day") %}
+                        {% elseif event.getDateEvent()|date("Y-m-d") == today|date_modify("+1 day")|date("Y-m-d") %}
                             <div class="blue">
                                 Demain
                             </div>
-                        {% elseif event.getDateEvent() == today|date_modify("+2 day") %}
+                        {% elseif event.getDateEvent()|date("Y-m-d") == today|date_modify("+2 day")|date("Y-m-d") %}
                             <div class="blue">
                                 J-2
                             </div>
-                        {% elseif event.getDateEvent() == today|date_modify("+3 day") %}
+                        {% elseif event.getDateEvent()|date("Y-m-d") == today|date_modify("+3 day")|date("Y-m-d") %}
                             <div class="blue">
                                 J-3
                             </div>
-                        {% elseif event.getDateEvent() == today|date_modify("+3 day") %}
-                            <div class="blue">
-                                J-3
-                            </div>
-                        {% elseif event.getDateEvent() < today %}
+                        {% elseif event.getDateEvent()|date("Y-m-d") < today|date("Y-m-d") %}
                         <div>
                             Évènement terminé
                         </div>

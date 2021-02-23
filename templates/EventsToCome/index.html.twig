@@ -51,13 +51,13 @@
                                     {# Date, et mentions couleurs du nbr de jours avant l'event #}
                                     <div class="infos">
                                         <i class="fas fa-calendar-alt"></i> {{ eventToCome.getDateEvent()|date("d-m-Y") }}
-                                        {% if eventToCome.getDateEvent() == today %}
+                                        {% if eventToCome.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
                                             <span class="info-jour green">Aujourd'hui</span>
-                                        {% elseif eventToCome.getDateEvent() == today|date_modify("+1 day") %}
+                                        {% elseif eventToCome.getDateEvent()|date("Y-m-d") == today|date_modify("+1 day")|date("Y-m-d") %}
                                             <span class="info-jour blue">Demain</span>
-                                        {% elseif eventToCome.getDateEvent() == today|date_modify("+2 day") %}
+                                        {% elseif eventToCome.getDateEvent()|date("Y-m-d") == today|date_modify("+2 day")|date("Y-m-d") %}
                                             <span class="info-jour blue">J-2</span>
-                                        {% elseif eventToCome.getDateEvent() == today|date_modify("+3 day") %}
+                                        {% elseif eventToCome.getDateEvent()|date("Y-m-d") == today|date_modify("+3 day")|date("Y-m-d") %}
                                             <span class="info-jour blue">J-3</span>
                                         {% endif %}
                                     </div>
