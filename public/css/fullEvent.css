@@ -33,7 +33,7 @@
 
 .full-event .info-bar {
    display: flex;
-   align-items: flex-end;
+   align-items: center;
    justify-content: space-between;
    /* border: solid rebeccapurple 1px; */
    color: rgb(136, 136, 136);
@@ -43,10 +43,6 @@
 .full-event .date-wrapper {
    display: flex;
    flex-direction: column;
-}
-
-.full-event .date {
-
 }
 
 .full-event .contact {

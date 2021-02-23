@@ -21,7 +21,7 @@ class CompletedEventsController extends AbstractController
      */
     public function index(): Response
     {
-        $today = new DateTime('2021-01-20'); // Pour tester d'autres dates du jour
+        $today = new DateTime('2021-01-14'); // Pour tester d'autres dates du jour
         // On récupère le nbre total d'events passés
         $countTotalCompletedEvents = $this->eventsRepository->countTotalCompletedEvents($today);
         // On récupère tous les events passés

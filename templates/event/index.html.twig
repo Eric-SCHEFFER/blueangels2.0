@@ -52,6 +52,10 @@
                     </div>
                     {% endif %}
                 </div>
+                <div class="time">
+                    <i class="fas fa-clock"></i>
+                    {{ event.getDateEvent | date("H:i") }}
+                </div>
                 <div class="contact">
                     <a class="bouton bt-small" href="">Contact</a>
                 </div>

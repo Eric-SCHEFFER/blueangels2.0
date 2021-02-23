@@ -61,8 +61,6 @@
         <h1>Évènements à venir:
             {% if countAVenir == 0 %}
                 aucun
-                {% else %}
-                    {{ countAVenir }}   
             {% endif %}
         </h1>
 
@@ -120,7 +118,7 @@
                 <a class="bouton bt2" href="">Évènements passés</a>
             {% endif %}
             {% if countAVenir > 3 %}
-                <a class="bouton bt2" href="{{ path('events_to_come') }}">Tous les évènements à venir ({{ countAVenir  }})</a>
+                <a class="bouton bt2" href="{{ path('a_venir') }}">Tous les évènements à venir ({{ countAVenir  }})</a>
             {% endif %}
         </div>
     </section>
