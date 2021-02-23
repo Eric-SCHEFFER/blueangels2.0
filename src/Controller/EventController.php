@@ -19,7 +19,7 @@ class EventController extends AbstractController
         $repo = $this->getDoctrine()->getRepository(Events::class);
         $event = $repo->find($id);
         $images = $imagesEventRepository->findBy(['event' => $event]);
-        $today = new DateTime('2021-01-15');
+        $today = new DateTime('2021-01-16');
         return $this->render('event/index.html.twig', [
             'event' => $event,
             'images' => $images,

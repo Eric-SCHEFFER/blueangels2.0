@@ -6,7 +6,7 @@
 
 {% endblock %}
 {% block title %}
-	{{ SiteName }}:
+	{{ SiteName }}: Évènements à venir
 {% endblock %}
 
 {% block body %}
@@ -25,7 +25,7 @@
 		<section class="events" id="events">
 			<div class="bloc-cards">
                 {# On affiche les evènements futurs #}
-                {% if not eventsToCome is empty %}
+                {% if eventsToCome is not empty %}
                     {% for eventToCome in eventsToCome %}
                         <div class="card-wraper">
                             {# Si c'est un event annulé, on affiche le tampon annulé, et on grise la carte #}

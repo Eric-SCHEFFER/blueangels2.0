@@ -20,7 +20,7 @@ class EventsRepository extends ServiceEntityRepository
     }
 
 
-    // On compte la totalité des events futurs
+    // On compte la tous les events futurs
     public function countTotalEventsToCome($date)
     {
         $query = $this->createQueryBuilder('e')
@@ -33,7 +33,7 @@ class EventsRepository extends ServiceEntityRepository
         return $query;
     }
 
-    // On compte la totalité des events passés
+    // On compte tous les events passés
     public function countTotalCompletedEvents($date)
     {
         $query = $this->createQueryBuilder('e')
@@ -41,6 +41,19 @@ class EventsRepository extends ServiceEntityRepository
             ->where('e.date_event < :date')
             ->setParameter('date', $date)
             ->select('count(e.id)')
+            ->getQuery()
+            ->getResult();
+        return $query;
+    }
+
+    // On recupère tous les events futurs
+    public function findAllEventsToCome($date)
+    {
+        $query = $this->createQueryBuilder('e')
+            ->select('e')
+            ->where('e.date_event >= :date')
+            ->setParameter('date', $date)
+            ->orderBy('e.date_event', 'ASC')
             ->getQuery()
             ->getResult();
         return $query;

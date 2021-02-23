@@ -95,7 +95,7 @@ nav .btDropdown {
    text-align: center;
    line-height: 50px;
    padding: 0;
-   color: #dcdcdc;
+   color: #ffffff;
    transition: all .3s;
 }
 
@@ -111,7 +111,6 @@ nav .active,
 nav .btDropdown:hover,
 nav ul.dropdown-content a:hover {
    font-size: 1.2em;
-   color: #ffffff;
 }
 
 nav ul.ulMenuGeneral {
