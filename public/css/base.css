@@ -45,7 +45,7 @@ a {
 }
 
 a:hover {
-   color: rgb(0, 0, 0);
+   color: rgb(255, 255, 255);
    text-decoration: none;
 }
 
@@ -113,8 +113,8 @@ footer {
 
 /* ================== colors ================ */
 .theme-menu {
-   background-color: rgb(224, 224, 224);
-   color:rgb(78, 78, 78);
+   background-color: #1b1b1b;
+   color:#dadada;
 }
 
 .green {
