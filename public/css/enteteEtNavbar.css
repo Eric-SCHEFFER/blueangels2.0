@@ -80,7 +80,6 @@ nav {
    right: 53px;
    font-weight: 500;
    padding: 0;
-   color: #ffffff;
    border-radius: 4px;
    /* border: solid #fbff00 1px */
 }
@@ -95,7 +94,6 @@ nav .btDropdown {
    text-align: center;
    line-height: 50px;
    padding: 0;
-   color: #ffffff;
    transition: all .3s;
 }
 
@@ -129,7 +127,7 @@ nav ul.dropdown-content {
    left: 0;
    padding: 0 20px 0 20px;
    min-width: 100%;
-   background-color: #0067d4;
+   background-color: #d1d1d1;
    border-radius: 4px;
    /* border: yellow 1px solid; */
 }
@@ -252,7 +250,7 @@ nav li {
    #burger:hover #burgerBarre1,
    #burger:hover #burgerBarre2,
    #burger:hover #burgerBarre3 {
-      background-color: white;
+      background-color: rgb(255, 255, 255);
    }
    
    #burgerBarre1,
@@ -286,6 +284,22 @@ nav li {
    .burgerBarre3-menu-ouvert {
       transform: rotate(-45deg) !important;
       top: 22px !important;
+   }
+
+   .burgerBarre1-menu-ouvert,
+   .burgerBarre2-menu-ouvert,
+   .burgerBarre3-menu-ouvert {
+      background-color: rgb(61, 61, 61) !important;
+   }
+
+   .burger-menu-ouvert {
+      background-color: transparent !important;
+   }
+
+   .burger-menu-ouvert:hover .burgerBarre1,
+   .burger-menu-ouvert:hover .burgerBarre2,
+   .burger-menu-ouvert:hover .burgerBarre3 {
+      background-color: rgb(0, 0, 0);
    }
 }
 
