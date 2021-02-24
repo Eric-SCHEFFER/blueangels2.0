@@ -1,0 +1,45 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/fullArticle.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+    
+{% endblock %}
+{% block title %}
+    {{ SiteName }}:
+	{{ article.titre }}
+{% endblock %}
+
+{% block body %}
+
+<div class="wrapper">
+    <h1>{{ article.titre }}</h1>
+    <section class="full-article">
+        {# TODO: S'il y a une image, on met la div #}
+        <div class="image">
+            <img src="{{ asset('images/2020-03-08_flyer_affiche_stage_bachata.jpg') }}" alt="">
+        </div>
+        <div class="textes">
+            <div class="info-bar">
+                <div class="date-wrapper">
+                    <div class="date">
+                        <i class="fas fa-calendar-alt"></i>
+                        {{ article.getCreatedAt | date("d-m-Y") }}
+                    </div>
+                </div>
+                <div class="contact">
+                    <a class="bouton bt-small" href="">Contact</a>
+                </div>
+            </div>
+            <h2 class="hook">
+                {{ article.hook }}
+            </h2>
+            <div>
+                {{ article.contenu }}
+            </div>
+        </div>
+    </section>
+
+
+
+</div>
+{% endblock %}
