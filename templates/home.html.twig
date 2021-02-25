@@ -26,7 +26,7 @@
         </h3>
         <div class="cards-wrapper">
             {% for communique in communiques %}
-                <a class="card bg-white" href=""
+                <a class="card bg-white" href="{{ path('communique', {id: communique.id}) }}"
                     title="{{ communique.getTitre() }}
                         {{ communique.getHook() }}
                         Mise à jour le {{ communique.getCreatedAt()|date("d-m-Y") }}">

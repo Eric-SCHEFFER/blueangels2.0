@@ -1,0 +1,38 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/fullCommunique.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+    
+{% endblock %}
+{% block title %}
+    {{ SiteName }}:
+	{{ communique.titre }}
+{% endblock %}
+
+{% block body %}
+
+<div class="wrapper">
+    <h1>{{ communique.titre }}</h1>
+    <section class="full-communique">
+        <div class="textes">
+            <div class="info-bar">
+                <div class="date-wrapper">
+                    <div class="date">
+                        <i class="fas fa-calendar-alt"></i>
+                        {{ communique.getCreatedAt | date("d-m-Y") }}
+                    </div>
+                </div>
+                <div class="contact">
+                    <a class="bouton bt-small" href="">Contact</a>
+                </div>
+            </div>
+            <h2 class="hook">
+                {{ communique.hook }}
+            </h2>
+            <div>
+                {{ communique.contenu }}
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
