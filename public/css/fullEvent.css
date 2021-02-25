@@ -43,6 +43,7 @@
 .full-event .date-wrapper {
    display: flex;
    flex-direction: column;
+   line-height: 1.4em;
 }
 
 .full-event .contact {

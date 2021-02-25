@@ -27,9 +27,9 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
-        $today = new DateTime('2021-01-14'); // Pour tester d'autres dates du jour
-        // On récupère les 3 events
-        $events = $this->getEvents($today);
+        $today = new DateTime('2021-01-05'); // Pour tester d'autres dates du jour
+        // On récupère les 3 events à venir
+        $eventsToCome = $this->eventsRepository->findEventsToCome($today);
         // On récupère le nbre total d'events futurs
         $countTotalEventsToCome = $this->eventsRepository->countTotalEventsToCome($today);
         // On récupère le nbre total d'events passés
@@ -40,8 +40,7 @@ class HomeController extends AbstractController
         $communiques = $this->communiqueRepository->findBy([], ['created_at' => 'DESC'], 1, 0);
         return $this->render('home.html.twig', [
             'menu_courant' => 'home',
-            'eventsToCome' => $events[0],
-            'completedEvents' => $events[1],
+            'eventsToCome' => $eventsToCome,
             'today' => $today,
             'countTotalEventsToCome' => $countTotalEventsToCome,
             'countTotalCompletedEvents' => $countTotalCompletedEvents,
@@ -55,17 +54,17 @@ class HomeController extends AbstractController
     // On recupère jusqu'à 3 events futurs
     // $countEventsToCome = nombre d'évènements récupérés
     // S'il y a moins de 3 events futurs (Si $countEventsToCome<3), on récupère aussi 3-$countEventsToCome évènements passés
-    private function getEvents($today)
-    {
-        $eventsToCome = $this->eventsRepository->findEventsToCome($today);
-        $completedEvents = [];
-        $countEventsToCome = count($eventsToCome);
-        if ($countEventsToCome < 3) {
-            $completedEvents = $this->eventsRepository->findCompletedEvents($today, 3 - $countEventsToCome);
-        }
-        return [
-            $eventsToCome,
-            $completedEvents,
-        ];
-    }
+    // private function getEvents($today)
+    // {
+    //     $eventsToCome = $this->eventsRepository->findEventsToCome($today);
+    //     $completedEvents = [];
+    //     $countEventsToCome = count($eventsToCome);
+    //     if ($countEventsToCome < 3) {
+    //         $completedEvents = $this->eventsRepository->findCompletedEvents($today, 3 - $countEventsToCome);
+    //     }
+    //     return [
+    //         $eventsToCome,
+    //         $completedEvents,
+    //     ];
+    // }
 }

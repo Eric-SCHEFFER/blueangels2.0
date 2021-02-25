@@ -21,7 +21,7 @@ class EventsToComeController extends AbstractController
      */
     public function index(): Response
     {
-        $today = new DateTime('2021-01-14'); // Pour tester d'autres dates du jour
+        $today = new DateTime('2021-01-05'); // Pour tester d'autres dates du jour
         // On récupère tous les events futurs
         $events = $this->eventsRepository->findAllEventsToCome($today);
         // On récupère le nbre total d'events futurs

@@ -95,7 +95,24 @@
                                 {# Date, et mentions couleurs du nbr de jours avant l'event #}
                                 <div class="infos">
                                     <i class="fas fa-calendar-alt"></i> {{ eventToCome.getDateEvent()|date("d-m-Y") }}
-                                    {% if eventToCome.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
+                                    {% for j in 0..7 %}
+                                        {% if j == 0 %}
+                                            {% if eventToCome.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
+                                                <span class="info-jour green">Aujourd'hui</span>
+                                            {% endif %}
+                                            {% elseif j == 1 %}
+                                                {% if eventToCome.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
+                                                    <span class="info-jour blue">demain</span>
+                                                {% endif %}
+                                            {% else %}
+                                            {% if eventToCome.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
+                                                <span class="info-jour blue">J-{{ j }}</span>
+                                            {% endif %}
+                                        {% endif %}    
+                                    {% endfor %}
+
+
+                                    {# {% if eventToCome.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
                                         <span class="info-jour green">Aujourd'hui</span>
                                     {% elseif eventToCome.getDateEvent()|date("Y-m-d") == today|date_modify("+1 day")|date("Y-m-d") %}
                                         <span class="info-jour blue">Demain</span>
@@ -103,7 +120,18 @@
                                         <span class="info-jour blue">J-2</span>
                                     {% elseif eventToCome.getDateEvent()|date("Y-m-d") == today|date_modify("+3 day")|date("Y-m-d") %}
                                         <span class="info-jour blue">J-3</span>
-                                    {% endif %}
+                                    {% elseif eventToCome.getDateEvent()|date("Y-m-d") == today|date_modify("+4 day")|date("Y-m-d") %}
+                                        <span class="info-jour blue">J-4</span>
+                                    {% elseif eventToCome.getDateEvent()|date("Y-m-d") == today|date_modify("+5 day")|date("Y-m-d") %}
+                                        <span class="info-jour blue">J-5</span>
+                                    {% elseif eventToCome.getDateEvent()|date("Y-m-d") == today|date_modify("+6 day")|date("Y-m-d") %}
+                                        <span class="info-jour blue">J-6</span>
+                                    {% elseif eventToCome.getDateEvent()|date("Y-m-d") == today|date_modify("+7 day")|date("Y-m-d") %}
+                                        <span class="info-jour blue">J-7</span>
+                                    {% endif %} #}
+
+
+
                                 </div>
                             </div>
                         </a>
@@ -115,7 +143,7 @@
 
         <div class="boutonsPassesFuturs">
             {% if (countPasse > 0) and (countAVenir == 0) %}
-                <a class="bouton bt2" href="">Évènements passés</a>
+                <a class="bouton bt2" href="{{ path('completed_events') }}">Évènements passés</a>
             {% endif %}
             {% if countAVenir > 3 %}
                 <a class="bouton bt2" href="{{ path('a_venir') }}">Tous les évènements à venir ({{ countAVenir  }})</a>

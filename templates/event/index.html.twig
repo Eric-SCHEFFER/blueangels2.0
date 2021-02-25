@@ -25,37 +25,43 @@
                         <i class="fas fa-calendar-alt"></i>
                         {{ event.getDateEvent | date("d-m-Y") }}
                     </div>
-                    {% if event.getDateEvent()|date("Y-m-d") == today|date("Y-m-d") %}
-                        <div class="green">
-                            Aujourd'hui
-                        </div>
-                        {% elseif event.getDateEvent()|date("Y-m-d") == today|date_modify("+1 day")|date("Y-m-d") %}
-                            <div class="blue">
-                                Demain
-                            </div>
-                        {% elseif event.getDateEvent()|date("Y-m-d") == today|date_modify("+2 day")|date("Y-m-d") %}
-                            <div class="blue">
-                                J-2
-                            </div>
-                        {% elseif event.getDateEvent()|date("Y-m-d") == today|date_modify("+3 day")|date("Y-m-d") %}
-                            <div class="blue">
-                                J-3
-                            </div>
-                        {% elseif event.getDateEvent()|date("Y-m-d") < today|date("Y-m-d") %}
+                    <div class="time">
+                        <i class="fas fa-clock"></i>
+                        {{ event.getDateEvent | date("H:i") }}
+                    </div>
+
+                    {% if event.getDateEvent()|date("Y-m-d") < today|date("Y-m-d") %}
                         <div>
                             Évènement terminé
                         </div>
                     {% endif %}
                     {% if event.getAnnule() %}
-                    <div class="red">
-                        Évènement annulé
-                    </div>
+                        <div class="red">
+                            Évènement annulé
+                        </div>
                     {% endif %}
+                    {# Date, et mentions couleurs du nbr de jours avant l'event #}   
+                    {% for j in 0..7 %}
+                        {% if j == 0 %}
+                            {% if event.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
+                                <span class="green">Aujourd'hui</span>
+                            {% endif %}
+                            {% elseif j == 1 %}
+                                {% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
+                                    <span class="blue">demain</span>
+                                {% endif %}
+                            {% else %}
+                                {% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
+                                    <span class="blue">J-{{ j }}</span>
+                                {% endif %}
+                        {% endif %}    
+                    {% endfor %}
+
                 </div>
-                <div class="time">
+                {# <div class="time">
                     <i class="fas fa-clock"></i>
                     {{ event.getDateEvent | date("H:i") }}
-                </div>
+                </div> #}
                 <div class="contact">
                     <a class="bouton bt-small" href="">Contact</a>
                 </div>
