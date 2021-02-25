@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\EventsRepository;
 use App\Repository\ArticlesRepository;
 use App\Repository\CommuniqueRepository;
+use App\Service\TodayGenerator;
 use DateTime;
 
 class HomeController extends AbstractController
@@ -25,9 +26,10 @@ class HomeController extends AbstractController
     /**
      * @Route("/home", name="home")
      */
-    public function index(): Response
+    public function index(TodayGenerator $todayGenerator): Response
     {
-        $today = new DateTime('2021-01-05'); // Pour tester d'autres dates du jour
+        // On récupère la date du jour, que l'on peut changer dans la classe
+        $today = $todayGenerator->generateAToday();
         // On récupère les 3 events à venir
         $eventsToCome = $this->eventsRepository->findEventsToCome($today);
         // On récupère le nbre total d'events futurs

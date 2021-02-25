@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\EventsRepository;
+use App\Service\TodayGenerator;
 use DateTime;
 
 class EventsToComeController extends AbstractController
@@ -19,9 +20,10 @@ class EventsToComeController extends AbstractController
     /**
      * @Route("/a_venir", name="a_venir")
      */
-    public function index(): Response
+    public function index(TodayGenerator $todayGenerator): Response
     {
-        $today = new DateTime('2021-01-05'); // Pour tester d'autres dates du jour
+        // On récupère la date du jour, que l'on peut changer dans cette classe
+        $today = $todayGenerator->generateAToday();
         // On récupère tous les events futurs
         $events = $this->eventsRepository->findAllEventsToCome($today);
         // On récupère le nbre total d'events futurs

@@ -26,7 +26,7 @@ class EventsRepository extends ServiceEntityRepository
         $query = $this->createQueryBuilder('e')
             ->select('e')
             ->where('e.date_event >= :date')
-            ->setParameter('date', $date)
+            ->setParameter('date', $date->format('Y-m-d'))
             ->select('count(e.id)')
             ->getQuery()
             ->getResult();
@@ -39,7 +39,7 @@ class EventsRepository extends ServiceEntityRepository
         $query = $this->createQueryBuilder('e')
             ->select('e')
             ->where('e.date_event < :date')
-            ->setParameter('date', $date)
+            ->setParameter('date', $date->format('Y-m-d'))
             ->select('count(e.id)')
             ->getQuery()
             ->getResult();
@@ -52,7 +52,7 @@ class EventsRepository extends ServiceEntityRepository
         $query = $this->createQueryBuilder('e')
             ->select('e')
             ->where('e.date_event >= :date')
-            ->setParameter('date', $date)
+            ->setParameter('date', $date->format('Y-m-d'))
             ->orderBy('e.date_event', 'ASC')
             ->getQuery()
             ->getResult();
@@ -65,7 +65,7 @@ class EventsRepository extends ServiceEntityRepository
         $query = $this->createQueryBuilder('e')
             ->select('e')
             ->where('e.date_event < :date')
-            ->setParameter('date', $date)
+            ->setParameter('date', $date->format('Y-m-d'))
             ->orderBy('e.date_event', 'DESC')
             ->getQuery()
             ->getResult();
@@ -77,8 +77,8 @@ class EventsRepository extends ServiceEntityRepository
     {
         $query = $this->createQueryBuilder('e')
             ->select('e')
-            ->where('e.date_event >= :date')
-            ->setParameter('date', $date)
+            ->where('e.date_event >= :date') 
+            ->setParameter('date', $date->format('Y-m-d')) // Ne compare que l'année, mois, jour
             ->orderBy('e.date_event', 'ASC')
             ->setMaxResults(3)
             ->getQuery()
@@ -92,7 +92,7 @@ class EventsRepository extends ServiceEntityRepository
         $query = $this->createQueryBuilder('e')
             ->select('e')
             ->where('e.date_event < :date')
-            ->setParameter('date', $date)
+            ->setParameter('date', $date->format('Y-m-d'))
             ->orderBy('e.date_event', 'DESC')
             ->setMaxResults($combien)
             ->getQuery()
