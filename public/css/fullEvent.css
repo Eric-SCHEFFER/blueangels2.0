@@ -33,7 +33,7 @@
 
 .full-event .info-bar {
    display: flex;
-   align-items: center;
+   align-items: flex-start;
    justify-content: space-between;
    /* border: solid rebeccapurple 1px; */
    color: rgb(136, 136, 136);

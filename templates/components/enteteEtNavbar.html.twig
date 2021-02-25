@@ -41,8 +41,9 @@
             </button>
             <ul class="dropdown-content" id ="menuDanses">
                <li>
+                  {# <a href="{{ path('article', {id: "479}) }}"> #}
                   <a href="{{ path('home') }}">
-                     Salsa
+                        Salsa
                   </a>
                </li>
                <li>
@@ -83,9 +84,9 @@
          {# ======== Sous-menu /OFF =========== #}
 
          <li>
-            <a href="{{ path('home') }}"
+            <a href="{{ path('articles') }}"
                class="
-               {% if menu_courant is defined and menu_courant == 'tarifs' %}
+               {% if menu_courant is defined and menu_courant == 'articles' %}
                   active
                {% endif %}">
                Articles

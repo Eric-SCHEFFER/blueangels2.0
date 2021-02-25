@@ -1,0 +1,50 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/cardApercuArticle.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+
+{% endblock %}
+{% block title %}
+	{{ SiteName }}: Articles
+{% endblock %}
+
+{% block body %}
+
+	<div class="wrapper">
+		<h1>
+            Articles
+		</h1>
+
+		<section class="articles">
+            {#
+                On affiche tous les articles par ordre de création.
+                Chaque article est cliquable, et renvoi vers la page de l'article
+                On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
+            #}
+            <div class="bloc-cards">
+                {% for article in articles %}
+                    <a class="card-article" href="{{ path('article', {id: article.id}) }}">
+                        {% if article.getImagesArticles()[0].getNom() is not empty %}
+                            <div class="image">
+                                <img src="{{ asset('images/8.jpg') }}" alt="">
+                            </div>
+                        {% endif %}
+                        <div class="bloc-text">
+                            <h3 class="titre">{{ article.getTitre() }}</h3>
+                            <div class="hook">{{ article.getHook() }}</div>
+                            <div class="center">
+                                <div class="bouton bt-inline-bloc">
+                                    Voir
+                                </div>
+                            </div>
+                            <div class="infos">
+                                <i class="fas fa-calendar-alt"></i>
+                                {{ article.getCreatedAt()|date("d-m-Y") }}
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </section>
+	</div>
+{% endblock %}
