@@ -8,7 +8,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Events;
 use App\Repository\ImagesEventRepository;
 use App\Service\TodayGenerator;
-use DateTime;
 
 class EventController extends AbstractController
 {
@@ -17,7 +16,7 @@ class EventController extends AbstractController
      */
     public function eventLoad($id, TodayGenerator $todayGenerator, ImagesEventRepository $imagesEventRepository): Response
     {
-        // On récupère la date du jour, que l'on peut changer dans cette classe
+        // On récupère la date du jour, que l'on peut changer dans la classe
         $today = $todayGenerator->generateAToday();
         $repo = $this->getDoctrine()->getRepository(Events::class);
         $event = $repo->find($id);

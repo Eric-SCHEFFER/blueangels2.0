@@ -1,0 +1,62 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/messagesEtAlertes.css') }}">
+
+{% endblock %}
+{% block title %}
+	{{ SiteName }}: Administration
+{% endblock %}
+
+{% block body %}
+
+	<div class="wrapper">
+
+        <h1>
+            Administration
+        </h1>
+        {% for message in app.flashes('succes') %}
+		<div class="conteneurMessageFlash">
+			<div class="messageFlash">
+				{{ message }}
+			</div>
+		</div>
+	    {% endfor %}
+
+		<section class = "admin">
+            <div class="container0">
+                <div class="container1">
+                    <ul class="liste">
+                        <li title="Slogan d'accroche de la page d'accueil">
+                            <div class="titre">Évènements</div>
+                            <a class="boutonGo" href="{{ path('home') }}">Go</a>
+                        </li>
+                        <li title="Ajouter, éditer, et supprimer des réalisations">
+                            <div class="titre">Articles</div>
+                            <a class="boutonGo" href="{{ path('home') }}">Go</a>
+                        </li>
+                        <li title="Coordonnées de contact - Email de réception du formulaire - Texte de présentation de l'entreprise">
+                            <div class="titre">Communiqués</div>
+                            <a class="boutonGo" href="{{ path('home') }}">Go</a>
+                        </li>
+                    </ul>
+                    <ul class="liste">
+                        <li title="Mentions légales">
+                            <div class="titre">Mentions légales</div>
+                            <a class="boutonGo" href="{{ path('home') }}">Go</a>
+                        </li>
+                        <li title="Modifier l'email utilisé pour s'authentifier">
+                            <div class="titre">Identifiant de connexion</div>
+                            <a class="boutonGo" href="{{ path('home') }}">Go</a>
+                        </li>
+                        <li title="Changer son mot de passe">
+                            <div class="titre">Mot de passe</div>
+                            <a class="boutonGo" href="{{ path('home') }}">Go</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

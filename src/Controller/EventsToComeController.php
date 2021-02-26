@@ -7,7 +7,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\EventsRepository;
 use App\Service\TodayGenerator;
-use DateTime;
 
 class EventsToComeController extends AbstractController
 {

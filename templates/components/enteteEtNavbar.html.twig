@@ -123,13 +123,36 @@
             </a>
          </li>
 
+         {# ======== Sous-menu /ON =========== #}
          <li>
-            <a href="{{ path('home') }}"
+            <button
+               class="btDropdown"
+               onclick="toggleMenu('plus1')">
+               PLus
+               <i class="fa fa-caret-down"></i>
+            </button>
+            <ul class="dropdown-content" id ="plus1">
+               <li>
+                  <a href="{{ path('home') }}">
+                     Plus 1
+                  </a>
+               </li>
+               <li>
+                  <a href="{{ path('home') }}">
+                     Plus 2
+                  </a>
+               </li>
+            </ul>
+         </li>
+         {# ======== Sous-menu /OFF =========== #}
+
+         <li>
+            <a href="{{ path('admin') }}"
                class="
                {% if menu_courant is defined and menu_courant == 'admin' %}
                   active
                {% endif %}">
-               Admin
+               <i class="fas fa-wrench fa-lg"></i>
             </a>
          </li>
 

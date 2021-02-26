@@ -9,7 +9,6 @@ use App\Repository\EventsRepository;
 use App\Repository\ArticlesRepository;
 use App\Repository\CommuniqueRepository;
 use App\Service\TodayGenerator;
-use DateTime;
 
 class HomeController extends AbstractController
 {

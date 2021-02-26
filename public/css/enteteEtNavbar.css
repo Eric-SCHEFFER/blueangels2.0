@@ -74,7 +74,7 @@ nav {
    height: 50px;
    text-transform: uppercase;
    font-size: .9em;
-   width: 68%;
+   width: 69%;
    position: absolute;
    top: 55px;
    right: 53px;
@@ -111,7 +111,7 @@ nav a:hover,
 nav .active,
 nav .btDropdown:hover,
 nav ul.dropdown-content a:hover {
-   font-size: 1.2em;
+   font-size: 1.1em;
 }
 
 nav ul.ulMenuGeneral {
