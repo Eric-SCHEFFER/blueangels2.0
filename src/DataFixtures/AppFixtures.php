@@ -41,7 +41,7 @@ class AppFixtures extends Fixture
             $event = new Events();
             $event->setNom('Évènement ' . $i);
             $event->setHook('Hook de l\'évènement ' . $i);
-            $event->setDateEvent(new DateTime('2021-01-' . $i));
+            $event->setDateEvent(new DateTime('2021-01-' . $i . ' 18:15'));
             $event->setDescription('Description de l\'évènement ' . $i . ' ' . str_repeat($lorem, 100));
             $manager->persist($event);
         }

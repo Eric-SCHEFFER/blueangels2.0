@@ -145,16 +145,19 @@
             </ul>
          </li>
          {# ======== Sous-menu /OFF =========== #}
-
-         <li>
-            <a href="{{ path('admin') }}"
-               class="
-               {% if menu_courant is defined and menu_courant == 'admin' %}
-                  active
-               {% endif %}">
-               <i class="fas fa-wrench fa-2x blue-pastel"></i>
-            </a>
-         </li>
+         {% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
+         
+            <li>
+               <a href="{{ path('admin') }}"
+                  class="
+                  {% if menu_courant is defined and menu_courant == 'admin' %}
+                     active
+                  {% endif %}">
+                  <i class="fas fa-wrench fa-2x blue-pastel"></i>
+               </a>
+            </li>
+         {% endif %}
+         
 
          
       </ul>
