@@ -1,0 +1,78 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/adminTableCrud.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/messagesEtAlertes.css') }}">
+{% endblock %}
+
+
+{% block title %}
+   {{ SiteName }}:
+   Gérer les Évènements à venir
+{% endblock %}
+
+{% block body %}
+   <div class="wrapper">
+
+      <h1>
+         Gérer les Évènements à venir
+      </h1>
+
+      <div class="conteneur_table">
+         {% for message in app.flashes('succes') %}
+            <div class="conteneurMessageFlash">
+               <div class="messageFlash">
+                  {{ message }}
+               </div>
+            </div>
+         {% endfor %}
+
+         <a class="boutonNew" href="{{ path('home') }}" title="Créer un nouvel évènement">Nouveau</a>
+
+         <table class="table_1">
+            <thead>
+               <tr>
+                  <th>Titre</th>
+                  <th>Date</th>
+                  <th>Actions</th>
+               </tr>
+            </thead>
+            <tbody>
+               {% if eventsToCome is not empty %}
+                  {% for eventToCome in eventsToCome|reverse %}
+                     <tr>
+                        <td>
+                           <div class="blocTitreImage">
+                              {{ eventToCome.nom }}
+                              {% if eventToCome.getAnnule() %}
+                                 <div class="iconeAnnule" title="Évènement annulé"></div>
+                              {% endif %}
+                              {# ========= On affiche la première image ========= #}
+                              {# Si la clé est définie, on affiche l'image #}
+                              {% if eventToCome.getImagesEvents[0].nom is defined %}
+                                 <img src="{{ asset('images/2020-03-08_flyer_affiche_stage_bachata.jpg') }}" alt="">
+                                 {# <img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ event.images[0].lien) }}"> #}
+                              {% endif %}
+                           </div>
+                        </td>
+                        <td>
+                           {{ eventToCome.getDateEvent()|date("d-m-Y") }}
+                        </td>
+                        <td>
+                           <a class="iconeEditer" href="{{ path('home', {id: eventToCome.id}) }}" title="Éditer"></a>
+                           
+                           {# formulaire avec champ caché (passer la valeur delete) pour supprimmer un évènement #}
+                           {# <form class="deleteForm" method="post" action="{{ path('admin.events.delete', {id: eventToCome.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ eventToCome.nom }} ?')"> #}
+                              <input type="hidden" name="_method" value="DELETE"/>
+                              {# On créé un token #}
+                              <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ eventToCome.id) }}"/>
+                              <button class="iconeSupprimer" title="Supprimer"></button>
+                           </form>
+                        </td>
+                     </tr>
+                  {% endfor %}
+               {% endif %}
+            </tbody>
+         </table>
+      </div>
+   </div>   
+{% endblock %}

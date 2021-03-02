@@ -28,8 +28,7 @@ class AdminEventsToComeController extends AbstractController
         // On récupère le nbre total d'events futurs
         $countTotalEventsToCome = $this->eventsRepository->countTotalEventsToCome($today);
         
-        return $this->render('admin/adminEventsToCome.html.twig', [
-            'menu_courant' => 'events',
+        return $this->render('admin/events/adminEventsToCome.html.twig', [
             'eventsToCome' => $events,
             'today' => $today,
             'countTotalEventsToCome' => $countTotalEventsToCome,
