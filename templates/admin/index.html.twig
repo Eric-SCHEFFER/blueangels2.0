@@ -2,7 +2,7 @@
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/messagesEtAlertes.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/messagesEtAlertes.css') }}">
 
 {% endblock %}
 {% block title %}
@@ -28,8 +28,12 @@
             <div class="container0">
                 <div class="container1">
                     <ul class="liste">
-                        <li title="Ajouter, éditer, et supprimer des évènements">
-                            <div class="titre">Évènements</div>
+                        <li title="Ajouter et gérer les évènements à venir">
+                            <div class="titre">Évènements à venir</div>
+                            <a class="boutonGo" href="{{ path('admin_events_a_venir') }}">Go</a>
+                        </li>
+                        <li title="gérer les évènements à passés">
+                            <div class="titre">Évènements passés</div>
                             <a class="boutonGo" href="{{ path('home') }}">Go</a>
                         </li>
                         <li title="Ajouter, éditer, et supprimer des articles">
