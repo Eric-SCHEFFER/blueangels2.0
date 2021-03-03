@@ -90,13 +90,17 @@ class AdminEventsToComeController extends AbstractController
      * @param Events $events
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function delete(Events $events, Request $request)
+    public function delete(Events $event, Request $request)
     {
-        // On supprime la réalisation, ainsi que toutes ses images (Option orphanRemoval) dans la base
-        $this->em->remove($events);
-        $this->em->flush();
-        $this->addFlash('succes', '"' . $events->getNom() . '"' . ' supprimé avec succès');
-        //return new HttpFoundationResponse('Suppression');
+        // Vérif token pour sécuriser la suppression d'une réalisation
+        if ($this->isCsrfTokenValid('delete' . $event->getId(), $request->get('_token'))) {
+            // Vérif token pour sécuriser la suppression d'une réalisation
+            // On supprime la réalisation, ainsi que toutes ses images (Option orphanRemoval) dans la base
+            $this->em->remove($event);
+            $this->em->flush();
+            $this->addFlash('succes', '"' . $event->getNom() . '"' . ' supprimé avec succès');
+            //return new HttpFoundationResponse('Suppression');
+        }
         return $this->redirectToRoute('admin.events_a_venir');
     }
 }
