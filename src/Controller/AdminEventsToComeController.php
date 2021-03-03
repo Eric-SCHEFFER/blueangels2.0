@@ -35,7 +35,6 @@ class AdminEventsToComeController extends AbstractController
         $events = $this->eventsRepository->findAllEventsToCome($today);
         // On récupère le nbre total d'events futurs
         $countTotalEventsToCome = $this->eventsRepository->countTotalEventsToCome($today);
-
         return $this->render('admin/events/adminEventsToCome.html.twig', [
             'eventsToCome' => $events,
             'today' => $today,
@@ -54,6 +53,28 @@ class AdminEventsToComeController extends AbstractController
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            // On récupère les images transmises
+            $images = $form->get('imageFile')->getData();
+            // On boucle sur les images
+            foreach ($images as $image) {
+                // On génère un nouveau nom de fichier
+                $ext = $image->guessExtension();
+                $fichier = md5(uniqid()) . '.' . $ext;
+                // On copie le fichier dans le dossier uploads
+                $dossierImages = $this->getParameter('dossier_images_events');
+                $image->move(
+                    $dossierImages,
+                    $fichier
+                );
+                $imageSource = $dossierImages . "/" . $fichier;
+                $imageCible = $dossierImages . "/min_" . $fichier;
+                // On créé une miniature du fichier image. En 3e paramètre, la largeur souhaitée en px de la miniature
+                $this->creeMiniature($imageSource, $imageCible, 270);
+                // On stocke le nom de l'image dans la base de données
+                $img = new ImagesEvent();
+                $img->setNom($fichier);
+                $event->addImagesEvent($img);
+            }
             $this->em->persist($event);
             $this->em->flush();
             $this->addFlash('succes', 'Évènement créé avec succès');
@@ -76,7 +97,6 @@ class AdminEventsToComeController extends AbstractController
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
             // On récupère les images transmises
             $images = $form->get('imageFile')->getData();
             // On boucle sur les images
@@ -90,18 +110,15 @@ class AdminEventsToComeController extends AbstractController
                     $dossierImages,
                     $fichier
                 );
-
                 $imageSource = $dossierImages . "/" . $fichier;
                 $imageCible = $dossierImages . "/min_" . $fichier;
                 // On créé une miniature du fichier image. En 3e paramètre, la largeur souhaitée en px de la miniature
-                $this->creeMiniature($imageSource, $imageCible, 290);
-
+                $this->creeMiniature($imageSource, $imageCible, 270);
                 // On stocke le nom de l'image dans la base de données
                 $img = new ImagesEvent();
                 $img->setNom($fichier);
                 $event->addImagesEvent($img);
             }
-
             $this->em->persist($event);
             $this->em->flush();
             $this->addFlash('succes', 'Évènement mis à jour avec succès');
@@ -171,8 +188,12 @@ class AdminEventsToComeController extends AbstractController
         }
     }
 
-    // ======== CRÉÉ UNE MINIATURE D'UNE IMAGE =========
-    // En entrée, le chemin complet d'un fichier image jpg ou png
+    /**
+     * Crée une miniature d'une image d'un fichier jpg ou png.
+     * Paramètres: 1: Chemin complet de l'image source (jpg ou png).
+     * 2: Chemin complet de l'image de sortie (cible).
+     * 3: Largeur souhaitée en px.
+     */
     private function creeMiniature($imageSource, $imageCible, $targetWidth)
     {
         // On recupère l'extension, et on minimise les caractères
@@ -193,7 +214,6 @@ class AdminEventsToComeController extends AbstractController
         $portraitMalOriente = false;
         // On détecte si une image jpg est en portrait, et si elle est mal orientée
         if ($imageSortie == "imagejpeg") {
-            // dd(exif_read_data($imageSource, 'ANY_TAG'));
             if (isset(exif_read_data($imageSource, 'ANY_TAG')['Orientation'])) {
                 $portraitMalOriente = exif_read_data($imageSource, 'ANY_TAG')['Orientation'];
                 if ($portraitMalOriente == 6 && $sourceSize[0] > $sourceSize[1]) {

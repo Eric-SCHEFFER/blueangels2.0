@@ -16,7 +16,7 @@
     <h1>{{ event.nom }}</h1>
     <section class="full-event">
         <div class="image">
-            <img src="{{ asset('images/2020-03-08_flyer_affiche_stage_bachata.jpg') }}" alt="">
+            <img src="{{ asset('uploads/imagesEvents/' ~ event.getImagesEvents[0].Nom) }}">
         </div>
         <div class="textes">
             <div class="info-bar">
