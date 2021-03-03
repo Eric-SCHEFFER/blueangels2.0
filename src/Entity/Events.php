@@ -52,6 +52,7 @@ class Events
     public function __construct()
     {
         $this->imagesEvents = new ArrayCollection();
+        $this->date_event = new \DateTime('now');
     }
 
     public function getId(): ?int

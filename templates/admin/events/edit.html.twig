@@ -9,8 +9,8 @@
 
 {% block body %}
    <div class="wrapper">
-      <h1>Éditer une réalisation</h1>
-	   {{ include ('admin/events/_form.html.twig') }}
+      <h1>Éditer un évènement</h1>
+	   {{ include ('admin/events/_form.html.twig', {form: form, button: 'Enregistrer'}) }}
 
 {# {% block javascript %}
    <script src="{{ asset('assets/js/images.js') }}"></script>

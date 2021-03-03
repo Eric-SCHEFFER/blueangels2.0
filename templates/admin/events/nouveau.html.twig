@@ -4,13 +4,13 @@
 
 {% block title %}
    {{ SiteName }}:
-   Editer un évènement
+   Nouvel évènement
 {% endblock %}
 
 {% block body %}
    <div class="wrapper">
-      <h1>Éditer unévènement</h1>
-	   {{ include ('admin/events/_form.html.twig') }}
+      <h1>Nouvel évènement</h1>
+	   {{ include ('admin/events/_form.html.twig', {form: form, button: 'Créer'}) }}
       
    </div>   
 {% endblock %}

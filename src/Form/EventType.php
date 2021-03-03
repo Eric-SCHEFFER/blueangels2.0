@@ -3,20 +3,40 @@
 namespace App\Form;
 
 use App\Entity\Events;
+use PhpParser\Node\Expr\Cast\Bool_;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class EventType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom')
-            ->add('hook')
-            ->add('date_event')
-            ->add('description')
-            ->add('annule')
+            ->add('nom', TextType::class, [
+            ])
+
+            ->add('hook', TextType::class, [
+                'required' => true,
+                'label' => 'Phrase d\'accroche'
+            ])
+
+            ->add('date_event', DateTimeType::class, [
+                'required' => true,
+                'label' => 'Date Évènement',
+            ])
+
+            ->add('description', TextareaType::class, [
+            ])
+
+            ->add('annule', CheckboxType::class, [
+                'required' => false,
+                'label' => 'Annulé'
+            ])
         ;
     }
 

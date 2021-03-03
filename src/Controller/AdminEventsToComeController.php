@@ -10,13 +10,16 @@ use App\Repository\EventsRepository;
 use App\Service\TodayGenerator;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\EventType;
+use Doctrine\ORM\EntityManagerInterface;
 
 class AdminEventsToComeController extends AbstractController
 {
     public function __construct(
-        EventsRepository $eventsRepository
+        EventsRepository $eventsRepository,
+        EntityManagerInterface $em
     ) {
         $this->eventsRepository = $eventsRepository;
+        $this->em = $em;
     }
 
     /**
@@ -30,7 +33,7 @@ class AdminEventsToComeController extends AbstractController
         $events = $this->eventsRepository->findAllEventsToCome($today);
         // On récupère le nbre total d'events futurs
         $countTotalEventsToCome = $this->eventsRepository->countTotalEventsToCome($today);
-        
+
         return $this->render('admin/events/adminEventsToCome.html.twig', [
             'eventsToCome' => $events,
             'today' => $today,
@@ -49,12 +52,36 @@ class AdminEventsToComeController extends AbstractController
      */
     public function edit(Events $event, Request $request)
     {
+        $form = $this->createForm(EventType::class, $event);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->em->persist($event);
+            $this->em->flush();
+            $this->addFlash('succes', 'Évènement mis à jour avec succès');
+            return $this->redirectToRoute('admin.events_a_venir');
+        }
         return $this->render('admin/events/edit.html.twig', [
-            
-           
+            'form' => $form->createView()
+        ]);
+    }
+
+    // ======== CRÉER UN ÉVÈNEMENT ========
+    /**
+     * @Route("/admin/events/nouveau", name="admin.events.avenir.nouveau")
+     */
+    public function new(Request $request)
+    {
+        $event = new Events();
+        $form = $this->createForm(EventType::class, $event);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->em->persist($event);
+            $this->em->flush();
+            $this->addFlash('succes', 'Évènement créé avec succès');
+            return $this->redirectToRoute('admin.events_a_venir');
+        }
+        return $this->render('admin/events/nouveau.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 }
-
-
-
