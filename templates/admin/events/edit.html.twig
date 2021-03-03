@@ -1,0 +1,20 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}{% endblock %}
+
+
+{% block title %}
+   {{ SiteName }}:
+   Editer un évènement
+{% endblock %}
+
+{% block body %}
+   <div class="wrapper">
+      <h1>Éditer une réalisation</h1>
+	   {{ include ('admin/events/_form.html.twig') }}
+
+{# {% block javascript %}
+   <script src="{{ asset('assets/js/images.js') }}"></script>
+{% endblock %} #}
+      
+   </div>   
+{% endblock %}

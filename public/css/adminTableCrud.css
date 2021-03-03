@@ -47,6 +47,17 @@
    margin-left: 14px;
 }
 
+.titreEtDate {
+   display: flex;
+   flex-direction: column;
+   line-height: 1.3em;
+}
+
+.date {
+   font-size: .8em;
+   color: rgb(119, 119, 119);
+}
+
 /* ========= FORMULAIRE COMPORTANT UN CHAMP INPUT CACHÉ DE SUPPRESSION D'UN ÉLÉMENT ======== */
 
 .deleteForm {
@@ -57,8 +68,7 @@
 /* ====== ICONES FONTAWESOME ======= */
 
 .iconeEditer::before,
-.iconeSupprimer::before,
-.iconeAnnule::before {
+.iconeSupprimer::before {
    font-family: "Font Awesome 5 Free";
    font-size: 1.6em;
    font-weight: 500;
@@ -66,9 +76,9 @@
    padding: 0;
 }
 
-.iconeAnnule::before {
-   color: red;
-   content: "\f410";
+.annule {
+   text-decoration: red line-through;
+
 }
 
 .iconeEditer::before {

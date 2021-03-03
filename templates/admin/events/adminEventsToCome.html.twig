@@ -32,7 +32,6 @@
             <thead>
                <tr>
                   <th>Titre</th>
-                  <th>Date</th>
                   <th>Actions</th>
                </tr>
             </thead>
@@ -42,10 +41,18 @@
                      <tr>
                         <td>
                            <div class="blocTitreImage">
-                              {{ eventToCome.nom }}
-                              {% if eventToCome.getAnnule() %}
-                                 <div class="iconeAnnule" title="Évènement annulé"></div>
-                              {% endif %}
+                              <div class="titreEtDate">
+                                 {% if eventToCome.getAnnule() %}
+                                    <div class="annule" title="Évènement annulé">
+                                       {{ eventToCome.nom }}
+                                    </div>
+                                    {% else %}
+                                       {{ eventToCome.nom }}
+                                 {% endif %}
+                                 <div class="date">
+                                    {{ eventToCome.getDateEvent()|date("d-m-Y") }}
+                                 </div>
+                              </div>
                               {# ========= On affiche la première image ========= #}
                               {# Si la clé est définie, on affiche l'image #}
                               {% if eventToCome.getImagesEvents[0].nom is defined %}
@@ -55,10 +62,7 @@
                            </div>
                         </td>
                         <td>
-                           {{ eventToCome.getDateEvent()|date("d-m-Y") }}
-                        </td>
-                        <td>
-                           <a class="iconeEditer" href="{{ path('home', {id: eventToCome.id}) }}" title="Éditer"></a>
+                           <a class="iconeEditer" href="{{ path('admin.events.avenir.edit', {id: eventToCome.id}) }}" title="Éditer"></a>
                            
                            {# formulaire avec champ caché (passer la valeur delete) pour supprimmer un évènement #}
                            {# <form class="deleteForm" method="post" action="{{ path('admin.events.delete', {id: eventToCome.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ eventToCome.nom }} ?')"> #}

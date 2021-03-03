@@ -5,8 +5,11 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Events;
 use App\Repository\EventsRepository;
 use App\Service\TodayGenerator;
+use Symfony\Component\HttpFoundation\Request;
+use App\Form\EventType;
 
 class AdminEventsToComeController extends AbstractController
 {
@@ -17,7 +20,7 @@ class AdminEventsToComeController extends AbstractController
     }
 
     /**
-     * @Route("/admin/evenements_a_venir", name="admin_events_a_venir")
+     * @Route("/admin/evenements_a_venir", name="admin.events_a_venir", methods={"GET"})
      */
     public function index(TodayGenerator $todayGenerator): Response
     {
@@ -32,6 +35,23 @@ class AdminEventsToComeController extends AbstractController
             'eventsToCome' => $events,
             'today' => $today,
             'countTotalEventsToCome' => $countTotalEventsToCome,
+        ]);
+    }
+
+
+
+    // ======== ÉDITER UN ÉVÈNEMENT ========
+    /**
+     * @Route("/admin/events/edit/{id}", name="admin.events.avenir.edit", methods="GET|POST")
+     * @param Events $events
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function edit(Events $event, Request $request)
+    {
+        return $this->render('admin/events/edit.html.twig', [
+            
+           
         ]);
     }
 }
