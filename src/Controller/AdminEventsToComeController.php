@@ -42,6 +42,25 @@ class AdminEventsToComeController extends AbstractController
     }
 
 
+    // ======== CRÉER UN ÉVÈNEMENT ========
+    /**
+     * @Route("/admin/events/nouveau", name="admin.events.avenir.nouveau")
+     */
+    public function new(Request $request)
+    {
+        $event = new Events();
+        $form = $this->createForm(EventType::class, $event);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->em->persist($event);
+            $this->em->flush();
+            $this->addFlash('succes', 'Évènement créé avec succès');
+            return $this->redirectToRoute('admin.events_a_venir');
+        }
+        return $this->render('admin/events/nouveau.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
 
     // ======== ÉDITER UN ÉVÈNEMENT ========
     /**
@@ -65,23 +84,19 @@ class AdminEventsToComeController extends AbstractController
         ]);
     }
 
-    // ======== CRÉER UN ÉVÈNEMENT ========
+    // ======== SUPPRIMER UN ÉVÈNEMENT ========
     /**
-     * @Route("/admin/events/nouveau", name="admin.events.avenir.nouveau")
+     * @Route("/admin/events/edit/{id}", name="admin.event.avenir.delete", methods={"DELETE"})
+     * @param Events $events
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function new(Request $request)
+    public function delete(Events $events, Request $request)
     {
-        $event = new Events();
-        $form = $this->createForm(EventType::class, $event);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->em->persist($event);
-            $this->em->flush();
-            $this->addFlash('succes', 'Évènement créé avec succès');
-            return $this->redirectToRoute('admin.events_a_venir');
-        }
-        return $this->render('admin/events/nouveau.html.twig', [
-            'form' => $form->createView()
-        ]);
+        // On supprime la réalisation, ainsi que toutes ses images (Option orphanRemoval) dans la base
+        $this->em->remove($events);
+        $this->em->flush();
+        $this->addFlash('succes', '"' . $events->getNom() . '"' . ' supprimé avec succès');
+        //return new HttpFoundationResponse('Suppression');
+        return $this->redirectToRoute('admin.events_a_venir');
     }
 }
