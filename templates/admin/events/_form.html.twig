@@ -25,9 +25,9 @@
 			{# On vérifie si la route est "admin.events.avenir.edit", et on affiche les images #}
 			{% if app.request.attributes.get('_route') == 'admin.events.avenir.edit' %}
 				<div class="blocVignettes">
-					{% for image in event.images %}
+					{% for image in event.imagesEvents %}
 						<div class="vignette">
-							<img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ image.lien) }}" alt="image">
+							<img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ image.nom) }}" alt="image">
 							<a class="bouton petitBouton" href="{{ path('admin.events.image.delete', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer
 							</a>
 						</div>
