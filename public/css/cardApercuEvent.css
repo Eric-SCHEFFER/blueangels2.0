@@ -71,6 +71,9 @@
    text-align: center;
    color: rgb(0, 0, 0);
    margin: 15px 0 5px 0;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
 }
 
 .events .infos {

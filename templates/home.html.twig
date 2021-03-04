@@ -79,7 +79,7 @@
                             {% else %}
                             <a class="card-event" href="{{ path('event_', {id: eventToCome.id}) }}">
                         {% endif %}
-                            {% if not eventToCome.getImagesEvents[0] is empty %}
+                            {% if not eventToCome.getImagesEvents is empty %}
                                 <div class="image">
                                     <img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ eventToCome.getImagesEvents[0].Nom) }}">
                                 </div>

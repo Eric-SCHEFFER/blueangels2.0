@@ -61,3 +61,71 @@
 .full-event .hook {
    margin-bottom: 30px;
 }
+
+/* ========== CONTROLES DU CAROUSEL ========= */
+
+.boutonsNav {
+   display: flex;
+   position: relative;
+   bottom: 160px;
+   height: auto;
+   justify-content: space-between;
+}
+
+/* Les boutons précédent et suivant */
+.prev, .next {
+   position: relative;
+   cursor: pointer;
+   bottom: 0;
+   width: 40px;
+   border-radius: 8px;
+   padding: 15px 0 15px 24px;
+   color: white;
+   font-weight: bold;
+   font-size: 18px;
+   transition: 0.6s ease;
+   user-select: none;
+   background-color: rgba(119, 119, 119, 0.5);
+}
+
+.next {
+   position: relative;
+}
+
+.prev:hover, .next:hover {
+   background-color: rgba(0, 0, 0, 0.8);
+}
+
+.blocBullets {
+   display: flex;
+   position: relative;
+   justify-content: center;
+   flex-wrap: wrap;
+   bottom: 45px;
+}
+
+.bullet {
+   position: relative;
+   cursor: pointer;
+   height: 24px;
+   width: 24px;
+   font-size: .8em;
+   margin: 0 5px 5px 5px;
+   border-radius: 50%;
+   display: block;
+   background-color: rgb(134, 134, 134);
+   color: rgb(255, 255, 255);
+   /* transition: background-color 0.6s ease; */
+}
+
+.bullet p {
+   position: relative;
+   margin: 0;
+   padding: 0;
+   text-align: center;
+   top: 4px;
+}
+
+.actif, .bullet:hover {
+   background-color: #000000;
+}

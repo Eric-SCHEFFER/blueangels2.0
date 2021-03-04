@@ -15,9 +15,31 @@
 <div class="wrapper">
     <h1>{{ event.nom }}</h1>
     <section class="full-event">
-        <div class="image">
-            <img src="{{ asset('uploads/imagesEvents/' ~ event.getImagesEvents[0].Nom) }}">
-        </div>
+        
+        {# S'il y a au moins 1 image, on affiche le système de carousel #}
+        {% if not event.getImagesEvents[0] is empty %}
+                {# Carousel #}
+                {% for image in event.getImagesEvents %}
+                    <div class="image">
+                        <img src="{{ asset('uploads/imagesEvents/' ~ image.nom) }}">
+                    </div>
+                {% endfor %}
+            {# Boutons de contrôles du carousel #}
+            <div class="boutonsNav">
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            {% set n = 0 %}
+            <div class="blocBullets">
+                {% for image in event.getImagesEvents %}
+                    {% set n = n + 1 %}
+                    <div class="bullet" onclick="currentSlide({{ n }})">
+                        <p>{{ n }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
         <div class="textes">
             <div class="info-bar">
                 <div class="date-wrapper">
@@ -74,4 +96,8 @@
 
 
 </div>
+
+    {% block javascript %}
+        <script src="{{ asset('js/carousel.js') }}"></script>
+    {% endblock %}
 {% endblock %}
