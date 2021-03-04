@@ -16,29 +16,34 @@
     <h1>{{ event.nom }}</h1>
     <section class="full-event">
         
-        {# S'il y a au moins 1 image, on affiche le système de carousel #}
-        {% if not event.getImagesEvents[0] is empty %}
-                {# Carousel #}
+        {% if event.getImagesEvents is empty %}
+            {# On affiche l'image de remplacement par défaut #}
+            <div class="image">
+                <img title="Aucune image de disponible" src="{{ asset('images/imageDefaut.jpg') }}">
+            </div>
+            {% else %}
+                {# On affiche les images dispo dans le tableau #}
                 {% for image in event.getImagesEvents %}
                     <div class="image">
                         <img src="{{ asset('uploads/imagesEvents/' ~ image.nom) }}">
                     </div>
                 {% endfor %}
-            {# Boutons de contrôles du carousel #}
-            <div class="boutonsNav">
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
-            </div>
-            {% set n = 0 %}
-            <div class="blocBullets">
-                {% for image in event.getImagesEvents %}
-                    {% set n = n + 1 %}
-                    <div class="bullet" onclick="currentSlide({{ n }})">
-                        <p>{{ n }}</p>
-                    </div>
-                {% endfor %}
-            </div>
         {% endif %}
+                
+        {# Boutons de contrôles du carousel #}
+        <div class="boutonsNav">
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        {% set n = 0 %}
+        <div class="blocBullets">
+            {% for image in event.getImagesEvents %}
+                {% set n = n + 1 %}
+                <div class="bullet" onclick="currentSlide({{ n }})">
+                    <p>{{ n }}</p>
+                </div>
+            {% endfor %}
+        </div>
 
         <div class="textes">
             <div class="info-bar">

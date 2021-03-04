@@ -121,7 +121,7 @@ class AdminEventsToComeController extends AbstractController
             }
             $this->em->persist($event);
             $this->em->flush();
-            $this->addFlash('succes', 'Évènement mis à jour avec succès');
+            $this->addFlash('succes', '"' . $event->getNom() . '"' . ' modifié avec succès');
             return $this->redirectToRoute('admin.events_a_venir');
         }
         return $this->render('admin/events/edit.html.twig', [
@@ -171,7 +171,7 @@ class AdminEventsToComeController extends AbstractController
         $data = json_decode($request->getContent(), true);
         // On vérifie si le token est valide
         if ($this->isCsrfTokenValid('delete' . $imagesEvent->getId(), $data['_token'])) {
-            // On récupère le nom de l'image (le champ "lien" n'est peut-être pas un bon nom, j'en suis conscient)
+            // On récupère le nom de l'image
             $nom = $imagesEvent->getNom();
             // On supprime le fichier
             unlink($this->getParameter('dossier_images_events') . '/' . $nom);

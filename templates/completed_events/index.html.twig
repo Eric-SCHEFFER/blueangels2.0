@@ -31,11 +31,15 @@
                                 {% else %}
                                 <a class="card-event" href="{{ path('event_', {id: completedEvent.id}) }}">
                             {% endif %}
-                                {% if not completedEvent.getImagesEvents() is empty %}
-                                    <div class="image">
-                                        <img src="{{ asset('uploads/imagesEvents/' ~ completedEvent.getImagesEvents[0].Nom) }}">
-                                    </div>
+                            <div class="image">
+                                {% if completedEvent.getImagesEvents[0] is defined %}
+                                    {# On affiche l'image de l'event #}
+                                    <img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ completedEvent.getImagesEvents[0].Nom) }}">
+                                    {% else %}
+                                        {# On affiche l'image de remplacement par défaut #}
+                                        <img title="Aucune image de disponible" src="{{ asset('images/min_imageDefaut.jpg') }}">
                                 {% endif %}
+                            </div>
                                 <div class="bloc-text">
                                     <h3 class="titre">{{ completedEvent.getNom() }}</h3>
                                     <p class="hook">{{ completedEvent.getHook() }}</p>

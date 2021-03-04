@@ -53,15 +53,17 @@
                                     {{ eventToCome.getDateEvent()|date("d-m-Y") }}
                                  </div>
                                  {# ==== On affiche le nbre d'images ==== #}
-                                 {% if eventToCome.getImagesEvents[0].nom is defined %}
-                                    <div class="nbreImages" title="Nombre d'images: {{ eventToCome.getImagesEvents | length }}">
-                                       <i class="fas fa-file-image fa-lg"></i> {{ eventToCome.getImagesEvents | length }}
-                                    </div>
-                                 {% endif %}
+                                 <div class="nbreImages" title="Nombre d'images: {{ eventToCome.getImagesEvents | length }}">
+                                    <i class="fas fa-file-image fa-lg"></i> {{ eventToCome.getImagesEvents | length }}
+                                 </div>
                               </div>
-                              {# ========= On affiche la première image ========= #}
-                              <img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ eventToCome.getImagesEvents[0].Nom) }}">
-                              
+                              {% if eventToCome.getImagesEvents[0] is defined %}
+                                    {# On affiche l'image de l'event #}
+                                    <img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ eventToCome.getImagesEvents[0].Nom) }}">
+                                    {% else %}
+                                        {# On affiche l'image de remplacement par défaut #}
+                                        <img title="Aucune image de disponible" src="{{ asset('images/min_imageDefaut.jpg') }}">
+                                {% endif %}
                            </div>
                         </td>
                         <td>
