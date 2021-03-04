@@ -1,10 +1,12 @@
 .full-event {
+   position: relative;
    max-width: 1200px;
    width: 100%;
-   margin: 60px auto 60px auto;
-   background-color: black;
+   margin: 30px auto 60px auto;
+   background-color: transparent;
    /* border: solid rgb(208, 255, 0) 1px; */
    border-radius: 12px;
+   margin-top: -45px;
 }
 
 .full-event h2 {
@@ -12,23 +14,21 @@
 }
 
 .full-event .image {
-   position: relative;
    height: 70vh;
    background-color: #000000;
    border-radius: 12px 12px 0 0;
-   margin: 0;
-   padding: 0;
+   position: relative;
+   top: 54px;
+   /* border: red 1px solid; */
 }
 
 .full-event .image img {
    background-color: #000000;
-   position: relative;
    width: 100%;
    height: 100%;
    border-radius: 12px;
-   object-fit: contain;
-   margin: 0;
-   padding: 0;
+   object-fit: scale-down;
+   /* border: blue 1px solid; */
 }
 
 .full-event .info-bar {
@@ -37,7 +37,7 @@
    justify-content: space-between;
    /* border: solid rebeccapurple 1px; */
    color: rgb(136, 136, 136);
-   margin-bottom: 40px;
+   margin-bottom: 0px;
 }
 
 .full-event .date-wrapper {
@@ -55,7 +55,7 @@
    color: #000000;
    border-radius: 0 0 12px 12px;
    /* border: solid rgb(0, 68, 255) 1px; */
-   padding: 30px 4% 50px 4%;
+   padding: 10px 4% 50px 4%;
 }
 
 .full-event .hook {
@@ -66,9 +66,8 @@
 
 .boutonsNav {
    display: flex;
-   position: relative;
-   bottom: 160px;
    height: auto;
+   width: 100%;
    justify-content: space-between;
 }
 
@@ -98,10 +97,11 @@
 
 .blocBullets {
    display: flex;
-   position: relative;
    justify-content: center;
    flex-wrap: wrap;
-   bottom: 45px;
+   padding-top: 10px;
+   background-color: rgb(255, 255, 255);
+   /* border: rgb(255, 0, 0) solid 1px; */
 }
 
 .bullet {

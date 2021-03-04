@@ -41,7 +41,7 @@
                      <tr>
                         <td>
                            <div class="blocTitreImage">
-                              <div class="titreEtDate">
+                              <div class="titreEtInfos">
                                  {% if eventToCome.getAnnule() %}
                                     <div class="annule" title="Évènement annulé">
                                        {{ eventToCome.nom }}
@@ -52,13 +52,16 @@
                                  <div class="date">
                                     {{ eventToCome.getDateEvent()|date("d-m-Y") }}
                                  </div>
+                                 {# ==== On affiche le nbre d'images ==== #}
+                                 {% if eventToCome.getImagesEvents[0].nom is defined %}
+                                    <div class="nbreImages" title="Nombre d'images: {{ eventToCome.getImagesEvents | length }}">
+                                       <i class="fas fa-file-image fa-lg"></i> {{ eventToCome.getImagesEvents | length }}
+                                    </div>
+                                 {% endif %}
                               </div>
                               {# ========= On affiche la première image ========= #}
-                              {# Si la clé est définie, on affiche l'image #}
-                              {% if eventToCome.getImagesEvents[0].nom is defined %}
-                                 {# <img src="{{ asset('images/2020-03-08_flyer_affiche_stage_bachata.jpg') }}" alt=""> #}
-                                 <img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ eventToCome.getImagesEvents[0].Nom) }}">
-                              {% endif %}
+                              <img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ eventToCome.getImagesEvents[0].Nom) }}">
+                              
                            </div>
                         </td>
                         <td>
