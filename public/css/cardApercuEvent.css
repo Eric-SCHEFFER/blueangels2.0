@@ -47,6 +47,10 @@
    transform: scale(1.12);
 }
 
+.events .card-event:hover .bouton {
+   color: rgb(255, 255, 255);
+}
+
 .events .completed {
    color: rgb(177, 164, 90);
 }
