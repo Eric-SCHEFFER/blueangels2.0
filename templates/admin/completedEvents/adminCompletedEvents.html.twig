@@ -25,9 +25,21 @@
                </div>
             </div>
          {% endfor %}
-
-         <a class="boutonNew" href="{{ path('admin.events.nouveau') }}" title="Créer un nouvel évènement">Nouveau</a>
-
+         <div class ="table-admin-dashboard">
+            <div>
+               <a class="boutonNew"
+                  href="{{ path('admin.events_a_venir') }}"
+                  title="Gérer les évènements à venir">
+                  <i class="fas fa-wrench fa-lg"></i>À venir
+               </a>
+            </div>
+            <div>
+               <a class="boutonNew"
+                  href="{{ path('admin.events.nouveau') }}"
+                  title="Créer un nouvel évènement">Nouveau
+               </a>
+            </div>
+         </div>
          <table class="table_1">
             <thead>
                <tr>

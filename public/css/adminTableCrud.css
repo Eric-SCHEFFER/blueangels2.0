@@ -1,9 +1,19 @@
 /* ================== TABLE ===================== */
 
 .conteneur_table {
-   margin: auto;
+   margin: 60px auto 60px auto;
    max-width: 700px;
-   margin-bottom: 60px;
+}
+
+.table-admin-dashboard {
+   display: flex;
+   justify-content: space-between;
+}
+
+.table-admin-dashboard i {
+   display: inline-block;
+   position: relative;
+   margin-right: 8px;
 }
 
 .table_1 {
