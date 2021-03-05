@@ -10,12 +10,6 @@
    justify-content: space-between;
 }
 
-.table-admin-dashboard i {
-   display: inline-block;
-   position: relative;
-   margin-right: 8px;
-}
-
 .table_1 {
    width: 99%;
    background-color: #313131d2;
@@ -131,6 +125,8 @@
    font-weight: bold;
    text-shadow: 2px 2px 3px rgb(0, 0, 0);
 }
+
+
 
 /* ============================ */
 

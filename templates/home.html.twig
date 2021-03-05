@@ -127,10 +127,16 @@
 
         <div class="boutonsPassesFuturs">
             {% if (countPasse > 0) and (countAVenir == 0) %}
-                <a class="bouton bt2" href="{{ path('completed_events') }}">Évènements passés</a>
+                <a class="bouton bt2 boutonFlecheGauche" href="{{ path('completed_events') }}">
+                    <i class="fas fa-arrow-left fa-lg flecheGauche"></i>
+                    Évènements passés
+                </a>
             {% endif %}
             {% if countAVenir > 3 %}
-                <a class="bouton bt2" href="{{ path('a_venir') }}">Tous les évènements à venir ({{ countAVenir  }})</a>
+                <a class="bouton bt2 boutonFlecheDroite" href="{{ path('a_venir') }}">
+                    Voir tout ({{ countAVenir  }})
+                    <i class="fas fa-arrow-right fa-lg flecheDroite"></i>
+                </a>
             {% endif %}
         </div>
     </section>
@@ -169,7 +175,10 @@
             {% endfor %}
         </div>
         <div class="boutonsPassesFuturs">
-            <a class="bouton" href="{{ path('articles') }}">Tous les articles</a>
+            <a class="bouton boutonFlecheDroite" href="{{ path('articles') }}">
+                Voir tout
+                <i class="fas fa-arrow-right fa-lg flecheDroite"></i>
+            </a>
         </div>
     </section>
 

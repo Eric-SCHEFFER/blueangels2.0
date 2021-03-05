@@ -2,6 +2,7 @@
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/adminTableCrud.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/messagesEtAlertes.css') }}">
+   <link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
 {% endblock %}
 
 
@@ -27,10 +28,11 @@
          {% endfor %}
          <div class ="table-admin-dashboard">
             <div>
-               <a class="boutonNew"
+               <a class="boutonNew boutonFlecheGauche"
                   href="{{ path('admin.events.passes') }}"
                   title="Gérer les évènements passés">
-                  <i class="fas fa-wrench fa-lg"></i>Passés
+                  <i class="fas fa-arrow-left fa-lg flecheGauche"></i>
+                  Passés
                </a>
             </div>
             <div>
