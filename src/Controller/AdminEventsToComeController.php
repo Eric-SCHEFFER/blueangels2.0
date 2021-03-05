@@ -35,7 +35,7 @@ class AdminEventsToComeController extends AbstractController
         $events = $this->eventsRepository->findAllEventsToCome($today);
         // On récupère le nbre total d'events futurs
         $countTotalEventsToCome = $this->eventsRepository->countTotalEventsToCome($today);
-        return $this->render('admin/events/adminEventsToCome.html.twig', [
+        return $this->render('admin/eventsToCome/adminEventsToCome.html.twig', [
             'eventsToCome' => $events,
             'today' => $today,
             'countTotalEventsToCome' => $countTotalEventsToCome,
@@ -45,7 +45,7 @@ class AdminEventsToComeController extends AbstractController
 
     // ======== CRÉER UN ÉVÈNEMENT ========
     /**
-     * @Route("/admin/events/nouveau", name="admin.events.avenir.nouveau")
+     * @Route("/admin/events/nouveau", name="admin.events.nouveau")
      */
     public function new(Request $request)
     {
@@ -80,7 +80,7 @@ class AdminEventsToComeController extends AbstractController
             $this->addFlash('succes', 'Évènement créé avec succès');
             return $this->redirectToRoute('admin.events_a_venir');
         }
-        return $this->render('admin/events/nouveau.html.twig', [
+        return $this->render('admin/eventsToCome/nouveau.html.twig', [
             'form' => $form->createView()
         ]);
     }
@@ -124,7 +124,7 @@ class AdminEventsToComeController extends AbstractController
             $this->addFlash('succes', '"' . $event->getNom() . '"' . ' modifié avec succès');
             return $this->redirectToRoute('admin.events_a_venir');
         }
-        return $this->render('admin/events/edit.html.twig', [
+        return $this->render('admin/eventsToCome/edit.html.twig', [
             'event' => $event,
             'form' => $form->createView()
         ]);
@@ -132,7 +132,7 @@ class AdminEventsToComeController extends AbstractController
 
     // ======== SUPPRIMER UN ÉVÈNEMENT ET SES IMAGES ========
     /**
-     * @Route("/admin/events/edit/{id}", name="admin.event.avenir.delete", methods={"DELETE"})
+     * @Route("/admin/events/edit/{id}", name="admin.event.delete", methods={"DELETE"})
      * @param Events $events
      * @return \Symfony\Component\HttpFoundation\Response
      */

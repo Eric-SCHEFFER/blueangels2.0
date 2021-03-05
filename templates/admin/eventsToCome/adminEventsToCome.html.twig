@@ -26,7 +26,7 @@
             </div>
          {% endfor %}
 
-         <a class="boutonNew" href="{{ path('admin.events.avenir.nouveau') }}" title="Créer un nouvel évènement">Nouveau</a>
+         <a class="boutonNew" href="{{ path('admin.events.nouveau') }}" title="Créer un nouvel évènement">Nouveau</a>
 
          <table class="table_1">
             <thead>
@@ -70,7 +70,7 @@
                            <a class="iconeEditer" href="{{ path('admin.events.avenir.edit', {id: eventToCome.id}) }}" title="Éditer"></a>
                            
                            {# formulaire avec champ caché (passer la valeur delete) pour supprimmer un évènement #}
-                           <form class="deleteForm" method="post" action="{{ path('admin.event.avenir.delete', {id: eventToCome.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ eventToCome.nom }} ?')">
+                           <form class="deleteForm" method="post" action="{{ path('admin.event.delete', {id: eventToCome.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ eventToCome.nom }} ?')">
                               <input type="hidden" name="_method" value="DELETE"/>
                               {# On créé un token #}
                               <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ eventToCome.id) }}"/>
