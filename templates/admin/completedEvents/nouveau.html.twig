@@ -1,0 +1,16 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}{% endblock %}
+
+
+{% block title %}
+   {{ SiteName }}:
+   Nouvel évènement
+{% endblock %}
+
+{% block body %}
+   <div class="wrapper">
+      <h1>Nouvel évènement</h1>
+	   {{ include ('admin/completedEvents/_form.html.twig', {form: form, button: 'Créer'}) }}
+      
+   </div>   
+{% endblock %}

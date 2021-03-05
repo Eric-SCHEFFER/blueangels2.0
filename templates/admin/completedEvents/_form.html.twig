@@ -1,0 +1,55 @@
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/formulaireCrud.css') }}">
+{% endblock %}
+
+
+
+<div class="container-form">
+   {{ form_start(form, {'attr':{'class':'form1'}}) }}
+   <div class="ligne1">
+		<div class="champ">
+			{{ form_row(form.nom, {'attr':{'class':'titre'}}) }}
+		</div>
+		<div class="champ">
+			{{ form_row(form.hook, {'attr':{'class':'titre'}}) }}
+		</div>
+	</div>
+
+   <h3>Images</h3>
+	<div class="images">
+
+		<div class="ligne1">
+			<div class="champ">
+				{{ form_row(form.imageFile, {'attr':{'class':'image'}}) }}
+			</div>
+			{# On vérifie si la route est "admin.events.passes.edit", et on affiche les images #}
+			{% if app.request.attributes.get('_route') == 'admin.events.passes.edit' %}
+				<div class="blocVignettes">
+					{% for image in event.imagesEvents %}
+						<div class="vignette">
+							<img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ image.nom) }}" alt="image">
+							<a class="bouton petitBouton" href="{{ path('admin.events.image.delete', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+			{% endif %}
+		</div>
+	</div>
+
+
+   <div class="ligne2">
+		<div class="champ">
+			{{ form_row(form.date_event, {'attr':{'class':'date'}}) }}
+		</div>
+	</div>
+	<div class="champ">
+		{{ form_row(form.description, {'attr':{'class':'description'}}) }}
+	</div>
+   <div class="champ">
+      {{ form_row(form.annule) }}
+   </div>
+
+   <button>{{ button|default('Enregistrer') }}</button>
+	{{ form_end(form) }}
+</div>

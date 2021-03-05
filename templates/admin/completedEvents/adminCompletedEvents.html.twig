@@ -1,0 +1,87 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/adminTableCrud.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/messagesEtAlertes.css') }}">
+{% endblock %}
+
+
+{% block title %}
+   {{ SiteName }}:
+   Gérer les Évènements passés
+{% endblock %}
+
+{% block body %}
+   <div class="wrapper">
+
+      <h1>
+         Gérer les Évènements passés
+      </h1>
+
+      <div class="conteneur_table">
+         {% for message in app.flashes('succes') %}
+            <div class="conteneurMessageFlash">
+               <div class="messageFlash">
+                  {{ message }}
+               </div>
+            </div>
+         {% endfor %}
+
+         <a class="boutonNew" href="{{ path('admin.events.nouveau') }}" title="Créer un nouvel évènement">Nouveau</a>
+
+         <table class="table_1">
+            <thead>
+               <tr>
+                  <th>Titre</th>
+                  <th>Actions</th>
+               </tr>
+            </thead>
+            <tbody>
+               {% if completedEvents is not empty %}
+                  {% for completedEvent in completedEvents %}
+                     <tr>
+                        <td>
+                           <div class="blocTitreImage">
+                              <div class="titreEtInfos">
+                                 {% if completedEvent.getAnnule() %}
+                                    <div class="annule" title="Évènement annulé">
+                                       {{ completedEvent.nom }}
+                                    </div>
+                                    {% else %}
+                                       {{ completedEvent.nom }}
+                                 {% endif %}
+                                 <div class="date">
+                                    {{ completedEvent.getDateEvent()|date("d-m-Y") }}
+                                 </div>
+                                 {# ==== On affiche le nbre d'images ==== #}
+                                 <div class="nbreImages" title="Nombre d'images: {{ completedEvent.getImagesEvents | length }}">
+                                    <i class="fas fa-file-image fa-lg"></i> {{ completedEvent.getImagesEvents | length }}
+                                 </div>
+                              </div>
+                              {% if completedEvent.getImagesEvents[0] is defined %}
+                                    {# On affiche l'image de l'event #}
+                                    <img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ completedEvent.getImagesEvents[0].Nom) }}">
+                                    {% else %}
+                                        {# On affiche l'image de remplacement par défaut #}
+                                        <img title="Aucune image de disponible" src="{{ asset('images/min_imageDefaut.jpg') }}">
+                                {% endif %}
+                           </div>
+                        </td>
+                        <td>
+                           <a class="iconeEditer" href="{{ path('admin.events.passes.edit', {id: completedEvent.id}) }}" title="Éditer"></a>
+                           
+                           {# formulaire avec champ caché (passer la valeur delete) pour supprimmer un évènement #}
+                           <form class="deleteForm" method="post" action="{{ path('admin.event.delete', {id: completedEvent.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ completedEvent.nom }} ?')">
+                              <input type="hidden" name="_method" value="DELETE"/>
+                              {# On créé un token #}
+                              <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ completedEvent.id) }}"/>
+                              <button class="iconeSupprimer" title="Supprimer"></button>
+                           </form>
+                        </td>
+                     </tr>
+                  {% endfor %}
+               {% endif %}
+            </tbody>
+         </table>
+      </div>
+   </div>   
+{% endblock %}
