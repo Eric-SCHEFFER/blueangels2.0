@@ -40,6 +40,11 @@
    margin-bottom: 0;
 }
 
+.full-article .side-titre {
+   text-transform: uppercase;
+   font-weight: 600;
+}
+
 .full-article .date-wrapper {
    display: flex;
    flex-direction: column;
