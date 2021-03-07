@@ -36,37 +36,37 @@
                     </div>
                 {% endfor %}
             </div>
+            <div class="textes">
+            {% else %}
+                <div class="textes article-sans-image">
         {% endif %}
-        
-
-        <div class="textes">
-            <div class="info-bar">
-                <div class="date-wrapper">
-                    <div class="date">
-                        <i class="fas fa-calendar-alt"></i>
-                        {{ article.getCreatedAt | date("d-m-Y") }}
-                    </div>
-                </div>
-                {# On affiche la clé anglaise "gérer", quand on est connecté en admin #}
-                {% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
-                    <div class="gerer">
-                        <a
-                            href="{{ path('admin.articles.edit', {id: article.id}) }}"
-                            title="Éditer l'évènement">
-                                <i class="fas fa-edit fa-2x blue"></i>
-                        </a>
-                    </div>
-                {% endif %}
-                <div class="contact">
-                    <a class="bouton bt-small" href="">Contact</a>
+        <div class="info-bar">
+            <div class="date-wrapper">
+                <div class="date">
+                    <i class="fas fa-calendar-alt"></i>
+                    {{ article.getCreatedAt | date("d-m-Y") }}
                 </div>
             </div>
-            <h2 class="hook">
-                {{ article.hook }}
-            </h2>
-            <div>
-                {{ article.contenu }}
+            {# On affiche la clé anglaise "gérer", quand on est connecté en admin #}
+            {% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
+                <div class="gerer">
+                    <a
+                        href="{{ path('admin.articles.edit', {id: article.id}) }}"
+                        title="Éditer l'évènement">
+                            <i class="fas fa-edit fa-2x blue"></i>
+                    </a>
+                </div>
+            {% endif %}
+            <div class="contact">
+                <a class="bouton bt-small" href="">Contact</a>
             </div>
+        </div>
+        <h2 class="hook">
+            {{ article.hook }}
+        </h2>
+        <div>
+            {{ article.contenu }}
+        </div>
         </div>
     </section>
 </div>

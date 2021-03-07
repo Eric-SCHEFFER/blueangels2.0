@@ -1,3 +1,5 @@
+let bullet = document.getElementsByClassName('bullet');
+if (bullet.length > 0) {
    let slideIndex = 1;
    showSlides(slideIndex);
 
@@ -26,7 +28,7 @@
       slides[slideIndex - 1].style.display = "block";
       bullets[slideIndex - 1].className += " actif";
    }
-
+}
 
 
 

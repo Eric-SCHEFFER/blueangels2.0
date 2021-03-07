@@ -56,8 +56,17 @@
    border-radius: 0 0 12px 12px;
    /* border: solid rgb(0, 68, 255) 1px; */
    padding: 10px 4% 50px 4%;
+   min-height: 50vh;
 }
 
 .full-article .hook {
    margin-bottom: 30px;
+}
+
+/* Met un border radius et rajoute du padding en haut de la zone de textes  */
+.article-sans-image {
+   border-radius: 12px !important;
+   padding-top: 30px !important;
+   position: relative;
+   margin-top: 90px;
 }
