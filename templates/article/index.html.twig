@@ -47,6 +47,16 @@
                         {{ article.getCreatedAt | date("d-m-Y") }}
                     </div>
                 </div>
+                {# On affiche la clé anglaise "gérer", quand on est connecté en admin #}
+                {% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
+                    <div class="gerer">
+                        <a
+                            href="{{ path('admin.articles.edit', {id: article.id}) }}"
+                            title="Éditer l'évènement">
+                                <i class="fas fa-edit fa-2x blue"></i>
+                        </a>
+                    </div>
+                {% endif %}
                 <div class="contact">
                     <a class="bouton bt-small" href="">Contact</a>
                 </div>
