@@ -20,13 +20,6 @@
 
 {% if communiques|length > 0 %}
     <div class="communiques-panel">
-        <h3 class="titre">
-            {% if communiques|length == 1 %}
-                Communiqué
-                {% else %}
-                Communiqués
-            {% endif %}
-        </h3>
         <div class="cards-wrapper">
             {% for communique in communiques %}
                 <a class="card bg-white" href="{{ path('communique', {id: communique.id}) }}"
