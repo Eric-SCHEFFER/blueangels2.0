@@ -102,8 +102,8 @@
             <h2 class="hook">
                 {{ event.hook }}
             </h2>
-            <div>
-                {{ event.description }}
+            <div class="description">
+                {{ event.description | nl2br | auto_link }}
             </div>
         </div>
     </section>

@@ -65,6 +65,17 @@ h2 {
    min-height: 50vh;
 }
 
+.description a,
+.contenu a {
+   color: #0068d6;
+   font-weight: 600;
+}
+
+.description a:hover,
+.contenu a:hover {
+   color: #0054ad;
+}
+
 .hook {
    margin-bottom: 30px;
 }

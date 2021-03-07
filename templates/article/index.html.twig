@@ -65,8 +65,8 @@
         <h2 class="hook">
             {{ article.hook }}
         </h2>
-        <div>
-            {{ article.contenu }}
+        <div class="contenu">
+            {{ article.contenu | nl2br | auto_link }}
         </div>
         </div>
     </section>
