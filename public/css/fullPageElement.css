@@ -83,7 +83,7 @@ h2 {
 /* Met un border radius et rajoute du padding en haut de la zone de textes  */
 .element-sans-image {
    border-radius: 12px !important;
-   padding-top: 30px !important;
+   padding-top: 40px !important;
    position: relative;
-   margin-top: 90px;
+   margin-top: 100px;
 }
