@@ -1,0 +1,52 @@
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/formulaireCrud.css') }}">
+{% endblock %}
+
+
+
+<div class="container-form">
+   {{ form_start(form, {'attr':{'class':'form1'}}) }}
+   <div class="ligne1">
+		<div class="champ">
+			{{ form_row(form.titre, {'attr':{'class':'titre'}}) }}
+		</div>
+		<div class="champ">
+			{{ form_row(form.hook, {'attr':{'class':'titre'}}) }}
+		</div>
+	</div>
+
+   <h3>Images</h3>
+	<div class="images">
+
+		<div class="ligne1">
+			<div class="champ">
+				{{ form_row(form.imageFile, {'attr':{'class':'image'}}) }}
+			</div>
+			{# On vérifie si la route est "admin.articles.edit", et on affiche les images #}
+			{% if app.request.attributes.get('_route') == 'admin.articles.edit' %}
+				<div class="blocVignettes">
+					{% for image in article.imagesArticles %}
+						<div class="vignette">
+							<img src="{{ asset('uploads/imagesArticles/' ~ 'min_' ~ image.nom) }}" alt="image">
+							<a class="bouton petitBouton" href="{{ path('admin.articles.image.delete', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+			{% endif %}
+		</div>
+	</div>
+
+
+   <div class="ligne2">
+		<div class="champ">
+			{{ form_row(form.created_at, {'attr':{'class':'date'}}) }}
+		</div>
+	</div>
+	<div class="champ">
+		{{ form_row(form.contenu, {'attr':{'class':'description'}}) }}
+	</div>
+   
+   <button>{{ button|default('Enregistrer') }}</button>
+	{{ form_end(form) }}
+</div>

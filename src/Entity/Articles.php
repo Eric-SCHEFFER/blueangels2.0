@@ -40,13 +40,14 @@ class Articles
     private $contenu;
 
     /**
-     * @ORM\OneToMany(targetEntity=ImagesArticle::class, mappedBy="articles")
+     * @ORM\OneToMany(targetEntity=ImagesArticle::class, mappedBy="articles", orphanRemoval=true, cascade={"persist"})
      */
     private $imagesArticles;
 
     public function __construct()
     {
         $this->imagesArticles = new ArrayCollection();
+        $this->created_at = new \DateTime('now');
     }
 
     public function getId(): ?int

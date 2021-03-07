@@ -1,0 +1,20 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}{% endblock %}
+
+
+{% block title %}
+   {{ SiteName }}:
+   Editer un article
+{% endblock %}
+
+{% block body %}
+   <div class="wrapper">
+      <h1>Éditer un article</h1>
+	   {{ include ('admin/articles/_form.html.twig', {form: form, button: 'Enregistrer'}) }}
+
+      {% block javascript %}
+         <script src="{{ asset('js/images.js') }}"></script>
+      {% endblock %}
+      
+   </div>   
+{% endblock %}

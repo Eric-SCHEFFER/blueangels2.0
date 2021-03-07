@@ -5,6 +5,8 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     dossier_images_events: '%kernel.project_dir%/public/uploads/imagesEvents'
+    dossier_images_articles: '%kernel.project_dir%/public/uploads/imagesArticles'
+    
 services:
     # default configuration for services in *this* file
     _defaults:

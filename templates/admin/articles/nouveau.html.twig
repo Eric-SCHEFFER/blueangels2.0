@@ -1,0 +1,16 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}{% endblock %}
+
+
+{% block title %}
+   {{ SiteName }}:
+   Nouvel article
+{% endblock %}
+
+{% block body %}
+   <div class="wrapper">
+      <h1>Nouvel article</h1>
+	   {{ include ('admin/articles/_form.html.twig', {form: form, button: 'Créer'}) }}
+      
+   </div>   
+{% endblock %}

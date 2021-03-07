@@ -24,9 +24,9 @@
             <div class="bloc-cards">
                 {% for article in articles %}
                     <a class="card-article" href="{{ path('article', {id: article.id}) }}">
-                        {% if article.getImagesArticles()[0].getNom() is not empty %}
+                        {% if article.getImagesArticles[0].getNom() is defined %}
                             <div class="image">
-                                <img src="{{ asset('images/8.jpg') }}" alt="">
+                                <img src="{{ asset('uploads/imagesArticles/' ~ 'min_' ~ article.getImagesArticles[0].Nom) }}" alt="">
                             </div>
                         {% endif %}
                         <div class="bloc-text">
