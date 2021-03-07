@@ -1,6 +1,6 @@
 {% extends 'components/base.html.twig' %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/fullArticle.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fullPageElement.css') }}">
     <link rel="stylesheet" href="{{ asset('css/carousel.css') }}">
     <link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
     
@@ -14,7 +14,7 @@
 
 <div class="wrapper">
     <h1>{{ article.titre }}</h1>
-    <section class="full-article">
+    <section class="full-element">
         {% if not article.getImagesArticles is empty %}
             {# On affiche les images dispo dans le tableau #}
             {% for image in article.getImagesArticles %}
@@ -38,7 +38,7 @@
             </div>
             <div class="textes">
             {% else %}
-                <div class="textes article-sans-image">
+                <div class="textes element-sans-image">
         {% endif %}
         <div class="info-bar">
             <div class="date-wrapper">

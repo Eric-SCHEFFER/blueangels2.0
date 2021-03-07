@@ -1,6 +1,6 @@
 {% extends 'components/base.html.twig' %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/fullEvent.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fullPageElement.css') }}">
     <link rel="stylesheet" href="{{ asset('css/carousel.css') }}">
     <link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
     
@@ -14,7 +14,7 @@
 
 <div class="wrapper">
     <h1>{{ event.nom }}</h1>
-    <section class="full-event">
+    <section class="full-element">
         
         {% if event.getImagesEvents is empty %}
             {# On affiche l'image de remplacement par défaut #}
