@@ -140,7 +140,7 @@
             Chaque article est cliquable, et renvoi vers la page de l'article
             On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
         #}
-        <h1>Derniers articles</h1>
+        <h1>Articles</h1>
         <div class="bloc-cards">
             {% for article in articles %}
                 <a class="card-article" href="{{ path('article', {id: article.id}) }}">
