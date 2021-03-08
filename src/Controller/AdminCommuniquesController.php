@@ -28,7 +28,7 @@ class AdminCommuniquesController extends AbstractController
     public function index(): Response
     {
         // On récupère tous les communiques
-        $communiques = $this->communiqueRepository->findAll();
+        $communiques = $this->communiqueRepository->findBy([], ['created_at' => 'DESC']);
         return $this->render('admin/communiques/adminCommuniques.html.twig', [
             'communiques' => $communiques,
         ]);
