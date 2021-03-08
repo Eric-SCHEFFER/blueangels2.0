@@ -47,6 +47,10 @@
                     <i class="fas fa-calendar-alt"></i>
                     {{ article.getCreatedAt | date("d-m-Y") }}
                 </div>
+                <div class="time">
+                    <i class="fas fa-clock"></i>
+                    {{ article.getCreatedAt | date("H:i") }}
+                </div>
             </div>
             {# On affiche la clé anglaise "gérer", quand on est connecté en admin #}
             {% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}

@@ -1,0 +1,75 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/adminTableCrud.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/messagesEtAlertes.css') }}">
+   <link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+{% endblock %}
+
+
+{% block title %}
+   {{ SiteName }}:
+   Gérer les communiqués
+{% endblock %}
+
+{% block body %}
+   <div class="wrapper">
+
+      <h1>
+         Gérer les communiqués
+      </h1>
+
+      <div class="conteneur_table">
+         {% for message in app.flashes('succes') %}
+            <div class="conteneurMessageFlash">
+               <div class="messageFlash">
+                  {{ message }}
+               </div>
+            </div>
+         {% endfor %}
+         <div class ="table-admin-dashboard">
+            <div>
+               <a class="boutonNew"
+                  href="{{ path('admin.communiques.nouveau') }}"
+                  title="Créer un nouveau communiqué">Nouveau
+               </a>
+            </div>
+         </div>
+         <table class="table_1">
+            <thead>
+               <tr>
+                  <th>Titre</th>
+                  <th>Actions</th>
+               </tr>
+            </thead>
+            <tbody>
+               {% if communiques is not empty %}
+                  {% for communique in communiques %}
+                     <tr>
+                        <td>
+                           <div class="blocTitreImage">
+                              <div class="titreEtInfos">
+                                 {{ communique.titre }}
+                                 <div class="date">
+                                    {{ communique.getCreatedAt()|date("d-m-Y") }}
+                                 </div>
+                           </div>
+                        </td>
+                        <td>
+                           <a class="iconeEditer" href="{{ path('admin.communiques.edit', {id: communique.id}) }}" title="Éditer"></a>
+                           
+                           {# formulaire avec champ caché (passer la valeur delete) pour supprimmer un communiqué #}
+                           <form class="deleteForm" method="post" action="{{ path('admin.communique.delete', {id: communique.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ communique.titre }} ?')">
+                              <input type="hidden" name="_method" value="DELETE"/>
+                              {# On créé un token #}
+                              <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ communique.id) }}"/>
+                              <button class="iconeSupprimer" title="Supprimer"></button>
+                           </form>
+                        </td>
+                     </tr>
+                  {% endfor %}
+               {% endif %}
+            </tbody>
+         </table>
+      </div>
+   </div>   
+{% endblock %}

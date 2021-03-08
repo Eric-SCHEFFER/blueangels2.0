@@ -17,11 +17,26 @@
         <div class="textes element-sans-image">
             <div class="info-bar">
                 <div class="date-wrapper">
+                    <div class="side-titre">Communiqué</div>
                     <div class="date">
                         <i class="fas fa-calendar-alt"></i>
                         {{ communique.getCreatedAt | date("d-m-Y") }}
                     </div>
+                    <div class="time">
+                        <i class="fas fa-clock"></i>
+                        {{ communique.getCreatedAt | date("H:i") }}
+                    </div>
                 </div>
+                {# On affiche la clé anglaise "gérer", quand on est connecté en admin #}
+                {% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
+                <div class="gerer">
+                    <a
+                        href="{{ path('admin.communiques.edit', {id: communique.id}) }}"
+                        title="Éditer le communiqué">
+                            <i class="fas fa-edit fa-2x blue"></i>
+                    </a>
+                </div>
+                {% endif %}
                 <div class="contact">
                     <a class="bouton bt-small" href="">Contact</a>
                 </div>

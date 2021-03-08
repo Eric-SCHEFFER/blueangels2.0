@@ -37,6 +37,12 @@ class Communique
      */
     private $contenu;
 
+    public function __construct()
+    {
+        $this->created_at = new \DateTime('now');
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;

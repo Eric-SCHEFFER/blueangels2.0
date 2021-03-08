@@ -1,0 +1,15 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}{% endblock %}
+
+
+{% block title %}
+   {{ SiteName }}:
+   Nouveau communiqué
+{% endblock %}
+
+{% block body %}
+   <div class="wrapper">
+      <h1>Nouveau communiqué</h1>
+	   {{ include ('admin/communiques/_form.html.twig', {form: form, button: 'Créer'}) }}
+   </div>   
+{% endblock %}

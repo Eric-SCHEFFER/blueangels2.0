@@ -1,0 +1,15 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}{% endblock %}
+
+
+{% block title %}
+   {{ SiteName }}:
+   Editer un communiqué
+{% endblock %}
+
+{% block body %}
+   <div class="wrapper">
+      <h1>Éditer un communiqué</h1>
+	   {{ include ('admin/communiques/_form.html.twig', {form: form, button: 'Enregistrer'}) }}
+   </div>   
+{% endblock %}
