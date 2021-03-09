@@ -64,6 +64,18 @@
    color: rgb(165, 165, 165);
 }
 
+.table-icones-infos {
+   display: flex;
+}
+
+.articles-epingle-on {
+   color: #ffae00;
+}
+
+.articles-epingle-on > i {
+   padding-left: 6px;
+}
+
 /* ========= FORMULAIRE COMPORTANT UN CHAMP INPUT CACHÉ DE SUPPRESSION D'UN ÉLÉMENT ======== */
 
 .deleteForm {

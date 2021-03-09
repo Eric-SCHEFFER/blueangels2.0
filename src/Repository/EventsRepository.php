@@ -26,7 +26,7 @@ class EventsRepository extends ServiceEntityRepository
         $query = $this->createQueryBuilder('e')
             ->select('e')
             ->where('e.date_event >= :date')
-            ->setParameter('date', $date->format('Y-m-d')) // Ne compare que l'année, mois, jour
+            ->setParameter('date', $date->format('Y-m-d')) // Ne compare que l'année, mois, jour pour que le jour de l'event soit valide jusqu'à 23:59:59
             ->select('count(e.id)')
             ->getQuery()
             ->getResult();

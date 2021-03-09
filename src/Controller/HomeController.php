@@ -32,7 +32,7 @@ class HomeController extends AbstractController
         $countTotalEventsToCome = $this->eventsRepository->countTotalEventsToCome($today);
         // On récupère le nbre total d'events passés
         $countTotalCompletedEvents = $this->eventsRepository->countTotalCompletedEvents($today);
-        // On récupère en tout 3 articles, dont en priorité des épinglés s'il y en a
+        // On récupère en tout 3 articles, dont en premier, les épinglés s'il y en a
         $articles = $this->getArticles();
 
         return $this->render('home.html.twig', [
@@ -47,13 +47,15 @@ class HomeController extends AbstractController
 
 
     /**
-     * S'il y a moins de 3 articles pinned trouvés, on complète avec des articles non pinned
+     * On récupère 3 articles, dont en priorité des épinglés s'il y en a.
      */
     private function getArticles()
     {
+        // Articles épinglés
         $pinnedArticles = $this->articlesRepository->findPinnedArticles();
         $nonPinnedArticles = [];
         if (count($pinnedArticles) < 3) {
+            // On complète avec des articles non-épinglés
             $nonPinnedArticles = $this->articlesRepository->findArticles(3 - count($pinnedArticles));
         }
         // On fusionne les deux tableaux $pinnedArticles et $nonPinnedArticles dans $articles.

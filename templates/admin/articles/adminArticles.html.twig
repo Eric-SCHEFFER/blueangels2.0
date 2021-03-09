@@ -52,9 +52,16 @@
                                  <div class="date">
                                     {{ article.getCreatedAt()|date("d-m-Y") }}
                                  </div>
-                                 {# ==== On affiche le nbre d'images ==== #}
-                                 <div class="nbreImages" title="Nombre d'images: {{ article.getImagesArticles | length }}">
-                                    <i class="fas fa-file-image fa-lg"></i> {{ article.getImagesArticles | length }}
+                                 <div class="table-icones-infos">
+                                    {# ==== On affiche le nbre d'images ==== #}
+                                    <div class="nbreImages" title="Nombre d'images: {{ article.getImagesArticles | length }}">
+                                       <i class="fas fa-file-image fa-lg"></i> {{ article.getImagesArticles | length }}
+                                    </div>
+                                    {% if article.epingle %}
+                                    <div class="articles-epingle-on">
+                                        <i class="fas fa-thumbtack orangered"></i>
+                                    </div>
+                                    {% endif %} 
                                  </div>
                               </div>
                               {% if article.getImagesArticles[0] is defined %}

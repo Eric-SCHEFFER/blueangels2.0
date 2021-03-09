@@ -21,7 +21,7 @@
 
     <section class="articles">
         {#
-            On affiche 3 articles, dont en priorité des épinglés s'il y en a
+            On affiche 3 articles, dont en priorité des épinglés s'il y en a.
             Chaque article est cliquable, et renvoi vers la page de l'article
             On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
         #}
@@ -53,7 +53,7 @@
                             {% endif %}
                             {% if article.epingle %}
                                 <div class="articles-epingle-on">
-                                    <i class="fas fa-thumbtack"></i>
+                                    <i class="fas fa-thumbtack orangered"></i>
                                 </div>
                             {% endif %}
                         </div>
@@ -79,11 +79,12 @@
 
     <section class="events" id="events">
         
-        <h1>Évènements à venir:
-            {% if countAVenir == 0 %}
-                aucun
+        
+            {% if countAVenir > 0 %}
+                <h1>Évènements à venir</h1>
+                {% else %}
+                <h1>Aucun évènement à venir</h1>
             {% endif %}
-        </h1>
 
         {# Provisoire, pour tester les dates #}
         <p>Nous sommes le {{ today|date("d-m-Y H:i:s") }}</p>

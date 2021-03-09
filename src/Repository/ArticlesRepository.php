@@ -53,6 +53,38 @@ class ArticlesRepository extends ServiceEntityRepository
     }
 
 
+     // On recupère tous les articles epinglés
+     public function findAllPinnedArticles()
+     {
+         $query = $this->createQueryBuilder('a')
+             ->select('a')
+             ->andwhere('a.epingle = :val') 
+             ->setParameter('val', true)
+             ->orderBy('a.created_at', 'DESC')
+             ->getQuery()
+             ->getResult();
+         return $query;
+     }
+ 
+ 
+     /**
+      * On récupère tous les articles non-epinglés
+      */
+     public function findAllArticles()
+     {
+         $query = $this->createQueryBuilder('a')
+             ->select('a')
+             ->andwhere('a.epingle = :val') 
+             ->setParameter('val', false)
+             ->orderBy('a.created_at', 'DESC')
+             ->getQuery()
+             ->getResult();
+         return $query;
+     }
+
+
+
+
 
     // /**
     //  * @return Articles[] Returns an array of Articles objects
