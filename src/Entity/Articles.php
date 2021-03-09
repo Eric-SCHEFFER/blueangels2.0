@@ -44,6 +44,16 @@ class Articles
      */
     private $imagesArticles;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=CategoriesArticle::class, inversedBy="articles")
+     */
+    private $categories_article;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $epingle;
+
     public function __construct()
     {
         $this->imagesArticles = new ArrayCollection();
@@ -129,6 +139,30 @@ class Articles
                 $imagesArticle->setArticles(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCategoriesArticle(): ?CategoriesArticle
+    {
+        return $this->categories_article;
+    }
+
+    public function setCategoriesArticle(?CategoriesArticle $categories_article): self
+    {
+        $this->categories_article = $categories_article;
+
+        return $this;
+    }
+
+    public function getEpingle(): ?bool
+    {
+        return $this->epingle;
+    }
+
+    public function setEpingle(?bool $epingle): self
+    {
+        $this->epingle = $epingle;
 
         return $this;
     }
