@@ -47,10 +47,11 @@
                                         <i class="fas fa-file-image"></i> {{ article.ImagesArticles | length }}
                                     </div>
                                 {% endif %}
-                                {# TODO: Afficher sous condition que le champ epinglé soit sur true #}
-                                <div class="articles-epingle-on">
-                                    <i class="fas fa-thumbtack"></i>
-                                </div>
+                                {% if article.epingle %}
+                                    <div class="articles-epingle-on">
+                                        <i class="fas fa-thumbtack"></i>
+                                    </div>
+                                {% endif %}    
                             </div>
                         </div>
                     </a>

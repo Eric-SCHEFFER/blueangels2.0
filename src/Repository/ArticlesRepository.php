@@ -21,6 +21,39 @@ class ArticlesRepository extends ServiceEntityRepository
 
 
 
+    // On recupère au maximum 3 articles epinglés
+    public function findPinnedArticles()
+    {
+        $query = $this->createQueryBuilder('a')
+            ->select('a')
+            ->andwhere('a.epingle = :val') 
+            ->setParameter('val', true)
+            ->orderBy('a.created_at', 'DESC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
+        return $query;
+    }
+
+
+    /**
+     * On récupère "$combien" d'articles non pinned
+     */
+    public function findArticles($combien)
+    {
+        $query = $this->createQueryBuilder('a')
+            ->select('a')
+            ->andwhere('a.epingle = :val') 
+            ->setParameter('val', false)
+            ->orderBy('a.created_at', 'DESC')
+            ->setMaxResults($combien)
+            ->getQuery()
+            ->getResult();
+        return $query;
+    }
+
+
+
     // /**
     //  * @return Articles[] Returns an array of Articles objects
     //  */

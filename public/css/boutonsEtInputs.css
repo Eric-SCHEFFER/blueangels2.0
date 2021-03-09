@@ -62,7 +62,7 @@ margin: 10px;
    border-radius: 50%;
 }
 
-.boutonsPassesFuturs {
+.boutonsVoir {
    display: flex;
    justify-content: center;
    flex-wrap: wrap;
