@@ -41,8 +41,7 @@ class HomeController extends AbstractController
             'today' => $today,
             'countTotalEventsToCome' => $countTotalEventsToCome,
             'countTotalCompletedEvents' => $countTotalCompletedEvents,
-            'pinnedArticles' => $articles[0],
-            'nonPinnedArticles' => $articles[1],
+            'articles' => $articles,
         ]);
     }
 
@@ -57,29 +56,9 @@ class HomeController extends AbstractController
         if (count($pinnedArticles) < 3) {
             $nonPinnedArticles = $this->articlesRepository->findArticles(3 - count($pinnedArticles));
         }
-        return [
-            $pinnedArticles,
-            $nonPinnedArticles,
-        ];
+        // On fusionne les deux tableaux $pinnedArticles et $nonPinnedArticles dans $articles.
+        $articles = array_merge($pinnedArticles, $nonPinnedArticles);
+        return
+            $articles;
     }
-
-
-
-
-    // On recupère jusqu'à 3 events futurs
-    // $countEventsToCome = nombre d'évènements récupérés
-    // S'il y a moins de 3 events futurs (Si $countEventsToCome<3), on récupère aussi 3-$countEventsToCome évènements passés
-    // private function getEvents($today)
-    // {
-    //     $eventsToCome = $this->eventsRepository->findEventsToCome($today);
-    //     $completedEvents = [];
-    //     $countEventsToCome = count($eventsToCome);
-    //     if ($countEventsToCome < 3) {
-    //         $completedEvents = $this->eventsRepository->findCompletedEvents($today, 3 - $countEventsToCome);
-    //     }
-    //     return [
-    //         $eventsToCome,
-    //         $completedEvents,
-    //     ];
-    // }
 }

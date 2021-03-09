@@ -26,17 +26,16 @@
             On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
         #}
         <div class="bloc-cards">
-            {# On affiche les articles épinglés #}
-            {% for pinnedArticle in pinnedArticles %}
-                <a class="card-article" href="{{ path('article', {id: pinnedArticle.id}) }}">
-                    {% if pinnedArticle.getImagesArticles[0].getNom() is defined %}
+            {% for article in articles %}
+                <a class="card-article" href="{{ path('article', {id: article.id}) }}">
+                    {% if article.getImagesArticles[0].getNom() is defined %}
                         <div class="image">
-                            <img src="{{ asset('uploads/imagesArticles/' ~ 'min_' ~ pinnedArticle.getImagesArticles[0].Nom) }}" alt="">
+                            <img src="{{ asset('uploads/imagesArticles/' ~ 'min_' ~ article.getImagesArticles[0].Nom) }}" alt="">
                         </div>
                     {% endif %}
                     <div class="bloc-text">
-                        <h3 class="titre">{{ pinnedArticle.getTitre() }}</h3>
-                        <div class="hook">{{ pinnedArticle.getHook() }}</div>
+                        <h3 class="titre">{{ article.getTitre() }}</h3>
+                        <div class="hook">{{ article.getHook() }}</div>
                         <div class="center">
                             <div class="bouton bt-medium">
                                 Voir
@@ -45,50 +44,14 @@
                         <div class="infos">
                             <div class="articles-date">
                                 <i class="fas fa-calendar-alt"></i>
-                                {{ pinnedArticle.getCreatedAt()|date("d-m-Y") }}
+                                {{ article.getCreatedAt()|date("d-m-Y") }}
                             </div>
-                            {% if pinnedArticle.ImagesArticles | length > 1 %}
+                            {% if article.ImagesArticles | length > 1 %}
                                 <div class="articles-nbr-images">
-                                    <i class="fas fa-file-image"></i> {{ pinnedArticle.ImagesArticles | length }}
+                                    <i class="fas fa-file-image"></i> {{ article.ImagesArticles | length }}
                                 </div>
                             {% endif %}
-                            {% if pinnedArticle.epingle %}
-                                <div class="articles-epingle-on">
-                                    <i class="fas fa-thumbtack"></i>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </a>
-            {% endfor %}
-
-            {# On affiche les articles non-épinglés #}
-            {% for nonPinnedArticle in nonPinnedArticles %}
-                <a class="card-article" href="{{ path('article', {id: nonPinnedArticle.id}) }}">
-                    {% if nonPinnedArticle.getImagesArticles[0].getNom() is defined %}
-                        <div class="image">
-                            <img src="{{ asset('uploads/imagesArticles/' ~ 'min_' ~ nonPinnedArticle.getImagesArticles[0].Nom) }}" alt="">
-                        </div>
-                    {% endif %}
-                    <div class="bloc-text">
-                        <h3 class="titre">{{ nonPinnedArticle.getTitre() }}</h3>
-                        <div class="hook">{{ nonPinnedArticle.getHook() }}</div>
-                        <div class="center">
-                            <div class="bouton bt-medium">
-                                Voir
-                            </div>
-                        </div>
-                        <div class="infos">
-                            <div class="articles-date">
-                                <i class="fas fa-calendar-alt"></i>
-                                {{ nonPinnedArticle.getCreatedAt()|date("d-m-Y") }}
-                            </div>
-                            {% if nonPinnedArticle.ImagesArticles | length > 1 %}
-                                <div class="articles-nbr-images">
-                                    <i class="fas fa-file-image"></i> {{ nonPinnedArticle.ImagesArticles | length }}
-                                </div>
-                            {% endif %}
-                            {% if nonPinnedArticle.epingle %}
+                            {% if article.epingle %}
                                 <div class="articles-epingle-on">
                                     <i class="fas fa-thumbtack"></i>
                                 </div>
@@ -101,7 +64,7 @@
 
         <div class="boutonsVoir">
             <a class="bouton boutonFlecheDroite" href="{{ path('articles') }}">
-                Voir tous les articles
+                Tous les articles
                 <i class="fas fa-arrow-right fa-lg flecheDroite"></i>
             </a>
         </div>
