@@ -50,7 +50,14 @@
                                     </div>
                                     {# Date, et mentions couleurs du nbr de jours avant l'event #}
                                     <div class="infos">
-                                        <i class="fas fa-calendar-alt"></i> {{ completedEvent.getDateEvent()|date("d-m-Y") }}
+                                        <div class="events-date">
+                                            <i class="fas fa-calendar-alt"></i> {{ completedEvent.getDateEvent()|date("d-m-Y") }}
+                                        </div>
+                                        {% if completedEvent.ImagesEvents | length > 1 %}
+                                            <div class="events-nbr-images">
+                                                <i class="fas fa-file-image"></i> {{ completedEvent.ImagesEvents | length }}
+                                            </div>
+                                        {% endif %}
                                         <span class="info-jour">Terminé</span>  
                                     </div>
                                 </div>

@@ -54,7 +54,14 @@
                                     </div>
                                     {# Date, et mentions couleurs du nbr de jours avant l'event #}
                                     <div class="infos">
-                                        <i class="fas fa-calendar-alt"></i> {{ eventToCome.getDateEvent()|date("d-m-Y") }}
+                                        <div class="events-date">
+                                            <i class="fas fa-calendar-alt"></i> {{ eventToCome.getDateEvent()|date("d-m-Y") }}
+                                        </div>
+                                        {% if eventToCome.ImagesEvents | length > 1 %}
+                                            <div class="events-nbr-images">
+                                                <i class="fas fa-file-image"></i> {{ eventToCome.ImagesEvents | length }}
+                                            </div>
+                                        {% endif %}
                                         {% for j in 0..7 %}
                                             {% if j == 0 %}
                                                 {% if eventToCome.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}

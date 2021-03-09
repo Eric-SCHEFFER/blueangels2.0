@@ -16,31 +16,58 @@
     </div>
 
 
-{# ====================== Communiqués =============================== #}
 
-{% if communiques|length > 0 %}
-    <div class="communiques-panel">
-        <div class="cards-wrapper">
-            {% for communique in communiques %}
-                <a class="card bg-white" href="{{ path('communique', {id: communique.id}) }}"
-                    title="{{ communique.getTitre() }}
-                        {{ communique.getHook() }}
-                        Mise à jour le {{ communique.getCreatedAt()|date("d-m-Y") }}">
-                    <div class="titre">
-                        {{ communique.getTitre() }}
-                    </div> 
-                    <div class="hook">
-                        {{ communique.getHook() }}
+{# ====================== Articles ======================== #}
+
+    <section class="articles">
+        {#
+            On affiche les 3 derniers articles par ordre de création.
+            Chaque article est cliquable, et renvoi vers la page de l'article
+            On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
+        #}
+        <div class="bloc-cards">
+            {% for article in articles %}
+                <a class="card-article" href="{{ path('article', {id: article.id}) }}">
+                    {% if article.getImagesArticles[0].getNom() is defined %}
+                        <div class="image">
+                            <img src="{{ asset('uploads/imagesArticles/' ~ 'min_' ~ article.getImagesArticles[0].Nom) }}" alt="">
+                        </div>
+                    {% endif %}
+                    <div class="bloc-text">
+                        <h3 class="titre">{{ article.getTitre() }}</h3>
+                        <div class="hook">{{ article.getHook() }}</div>
+                        <div class="center">
+                            <div class="bouton bt-medium">
+                                Voir
+                            </div>
+                        </div>
+                        <div class="infos">
+                            <div class="articles-date">
+                                <i class="fas fa-calendar-alt"></i>
+                                {{ article.getCreatedAt()|date("d-m-Y") }}
+                            </div>
+                            {% if article.ImagesArticles | length > 1 %}
+                                <div class="articles-nbr-images">
+                                    <i class="fas fa-file-image"></i> {{ article.ImagesArticles | length }}
+                                </div>
+                            {% endif %}
+                            {# TODO: Afficher sous condition que le champ epinglé soit sur true #}
+                            <div class="articles-epingle-on">
+                                <i class="fas fa-thumbtack"></i>
+                            </div>
+                        </div>
                     </div>
-                    <div class="date">
-                        <i class="fas fa-calendar-alt"></i>
-                        {{ communique.getCreatedAt()|date("d-m-Y") }}
-                    </div>
-                </a>    
+                </a>
             {% endfor %}
         </div>
-    </div>
-{% endif %} 
+        <div class="boutonsPassesFuturs">
+            <a class="bouton boutonFlecheDroite" href="{{ path('articles') }}">
+                Voir tous les articles
+                <i class="fas fa-arrow-right fa-lg flecheDroite"></i>
+            </a>
+        </div>
+    </section>
+
 
 
 {# ==================== Évènements à venir ============================= #}   
@@ -90,7 +117,14 @@
                                 </div>
                                 {# Date, et mentions couleurs du nbr de jours avant l'event #}
                                 <div class="infos">
-                                    <i class="fas fa-calendar-alt"></i> {{ eventToCome.getDateEvent()|date("d-m-Y") }}
+                                    <div class="events-date">
+                                        <i class="fas fa-calendar-alt"></i> {{ eventToCome.getDateEvent()|date("d-m-Y") }}
+                                    </div>
+                                    {% if eventToCome.ImagesEvents | length > 1 %}
+                                        <div class="events-nbr-images">
+                                            <i class="fas fa-file-image"></i> {{ eventToCome.ImagesEvents | length }}
+                                        </div>
+                                    {% endif %}
                                     {% for j in 0..7 %}
                                         {% if j == 0 %}
                                             {% if eventToCome.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
@@ -128,48 +162,6 @@
                     <i class="fas fa-arrow-right fa-lg flecheDroite"></i>
                 </a>
             {% endif %}
-        </div>
-    </section>
-
-
-{# ====================== Articles ======================== #}
-
-    <section class="articles">
-        {#
-            On affiche les 3 derniers articles par ordre de création.
-            Chaque article est cliquable, et renvoi vers la page de l'article
-            On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
-        #}
-        <h1>Articles</h1>
-        <div class="bloc-cards">
-            {% for article in articles %}
-                <a class="card-article" href="{{ path('article', {id: article.id}) }}">
-                    {% if article.getImagesArticles[0].getNom() is defined %}
-                        <div class="image">
-                            <img src="{{ asset('uploads/imagesArticles/' ~ 'min_' ~ article.getImagesArticles[0].Nom) }}" alt="">
-                        </div>
-                    {% endif %}
-                    <div class="bloc-text">
-                        <h3 class="titre">{{ article.getTitre() }}</h3>
-                        <div class="hook">{{ article.getHook() }}</div>
-                        <div class="center">
-                            <div class="bouton bt-inline-bloc">
-                                Voir
-                            </div>
-                        </div>
-                        <div class="infos">
-                            <i class="fas fa-calendar-alt"></i>
-                            {{ article.getCreatedAt()|date("d-m-Y") }}
-                        </div>
-                    </div>
-                </a>
-            {% endfor %}
-        </div>
-        <div class="boutonsPassesFuturs">
-            <a class="bouton boutonFlecheDroite" href="{{ path('articles') }}">
-                Voir tout
-                <i class="fas fa-arrow-right fa-lg flecheDroite"></i>
-            </a>
         </div>
     </section>
 </div>

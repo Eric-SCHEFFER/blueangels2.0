@@ -33,13 +33,24 @@
                             <h3 class="titre">{{ article.getTitre() }}</h3>
                             <div class="hook">{{ article.getHook() }}</div>
                             <div class="center">
-                                <div class="bouton bt-inline-bloc">
+                                <div class="bouton bt-medium">
                                     Voir
                                 </div>
                             </div>
                             <div class="infos">
-                                <i class="fas fa-calendar-alt"></i>
-                                {{ article.getCreatedAt()|date("d-m-Y") }}
+                                <div class="articles-date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    {{ article.getCreatedAt()|date("d-m-Y") }}
+                                </div>
+                                {% if article.ImagesArticles | length > 1 %}
+                                    <div class="articles-nbr-images">
+                                        <i class="fas fa-file-image"></i> {{ article.ImagesArticles | length }}
+                                    </div>
+                                {% endif %}
+                                {# TODO: Afficher sous condition que le champ epinglé soit sur true #}
+                                <div class="articles-epingle-on">
+                                    <i class="fas fa-thumbtack"></i>
+                                </div>
                             </div>
                         </div>
                     </a>

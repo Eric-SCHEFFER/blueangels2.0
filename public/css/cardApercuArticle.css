@@ -9,7 +9,7 @@
    justify-content: left;
    min-width: 300px;
    width: 300px;
-   height: 120px;
+   height: 130px;
    padding: 0;
    margin: 30px;
    border: solid 1px rgb(255, 255, 255);
@@ -26,10 +26,10 @@
 }
 
 .articles .image {
-   min-width: 120px;
-   max-width: 120px;
-   min-height: 120px;
-   max-height: 120px;
+   min-width: 130px;
+   max-width: 130px;
+   min-height: 130px;
+   max-height: 130px;
    overflow: hidden;
    border-radius: 4px;
 }
@@ -54,15 +54,23 @@
 }
 
 .articles .infos {
+   display: flex;
+   justify-content: space-between;
    color: rgb(153, 153, 153);
    font-size: .8em;
-   position: absolute;
-   top: 98px;
+   position: relative;
+   top: 10px;
+   width: 100%;
 }
 
-.articles .infos i {
-   position: relative;
-   bottom: 1px;
+
+
+.articles-date {
+
+}
+
+.articles-epingle-on {
+   color: orangered;
 }
 
 .articles .hook {
