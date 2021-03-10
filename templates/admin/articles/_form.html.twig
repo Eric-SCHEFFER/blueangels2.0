@@ -46,7 +46,14 @@
 	<div class="champ">
 		{{ form_row(form.contenu, {'attr':{'class':'description'}}) }}
 	</div>
-   
+   <div class="ligne2">
+		<div class="champ">
+			{{ form_row(form.epingle) }}
+		</div>
+		<div class="champ">
+			{{ form_row(form.CategoriesArticle) }}
+		</div>
+	</div>
    <button>{{ button|default('Enregistrer') }}</button>
 	{{ form_end(form) }}
 </div>

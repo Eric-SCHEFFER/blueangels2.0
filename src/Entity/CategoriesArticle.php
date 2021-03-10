@@ -80,4 +80,15 @@ class CategoriesArticle
 
         return $this;
     }
+
+    // Pour éviter l'erreur "object of class could not be converted to string"
+    // depuis ArticleType, avec la liste de choix des catégories.
+    /**
+     * toString
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getNom();
+    }
 }

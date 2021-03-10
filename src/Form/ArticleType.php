@@ -62,7 +62,9 @@ class ArticleType extends AbstractType
 
             ->add('CategoriesArticle', EntityType::class, [
                 'class' => CategoriesArticle::class,
-
+                'label' => 'Catégorie',
+                'required' => false,
+                'placeholder' => 'choisir une option',
             ])
             
         ;
