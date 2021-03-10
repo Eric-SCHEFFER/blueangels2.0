@@ -46,9 +46,19 @@
         </div>
 
         <div class="textes">
+
+
+
             <div class="info-bar">
-                <div class="date-wrapper">
-                    <div class="side-titre">Évènement</div>
+                <div class="info-bar-left">
+                    <div class="type-vue-and-status">
+                        Évènement
+                    </div>
+                    <div class="categorie">
+                        {% if article.categoriesArticle.nom is defined %}
+                            {{ article.categoriesArticle.nom }}
+                        {% endif %}
+                    </div>
                     <div class="date">
                         <i class="fas fa-calendar-alt"></i>
                         {{ event.getDateEvent | date("d-m-Y") }}
@@ -57,7 +67,6 @@
                         <i class="fas fa-clock"></i>
                         {{ event.getDateEvent | date("H:i") }}
                     </div>
-
                     {% if event.getDateEvent()|date("Y-m-d") < today|date("Y-m-d") %}
                         <div>
                             Évènement terminé
@@ -85,6 +94,7 @@
                         {% endif %}    
                     {% endfor %}
                 </div>
+
                 {# On affiche la clé anglaise "gérer", quand on est connecté en admin #}
                 {% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
                     <div class="gerer">
@@ -99,6 +109,10 @@
                     <a class="bouton bt-small" href="">Contact</a>
                 </div>
             </div>
+
+
+
+
             <h2 class="hook">
                 {{ event.hook }}
             </h2>

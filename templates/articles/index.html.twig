@@ -17,16 +17,12 @@
 
 		<section class="articles">
             {#
-                TODO: On affiche tous les articles, dont en priorité des épinglés s'il y en a.
+                On affiche tous les articles, dont en priorité des épinglés s'il y en a.
                 Chaque article est cliquable, et renvoi vers la page de l'article
                 On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
             #}
             <div class="bloc-cards">
                 {% for article in articles %}
-                {# {% if article.categoriesArticle.nom is defined %}
-                        {{ dump(article.categoriesArticle.nom) }}
-                {% endif %} #}
-                    
                     <a class="card-article" href="{{ path('article', {id: article.id}) }}">
                         {% if article.getImagesArticles[0].getNom() is defined %}
                             <div class="image">

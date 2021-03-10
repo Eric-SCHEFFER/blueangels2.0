@@ -40,15 +40,8 @@ h2 {
    margin-bottom: 0;
 }
 
-.side-titre {
-   text-transform: uppercase;
-   font-weight: 600;
-   margin-bottom: 10px;
-}
-
-.date-wrapper {
-   display: flex;
-   flex-direction: column;
+.info-bar-left {
+   font-size: .9em;
    line-height: 1.4em;
 }
 

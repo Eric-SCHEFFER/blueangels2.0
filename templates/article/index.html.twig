@@ -40,9 +40,24 @@
             {% else %}
                 <div class="textes element-sans-image">
         {% endif %}
+
+
+
         <div class="info-bar">
-            <div class="date-wrapper">
-                <div class="side-titre">Article</div>
+            <div class="info-bar-left">
+                <div class="type-vue-and-status">
+                    Article 
+                    {% if article.epingle %}
+                        <span class="articles-epingle-on">
+                            <i class="fas fa-thumbtack orangered"></i>
+                        </span>
+                    {% endif %}  
+                </div>
+                <div class="categorie">
+                    {% if article.categoriesArticle.nom is defined %}
+                        {{ article.categoriesArticle.nom }}
+                    {% endif %}
+                </div>
                 <div class="date">
                     <i class="fas fa-calendar-alt"></i>
                     {{ article.getCreatedAt | date("d-m-Y") }}
@@ -51,7 +66,7 @@
                     <i class="fas fa-clock"></i>
                     {{ article.getCreatedAt | date("H:i") }}
                 </div>
-            </div>
+            </div>        
             {# On affiche la clé anglaise "gérer", quand on est connecté en admin #}
             {% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
                 <div class="gerer">
@@ -66,13 +81,16 @@
                 <a class="bouton bt-small" href="">Contact</a>
             </div>
         </div>
+
+
+
         <h2 class="hook">
             {{ article.hook }}
         </h2>
         <div class="contenu">
             {{ article.contenu | nl2br | auto_link }}
         </div>
-        </div>
+    </div>
     </section>
 </div>
 {% block javascript %}
