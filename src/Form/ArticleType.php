@@ -47,6 +47,11 @@ class ArticleType extends AbstractType
 
             ->add('created_at')
             ->add('contenu')
+
+            ->add('epingle', CheckboxType::class, [
+                'required' => false,
+                'label' => 'Épingler'
+            ])
         ;
     }
 

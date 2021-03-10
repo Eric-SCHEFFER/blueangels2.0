@@ -66,9 +66,11 @@
                                  <div class="date">
                                     {{ completedEvent.getDateEvent()|date("d-m-Y") }}
                                  </div>
-                                 {# ==== On affiche le nbre d'images ==== #}
-                                 <div class="nbreImages" title="Nombre d'images: {{ completedEvent.getImagesEvents | length }}">
-                                    <i class="fas fa-file-image fa-lg"></i> {{ completedEvent.getImagesEvents | length }}
+                                 <div class="table-icones-infos">
+                                    {# ==== On affiche le nbre d'images ==== #}
+                                    <div class="nbreImages" title="Nombre d'images: {{ completedEvent.getImagesEvents | length }}">
+                                       <i class="fas fa-file-image fa-lg"></i> {{ completedEvent.getImagesEvents | length }}
+                                    </div>
                                  </div>
                               </div>
                               {% if completedEvent.getImagesEvents[0] is defined %}

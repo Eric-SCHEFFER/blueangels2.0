@@ -61,7 +61,13 @@
                                     <div class="articles-epingle-on">
                                         <i class="fas fa-thumbtack orangered"></i>
                                     </div>
-                                    {% endif %} 
+                                    {% endif %}
+                                    {% if article.categoriesArticle.nom is defined %}
+                                       <div class="categorie">
+                                          <i class="fas fa-folder-open"></i>
+                                          {{ article.categoriesArticle.nom }}
+                                       </div>
+                                    {% endif %}
                                  </div>
                               </div>
                               {% if article.getImagesArticles[0] is defined %}

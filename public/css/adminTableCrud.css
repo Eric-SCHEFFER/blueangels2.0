@@ -59,7 +59,7 @@
    line-height: 1.3em;
 }
 
-.date, .nbreImages {
+.date, .table-icones-infos {
    font-size: .8em;
    color: rgb(165, 165, 165);
 }
@@ -72,9 +72,12 @@
    color: #ffae00;
 }
 
-.articles-epingle-on > i {
-   padding-left: 6px;
+.articles-epingle-on > i,
+.categorie,
+.nbreImages {
+   padding: 0 8px 0 0;
 }
+
 
 /* ========= FORMULAIRE COMPORTANT UN CHAMP INPUT CACHÉ DE SUPPRESSION D'UN ÉLÉMENT ======== */
 

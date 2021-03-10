@@ -40,12 +40,10 @@
             {% else %}
                 <div class="textes element-sans-image">
         {% endif %}
-
-
-
         <div class="info-bar">
             <div class="info-bar-left">
                 <div class="type-vue-and-status">
+                    <i class="fas fa-info-circle"></i>
                     Article 
                     {% if article.epingle %}
                         <span class="articles-epingle-on">
@@ -55,6 +53,7 @@
                 </div>
                 <div class="categorie">
                     {% if article.categoriesArticle.nom is defined %}
+                        <i class="fas fa-folder-open"></i>
                         {{ article.categoriesArticle.nom }}
                     {% endif %}
                 </div>
@@ -81,9 +80,6 @@
                 <a class="bouton bt-small" href="">Contact</a>
             </div>
         </div>
-
-
-
         <h2 class="hook">
             {{ article.hook }}
         </h2>
