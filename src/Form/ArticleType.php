@@ -57,14 +57,14 @@ class ArticleType extends AbstractType
 
             ->add('epingle', CheckboxType::class, [
                 'required' => false,
-                'label' => 'Épingler'
+                'label' => 'Épingler en page d\'accueil'
             ])
 
             ->add('CategoriesArticle', EntityType::class, [
                 'class' => CategoriesArticle::class,
                 'label' => 'Catégorie',
                 'required' => false,
-                'placeholder' => 'choisir une option',
+                'placeholder' => 'Aucune catégorie choisie',
             ])
             
         ;
