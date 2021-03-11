@@ -35,9 +35,9 @@ class ArticlesController extends AbstractController
     private function getArticles()
     {
         // Articles épinglés
-        $pinnedArticles = $this->articlesRepository->findAllPinnedArticles();
+        $pinnedArticles = $this->articlesRepository->findAllPinnedActifsArticles();
         // Articles non-épinglés
-        $nonPinnedArticles = $this->articlesRepository->findAllArticles();
+        $nonPinnedArticles = $this->articlesRepository->findAllActifsArticles();
         // On fusionne les deux tableaux $pinnedArticles et $nonPinnedArticles dans $articles.
         $articles = array_merge($pinnedArticles, $nonPinnedArticles);
         return

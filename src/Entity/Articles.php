@@ -54,10 +54,16 @@ class Articles
      */
     private $epingle;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $actif;
+
     public function __construct()
     {
         $this->imagesArticles = new ArrayCollection();
         $this->created_at = new \DateTime('now');
+        $this->actif = true;
     }
 
     public function getId(): ?int
@@ -163,6 +169,18 @@ class Articles
     public function setEpingle(?bool $epingle): self
     {
         $this->epingle = $epingle;
+
+        return $this;
+    }
+
+    public function getActif(): ?bool
+    {
+        return $this->actif;
+    }
+
+    public function setActif(?bool $actif): self
+    {
+        $this->actif = $actif;
 
         return $this;
     }

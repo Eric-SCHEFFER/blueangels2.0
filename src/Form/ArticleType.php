@@ -17,6 +17,8 @@ use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Form\ChoiceList\ChoiceList;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use App\Entity\CategoriesArticle;
 
 
@@ -27,7 +29,20 @@ class ArticleType extends AbstractType
     {
         $builder
             ->add('titre', TextType::class, [])
-            ->add('hook')
+
+            ->add('hook', TextType::class, [
+                'required' => true,
+                'label' => 'Phrase d\'accroche',
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min' => 3,
+                        'minMessage' => 'Minimum 3 caractères',
+                        'max' => 255,
+                        'maxMessage' => 'Maximum 255 caractères'
+                    ])
+                ]
+            ])
 
             // On ajoute le champ image dans le formulaire
             // Il n'est pas lié à la base de données (mapped à false)
@@ -52,7 +67,11 @@ class ArticleType extends AbstractType
                 ]
             ])
 
-            ->add('created_at')
+            ->add('created_at', DateTimeType::class, [
+                'label' => 'Date de mise à jour',
+                'required' => true
+            ])
+
             ->add('contenu')
 
             ->add('epingle', CheckboxType::class, [
@@ -67,14 +86,19 @@ class ArticleType extends AbstractType
                 'placeholder' => 'Aucune catégorie choisie',
             ])
             
-        ;
+            ->add('actif', CheckboxType::class, [
+                'required' => false,
+                'label' => 'Actif'
+            ]);
+            
+            
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => Articles::class,
-            
+
         ]);
     }
 }

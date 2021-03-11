@@ -52,11 +52,11 @@ class HomeController extends AbstractController
     private function getArticles()
     {
         // Articles épinglés
-        $pinnedArticles = $this->articlesRepository->findPinnedArticles();
+        $pinnedArticles = $this->articlesRepository->findPinnedActifsArticles();
         $nonPinnedArticles = [];
         if (count($pinnedArticles) < 3) {
             // On complète avec des articles non-épinglés
-            $nonPinnedArticles = $this->articlesRepository->findArticles(3 - count($pinnedArticles));
+            $nonPinnedArticles = $this->articlesRepository->findActifsArticles(3 - count($pinnedArticles));
         }
         // On fusionne les deux tableaux $pinnedArticles et $nonPinnedArticles dans $articles.
         $articles = array_merge($pinnedArticles, $nonPinnedArticles);

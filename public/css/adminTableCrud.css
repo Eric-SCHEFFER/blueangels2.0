@@ -68,11 +68,10 @@
    display: flex;
 }
 
-.articles-epingle-on {
-   color: #ffae00;
-}
 
 .articles-epingle-on > i,
+.articles-actif-off > i,
+.articles-actif-on > i,
 .categorie,
 .nbreImages {
    padding: 0 8px 0 0;
