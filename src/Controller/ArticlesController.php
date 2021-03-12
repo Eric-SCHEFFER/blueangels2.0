@@ -28,7 +28,6 @@ class ArticlesController extends AbstractController
         ]);
     }
 
-    // TODO: factoriser cette fonction qui est utilisée dans plusieurs controleurs, en la mettant dans un service.
      /**
      * On récupère les articles, dont en priorité des épinglés s'il y en a.
      */

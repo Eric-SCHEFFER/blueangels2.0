@@ -2,7 +2,6 @@
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/messagesEtAlertes.css') }}">
 
 {% endblock %}
 {% block title %}
@@ -16,13 +15,13 @@
         <h1>
             Administration
         </h1>
-        {% for message in app.flashes('succes') %}
+        {# {% for message in app.flashes('succes') %}
 		<div class="conteneurMessageFlash">
 			<div class="messageFlash">
 				{{ message }}
 			</div>
 		</div>
-	    {% endfor %}
+	    {% endfor %} #}
 
 		<section class = "admin">
             <div class="container0">
@@ -39,6 +38,10 @@
                         <li title="Gérer les articles">
                             <div class="titre">Articles</div>
                             <a class="boutonGo" href="{{ path('admin.articles') }}">Go</a>
+                        </li>
+                        <li title="Gérer les tarifs">
+                            <div class="titre">Tarifs</div>
+                            <a class="boutonGo" href="{{ path('admin.tarifs') }}">Go</a>
                         </li>
                     </ul>
                     <ul class="liste">

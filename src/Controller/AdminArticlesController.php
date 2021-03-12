@@ -10,6 +10,7 @@ use App\Entity\ImagesArticle;
 use App\Repository\ArticlesRepository;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\ArticleType;
+use Attribute;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -115,7 +116,11 @@ class AdminArticlesController extends AbstractController
             $this->em->persist($article);
             $this->em->flush();
             $this->addFlash('succes', '"' . $article->getTitre() . '"' . ' modifié avec succès');
-            return $this->redirectToRoute('admin.articles');
+            // return $this->redirectToRoute('admin.articles');
+
+            // TODO: Faire un retour vers la page de laquelle on vient, et sécuriser, en s'assurant que le referer vient bien de notre site.
+            // Est-ce que ça fonctionne en https ?
+            return $this->redirect($request->request->get('referer'));
         }
         return $this->render('admin/articles/edit.html.twig', [
             'article' => $article,

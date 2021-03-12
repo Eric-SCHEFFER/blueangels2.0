@@ -20,14 +20,19 @@ class TarifsController extends AbstractController
         $repoCat = $this->getDoctrine()->getRepository(CategoriesArticle::class);
         // On recherche dans CategoriesArticle, la catégorie "Tarifs".  
         $categorie = $repoCat->findOneBy(array('nom' => 'Tarifs'));
-        // On cherche l'id de l'article actif le plus récent dans cette catégorie
-        $id = $repoArticles->findOneBy(
+        // On cherche l'article actif le plus récent dans cette catégorie
+        $findArticle = $repoArticles->findOneBy(
             [
                 'categories_article' => $categorie,
                 'actif' => true,
             ],
             ['created_at' => "DESC"]
-        )->getId();
+        );
+        if (empty($findArticle)) {
+            // Erreur 404
+            throw $this->createNotFoundException('L\'article est introuvable');
+        }
+        $id = $findArticle->getId();
         $article = $repoArticles->find($id);
         $images = $imagesArticleRepository->findBy(['articles' => $article]);
         return $this->render('article/index.html.twig', [

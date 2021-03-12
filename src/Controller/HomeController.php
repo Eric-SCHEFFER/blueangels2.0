@@ -45,7 +45,6 @@ class HomeController extends AbstractController
         ]);
     }
 
-
     /**
      * On récupère 3 articles, dont en priorité des épinglés s'il y en a.
      */

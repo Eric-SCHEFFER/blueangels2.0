@@ -19,6 +19,7 @@ use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Form\ChoiceList\ChoiceList;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Doctrine\ORM\EntityRepository;
 use App\Entity\CategoriesArticle;
 
 
@@ -72,26 +73,37 @@ class ArticleType extends AbstractType
                 'required' => true
             ])
 
-            ->add('contenu')
+            ->add('contenu');
+
+        // ->add('CategoriesArticle', EntityType::class, [
+        //     'class' => CategoriesArticle::class,
+        //     'label' => 'Catégorie',
+        //     'required' => false,
+        //     'placeholder' => 'Aucune catégorie choisie',
+        // ])
+
+        // On utilise à la place de ci-dessus, l'option queryBuilder pour trier les choix par nom
+        $builder->add('CategoriesArticle', EntityType::class, [
+            'class' => CategoriesArticle::class,
+            'query_builder' => function (EntityRepository $er) {
+                return $er->createQueryBuilder('c')
+                    ->orderBy('c.nom', 'ASC');
+            },
+            'choice_label' => 'nom',
+            'placeholder' => 'Aucune catégorie choisie',
+            'label' => 'Catégorie',
+            'required' => false,
+        ])
 
             ->add('epingle', CheckboxType::class, [
                 'required' => false,
                 'label' => 'Épingler en page d\'accueil'
             ])
 
-            ->add('CategoriesArticle', EntityType::class, [
-                'class' => CategoriesArticle::class,
-                'label' => 'Catégorie',
-                'required' => false,
-                'placeholder' => 'Aucune catégorie choisie',
-            ])
-            
             ->add('actif', CheckboxType::class, [
                 'required' => false,
-                'label' => 'Actif'
+                'label' => 'Actif',
             ]);
-            
-            
     }
 
     public function configureOptions(OptionsResolver $resolver)

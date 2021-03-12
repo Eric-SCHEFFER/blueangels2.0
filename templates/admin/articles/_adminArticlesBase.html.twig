@@ -1,0 +1,82 @@
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/adminTableCrud.css') }}">
+   <link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+{% endblock %}
+
+<div class="conteneur_table">
+   <div class ="table-admin-dashboard">
+      <div>
+         <a class="boutonNew"
+            href="{{ path('admin.articles.nouveau') }}"
+            title="Créer un nouvel article">Nouveau
+         </a>
+      </div>
+   </div>
+   <table class="table_1">
+      <thead>
+         <tr>
+            <th>Titre</th>
+            <th>Actions</th>
+         </tr>
+      </thead>
+      <tbody>
+         {% if articles is not empty %}
+            {% for article in articles %}
+               <tr>
+                  <td>
+                     <div class="blocTitreImage">
+                        <div class="titreEtInfos">
+                           {{ article.titre }}
+                           <div class="date">
+                              {{ article.getCreatedAt()|date("d-m-Y") }}
+                           </div>
+                           <div class="table-icones-infos">
+                              {# ==== On affiche le nbre d'images ==== #}
+                              <div class="nbreImages" title="Nombre d'images: {{ article.getImagesArticles | length }}">
+                                 <i class="fas fa-file-image fa-lg"></i> {{ article.getImagesArticles | length }}
+                              </div>
+                              {% if not article.actif %}
+                                 <div class="articles-actif-off">
+                                    <i class="fas fa-eye-slash orange"></i>
+                                 </div>
+                                 {% else %}
+                                    <div class="articles-actif-on">
+                                       <i class="fas fa-eye green"></i>
+                                    </div>
+                              {% endif %}
+                              {% if article.epingle %}
+                                 <div class="articles-epingle-on">
+                                    <i class="fas fa-thumbtack orangered"></i>
+                                 </div>
+                              {% endif %}
+                              {% if article.categoriesArticle.nom is defined %}
+                                 <div class="categorie">
+                                    <i class="fas fa-folder-open"></i>
+                                    {{ article.categoriesArticle.nom }}
+                                 </div>
+                              {% endif %}
+                           </div>
+                        </div>
+                        {% if article.getImagesArticles[0] is defined %}
+                           {# On affiche l'image de l'article #}
+                           <img src="{{ asset('uploads/imagesArticles/' ~ 'min_' ~ article.getImagesArticles[0].nom) }}">
+                        {% endif %}
+                     </div>
+                  </td>
+                  <td>
+                     <a class="iconeEditer" href="{{ path('admin.articles.edit', {id: article.id}) }}" title="Éditer"></a>
+                     
+                     {# formulaire avec champ caché (passer la valeur delete) pour supprimmer un article #}
+                     <form class="deleteForm" method="post" action="{{ path('admin.article.delete', {id: article.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ article.titre }} ?')">
+                        <input type="hidden" name="_method" value="DELETE"/>
+                        {# On créé un token #}
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}"/>
+                        <button class="iconeSupprimer" title="Supprimer"></button>
+                     </form>
+                  </td>
+               </tr>
+            {% endfor %}
+         {% endif %}
+      </tbody>
+   </table>
+</div>
