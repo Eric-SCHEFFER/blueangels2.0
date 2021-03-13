@@ -68,15 +68,9 @@
    display: flex;
 }
 
-
-.articles-epingle-on > i,
-.articles-actif-off > i,
-.articles-actif-on > i,
-.categorie,
-.nbreImages {
+.articles-epingle-on>i, .articles-actif-off>i, .articles-actif-on>i, .categorie, .nbreImages {
    padding: 0 8px 0 0;
 }
-
 
 /* ========= FORMULAIRE COMPORTANT UN CHAMP INPUT CACHÉ DE SUPPRESSION D'UN ÉLÉMENT ======== */
 
@@ -87,8 +81,7 @@
 
 /* ====== ICONES FONTAWESOME ======= */
 
-.iconeEditer::before,
-.iconeSupprimer::before {
+.iconeEditer::before, .iconeSupprimer::before {
    font-family: "Font Awesome 5 Free";
    font-size: 1.6em;
    font-weight: 500;
@@ -98,7 +91,6 @@
 
 .annule {
    text-decoration: red line-through;
-
 }
 
 .iconeEditer::before {
@@ -140,7 +132,4 @@
    text-shadow: 2px 2px 3px rgb(0, 0, 0);
 }
 
-
-
 /* ============================ */
-

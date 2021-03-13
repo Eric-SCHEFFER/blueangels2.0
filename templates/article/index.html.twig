@@ -1,95 +1,94 @@
 {% extends 'components/base.html.twig' %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/fullPageElement.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/carousel.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
-    
+	<link rel="stylesheet" href="{{ asset('css/fullPageElement.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/carousel.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+
 {% endblock %}
 {% block title %}
-    {{ SiteName }}:
-	Article - {{ article.titre }}
+	{{ SiteName }}:
+		Article -
+	{{ article.titre }}
 {% endblock %}
 
 {% block body %}
 
-<div class="wrapper">
-    <h1>{{ article.titre }}</h1>
-    <section class="full-element">
-        {% if not article.getImagesArticles is empty %}
-            {# On affiche les images dispo dans le tableau #}
-            {% for image in article.getImagesArticles %}
-                <div class="image">
-                    <img src="{{ asset('uploads/imagesArticles/' ~ image.nom) }}" alt="">
-                </div>
-            {% endfor %}
-            {# Boutons de contrôles du carousel #}
-            <div class="boutonsNav">
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
-            </div>
-            {% set n = 0 %}
-            <div class="blocBullets">
-                {% for image in article.getImagesArticles %}
-                    {% set n = n + 1 %}
-                    <div class="bullet" onclick="currentSlide({{ n }})">
-                        <p>{{ n }}</p>
-                    </div>
-                {% endfor %}
-            </div>
-            <div class="textes">
-            {% else %}
-                <div class="textes element-sans-image">
-        {% endif %}
-        <div class="info-bar">
-            <div class="info-bar-left">
-                <div class="type-vue-and-status">
-                    <i class="fas fa-info-circle"></i>
-                    Article 
-                    {% if article.epingle %}
-                        <span class="articles-epingle-on">
-                            <i class="fas fa-thumbtack orangered"></i>
-                        </span>
-                    {% endif %}  
-                </div>
-                <div class="categorie">
-                    {% if article.categoriesArticle.nom is defined %}
-                        <i class="fas fa-folder-open"></i>
-                        {{ article.categoriesArticle.nom }}
-                    {% endif %}
-                </div>
-                <div class="date">
-                    <i class="fas fa-calendar-alt"></i>
-                    {{ article.getCreatedAt | date("d-m-Y") }}
-                </div>
-                <div class="time">
-                    <i class="fas fa-clock"></i>
-                    {{ article.getCreatedAt | date("H:i") }}
-                </div>
-            </div>        
-            {# On affiche la clé anglaise "gérer", quand on est connecté en admin #}
-            {% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
-                <div class="gerer">
-                    <a
-                        href="{{ path('admin.articles.edit', {id: article.id}) }}"
-                        title="Éditer l'évènement">
-                            <i class="fas fa-edit fa-2x blue"></i>
-                    </a>
-                </div>
-            {% endif %}
-            <div class="contact">
-                <a class="bouton bt-small" href="">Contact</a>
-            </div>
-        </div>
-        <h2 class="hook">
-            {{ article.hook }}
-        </h2>
-        <div class="contenu">
-            {{ article.contenu | nl2br | auto_link }}
-        </div>
-    </div>
-    </section>
-</div>
-{% block javascript %}
-    <script src="{{ asset('js/carousel.js') }}"></script>
-{% endblock %}
-{% endblock %}
+	<div class="wrapper">
+		<h1>{{ article.titre }}</h1>
+		<section class="full-element">
+			{% if not article.getImagesArticles is empty %}
+				{# On affiche les images dispo dans le tableau #}
+				{% for image in article.getImagesArticles %}
+					<div class="image">
+						<img src="{{ asset('uploads/imagesArticles/' ~ image.nom) }}" alt="">
+					</div>
+				{% endfor %}
+				{# Boutons de contrôles du carousel #}
+				<div class="boutonsNav">
+					<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+					<a class="next" onclick="plusSlides(1)">&#10095;</a>
+				</div>
+				{% set n = 0 %}
+				<div class="blocBullets">
+					{% for image in article.getImagesArticles %}
+						{% set n = n + 1 %}
+						<div class="bullet" onclick="currentSlide({{ n }})">
+							<p>{{ n }}</p>
+						</div>
+					{% endfor %}
+				</div>
+				<div class="textes">
+				{% else %}
+					<div class="textes element-sans-image">
+					{% endif %}
+					<div class="info-bar">
+						<div class="info-bar-left">
+							<div class="type-vue-and-status">
+								<i class="fas fa-info-circle"></i>
+								Article
+								{% if article.epingle %}
+									<span class="articles-epingle-on">
+										<i class="fas fa-thumbtack orangered"></i>
+									</span>
+								{% endif %}
+							</div>
+							<div class="categorie">
+								{% if article.categoriesArticle.nom is defined %}
+									<i class="fas fa-folder-open"></i>
+									{{ article.categoriesArticle.nom }}
+								{% endif %}
+							</div>
+							<div class="date">
+								<i class="fas fa-calendar-alt"></i>
+								{{ article.getCreatedAt | date("d-m-Y") }}
+							</div>
+							<div class="time">
+								<i class="fas fa-clock"></i>
+								{{ article.getCreatedAt | date("H:i") }}
+							</div>
+						</div>
+						{# On affiche la clé anglaise "gérer", quand on est connecté en admin #}
+						{% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
+							<div class="gerer">
+								<a href="{{ path('admin.articles.edit', {id: article.id}) }}" title="Éditer l'évènement">
+									<i class="fas fa-edit fa-2x blue"></i>
+								</a>
+							</div>
+						{% endif %}
+						<div class="contact">
+							<a class="bouton bt-small" href="">Contact</a>
+						</div>
+					</div>
+					<h2 class="hook">
+						{{ article.hook }}
+					</h2>
+					<div class="contenu">
+						{{ article.contenu | nl2br | auto_link }}
+					</div>
+				</div>
+			</section>
+		</div>
+		{% block javascript %}
+			<script src="{{ asset('js/carousel.js') }}"></script>
+		{% endblock %}
+	{% endblock %}

@@ -50,7 +50,6 @@
    height: 60px;
    object-fit: cover;
    object-position: top;
-
 }
 
 .form1 h3 {
@@ -62,7 +61,6 @@
    display: flex;
    flex-wrap: wrap;
    margin-left: 10px;
-
 }
 
 .vignette {
@@ -74,11 +72,11 @@
 }
 
 .ligne1 {
-   margin: 20px 0 40px 0;
+   margin: 30px 0 30px 0;
    display: flex;
    justify-content: left;
    flex-wrap: wrap;
-   align-items: baseline;
+   align-items: flex-end;
 }
 
 .ligne2 {
@@ -86,9 +84,8 @@
    justify-content: left;
 }
 
-
-.form1 button, .form1 .bouton{
-   font-family: 'Kodchasan', sans-serif;
+.form1 button, .form1 .bouton {
+   /* font-family: 'Kodchasan', sans-serif; */
    text-align: center;
    border: unset;
    display: flex;
@@ -122,7 +119,6 @@
    background-color: #ec1127;
    bottom: 8px;
    border-radius: 0 0 6px 6px;
-
 }
 
 /* Surcharge le style de a qui est en blanc */

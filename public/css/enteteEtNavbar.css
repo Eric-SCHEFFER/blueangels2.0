@@ -41,6 +41,12 @@
    box-shadow: inset 0 0 2000px rgba(46, 46, 46, 0.582);
 }
 
+.logo-panel-wrapper {
+   /* border: blue solid 1px; */
+   bottom: 10px;
+   position: relative;
+}
+
 .logo-panel {
    display: flex;
    /* border: 1px rgb(21, 255, 0) solid; */
@@ -67,6 +73,14 @@
    line-height: 1em;
 }
 
+.decription-asso {
+   /* border: red 1px solid; */
+   padding: 0;
+   margin: 5px 0 0 0;
+   font-size: .93em;
+   color: #fff;
+}
+
 /* =================== menu ===================== */
 
 nav {
@@ -84,8 +98,7 @@ nav {
    /* border: solid #fbff00 1px */
 }
 
-nav a,
-nav .btDropdown {
+nav a, nav .btDropdown {
    position: relative;
    /* border: solid #fbff00 1px; */
    width: 100%;
@@ -107,10 +120,7 @@ button:focus {
    outline: none;
 }
 
-nav a:hover,
-nav .active,
-nav .btDropdown:hover,
-nav ul.dropdown-content a:hover {
+nav a:hover, nav .active, nav .btDropdown:hover, nav ul.dropdown-content a:hover {
    font-size: 1.1em;
 }
 
@@ -126,7 +136,7 @@ nav ul.ulMenuGeneral {
 
 nav ul.dropdown-content {
    position: absolute;
-   display: none;  
+   display: none;
    left: 0;
    padding: 0 20px 0 20px;
    min-width: 100%;
@@ -168,9 +178,7 @@ nav li {
 /* ================ Moyens écrans ================ */
 
 @media screen and (max-width: 1300px) {
-   nav {
-      
-   }
+   nav {}
 }
 
 /* ================ Petits écrans ================ */
@@ -190,13 +198,10 @@ nav li {
    nav.visible {
       right: 0;
    }
-
-   nav a,
-   nav .btDropdown {
+   nav a, nav .btDropdown {
       text-align: left;
       padding-left: 40px;
    }
-     
    nav ul.ulMenuGeneral {
       display: block;
       width: inherit;
@@ -204,16 +209,13 @@ nav li {
       overflow-y: scroll;
       overflow-x: hidden;
    }
-   nav li,
-   nav a,
-   nav .btDropdown {
+   nav li, nav a, nav .btDropdown {
       width: inherit;
       min-width: initial;
       background-color: inherit;
       height: auto;
    }
-   nav ul
-    {
+   nav ul {
       background-color: inherit;
       height: auto;
    }
@@ -232,8 +234,6 @@ nav li {
       text-overflow: ellipsis;
       overflow: hidden;
    }
-   
- 
    /* ================ Burger ================ */
    #burger {
       z-index: 10000;
@@ -249,16 +249,10 @@ nav li {
       border: solid 1px transparent;
       transition: border .6s;
    }
-
-   #burger:hover #burgerBarre1,
-   #burger:hover #burgerBarre2,
-   #burger:hover #burgerBarre3 {
+   #burger:hover #burgerBarre1, #burger:hover #burgerBarre2, #burger:hover #burgerBarre3 {
       background-color: rgb(255, 255, 255);
    }
-   
-   #burgerBarre1,
-   #burgerBarre2,
-   #burgerBarre3 {
+   #burgerBarre1, #burgerBarre2, #burgerBarre3 {
       height: 3px;
       width: 30px;
       background-color: rgb(211, 211, 211);
@@ -276,7 +270,6 @@ nav li {
    #burgerBarre3 {
       top: 32px;
    }
-
    .burgerBarre1-menu-ouvert {
       transform: rotate(45deg) !important;
       top: 22px !important;
@@ -288,11 +281,12 @@ nav li {
       transform: rotate(-45deg) !important;
       top: 22px !important;
    }
-
    .burger-menu-ouvert {
       background-color: transparent !important;
    }
 }
+
+/* ================ Très petits écrans ================ */
 
 @media screen and (max-width: 460px) {
    .header-wrapper {
@@ -301,5 +295,16 @@ nav li {
    .logo-titre {
       width: 42px;
       font-size: 1.9em;
+   }
+   .decription-asso {
+      font-size: .8em;
+   }
+}
+
+/* ================ Écrans riquiquis ================ */
+
+@media screen and (max-width: 340px) {
+   .decription-asso {
+      font-size: .74em;
    }
 }

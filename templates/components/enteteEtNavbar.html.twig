@@ -1,13 +1,18 @@
 <div class="header-wrapper">
    <div class="header-panel">
       <a href="{{ path('home') }}">
-         <div class="logo-panel">
-            <div class="logo-image">
-               <img src="{{ asset('images/logo_ba_6.png') }}" alt="logo blue angels">
+         <div class="logo-panel-wrapper">
+            <div class="logo-panel">
+               <div class="logo-image">
+                  <img src="{{ asset('images/logo_ba_6.png') }}" alt="logo blue angels">
+               </div>
+               <h1 class="logo-titre">
+                  {{ SiteName }}
+               </h1>
             </div>
-            <h1 class="logo-titre">
-               {{ SiteName }}
-            </h1>
+            <h2 class="decription-asso">
+               Association de danses latino-rock
+            </h2>
          </div>
       </a>
    </div>
@@ -19,11 +24,10 @@
       <div id="burgerBarre3"></div>
    </div>
 
-   <nav class="theme-menu" id ="nav">
+   <nav class="theme-menu" id="nav">
       <ul class="ulMenuGeneral">
          <li>
-            <a href="{{ path('home') }}"
-               class="
+            <a href="{{ path('home') }}" class="
                {% if menu_courant is defined and menu_courant == 'home' %}
                   active
                {% endif %}">
@@ -33,18 +37,16 @@
 
          {# ======== Sous-menu /ON =========== #}
          <li>
-            <button
-               class="btDropdown"
-               onclick="toggleMenu('menuDanses')">
+            <button class="btDropdown" onclick="toggleMenu('menuDanses')">
                Danses
                <i class="fa fa-caret-down"></i>
             </button>
-            <ul class="dropdown-content" id ="menuDanses">
+            <ul class="dropdown-content" id="menuDanses">
                <li>
                   {# <a href="{{ path('article', {id: 39}) }}"> #}
-                  <a href="{{ path('home') }}">
+                     <a href="{{ path('home') }}">
                         Salsa
-                  </a>
+                     </a>
                </li>
                <li>
                   <a href="{{ path('home') }}">
@@ -62,13 +64,11 @@
 
          {# ======== Sous-menu /ON =========== #}
          <li>
-            <button
-               class="btDropdown"
-               onclick="toggleMenu('menuEvenements')">
+            <button class="btDropdown" onclick="toggleMenu('menuEvenements')">
                Évènements
                <i class="fa fa-caret-down"></i>
             </button>
-            <ul class="dropdown-content" id ="menuEvenements">
+            <ul class="dropdown-content" id="menuEvenements">
                <li>
                   <a href="{{ path('a_venir') }}">
                      À venir
@@ -84,18 +84,16 @@
          {# ======== Sous-menu /OFF =========== #}
 
          <li>
-            <a href="{{ path('articles') }}"
-               class="
+            <a href="{{ path('articles') }}" class="
                {% if menu_courant is defined and menu_courant == 'articles' %}
                   active
                {% endif %}">
                Articles
             </a>
          </li>
-         
+
          <li>
-            <a href="{{ path('tarifs') }}"
-               class="
+            <a href="{{ path('tarifs') }}" class="
                {% if menu_courant is defined and menu_courant == 'tarifs' %}
                   active
                {% endif %}">
@@ -104,8 +102,7 @@
          </li>
 
          <li>
-            <a href="{{ path('home') }}"
-               class="
+            <a href="{{ path('home') }}" class="
                {% if menu_courant is defined and menu_courant == 'qui_sommes_nous' %}
                   active
                {% endif %}">
@@ -114,8 +111,7 @@
          </li>
 
          <li>
-            <a href="{{ path('home') }}"
-               class="
+            <a href="{{ path('home') }}" class="
                {% if menu_courant is defined and menu_courant == 'contact' %}
                   active
                {% endif %}">
@@ -125,13 +121,11 @@
 
          {# ======== Sous-menu /ON =========== #}
          <li>
-            <button
-               class="btDropdown"
-               onclick="toggleMenu('plus1')">
+            <button class="btDropdown" onclick="toggleMenu('plus1')">
                PLus
                <i class="fa fa-caret-down"></i>
             </button>
-            <ul class="dropdown-content" id ="plus1">
+            <ul class="dropdown-content" id="plus1">
                <li>
                   <a href="{{ path('home') }}">
                      Plus 1
@@ -147,19 +141,18 @@
          {# ======== Sous-menu /OFF =========== #}
 
          {% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
-         
-            <li>
-               <a href="{{ path('admin') }}"
-                  class="
+
+         <li>
+            <a href="{{ path('admin') }}" class="
                   {% if menu_courant is defined and menu_courant == 'admin' %}
                      active
                   {% endif %}">
-                  <i class="fas fa-wrench fa-2x blue-pastel"></i>
-               </a>
-            </li>
+               <i class="fas fa-wrench fa-2x blue-pastel"></i>
+            </a>
+         </li>
          {% endif %}
 
-         
+
       </ul>
    </nav>
-</div> 
+</div>
