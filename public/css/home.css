@@ -1,15 +1,18 @@
 section {
-   padding: 20px 0 40px 0;
+   padding: 0 0 40px 0;
 }
 
 .bienvenue-panel {
-   text-align: center;
-   font-size: 1.2em;
+   /* text-align: center;
+   font-size: 1.9em;
    padding: 0 12px 0 12px;
+   color: #fff;
+   font-weight: 300; */
 }
 
 .bienvenue-panel p {
    margin: 0;
+   padding: 0;
 }
 
 .articles {
