@@ -80,7 +80,7 @@ class AdminCompletedEventsController extends AbstractController
             $this->addFlash('succes', 'Évènement créé avec succès');
             return $this->redirectToRoute('admin.events.passes');
         }
-        return $this->render('admin/completedEvents/nouveau.html.twig', [
+        return $this->render('admin/_eventForm/nouveau.html.twig', [
             'form' => $form->createView()
         ]);
     }
@@ -124,7 +124,7 @@ class AdminCompletedEventsController extends AbstractController
             $this->addFlash('succes', '"' . $event->getNom() . '"' . ' modifié avec succès');
             return $this->redirectToRoute('admin.events.passes');
         }
-        return $this->render('admin/completedEvents/edit.html.twig', [
+        return $this->render('admin/_eventForm/edit.html.twig', [
             'event' => $event,
             'form' => $form->createView()
         ]);
