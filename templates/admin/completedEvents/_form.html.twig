@@ -1,8 +1,8 @@
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('css/formulaireCrud.css') }}">
+<link rel="stylesheet" href="{{ asset('css/formulaireCrud.css') }}">
 {% endblock %}
 
-{# TODO: Ce fichier est en cours de réalisation. C'est le formulaire de base pour administrer les events à venir et passés #}
+
 
 <div class="container-form">
 	{{ form_start(form, {'attr':{'class':'form1'}}) }}
@@ -24,15 +24,16 @@
 			</div>
 			{# On vérifie si la route est "admin.events.passes.edit", et on affiche les images #}
 			{% if app.request.attributes.get('_route') == 'admin.events.passes.edit' %}
-				<div class="blocVignettes">
-					{% for image in event.imagesEvents %}
-						<div class="vignette">
-							<img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ image.nom) }}" alt="image">
-							<a class="bouton petitBouton" href="{{ path('admin.events.image.delete', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer
-							</a>
-						</div>
-					{% endfor %}
+			<div class="blocVignettes">
+				{% for image in event.imagesEvents %}
+				<div class="vignette">
+					<img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ image.nom) }}" alt="image">
+					<a class="bouton petitBouton" href="{{ path('admin.events.image.delete', {id: image.id}) }}" data-delete
+						data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer
+					</a>
 				</div>
+				{% endfor %}
+			</div>
 			{% endif %}
 		</div>
 	</div>
