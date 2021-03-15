@@ -35,7 +35,7 @@ class AdminCompletedEventsController extends AbstractController
         $completedEvents = $this->eventsRepository->findAllCompletedEvents($today);
         // On récupère le nbre total d'events passés
         $countTotalCompletedEvents = $this->eventsRepository->countTotalCompletedEvents($today);
-        return $this->render('admin/completedEvents/adminCompletedEvents.html.twig', [
+        return $this->render('admin/events/adminCompletedEvents.html.twig', [
             'completedEvents' => $completedEvents,
             'today' => $today,
             'countTotalCompletedEvents' => $countTotalCompletedEvents,
@@ -80,7 +80,7 @@ class AdminCompletedEventsController extends AbstractController
             $this->addFlash('succes', 'Évènement créé avec succès');
             return $this->redirectToRoute('admin.events.passes');
         }
-        return $this->render('admin/_eventForm/nouveau.html.twig', [
+        return $this->render('admin/events/nouveau.html.twig', [
             'form' => $form->createView()
         ]);
     }
@@ -124,7 +124,7 @@ class AdminCompletedEventsController extends AbstractController
             $this->addFlash('succes', '"' . $event->getNom() . '"' . ' modifié avec succès');
             return $this->redirectToRoute('admin.events.passes');
         }
-        return $this->render('admin/_eventForm/edit.html.twig', [
+        return $this->render('admin/events/edit.html.twig', [
             'event' => $event,
             'form' => $form->createView()
         ]);
