@@ -25,34 +25,34 @@
 		</thead>
 
 		<tbody>
-			{% if passeFuturEvents is not empty %}
-				{% for passeFuturEvent in passeFuturEvents %}
+			{% if events is not empty %}
+				{% for events in events %}
 					<tr>
 						<td>
 							<div class="blocTitreImage">
 								<div class="titreEtInfos">
-									{% if passeFuturEvent.getAnnule() %}
+									{% if events.getAnnule() %}
 										<div class="annule" title="Évènement annulé">
-											{{ passeFuturEvent.nom }}
+											{{ events.nom }}
 										</div>
 									{% else %}
-										{{ passeFuturEvent.nom }}
+										{{ events.nom }}
 									{% endif %}
 									<div class="date">
-										{{ passeFuturEvent.getDateEvent()|date("d-m-Y") }}
+										{{ events.getDateEvent()|date("d-m-Y") }}
 									</div>
 									<div
 										class="table-icones-infos">
 										{# ==== On affiche le nbre d'images ==== #}
-										<div class="nbreImages" title="Nombre d'images: {{ passeFuturEvent.getImagesEvents | length }}">
+										<div class="nbreImages" title="Nombre d'images: {{ events.getImagesEvents | length }}">
 											<i class="fas fa-file-image fa-lg"></i>
-											{{ passeFuturEvent.getImagesEvents | length }}
+											{{ events.getImagesEvents | length }}
 										</div>
 									</div>
 								</div>
-								{% if passeFuturEvent.getImagesEvents[0] is defined %}
+								{% if events.getImagesEvents[0] is defined %}
 									{# On affiche l'image de l'event #}
-									<img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ passeFuturEvent.getImagesEvents[0].Nom) }}">
+									<img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ events.getImagesEvents[0].Nom) }}">
 								{% else %}
 									{# On affiche l'image de remplacement par défaut #}
 									<img title="Aucune image de disponible" src="{{ asset('images/min_imageDefaut.jpg') }}">
@@ -60,14 +60,14 @@
 							</div>
 						</td>
 						<td>
-							<a class="iconeEditer" href="{{ path('admin.events.edit', {id: passeFuturEvent.id}) }}" title="Éditer"></a>
+							<a class="iconeEditer" href="{{ path('admin.events.edit', {id: events.id}) }}" title="Éditer"></a>
 
 							{# formulaire avec champ caché (passer la valeur delete) pour supprimmer un évènement #}
-							<form class="deleteForm" method="post" action="{{ path('admin.event.delete', {id: passeFuturEvent.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ passeFuturEvent.nom }} ?')">
+							<form class="deleteForm" method="post" action="{{ path('admin.event.delete', {id: events.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ events.nom }} ?')">
 								<input
 								type="hidden" name="_method" value="DELETE"/>
 								{# On créé un token #}
-								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ passeFuturEvent.id) }}"/>
+								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ events.id) }}"/>
 								<button class="iconeSupprimer" title="Supprimer"></button>
 							</form>
 						</td>
