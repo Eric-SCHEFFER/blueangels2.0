@@ -14,7 +14,7 @@ use App\Form\EventType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class AdminCompletedEventsController extends AbstractController
+class AdminEventsController extends AbstractController
 {
     public function __construct(
         EventsRepository $eventsRepository,
@@ -25,9 +25,10 @@ class AdminCompletedEventsController extends AbstractController
     }
 
     /**
+     * Charge la page du tableau d'admin des évènements passés
      * @Route("/admin/evenements_passes", name="admin.events.passes", methods={"GET"})
      */
-    public function index(TodayGenerator $todayGenerator): Response
+    public function loadCompletedEvents(TodayGenerator $todayGenerator): Response
     {
         // On récupère la date du jour, que l'on peut changer dans cette classe
         $today = $todayGenerator->generateAToday();
@@ -42,6 +43,27 @@ class AdminCompletedEventsController extends AbstractController
         ]);
     }
 
+
+    /**
+     * Charge la page du tableau d'admin des évènements à venir
+     * @Route("/admin/evenements_a_venir", name="admin.events_a_venir", methods={"GET"})
+     */
+    public function loadEventsToCome(TodayGenerator $todayGenerator): Response
+    {
+        // On récupère la date du jour, que l'on peut changer dans cette classe
+        $today = $todayGenerator->generateAToday();
+        // On récupère tous les events futurs
+        $events = $this->eventsRepository->findAllEventsToCome($today);
+        // On récupère le nbre total d'events futurs
+        $countTotalEventsToCome = $this->eventsRepository->countTotalEventsToCome($today);
+        return $this->render('admin/events/adminEventsToCome.html.twig', [
+            'eventsToCome' => $events,
+            'today' => $today,
+            'countTotalEventsToCome' => $countTotalEventsToCome,
+        ]);
+    }
+
+    // TODO: Factoriser méthodes new et edit qui sont très similaires, en une seule
 
     // ======== CRÉER UN ÉVÈNEMENT ========
     /**
@@ -78,7 +100,9 @@ class AdminCompletedEventsController extends AbstractController
             $this->em->persist($event);
             $this->em->flush();
             $this->addFlash('succes', 'Évènement créé avec succès');
-            return $this->redirectToRoute('admin.events.passes');
+            // TODO: Sécuriser la redirection en s'assurant surant que le referer vient bien de notre site.
+            // Est-ce que ça fonctionne en https ?
+            return $this->redirect($request->request->get('referer'));
         }
         return $this->render('admin/events/nouveau.html.twig', [
             'form' => $form->createView()
@@ -122,7 +146,9 @@ class AdminCompletedEventsController extends AbstractController
             $this->em->persist($event);
             $this->em->flush();
             $this->addFlash('succes', '"' . $event->getNom() . '"' . ' modifié avec succès');
-            return $this->redirectToRoute('admin.events.passes');
+            // TODO: Sécuriser la redirection en s'assurant surant que le referer vient bien de notre site.
+            // Est-ce que ça fonctionne en https ?
+            return $this->redirect($request->request->get('referer'));
         }
         return $this->render('admin/events/edit.html.twig', [
             'event' => $event,
@@ -159,7 +185,7 @@ class AdminCompletedEventsController extends AbstractController
             $this->addFlash('succes', '"' . $event->getNom() . '"' . ' supprimé avec succès');
             //return new HttpFoundationResponse('Suppression');
         }
-        return $this->redirectToRoute('admin.events.passes');
+        return $this->redirectToRoute('admin');
     }
 
     // ======== SUPPRIMER UNE IMAGE ========

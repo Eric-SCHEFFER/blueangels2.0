@@ -2,9 +2,7 @@
 	<link rel="stylesheet" href="{{ asset('css/formulaireCrud.css') }}">
 {% endblock %}
 
-{# TODO: Ce fichier est en cours de réalisation. C'est le formulaire de base pour administrer les events à venir et passés #}
 <div class="container-form">
-
 	{{ form_start(form, {'attr':{'class':'form1'}}) }}
 	<div class="ligne1">
 		<div class="champ">
@@ -49,6 +47,8 @@
 	<div class="champ">
 		{{ form_row(form.annule) }}
 	</div>
+	{# Champ caché pour envoyer le referer, et permettre la redirection à la page précédente après la soumission  #}
+	<input type="hidden" name="referer" value="{{app.request.headers.get('referer')}}"/>
 
 	<button>{{ button|default('Enregistrer') }}</button>
 	{{ form_end(form) }}

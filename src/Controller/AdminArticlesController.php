@@ -118,7 +118,7 @@ class AdminArticlesController extends AbstractController
             $this->addFlash('succes', '"' . $article->getTitre() . '"' . ' modifié avec succès');
             // return $this->redirectToRoute('admin.articles');
 
-            // TODO: Faire un retour vers la page de laquelle on vient, et sécuriser, en s'assurant que le referer vient bien de notre site.
+            // TODO: Sécuriser la redirection en s'assurant surant que le referer vient bien de notre site.
             // Est-ce que ça fonctionne en https ?
             return $this->redirect($request->request->get('referer'));
         }
@@ -241,7 +241,7 @@ class AdminArticlesController extends AbstractController
         return $imageCible;
     }
 
-    // TODO: factoriser cette fonction qui est utilisée dans plusieurs controleurs, en la mettant dans un service.
+    // TODO: Factoriser si possible cette fonction qui est utilisée dans plusieurs controleurs, en la mettant dans un service.
     /**
      * On récupère les articles, dont en priorité des épinglés s'il y en a.
      */
