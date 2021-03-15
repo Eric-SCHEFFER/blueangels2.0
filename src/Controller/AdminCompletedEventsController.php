@@ -87,7 +87,7 @@ class AdminCompletedEventsController extends AbstractController
 
     // ======== ÉDITER UN ÉVÈNEMENT ========
     /**
-     * @Route("/admin/events/edit/{id}", name="admin.events.passes.edit", methods="GET|POST")
+     * @Route("/admin/events/edit/{id}", name="admin.events.edit", methods="GET|POST")
      * @param Events $events
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response

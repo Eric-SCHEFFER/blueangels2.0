@@ -100,7 +100,7 @@
                 {% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
                     <div class="gerer">
                         <a
-                            href="{{ path('admin.events.passes.edit', {id: event.id}) }}"
+                            href="{{ path('admin.events.edit', {id: event.id}) }}"
                             title="Éditer l'évènement">
                                 <i class="fas fa-edit fa-2x blue"></i>
                         </a>

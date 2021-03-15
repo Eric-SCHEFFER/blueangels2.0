@@ -35,7 +35,7 @@ class AdminEventsToComeController extends AbstractController
         $events = $this->eventsRepository->findAllEventsToCome($today);
         // On récupère le nbre total d'events futurs
         $countTotalEventsToCome = $this->eventsRepository->countTotalEventsToCome($today);
-        return $this->render('admin/eventsToCome/adminEventsToCome.html.twig', [
+        return $this->render('admin/events/adminEventsToCome.html.twig', [
             'eventsToCome' => $events,
             'today' => $today,
             'countTotalEventsToCome' => $countTotalEventsToCome,
@@ -80,14 +80,14 @@ class AdminEventsToComeController extends AbstractController
             $this->addFlash('succes', 'Évènement créé avec succès');
             return $this->redirectToRoute('admin.events_a_venir');
         }
-        return $this->render('admin/eventsToCome/nouveau.html.twig', [
+        return $this->render('admin/events/nouveau.html.twig', [
             'form' => $form->createView()
         ]);
     }
 
     // ======== ÉDITER UN ÉVÈNEMENT ========
     /**
-     * @Route("/admin/events/edit/{id}", name="admin.events.avenir.edit", methods="GET|POST")
+     * @Route("/admin/events/edit/{id}", name="admin.events.edit", methods="GET|POST")
      * @param Events $events
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -124,7 +124,7 @@ class AdminEventsToComeController extends AbstractController
             $this->addFlash('succes', '"' . $event->getNom() . '"' . ' modifié avec succès');
             return $this->redirectToRoute('admin.events_a_venir');
         }
-        return $this->render('admin/eventsToCome/edit.html.twig', [
+        return $this->render('admin/events/edit.html.twig', [
             'event' => $event,
             'form' => $form->createView()
         ]);

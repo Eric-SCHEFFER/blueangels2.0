@@ -3,8 +3,8 @@
 {% endblock %}
 
 {# TODO: Ce fichier est en cours de réalisation. C'est le formulaire de base pour administrer les events à venir et passés #}
-
 <div class="container-form">
+
 	{{ form_start(form, {'attr':{'class':'form1'}}) }}
 	<div class="ligne1">
 		<div class="champ">
@@ -22,8 +22,8 @@
 			<div class="champ">
 				{{ form_row(form.imageFile, {'attr':{'class':'image'}}) }}
 			</div>
-			{# On vérifie si la route est "admin.events.passes.edit", et on affiche les images #}
-			{% if app.request.attributes.get('_route') == 'admin.events.passes.edit' %}
+			{# On vérifie si la route correspond à la variable routeVerif passée depuis l'édition d'un event passé soit futur, et on affiche les images #}
+			{% if app.request.attributes.get('_route') == routeVerif %}
 				<div class="blocVignettes">
 					{% for image in event.imagesEvents %}
 						<div class="vignette">
