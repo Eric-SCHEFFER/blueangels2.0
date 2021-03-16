@@ -1,0 +1,18 @@
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/formulaireCrud.css') }}">
+{% endblock %}
+
+<div class="container-form">
+	{{ form_start(form, {'attr':{'class':'form1'}}) }}
+	<div class="ligne1">
+		<div class="champ">
+			{{ form_row(form.nom, {'attr':{'class':'titre'}}) }}
+		</div>
+	</div>
+
+	{# Champ caché pour envoyer le referer, et permettre la redirection à la page précédente après la soumission  #}
+	<input type="hidden" name="referer" value="{{app.request.headers.get('referer')}}"/>
+
+	<button>{{ button|default('Enregistrer') }}</button>
+	{{ form_end(form) }}
+</div>

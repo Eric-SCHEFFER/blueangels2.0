@@ -26,33 +26,33 @@
 
 		<tbody>
 			{% if events is not empty %}
-				{% for events in events %}
+				{% for event in events %}
 					<tr>
 						<td>
 							<div class="blocTitreImage">
 								<div class="titreEtInfos">
-									{% if events.getAnnule() %}
+									{% if event.getAnnule() %}
 										<div class="annule" title="Évènement annulé">
-											{{ events.nom }}
+											{{ event.nom }}
 										</div>
 									{% else %}
-										{{ events.nom }}
+										{{ event.nom }}
 									{% endif %}
 									<div class="date">
-										{{ events.getDateEvent()|date("d-m-Y") }}
+										{{ event.getDateEvent()|date("d-m-Y") }}
 									</div>
 									<div
 										class="table-icones-infos">
 										{# ==== On affiche le nbre d'images ==== #}
-										<div class="nbreImages" title="Nombre d'images: {{ events.getImagesEvents | length }}">
+										<div class="nbreImages" title="Nombre d'images: {{ event.getImagesEvents | length }}">
 											<i class="fas fa-file-image fa-lg"></i>
-											{{ events.getImagesEvents | length }}
+											{{ event.getImagesEvents | length }}
 										</div>
 									</div>
 								</div>
-								{% if events.getImagesEvents[0] is defined %}
+								{% if event.getImagesEvents[0] is defined %}
 									{# On affiche l'image de l'event #}
-									<img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ events.getImagesEvents[0].Nom) }}">
+									<img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ event.getImagesEvents[0].Nom) }}">
 								{% else %}
 									{# On affiche l'image de remplacement par défaut #}
 									<img title="Aucune image de disponible" src="{{ asset('images/min_imageDefaut.jpg') }}">
@@ -60,14 +60,14 @@
 							</div>
 						</td>
 						<td>
-							<a class="iconeEditer" href="{{ path('admin.events.edit', {id: events.id}) }}" title="Éditer"></a>
+							<a class="iconeEditer" href="{{ path('admin.events.edit', {id: event.id}) }}" title="Éditer"></a>
 
 							{# formulaire avec champ caché (passer la valeur delete) pour supprimmer un évènement #}
-							<form class="deleteForm" method="post" action="{{ path('admin.event.delete', {id: events.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ events.nom }} ?')">
+							<form class="deleteForm" method="post" action="{{ path('admin.event.delete', {id: event.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ event.nom }} ?')">
 								<input
 								type="hidden" name="_method" value="DELETE"/>
 								{# On créé un token #}
-								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ events.id) }}"/>
+								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ event.id) }}"/>
 								<button class="iconeSupprimer" title="Supprimer"></button>
 							</form>
 						</td>
