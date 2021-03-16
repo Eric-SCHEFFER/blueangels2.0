@@ -19,7 +19,9 @@
    background-color: rgba(0, 0, 0, 0.562);
 }
 
-.table_1, .table_1 tr, .table_1 td {
+.table_1,
+.table_1 tr,
+.table_1 td {
    border: 1px solid #ffffff;
    border-collapse: collapse;
 }
@@ -59,7 +61,8 @@
    line-height: 1.3em;
 }
 
-.date, .table-icones-infos {
+.date,
+.table-icones-infos {
    font-size: .8em;
    color: rgb(165, 165, 165);
 }
@@ -68,8 +71,17 @@
    display: flex;
 }
 
-.articles-epingle-on>i, .articles-actif-off>i, .articles-actif-on>i, .categorie, .nbreImages {
+.articles-epingle-on>i,
+.articles-actif-off>i,
+.articles-actif-on>i,
+.articles-linked>i,
+.categorie,
+.nbreImages {
    padding: 0 8px 0 0;
+}
+
+.annule {
+   text-decoration: red line-through;
 }
 
 /* ========= FORMULAIRE COMPORTANT UN CHAMP INPUT CACHÉ DE SUPPRESSION D'UN ÉLÉMENT ======== */
@@ -81,16 +93,13 @@
 
 /* ====== ICONES FONTAWESOME ======= */
 
-.iconeEditer::before, .iconeSupprimer::before {
+.iconeEditer::before,
+.iconeSupprimer::before {
    font-family: "Font Awesome 5 Free";
    font-size: 1.6em;
    font-weight: 500;
    margin: 0;
    padding: 0;
-}
-
-.annule {
-   text-decoration: red line-through;
 }
 
 .iconeEditer::before {

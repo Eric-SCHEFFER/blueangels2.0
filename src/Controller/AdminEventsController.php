@@ -146,7 +146,7 @@ class AdminEventsController extends AbstractController
             $this->em->persist($event);
             $this->em->flush();
             $this->addFlash('succes', '"' . $event->getNom() . '"' . ' modifié avec succès');
-            // TODO: Sécuriser la redirection en s'assurant surant que le referer vient bien de notre site.
+            // TODO: Sécuriser la redirection en s'assurant que le referer vient bien de notre site.
             // Est-ce que ça fonctionne en https ?
             return $this->redirect($request->request->get('referer'));
         }

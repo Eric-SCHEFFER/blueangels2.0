@@ -141,6 +141,14 @@ footer {
    color: #2c70b8;
 }
 
+.blue-pastel {
+   color: #1fa3fc;
+}
+
+.blue-light {
+   color: rgb(0, 217, 255);
+}
+
 .brun {
    color:#cc9900;
 }
@@ -157,9 +165,6 @@ footer {
    background-color: #ffffff ;
 }
 
-.blue-pastel {
-   color: #1fa3fc;
-}
 
 .bg-blue-pastel {
    background-color: rgb(31, 163, 252);

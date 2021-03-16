@@ -59,6 +59,11 @@ class Articles
      */
     private $actif;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $linked_page;
+
     public function __construct()
     {
         $this->imagesArticles = new ArrayCollection();
@@ -181,6 +186,18 @@ class Articles
     public function setActif(?bool $actif): self
     {
         $this->actif = $actif;
+
+        return $this;
+    }
+
+    public function getLinkedPage(): ?bool
+    {
+        return $this->linked_page;
+    }
+
+    public function setLinkedPage(?bool $linked_page): self
+    {
+        $this->linked_page = $linked_page;
 
         return $this;
     }

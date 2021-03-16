@@ -49,6 +49,11 @@
 												<i class="fas fa-thumbtack orangered"></i>
 											</div>
 										{% endif %}
+										{% if article.linkedPage %}
+											<div class="articles-linked">
+												<i class="fas fa-link blue-light"></i>
+											</div>
+										{% endif %}
 										{% if article.categoriesArticle.nom is defined %}
 											<div class="categorie">
 												<i class="fas fa-folder-open"></i>
