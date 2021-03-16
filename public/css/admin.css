@@ -5,10 +5,10 @@
 .admin .container1 {
    /* border: blue solid 1px; */
    display: flex;
-   justify-content: center;
+   justify-content: start;
    flex-wrap: wrap;
    background-color: rgba(44, 44, 44, 0.admin .8);
-   max-width: 680px;
+   max-width: 1200px;
    margin: auto;
    border-radius: 8px;
    

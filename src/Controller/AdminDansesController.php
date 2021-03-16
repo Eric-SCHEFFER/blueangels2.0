@@ -8,17 +8,17 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Articles;
 use App\Entity\CategoriesArticle;
 
-class AdminTarifsController extends AbstractController
+class AdminDansesController extends AbstractController
 {
     /**
-     * @Route("/admin/tarifs", name="admin.tarifs")
+     * @Route("/admin/danses", name="admin.danses")
      */
     public function findAllArticlesByCategorie(): Response
     {
         $repoArticles = $this->getDoctrine()->getRepository(Articles::class);
         $repoCat = $this->getDoctrine()->getRepository(CategoriesArticle::class);
-        // On recherche dans CategoriesArticle, la catégorie "Tarifs".  
-        $categorie = $repoCat->findOneBy(array('nom' => 'Tarifs'));
+        // On recherche dans CategoriesArticle, la catégorie "Danses".  
+        $categorie = $repoCat->findOneBy(array('nom' => 'Danses'));
         // On cherche tous les articles dans cette catégorie
         $articles = $repoArticles->findBy(
             [
@@ -26,7 +26,7 @@ class AdminTarifsController extends AbstractController
             ],
             ['created_at' => 'DESC']
         );
-        return $this->render('admin/tarifs/index.html.twig', [
+        return $this->render('admin/danses/index.html.twig', [
             'articles' => $articles,
         ]);
     }
