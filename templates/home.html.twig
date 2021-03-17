@@ -3,8 +3,11 @@
 	<link rel="stylesheet" href="{{ asset('css/home.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/cardApercuEvent.css') }}">
 {% endblock %}
-{% block title %}Accueil
+
+{% block title %}
+	{{ SiteName }}: Bienvenue
 {% endblock %}
+
 
 {% block body %}
 
@@ -49,8 +52,8 @@
 			{% endif %}
 
 			{# Provisoire, pour tester les dates #}
-			<p>Nous sommes le
-				{{ today|date("d-m-Y H:i:s") }}</p>
+			{# <p>Nous sommes le
+				{{ today|date("d-m-Y H:i:s") }}</p> #}
 
 			<div
 				class="bloc-cards">
@@ -95,6 +98,7 @@
 													{{ eventToCome.ImagesEvents | length }}
 												</div>
 											{% endif %}
+											{# De 0 à j jours avant l'event #}
 											{% for j in 0..7 %}
 												{% if j == 0 %}
 													{% if eventToCome.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
@@ -106,6 +110,7 @@
 													{% endif %}
 												{% else %}
 													{% if eventToCome.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
+														{# On affiche j - le nbre de jours avant l'event #}
 														<span class="info-jour blue">J-{{ j }}</span>
 													{% endif %}
 												{% endif %}
