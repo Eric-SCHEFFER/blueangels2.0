@@ -72,7 +72,10 @@ class AdminArticlesController extends AbstractController
             $this->em->persist($article);
             $this->em->flush();
             $this->addFlash('succes', 'Article créé avec succès');
-            return $this->redirectToRoute('admin.articles');
+            // return $this->redirectToRoute('admin.articles');
+            // TODO: Sécuriser la redirection en s'assurant surant que le referer vient bien de notre site.
+            // Est-ce que ça fonctionne en https ?
+            return $this->redirect($request->request->get('referer'));
         }
         return $this->render('admin/articles/nouveau.html.twig', [
             'form' => $form->createView()
@@ -157,7 +160,7 @@ class AdminArticlesController extends AbstractController
             $this->addFlash('succes', '"' . $article->getTitre() . '"' . ' supprimé avec succès');
             //return new HttpFoundationResponse('Suppression');
         }
-        return $this->redirectToRoute('admin.articles');
+        return $this->redirectToRoute('admin');
     }
 
     // ======== SUPPRIMER UNE IMAGE ========
