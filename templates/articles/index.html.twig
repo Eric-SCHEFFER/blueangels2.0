@@ -1,62 +1,21 @@
 {% extends 'components/base.html.twig' %}
-{% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('css/cardApercuArticle.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+{% block stylesheets %}{% endblock %}
 
-{% endblock %}
 {% block title %}
 	{{ SiteName }}: Articles
 {% endblock %}
 
 {% block body %}
-
 	<div class="wrapper">
 		<h1>
-            Articles
+			Articles
 		</h1>
-
+		{#
+		On affiche les aperçus des articles, dont en priorité les épinglés s'il y en a, dans des cards.
+		Chaque card est cliquable, et renvoi vers la fullPage de l'article.
+		#}
 		<section class="articles">
-            {#
-                On affiche tous les articles, dont en priorité des épinglés s'il y en a.
-                Chaque article est cliquable, et renvoi vers la page de l'article
-                On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
-            #}
-            <div class="bloc-cards">
-                {% for article in articles %}
-                    <a class="card-article" href="{{ path('article', {id: article.id}) }}">
-                        {% if article.getImagesArticles[0].getNom() is defined %}
-                            <div class="image">
-                                <img src="{{ asset('uploads/imagesArticles/' ~ 'min_' ~ article.getImagesArticles[0].Nom) }}" alt="">
-                            </div>
-                        {% endif %}
-                        <div class="bloc-text">
-                            <h3 class="titre">{{ article.getTitre() }}</h3>
-                            <div class="hook">{{ article.getHook() }}</div>
-                            <div class="center">
-                                <div class="bouton bt-medium">
-                                    Voir
-                                </div>
-                            </div>
-                            <div class="infos">
-                                <div class="articles-date">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    {{ article.getCreatedAt()|date("d-m-Y") }}
-                                </div>
-                                {% if article.ImagesArticles | length > 1 %}
-                                    <div class="articles-nbr-images">
-                                        <i class="fas fa-file-image"></i> {{ article.ImagesArticles | length }}
-                                    </div>
-                                {% endif %}
-                                {% if article.epingle %}
-                                    <div class="articles-epingle-on">
-                                        <i class="fas fa-thumbtack orangered"></i>
-                                    </div>
-                                {% endif %}    
-                            </div>
-                        </div>
-                    </a>
-                {% endfor %}
-            </div>
-        </section>
+			{{ include ('articles/_articlesBase.html.twig') }}
+		</section>
 	</div>
 {% endblock %}

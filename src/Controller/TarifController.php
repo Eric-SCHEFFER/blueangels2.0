@@ -9,7 +9,7 @@ use App\Entity\Articles;
 use App\Entity\CategoriesArticle;
 use App\Repository\ImagesArticleRepository;
 
-class TarifsController extends AbstractController
+class TarifController extends AbstractController
 {
     /**
      * @Route("/tarifs/", name="tarifs")

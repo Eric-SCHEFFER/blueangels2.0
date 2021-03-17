@@ -25,7 +25,7 @@ class AdminCategoriesController extends AbstractController
     */
    public function loadAllCategoriesArticles(): Response
    {
-      $categories = $this->getDoctrine()->getRepository(CategoriesArticle::class)->findAll();
+      $categories = $this->getDoctrine()->getRepository(CategoriesArticle::class)->findBy([], ["nom" => "ASC"]);
       return $this->render('admin/categories/adminCategories.html.twig', [
          'categories' => $categories,
       ]);

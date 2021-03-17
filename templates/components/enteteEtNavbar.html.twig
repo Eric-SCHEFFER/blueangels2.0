@@ -67,6 +67,16 @@
          </li>
          {# ======== Sous-menu /OFF =========== #}
 
+
+         <li>
+            <a href="{{ path('articles') }}" class="
+               {% if menu_courant is defined and menu_courant == 'articles' %}
+                  active
+               {% endif %}">
+               Articles
+            </a>
+         </li>
+
          {# ======== Sous-menu /ON =========== #}
          <li>
             <button class="btDropdown" onclick="toggleMenu('menuEvenements')">
@@ -86,14 +96,13 @@
                </li>
             </ul>
          </li>
-         {# ======== Sous-menu /OFF =========== #}
 
          <li>
             <a href="{{ path('articles') }}" class="
-               {% if menu_courant is defined and menu_courant == 'articles' %}
+               {% if menu_courant is defined and menu_courant == 'photos' %}
                   active
                {% endif %}">
-               Articles
+               Photos
             </a>
          </li>
 
@@ -152,7 +161,7 @@
                   {% if menu_courant is defined and menu_courant == 'admin' %}
                      active
                   {% endif %}">
-               <i class="fas fa-wrench fa-2x blue-pastel"></i>
+               <i class="fas fa-wrench fa-lg blue-pastel"></i>
             </a>
          </li>
          {% endif %}
