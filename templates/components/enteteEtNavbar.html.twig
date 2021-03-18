@@ -65,7 +65,7 @@
                </li>
             </ul>
          </li>
-         {# ======== Sous-menu /OFF =========== #}
+         
 
 
          <li>
@@ -96,6 +96,7 @@
                </li>
             </ul>
          </li>
+         {# ======== Sous-menu /OFF =========== #}
 
          <li>
             <a href="{{ path('photos') }}" class="
@@ -115,14 +116,26 @@
             </a>
          </li>
 
+         {# ======== Sous-menu /ON =========== #}
          <li>
-            <a href="{{ path('home') }}" class="
-               {% if menu_courant is defined and menu_courant == 'qui_sommes_nous' %}
-                  active
-               {% endif %}">
-               À Propos
-            </a>
+            <button class="btDropdown" onclick="toggleMenu('menuAPropos')">
+               À propos
+               <i class="fa fa-caret-down"></i>
+            </button>
+            <ul class="dropdown-content" id="menuAPropos">
+               <li>
+                  <a href="{{ path('a_venir') }}">
+                     Historique
+                  </a>
+               </li>
+               <li>
+                  <a href="{{ path('completed_events') }}">
+                     Trombinoscope
+                  </a>
+               </li>
+            </ul>
          </li>
+         {# ======== Sous-menu /OFF =========== #}
 
          <li>
             <a href="{{ path('home') }}" class="
