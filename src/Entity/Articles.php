@@ -57,7 +57,7 @@ class Articles
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $inactif;
+    private $actif;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
@@ -67,14 +67,14 @@ class Articles
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $unlisted;
+    private $listed;
 
     public function __construct()
     {
         $this->imagesArticles = new ArrayCollection();
         $this->created_at = new \DateTime('now');
-        $this->inactif = false;
-        $this->unlisted = false;
+        $this->actif = true;
+        $this->listed = true;
     }
 
     public function getId(): ?int
@@ -184,14 +184,14 @@ class Articles
         return $this;
     }
 
-    public function getInactif(): ?bool
+    public function getActif(): ?bool
     {
-        return $this->inactif;
+        return $this->actif;
     }
 
-    public function setInactif(?bool $inactif): self
+    public function setActif(?bool $actif): self
     {
-        $this->inactif = $inactif;
+        $this->actif = $actif;
 
         return $this;
     }
@@ -208,14 +208,14 @@ class Articles
         return $this;
     }
 
-    public function getUnlisted(): ?bool
+    public function getListed(): ?bool
     {
-        return $this->unlisted;
+        return $this->listed;
     }
 
-    public function setUnlisted(?bool $unlisted): self
+    public function setListed(?bool $listed): self
     {
-        $this->listed = $unlisted;
+        $this->listed = $listed;
 
         return $this;
     }

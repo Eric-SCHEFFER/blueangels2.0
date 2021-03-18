@@ -105,13 +105,13 @@ class ArticleType extends AbstractType
                 'label' => 'Épingler en page d\'accueil'
             ])
 
-            ->add('inactif', CheckboxType::class, [
+            ->add('actif', CheckboxType::class, [
                 'required' => false,
-                'label' => 'Inactif',
+                'label' => 'Actif',
             ])
             ->add('listed', CheckboxType::class, [
                 'required' => false,
-                'label' => 'Non listé dans home et menu articles',
+                'label' => 'Listé dans home et menu articles',
             ]);
     }
 
