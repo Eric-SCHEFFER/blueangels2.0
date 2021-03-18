@@ -75,6 +75,8 @@
 .articles-actif-off>i,
 .articles-actif-on>i,
 .articles-linked>i,
+.articles-listed-on>i,
+.articles-listed-off>i,
 .categorie,
 .nbreImages {
    padding: 0 8px 0 0;
@@ -82,6 +84,17 @@
 
 .annule {
    text-decoration: red line-through;
+}
+
+.articles-listed-off {
+position: relative;
+}
+
+.articles-listed-off::before {
+   content: "X";
+   font-size: 1.7em;
+   color: orange;
+   position: absolute;
 }
 
 /* ========= FORMULAIRE COMPORTANT UN CHAMP INPUT CACHÉ DE SUPPRESSION D'UN ÉLÉMENT ======== */

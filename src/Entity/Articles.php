@@ -64,11 +64,17 @@ class Articles
      */
     private $linked_page;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $listed;
+
     public function __construct()
     {
         $this->imagesArticles = new ArrayCollection();
         $this->created_at = new \DateTime('now');
         $this->actif = true;
+        $this->listed = true;
     }
 
     public function getId(): ?int
@@ -198,6 +204,18 @@ class Articles
     public function setLinkedPage(?bool $linked_page): self
     {
         $this->linked_page = $linked_page;
+
+        return $this;
+    }
+
+    public function getListed(): ?bool
+    {
+        return $this->listed;
+    }
+
+    public function setListed(?bool $listed): self
+    {
+        $this->listed = $listed;
 
         return $this;
     }

@@ -108,6 +108,10 @@ class ArticleType extends AbstractType
             ->add('actif', CheckboxType::class, [
                 'required' => false,
                 'label' => 'Actif',
+            ])
+            ->add('listed', CheckboxType::class, [
+                'required' => false,
+                'label' => 'Listé dans home et menu articles',
             ]);
     }
 
