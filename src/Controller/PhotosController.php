@@ -26,7 +26,7 @@ class PhotosController extends AbstractController
         $articles = $this->articlesRepository->findBy(
             [
                 'categories_article' => $categorie,
-                'actif' => true,
+                'inactif' => false,
             ],
             ['created_at' => "DESC"]
         );
