@@ -93,7 +93,6 @@ position: relative;
 .articles-listed-off::before {
    content: "X";
    font-size: 1.7em;
-   color: orange;
    position: absolute;
 }
 

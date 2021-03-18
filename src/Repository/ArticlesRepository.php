@@ -17,13 +17,15 @@ class ArticlesRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Articles::class);
+        
     }
 
+    // ================== Méthodes utilisées dans la homePage et dans la page articles ========================
 
     /**
-     * On recupère au maximum 3 articles epinglés actifs
+     * On recupère au maximum 3 articles epinglés actifs et listés en homePAge et dans la page articles
      */
-    public function findPinnedActifsArticles()
+    public function findPinnedActifsListedArticles()
     {
         $query = $this->createQueryBuilder('a')
             ->select('a')
@@ -31,6 +33,8 @@ class ArticlesRepository extends ServiceEntityRepository
             ->setParameter('val', true)
             ->andwhere('a.actif = :actif')
             ->setParameter('actif', true)
+            ->andwhere('a.listed = :listed')
+            ->setParameter('listed', true)
             ->orderBy('a.created_at', 'DESC')
             ->setMaxResults(3)
             ->getQuery()
@@ -40,9 +44,9 @@ class ArticlesRepository extends ServiceEntityRepository
 
 
     /**
-     * On recupère tous les articles epinglés actifs
+     * On recupère tous les articles epinglés actifs et listés en homePAge et dans la page articles
      */
-    public function findAllPinnedActifsArticles()
+    public function findAllPinnedActifsListedArticles()
     {
         $query = $this->createQueryBuilder('a')
             ->select('a')
@@ -50,6 +54,8 @@ class ArticlesRepository extends ServiceEntityRepository
             ->setParameter('epingle', true)
             ->andwhere('a.actif = :actif')
             ->setParameter('actif', true)
+            ->andwhere('a.listed = :listed')
+            ->setParameter('listed', true)
             ->orderBy('a.created_at', 'DESC')
             ->getQuery()
             ->getResult();
@@ -58,9 +64,9 @@ class ArticlesRepository extends ServiceEntityRepository
 
 
     /**
-     * On récupère tous les articles non-epinglés actifs
+     * On récupère tous les articles non-epinglés actifs et listés en homePAge et dans la page articles
      */
-    public function findAllActifsArticles()
+    public function findAllActifsListedArticles()
     {
         $query = $this->createQueryBuilder('a')
             ->select('a')
@@ -68,6 +74,8 @@ class ArticlesRepository extends ServiceEntityRepository
             ->setParameter('epingle', false)
             ->andwhere('a.actif = :actif')
             ->setParameter('actif', true)
+            ->andwhere('a.listed = :listed')
+            ->setParameter('listed', true)
             ->orderBy('a.created_at', 'DESC')
             ->getQuery()
             ->getResult();
@@ -76,9 +84,9 @@ class ArticlesRepository extends ServiceEntityRepository
 
 
     /**
-     * On récupère "$combien" d'articles non-epinglés actifs
+     * On récupère "$combien" d'articles non-epinglés actifs et listés en homePAge et dans la page articles
      */
-    public function findActifsArticles($combien)
+    public function findActifsListedArticles($combien)
     {
         $query = $this->createQueryBuilder('a')
             ->select('a')
@@ -86,6 +94,8 @@ class ArticlesRepository extends ServiceEntityRepository
             ->setParameter('val', false)
             ->andwhere('a.actif = :actif')
             ->setParameter('actif', true)
+            ->andwhere('a.listed = :listed')
+            ->setParameter('listed', true)
             ->orderBy('a.created_at', 'DESC')
             ->setMaxResults($combien)
             ->getQuery()
@@ -93,7 +103,7 @@ class ArticlesRepository extends ServiceEntityRepository
         return $query;
     }
 
-    
+
 
 
     // ================== Partie admin ========================

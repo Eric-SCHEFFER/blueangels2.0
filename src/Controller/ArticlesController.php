@@ -19,7 +19,7 @@ class ArticlesController extends AbstractController
      */
     public function index(): Response
     {
-        // On récupère tous les articles, dont en premier les épinglés s'il y en a
+        // On récupère tous les articles qui ont le droit de s'afficher, dont en premier les épinglés s'il y en a
         $articles = $this->getArticles();
         return $this->render('articles/index.html.twig', [
             'menu_courant' => 'articles',
@@ -29,14 +29,14 @@ class ArticlesController extends AbstractController
     }
 
      /**
-     * On récupère les articles, dont en priorité des épinglés s'il y en a.
+     * On récupère les articles qui ont le droit de s'afficher, dont en priorité des épinglés s'il y en a.
      */
     private function getArticles()
     {
         // Articles épinglés
-        $pinnedArticles = $this->articlesRepository->findAllPinnedActifsArticles();
+        $pinnedArticles = $this->articlesRepository->findAllPinnedActifsListedArticles();
         // Articles non-épinglés
-        $nonPinnedArticles = $this->articlesRepository->findAllActifsArticles();
+        $nonPinnedArticles = $this->articlesRepository->findAllActifsListedArticles();
         // On fusionne les deux tableaux $pinnedArticles et $nonPinnedArticles dans $articles.
         $articles = array_merge($pinnedArticles, $nonPinnedArticles);
         return

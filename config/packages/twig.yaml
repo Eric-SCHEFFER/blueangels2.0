@@ -2,3 +2,23 @@ twig:
     default_path: '%kernel.project_dir%/templates'
     globals:
         SiteName: 'Les Blue Angels'
+
+        # Infos détaillées des options dipos pour chaque article (pour info-bulle de balise title, ou infos dans la page du formulaire par ex)
+        articleOptionInfo:
+            inactif:
+                "L'article et ses aperçus ne s'afficheront nulle part. Si on tente d'entrer son url, il y aura une erreur 404 de page non trouvée. Ce filtre prend la main sur tous les autres filtres."
+            actif:
+                "L'affichage de l'article est activé. C'est le minimum obligatoire pour qu'un article soit visible. D'autres filtres pourront prendre la main ensuite."
+            listedOff:
+                "La carte d'aperçu ne s'affichera ni en homePage, ni dans la page Articles du menu."
+            listed:
+                "La carte d'aperçu s'affichera également en homePage ainsi que dans la page Articles du menu"
+            epingle:
+                "La carte d'aperçu sera épinglée pour apparaitre en premier sur la page d'accueil, ainsi que dans la page articles"
+            linked:
+                "Simple indicateur signalant qu'une page fixe du site partage cet article, en se basant entre autre sur son titre comme balise de sélection. Il faut donc éviter de modifier le titre, d'ajouter un autre article dans la même catégorie, avec un titre identique, et plus généralement, de modifier l'article, et de le supprimer, à moins de savoir exactement ce que l'on fait."
+            categorie:
+                "Catégorie de l'article"
+                
+
+

@@ -31,40 +31,42 @@
 									<div
 										class="table-icones-infos">
 										{# ==== On affiche le nbre d'images ==== #}
+
 										<div class="nbreImages" title="Nombre d'images: {{ article.getImagesArticles | length }}">
 											<i class="fas fa-file-image fa-lg"></i>
 											{{ article.getImagesArticles | length }}
 										</div>
 										{% if not article.actif %}
-											<div class="articles-actif-off">
+											{# Variable array globale pour les différentes balises title ci-dessous de cette div (dans twig.yaml) #}
+											<div class="articles-actif-off" title="{{ articleOptionInfo.inactif }}">
 												<i class="fas fa-eye-slash orange"></i>
 											</div>
 										{% else %}
-											<div class="articles-actif-on">
+											<div class="articles-actif-on" title="{{ articleOptionInfo.actif }}">
 												<i class="fas fa-eye lime"></i>
 											</div>
 										{% endif %}
 										{% if not article.listed %}
-											<div class="articles-listed-off">
-												<i class="fas fa-list orange barre"></i>
+											<div class="articles-listed-off" title="{{ articleOptionInfo.listedOff }}">
+												<i class="fas fa-list violet"></i>
 											</div>
 										{% else %}
-											<div class="articles-listed-on">
+											<div class="articles-listed-on" title="{{ articleOptionInfo.listed }}">
 												<i class="fas fa-list lime"></i>
 											</div>
 										{% endif %}
 										{% if article.epingle %}
-											<div class="articles-epingle-on">
-												<i class="fas fa-thumbtack lime"></i>
+											<div class="articles-epingle-on" title="{{ articleOptionInfo.epingle }}">
+												<i class="fas fa-thumbtack orangered"></i>
 											</div>
 										{% endif %}
 										{% if article.linkedPage %}
-											<div class="articles-linked">
+											<div class="articles-linked" title="{{ articleOptionInfo.linked }}">
 												<i class="fas fa-link blue-light"></i>
 											</div>
 										{% endif %}
 										{% if article.categoriesArticle.nom is defined %}
-											<div class="categorie">
+											<div class="categorie" title="{{ articleOptionInfo.categorie }}">
 												<i class="fas fa-folder-open"></i>
 												{{ article.categoriesArticle.nom }}
 											</div>

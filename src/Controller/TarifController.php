@@ -7,14 +7,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Articles;
 use App\Entity\CategoriesArticle;
-use App\Repository\ImagesArticleRepository;
+// use App\Repository\ImagesArticleRepository;
 
 class TarifController extends AbstractController
 {
     /**
      * @Route("/tarifs/", name="tarifs")
      */
-    public function findFirstArticleByCategorie(ImagesArticleRepository $imagesArticleRepository): Response
+    public function findFirstArticleByCategorie(): Response
     {
         $repoArticles = $this->getDoctrine()->getRepository(Articles::class);
         $repoCat = $this->getDoctrine()->getRepository(CategoriesArticle::class);
@@ -34,10 +34,10 @@ class TarifController extends AbstractController
         }
         $id = $findArticle->getId();
         $article = $repoArticles->find($id);
-        $images = $imagesArticleRepository->findBy(['articles' => $article]);
+        // $images = $imagesArticleRepository->findBy(['articles' => $article]);
         return $this->render('article/index.html.twig', [
             'article' => $article,
-            'images' => $images,
+            // 'images' => $images,
         ]);
     }
 }

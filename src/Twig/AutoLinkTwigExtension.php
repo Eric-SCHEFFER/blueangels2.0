@@ -16,7 +16,9 @@ class AutoLinkTwigExtension extends AbstractExtension
 
     static public function autoLink($string)
     {
-        $pattern = "/http[s]?:\/\/[a-zA-Z0-9.\-\/?#=&]+/";
+        // Pattern de départ avant modif (ajout underscore qui n'était pas compris comme inclus dans un url)
+        // $pattern = "/http[s]?:\/\/[a-zA-Z0-9.\-\/?#=&]+/";
+        $pattern = "/http[s]?:\/\/[a-zA-Z0-9._\-\/?#=&]+/";
         $replacement = "<a href=\"$0\" target=\"_blank\">$0</a>";
         $string = preg_replace($pattern, $replacement, $string);
         return $string;
