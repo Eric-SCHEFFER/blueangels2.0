@@ -82,8 +82,8 @@
 						<td>
 							<a class="iconeEditer" href="{{ path('admin.articles.edit', {id: article.id}) }}" title="Éditer"></a>
 
-							{# formulaire avec champ caché (passer la valeur delete) pour supprimmer un article #}
-							<form class="deleteForm" method="post" action="{{ path('admin.article.delete', {id: article.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ article.titre }} ?')">
+							{# formulaire avec champ caché (passer la valeur delete) pour supprimmer un article. Le filtre twig replace supprime l'apostrophe s'il y en a, pour éviter l'absence de confirmation de supression #}
+							<form class="deleteForm" method="post" action="{{ path('admin.article.delete', {id: article.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ article.titre|replace({"'": ""}) }} ?')">
 								<input
 								type="hidden" name="_method" value="DELETE"/>
 								{# On créé un token #}

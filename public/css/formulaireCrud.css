@@ -3,7 +3,8 @@
    /* border: 1px yellow solid; */
    display: flex;
    justify-content: center;
-   margin: 0 14px 60px 18px;
+   /* margin: 0 14px 60px 18px; */
+   margin: 0 16px 60px -8px;
 }
 
 .form1 {
@@ -28,6 +29,7 @@
 
 .champ {
    margin: 0 20px 20px 20px;
+   /* border: solid 1px blue; */
 }
 
 .date {
@@ -61,6 +63,8 @@
    display: flex;
    flex-wrap: wrap;
    margin-left: 10px;
+   position: relative;
+   top: 10px;
 }
 
 .vignette {
@@ -77,6 +81,7 @@
    justify-content: left;
    flex-wrap: wrap;
    align-items: flex-end;
+   /* border: solid 1px rgb(255, 0, 0); */
 }
 
 .ligne2 {
