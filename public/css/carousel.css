@@ -1,5 +1,10 @@
 /* ========== CONTROLES DU CAROUSEL ========= */
 
+.hidden {
+   height: 85px;
+   background-color: white;
+}
+
 .boutonsNav {
    display: flex;
    height: auto;

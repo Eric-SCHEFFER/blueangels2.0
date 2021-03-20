@@ -23,24 +23,32 @@
 						<img src="{{ asset('uploads/imagesArticles/' ~ image.nom) }}" alt="">
 					</div>
 				{% endfor %}
-				{# Boutons de contrôles du carousel #}
-				<div class="boutonsNav">
-					<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-					<a class="next" onclick="plusSlides(1)">&#10095;</a>
-				</div>
-				{% set n = 0 %}
-				<div class="blocBullets">
-					{% for image in article.getImagesArticles %}
-						{% set n = n + 1 %}
-						<div class="bullet" onclick="currentSlide({{ n }})">
-							<p>{{ n }}</p>
+
+				{# On affiche les boutons et infos du carousel, sauf s'il n'y a qu'une image #}
+				{% if article.getImagesArticles|length == 1 %}
+					<div class="boutonsAndBulletsWrapper hidden"></div>
+					{% else %}
+						<div class="boutonsAndBulletsWrapper">
+							<div class="boutonsNav">
+								<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+								<a class="next" onclick="plusSlides(1)">&#10095;</a>
+							</div>
+							{% set n = 0 %}
+							<div class="blocBullets">
+								{% for image in article.getImagesArticles %}
+									{% set n = n + 1 %}
+									<div class="bullet" onclick="currentSlide({{ n }})">
+										<p>{{ n }}</p>
+									</div>
+								{% endfor %}
+							</div>
 						</div>
-					{% endfor %}
-				</div>
+				{% endif %}
+
 				<div class="textes">
 				{% else %}
 					<div class="textes element-sans-image">
-					{% endif %}
+			{% endif %}
 					<div class="info-bar">
 						<div class="info-bar-left">
 							<div class="type-vue-and-status">

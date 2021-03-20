@@ -30,25 +30,28 @@
                 {% endfor %}
         {% endif %}
                 
-        {# Boutons de contrôles du carousel #}
-        <div class="boutonsNav">
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        </div>
-        {% set n = 0 %}
-        <div class="blocBullets">
-            {% for image in event.getImagesEvents %}
-                {% set n = n + 1 %}
-                <div class="bullet" onclick="currentSlide({{ n }})">
-                    <p>{{ n }}</p>
-                </div>
-            {% endfor %}
-        </div>
+        {# On affiche les boutons et infos du carousel, sauf s'il n'y a qu'une image #}
+        {% if event.getImagesEvents|length == 1 %}
+            <div class="boutonsAndBulletsWrapper hidden"></div>
+                {% else %}
+                    <div class="boutonsAndBulletsWrapper">
+                        <div class="boutonsNav">
+                            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                        </div>
+                        {% set n = 0 %}
+                        <div class="blocBullets">
+                            {% for image in event.getImagesEvents %}
+                                {% set n = n + 1 %}
+                                <div class="bullet" onclick="currentSlide({{ n }})">
+                                    <p>{{ n }}</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+        {% endif %}
 
         <div class="textes">
-
-
-
             <div class="info-bar">
                 <div class="info-bar-left">
                     <div class="type-vue-and-status">

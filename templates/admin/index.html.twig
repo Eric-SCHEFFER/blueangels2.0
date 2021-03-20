@@ -15,13 +15,6 @@
         <h1>
             Administration
         </h1>
-        {# {% for message in app.flashes('succes') %}
-		<div class="conteneurMessageFlash">
-			<div class="messageFlash">
-				{{ message }}
-			</div>
-		</div>
-	    {% endfor %} #}
 
 		<section class = "admin">
             <div class="container0">
@@ -60,6 +53,10 @@
                         <li title="Gérer les partenaires">
                             <div class="titre">Partenaires</div>
                             <a class="boutonGo" href="{{ path('admin.partenaires') }}">Go</a>
+                        </li>
+                        <li title="Gérer le trombinoscope">
+                            <div class="titre">Trombinoscope</div>
+                            <a class="boutonGo" href="{{ path('admin.trombinoscope') }}">Go</a>
                         </li>
                     </ul>
                     <ul class="liste">
