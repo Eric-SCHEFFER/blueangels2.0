@@ -57,6 +57,16 @@ class MembresAsso
      */
     private $telephone;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $actif;
+
+    public function __construct()
+    {
+        $this->actif = true;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -154,6 +164,18 @@ class MembresAsso
     public function setTelephone(?string $telephone): self
     {
         $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    public function getActif(): ?bool
+    {
+        return $this->actif;
+    }
+
+    public function setActif(?bool $actif): self
+    {
+        $this->actif = $actif;
 
         return $this;
     }

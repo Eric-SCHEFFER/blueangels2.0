@@ -1,0 +1,15 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}{% endblock %}
+
+{% block title %}
+	{{ SiteName }}: Gérer le trombinoscope
+{% endblock %}
+
+{% block body %}
+	<div class="wrapper">
+		<h1>
+			Gérer le trombinoscope
+		</h1>
+		{{ include ('admin/trombinoscope/_adminTrombinoscopeBase.html.twig') }}
+	</div>
+{% endblock %}

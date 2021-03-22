@@ -1,0 +1,66 @@
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/adminTableCrud.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+{% endblock %}
+
+<div class="conteneur_table">
+	<div class="table-admin-dashboard">
+		<div>
+			<a class="boutonNew" href="" title="Créer un nouveau trombinoscopé">Nouveau
+			</a>
+		</div>
+	</div>
+	<table class="table_1">
+		<thead>
+			<tr>
+            <th>Prénom et nom</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			{% if membresAsso is not empty %}
+				{% for membreAsso in membresAsso %}
+					<tr>
+						<td>
+							<div class="blocTitreImage">
+								<div class="titreEtInfos">
+                              {{ membreAsso.prenom }}
+                              
+                           {% if not membreAsso.actif %}
+                              {# Variable array globale pour les différentes balises title ci-dessous de cette div (dans twig.yaml) #}
+                              <div class="articles-actif-off" title="{{ articleOptionInfo.inactif }}">
+                                 <i class="fas fa-eye-slash orange"></i>
+                              </div>
+                              {% else %}
+                                 <div class="articles-actif-on" title="{{ articleOptionInfo.actif }}">
+                                    <i class="fas fa-eye lime"></i>
+                                 </div>
+                           {% endif %}
+                        </div>
+                        <div class="align-self-top">
+                           {{ membreAsso.nom }}
+                        </div>
+                        <div>
+                           image
+                        </div>
+                     </div>
+								
+							</div>
+						</td>
+                  
+						<td>
+							<a class="iconeEditer" href="" title="Éditer"></a>
+
+							{# formulaire avec champ caché (passer la valeur delete) pour supprimmer un article. Le filtre twig replace supprime l'apostrophe s'il y en a, pour éviter l'absence de confirmation de supression #}
+							<form class="deleteForm" method="post" action="" onsubmit="return confirm('Voulez-vous vraiment supprimer')">
+								
+								<button class="iconeSupprimer" title="Supprimer"></button>
+							</form>
+						</td>
+					</tr>
+				{% endfor %}
+			{% endif %}
+		</tbody>
+	</table>
+</div>
