@@ -17,27 +17,15 @@ class PartenairesController extends AbstractController
         $this->articlesRepository = $articlesRepository;
         $this->categoriesArticleRepository = $categoriesArticleRepository;
     }
+
     /**
      * @Route("/partenairessssss", name="partenaires")
      */
-    public function loadArticles(): Response
+    public function loadArticlesPartenaires(): Response
     {
         $categorie = $this->categoriesArticleRepository->findOneBy(['nom' => 'Partenaires']);
-        $articles = $this->articlesRepository->findBy(
-            [
-                'categories_article' => $categorie,
-                'actif' => true,
-            ],
-            ['created_at' => "DESC"]
-        );
-
-        if (empty($articles)) {
-            // Erreur 404
-            throw $this->createNotFoundException('L\'article est introuvable');
-        }
-        return $this->render('partenaires/partenaires.html.twig', [
-            'menu_courant' => 'partenaires',
-            'articles' => $articles,
-        ]);
+        $categorieId = $categorie->getId();
+        // On va sur la route qui affiche les articles selon la catégorie passée en id, et c'est sur l'autre controller que s'effectue la logique
+        return $this->redirectToRoute('categorie.articles', ['idCategorie' => $categorieId]);
     }
 }

@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ArticlesRepository;
 use App\Repository\CategoriesArticleRepository;
 
-class ArticlesFromCategorieButtonController extends AbstractController
+class articlesByCategorieController extends AbstractController
 {
     public function __construct(
         ArticlesRepository $articlesRepository,
@@ -17,6 +17,7 @@ class ArticlesFromCategorieButtonController extends AbstractController
         $this->articlesRepository = $articlesRepository;
         $this->categoriesArticleRepository = $categoriesArticleRepository;
     }
+    
     /**
      * @Route("/categorieArticles/{idCategorie}", name="categorie.articles")
      */
@@ -35,7 +36,7 @@ class ArticlesFromCategorieButtonController extends AbstractController
             // Erreur 404
             throw $this->createNotFoundException('L\'article est introuvable');
         }
-        return $this->render('articlesFromCategorieButton/articlesFromCategorieButton.html.twig', [
+        return $this->render('articlesByCategorie/articlesByCategorie.html.twig', [
             'articles' => $articles,
             'nomCategorie' => $categorie->getNom(),
         ]);
