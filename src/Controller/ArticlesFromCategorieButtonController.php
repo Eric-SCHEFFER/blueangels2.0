@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ArticlesRepository;
 use App\Repository\CategoriesArticleRepository;
 
-class PartenairesController extends AbstractController
+class ArticlesFromCategorieButtonController extends AbstractController
 {
     public function __construct(
         ArticlesRepository $articlesRepository,
@@ -18,11 +18,11 @@ class PartenairesController extends AbstractController
         $this->categoriesArticleRepository = $categoriesArticleRepository;
     }
     /**
-     * @Route("/partenairessssss", name="partenaires")
+     * @Route("/categorieArticles/{idCategorie}", name="categorie.articles")
      */
-    public function loadArticles(): Response
+    public function loadArticles($idCategorie): Response
     {
-        $categorie = $this->categoriesArticleRepository->findOneBy(['nom' => 'Partenaires']);
+        $categorie = $this->categoriesArticleRepository->find(['id' => $idCategorie]);
         $articles = $this->articlesRepository->findBy(
             [
                 'categories_article' => $categorie,
@@ -35,9 +35,9 @@ class PartenairesController extends AbstractController
             // Erreur 404
             throw $this->createNotFoundException('L\'article est introuvable');
         }
-        return $this->render('partenaires/partenaires.html.twig', [
-            'menu_courant' => 'partenaires',
+        return $this->render('articlesFromCategorieButton/articlesFromCategorieButton.html.twig', [
             'articles' => $articles,
+            'nomCategorie' => $categorie->getNom(),
         ]);
     }
 }

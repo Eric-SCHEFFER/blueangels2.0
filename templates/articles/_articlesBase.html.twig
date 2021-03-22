@@ -4,9 +4,10 @@
 {% endblock %}
 
 {#
-On affiche les aperçus des articles, dont en priorité les épinglés s'il y en a, dans des cards.
+On affiche les aperçus des articles, s'il y en a, dans des cards.
 Chaque card est cliquable, et renvoi vers la fullPage de l'article.
 #}
+	
 <div class="bloc-cards">
 	{% for article in articles %}
 		<a class="card-article" href="{{ path('article', {id: article.id}) }}" title="{{ article.getTitre() }}">

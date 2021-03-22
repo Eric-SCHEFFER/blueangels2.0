@@ -54,6 +54,13 @@ margin: 10px;
    border-radius: 4px;
 }
 
+.bt-extra-small {
+   font-size: .8em;
+   padding: 1px 5px 1px 5px;
+   width: max-content;
+   border-radius: 4px;
+}
+
 .bt-extra-small-arrow {
    padding: 0;
    width: 18px;

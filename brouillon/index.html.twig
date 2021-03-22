@@ -7,7 +7,7 @@
 {% endblock %}
 {% block title %}
 	{{ SiteName }}:
-			Article -
+		Article -
 	{{ article.titre }}
 {% endblock %}
 
@@ -16,7 +16,7 @@
 	<div class="wrapper">
 		<h1>{{ article.titre }}</h1>
 		<section class="full-element">
-			{% if article.getImagesArticles is not empty %}
+			{% if not article.getImagesArticles is empty %}
 				{# On affiche les images dispo dans le tableau #}
 				{% for image in article.getImagesArticles %}
 					<div class="image">
@@ -27,28 +27,28 @@
 				{# On affiche les boutons et infos du carousel, sauf s'il n'y a qu'une image #}
 				{% if article.getImagesArticles|length == 1 %}
 					<div class="boutonsAndBulletsWrapper hidden"></div>
-				{% else %}
-					<div class="boutonsAndBulletsWrapper">
-						<div class="boutonsNav">
-							<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-							<a class="next" onclick="plusSlides(1)">&#10095;</a>
+					{% else %}
+						<div class="boutonsAndBulletsWrapper">
+							<div class="boutonsNav">
+								<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+								<a class="next" onclick="plusSlides(1)">&#10095;</a>
+							</div>
+							{% set n = 0 %}
+							<div class="blocBullets">
+								{% for image in article.getImagesArticles %}
+									{% set n = n + 1 %}
+									<div class="bullet" onclick="currentSlide({{ n }})">
+										<p>{{ n }}</p>
+									</div>
+								{% endfor %}
+							</div>
 						</div>
-						{% set n = 0 %}
-						<div class="blocBullets">
-							{% for image in article.getImagesArticles %}
-								{% set n = n + 1 %}
-								<div class="bullet" onclick="currentSlide({{ n }})">
-									<p>{{ n }}</p>
-								</div>
-							{% endfor %}
-						</div>
-					</div>
 				{% endif %}
 
 				<div class="textes">
 				{% else %}
 					<div class="textes element-sans-image">
-					{% endif %}
+			{% endif %}
 					<div class="info-bar">
 						<div class="info-bar-left">
 							<div class="type-vue-and-status">
@@ -63,14 +63,7 @@
 							<div class="categorie">
 								{% if article.categoriesArticle.nom is defined %}
 									<i class="fas fa-folder-open"></i>
-									{# Lien vers la page de la catégorie #}
-									<a class="bouton bt-extra-small"
-										title="Tous les articles de la catégorie {{ article.categoriesArticle.nom }}"
-										href="{{ path('categorie.articles', {idCategorie: article.categoriesArticle.id}) }}">
-										{{ article.categoriesArticle.nom }}
-									</a>
-
-
+									{{ article.categoriesArticle.nom }}
 								{% endif %}
 							</div>
 							<div class="date">

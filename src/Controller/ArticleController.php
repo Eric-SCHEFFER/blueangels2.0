@@ -14,6 +14,7 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article/{id}", name="article")
      */
+    
     public function articleLoad($id, ImagesArticleRepository $imagesArticleRepository): Response
     {
         $repo = $this->getDoctrine()->getRepository(Articles::class);
