@@ -46,24 +46,27 @@ class AdminTrombinoscopeController extends AbstractController
         $form = $this->createForm(MembreAssoType::class, $membreAsso);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // On récupère l'image transmise
-            $image = $form->get('photo')->getData();
-            // On génère un nouveau nom de fichier
-            $ext = $image->guessExtension();
-            $fichier = md5(uniqid()) . '.' . $ext;
-            // On copie le fichier dans le dossier uploads
-            $dossierImages = $this->getParameter('dossier_images_trombinoscope');
-            $image->move(
-                $dossierImages,
-                $fichier
-            );
-            // On créé une image réduite uniquement si l'image fait plus de 300 000  octets
-            $pathImage = $dossierImages . '/' . $fichier;
-            if (filesize($pathImage) > 300000) {
-                $this->creeMiniature($pathImage, $pathImage, 300);
+            // Si une image est passée par le formulaire
+            if (!empty($form->get('photo')->getData())) {
+                // On récupère l'image transmise
+                $image = $form->get('photo')->getData();
+                // On génère un nouveau nom de fichier
+                $ext = $image->guessExtension();
+                $fichier = md5(uniqid()) . '.' . $ext;
+                // On copie le fichier dans le dossier uploads
+                $dossierImages = $this->getParameter('dossier_images_trombinoscope');
+                $image->move(
+                    $dossierImages,
+                    $fichier
+                );
+                // On créé une image réduite uniquement si l'image fait plus de 300 000  octets
+                $pathImage = $dossierImages . '/' . $fichier;
+                if (filesize($pathImage) > 300000) {
+                    $this->creeMiniature($pathImage, $pathImage, 300);
+                }
+                // On stocke le nom de l'image dans la base de données
+                $membreAsso->setPhoto($fichier);
             }
-            // On stocke le nom de l'image dans la base de données
-            $membreAsso->setPhoto($fichier);
             $this->em->persist($membreAsso);
             $this->em->flush();
             $this->addFlash('succes', 'Article créé avec succès');
@@ -90,27 +93,29 @@ class AdminTrombinoscopeController extends AbstractController
         $form = $this->createForm(MembreAssoType::class, $membresAsso);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // On récupère l'image transmise
-            $image = $form->get('photo')->getData();
-            // On génère un nouveau nom de fichier
-            $ext = $image->guessExtension();
-            $fichier = md5(uniqid()) . '.' . $ext;
-            // On copie le fichier dans le dossier uploads
-            $dossierImages = $this->getParameter('dossier_images_trombinoscope');
-            $image->move(
-                $dossierImages,
-                $fichier
-            );
-            // On créé une image réduite uniquement si l'image fait plus de 300 000  octets
-            $pathImage = $dossierImages . '/' . $fichier;
-            if (filesize($pathImage) > 300000) {
-                $this->creeMiniature($pathImage, $pathImage, 300);
+            if (!empty($form->get('photo')->getData())) {
+                // On récupère l'image transmise
+                $image = $form->get('photo')->getData();
+                // On génère un nouveau nom de fichier
+                $ext = $image->guessExtension();
+                $fichier = md5(uniqid()) . '.' . $ext;
+                // On copie le fichier dans le dossier uploads
+                $dossierImages = $this->getParameter('dossier_images_trombinoscope');
+                $image->move(
+                    $dossierImages,
+                    $fichier
+                );
+                // On créé une image réduite uniquement si l'image fait plus de 300 000  octets
+                $pathImage = $dossierImages . '/' . $fichier;
+                if (filesize($pathImage) > 300000) {
+                    $this->creeMiniature($pathImage, $pathImage, 300);
+                }
+                // On stocke le nom de l'image dans la base de données
+                $membresAsso->setPhoto($fichier);
             }
-            // On stocke le nom de l'image dans la base de données
-            $membresAsso->setPhoto($fichier);
             $this->em->persist($membresAsso);
             $this->em->flush();
-            $this->addFlash('succes', 'Article créé avec succès');
+            $this->addFlash('succes', 'Article modifié avec succès');
             // return $this->redirectToRoute('admin.articles');
             // TODO: Sécuriser la redirection en s'assurant surant que le referer vient bien de notre site.
             // Est-ce que ça fonctionne en https ?
@@ -134,7 +139,9 @@ class AdminTrombinoscopeController extends AbstractController
         // Vérif token pour sécuriser la suppression d'une réalisation
         if ($this->isCsrfTokenValid('delete' . $membresAsso->getId(), $request->get('_token'))) {
             // On supprime l'image sur le disque
-            unlink($this->getParameter('dossier_images_trombinoscope') . '/' . $membresAsso->getPhoto());
+            if (!empty($membresAsso->getPhoto())) {
+                unlink($this->getParameter('dossier_images_trombinoscope') . '/' . $membresAsso->getPhoto());
+            }
             // On supprime le trombinoscopé dans la base
             $this->em->remove($membresAsso);
             $this->em->flush();

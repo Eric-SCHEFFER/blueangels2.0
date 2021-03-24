@@ -23,13 +23,18 @@
 			</div>
 			{# On vérifie si la route est "admin.trombinoscope.edit", et on affiche les images #}
 			{% if app.request.attributes.get('_route') == 'admin.trombinoscope.edit' %}
-				<div class="blocVignettes">
-					<div class="vignette">
-						<img src="{{ asset('uploads/imagesTrombinoscope/' ~ membresAsso.photo) }}" alt="image">
-               {# TODO: Bouton supprimer l'image #}
-						<a class="bouton petitBouton" href="{{ path('admin.trombinoscope.image.delete', {id: membresAsso.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ membresAsso.id) }}">Supprimer
-						</a>
-					</div>
+				<div
+					class="blocVignettes">
+					{# S'il y a une image, on l'affiche #}
+					{% if  membresAsso.photo is not empty %}
+						<div class="vignette">
+							<img
+							src="{{ asset('uploads/imagesTrombinoscope/' ~ membresAsso.photo) }}" alt="image">
+							{# Bouton supprimer l'image #}
+							<a class="bouton petitBouton" href="{{ path('admin.trombinoscope.image.delete', {id: membresAsso.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ membresAsso.id) }}">Supprimer
+							</a>
+						</div>
+					{% endif %}
 				</div>
 			{% endif %}
 		</div>

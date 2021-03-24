@@ -41,9 +41,16 @@
 										</div>
 									{% endif %}
 								</div>
-								<div>
-									<img src="{{ asset('uploads/imagesTrombinoscope/' ~ membreAsso.getPhoto) }}">
-								</div>
+								{% if membreAsso.getPhoto is empty %}
+									{# On affiche l'image de remplacement par défaut #}
+									<div>
+										<img title="Aucune image de disponible" src="{{ asset('images/min_imageDefaut.jpg') }}">
+									</div>
+								{% else %}
+									<div>
+										<img src="{{ asset('uploads/imagesTrombinoscope/' ~ membreAsso.getPhoto) }}">
+									</div>
+								{% endif %}
 							</div>
 						</td>
 						<td>
@@ -51,7 +58,8 @@
 
 							{# formulaire avec champ caché (passer la valeur delete) pour supprimmer un article. Le filtre twig replace supprime l'apostrophe s'il y en a, pour éviter l'absence de confirmation de supression #}
 							<form class="deleteForm" method="post" action="{{ path('admin.trombinoscope.delete', {id: membreAsso.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer')">
-								<input type="hidden" name="_method" value="DELETE"/>
+								<input
+								type="hidden" name="_method" value="DELETE"/>
 								{# On créé un token #}
 								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ membreAsso.id) }}"/>
 								<button class="iconeSupprimer" title="Supprimer"></button>
