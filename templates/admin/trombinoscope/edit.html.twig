@@ -1,0 +1,18 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}{% endblock %}
+
+
+{% block title %}
+	{{ SiteName }}:
+	   Éditer un trombinoscopé
+{% endblock %}
+
+{% block body %}
+	<div class="wrapper">
+		<h1>Éditer un trombinoscopé</h1>
+		{{ include ('admin/trombinoscope/_form.html.twig', {form: form, button: 'Enregistrer'}) }}
+	</div>
+	{% block javascript %}
+		<script src="{{ asset('js/images.js') }}"></script>
+	{% endblock %}
+{% endblock %}

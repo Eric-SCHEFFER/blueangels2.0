@@ -1,0 +1,72 @@
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/formulaireCrud.css') }}">
+{% endblock %}
+
+
+<div class="container-form">
+	{{ form_start(form, {'attr':{'class':'form1'}}) }}
+	<div class="ligne1">
+		<div class="champ">
+			{{ form_row(form.prenom, {'attr':{'class':'titre'}}) }}
+		</div>
+		<div class="champ">
+			{{ form_row(form.nom, {'attr':{'class':'titre'}}) }}
+		</div>
+	</div>
+
+	<h3>Images</h3>
+	<div class="images">
+
+		<div class="ligne1">
+			<div class="champ">
+				{{ form_row(form.photo, {'attr':{'class':'image'}}) }}
+			</div>
+			{# On vérifie si la route est "admin.trombinoscope.edit", et on affiche les images #}
+			{% if app.request.attributes.get('_route') == 'admin.trombinoscope.edit' %}
+				<div class="blocVignettes">
+					<div class="vignette">
+						<img src="{{ asset('uploads/imagesTrombinoscope/' ~ membresAsso.photo) }}" alt="image">
+               {# TODO: Bouton supprimer l'image #}
+						<a class="bouton petitBouton" href="{{ path('admin.trombinoscope.image.delete', {id: membresAsso.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ membresAsso.id) }}">Supprimer
+						</a>
+					</div>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+
+
+	<div class="ligne1">
+		<div class="champ">
+			{{ form_row(form.fonction, {'attr':{'class':'titre'}}) }}
+		</div>
+		<div class="champ">
+			{{ form_row(form.email, {'attr':{'class':'titre'}}) }}
+		</div>
+
+	</div>
+	<div class="ligne1">
+		<div class="champ">
+			{{ form_row(form.facebook, {'attr':{'class':'titre'}}) }}
+		</div>
+		<div class="champ">
+			{{ form_row(form.telephone, {'attr':{'class':'titre'}}) }}
+		</div>
+	</div>
+
+	<div class="champ">
+		{{ form_row(form.description, {'attr':{'class':'description'}}) }}
+	</div>
+
+	<div class="ligne2">
+		<div class="champ" title="{{ articleOptionInfo.actif }}">
+			{{ form_row(form.actif) }}
+		</div>
+	</div>
+
+	{# Champ caché pour envoyer le referer, et permettre la redirection à la page précédente après la soumission  #}
+	<input type="hidden" name="referer" value="{{app.request.headers.get('referer')}}"/>
+
+	<button>{{ button|default('Enregistrer') }}</button>
+	{{ form_end(form) }}
+</div>

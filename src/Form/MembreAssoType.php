@@ -6,6 +6,10 @@ use App\Entity\MembresAsso;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\All;
+use Symfony\Component\Validator\Constraints\Image;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class MembreAssoType extends AbstractType
 {
@@ -16,11 +20,36 @@ class MembreAssoType extends AbstractType
             ->add('prenom')
             ->add('fonction')
             ->add('description')
-            ->add('photo')
+
+            ->add('photo', FileType::class, [
+                'required' => false,
+                'label' => false,
+                'mapped' => false,
+                'constraints' => [
+                    // new All([
+                    //     new Image([
+                    //         // maxSize: Par fichier
+                    //         'maxSize' => '8M',
+                    //         'maxSizeMessage' => 'Trop gros: 8M maxi par fichier',
+                    //         'mimeTypes' => [
+                    //             'image/jpeg',
+                    //             'image/png'
+                    //         ],
+                    //         'mimeTypesMessage' => 'Fichier non-valide: Uniquement jpeg et png'
+                    //     ])
+                    // ])
+                ]
+            ])
+
+
             ->add('email')
             ->add('facebook')
             ->add('telephone')
-        ;
+
+            ->add('actif', CheckboxType::class, [
+                'required' => false,
+                'label' => 'Actif',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
