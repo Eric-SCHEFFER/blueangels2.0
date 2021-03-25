@@ -1,0 +1,39 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/cardTrombinoscope.css') }}">
+{% endblock %}
+{% block title %}
+	{{ SiteName }}: Trombinoscope
+{% endblock %}
+
+{% block body %}
+
+	<div class="wrapper">
+		<h1>Trombinoscope</h1>
+		<section class="trombinoscope">
+			<div class="bloc-cards">
+				{% set n = 1 %}
+				{% for membre in membres %}
+					<div class="card" id="card-{{ n }}" onclick="cardClick({{ n }})">
+						<div class="image">
+							<img src="{{ asset('uploads/imagesTrombinoscope/' ~ membre.getPhoto()) }}" alt="">
+						</div>
+						<div class="zone-titre">
+							<div>{{ membre.prenom }}</div>
+							<div>{{ membre.nom }}</div>
+						</div>
+						<div class="zone-texte">
+							<p class="fonction">{{ membre.fonction }}</p>
+							<p>{{ membre.description | nl2br }}</p>
+						</div>
+					</div>
+					{% set n = n + 1 %}
+				{% endfor %}
+			</div>
+		</section>
+	</div>
+
+	{% block javascript %}
+		<script src="{{ asset('js/trombinoscope.js') }}"></script>
+	{% endblock %}
+{% endblock %}

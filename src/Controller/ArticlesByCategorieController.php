@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ArticlesRepository;
 use App\Repository\CategoriesArticleRepository;
 
-class articlesByCategorieController extends AbstractController
+class ArticlesByCategorieController extends AbstractController
 {
     public function __construct(
         ArticlesRepository $articlesRepository,

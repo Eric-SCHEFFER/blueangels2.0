@@ -25,7 +25,7 @@ class PartenairesController extends AbstractController
     {
         $categorie = $this->categoriesArticleRepository->findOneBy(['nom' => 'Partenaires']);
         $categorieId = $categorie->getId();
-        // On va sur la route qui affiche les articles selon la catégorie passée en id, et c'est sur l'autre controller que s'effectue la logique
+        // On va sur la route qui affiche les articles selon la catégorie passée en id, et c'est sur ArticlesByCategorieController que s'effectue la logique
         return $this->redirectToRoute('categorie.articles', ['idCategorie' => $categorieId]);
     }
 }

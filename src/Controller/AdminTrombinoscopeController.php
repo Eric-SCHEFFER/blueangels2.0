@@ -29,7 +29,7 @@ class AdminTrombinoscopeController extends AbstractController
      */
     public function loadMembresAsso(MembresAssoRepository $membresAssoRepository): Response
     {
-        $membresAsso = $membresAssoRepository->findBy([], ['prenom' => 'DESC']);
+        $membresAsso = $membresAssoRepository->findBy([], ['prenom' => 'ASC']);
         return $this->render('admin/trombinoscope/adminTrombinoscope.html.twig', [
             'membresAsso' => $membresAsso,
         ]);
@@ -115,7 +115,7 @@ class AdminTrombinoscopeController extends AbstractController
             }
             $this->em->persist($membresAsso);
             $this->em->flush();
-            $this->addFlash('succes', 'Article modifié avec succès');
+            $this->addFlash('succes', '"' . $membresAsso->getPrenom() . '"' . ' modifié avec succès');
             // return $this->redirectToRoute('admin.articles');
             // TODO: Sécuriser la redirection en s'assurant surant que le referer vient bien de notre site.
             // Est-ce que ça fonctionne en https ?
