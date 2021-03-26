@@ -1,6 +1,7 @@
 // Reçoit le clic sur une card, avec son id en paramètre, et bascule sur la class qui développe la description
 function cardClick(id) {
-   let targetCard = document.getElementById('card-' + id);
+   console.log(id);
+   let targetCard = document.getElementById(id);
    targetCard.classList.toggle('card-click');
    let cards = document.getElementsByClassName('card');
    for (let i = 0; i < cards.length; i++) {

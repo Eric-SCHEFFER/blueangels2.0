@@ -14,7 +14,7 @@
 			<div class="bloc-cards">
 				{% set n = 1 %}
 				{% for membre in membres %}
-					<div class="card" id="card-{{ n }}" onclick="cardClick({{ n }})">
+					<div class="card" id="card-{{ n }}" onclick="cardClick('card-{{ n }}')">
 						<div class="image">
 							<img src="{{ asset('uploads/imagesTrombinoscope/' ~ membre.getPhoto()) }}" alt="">
 						</div>
