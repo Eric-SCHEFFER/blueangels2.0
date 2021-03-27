@@ -19,6 +19,7 @@ class AdminMentionsLegalesController extends AbstractController
         $repoCat = $this->getDoctrine()->getRepository(CategoriesArticle::class);
         // On recherche dans CategoriesArticle, la catégorie "Historique asso".  
         $categorie = $repoCat->findOneBy(array('nom' => 'Mentions légales'));
+        $categorieId = $categorie->getId();
         // On cherche tous les articles dans cette catégorie
         $articles = $repoArticles->findBy(
             [
@@ -28,6 +29,7 @@ class AdminMentionsLegalesController extends AbstractController
         );
         return $this->render('admin/mentionsLegales/mentionsLegales.html.twig', [
             'articles' => $articles,
+            'categorieId' => $categorieId,
         ]);
     }
 }

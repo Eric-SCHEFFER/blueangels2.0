@@ -46,8 +46,14 @@
 		{{ form_row(form.contenu, {'attr':{'class':'description'}}) }}
 	</div>
 	<div class="ligne1">
-		<div class="champ">
-			{{ form_row(form.CategoriesArticle) }}
+		<div
+			class="champ">
+			{# Afficher par défaut l'id' de la catégorie en cours, avec une variable reçue de nouveau.html.twig #}
+			{% if categorieId is defined %}
+				{{ form_row(form.CategoriesArticle, {'value': categorieId}) }}
+			{% else %}
+				{{ form_row(form.CategoriesArticle) }}
+			{% endif %}
 		</div>
 		<div class="champ" title="{{ articleOptionInfo.actif }}">
 			{{ form_row(form.actif) }}

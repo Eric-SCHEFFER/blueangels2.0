@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Articles;
 use App\Entity\ImagesArticle;
 use App\Repository\ArticlesRepository;
+use App\Entity\CategoriesArticle;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\ArticleType;
 use Attribute;
@@ -31,15 +32,20 @@ class AdminArticlesController extends AbstractController
     {
         // On récupère tous les articles, dont en premier les épinglés s'il y en a
         $articles = $this->getArticles();
+        // TODO: Récuper l'id de la catégorie 'Non classé', pour après l'avoir dans le select d'une création d'article (car on est dans l'admin des articles en général)
+        $repoCat = $this->getDoctrine()->getRepository(CategoriesArticle::class);
+        $categorie = $repoCat->findOneBy(array('nom' => 'Non classé'));
+        $categorieId = $categorie->getId();
         return $this->render('admin/articles/adminArticles.html.twig', [
             'articles' => $articles,
+            'categorieId' => $categorieId,
         ]);
     }
 
 
     // ======== CRÉER UN ARTICLE ========
     /**
-     * @Route("/admin/articles/nouveau", name="admin.articles.nouveau")
+     * @Route("/admin/articles/nouveau/{categorieId}", name="admin.articles.nouveau", methods="GET|POST")
      */
     public function new(Request $request)
     {

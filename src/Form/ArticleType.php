@@ -90,7 +90,8 @@ class ArticleType extends AbstractType
                     ->orderBy('c.nom', 'ASC');
             },
             'choice_label' => 'nom',
-            'placeholder' => 'Aucune catégorie choisie',
+            // TODO: Modif pour afficher par défaut dans _form.html.twig l'option de la catégorie en cours
+            // 'placeholder' => 'Aucune catégorie choisie',
             'label' => 'Catégorie',
             'required' => false,
         ])

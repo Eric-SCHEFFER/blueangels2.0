@@ -19,6 +19,7 @@ class AdminDansesController extends AbstractController
         $repoCat = $this->getDoctrine()->getRepository(CategoriesArticle::class);
         // On recherche dans CategoriesArticle, la catégorie "Danses".  
         $categorie = $repoCat->findOneBy(array('nom' => 'Danses'));
+        $categorieId = $categorie->getId();
         // On cherche tous les articles dans cette catégorie
         $articles = $repoArticles->findBy(
             [
@@ -28,6 +29,7 @@ class AdminDansesController extends AbstractController
         );
         return $this->render('admin/danses/index.html.twig', [
             'articles' => $articles,
+            'categorieId' => $categorieId,
         ]);
     }
 }

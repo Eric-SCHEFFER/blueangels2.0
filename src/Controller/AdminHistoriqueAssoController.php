@@ -19,6 +19,7 @@ class AdminHistoriqueAssoController extends AbstractController
         $repoCat = $this->getDoctrine()->getRepository(CategoriesArticle::class);
         // On recherche dans CategoriesArticle, la catégorie "Historique asso".  
         $categorie = $repoCat->findOneBy(array('nom' => 'Historique asso'));
+        $categorieId = $categorie->getId();
         // On cherche tous les articles dans cette catégorie
         $articles = $repoArticles->findBy(
             [
@@ -28,6 +29,7 @@ class AdminHistoriqueAssoController extends AbstractController
         );
         return $this->render('admin/historiqueAsso/historiqueAsso.html.twig', [
             'articles' => $articles,
+            'categorieId' => $categorieId,
         ]);
     }
 }

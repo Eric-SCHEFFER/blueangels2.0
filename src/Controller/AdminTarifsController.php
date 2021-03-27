@@ -19,6 +19,7 @@ class AdminTarifsController extends AbstractController
         $repoCat = $this->getDoctrine()->getRepository(CategoriesArticle::class);
         // On recherche dans CategoriesArticle, la catégorie "Tarifs".  
         $categorie = $repoCat->findOneBy(array('nom' => 'Tarifs'));
+        $categorieId = $categorie->getId();
         // On cherche tous les articles dans cette catégorie
         $articles = $repoArticles->findBy(
             [
@@ -28,6 +29,7 @@ class AdminTarifsController extends AbstractController
         );
         return $this->render('admin/tarifs/index.html.twig', [
             'articles' => $articles,
+            'categorieId' => $categorieId,
         ]);
     }
 }

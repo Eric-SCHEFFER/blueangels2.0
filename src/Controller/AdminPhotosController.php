@@ -19,6 +19,7 @@ class AdminPhotosController extends AbstractController
         $repoCat = $this->getDoctrine()->getRepository(CategoriesArticle::class);
         // On recherche dans CategoriesArticle, la catégorie "Photos".  
         $categorie = $repoCat->findOneBy(array('nom' => 'Photos'));
+        $categorieId = $categorie->getId();
         // On cherche tous les articles dans cette catégorie
         $articles = $repoArticles->findBy(
             [
@@ -28,6 +29,7 @@ class AdminPhotosController extends AbstractController
         );
         return $this->render('admin/photos/photos.html.twig', [
             'articles' => $articles,
+            'categorieId' => $categorieId,
         ]);
     }
 }

@@ -6,10 +6,11 @@
    {{ SiteName }}:
    Nouvel article
 {% endblock %}
-
 {% block body %}
    <div class="wrapper">
       <h1>Nouvel article</h1>
-	   {{ include ('admin/articles/_form.html.twig', {form: form, button: 'Créer'}) }}
+      {# Passer en paramètres l'id de la catégorie reçu en get #}
+      {% set categorieId = app.request.attributes.get('categorieId') %}
+	   {{ include ('admin/articles/_form.html.twig', {form: form, button: 'Créer', categorieId: categorieId }) }}
    </div>   
 {% endblock %}

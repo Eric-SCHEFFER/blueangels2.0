@@ -6,7 +6,10 @@
 <div class="conteneur_table">
 	<div class="table-admin-dashboard">
 		<div>
-			<a class="boutonNew" href="{{ path('admin.articles.nouveau') }}" title="Créer un nouvel article">Nouveau
+			{# Passer en paramètre l'id de la catégorie #}
+			{# <a class="boutonNew" href="{{ path('admin.articles.nouveau', {categorieId: categorieId}) }}" title="Créer un nouvel article">Nouveau #}
+			</a>
+			<a class="boutonNew" href="{{ path('admin.articles.nouveau', {categorieId: categorieId}) }}" title="Créer un nouvel article">Nouveau
 			</a>
 		</div>
 	</div>
