@@ -1,5 +1,8 @@
 {% extends 'components/base.html.twig' %}
-
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/formulaireCrud.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+{% endblock %}
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
