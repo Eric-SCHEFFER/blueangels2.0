@@ -9,6 +9,8 @@
    background-color: #225d91;
    font-weight: 500;
    text-transform: uppercase;
+   border: none;
+   font-size: 1em;
 }
 
 .boutonFlecheGauche:hover
