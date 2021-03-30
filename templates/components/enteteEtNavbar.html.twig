@@ -137,14 +137,26 @@
          </li>
          {# ======== Sous-menu /OFF =========== #}
 
+         {# ======== Sous-menu /ON =========== #}
          <li>
-            <a href="{{ path('contact') }}" class="
-               {% if menu_courant is defined and menu_courant == 'contact' %}
-                  active
-               {% endif %}">
+            <button class="btDropdown" onclick="toggleMenu('contact')">
                Contact
-            </a>
+               <i class="fa fa-caret-down"></i>
+            </button>
+            <ul class="dropdown-content" id="contact">
+               <li>
+                  <a href="{{ path('coordonnees') }}">
+                     Adresse
+                  </a>
+               </li>
+               <li>
+                  <a href="{{ path('contact') }}">
+                     Formulaire de contact
+                  </a>
+               </li>
+            </ul>
          </li>
+         {# ======== Sous-menu /OFF =========== #}
 
          {# ======== Sous-menu /ON =========== #}
          <li>

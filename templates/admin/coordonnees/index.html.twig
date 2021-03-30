@@ -1,0 +1,15 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}{% endblock %}
+
+{% block title %}
+	{{ SiteName }}: Gérer les coordonnées
+{% endblock %}
+
+{% block body %}
+	<div class="wrapper">
+		<h1>
+			Gérer les coordonnées
+		</h1>
+		{{ include ('admin/articles/_adminArticlesBase.html.twig') }}
+	</div>
+{% endblock %}
