@@ -13,8 +13,7 @@
    font-size: 1em;
 }
 
-.boutonFlecheGauche:hover
-.flecheGauche {
+.boutonFlecheGauche:hover .flecheGauche {
    left: -13px;
 }
 
@@ -24,8 +23,7 @@
    transition: left .6s;
 }
 
-.boutonFlecheDroite:hover
-.flecheDroite {
+.boutonFlecheDroite:hover .flecheDroite {
    left: 15px;
 }
 
@@ -36,7 +34,7 @@
 }
 
 .bt2 {
-margin: 10px;
+   margin: 10px;
 }
 
 .bt-inline-bloc {
@@ -81,6 +79,48 @@ margin: 10px;
    cursor: pointer;
    color: #fff;
 }
+
+/* =========== FORMULAIRE CONTACT ============ */
+
+
+.buttonDisabled,
+.buttonEnabled {
+   font-family: 'Kodchasan', sans-serif;
+   text-align: center;
+   border: unset;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 40px;
+   border-radius: 6px;
+   font-weight: 600;
+   font-size: 1.1em;
+   cursor: pointer;
+   margin: auto;
+   padding: 0;
+   width: 200px;
+   position: relative;
+   right: 1.2%;
+   text-transform: uppercase;
+}
+
+.buttonEnabled {
+   background-color: #2c70b8;
+   color: rgb(220, 220, 220);
+}
+
+button:hover {
+   color: rgb(255, 255, 255);
+}
+
+.buttonDisabled,
+.buttonDisabled:hover {
+   background-color: rgb(85, 85, 85);
+   color: #ffffff;
+   cursor: not-allowed;
+}
+
+
 
 /* ============= Colors ================== */
 

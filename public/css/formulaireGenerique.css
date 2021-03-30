@@ -1,0 +1,87 @@
+.container-form {
+   max-width: 400px;
+   margin: 0 auto 60px auto;
+   text-align: center;
+   padding: 0;
+   /* border: solid yellow 1px; */
+}
+
+.bloc-column {
+   margin: 30px 0 30px 0;
+   display: flex;
+   flex-direction: column;
+   /* border: solid rgb(255, 0, 0) 1px; */
+}
+
+.bloc-ligne {
+   margin: 30px 0 30px 0;
+   display: flex;
+   flex-wrap: wrap;
+   width: 100%;
+   justify-content: center;
+   /* border: solid rgb(255, 0, 0) 1px; */
+}
+
+.bloc-ligne>div,
+.consentementRgpd {
+   display: flex;
+   flex-direction: column;
+   /* border: solid rgb(212, 212, 216) 1px; */
+   height: 50px;
+   width: 400px;
+   font-size: 1em;
+   margin: 15px 3% 15px 3%;
+}
+
+.consentementRgpd {
+   flex-direction: row;
+   text-align: left;
+}
+
+.caseACocher {
+   margin-right: 20px;
+}
+
+.bloc-ligne-objet-et-message {
+   margin: 30px 0 30px 0;
+   display: flex;
+   flex-wrap: wrap;
+   width: 100%;
+   justify-content: center;
+   /* border: solid rgb(255, 0, 0) 1px; */
+}
+
+.bloc-ligne-objet-et-message>div {
+   display: flex;
+   flex-direction: column;
+   /* border: solid rgb(0, 17, 255) 1px; */
+   height: 50px;
+   width: 400px;
+   font-size: 1em;
+   margin: 15px 3% 15px 3%;
+}
+
+.bloc-ligne-objet-et-message>div:nth-child(2),
+.bloc-ligne-objet-et-message>div:nth-child(2) textarea {
+   height: 150px;
+}
+
+input, textarea {
+   border-radius: 6px;
+   border: none;
+   padding: 9px;
+   font-size: 1em;
+   color: rgb(70, 70, 70);
+}
+
+textarea {
+   font-size: 1.2em;
+}
+
+label {
+   align-self: flex-start;
+}
+
+.big-width {
+   max-width: 1000px;
+}

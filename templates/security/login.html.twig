@@ -1,9 +1,10 @@
 {% extends 'components/base.html.twig' %}
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('css/formulaireLogin.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/formulaireGenerique.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
 {% endblock %}
-{% block title %}Log in!
+{% block title %}
+{{ SiteName }}: Connexion
 {% endblock %}
 
 {% block body %}
@@ -15,7 +16,7 @@
 				{% endif %}
 
 				{% if app.user %}
-					<div class="mb-3">
+					<div>
 						Vous ếtes déjà connecté
 						{{ app.user.username }},
 						<a href="{{ path('app_logout') }}">Déconnexion</a>
@@ -24,13 +25,13 @@
 
 				<h1 class=>Connexion</h1>
                 
-                <div class="ligne">
-				    <label class="item-ligne" for="inputEmail">Email</label>
+                <div class="bloc-column">
+				    <label class="item-bloc" for="inputEmail">Email</label>
 				    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="input" required autofocus>
                 </div>
 
-                <div class="ligne">
-				    <label class="item-ligne" for="inputPassword">Mot de passe</label>
+                <div class="bloc-column">
+				    <label class="item-bloc" for="inputPassword">Mot de passe</label>
 				    <input type="password" name="password" id="inputPassword" class="input" required>
                 </div>
 

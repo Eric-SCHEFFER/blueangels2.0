@@ -1,0 +1,73 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/formulaireGenerique.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+{% endblock %}
+
+{% block title %}
+	{{ SiteName }}: Contact
+{% endblock %}
+
+
+{% block body %}
+
+	<div class="wrapper">
+		<h1>
+			Formulaire de contact
+		</h1>
+      <p class="center">(Tous les champs sont obligatoires)</p>
+
+		<div class="container-form big-width">
+			{{ form_start(contactForm) }}
+
+			<div class="bloc-ligne">
+				{{ form_row(contactForm.prenom) }}
+				{{ form_row(contactForm.nom) }}
+			</div>
+
+			<div class="bloc-ligne">
+				{{ form_row(contactForm.tel) }}
+				{{ form_row(contactForm.email) }}
+			</div>
+
+			<div class="bloc-ligne-objet-et-message">
+				{{ form_row(contactForm.objet, {'attr':{'value':champObjetPreRempli}}) }}
+				{{ form_row(contactForm.message, {'attr':{'value': champMessagePreRempli}}) }}
+			</div>
+
+
+			{# Champ caché pôt de miel pour les petits robots #}
+			<div>
+				{{ form_row(contactForm.motif) }}
+			</div>
+
+
+			<div class="bloc-ligne">
+				<p class="consentementRgpd">
+					<input type="checkbox" class="caseACocher" id="accordDonneesPerso">
+					<label for="accordDonneesPerso">
+						<span class="texteRgpd">
+							Je consens à la collecte de mes données personnelles dans le cadre de cette demande de contact.
+						</span>
+					</label>
+				</p>
+			</div>
+
+			<div class="bloc-ligne">
+				{{ form_row(contactForm.envoyer,
+                  {'attr':{'disabled':'disabled',
+                  'class':'buttonDisabled',
+                  'id':'contact_envoyer'
+                  }}
+				)
+				}}
+			</div>
+
+			{{ form_end(contactForm) }}
+
+			{% block javascript %}
+				<script src="{{ asset('js/checkBoxRgpdFormulaireContact.js') }}"></script>
+			{% endblock %}
+
+		</div>
+	{% endblock %}
