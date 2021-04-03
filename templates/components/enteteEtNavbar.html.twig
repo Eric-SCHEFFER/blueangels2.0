@@ -133,30 +133,20 @@
                      Trombinoscope
                   </a>
                </li>
+               <li>
+                  <a href="{{ path('adresse') }}">
+                     Adresse
+                  </a>
+               </li>
             </ul>
          </li>
          {# ======== Sous-menu /OFF =========== #}
 
-         {# ======== Sous-menu /ON =========== #}
          <li>
-            <button class="btDropdown" onclick="toggleMenu('contact')">
+            <a href="{{ path('contact') }}">
                Contact
-               <i class="fa fa-caret-down"></i>
-            </button>
-            <ul class="dropdown-content" id="contact">
-               <li>
-                  <a href="{{ path('coordonnees') }}">
-                     Adresse
-                  </a>
-               </li>
-               <li>
-                  <a href="{{ path('contact') }}">
-                     Formulaire de contact
-                  </a>
-               </li>
-            </ul>
+            </a>
          </li>
-         {# ======== Sous-menu /OFF =========== #}
 
          {# ======== Sous-menu /ON =========== #}
          <li>

@@ -1,0 +1,65 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/formulaireGenerique.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+{% endblock %}
+
+{% block title %}
+	{{ SiteName }}: Gérer infos et adresses
+{% endblock %}
+
+
+{% block body %}
+
+	<div class="wrapper">
+		<h1>
+			Gérer infos et adresses
+		</h1>
+		<div class="container-form big-width">
+			{{ form_start(form) }}
+
+			<div class="bloc-ligne">
+				{{ form_row(form.nom_entreprise) }}
+				{{ form_row(form.adresse) }}
+			</div>
+			<div class="bloc-ligne">
+				{{ form_row(form.complement_adresse) }}
+				{{ form_row(form.code_postal) }}
+			</div>
+			<div class="bloc-ligne">
+				{{ form_row(form.ville) }}
+				{{ form_row(form.telephone) }}
+			</div>
+			<div class="bloc-ligne">
+				{{ form_row(form.telephone_2) }}
+				{{ form_row(form.email_contact) }}
+			</div>
+			<div class="bloc-ligne">
+				{{ form_row(form.facebook) }}
+				{{ form_row(form.youtube) }}
+			</div>
+			<div class="bloc-ligne">
+				{{ form_row(form.autre) }}
+			</div>
+			<div class="bloc-ligne">
+				{{ form_row(form.lieu_cours) }}
+				{{ form_row(form.adresse_cours) }}
+			</div>
+			<div class="bloc-ligne">
+				{{ form_row(form.code_postal_cours) }}
+				{{ form_row(form.ville_cours) }}
+			</div>
+			<div class="bloc-ligne">
+				{{ form_row(form.google_maps_cours) }}
+			</div>
+			<div class="bloc-ligne">
+				{{ form_row(form.email_envoi_formulaire) }}
+			</div>
+			<div class="bloc-ligne">
+				<button class="bouton">
+					{{ button|default('Enregistrer') }}
+				</button>
+			</div>
+			{{ form_end(form) }}
+		</div>
+	{% endblock %}
