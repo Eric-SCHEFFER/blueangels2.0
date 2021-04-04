@@ -8,3 +8,38 @@
    word-break: break-word;
    color: rgb(0, 0, 0);
 }
+
+.bloc-contenu-page h2 {
+   color:rgb(0, 0, 0);
+}
+
+.bloc-adresse {
+   margin: 50px 0 70px 0;
+}
+
+.titre1 {
+   margin-bottom: 10px;
+}
+
+.bloc-contenu-page a {
+   color: #0068d6;
+   font-weight: 600;
+}
+
+.bloc-contenu-page a:hover {
+   color: #0054ad;
+}
+
+.bloc-contenu-page i {
+   color: rgb(87, 87, 87);
+}
+
+.dl-sous-groupe {
+   position: relative;
+   margin-bottom: -18px;
+}
+
+.bloc-contenu-page dd {
+   position: relative;
+   bottom: 20px; /* On aligne les données avec les icones */
+}

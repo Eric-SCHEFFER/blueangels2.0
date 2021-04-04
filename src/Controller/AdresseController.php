@@ -19,8 +19,9 @@ class AdresseController extends AbstractController
      */
     public function index(): Response
     {
-        $champs = $this->infosEtAdressesRepository->findOneBy([]);
-        dd($champs);
-        return $this->render('adresse/adresse.html.twig', []);
+        $infos = $this->infosEtAdressesRepository->findOneBy([]);
+        return $this->render('adresse/adresse.html.twig', [
+            'infos' => $infos,
+        ]);
     }
 }
