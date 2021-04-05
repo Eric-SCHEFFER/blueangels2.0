@@ -15,7 +15,7 @@
 		<h1>
 			Formulaire de contact
 		</h1>
-      <p class="center">(Tous les champs sont obligatoires)</p>
+		<p class="center">(Tous les champs sont obligatoires)</p>
 
 		<div class="container-form big-width">
 			{{ form_start(contactForm) }}
@@ -31,10 +31,9 @@
 			</div>
 
 			<div class="bloc-ligne-objet-et-message">
-				{{ form_row(contactForm.objet, {'attr':{'value':champObjetPreRempli}}) }}
-				{{ form_row(contactForm.message, {'attr':{'value': champMessagePreRempli}}) }}
+				{{ form_row(contactForm.objet, {'value':champObjetPreRempli}) }}
+				{{ form_row(contactForm.message, {'value': champMessagePreRempli}) }}
 			</div>
-
 
 			{# Champ caché pôt de miel pour les petits robots #}
 			<div>
@@ -46,9 +45,7 @@
 				<p class="consentementRgpd">
 					<input type="checkbox" class="caseACocher" id="accordDonneesPerso">
 					<label for="accordDonneesPerso">
-						<span class="texteRgpd">
-							Je consens à la collecte de mes données personnelles dans le cadre de cette demande de contact.
-						</span>
+						Je consens à la collecte de mes données personnelles dans le cadre de cette demande de contact.
 					</label>
 				</p>
 			</div>
@@ -60,7 +57,7 @@
                   'id':'contact_envoyer'
                   }}
 				)
-				}}
+								}}
 			</div>
 
 			{{ form_end(contactForm) }}

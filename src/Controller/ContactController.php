@@ -27,9 +27,9 @@ class ContactController extends AbstractController
         $titre = NULL;
         $champObjetPreRempli = NULL;
         $champMessagePreRempli = NULL;
-        // Si l'id de la réalisation existe, on hydrate les variables qui pré-rempliront les champs objet et message
+        // Si l'id de l'article' existe, on hydrate les variables qui pré-rempliront les champs objet et message
         if (isset($id)) {
-            $titre = $this->getDoctrine()->getRepository(Realisations::class)->find($id)->getTitre();
+            $titre = $this->getDoctrine()->getRepository(Articles::class)->find($id)->getTitre();
             $referer = $request->headers->get('referer');
             $champObjetPreRempli = 'A propos: ' . $titre;
             $champMessagePreRempli = "Lien: " . $referer . "\n\nBonjour,\n";

@@ -39,6 +39,11 @@
 
 .caseACocher {
    margin-right: 20px;
+   cursor: pointer;
+}
+
+input[type=checkbox] + label {
+   cursor: pointer;
 }
 
 .bloc-ligne-objet-et-message {
