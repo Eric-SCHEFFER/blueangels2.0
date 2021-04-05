@@ -7,7 +7,7 @@
 {% endblock %}
 {% block title %}
 	{{ SiteName }}:
-			Article -
+				Article -
 	{{ article.titre }}
 {% endblock %}
 
@@ -64,9 +64,7 @@
 								{% if article.categoriesArticle.nom is defined %}
 									<i class="fas fa-folder-open"></i>
 									{# Lien vers la page de la catégorie #}
-									<a class="bouton bt-extra-small"
-										title="Tous les articles de la catégorie {{ article.categoriesArticle.nom }}"
-										href="{{ path('categorie.articles', {idCategorie: article.categoriesArticle.id}) }}">
+									<a class="bouton bt-extra-small" title="Tous les articles de la catégorie {{ article.categoriesArticle.nom }}" href="{{ path('categorie.articles', {idCategorie: article.categoriesArticle.id}) }}">
 										{{ article.categoriesArticle.nom }}
 									</a>
 
@@ -90,10 +88,14 @@
 								</a>
 							</div>
 						{% endif %}
-						<div class="contact">
-							<a class="bouton bt-small" href="{{ path('contact', {id: article.id}) }}">Contact</a>
-						</div>
+						{# On n'affiche pas le lien contact quand c'est la catégorie Partenaires, car ça peut prêter à confusion #}
+						{% if article.categoriesArticle.nom and article.categoriesArticle.nom != "Partenaires" %}
+							<div class="contact">
+								<a class="bouton bt-small" href="{{ path('contact', {id: article.id}) }}">Contact</a>
+							</div>
+						{% endif %}
 					</div>
+
 					<h2 class="hook">
 						{{ article.hook }}
 					</h2>
