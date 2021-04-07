@@ -67,7 +67,7 @@ input[type=checkbox] + label {
 
 .bloc-ligne-objet-et-message>div:nth-child(2),
 .bloc-ligne-objet-et-message>div:nth-child(2) textarea {
-   height: 150px;
+   height: 250px;
 }
 
 input, textarea {
