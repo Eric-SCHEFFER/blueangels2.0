@@ -4,7 +4,7 @@
 	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
 {% endblock %}
 {% block title %}
-{{ SiteName }}: Connexion
+	{{ SiteName }}: Connexion
 {% endblock %}
 
 {% block body %}
@@ -24,34 +24,39 @@
 				{% endif %}
 
 				<h1 class=>Connexion</h1>
-                
-                <div class="bloc-column">
-				    <label class="item-bloc" for="inputEmail">Email</label>
-				    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="input" required autofocus>
-                </div>
 
-                <div class="bloc-column">
-				    <label class="item-bloc" for="inputPassword">Mot de passe</label>
-				    <input type="password" name="password" id="inputPassword" class="input" required>
-                </div>
+				<div class="bloc-column">
+					<label class="item-bloc" for="inputEmail">Email</label>
+					<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="input" required autofocus>
+				</div>
+
+				<div class="bloc-column">
+					<label class="item-bloc" for="inputPassword">Mot de passe</label>
+					<input type="password" name="password" id="inputPassword" class="input" required>
+				</div>
 
 				<input
 				type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
 				{#
-                Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-                See https://symfony.com/doc/current/security/remember_me.html
-    
-                <div class="checkbox mb-3">
-                    <label>
-                        <input type="checkbox" name="_remember_me"> Remember me
-                    </label>
-                </div>
-                #}
+				Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+				See https://symfony.com/doc/current/security/remember_me.html
 
+				<div class="checkbox mb-3">
+					<label>
+						<input type="checkbox" name="_remember_me"> Remember me
+					</label>
+				</div>
+				#}
+				{% if not app.user %}
+					<p>
+						<a href="{{ path('app_forgot_password_request') }}">Mot de passe oublié</a>
+					</p>
+				{% endif %}
 				<button class="bouton" type="submit">
 					Connexion
 				</button>
+
 			</form>
 		</div>
 	</div>
