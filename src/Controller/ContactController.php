@@ -26,9 +26,9 @@ class ContactController extends AbstractController
         if (empty($request->attributes->get("categorie"))) {
             // Si l'id de l'event existe, c'est qu'on vient d'une page event, alors, on hydrate les variables qui pré-rempliront les champs objet et message
             if (isset($id)) {
-                $titre = $this->getDoctrine()->getRepository(Events::class)->find($id)->getNom();
+                $nom = $this->getDoctrine()->getRepository(Events::class)->find($id)->getNom();
                 $referer = $request->headers->get('referer');
-                $champObjetPreRempli = 'A propos: ' . $titre;
+                $champObjetPreRempli = 'A propos: ' . $nom;
                 $champMessagePreRempli = "Lien: " . $referer . "\n\nBonjour,\n";
             }
         }
