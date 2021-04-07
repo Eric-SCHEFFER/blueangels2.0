@@ -66,16 +66,24 @@
             </ul>
          </li>
          
-
-
          <li>
-            <a href="{{ path('articles') }}" class="
-               {% if menu_courant is defined and menu_courant == 'articles' %}
+            <a href="{{ path('home') }}" class="
+               {% if menu_courant is defined and menu_courant == 'cours' %}
                   active
                {% endif %}">
-               Articles
+               Cours
             </a>
          </li>
+
+         <li>
+            <a href="{{ path('home') }}" class="
+               {% if menu_courant is defined and menu_courant == 'stages' %}
+                  active
+               {% endif %}">
+               Stages
+            </a>
+         </li>
+         
 
          {# ======== Sous-menu /ON =========== #}
          <li>
@@ -168,20 +176,30 @@
             </ul>
          </li>
          {# ======== Sous-menu /OFF =========== #}
+         {# ======== Sous-menu /ON =========== #}
 
          {% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
-
-         <li>
-            <a href="{{ path('admin') }}" class="
-                  {% if menu_courant is defined and menu_courant == 'admin' %}
-                     active
-                  {% endif %}">
-               <i class="fas fa-wrench fa-lg"></i>
-            </a>
-         </li>
+            <li>
+               <button class="btDropdown" onclick="toggleMenu('admin')">
+                  Admin
+                  <i class="fa fa-caret-down"></i>
+               </button>
+               <ul class="dropdown-content" id="admin">
+                  <li>
+                     <a href="{{ path('admin') }}">
+                        Page admin
+                     </a>
+                  </li>
+                  <li>
+                     <a href="{{ path('app_logout') }}">
+                        Déconnexion
+                        <i class="fas fa-sign-out-alt"></i>
+                     </a>
+                  </li>
+               </ul>
+            </li>
          {% endif %}
-
-
+         {# ======== Sous-menu /OFF =========== #}
       </ul>
    </nav>
 </div>
