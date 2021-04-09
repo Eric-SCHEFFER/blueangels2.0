@@ -93,7 +93,7 @@ nav {
    top: 55px;
    right: 53px;
    font-weight: 500;
-   padding: 0;
+   padding: 0 20px 0 20px;
    border-radius: 4px;
    /* border: solid #fbff00 1px */
 }
@@ -101,7 +101,7 @@ nav {
 nav a, nav .btDropdown {
    position: relative;
    /* border: solid #ff0000 1px; */
-   width: 100%;
+   width: max-content;
    text-align: center;
    line-height: 50px;
    padding: 0;
@@ -138,7 +138,7 @@ nav ul.ulMenuGeneral {
 nav ul.dropdown-content {
    position: absolute;
    display: none;
-   left: 0;
+   right: 0;
    padding: 0 20px 0 20px;
    min-width: 100%;
    background-color: #004785;
@@ -167,7 +167,7 @@ nav li {
    padding: 0;
    margin: 0;
    height: 100%;
-   width: 100%;
+   width: max-content;
    /* border: rgb(0, 217, 255) solid 1px; */
    /* min-width: max-content; */
 }

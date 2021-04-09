@@ -1,6 +1,8 @@
 // Au clic du bouton, on ouvre/ferme son sous-menu 
 function toggleMenu(iDMenu) {
+
    let dropDownTarget = document.getElementById(iDMenu);
+   console.log(dropDownTarget);
    let dropdowns = document.getElementsByClassName('dropdown-content');
    let i;
    for (i = 0; i < dropdowns.length; i++) {
@@ -12,14 +14,15 @@ function toggleMenu(iDMenu) {
          }
       }
    }
-   // Bascule On/Off du menu dropdown au clic du le bouton
+   // Bascule On/Off du menu dropdown au clic sur le bouton
    dropDownTarget.classList.toggle("show");
 }
 
 
 // Ferme le menu dropdown si on clique n'importe où sauf sur son bouton
 window.onclick = function (e) {
-   if (!e.target.matches('.btDropdown')) {
+   // closest permet de cibler tout le contenu de btDropdown (les boites descendantes)
+   if (!e.target.closest('.btDropdown')) {
       let dropdowns = document.getElementsByClassName('dropdown-content');
       let i;
       for (i = 0; i < dropdowns.length; i++) {

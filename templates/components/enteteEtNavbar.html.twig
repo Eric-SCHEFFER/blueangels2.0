@@ -158,30 +158,31 @@
             </ul>
          </li>
          {# ======== Sous-menu /OFF =========== #}
-         {# ======== Sous-menu /ON =========== #}
+
 
          {% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
-            <li>
-               <button class="btDropdown" onclick="toggleMenu('admin')">
-                  Admin
-                  <i class="fa fa-caret-down"></i>
-               </button>
-               <ul class="dropdown-content" id="admin">
-                  <li>
-                     <a href="{{ path('admin') }}">
-                        Page admin
-                     </a>
-                  </li>
-                  <li>
-                     <a href="{{ path('app_logout') }}">
-                        Déconnexion
-                        <i class="fas fa-sign-out-alt"></i>
-                     </a>
-                  </li>
-               </ul>
-            </li>
-         {% endif %}
+          {# ======== Sous-menu /ON =========== #}
+         <li>
+            <button class="btDropdown" onclick="toggleMenu('user')" title="Paramètres de {{ app.user.username }}">
+               <i class="fas fa-lg fa-user-cog"></i>
+               <i class="fa fa-caret-down"></i>
+            </button>
+            <ul class="dropdown-content" id="user">
+               <li>
+                  <a href="{{ path('app_logout') }}">
+                     Déconnexion de {{ app.user.username }}
+                     <i class="fas fa-lg fa-sign-out-alt"></i>
+                  </a>
+               </li>
+            </ul>
+         </li>
          {# ======== Sous-menu /OFF =========== #}
+         <li>
+            <a href="{{ path('admin') }}" title="Administration">
+               <i class="fas fa-lg fa-wrench"></i>
+            </a>
+         </li>
+         {% endif %}
       </ul>
    </nav>
 </div>
