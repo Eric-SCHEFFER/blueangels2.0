@@ -96,6 +96,11 @@ class ArticleType extends AbstractType
             'required' => false,
         ])
 
+            ->add('linked_page', CheckboxType::class, [
+                'required' => false,
+                'label' => 'Lié à une page fixe'
+            ])
+
             ->add('epingle', CheckboxType::class, [
                 'required' => false,
                 'label' => 'Épingler en page d\'accueil'

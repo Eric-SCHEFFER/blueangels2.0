@@ -7,19 +7,18 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Articles;
 use App\Entity\CategoriesArticle;
-// use App\Repository\ImagesArticleRepository;
 
-class TarifController extends AbstractController
+class CoursController extends AbstractController
 {
     /**
-     * @Route("/tarifs/", name="tarifs")
+     * @Route("/cours/", name="cours")
      */
     public function findFirstArticleByCategorie(): Response
     {
         $repoArticles = $this->getDoctrine()->getRepository(Articles::class);
         $repoCat = $this->getDoctrine()->getRepository(CategoriesArticle::class);
-        // On recherche dans CategoriesArticle, la catégorie "Tarifs".  
-        $categorie = $repoCat->findOneBy(array('nom' => 'Tarifs'));
+        // On recherche dans CategoriesArticle, la catégorie "Cours".  
+        $categorie = $repoCat->findOneBy(array('nom' => 'Cours'));
         // On cherche l'article actif le plus récent dans cette catégorie
         $findArticle = $repoArticles->findOneBy(
             [

@@ -62,12 +62,8 @@ class Articles
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $linked_page;
-
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
     private $listed;
+
 
     public function __construct()
     {
@@ -196,18 +192,6 @@ class Articles
         return $this;
     }
 
-    public function getLinkedPage(): ?bool
-    {
-        return $this->linked_page;
-    }
-
-    public function setLinkedPage(?bool $linked_page): self
-    {
-        $this->linked_page = $linked_page;
-
-        return $this;
-    }
-
     public function getListed(): ?bool
     {
         return $this->listed;
@@ -219,4 +203,5 @@ class Articles
 
         return $this;
     }
+
 }

@@ -127,7 +127,7 @@ class AdminArticlesController extends AbstractController
             $this->addFlash('succes', '"' . $article->getTitre() . '"' . ' modifié avec succès');
             // return $this->redirectToRoute('admin.articles');
 
-            // TODO: Sécuriser la redirection en s'assurant surant que le referer vient bien de notre site.
+            // TODO: Sécuriser la redirection en s'assurant que le referer vient bien de notre site.
             // Est-ce que ça fonctionne en https ?
             return $this->redirect($request->request->get('referer'));
         }

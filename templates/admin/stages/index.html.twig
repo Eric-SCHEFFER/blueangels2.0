@@ -1,0 +1,16 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}{% endblock %}
+
+{% block title %}
+	{{ SiteName }}: Gérer les stages
+{% endblock %}
+
+{% block body %}
+	<div class="wrapper">
+		<h1>
+			Gérer les stages
+		</h1>
+		<p class="center">C'est l'article le plus récent qui est ciblé par la page</p>
+		{{ include ('admin/articles/_adminArticlesBase.html.twig') }}
+	</div>
+{% endblock %}

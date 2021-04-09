@@ -45,10 +45,11 @@
 	<div class="champ">
 		{{ form_row(form.contenu, {'attr':{'class':'description'}}) }}
 	</div>
+	
 	<div class="ligne1">
 		<div
 			class="champ">
-			{# Afficher par défaut l'id' de la catégorie en cours, avec une variable reçue de nouveau.html.twig #}
+			{# Afficher par défaut le nom de la catégorie en cours, avec une son id reçue de nouveau.html.twig #}
 			{% if categorieId is defined %}
 				{{ form_row(form.CategoriesArticle, {'value': categorieId}) }}
 			{% else %}
@@ -63,9 +64,6 @@
 		</div>
 		<div class="champ" title="{{ articleOptionInfo.epingle }}">
 			{{ form_row(form.epingle) }}
-		</div>
-		<div class="champ" title="{{ articleOptionInfo.linked }}">
-			{{ form_row(form.linked_page) }}
 		</div>
 	</div>
 
