@@ -26,6 +26,30 @@
 
    <nav class="theme-menu" id="nav">
       <ul class="ulMenuGeneral">
+         {% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
+          {# ======== Sous-menu /ON =========== #}
+         <li>
+            <button class="btDropdown" onclick="toggleMenu('user')" title="Paramètres de {{ app.user.username }}">
+               <i class="fas fa-lg fa-user-cog"></i>
+               <i class="fa fa-caret-down"></i>
+            </button>
+            <ul class="dropdown-content" id="user">
+               <li>
+                  <a href="{{ path('app_logout') }}">
+                     {{ app.user.username }}: Déconnexion 
+                     <i class="fas fa-lg fa-sign-out-alt"></i>
+                  </a>
+               </li>
+            </ul>
+         </li>
+         {# ======== Sous-menu /OFF =========== #}
+         <li>
+            <a href="{{ path('admin') }}" title="Administration">
+               <i class="fas fa-lg fa-wrench"></i>
+            </a>
+         </li>
+         {% endif %}
+
          <li>
             <a href="{{ path('home') }}" class="
                {% if menu_courant is defined and menu_courant == 'home' %}
@@ -158,31 +182,6 @@
             </ul>
          </li>
          {# ======== Sous-menu /OFF =========== #}
-
-
-         {% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
-          {# ======== Sous-menu /ON =========== #}
-         <li>
-            <button class="btDropdown" onclick="toggleMenu('user')" title="Paramètres de {{ app.user.username }}">
-               <i class="fas fa-lg fa-user-cog"></i>
-               <i class="fa fa-caret-down"></i>
-            </button>
-            <ul class="dropdown-content" id="user">
-               <li>
-                  <a href="{{ path('app_logout') }}">
-                     {{ app.user.username }}: Déconnexion 
-                     <i class="fas fa-lg fa-sign-out-alt"></i>
-                  </a>
-               </li>
-            </ul>
-         </li>
-         {# ======== Sous-menu /OFF =========== #}
-         <li>
-            <a href="{{ path('admin') }}" title="Administration">
-               <i class="fas fa-lg fa-wrench"></i>
-            </a>
-         </li>
-         {% endif %}
       </ul>
    </nav>
 </div>
