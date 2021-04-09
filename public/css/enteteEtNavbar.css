@@ -101,7 +101,7 @@ nav {
 nav a, nav .btDropdown {
    position: relative;
    /* border: solid #ff0000 1px; */
-   width: max-content;
+   min-width: max-content;
    text-align: center;
    line-height: 50px;
    padding: 0;
@@ -139,7 +139,7 @@ nav ul.dropdown-content {
    position: absolute;
    display: none;
    right: 0;
-   padding: 0 20px 0 20px;
+   padding: 0 6px 0 12px;
    min-width: 100%;
    background-color: #004785;
    border-radius: 4px;
@@ -148,13 +148,16 @@ nav ul.dropdown-content {
 
 nav ul.dropdown-content a {
    display: block;
-   /* width: 100%; */
-   min-width: max-content;
+   width: auto;
    padding: 0;
    font-size: .9em;
    text-align: left;
    transition: all .3s;
    /* border: rgb(0, 0, 0) 1px solid; */
+}
+
+nav ul.dropdown-content > li {
+   width: auto;
 }
 
 nav ul {
