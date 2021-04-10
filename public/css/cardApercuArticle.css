@@ -7,7 +7,7 @@
 .articles .card-article {
    display: flex;
    justify-content: left;
-   min-width: 300px;
+   min-width: 250px;
    width: 300px;
    height: 130px;
    padding: 0;
