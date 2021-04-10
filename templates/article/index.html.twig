@@ -7,7 +7,7 @@
 {% endblock %}
 {% block title %}
 	{{ SiteName }}:
-				Article -
+					Article -
 	{{ article.titre }}
 {% endblock %}
 
@@ -60,17 +60,6 @@
 									</span>
 								{% endif %}
 							</div>
-							<div class="categorie">
-								{% if article.categoriesArticle.nom is defined %}
-									<i class="fas fa-folder-open"></i>
-									{# Lien vers la page de la catégorie #}
-									<a class="bouton bt-extra-small" title="Tous les articles de la catégorie {{ article.categoriesArticle.nom }}" href="{{ path('categorie.articles', {idCategorie: article.categoriesArticle.id}) }}">
-										{{ article.categoriesArticle.nom }}
-									</a>
-
-
-								{% endif %}
-							</div>
 							<div class="date">
 								<i class="fas fa-calendar-alt"></i>
 								{{ article.getCreatedAt | date("d-m-Y") }}
@@ -78,6 +67,19 @@
 							<div class="time">
 								<i class="fas fa-clock"></i>
 								{{ article.getCreatedAt | date("H:i") }}
+							</div>
+							<div class="categorie">
+								{% if article.categoriesArticle.nom is defined %}
+									{# Lien vers la page de la catégorie #}
+									<a class="bouton bt-extra-small margin-right-6" title="Tous les articles de la catégorie {{ article.categoriesArticle.nom }}" href="{{ path('categorie.articles', {idCategorie: article.categoriesArticle.id}) }}">
+										{{ article.categoriesArticle.nom }}
+									</a>
+								{% endif %}
+							</div>
+							<div class="categorie">
+								<a class="bouton bt-extra-small" title="Tous les articles de toutes les catégories" href="{{ path('articles') }}">
+									Tous les articles
+								</a>
 							</div>
 						</div>
 						{# On affiche la clé anglaise "gérer", quand on est connecté en admin #}

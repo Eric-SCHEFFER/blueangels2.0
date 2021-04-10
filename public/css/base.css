@@ -124,6 +124,10 @@ footer {
    text-transform: uppercase;
 }
 
+.margin-right-6 {
+   margin-right: 6px;
+}
+
 /* ================== colors ================ */
 .theme-menu {
    background-color: #225D91;

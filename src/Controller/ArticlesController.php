@@ -27,7 +27,7 @@ class ArticlesController extends AbstractController
             ],
             ['created_at' => "DESC"]
         );
-        // On récupère tous les articles qui ont le droit de s'afficher (visibles, listés en page d'accueil, et épinglés) dont en premier les épinglés s'il y en a
+        // Si on veut mettre les épinglés devant: On récupère tous les articles qui ont le droit de s'afficher (visibles, listés en page d'accueil, et épinglés) dont en premier les épinglés s'il y en a
         // $articles = $this->getArticles();
         return $this->render('articles/index.html.twig', [
             'menu_courant' => 'articles',
