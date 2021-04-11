@@ -179,7 +179,18 @@ nav li {
    display: block !important;
 }
 
+.icone-communiques-calque-0 {
+   position: relative;
+   top: 7px;
+   font-size: 2.3em;
+}
 
+.icone-communiques-calque-1 {
+   position: relative;
+   right: 22px;
+   top: 0;
+   font-size: 1.1em;
+}
 
 /* ================ Petits écrans ================ */
 

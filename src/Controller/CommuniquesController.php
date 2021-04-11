@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ArticlesRepository;
 use App\Repository\CategoriesArticleRepository;
 
-class PartenairesController extends AbstractController
+class CommuniquesController extends AbstractController
 {
     public function __construct(
         ArticlesRepository $articlesRepository,
@@ -19,11 +19,11 @@ class PartenairesController extends AbstractController
     }
 
     /**
-     * @Route("/partenaires", name="partenaires")
+     * @Route("/communiques", name="communiques")
      */
-    public function loadArticlesPartenaires(): Response
+    public function loadArticlesCommuniques(): Response
     {
-        $categorie = $this->categoriesArticleRepository->findOneBy(['nom' => 'Partenaires']);
+        $categorie = $this->categoriesArticleRepository->findOneBy(['nom' => 'Communiqués']);
         $categorieId = $categorie->getId();
         // On va sur la route qui affiche les articles selon la catégorie passée en id, et c'est sur ArticlesByCategorieController que s'effectue la logique
         return $this->redirectToRoute('categorie.articles', ['idCategorie' => $categorieId]);

@@ -51,6 +51,16 @@
          {% endif %}
 
          <li>
+            <a href="{{ path('communiques') }}" title="Communiqués" class="
+               {% if menu_courant is defined and menu_courant == 'communiques' %}
+                  active
+               {% endif %}">
+               <i class="fas fa-comment icone-communiques-calque-0"></i>
+               <i class="fas fa-info blue icone-communiques-calque-1"></i>
+            </a>
+         </li>
+
+         <li>
             <a href="{{ path('home') }}" class="
                {% if menu_courant is defined and menu_courant == 'home' %}
                   active
@@ -61,7 +71,7 @@
 
          <li>
             <a href="{{ path('danses') }}" class="
-               {% if menu_courant is defined and menu_courant == 'danses' %}
+               {% if menu_courant is defined and menu_courant == 'communiques' %}
                   active
                {% endif %}">
                Danses
