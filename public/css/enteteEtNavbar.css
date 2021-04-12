@@ -187,9 +187,10 @@ nav li {
 
 .icone-communiques-calque-1 {
    position: relative;
-   right: 22px;
-   top: 0;
-   font-size: 1.1em;
+   right: 2px;
+   top: 7px;
+   font-size: 1.4em;
+   transform: rotate(-30deg);
 }
 
 /* ================ Petits écrans ================ */

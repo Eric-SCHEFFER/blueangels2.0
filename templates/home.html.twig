@@ -15,27 +15,6 @@
 		<h1 class="bienvenue-panel">
 			Bienvenue
 		</h1>
-		<h2>Derniers articles</h2>
-
-
-		{# ====================== Articles ======================== #}
-
-		<section
-			class="articles">
-			{#
-			On affiche les aperçus des 3 premiers articles, dont en priorité les épinglés s'il y en a, dans des cards.
-			Chaque card est cliquable, et renvoi vers la fullPage de l'article.
-			On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
-			#}
-			{{ include ('articles/_articlesBase.html.twig') }}
-
-			<div class="boutonsVoir">
-				<a class="bouton boutonFlecheDroite" href="{{ path('articles') }}">
-					Tous les articles
-					<i class="fas fa-arrow-right fa-lg flecheDroite"></i>
-				</a>
-			</div>
-		</section>
 
 
 		{# ==================== Évènements à venir ============================= #}
@@ -44,17 +23,19 @@
 		{% set countPasse = countTotalCompletedEvents[0][1] %}
 
 		<section class="events" id="events">
-
-
 			{% if countAVenir > 0 %}
-				<h1>Évènements à venir</h1>
+				{% if countAVenir == 1 %}
+					<h1>Évènement à venir</h1>
+				{% else %}
+					<h1>Évènements à venir</h1>
+				{% endif %}
 			{% else %}
 				<h1>Aucun évènement à venir</h1>
 			{% endif %}
 
 			{# Provisoire, pour tester les dates #}
 			{# <p>Nous sommes le
-				{{ today|date("d-m-Y H:i:s") }}</p> #}
+			{{ today|date("d-m-Y H:i:s") }}</p> #}
 
 			<div
 				class="bloc-cards">
@@ -138,6 +119,26 @@
 							<i class="fas fa-arrow-right fa-lg flecheDroite"></i>
 						</a>
 					{% endif %}
+				</div>
+			</section>
+
+			
+			{# ====================== Articles ======================== #}
+
+			<section class="articles">
+				<h2>Derniers articles</h2>
+				{#
+				On affiche les aperçus des 3 premiers articles, dont en priorité les épinglés s'il y en a, dans des cards.
+				Chaque card est cliquable, et renvoi vers la fullPage de l'article.
+				On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
+				#}
+				{{ include ('articles/_articlesBase.html.twig') }}
+
+				<div class="boutonsVoir">
+					<a class="bouton boutonFlecheDroite" href="{{ path('articles') }}">
+						Tous les articles
+						<i class="fas fa-arrow-right fa-lg flecheDroite"></i>
+					</a>
 				</div>
 			</section>
 		</div>

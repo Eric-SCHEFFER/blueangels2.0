@@ -28,6 +28,13 @@
                     </div>
                 </div>
             {% endfor %}
+            {% for message in app.flashes('error') %}
+		        <div class="conteneurMessageFlash">
+			        <div class="messageFlash messageFlash-alert">
+				        {{ message }}
+			        </div>
+		        </div>
+	{% endfor %}
             {% block body %}{% endblock %}
         </main>
         <footer>

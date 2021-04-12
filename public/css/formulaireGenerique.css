@@ -76,6 +76,7 @@ input, textarea {
    padding: 9px;
    font-size: 1em;
    color: rgb(70, 70, 70);
+   max-width: 100%;
 }
 
 textarea {
@@ -88,4 +89,8 @@ label {
 
 .big-width {
    max-width: 1000px;
+}
+
+.width-100 {
+   width: 100% !important;
 }

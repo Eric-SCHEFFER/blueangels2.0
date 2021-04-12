@@ -93,7 +93,7 @@
 						{# On n'affiche pas le lien contact quand c'est la catégorie Partenaires, car ça peut prêter à confusion #}
 						{% if article.categoriesArticle.nom and article.categoriesArticle.nom != "Partenaires" %}
 							<div class="contact">
-								<a class="bouton bt-small" href="{{ path('contact', {id: article.id, categorie: article.categoriesArticle.nom}) }}">Contact</a>
+								<a class="bouton bt-small" href="{{ path('contact', {id: article.id, categorie: article.categoriesArticle.nom}) }}" title="Nous contacter à propos de cet article">Contact</a>
 							</div>
 						{% endif %}
 					</div>

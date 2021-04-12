@@ -1,0 +1,51 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/formulaireGenerique.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+{% endblock %}
+
+{% block title %}
+	{{ SiteName }}: Modifier le mot de passe de
+	{{ app.user.email }}
+
+{% endblock %}
+
+{% block body %}
+	<div class="wrapper">
+		<h1>
+			Modifier le mot de passe de
+			{{ app.user.email }}
+
+
+		</h1>
+		<div class="container-form">
+
+			<form method="post">
+
+				<p>Le nouveau mot de passe doit faire 8 caractères minimum, et contenir au moins:
+					1 minuscule, 1 majuscule, 1 chiffre, et au moins 1 caractère spécial: & ) = ( ?
+				</p>
+				<div class="bloc-column">
+					<label for="inputPassword">Mot de passe actuel</label>
+					<input type="password" name="actuPassword" id="actuPassword" class="" required>
+				</div>
+
+				<div class="bloc-column">
+					<label for="inputPassword">Nouveau mot de passe</label>
+					<input type="password" name="newPassword" id="newPassword" class="" required>
+				</div>
+				<div class="bloc-column">
+					<label for="inputPassword">Confirmer le nouveau mot de passe</label>
+					<input type="password" name="newPasswordConfirm" id="newPasswordConfirm" class="" required>
+				</div>
+				<div class="bloc-column">
+					<button class="bouton width-100" type="submit">
+						ENVOYER
+					</button>
+				</div>
+			</form>
+
+		</div>
+	</div>
+
+{% endblock %}
