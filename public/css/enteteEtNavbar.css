@@ -187,7 +187,14 @@ nav li {
 
 .icone-communiques-calque-1 {
    position: relative;
-   right: 2px;
+   right: 19px;
+   top: 6px;
+   font-size: 1.3em;
+}
+
+.icone-communiques-calque-2 {
+   position: relative;
+   right: 13px;
    top: 7px;
    font-size: 1.4em;
    transform: rotate(-30deg);
@@ -199,7 +206,7 @@ nav li {
    nav {
       position: fixed;
       width: 100%;
-      max-width: 230px;
+      max-width: 200px;
       right: -310px;
       top: 0;
       height: auto;
