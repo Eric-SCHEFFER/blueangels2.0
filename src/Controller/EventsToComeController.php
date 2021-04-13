@@ -24,9 +24,9 @@ class EventsToComeController extends AbstractController
         // On récupère la date du jour, que l'on peut changer dans cette classe
         $today = $todayGenerator->generateAToday();
         // On récupère tous les events futurs
-        $events = $this->eventsRepository->findAllEventsToCome($today);
+        $events = $this->eventsRepository->findAllActifEventsToCome($today);
         // On récupère le nbre total d'events futurs
-        $countTotalEventsToCome = $this->eventsRepository->countTotalEventsToCome($today);
+        $countTotalEventsToCome = $this->eventsRepository->countTotalActifEventsToCome($today);
         
         return $this->render('EventsToCome/index.html.twig', [
             'menu_courant' => 'events',

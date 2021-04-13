@@ -26,6 +26,8 @@ class CommuniquesController extends AbstractController
         $categorie = $this->categoriesArticleRepository->findOneBy(['nom' => 'Communiqués']);
         $categorieId = $categorie->getId();
         // On va sur la route qui affiche les articles selon la catégorie passée en id, et c'est sur ArticlesByCategorieController que s'effectue la logique
-        return $this->redirectToRoute('categorie.articles', ['idCategorie' => $categorieId]);
+        return $this->redirectToRoute('categorie.articles', [
+            'idCategorie' => $categorieId,
+        ]);
     }
 }

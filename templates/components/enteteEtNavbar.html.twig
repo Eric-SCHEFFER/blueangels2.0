@@ -17,6 +17,7 @@
       </a>
    </div>
 
+
    {# ================= Menu ==================== #}
    <div id="burger">
       <div id="burgerBarre1"></div>
@@ -44,11 +45,23 @@
          </li>
          {# ======== Sous-menu /OFF =========== #}
          <li>
-            <a href="{{ path('admin') }}" title="Administration">
+            <a href="{{ path('admin') }}" title="Administration" class="
+            {% if menu_courant is defined and menu_courant == 'admin' %}
+               active
+            {% endif %}">
                <i class="fas fa-lg fa-wrench"></i>
             </a>
          </li>
          {% endif %}
+
+         <li>
+            <a href="{{ path('home') }}" class="
+               {% if menu_courant is defined and menu_courant == 'home' %}
+                  active
+               {% endif %}">
+               Accueil
+            </a>
+         </li>
 
          <li>
             <a href="{{ path('communiques') }}" title="Communiqués" class="
@@ -62,17 +75,8 @@
          </li>
 
          <li>
-            <a href="{{ path('home') }}" class="
-               {% if menu_courant is defined and menu_courant == 'home' %}
-                  active
-               {% endif %}">
-               Accueil
-            </a>
-         </li>
-
-         <li>
             <a href="{{ path('danses') }}" class="
-               {% if menu_courant is defined and menu_courant == 'communiques' %}
+               {% if menu_courant is defined and menu_courant == 'danses' %}
                   active
                {% endif %}">
                Danses
@@ -173,7 +177,10 @@
          {# ======== Sous-menu /OFF =========== #}
 
          <li>
-            <a href="{{ path('contact') }}">
+            <a href="{{ path('contact') }}" class="
+            {% if menu_courant is defined and menu_courant == 'contact' %}
+               active
+            {% endif %}">
                Contact
             </a>
          </li>

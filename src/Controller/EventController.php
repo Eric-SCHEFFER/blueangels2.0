@@ -19,7 +19,21 @@ class EventController extends AbstractController
         // On récupère la date du jour, que l'on peut changer dans la classe
         $today = $todayGenerator->generateAToday();
         $repo = $this->getDoctrine()->getRepository(Events::class);
-        $event = $repo->find($id);
+
+        // TODO: On récupère l'event par son id, et s'il est actif
+        $event = $repo->findOneBy(
+            [
+                'id' => $id,
+                'actif' => true,
+            ]
+
+        );
+
+        if (empty($event)) {
+            // Erreur 404
+            throw $this->createNotFoundException('L\'évènement n\'est pas actif');
+        }
+
         $images = $imagesEventRepository->findBy(['event' => $event]);
         return $this->render('event/index.html.twig', [
             'event' => $event,

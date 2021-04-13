@@ -49,10 +49,16 @@ class Events
      */
     private $annule;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $actif;
+
     public function __construct()
     {
         $this->imagesEvents = new ArrayCollection();
         $this->date_event = new \DateTime('now');
+        $this->actif = true;
     }
 
     public function getId(): ?int
@@ -146,6 +152,18 @@ class Events
     public function setAnnule(?bool $annule): self
     {
         $this->annule = $annule;
+
+        return $this;
+    }
+
+    public function getActif(): ?bool
+    {
+        return $this->actif;
+    }
+
+    public function setActif(?bool $actif): self
+    {
+        $this->actif = $actif;
 
         return $this;
     }

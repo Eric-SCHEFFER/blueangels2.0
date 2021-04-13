@@ -44,8 +44,14 @@
 	<div class="champ">
 		{{ form_row(form.description, {'attr':{'class':'description'}}) }}
 	</div>
-	<div class="champ">
-		{{ form_row(form.annule) }}
+
+	<div class="ligne1">
+		<div class="champ">
+			{{ form_row(form.annule) }}
+		</div>
+		<div class="champ" title="{{ articleOptionInfo.actif }}">
+			{{ form_row(form.actif) }}
+		</div>
 	</div>
 	{# Champ caché pour envoyer le referer, et permettre la redirection à la page précédente après la soumission  #}
 	<input type="hidden" name="referer" value="{{app.request.headers.get('referer')}}"/>

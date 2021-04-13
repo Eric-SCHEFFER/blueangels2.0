@@ -19,6 +19,52 @@ class EventsRepository extends ServiceEntityRepository
         parent::__construct($registry, Events::class);
     }
 
+    // ==================== FUTURS =======================
+
+
+    // On recupère jusqu'à 3 events futurs actifs
+    public function findActifEventsToCome($date)
+    {
+        $query = $this->createQueryBuilder('e')
+            ->select('e')
+            ->andWhere('e.date_event >= :date')
+            ->setParameter('date', $date->format('Y-m-d'))
+            ->andWhere('e.actif = :actif')
+            ->setParameter('actif', true)
+            ->orderBy('e.date_event', 'ASC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
+        return $query;
+    }
+
+    // On recupère tous les events futurs
+    public function findAllEventsToCome($date)
+    {
+        $query = $this->createQueryBuilder('e')
+            ->select('e')
+            ->andWhere('e.date_event >= :date')
+            ->setParameter('date', $date->format('Y-m-d'))
+            ->orderBy('e.date_event', 'ASC')
+            ->getQuery()
+            ->getResult();
+        return $query;
+    }
+
+    // On recupère tous les events futurs actifs
+    public function findAllActifEventsToCome($date)
+    {
+        $query = $this->createQueryBuilder('e')
+            ->select('e')
+            ->andWhere('e.date_event >= :date')
+            ->setParameter('date', $date->format('Y-m-d'))
+            ->andWhere('e.actif = :actif')
+            ->setParameter('actif', true)
+            ->orderBy('e.date_event', 'ASC')
+            ->getQuery()
+            ->getResult();
+        return $query;
+    }
 
     // On compte tous les events futurs
     public function countTotalEventsToCome($date)
@@ -33,31 +79,25 @@ class EventsRepository extends ServiceEntityRepository
         return $query;
     }
 
-    // On compte tous les events passés
-    public function countTotalCompletedEvents($date)
+    // On compte tous les events futurs actifs
+    public function countTotalActifEventsToCome($date)
     {
         $query = $this->createQueryBuilder('e')
             ->select('e')
-            ->where('e.date_event < :date')
-            ->setParameter('date', $date->format('Y-m-d'))
+            ->where('e.date_event >= :date')
+            ->setParameter('date', $date->format('Y-m-d')) // Ne compare que l'année, mois, jour pour que le jour de l'event soit valide jusqu'à 23:59:59
+            ->andWhere('e.actif = :actif')
+            ->setParameter('actif', true)
             ->select('count(e.id)')
             ->getQuery()
             ->getResult();
         return $query;
     }
 
-    // On recupère tous les events futurs
-    public function findAllEventsToCome($date)
-    {
-        $query = $this->createQueryBuilder('e')
-            ->select('e')
-            ->where('e.date_event >= :date')
-            ->setParameter('date', $date->format('Y-m-d'))
-            ->orderBy('e.date_event', 'ASC')
-            ->getQuery()
-            ->getResult();
-        return $query;
-    }
+
+    
+
+    // ==================== PASSÉS =======================
 
     // On recupère tous les events passés
     public function findAllCompletedEvents($date)
@@ -72,33 +112,72 @@ class EventsRepository extends ServiceEntityRepository
         return $query;
     }
 
-    // On recupère jusqu'à 3 events futurs
-    public function findEventsToCome($date)
+    // On recupère tous les events passés actifs
+    public function findAllActifCompletedEvents($date)
     {
         $query = $this->createQueryBuilder('e')
             ->select('e')
-            ->where('e.date_event >= :date') 
+            ->andWhere('e.date_event < :date')
             ->setParameter('date', $date->format('Y-m-d'))
-            ->orderBy('e.date_event', 'ASC')
-            ->setMaxResults(3)
+            ->andWhere('e.actif = :actif')
+            ->setParameter('actif', true)
+            ->orderBy('e.date_event', 'DESC')
             ->getQuery()
             ->getResult();
         return $query;
     }
 
-    // On récupère un nombre d'events passés, dépendant des events futurs trouvés dans la méthode du haut
-    public function findCompletedEvents($date, $combien)
+    // On compte tous les events passés
+    public function countTotalCompletedEvents($date)
     {
         $query = $this->createQueryBuilder('e')
             ->select('e')
-            ->where('e.date_event < :date')
+            ->andWhere('e.date_event < :date')
             ->setParameter('date', $date->format('Y-m-d'))
-            ->orderBy('e.date_event', 'DESC')
-            ->setMaxResults($combien)
+            ->select('count(e.id)')
             ->getQuery()
             ->getResult();
         return $query;
     }
+
+    // On compte tous les events passés actifs
+    public function countTotalActifCompletedEvents($date)
+    {
+        $query = $this->createQueryBuilder('e')
+            ->select('e')
+            ->andWhere('e.date_event < :date')
+            ->setParameter('date', $date->format('Y-m-d'))
+            ->andWhere('e.actif = :actif')
+            ->setParameter('actif', true)
+            ->select('count(e.id)')
+            ->getQuery()
+            ->getResult();
+        return $query;
+    }
+
+
+
+
+
+
+
+
+
+
+    // On récupère un nombre d'events passés, dépendant des events futurs trouvés dans la méthode du haut
+    // public function findCompletedEvents($date, $combien)
+    // {
+    //     $query = $this->createQueryBuilder('e')
+    //         ->select('e')
+    //         ->where('e.date_event < :date')
+    //         ->setParameter('date', $date->format('Y-m-d'))
+    //         ->orderBy('e.date_event', 'DESC')
+    //         ->setMaxResults($combien)
+    //         ->getQuery()
+    //         ->getResult();
+    //     return $query;
+    // }
+
 
 
     // /**

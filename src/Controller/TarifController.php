@@ -36,6 +36,7 @@ class TarifController extends AbstractController
         $article = $repoArticles->find($id);
         return $this->render('article/index.html.twig', [
             'article' => $article,
+            'menu_courant' => 'tarifs',
         ]);
     }
 }

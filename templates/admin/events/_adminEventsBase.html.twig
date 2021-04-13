@@ -41,6 +41,7 @@
 									<div class="date">
 										{{ event.getDateEvent()|date("d-m-Y") }}
 									</div>
+									
 									<div
 										class="table-icones-infos">
 										{# ==== On affiche le nbre d'images ==== #}
@@ -48,6 +49,17 @@
 											<i class="fas fa-file-image fa-lg"></i>
 											{{ event.getImagesEvents | length }}
 										</div>
+										{% if not event.actif %}
+											{# Variable array globale (commune aux events et articles), pour les différentes balises title ci-dessous de cette div (dans twig.yaml) #}
+											<div class="articles-actif-off" title="{{ articleOptionInfo.inactif }}">
+												<i class="fas fa-eye-slash orange"></i>
+											</div>
+										{% else %}
+											<div class="articles-actif-on" title="{{ articleOptionInfo.actif }}">
+												<i class="fas fa-eye lime"></i>
+											</div>
+										{% endif %}
+
 									</div>
 								</div>
 								{% if event.getImagesEvents[0] is defined %}

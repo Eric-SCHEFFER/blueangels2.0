@@ -59,7 +59,12 @@ class EventType extends AbstractType
 
             ->add('annule', CheckboxType::class, [
                 'required' => false,
-                'label' => 'Annulé'
+                'label' => 'Annulé',
+            ])
+
+            ->add('actif', CheckboxType::class, [
+                'required' => false,
+                'label' => 'Actif',
             ]);
     }
 

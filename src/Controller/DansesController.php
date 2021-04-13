@@ -26,9 +26,10 @@ class DansesController extends AbstractController
         $categorie = $this->categoriesArticleRepository->findOneBy(['nom' => 'Danses']);
         $categorieId = $categorie->getId();
         // On va sur la route qui affiche les articles selon la catégorie passée en id, et c'est sur ArticlesByCategorieController que s'effectue la logique
-        return $this->redirectToRoute('categorie.articles', ['idCategorie' => $categorieId]);
+        return $this->redirectToRoute('categorie.articles', [
+            'idCategorie' => $categorieId,
+            ]);
     }
-
 
     /**
      * Cherche le premier article en fonction de la catégorie et du titre

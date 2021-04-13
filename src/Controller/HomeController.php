@@ -27,11 +27,11 @@ class HomeController extends AbstractController
         // On récupère la date du jour, que l'on peut changer dans la classe
         $today = $todayGenerator->generateAToday();
         // On récupère les 3 events à venir
-        $eventsToCome = $this->eventsRepository->findEventsToCome($today);
+        $eventsToCome = $this->eventsRepository->findActifEventsToCome($today);
         // On récupère le nbre total d'events futurs
-        $countTotalEventsToCome = $this->eventsRepository->countTotalEventsToCome($today);
+        $countTotalEventsToCome = $this->eventsRepository->countTotalActifEventsToCome($today);
         // On récupère le nbre total d'events passés
-        $countTotalCompletedEvents = $this->eventsRepository->countTotalCompletedEvents($today);
+        $countTotalCompletedEvents = $this->eventsRepository->countTotalActifCompletedEvents($today);
         // On récupère en tout 3 articles, dont en premier, les épinglés s'il y en a
         $articles = $this->getArticles();
 
