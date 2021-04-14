@@ -206,13 +206,13 @@ nav li {
    nav {
       position: fixed;
       width: 100%;
-      max-width: 200px;
+      max-width: 220px;
       right: -310px;
       top: 0;
       height: auto;
       border-radius: 0 0 0 8px;
       transition: right .3s;
-      padding: 34px 80px 20px 0;
+      padding: 34px 0 20px 0;
    }
    nav.visible {
       right: 0;
