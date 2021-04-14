@@ -20,7 +20,7 @@ class EventController extends AbstractController
         $today = $todayGenerator->generateAToday();
         $repo = $this->getDoctrine()->getRepository(Events::class);
 
-        // TODO: On récupère l'event par son id, et s'il est actif
+        // On récupère l'event par son id, et seulement s'il est actif
         $event = $repo->findOneBy(
             [
                 'id' => $id,

@@ -10,6 +10,7 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
 use App\Entity\Articles;
 use App\Entity\Events;
+use App\Entity\InfosEtAdresses;
 
 
 class ContactController extends AbstractController
@@ -48,11 +49,7 @@ class ContactController extends AbstractController
             if (!isset($contact['motif']) && isset($_SERVER['HTTP_ORIGIN'])) {
                 $expediteur = $contact['email'];
                 $objet = $contact['objet'];
-                // TODO: Remettre ces lignes quand on aura crée l'entity aProposEtInfos, avec les différentes infos de contact dedans
-                // $destinataire = $this->aProposEtInfosRepository->findField("email_envoi_formulaire");
-                // $destinataire = $destinataire[0]['email_envoi_formulaire'];
-                $destinataire = 'ericsch2e@gmail.com';
-
+                $destinataire = $this->getDoctrine()->getRepository(InfosEtAdresses::class)->findOneBy([])->getEmailEnvoiFormulaire();
                 $templateTwig = "emails/contact.html.twig";
                 // Envoi du mail contenant les données du formulaire
                 $this->envoiEmail($mailer, $expediteur, $destinataire, $templateTwig, $objet, $contact);

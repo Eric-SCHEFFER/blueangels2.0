@@ -2,16 +2,21 @@
 {% block stylesheets %}{% endblock %}
 
 {% block title %}
-	{{ SiteName }}: {{ nomCategorie }}
+	{{ SiteName }}:
+	{{ nomCategorie }}
 {% endblock %}
 
 {% block body %}
 
 
 	<div class="wrapper">
-		<h1>
-			{{ nomCategorie }}
-		</h1>
+
+		<h1>{{ nomCategorie }}</h1>
+
+		{% if articles is empty %}
+			<h2>La catégorie {{ nomCategorie }} est vide</h2>
+		{% endif %}
+
 		{#
 		On affiche les aperçus des articles dans des cards.
 		Chaque card est cliquable, et renvoi vers la fullPage de l'article.

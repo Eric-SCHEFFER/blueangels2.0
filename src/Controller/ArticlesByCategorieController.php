@@ -34,7 +34,7 @@ class ArticlesByCategorieController extends AbstractController
 
         if (empty($articles)) {
             // Erreur 404
-            throw $this->createNotFoundException('L\'article est introuvable');
+            // throw $this->createNotFoundException('L\'article est introuvable');
         }
         return $this->render('articlesByCategorie/articlesByCategorie.html.twig', [
             'articles' => $articles,

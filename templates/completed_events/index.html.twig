@@ -27,9 +27,13 @@
                             {# Si c'est un event annulé, on affiche le tampon annulé, et on grise la carte #}
                             {% if actifCompletedEvent.getAnnule() %}
                                 <div class="tampon-oblique tampon-oblique-red">Évènement annulé</div>
-                                <a class="card-event card-event-grise" href="{{ path('event_', {id: actifCompletedEvent.id}) }}">
+                                <a class="card-event card-event-grise"
+                                href="{{ path('event_', {id: actifCompletedEvent.id}) }}"
+                                title="{{ actifCompletedEvent.getNom ~ ' | ' ~ actifCompletedEvent.getHook}}">
                                 {% else %}
-                                <a class="card-event" href="{{ path('event_', {id: actifCompletedEvent.id}) }}">
+                                <a class="card-event"
+                                href="{{ path('event_', {id: actifCompletedEvent.id}) }}"
+                                title="{{ actifCompletedEvent.getNom ~ ' | ' ~ actifCompletedEvent.getHook}}">
                             {% endif %}
                             <div class="image">
                                 {% if actifCompletedEvent.getImagesEvents[0] is defined %}
