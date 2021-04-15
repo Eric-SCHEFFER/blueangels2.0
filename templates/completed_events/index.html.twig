@@ -11,67 +11,75 @@
 {% block body %}
 
 	<div class="wrapper">
-        {% set countPasse = countTotalActifCompletedEvents[0][1] %}
+		{% set countPasse = countTotalActifCompletedEvents[0][1] %}
+		{% set countAVenir = countTotalEventsToCome[0][1] %}
 
-        <h1>
-            Évènements passés:
-            {{ countPasse }}
-        </h1>
+		<h1>
+			Évènements passés:
+			{{ countPasse }}
+		</h1>
+		{% if countAVenir > 0 %}
+			<h3>Voir aussi
+				<a class="bouton bt2" href="{{ path('a_venir') }}">
+					Évènements à venir
+				</a>
+			</h3>
+		{% endif %}
 
 		<section class="events" id="events">
-			<div class="bloc-cards">
-                {# On affiche les evènements passés actifs #}
-                {% if actifCompletedEvents is not empty %}
-                    {% for actifCompletedEvent in actifCompletedEvents %}
-                        <div class="card-wraper">
-                            {# Si c'est un event annulé, on affiche le tampon annulé, et on grise la carte #}
-                            {% if actifCompletedEvent.getAnnule() %}
-                                <div class="tampon-oblique tampon-oblique-red">Évènement annulé</div>
-                                <a class="card-event card-event-grise"
-                                href="{{ path('event_', {id: actifCompletedEvent.id}) }}"
-                                title="{{ actifCompletedEvent.getNom ~ ' | ' ~ actifCompletedEvent.getHook}}">
-                                {% else %}
-                                <a class="card-event"
-                                href="{{ path('event_', {id: actifCompletedEvent.id}) }}"
-                                title="{{ actifCompletedEvent.getNom ~ ' | ' ~ actifCompletedEvent.getHook}}">
-                            {% endif %}
-                            <div class="image">
-                                {% if actifCompletedEvent.getImagesEvents[0] is defined %}
-                                    {# On affiche l'image de l'event #}
-                                    <img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ actifCompletedEvent.getImagesEvents[0].Nom) }}">
-                                    {% else %}
-                                        {# On affiche l'image de remplacement par défaut #}
-                                        <img title="Aucune image de disponible" src="{{ asset('images/min_imageDefaut.jpg') }}">
-                                {% endif %}
-                            </div>
-                                <div class="bloc-text">
-                                    <h3 class="titre">{{ actifCompletedEvent.getNom() }}</h3>
-                                    <p class="hook">{{ actifCompletedEvent.getHook() }}</p>
-                                    <div class="center">
-                                        <div class="bouton bt-inline-bloc">
-                                            Voir
-                                        </div>
-                                    </div>
-                                    {# Date, et mentions couleurs du nbr de jours avant l'event #}
-                                    <div class="infos">
-                                        <div class="events-date">
-                                            <i class="fas fa-calendar-alt"></i> {{ actifCompletedEvent.getDateEvent()|date("d-m-Y") }}
-                                        </div>
-                                        {% if actifCompletedEvent.ImagesEvents | length > 1 %}
-                                            <div class="events-nbr-images">
-                                                <i class="fas fa-file-image"></i> {{ actifCompletedEvent.ImagesEvents | length }}
-                                            </div>
-                                        {% endif %}
-                                        <span class="info-jour">Terminé</span>  
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    {% endfor %}
-                {% endif %}
-                {# ====================================================== #}
-    
-            </div>
-        </section>
-    </div>
-{% endblock %}
+			<div
+				class="bloc-cards">
+				{# On affiche les evènements passés actifs #}
+				{% if actifCompletedEvents is not empty %}
+					{% for actifCompletedEvent in actifCompletedEvents %}
+						<div
+							class="card-wraper">
+							{# Si c'est un event annulé, on affiche le tampon annulé, et on grise la carte #}
+							{% if actifCompletedEvent.getAnnule() %}
+								<div class="tampon-oblique tampon-oblique-red">Évènement annulé</div>
+								<a class="card-event card-event-grise" href="{{ path('event_', {id: actifCompletedEvent.id}) }}" title="{{ actifCompletedEvent.getNom ~ ' | ' ~ actifCompletedEvent.getHook}}">
+								{% else %}
+									<a class="card-event" href="{{ path('event_', {id: actifCompletedEvent.id}) }}" title="{{ actifCompletedEvent.getNom ~ ' | ' ~ actifCompletedEvent.getHook}}">
+									{% endif %}
+									<div class="image">
+										{% if actifCompletedEvent.getImagesEvents[0] is defined %}
+											{# On affiche l'image de l'event #}
+											<img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ actifCompletedEvent.getImagesEvents[0].Nom) }}">
+										{% else %}
+											{# On affiche l'image de remplacement par défaut #}
+											<img title="Aucune image de disponible" src="{{ asset('images/min_imageDefaut.jpg') }}">
+										{% endif %}
+									</div>
+									<div class="bloc-text">
+										<h3 class="titre">{{ actifCompletedEvent.getNom() }}</h3>
+										<p class="hook">{{ actifCompletedEvent.getHook() }}</p>
+										<div class="center">
+											<div class="bouton bt-inline-bloc">
+												Voir
+											</div>
+										</div>
+										{# Date, et mentions couleurs du nbr de jours avant l'event #}
+										<div class="infos">
+											<div class="events-date">
+												<i class="fas fa-calendar-alt"></i>
+												{{ actifCompletedEvent.getDateEvent()|date("d-m-Y") }}
+											</div>
+											{% if actifCompletedEvent.ImagesEvents | length > 1 %}
+												<div class="events-nbr-images">
+													<i class="fas fa-file-image"></i>
+													{{ actifCompletedEvent.ImagesEvents | length }}
+												</div>
+											{% endif %}
+											<span class="info-jour">Terminé</span>
+										</div>
+									</div>
+								</a>
+							</div>
+						{% endfor %}
+					{% endif %}
+					{# ====================================================== #}
+
+				</div>
+			</section>
+		</div>
+	{% endblock %}

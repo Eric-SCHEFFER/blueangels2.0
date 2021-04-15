@@ -35,7 +35,7 @@
 
 			{# Provisoire, pour tester les dates #}
 			{# <p>Nous sommes le
-			{{ today|date("d-m-Y H:i:s") }}</p> #}
+						{{ today|date("d-m-Y H:i:s") }}</p> #}
 
 			<div
 				class="bloc-cards">
@@ -110,7 +110,7 @@
 					{% if (countPasse > 0) and (countAVenir == 0) %}
 						<a class="bouton bt2 boutonFlecheGauche" href="{{ path('completed_events') }}">
 							<i class="fas fa-arrow-left fa-lg flecheGauche"></i>
-							Anciens évènements
+							Évènements passés
 						</a>
 					{% endif %}
 					{% if countAVenir > 3 %}
@@ -122,7 +122,7 @@
 				</div>
 			</section>
 
-			
+
 			{# ====================== Articles ======================== #}
 
 			<section class="articles">

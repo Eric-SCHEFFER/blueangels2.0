@@ -27,12 +27,15 @@ class EventsToComeController extends AbstractController
         $events = $this->eventsRepository->findAllActifEventsToCome($today);
         // On récupère le nbre total d'events futurs
         $countTotalEventsToCome = $this->eventsRepository->countTotalActifEventsToCome($today);
+        // On récupère le nbre total d'events passés
+        $countTotalCompletedEvents = $this->eventsRepository->countTotalActifCompletedEvents($today);
         
         return $this->render('EventsToCome/index.html.twig', [
             'menu_courant' => 'events',
             'eventsToCome' => $events,
             'today' => $today,
             'countTotalEventsToCome' => $countTotalEventsToCome,
+            'countTotalCompletedEvents' => $countTotalCompletedEvents,
         ]);
     }
 }

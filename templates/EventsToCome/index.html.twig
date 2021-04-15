@@ -13,14 +13,28 @@
 
 	<div class="wrapper">
 		{% set countAVenir = countTotalEventsToCome[0][1] %}
+		{% set countPasse = countTotalCompletedEvents[0][1] %}
 
-		<h1>Évènements à venir:
-			{% if countAVenir == 0 %}
-				aucun
+		{% if countAVenir > 0 %}
+			{% if countAVenir == 1 %}
+				<h1>Évènement à venir: 1</h1>
 			{% else %}
-				{{ countAVenir }}
+				<h1>Évènements à venir: 
+					{{ countAVenir }}
+				</h1>
 			{% endif %}
-		</h1>
+		{% else %}
+			<h1>Aucun évènement à venir</h1>
+			{% if countPasse > 0 %}
+				<h3>Voir aussi
+					<a class="bouton bt2" href="{{ path('completed_events') }}">
+						Évènements passés
+					</a>
+				</h3>
+			{% endif %}
+
+
+		{% endif %}
 
 		<section class="events" id="events">
 			<div

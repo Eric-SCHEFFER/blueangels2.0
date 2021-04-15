@@ -25,6 +25,8 @@ class CompletedEventsController extends AbstractController
         $today = $todayGenerator->generateAToday();
         // On récupère le nbre total d'events passés actifs
         $countTotalActifCompletedEvents = $this->eventsRepository->countTotalActifCompletedEvents($today);
+         // On récupère le nbre total d'events futurs
+         $countTotalEventsToCome = $this->eventsRepository->countTotalActifEventsToCome($today);
         // On récupère tous les events passés activés
         $actifCompletedEvents = $this->eventsRepository->findAllActifCompletedEvents($today);
         
@@ -32,6 +34,7 @@ class CompletedEventsController extends AbstractController
             'menu_courant' => 'completedEvents',
             'today' => $today,
             'countTotalActifCompletedEvents' => $countTotalActifCompletedEvents,
+            'countTotalEventsToCome' => $countTotalEventsToCome,
             'actifCompletedEvents' => $actifCompletedEvents,
         ]);
     }
