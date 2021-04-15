@@ -16,7 +16,7 @@
 # ====== Variables à renseigner ======
 utilisateur="u104388791"
 serveur="access867248383.webspace-data.io"
-racineProjetDistant="~/bad_test"
+racineProjetDistant="~/bad"
 php="php7.4-cli"
 
 # Couleur texte et fond
