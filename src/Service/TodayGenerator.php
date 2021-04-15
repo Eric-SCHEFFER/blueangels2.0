@@ -15,7 +15,7 @@ class TodayGenerator
     */
    public function generateAToday()
    {
-      $today = new DateTime('2019-12-31 22:31:05');
+      $today = new DateTime();
       return $today;
    }
 }
