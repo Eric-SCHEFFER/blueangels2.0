@@ -1,0 +1,25 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+{% endblock %}
+
+{% block title %}
+	{{ SiteName }}: Page non trouvée - 403
+{% endblock %}
+
+
+{% block body %}
+
+	<div class="wrapper">
+		<h1>
+			Page non trouvée
+		</h1>
+		<p class="center   marge-haut-20">La page demandée n'a pas été trouvée.</p>
+		<p class="center">Vous pouvez utiliser le menu du site pour tenter de trouver ce que vous recherchez.</p>
+		<p class="center marge-haut-20">Vous pouvez aussi vous rendre à l'accueil</p>
+		<a class="bouton margin-auto marge-haut-20" href="{{ path('home') }}">
+			Accueil
+		</a>
+	</div>
+   
+{% endblock %}

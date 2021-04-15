@@ -128,6 +128,15 @@ footer {
    margin-right: 6px;
 }
 
+.margin-auto {
+   margin: auto;
+   display: block;
+}
+
+.marge-haut-20 {
+   margin-top: 20px;
+}
+
 /* ================== colors ================ */
 .theme-menu {
    background-color: #225D91;

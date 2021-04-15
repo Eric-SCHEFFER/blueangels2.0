@@ -28,14 +28,16 @@ class ContactController extends AbstractController
             // Si l'id de l'event existe, c'est qu'on vient d'une page event, alors, on hydrate les variables qui pré-rempliront les champs objet et message
             if (isset($id)) {
                 $nom = $this->getDoctrine()->getRepository(Events::class)->find($id)->getNom();
+                // TODO: Utiliser autre chose que le referer pour avoir le lien de l'article ou de l'event qui appelle la page contact
                 $referer = $request->headers->get('referer');
                 $champObjetPreRempli = 'A propos: ' . $nom;
                 $champMessagePreRempli = "Lien: " . $referer . "\n\nBonjour,\n";
             }
         }
-        // Sinon, c'est qu'on vient d'une page article
+        // Sinon, c'est qu'on vient d'une page article. on hydrate aussi les variables
         else {
             $titre = $this->getDoctrine()->getRepository(Articles::class)->find($id)->getTitre();
+            // TODO: Utiliser autre chose que le referer pour avoir le lien de l'article ou de l'event qui appelle la page contact
             $referer = $request->headers->get('referer');
             $champObjetPreRempli = 'A propos: ' . $titre;
             $champMessagePreRempli = "Lien: " . $referer . "\n\nBonjour,\n";
