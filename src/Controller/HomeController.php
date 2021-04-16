@@ -37,7 +37,8 @@ class HomeController extends AbstractController
 
         return $this->render('home.html.twig', [
             'menu_courant' => 'home',
-            'eventsToCome' => $eventsToCome,
+            'events' => $eventsToCome,
+            'epoque' => 'futur',
             'today' => $today,
             'countTotalEventsToCome' => $countTotalEventsToCome,
             'countTotalCompletedEvents' => $countTotalCompletedEvents,

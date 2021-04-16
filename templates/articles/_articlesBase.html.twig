@@ -20,11 +20,11 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'article.
 					<h3 class="titre">{{ article.getTitre() }}</h3>
 					<div class="hook">{{ article.getHook() }}</div>
 					<div class="center">
-						{# <div class="bouton bt-medium">
+						<div class="bouton bt-small bt-card-article">
 							Voir
-						</div> #}
+						</div>
 					</div>
-					<div class="infos">
+					<div class="infos infos-article">
 						<div class="articles-date">
 							<i class="fas fa-calendar-alt"></i>
 							{{ article.getCreatedAt()|date("d-m-Y") }}

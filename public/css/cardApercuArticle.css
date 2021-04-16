@@ -7,7 +7,7 @@
 .card-article {
    display: flex;
    justify-content: left;
-   min-width: 250px;
+   min-width: 270px;
    width: 300px;
    height: 130px;
    padding: 0;
@@ -59,8 +59,12 @@
    display: flex;
    justify-content: space-between;
    position: relative;
-   top: 48px;
+   top: 50px;
    /* border: solid green 1px; */
+}
+
+.infos-article {
+   top: 22px;
 }
 
 .info-epoque-event {
@@ -68,19 +72,29 @@
    /* border: solid red 1px; */
    display: flex;
    justify-content: space-between;
-   top: 28px;
+   top: 32px;
    margin-bottom: -16px;
+   min-height: 16px;
 }
 
-.infos, .info-epoque-event {
+.infos,
+.info-epoque-event {
    font-size: .8em;
    color: rgb(153, 153, 153);
 }
 
-.articles-date {
-   
-
+.bt-card-event {
+   position: absolute;
+   top: 58px;
+   left: 60px;
 }
+
+.bt-card-article {
+   position: relative;
+   margin-bottom: 0px;
+}
+
+.articles-date {}
 
 .hook {
    white-space: nowrap;
@@ -91,6 +105,8 @@
    font-size: .8em;
    font-weight: 500;
    padding: 4px 0 8px 0;
+   position: relative;
+   top: -4px;
 }
 
 .contenu {
@@ -108,4 +124,30 @@
    overflow: hidden;
    text-overflow: ellipsis;
    /* border: solid blue 1px; */
+}
+
+
+.tampon-oblique-red {
+   z-index: 1;
+   position: absolute;
+   text-align: center;
+   text-transform: uppercase;
+   font-size: .8em;
+   top: 41px;
+   width: auto;
+   height: auto;
+   color: rgb(255, 255, 255);
+   border: 1px rgb(255, 255, 255) solid;
+   padding: 10px;
+   border-radius: 6px;
+   font-weight: 400;
+   text-shadow: #000 1px 1px 1px;
+   box-shadow: #000 2px 2px 2px;
+   transform: rotate(-20deg);
+   color: rgb(221, 0, 0);
+   border: 1px rgb(221, 0, 0) solid;
+}
+
+.card-event-grise {
+   opacity: .5;
 }

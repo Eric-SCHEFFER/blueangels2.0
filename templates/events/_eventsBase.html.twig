@@ -13,23 +13,42 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 	<div class="bloc-cards">
 		{% for event in events %}
 			<a class="card-article" href="{{ path('event_', {id: event.id}) }}" title="{{ event.getNom ~ ' | ' ~ event.getHook }}">
-				{% if event.getImagesEvents[0].getNom() is defined %}
-					<div class="image">
+				<div class="image">
+					{% if event.getImagesEvents[0].getNom() is defined %}
 						<img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ event.getImagesEvents[0].Nom) }}" alt="">
-					</div>
-				{% endif %}
+					{% else %}
+						{# On affiche l'image de remplacement par défaut #}
+						<img title="Aucune image de disponible" src="{{ asset('images/min_imageDefaut.jpg') }}">
+					{% endif %}
+				</div>
 				<div class="bloc-text">
+               {% if event.getAnnule %}
+                  <div class="tampon-oblique-red">Évènement annulé</div>
+               {% endif %}
 					<h3 class="titre">{{ event.getNom() }}</h3>
 					<div class="hook">{{ event.getHook() }}</div>
-               <div class="info-epoque-event">
-                  
-                  <div>
-                     item 1
-                  </div>
-                  <div>
-                     item 2
-                  </div>
-               </div>
+					<div class="bouton bt-small bt-card-event">Voir</div>
+					<div class="info-epoque-event">
+						{% if epoque == 'futur' %}
+							{% for j in 0..7 %}
+								{% if j == 0 %}
+									{% if event.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
+										<span class="info-jour green tres-gras">Aujourd'hui</span>
+									{% endif %}
+								{% elseif j == 1 %}
+									{% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
+										<span class="info-jour blue tres-gras">Demain</span>
+									{% endif %}
+								{% else %}
+									{% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
+										<span class="info-jour blue tres-gras">J-{{ j }}</span>
+									{% endif %}
+								{% endif %}
+							{% endfor %}
+						{% else %}
+							<span class="info-jour">Terminé</span>
+						{% endif %}
+					</div>
 
 					<div class="infos">
 						<div class="articles-date">
@@ -42,7 +61,7 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 								{{ event.ImagesEvents | length }}
 							</div>
 						{% endif %}
-						
+
 					</div>
 				</div>
 			</a>

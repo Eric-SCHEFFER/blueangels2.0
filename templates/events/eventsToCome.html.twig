@@ -7,9 +7,29 @@
 
 {% block body %}
 	<div class="wrapper">
-		<h1>
-			Évènements à venir
-		</h1>
+		{% set countPasse = countTotalCompletedEvents[0][1] %}
+		{% set countAVenir = countTotalEventsToCome[0][1] %}
+
+		{% if countAVenir > 0 %}
+			{% if countAVenir == 1 %}
+				<h1>Évènement à venir: 1</h1>
+			{% else %}
+				<h1>Évènements à venir:
+					{{ countAVenir }}
+				</h1>
+			{% endif %}
+		{% else %}
+			<h1>Aucun évènement à venir</h1>
+			{% if countPasse > 0 %}
+				<h4>Voir aussi
+					<a class="bouton bt2" href="{{ path('completed_events') }}">
+						Évènements passés
+					</a>
+				</h4>
+			{% endif %}
+
+
+		{% endif %}
 		<section class="events">
 			{{ include ('events/_eventsBase.html.twig') }}
 		</section>

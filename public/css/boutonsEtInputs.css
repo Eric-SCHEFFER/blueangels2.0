@@ -48,6 +48,7 @@
 }
 
 .bt-small {
+   display: inline-block;
    font-size: .8em;
    padding: 6px;
    width: max-content;
