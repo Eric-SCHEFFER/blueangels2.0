@@ -1,0 +1,17 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}{% endblock %}
+
+{% block title %}
+	{{ SiteName }}: Évènements passés
+{% endblock %}
+
+{% block body %}
+	<div class="wrapper">
+		<h1>
+			Évènements passés
+		</h1>
+		<section class="events">
+			{{ include ('events/_eventsBase.html.twig') }}
+		</section>
+	</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/cardApercuArticle.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+{% endblock %}
+
+{#
+On affiche les aperçus des elements, s'il y en a, dans des cards.
+Chaque card est cliquable, et renvoi vers la fullPage de l'element.
+#}
+
+
+{% if events is not empty %}
+	<div class="bloc-cards">
+		{% for event in events %}
+			<a class="card-article" href="{{ path('event_', {id: event.id}) }}" title="{{ event.getNom ~ ' | ' ~ event.getHook }}">
+				{% if event.getImagesEvents[0].getNom() is defined %}
+					<div class="image">
+						<img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ event.getImagesEvents[0].Nom) }}" alt="">
+					</div>
+				{% endif %}
+				<div class="bloc-text">
+					<h3 class="titre">{{ event.getNom() }}</h3>
+					<div class="hook">{{ event.getHook() }}</div>
+					
+               <div class="info-epoque-event">
+                  aaaaa
+               </div>
+
+					<div class="infos">
+						<div class="articles-date">
+							<i class="fas fa-calendar-alt"></i>
+							{{ event.getDateEvent()|date("d-m-Y") }}
+						</div>
+						{% if event.ImagesEvents | length > 1 %}
+							<div class="articles-nbr-images">
+								<i class="fas fa-file-image"></i>
+								{{ event.ImagesEvents | length }}
+							</div>
+						{% endif %}
+						
+					</div>
+				</div>
+			</a>
+		{% endfor %}
+	</div>
+{% endif %}

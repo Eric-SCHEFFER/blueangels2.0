@@ -23,22 +23,20 @@ class CompletedEventsController extends AbstractController
     {
         // On récupère la date du jour, que l'on peut changer dans la classe
         $today = $todayGenerator->generateAToday();
-        // On récupère le nbre total d'events passés actifs
-        $countTotalActifCompletedEvents = $this->eventsRepository->countTotalActifCompletedEvents($today);
-         // On récupère le nbre total d'events futurs
-         $countTotalEventsToCome = $this->eventsRepository->countTotalActifEventsToCome($today);
         // On récupère tous les events passés activés
-        $actifCompletedEvents = $this->eventsRepository->findAllActifCompletedEvents($today);
-        
-        return $this->render('completed_events/index.html.twig', [
+        $completedEvents = $this->eventsRepository->findAllActifCompletedEvents($today);
+        // On récupère le nbre total d'events passés actifs
+        $countTotalCompletedEvents = $this->eventsRepository->countTotalActifCompletedEvents($today);
+        // On récupère le nbre total d'events futurs
+        $countTotalEventsToCome = $this->eventsRepository->countTotalActifEventsToCome($today);
+
+        return $this->render('events/completedEvents.html.twig', [
             'menu_courant' => 'completedEvents',
+            'events' => $completedEvents,
+            'epoque' => 'passé',
             'today' => $today,
-            'countTotalActifCompletedEvents' => $countTotalActifCompletedEvents,
+            'countTotalCompletedEvents' => $countTotalCompletedEvents,
             'countTotalEventsToCome' => $countTotalEventsToCome,
-            'actifCompletedEvents' => $actifCompletedEvents,
         ]);
     }
 }
-
-
-
