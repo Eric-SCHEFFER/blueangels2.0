@@ -7,16 +7,19 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\EventsRepository;
 use App\Repository\ArticlesRepository;
+use App\Repository\CategoriesArticleRepository;
 use App\Service\TodayGenerator;
 
 class HomeController extends AbstractController
 {
     public function __construct(
         EventsRepository $eventsRepository,
-        ArticlesRepository $articlesRepository
+        ArticlesRepository $articlesRepository,
+        CategoriesArticleRepository $categoriesArticleRepository
     ) {
         $this->eventsRepository = $eventsRepository;
         $this->articlesRepository = $articlesRepository;
+        $this->categoriesArticleRepository = $categoriesArticleRepository;
     }
 
     /**
@@ -26,9 +29,8 @@ class HomeController extends AbstractController
     {
         // On récupère la date du jour, que l'on peut changer dans la classe
         $today = $todayGenerator->generateAToday();
-        // TODO: On récupère les 3 derniers communiqués, dont en priorité, les épinglés
-
-
+        // On récupère les 3 derniers communiqués, dont en priorité, les épinglés
+        $communiques = $this->getCommuniques();
         // On récupère les 3 events à venir
         $eventsToCome = $this->eventsRepository->findActifEventsToCome($today);
         // On récupère le nbre total d'events futurs
@@ -40,6 +42,7 @@ class HomeController extends AbstractController
 
         return $this->render('home.html.twig', [
             'menu_courant' => 'home',
+            'communiques' => $communiques,
             'events' => $eventsToCome,
             'epoque' => 'futur',
             'today' => $today,
@@ -49,20 +52,52 @@ class HomeController extends AbstractController
         ]);
     }
 
+
     /**
-     * On récupère les 3 derniers articles qui ont le droit de s'afficher, dont en priorité les épinglés s'il y en a.
+     * On récupère les 3 derniers articles actifs dans la catégorie Communiqués, dont en priorité les épinglés s'il y en a.
+     */
+    private function getCommuniques()
+    {
+        $categorie = $this->categoriesArticleRepository->findOneBy(['nom' => 'Communiqués']);
+        $pinnedCommuniques = $this->articlesRepository->findBy(
+            [
+                'categories_article' => $categorie,
+                'actif' => true,
+                'epingle' => true,
+            ],
+            ['created_at' => "DESC"],
+            3
+        );
+        $nonPinnedCommuniques = [];
+        if (count($pinnedCommuniques) < 3) {
+            // On complète avec des communiqués non-épinglés
+            $nonPinnedCommuniques = $this->articlesRepository->findBy(
+                [
+                    'categories_article' => $categorie,
+                    'actif' => true,
+                    'epingle' => false,
+                ],
+                ['created_at' => "DESC"],
+                3 - count($pinnedCommuniques)
+            );
+        }
+        // On fusionne les deux tableaux $pinnedCommuniques et $nonPinnedCommuniques dans $communiques.
+        $communiques = array_merge($pinnedCommuniques, $nonPinnedCommuniques);
+        return $communiques;
+    }
+
+
+    /**
+     * On récupère les 3 derniers articles actifs et listés
      */
     private function getArticles()
     {
-        // Articles épinglés
-        $pinnedArticles = $this->articlesRepository->findPinnedActifsListedArticles();
-        $nonPinnedArticles = [];
-        if (count($pinnedArticles) < 3) {
-            // On complète avec des articles non-épinglés
-            $nonPinnedArticles = $this->articlesRepository->findActifsListedArticles(3 - count($pinnedArticles));
-        }
-        // On fusionne les deux tableaux $pinnedArticles et $nonPinnedArticles dans $articles.
-        $articles = array_merge($pinnedArticles, $nonPinnedArticles);
+
+        $articles = $this->articlesRepository->findBy(
+            ['actif' => true,],
+            ['created_at' => "DESC"],
+            3
+        );
         return
             $articles;
     }
