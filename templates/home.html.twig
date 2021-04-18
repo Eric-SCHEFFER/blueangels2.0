@@ -11,15 +11,21 @@
 {% block body %}
 
 	{# TODO: Mini-barre de news qui affiche les 3 derniers communiqués, avec en priorité, ceux épinglés #}
-	{{ dump(communiques) }}
 	<div class="barre-news-wrapper">
 		<div class="barre-news">
-			{# {% for communique in communique %} #}
-				<div class="communique">
-					<div class="titre"></div>
-					<div class="hook"></div>
-				</div>
-			{# {% endfor %} #}
+			{% for communique in communiques %}
+				<a class="communique" href="{{ path('article', {id: communique.id}) }}">
+					<div class="titre-communique">
+						{{ communique.titre }}
+					</div>
+					<div class="hook-communique">
+						{{ communique.hook }}
+					</div>
+					<div class="date-communique">
+						{{ communique.getCreatedAt | date("d-m-Y") }}
+					</div>
+				</a>
+			{% endfor %}
 
 		</div>
 	</div>

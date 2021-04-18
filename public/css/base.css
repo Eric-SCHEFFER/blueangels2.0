@@ -14,19 +14,17 @@ html, body {
 
 /* Pour l'assombrissement du fond, quand le menu burger est actif */
 #bodyDark {
-   background-color: none !important;
-   position: absolute !important;
-   width: 100% !important;
-   height: 100% !important;
-   z-index: 0;
-   transition: all .3s !important;
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   z-index: -1;
+   transition: all .3s;
 }
 
 /* Pour l'assombrissement du fond, quand le menu burger est actif */
 .bgDark {
    background-color: rgba(0, 0, 0, 0.5) !important;
    z-index: 1000 !important;
-   transition: all .3s !important;
 }
 
 .no-click-no-scroll {
