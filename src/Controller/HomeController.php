@@ -26,13 +26,16 @@ class HomeController extends AbstractController
     {
         // On récupère la date du jour, que l'on peut changer dans la classe
         $today = $todayGenerator->generateAToday();
+        // TODO: On récupère les 3 derniers communiqués, dont en priorité, les épinglés
+
+
         // On récupère les 3 events à venir
         $eventsToCome = $this->eventsRepository->findActifEventsToCome($today);
         // On récupère le nbre total d'events futurs
         $countTotalEventsToCome = $this->eventsRepository->countTotalActifEventsToCome($today);
         // On récupère le nbre total d'events passés
         $countTotalCompletedEvents = $this->eventsRepository->countTotalActifCompletedEvents($today);
-        // On récupère en tout 3 articles, dont en premier, les épinglés s'il y en a
+        // On récupère en tout 3 articles, dont en priorité, les épinglés
         $articles = $this->getArticles();
 
         return $this->render('home.html.twig', [
@@ -47,7 +50,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * On récupère 3 articles qui ont le droit de s'afficher, dont en priorité des épinglés s'il y en a.
+     * On récupère les 3 derniers articles qui ont le droit de s'afficher, dont en priorité les épinglés s'il y en a.
      */
     private function getArticles()
     {
