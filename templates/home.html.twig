@@ -10,11 +10,11 @@
 
 {% block body %}
 
-	{# TODO: Mini-barre de news qui affiche les 3 derniers communiqués, avec en priorité, ceux épinglés #}
+	{# =============================================================== #}
+	{# Mini-barre de news qui affiche les 3 derniers communiqués, avec en priorité, ceux épinglés #}
 
-	{% if communiques is not empty %}
-		<div class="barre-news-wrapper">
-			<div class="barre-news">
+		{% if communiques is not empty %}
+			<div class="barre-news-wrapper"> <div class="barre-news">
 				{% for communique in communiques %}
 					<div class="communique">
 						<a href="{{ path('article', {id: communique.id}) }}" title="{{ communique.titre }} | {{ communique.hook }}">

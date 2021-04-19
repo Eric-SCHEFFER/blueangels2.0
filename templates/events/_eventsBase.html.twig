@@ -13,21 +13,24 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 	<div class="bloc-cards">
 		{% for event in events %}
 			<a class="card-article" href="{{ path('event_', {id: event.id}) }}" title="{{ event.getNom ~ ' | ' ~ event.getHook }}">
-				<div class="image">
-					{% if event.getImagesEvents[0].getNom() is defined %}
+				{% if event.getImagesEvents[0].getNom() is defined %}
+					<div class="image">
 						<img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ event.getImagesEvents[0].Nom) }}" alt="">
-					{% else %}
-						{# On affiche l'image de remplacement par défaut #}
-						<img title="Aucune image de disponible" src="{{ asset('images/min_imageDefaut.jpg') }}">
-					{% endif %}
-				</div>
+					</div>
+				{% endif %}
 				<div class="bloc-text">
                {% if event.getAnnule %}
                   <div class="tampon-oblique-red">Évènement annulé</div>
                {% endif %}
 					<h3 class="titre">{{ event.getNom() }}</h3>
 					<div class="hook">{{ event.getHook() }}</div>
-					<div class="bouton bt-small bt-card-event">Voir</div>
+
+					{% if event.getImagesEvents[0].getNom() is defined %}
+						<div class="bouton bt-small bt-card-event">Voir</div>
+						{% else %}
+						<div class="bouton bt-small bt-card-event bt-card-event-sans-image">Voir</div>
+					{% endif %}
+
 					<div class="info-epoque-event">
 						{% if epoque == 'futur' %}
 							{% for j in 0..7 %}

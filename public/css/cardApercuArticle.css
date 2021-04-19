@@ -89,6 +89,10 @@
    left: 60px;
 }
 
+.bt-card-event-sans-image {
+   left: 130px;
+}
+
 .bt-card-article {
    position: relative;
    margin-bottom: 0px;

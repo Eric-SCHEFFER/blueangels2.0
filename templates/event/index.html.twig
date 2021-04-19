@@ -1,131 +1,120 @@
 {% extends 'components/base.html.twig' %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/fullPageElement.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/carousel.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
-    
+	<link rel="stylesheet" href="{{ asset('css/fullPageElement.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/carousel.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+
 {% endblock %}
 {% block title %}
-    {{ SiteName }}:
+	{{ SiteName }}:
 	{{ event.nom }}
 {% endblock %}
 
 {% block body %}
 
-<div class="wrapper">
-    <h1>{{ event.nom }}</h1>
-    <section class="full-element">
-        
-        {% if event.getImagesEvents is empty %}
-            {# On affiche l'image de remplacement par défaut #}
-            <div class="image">
-                <img title="Aucune image de disponible" src="{{ asset('images/imageDefaut.jpg') }}">
-            </div>
-            {% else %}
-                {# On affiche les images dispo dans le tableau #}
-                {% for image in event.getImagesEvents %}
-                    <div class="image">
-                        <img src="{{ asset('uploads/imagesEvents/' ~ image.nom) }}">
-                    </div>
-                {% endfor %}
-        {% endif %}
-                
-        {# On affiche les boutons et infos du carousel, sauf s'il n'y a qu'une image #}
-        {% if event.getImagesEvents|length == 1 %}
-            <div class="boutonsAndBulletsWrapper hidden"></div>
-                {% else %}
-                    <div class="boutonsAndBulletsWrapper">
-                        <div class="boutonsNav">
-                            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                        </div>
-                        {% set n = 0 %}
-                        <div class="blocBullets">
-                            {% for image in event.getImagesEvents %}
-                                {% set n = n + 1 %}
-                                <div class="bullet" onclick="currentSlide({{ n }})">
-                                    <p>{{ n }}</p>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-        {% endif %}
+	<div class="wrapper">
+		<h1>{{ event.nom }}</h1>
+		<section class="full-element">
+			{% if event.getImagesEvents is not empty %}
+				{# On affiche les images dispo dans le tableau #}
+				{% for image in event.getImagesEvents %}
+					<div class="image">
+						<img src="{{ asset('uploads/imagesEvents/' ~ image.nom) }}">
+					</div>
+				{% endfor %}
 
-        <div class="textes">
-            <div class="info-bar">
-                <div class="info-bar-left">
-                    <div class="type-vue-and-status">
-                        <i class="fas fa-info-circle"></i>
-                        Évènement
-                    </div>
-                    <div class="date">
-                        <i class="fas fa-calendar-alt"></i>
-                        {{ event.getDateEvent | date("d-m-Y") }}
-                    </div>
-                    <div class="time">
-                        <i class="fas fa-clock"></i>
-                        {{ event.getDateEvent | date("H:i") }}
-                    </div>
-                    {% if event.getDateEvent()|date("Y-m-d") < today|date("Y-m-d") %}
-                        <div>
-                            Évènement terminé
-                        </div>
-                    {% endif %}
-                    {% if event.getAnnule() %}
-                        <div class="red">
-                            Évènement annulé
-                        </div>
-                    {% endif %}
-                    {# Date, et mentions couleurs du nbr de jours avant l'event #}   
-                    {% for j in 0..7 %}
-                        {% if j == 0 %}
-                            {% if event.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
-                                <span class="green">Aujourd'hui</span>
-                            {% endif %}
-                            {% elseif j == 1 %}
-                                {% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
-                                    <span class="blue">demain</span>
-                                {% endif %}
-                            {% else %}
-                                {% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
-                                    <span class="blue">J-{{ j }}</span>
-                                {% endif %}
-                        {% endif %}    
-                    {% endfor %}
-                </div>
+				{# On affiche les boutons et infos du carousel, sauf s'il n'y a qu'une image #}
+				{% if event.getImagesEvents|length == 1 %}
+					<div class="boutonsAndBulletsWrapper hidden"></div>
+				{% else %}
+					<div class="boutonsAndBulletsWrapper">
+						<div class="boutonsNav">
+							<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+							<a class="next" onclick="plusSlides(1)">&#10095;</a>
+						</div>
+						{% set n = 0 %}
+						<div class="blocBullets">
+							{% for image in event.getImagesEvents %}
+								{% set n = n + 1 %}
+								<div class="bullet" onclick="currentSlide({{ n }})">
+									<p>{{ n }}</p>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				{% endif %}
 
-                {# On affiche la clé anglaise "gérer", quand on est connecté en admin #}
-                {% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
-                    <div class="gerer">
-                        <a
-                            href="{{ path('admin.events.edit', {id: event.id}) }}"
-                            title="Éditer l'évènement">
-                                <i class="fas fa-edit fa-2x blue"></i>
-                        </a>
-                    </div>
-                {% endif %}
-                <div class="contact">
-                    <a class="bouton bt-small" href="{{ path('contact', {id: event.id}) }}">Contact</a>
-                </div>
-            </div>
+				<div class="textes">
+				{% else %}
+					<div class="textes element-sans-image">
+					{% endif %}
 
+					<div class="info-bar">
+						<div class="info-bar-left">
+							<div class="type-vue-and-status">
+								<i class="fas fa-info-circle"></i>
+								Évènement
+							</div>
+							<div class="date">
+								<i class="fas fa-calendar-alt"></i>
+								{{ event.getDateEvent | date("d-m-Y") }}
+							</div>
+							<div class="time">
+								<i class="fas fa-clock"></i>
+								{{ event.getDateEvent | date("H:i") }}
+							</div>
+							{% if event.getDateEvent()|date("Y-m-d") < today|date("Y-m-d") %}
+								<div>
+									Évènement terminé
+								</div>
+							{% endif %}
+							{% if event.getAnnule() %}
+								<div class="red">
+									Évènement annulé
+								</div>
+							{% endif %}
+							{# Date, et mentions couleurs du nbr de jours avant l'event #}
+							{% for j in 0..7 %}
+								{% if j == 0 %}
+									{% if event.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
+										<span class="green">Aujourd'hui</span>
+									{% endif %}
+								{% elseif j == 1 %}
+									{% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
+										<span class="blue">demain</span>
+									{% endif %}
+								{% else %}
+									{% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
+										<span class="blue">J-{{ j }}</span>
+									{% endif %}
+								{% endif %}
+							{% endfor %}
+						</div>
 
+						{# On affiche la clé anglaise "gérer", quand on est connecté en admin #}
+						{% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
+							<div class="gerer">
+								<a href="{{ path('admin.events.edit', {id: event.id}) }}" title="Éditer l'évènement">
+									<i class="fas fa-edit fa-2x blue"></i>
+								</a>
+							</div>
+						{% endif %}
+						<div class="contact">
+							<a class="bouton bt-small" href="{{ path('contact', {id: event.id}) }}">Contact</a>
+						</div>
+					</div>
 
+					<h2 class="hook">
+						{{ event.hook }}
+					</h2>
+					<div class="description">
+						{{ event.description | nl2br | auto_link }}
+					</div>
+				</div>
+			</section>
+		</div>
 
-            <h2 class="hook">
-                {{ event.hook }}
-            </h2>
-            <div class="description">
-                {{ event.description | nl2br | auto_link }}
-            </div>
-        </div>
-    </section>
-
-
-
-</div>
-
-    {% block javascript %}
-        <script src="{{ asset('js/carousel.js') }}"></script>
-    {% endblock %}
-{% endblock %}
+		{% block javascript %}
+			<script src="{{ asset('js/carousel.js') }}"></script>
+		{% endblock %}
+	{% endblock %}
