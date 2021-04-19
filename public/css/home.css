@@ -40,11 +40,21 @@ section {
    color: rgb(197, 197, 197);
 }
 
-.titre-communique > i{
-   font-size: 1.6em;
+
+.icone-titre-communique-calque-0 {
+   position: relative;
+   font-size: 1.8em;
+   color: #2c70b8;
 }
 
-.communique a:hover * {
+.icone-titre-communique-calque-1 {
+   position: relative;
+   margin-left: -15px;
+   margin-right: 9px;
+   bottom: 3px;
+}
+
+.communique a:hover div {
    color: white;
 }
 

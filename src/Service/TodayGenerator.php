@@ -15,7 +15,7 @@ class TodayGenerator
     */
    public function generateAToday()
    {
-      $today = new DateTime('2020-03-05 10:15:12');
+      $today = new DateTime();
       return $today;
    }
 }
