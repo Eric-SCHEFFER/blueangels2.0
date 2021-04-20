@@ -1,6 +1,7 @@
 {% extends 'components/base.html.twig' %}
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/home.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
 {% endblock %}
 
 {% block title %}
@@ -12,30 +13,33 @@
 
 	{# =============================================================== #}
 	{# Mini-barre de news qui affiche les 3 derniers communiqués, avec en priorité, ceux épinglés #}
+	{# <i class="fas fa-circle icone-titre-communique-calque-0"></i> #}
+	{# <i class="fas fa-info icone-titre-communique-calque-1"></i> #}
 
-		{% if communiques is not empty %}
-			<div class="barre-news-wrapper"> <div class="barre-news">
+
+	{# TODO: Refaire la mini barre plus compacte #}
+	{% if communiques is not empty %}
+		<div class="barre-news-wrapper">
+			<div class="barre-news">
 				{% for communique in communiques %}
-					<div class="communique">
-						<a href="{{ path('article', {id: communique.id}) }}" title="{{ communique.titre }} | {{ communique.hook }}">
+					<a href="{{ path('article', {id: communique.id}) }}" title="{{ communique.titre }} | {{ communique.hook }}">
+						<div class="communique">
 							<div class="titre-communique">
-								<i class="fas fa-circle icone-titre-communique-calque-0"></i>
-								<i class="fas fa-info icone-titre-communique-calque-1"></i>
-								{{ communique.titre }}
+								{{ communique.titre  ~ ':' }}
 							</div>
 							<div class="hook-communique">
 								{{ communique.hook }}
 							</div>
-							<div class="date-communique">
-								<i class="fas fa-calendar-alt"></i>
-								{{ communique.getCreatedAt | date("d-m-Y") }}
-							</div>
-						</a>
-					</div>
+						</div>
+					</a>
 				{% endfor %}
 			</div>
 		</div>
-		{# <hr class="hr-barre-news"> #}
+		<div class="voir-tous-les-communiques">
+			<div class="bouton-wrapper">
+				<a class="bouton bt-extra-small" title="Voir tous les communiqués" href="{{ path('communiques') }}">Tous les communiqués</a>
+			</div>
+		</div>
 	{% endif %}
 
 

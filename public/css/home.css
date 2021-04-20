@@ -3,34 +3,36 @@ section {
 }
 
 .barre-news-wrapper {
-   /* border: solid 1px yellow; */
-   max-width: 1025px;
-   height: 40px;
-   margin: 3px auto -40px auto;
-   padding: 5px 4vw 20px 4vw;
+   border-bottom: solid 1px rgb(138, 138, 138);
+   padding: 9px 4vw;
 }
 
 .barre-news {
    /* border: solid 1px rgb(255, 0, 0); */
-   font-size: .7em;
+   max-width: 1025px;
+   margin: auto;
    display: flex;
    justify-content: space-around;
-   height: 100%;
+   height: auto;
    padding: 0;
 }
 
 .barre-news a {
    z-index: 1;
+   padding: 0;
+   margin: 0;
+   height: max-content;
 }
 
 .communique {
    display: flex;
-   flex-direction: column;
-   /* justify-content: center; */
+   flex-wrap: nowrap;
    /* border: solid 1px rgb(0, 47, 255); */
+   font-size: .8em;
    overflow: hidden;
    padding: 0;
-   height: max-content;
+   /* height: max-content; */
+   width: max-content;
    max-width: 150px;
 }
 
@@ -38,8 +40,12 @@ section {
    text-transform: uppercase;
    font-weight: 600;
    color: rgb(197, 197, 197);
+   min-width: max-content;
 }
 
+.hook-communique {
+   width: max-content;
+}
 
 .icone-titre-communique-calque-0 {
    position: relative;
@@ -54,7 +60,7 @@ section {
    bottom: 3px;
 }
 
-.communique a:hover div {
+a .communique:hover * {
    color: white;
 }
 
@@ -71,17 +77,33 @@ section {
    color: rgb(106, 106, 106);
 }
 
-.hr-barre-news {
-   position: relative;
-   top: 28px;
-   margin: 0;
-   padding: 0;
-   border-top: 0;
-   border-bottom: 1px solid rgb(70, 70, 70);
+.voir-tous-les-communiques {
+   /* border: solid yellow 1px; */
 }
 
-@media screen and (max-width: 400px) {
+.bouton-wrapper {
+   position: relative;
+   top: -11px;
+   /* border: solid violet 1px; */
+   width: max-content;
+   margin: auto;
+   padding: 0 5px;
+   background-color: #1b1b1b;
+}
+
+@media screen and (max-width: 550px) {
    .communique {
       max-width: 88px;
+      font-size: .7em;
+   }
+
+   .titre-communique {
+      max-width: 70px;
+      min-width: initial;
+   }
+
+   .hook-communique {
+      max-width: 33px;
+      min-width: initial;
    }
 }

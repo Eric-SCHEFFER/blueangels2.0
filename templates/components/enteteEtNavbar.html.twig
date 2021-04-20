@@ -62,19 +62,7 @@
                Accueil
             </a>
          </li>
-
-         <li>
-            <a href="{{ path('communiques') }}" title="Communiqués" class="
-               {% if menu_courant is defined and menu_courant == 'communiques' %}
-                  active
-               {% endif %}">
-               <i class="fas fa-info-circle icone-communiques-calque-0"></i>
-               Infos
-               {# <i class="fas fa-info blue icone-communiques-calque-1"></i> #}
-               {# <i class="fas fa-hand-pointer orange icone-communiques-calque-2"></i> #}
-            </a>
-         </li>
-
+         
          <li>
             <a href="{{ path('danses') }}" class="
                {% if menu_courant is defined and menu_courant == 'danses' %}
