@@ -17,7 +17,7 @@
    border-radius: 4px;
 }
 
-.card-article:hover img {
+.card-article:hover .image img {
    transform: scale(1.12);
 }
 
@@ -98,6 +98,14 @@
    margin-bottom: 0px;
 }
 
+.event-blue-angels {
+   width: 13px;
+}
+
+.event-blue-angels img {
+   width: 100%;
+}
+
 .articles-date {}
 
 .hook {
@@ -152,6 +160,3 @@
    border: 1px rgb(221, 0, 0) solid;
 }
 
-.card-event-grise {
-   opacity: .5;
-}

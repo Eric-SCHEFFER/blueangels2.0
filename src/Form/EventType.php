@@ -65,6 +65,11 @@ class EventType extends AbstractType
             ->add('actif', CheckboxType::class, [
                 'required' => false,
                 'label' => 'Actif',
+            ])
+
+            ->add('event_blue_angels', CheckboxType::class, [
+                'required' => false,
+                'label' => 'Organisé par les Blue Angels',
             ]);
     }
 

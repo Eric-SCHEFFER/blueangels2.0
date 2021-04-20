@@ -54,11 +54,17 @@ class Events
      */
     private $actif;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $event_blue_angels;
+
     public function __construct()
     {
         $this->imagesEvents = new ArrayCollection();
         $this->date_event = new \DateTime('now');
         $this->actif = true;
+        $this->event_blue_angels = true;
     }
 
     public function getId(): ?int
@@ -164,6 +170,18 @@ class Events
     public function setActif(?bool $actif): self
     {
         $this->actif = $actif;
+
+        return $this;
+    }
+
+    public function getEventBlueAngels(): ?bool
+    {
+        return $this->event_blue_angels;
+    }
+
+    public function setEventBlueAngels(?bool $event_blue_angels): self
+    {
+        $this->event_blue_angels = $event_blue_angels;
 
         return $this;
     }

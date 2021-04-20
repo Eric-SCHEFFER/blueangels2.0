@@ -136,6 +136,21 @@ position: relative;
    border: none;
 }
 
+/* ====== ICONE BLUE ANGELS ======= */
+
+.event-blue-angels {
+   position: relative;
+   top: 2px;
+   left: -12px;
+   height: 13px;
+   width: 13px;
+}
+
+.event-blue-angels img {
+   height: 100%;
+   width: 100%;
+}
+
 /* ====== BOUTONS ======= */
 
 .boutonNew {

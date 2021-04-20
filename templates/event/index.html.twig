@@ -54,6 +54,12 @@
 							<div class="type-vue-and-status">
 								<i class="fas fa-info-circle"></i>
 								Évènement
+								{% if event.getEventBlueAngels %}
+									Blue Angels
+									<div class="event-blue-angels" title="Évènement oganisé par Les Blue Angels">
+										<img src="{{ asset('images/favicon.png') }}" alt='Icone des Blue Angels'>
+									</div>
+								{% endif %}
 							</div>
 							<div class="date">
 								<i class="fas fa-calendar-alt"></i>

@@ -84,3 +84,14 @@ h2 {
    position: relative;
    margin-top: 100px;
 }
+
+.event-blue-angels {
+   display: inline-block;
+   width: 14px;
+   height: 14px;
+}
+
+.event-blue-angels img {
+   width: 100%;
+   height: 100%;
+}

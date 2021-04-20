@@ -32,6 +32,12 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 					{% endif %}
 
 					<div class="info-epoque-event">
+						{# Quand l'event est organisé par les ba, on met un petit logo des ba #}
+						{% if event.getEventBlueAngels %}
+							<div class="event-blue-angels">
+								<img src="{{ asset('images/favicon.png') }}" alt='Icone des Blue Angels'>
+							</div>
+						{% endif %}
 						{% if epoque == 'futur' %}
 							{% for j in 0..7 %}
 								{% if j == 0 %}
@@ -51,6 +57,8 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 						{% else %}
 							<span class="info-jour">Terminé</span>
 						{% endif %}
+
+						
 					</div>
 
 					<div class="infos">
