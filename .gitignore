@@ -15,6 +15,12 @@
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 
+
+### Rajouté par Éric
+/composer.lock
+/symfony.lock
+/composer.json
+
 /.env
 /migrations/
 /public/uploads/
