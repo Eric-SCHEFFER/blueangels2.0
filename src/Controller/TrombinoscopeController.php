@@ -14,7 +14,9 @@ class TrombinoscopeController extends AbstractController
      */
     public function loadTrombinoscopes(): Response
     {
-        $membres = $this->getDoctrine()->getRepository(MembresAsso::class)->findAll();
+        $membres = $this->getDoctrine()->getRepository(MembresAsso::class)->findby(
+            ['actif' => true],
+        );
         return $this->render('trombinoscope/trombinoscope.html.twig', [
             'membres' => $membres,
         ]);
