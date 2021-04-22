@@ -42,6 +42,6 @@
    display: flex;
    flex-direction: column;
    justify-content: baseline;
-   padding: 0 4px 0 4px;
+   padding: 8px 42px;
    /* border: solid 1px rgb(229, 255, 0); */
 }
