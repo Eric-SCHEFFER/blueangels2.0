@@ -41,7 +41,6 @@
    font-size: .8em;
    display: flex;
    flex-direction: column;
-   justify-content: baseline;
    padding: 8px 42px;
    /* border: solid 1px rgb(229, 255, 0); */
 }
