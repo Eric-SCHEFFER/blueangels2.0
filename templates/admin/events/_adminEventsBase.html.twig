@@ -102,7 +102,9 @@
 							<a class="iconeEditer" href="{{ path('admin.events.edit', {id: event.id}) }}" title="Éditer"></a>
 
 							{# formulaire avec champ caché (passer la valeur delete) pour supprimmer un évènement #}
-							<form class="deleteForm" method="post" action="{{ path('admin.event.delete', {id: event.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ event.nom }} ?')">
+							{# Le filtre twig replace supprime l'apostrophe s'il y en a, et d'autres caractères, pour éviter l'absence de confirmation de supression #}
+							{% set nomFiltre = event.nom|replace({"'": "", '"': "", '(': "", ')': "", '{': "", '}': ""}) %}
+							<form class="deleteForm" method="post" action="{{ path('admin.event.delete', {id: event.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ nomFiltre }} ?')">
 								<input
 								type="hidden" name="_method" value="DELETE"/>
 								{# On créé un token #}
