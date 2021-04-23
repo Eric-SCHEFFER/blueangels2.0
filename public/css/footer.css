@@ -14,6 +14,15 @@
    /* border: solid 1px blue; */
 }
 
+.footer a::first-letter {
+   color: #37b9ff;
+   text-transform: uppercase;
+}
+
+.footer a:hover * {
+   color: white;
+}
+
 .blocMentions {
    display: flex;
    flex-direction: column;
