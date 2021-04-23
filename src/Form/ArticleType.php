@@ -69,6 +69,7 @@ class ArticleType extends AbstractType
             ])
 
             ->add('created_at', DateTimeType::class, [
+                'years' => range(date('Y')-20, date('Y')+20),
                 'label' => 'Date de mise à jour',
                 'required' => true
             ])

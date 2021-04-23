@@ -51,6 +51,7 @@ class EventType extends AbstractType
             ])
 
             ->add('date_event', DateTimeType::class, [
+                'years' => range(date('Y')-20, date('Y')+20),
                 'required' => true,
                 'label' => 'Date Évènement',
             ])
