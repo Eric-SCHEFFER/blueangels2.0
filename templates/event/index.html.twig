@@ -19,10 +19,12 @@
 				{# On affiche les images dispo dans le tableau #}
 				{% for image in event.getImagesEvents %}
 					<div class="image">
+						{% if event.getAnnule %}
+                  	<div class="tampon-oblique-red">Évènement annulé</div>
+               	{% endif %}
 						<img src="{{ asset('uploads/imagesEvents/' ~ image.nom) }}">
 					</div>
 				{% endfor %}
-
 				{# On affiche les boutons et infos du carousel, sauf s'il n'y a qu'une image #}
 				{% if event.getImagesEvents|length == 1 %}
 					<div class="boutonsAndBulletsWrapper hidden"></div>
@@ -48,7 +50,9 @@
 				{% else %}
 					<div class="textes element-sans-image">
 					{% endif %}
-
+					{% if event.getAnnule %}
+                  	<div class="tampon-oblique-red">Évènement annulé</div>
+					{% endif %}
 					<div class="info-bar">
 						<div class="info-bar-left">
 							<div class="type-vue-and-status">

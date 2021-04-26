@@ -95,3 +95,25 @@ h2 {
    width: 100%;
    height: 100%;
 }
+
+.tampon-oblique-red {
+   z-index: 0;
+   position: relative;
+   top: 155px;
+   text-align: center;
+   text-transform: uppercase;
+   font-size: .8em;
+   width: 50%;
+   margin: auto;
+   height: auto;
+   color: rgb(255, 255, 255);
+   border: 1px rgb(255, 255, 255) solid;
+   padding: 10px;
+   border-radius: 6px;
+   font-weight: 400;
+   text-shadow: #000 1px 1px 1px;
+   box-shadow: #000 2px 2px 2px;
+   transform: rotate(-20deg);
+   color: rgb(221, 0, 0);
+   border: 1px rgb(221, 0, 0) solid;
+}
