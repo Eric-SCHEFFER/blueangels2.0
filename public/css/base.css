@@ -135,6 +135,10 @@ footer {
    margin-top: 20px;
 }
 
+.float-right {
+   float: right;
+}
+
 /* ================== colors ================ */
 .theme-menu {
    background-color: #225D91;

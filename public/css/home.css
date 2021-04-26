@@ -60,25 +60,25 @@ section {
 
 .titre-communique,
 .hook-communique,
-.date-communique {
+.footer-communique {
    white-space: nowrap;
    overflow: hidden;
    text-overflow: ellipsis;
    text-align: center;
 }
 
-.date-communique {
+.footer-communique {
    color: rgb(106, 106, 106);
 }
 
-.hr-barre-news {
+/* .hr-barre-news {
    position: relative;
    top: 28px;
    margin: 0;
    padding: 0;
    border-top: 0;
    border-bottom: 1px solid rgb(70, 70, 70);
-}
+} */
 
 @media screen and (max-width: 400px) {
    .communique {

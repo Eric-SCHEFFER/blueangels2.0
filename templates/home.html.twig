@@ -26,10 +26,16 @@
 							<div class="hook-communique">
 								{{ communique.hook }}
 							</div>
-							<div class="date-communique">
+							<div class="footer-communique">
 								<i class="fas fa-calendar-alt"></i>
 								{{ communique.getCreatedAt | date("d-m-Y") }}
+								{% if communique.epingle %}
+									<div class="articles-epingle-on float-right">
+										<i class="fas fa-thumbtack orangered"></i>
+									</div>
+								{% endif %}
 							</div>
+
 						</a>
 					</div>
 				{% endfor %}
