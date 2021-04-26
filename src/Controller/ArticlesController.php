@@ -19,11 +19,11 @@ class ArticlesController extends AbstractController
      */
     public function index(): Response
     {
-        // On récupère tous les articles qui ont le droit de s'afficher (visibles, listés en page d'accueil, et épinglés)
+        // On récupère tous les articles qui ont le droit de s'afficher (visibles)
         $articles = $this->articlesRepository->findBy(
             [
                 'actif' => true,
-                'listed' => true,
+                // 'listed' => true,
             ],
             ['created_at' => "DESC"]
         );

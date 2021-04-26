@@ -63,6 +63,7 @@ class HomeController extends AbstractController
             [
                 'categories_article' => $categorie,
                 'actif' => true,
+                'listed' => true,
                 'epingle' => true,
             ],
             ['created_at' => "DESC"],
@@ -75,6 +76,7 @@ class HomeController extends AbstractController
                 [
                     'categories_article' => $categorie,
                     'actif' => true,
+                    'listed' => true,
                     'epingle' => false,
                 ],
                 ['created_at' => "DESC"],
@@ -94,7 +96,10 @@ class HomeController extends AbstractController
     {
 
         $articles = $this->articlesRepository->findBy(
-            ['actif' => true,],
+            [
+                'actif' => true,
+                'listed' => true,
+            ],
             ['created_at' => "DESC"],
             3
         );
