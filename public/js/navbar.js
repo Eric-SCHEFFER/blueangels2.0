@@ -1,38 +1,50 @@
-// Au clic du bouton, on ouvre/ferme son sous-menu 
-function toggleMenu(iDMenu) {
+//  ============ Sous-menu ===============
 
-   let dropDownTarget = document.getElementById(iDMenu);
-   console.log(dropDownTarget);
-   let dropdowns = document.getElementsByClassName('dropdown-content');
-   let i;
-   for (i = 0; i < dropdowns.length; i++) {
-      let openDropdown = dropdowns[i];
-      // On ferme tous les menus dropdown ouvert, excepté celui du bouton cliqué
-      if (openDropdown != dropDownTarget) {
-         if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-         }
-      }
-   }
-   // Bascule On/Off du menu dropdown au clic sur le bouton
-   dropDownTarget.classList.toggle("show");
+let boutons = document.querySelectorAll(".btDropdown");
+
+for (let bouton = 0; bouton < boutons.length; bouton++) {
+   boutons[bouton].addEventListener("click", clicBouton);
 }
 
-
-// Ferme le menu dropdown si on clique n'importe où sauf sur son bouton
-window.onclick = function (e) {
-   // closest permet de cibler tout le contenu de btDropdown (les boites descendantes)
-   if (!e.target.closest('.btDropdown')) {
-      let dropdowns = document.getElementsByClassName('dropdown-content');
-      let i;
-      for (i = 0; i < dropdowns.length; i++) {
-         let openDropdown = dropdowns[i];
-         if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
+function clicBouton() {
+   // Affiche/masque le sous-menu
+   if (this.classList.contains("visible")) {
+      this.classList.remove("visible");
+   } else {
+      this.classList.add("visible");
+   }
+   // On ferme tous les sous-menu ouverts, excepté celui de notre bouton cliqué
+   for (let bouton = 0; bouton < boutons.length; bouton++) {
+      if (boutons[bouton] != this) {
+         // Affiche/masque le sous-menu
+         if (boutons[bouton].classList.contains("visible")) {
+            boutons[bouton].classList.remove("visible");
          }
       }
    }
 }
+
+
+document.addEventListener("click", clicAilleurs);
+
+// Ferme le menu dropdown si on clique n'importe où sauf sur son bouton et sur un autre bouton de sous-menu
+function clicAilleurs() {
+   if (!this.activeElement.classList.contains("btDropdown")) {
+      for (let bouton = 0; bouton < boutons.length; bouton++) {
+         if (boutons[bouton].classList.contains("visible")) {
+            boutons[bouton].classList.remove("visible");
+         }
+      }
+   }
+}
+
+
+
+
+
+
+
+
 
 
 //  ================= Menu burger =====================

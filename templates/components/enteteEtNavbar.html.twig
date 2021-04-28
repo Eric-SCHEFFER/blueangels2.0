@@ -32,7 +32,7 @@
          <li>
             <button class="btDropdown" onclick="toggleMenu('user')" title="Paramètres de {{ app.user.username }}">
                <i class="fas fa-lg fa-user-cog"></i>
-               <i class="fa fa-caret-down"></i>
+               <i class="fa fa-caret-right"></i>
             </button>
             <ul class="dropdown-content" id="user">
                <li>
@@ -105,11 +105,10 @@
 
          {# ======== Sous-menu /ON =========== #}
          <li>
-            <button class="btDropdown" onclick="toggleMenu('menuEvenements')">
-               Évènements
-               <i class="fa fa-caret-down"></i>
+            <button class="btDropdown" id="menuEvenements">
+               <div>Évènements</div>
             </button>
-            <ul class="dropdown-content" id="menuEvenements">
+            <ul class="dropdown-content">
                <li>
                   <a href="{{ path('a_venir') }}">
                      À venir
@@ -153,11 +152,10 @@
 
          {# ======== Sous-menu /ON =========== #}
          <li>
-            <button class="btDropdown" onclick="toggleMenu('menuAPropos')">
-               À propos
-               <i class="fa fa-caret-down"></i>
+            <button class="btDropdown" id="menuAPropos">
+               <div>À propos</div>
             </button>
-            <ul class="dropdown-content" id="menuAPropos">
+            <ul class="dropdown-content">
                <li>
                   <a href="{{ path('historique.asso') }}">
                      Historique
@@ -188,11 +186,10 @@
 
          {# ======== Sous-menu /ON =========== #}
          <li>
-            <button class="btDropdown" onclick="toggleMenu('menuPlus')">
-               PLus
-               <i class="fa fa-caret-down"></i>
+            <button class="btDropdown" id="menuPlus">
+               <div>PLus</div>
             </button>
-            <ul class="dropdown-content" id="menuPlus">
+            <ul class="dropdown-content">
                <li>
                   <a href="https://www.facebook.com/LesBlueAngels/">
                      <i class="fab fa-lg fa-facebook-f"></i>

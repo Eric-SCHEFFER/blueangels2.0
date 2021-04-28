@@ -105,7 +105,6 @@ nav a, nav .btDropdown {
    text-align: center;
    line-height: 50px;
    padding: 0;
-   transition: all .3s;
    color: #c4c4c4;
 }
 
@@ -137,12 +136,18 @@ nav ul.ulMenuGeneral {
 
 nav ul.dropdown-content {
    position: absolute;
-   display: none;
+   display: block;
+   opacity: 0;
+   height: 0;
+   visibility: hidden;
+   overflow: hidden;
    right: 0;
    padding: 0 12px 0 12px;
+   margin-top: -2px;
    min-width: 100%;
    background-color: #004785;
    border-radius: 4px;
+   transition: all 1s;
    /* border: yellow 1px solid; */
 }
 
@@ -152,7 +157,6 @@ nav ul.dropdown-content a {
    padding: 0;
    font-size: .9em;
    text-align: left;
-   transition: all .3s;
    /* border: rgb(0, 0, 0) 1px solid; */
 }
 
@@ -175,8 +179,31 @@ nav li {
    /* min-width: max-content; */
 }
 
-.show {
-   display: block !important;
+.btDropdown.visible + ul.dropdown-content {
+  /* display: block !important; */
+  opacity: 1;
+  height: auto;
+  visibility: visible;
+}
+
+
+/* =========== Icones fontawesome =========== */
+
+.btDropdown > div::after {
+   position: relative;
+   display: inline-block;
+   left: 6px;
+   top: 2px;
+   font-family: "Font Awesome 5 Free";
+   font-size: 1.4em;
+   font-weight: 600;
+   content: "\f0da";
+   transition: all .6s;
+}
+
+.btDropdown.visible > div::after {
+   transform: rotate(90deg);
+   color: rgb(255, 111, 0);
 }
 
 .icone-communiques-calque-0 {
@@ -240,8 +267,8 @@ nav li {
    }
    nav ul.dropdown-content {
       z-index: 10;
-      position: relative;
       padding-left: 0;
+      position: relative;
       left: 0;
       max-width: 230px !important;
    }
