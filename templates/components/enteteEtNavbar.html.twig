@@ -31,10 +31,9 @@
           {# ======== Sous-menu /ON =========== #}
          <li>
             <button class="btDropdown" onclick="toggleMenu('user')" title="Paramètres de {{ app.user.username }}">
-               <i class="fas fa-lg fa-user-cog"></i>
-               <i class="fa fa-caret-right"></i>
+               <div><i class="fas fa-lg fa-user-cog"></i></div>
             </button>
-            <ul class="dropdown-content" id="user">
+            <ul class="dropdown-content">
                <li>
                   <a href="{{ path('app_logout') }}">
                      {{ app.user.username }}: Déconnexion 
@@ -105,7 +104,7 @@
 
          {# ======== Sous-menu /ON =========== #}
          <li>
-            <button class="btDropdown" id="menuEvenements">
+            <button class="btDropdown">
                <div>Évènements</div>
             </button>
             <ul class="dropdown-content">
@@ -152,7 +151,7 @@
 
          {# ======== Sous-menu /ON =========== #}
          <li>
-            <button class="btDropdown" id="menuAPropos">
+            <button class="btDropdown">
                <div>À propos</div>
             </button>
             <ul class="dropdown-content">
@@ -186,7 +185,7 @@
 
          {# ======== Sous-menu /ON =========== #}
          <li>
-            <button class="btDropdown" id="menuPlus">
+            <button class="btDropdown">
                <div>PLus</div>
             </button>
             <ul class="dropdown-content">
