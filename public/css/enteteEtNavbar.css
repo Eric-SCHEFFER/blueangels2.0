@@ -137,9 +137,9 @@ nav ul.ulMenuGeneral {
 nav ul.dropdown-content {
    position: absolute;
    display: block;
-   opacity: 0;
-   height: 0;
-   visibility: hidden;
+   /* opacity: 0; */
+   max-height: 0;
+   /* visibility: hidden; */
    overflow: hidden;
    right: 0;
    padding: 0 12px 0 12px;
@@ -147,7 +147,7 @@ nav ul.dropdown-content {
    min-width: 100%;
    background-color: #004785;
    border-radius: 4px;
-   transition: all 1s;
+   transition: max-height .8s;
    /* border: yellow 1px solid; */
 }
 
@@ -181,9 +181,10 @@ nav li {
 
 .btDropdown.visible + ul.dropdown-content {
   /* display: block !important; */
-  opacity: 1;
+  /* opacity: 1; */
   height: auto;
-  visibility: visible;
+  max-height: 500px; /* Obligé de mettre une max-height pour que la transition fonctionne */
+  /* visibility: visible; */
 }
 
 
