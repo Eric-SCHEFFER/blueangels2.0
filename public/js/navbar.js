@@ -16,7 +16,7 @@ function clicBouton() {
    // On ferme tous les sous-menu ouverts, excepté celui de notre bouton cliqué
    for (let bouton = 0; bouton < boutons.length; bouton++) {
       if (boutons[bouton] != this) {
-         // Affiche/masque le sous-menu
+         // Masque le sous-menu
          if (boutons[bouton].classList.contains("visible")) {
             boutons[bouton].classList.remove("visible");
          }
