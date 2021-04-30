@@ -95,7 +95,7 @@ nav {
    font-weight: 500;
    padding: 0 20px 0 20px;
    border-radius: 4px;
-   /* border: solid #fbff00 1px */
+   border: solid #4d4d4d 1px;
 }
 
 nav a, nav .btDropdown {
@@ -145,7 +145,7 @@ nav ul.dropdown-content {
    padding: 0 12px 0 12px;
    margin-top: -2px;
    min-width: 100%;
-   background-color: #004785;
+   background-color: #1b2833;
    border-radius: 4px;
    transition: max-height .8s;
    /* border: yellow 1px solid; */
@@ -239,6 +239,7 @@ nav li {
       top: 0;
       height: auto;
       border-radius: 0 0 0 8px;
+      border: none;
       transition: right .3s;
       padding: 34px 0 20px 0;
    }
@@ -291,7 +292,7 @@ nav li {
       width: 50px;
       height: 50px;
       cursor: pointer;
-      background-color: hsla(211, 100%, 50%, 0.3);
+      background-color: #23354477;
       border-radius: 50%;
       border: solid 1px transparent;
       transition: border .6s;
