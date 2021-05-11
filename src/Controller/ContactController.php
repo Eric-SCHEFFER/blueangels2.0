@@ -53,12 +53,13 @@ class ContactController extends AbstractController
                 $objet = $contact['objet'];
                 $destinataire = $this->getDoctrine()->getRepository(InfosEtAdresses::class)->findOneBy([])->getEmailEnvoiFormulaire();
                 $templateTwig = "emails/contact.html.twig";
-                // Envoi du mail avec gestion d'erreur, contenant les données du formulaire
+                // Envoi du mail avec gestion d'erreur
                 try {
                     $this->envoiEmail($mailer, $expediteur, $destinataire, $templateTwig, $objet, $contact);
-                    // S'il y a une erreur de transport de l'email (renvoyée par l'hebergeur)
+                    // S'il y a une erreur renvoyée par le serveur
                 } catch (\Throwable $th) {
-                    $this->addFlash('error', 'Votre message n\'a pas pu être envoyé. Si celà arrive pour la première fois, nous vous invitons à faire une seconde tentative. Si le problème persiste, nous vous invitons à le signaler à notre webmaster. Nous nous excusons pour la gêne occasionnée.');
+                    $emailContact = $this->getDoctrine()->getRepository(InfosEtAdresses::class)->findOneBy([])->getEmailContact();
+                    $this->addFlash('error', 'Votre message n\'a pas pu être envoyé. Si celà arrive pour la première fois, nous vous invitons à faire une seconde tentative. Si le problème persiste, nous vous invitons à le signaler via notre adresse email de contact: ' . $emailContact . '. Veuillez nous excuser pour la gêne occasionnée.');
                     return $this->render('contact/contact.html.twig', [
                         'menu_courant' => 'contact',
                         'contactForm' => $form->createView(),
