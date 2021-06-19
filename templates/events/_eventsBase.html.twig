@@ -39,7 +39,7 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 							</div>
 						{% endif %}
 						{% if epoque == 'futur' %}
-							{% for j in 0..7 %}
+							{% for j in 0..9 %}
 								{% if j == 0 %}
 									{% if event.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
 										<span class="info-jour green tres-gras">Aujourd'hui</span>

@@ -12,7 +12,6 @@
 # Tout ce qui se trouve dans ce dossier sera envoyé sur le serveur, en excluant ceux inclus dans le fichier .gitignore qui doit être présent à la racine.
 # Eric SCHEFFER 2020-12-11-18-33
 
-
 # ====== Variables à renseigner ======
 utilisateur="u104388791"
 serveur="access867248383.webspace-data.io"

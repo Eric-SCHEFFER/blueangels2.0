@@ -84,7 +84,7 @@
 								</div>
 							{% endif %}
 							{# Date, et mentions couleurs du nbr de jours avant l'event #}
-							{% for j in 0..7 %}
+							{% for j in 0..20 %}
 								{% if j == 0 %}
 									{% if event.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
 										<span class="green">Aujourd'hui</span>
