@@ -21,23 +21,21 @@ class EventsRepository extends ServiceEntityRepository
 
     // ==================== FUTURS =======================
 
-
     // On recupère jusqu'à 3 events futurs actifs
-    public function findActifEventsToCome($date)
-    {
-        $query = $this->createQueryBuilder('e')
-            ->select('e')
-            ->andWhere('e.date_event >= :date')
-            ->setParameter('date', $date->format('Y-m-d'))
-            ->andWhere('e.actif = :actif')
-            ->setParameter('actif', true)
-            ->orderBy('e.date_event', 'ASC')
-            ->setMaxResults(3)
-            ->getQuery()
-            ->getResult();
-        return $query;
-    }
-
+    // public function findActifEventsToCome($date)
+    // {
+    //     $query = $this->createQueryBuilder('e')
+    //         ->select('e')
+    //         ->andWhere('e.date_event >= :date')
+    //         ->setParameter('date', $date->format('Y-m-d'))
+    //         ->andWhere('e.actif = :actif')
+    //         ->setParameter('actif', true)
+    //         ->orderBy('e.date_event', 'ASC')
+    //         ->setMaxResults(3)
+    //         ->getQuery()
+    //         ->getResult();
+    //     return $query;
+    // }
 
     // On recupère jusqu'à 3 events futurs actifs épinglés
     public function find3ActifPinnedEventsToCome($date)
@@ -74,12 +72,6 @@ class EventsRepository extends ServiceEntityRepository
             ->getResult();
         return $query;
     }
-
-
-
-
-
-
 
     // On recupère tous les events futurs
     public function findAllEventsToCome($date)
@@ -138,7 +130,7 @@ class EventsRepository extends ServiceEntityRepository
     }
 
 
-    
+
 
     // ==================== PASSÉS =======================
 
