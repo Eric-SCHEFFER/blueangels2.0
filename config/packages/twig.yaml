@@ -23,5 +23,7 @@ twig:
                 "Si l'évènement à été annulé, mais qu'on veut quand même le faire apparaitre. Une mention 'Annulé' apparaitra en rouge en travers de la carte d'aperçu"
             eventBlueAngels:
                 "Cocher si l'évènement est organisé par les Blue Angels. Décocher si l'évènement n'a rien à voir avec l'association"
+            epingle:
+                "Si activé, l'évènement apparaitra en premier dans la liste de la homePage"
 
 

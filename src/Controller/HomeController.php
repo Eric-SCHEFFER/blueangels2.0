@@ -27,17 +27,18 @@ class HomeController extends AbstractController
      */
     public function index(TodayGenerator $todayGenerator): Response
     {
-        // On récupère la date du jour, que l'on peut changer dans la classe
+        // La date du jour, récupérée dans le service generateAToday
         $today = $todayGenerator->generateAToday();
-        // On récupère les 3 derniers communiqués, dont en priorité, les épinglés
+        // Les 3 derniers communiqués (dont en priorité, les épinglés)
         $communiques = $this->getCommuniques();
-        // On récupère les 3 events à venir
-        $eventsToCome = $this->eventsRepository->findActifEventsToCome($today);
-        // On récupère le nbre total d'events futurs
+        // Les 3 events à venir (dont en priorité, les épinglés)
+        $eventsToCome = $this->get3Events($today);
+        // dd($eventsToCome);
+        // Nbre total d'events futurs
         $countTotalEventsToCome = $this->eventsRepository->countTotalActifEventsToCome($today);
-        // On récupère le nbre total d'events passés
+        // Nbre total d'events passés
         $countTotalCompletedEvents = $this->eventsRepository->countTotalActifCompletedEvents($today);
-        // On récupère en tout 3 articles, dont en priorité, les épinglés
+        // Les 3 derniers articles
         $articles = $this->getArticles();
 
         return $this->render('home.html.twig', [
@@ -87,6 +88,27 @@ class HomeController extends AbstractController
         $communiques = array_merge($pinnedCommuniques, $nonPinnedCommuniques);
         return $communiques;
     }
+
+
+    /**
+     * TODO: On récupère les 3 derniers events actifs, avec en priorité, ceux épinglés s'il y en a.
+     * On utilise les fonctions find3ActifPinnedEventsToCome et find3ActifNonPinnedEventsToCome depuis le repo.
+     */
+    private function get3Events($today)
+    {
+        $pinnedEvents = $this->eventsRepository->find3ActifPinnedEventsToCome($today);
+        $nonPinnedEvents = [];
+        if (count($pinnedEvents) < 3) {
+            // On complète avec des events non-épinglés
+            $combien = 3 - count($pinnedEvents);
+            $nonPinnedEvents = $this->eventsRepository->find3ActifNonPinnedEventsToCome($today, $combien);
+            // dd($nonPinnedEvents);
+        }
+        // On fusionne $pinnedEvents et $nonPinnedEvents
+        $eventsToCome = array_merge($pinnedEvents, $nonPinnedEvents);
+        return $eventsToCome;
+    }
+
 
 
     /**

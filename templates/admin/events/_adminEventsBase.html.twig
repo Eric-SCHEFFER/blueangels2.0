@@ -88,7 +88,13 @@
 												<i class="fas fa-eye lime"></i>
 											</div>
 										{% endif %}
-										{# TODO: Si organisé par ba, on met l'icone ba #}
+										{# Si l'article est épinglé #}
+										{% if event.epingle %}
+											<div class="articles-epingle-on" title="{{ eventOptionInfo.epingle }}">
+												<i class="fas fa-thumbtack orangered"></i>
+											</div>
+										{% endif %}
+										{# Si organisé par ba, on met l'icone ba #}
 										{% if event.getEventBlueAngels %}
 											<div class="event-blue-angels">
 												<img src="{{ asset('images/favicon.png') }}" alt='Icone des Blue Angels'>

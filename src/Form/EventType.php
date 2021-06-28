@@ -63,6 +63,11 @@ class EventType extends AbstractType
                 'label' => 'Annulé',
             ])
 
+            ->add('epingle', CheckboxType::class, [
+                'required' => false,
+                'label' => 'Épinglé en page d\'accueil'
+            ])
+
             ->add('actif', CheckboxType::class, [
                 'required' => false,
                 'label' => 'Actif',

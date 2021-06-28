@@ -72,6 +72,11 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 								{{ event.ImagesEvents | length }}
 							</div>
 						{% endif %}
+						{% if event.epingle %}
+							<div class="articles-epingle-on">
+								<i class="fas fa-thumbtack orangered"></i>
+							</div>
+						{% endif %}
 
 					</div>
 				</div>

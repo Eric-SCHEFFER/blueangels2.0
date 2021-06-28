@@ -59,6 +59,11 @@ class Events
      */
     private $event_blue_angels;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $epingle;
+
     public function __construct()
     {
         $this->imagesEvents = new ArrayCollection();
@@ -182,6 +187,18 @@ class Events
     public function setEventBlueAngels(?bool $event_blue_angels): self
     {
         $this->event_blue_angels = $event_blue_angels;
+
+        return $this;
+    }
+
+    public function getEpingle(): ?bool
+    {
+        return $this->epingle;
+    }
+
+    public function setEpingle(?bool $epingle): self
+    {
+        $this->epingle = $epingle;
 
         return $this;
     }

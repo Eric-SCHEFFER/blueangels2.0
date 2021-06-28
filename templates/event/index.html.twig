@@ -64,6 +64,11 @@
 										<img src="{{ asset('images/favicon.png') }}" alt='Icone des Blue Angels'>
 									</div>
 								{% endif %}
+								{% if event.epingle %}
+									<span class="articles-epingle-on" title="Épinglé en page d'accueil">
+										<i class="fas fa-thumbtack orangered"></i>
+									</span>
+								{% endif %}
 							</div>
 							<div class="date">
 								<i class="fas fa-calendar-alt"></i>
