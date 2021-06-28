@@ -11,13 +11,12 @@
 		{% set countAVenir = countTotalEventsToCome[0][1] %}
 
 		<h1>
-			Évènements passés:
-			{{ countPasse }}
+			Évènements passés
 		</h1>
 		{% if countAVenir > 0 %}
 			<h4>Voir aussi
-				<a class="bouton bt2" href="{{ path('a_venir') }}">
-					Évènements à venir
+				<a class="bouton bt2" href="{{ path('a_venir') }}" title="{{ countAVenir }} évènement(s) à venir">
+					Évènements à venir ({{ countAVenir }})
 				</a>
 			</h4>
 		{% endif %}
