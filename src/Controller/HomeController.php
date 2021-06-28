@@ -91,7 +91,7 @@ class HomeController extends AbstractController
 
 
     /**
-     * TODO: On récupère les 3 derniers events actifs, avec en priorité, ceux épinglés s'il y en a.
+     * On récupère les 3 derniers events actifs, avec en priorité, ceux épinglés s'il y en a.
      * On utilise les fonctions find3ActifPinnedEventsToCome et find3ActifNonPinnedEventsToCome depuis le repo.
      */
     private function get3Events($today)

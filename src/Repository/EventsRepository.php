@@ -39,7 +39,7 @@ class EventsRepository extends ServiceEntityRepository
     }
 
 
-    // TODO: On recupère jusqu'à 3 events futurs actifs épinglés
+    // On recupère jusqu'à 3 events futurs actifs épinglés
     public function find3ActifPinnedEventsToCome($date)
     {
         $query = $this->createQueryBuilder('e')
@@ -57,7 +57,7 @@ class EventsRepository extends ServiceEntityRepository
         return $query;
     }
 
-    // TODO: On récupère jusqu'à 3 events futurs non épinglés
+    // On récupère jusqu'à 3 events futurs non épinglés
     public function find3ActifNonPinnedEventsToCome($date, $combien)
     {
         $query = $this->createQueryBuilder('e')
