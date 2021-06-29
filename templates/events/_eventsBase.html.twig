@@ -12,7 +12,7 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 {% if events is not empty %}
 	<div class="bloc-cards">
 		{% for event in events %}
-			<a class="card-article" href="{{ path('event_', {id: event.id}) }}" title="{{ event.getNom ~ ' | ' ~ event.getHook }}">
+			<a class="card-article" href="{{ path('event_', {id: event.id}) }}" title="{{ event.getNom ~ ' | ' ~ event.getHook ~ ' | ' ~ event.getDateEvent | format_datetime(pattern="EEEE dd LLLL yyyy HH:mm", locale="fr") | capitalize }}">
 				{% if event.getImagesEvents[0].getNom() is defined %}
 					<div class="image">
 						<img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ event.getImagesEvents[0].Nom) }}" alt="">
