@@ -58,9 +58,11 @@
 		<section class="events" id="events">
 			{% if countAVenir > 0 %}
 				{% if countAVenir == 1 %}
-					<h2>Évènement à venir</h2>
+					<h2>Évènement à venir: 1</h2>
 				{% else %}
-					<h2>Évènements à venir</h2>
+					<h2>Évènements à venir:
+						{{ countAVenir }}
+					</h2>
 				{% endif %}
 			{% else %}
 				<h2>Aucun évènement à venir</h2>

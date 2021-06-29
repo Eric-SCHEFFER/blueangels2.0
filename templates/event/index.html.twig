@@ -73,7 +73,7 @@
 							<div class="date">
 								<i class="fas fa-calendar-alt"></i>
 								{# Date affichant le jour, et le mois en toutes lettres #}
-								{{ event.getDateEvent | format_datetime(pattern="EEEE dd LLLL yyyy", locale="fr") | capitalize }}
+								{{ event.getDateEvent | format_datetime(pattern="EEEE dd MMMM yyyy", locale="fr") | capitalize }}
 							</div>
 							<div class="time">
 								<i class="fas fa-clock"></i>
@@ -90,6 +90,7 @@
 								</div>
 							{% endif %}
 							{# Date, et mentions couleurs du nbr de jours avant l'event #}
+							{# De Jour J à J-N, soit 0..N #}
 							{% for j in 0..20 %}
 								{% if j == 0 %}
 									{% if event.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
