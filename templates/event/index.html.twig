@@ -72,12 +72,10 @@
 							</div>
 							<div class="date">
 								<i class="fas fa-calendar-alt"></i>
-								{{ event.getDateEvent | date("d-m-Y") }}
+								{# TODO: Date affichant le jour en toutes lettres #}
+								{{ event.getDateEvent | format_datetime("full", locale="fr") }}
 							</div>
-							<div class="time">
-								<i class="fas fa-clock"></i>
-								{{ event.getDateEvent | date("H:i") }}
-							</div>
+							
 							{% if event.getDateEvent()|date("Y-m-d") < today|date("Y-m-d") %}
 								<div>
 									Évènement terminé
