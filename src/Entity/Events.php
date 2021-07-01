@@ -64,6 +64,31 @@ class Events
      */
     private $epingle;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $nom_lieu;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $adresse;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $code_postal;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $ville;
+
+    /**
+     * @ORM\Column(type="string", length=800, nullable=true)
+     */
+    private $lien_maps;
+
     public function __construct()
     {
         $this->imagesEvents = new ArrayCollection();
@@ -199,6 +224,66 @@ class Events
     public function setEpingle(?bool $epingle): self
     {
         $this->epingle = $epingle;
+
+        return $this;
+    }
+
+    public function getNomLieu(): ?string
+    {
+        return $this->nom_lieu;
+    }
+
+    public function setNomLieu(?string $nom_lieu): self
+    {
+        $this->nom_lieu = $nom_lieu;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(?string $adresse): self
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getCodePostal(): ?string
+    {
+        return $this->code_postal;
+    }
+
+    public function setCodePostal(?string $code_postal): self
+    {
+        $this->code_postal = $code_postal;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(?string $ville): self
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getLienMaps(): ?string
+    {
+        return $this->lien_maps;
+    }
+
+    public function setLienMaps(?string $lien_maps): self
+    {
+        $this->lien_maps = $lien_maps;
 
         return $this;
     }

@@ -48,6 +48,9 @@
 				{% else %}
 					<div class="textes element-sans-image">
 					{% endif %}
+					<h2 class="hook">
+						{{ article.hook }}
+					</h2>
 					<div class="info-bar">
 						<div class="info-bar-left">
 							<div class="type-vue-and-status">
@@ -99,9 +102,7 @@
 						{% endif %}
 					</div>
 
-					<h2 class="hook">
-						{{ article.hook }}
-					</h2>
+					
 					<div class="contenu">
 						{{ article.contenu | nl2br | auto_link}}
 					</div>

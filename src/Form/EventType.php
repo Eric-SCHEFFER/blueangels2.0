@@ -20,7 +20,9 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom', TextType::class, [])
+            ->add('nom', TextType::class, [
+                'label' => 'Nom de l\'évènement',
+            ])
 
             ->add('hook', TextType::class, [
                 'required' => true,
@@ -53,10 +55,37 @@ class EventType extends AbstractType
             ->add('date_event', DateTimeType::class, [
                 'years' => range(date('Y')-20, date('Y')+20),
                 'required' => true,
-                'label' => 'Date Évènement',
+                'label' => 'Date de l\'évènement',
             ])
 
-            ->add('description', TextareaType::class, [])
+            ->add('nom_lieu', TextType::class, [
+                'required' => false,
+                'label' => 'Nom du lieu'
+            ])
+
+            ->add('adresse', TextType::class, [
+                'required' => false,
+                'label' => 'Adresse'
+            ])
+
+            ->add('code_postal', TextType::class, [
+                'required' => false,
+                'label' => 'Code postal'
+            ])
+
+            ->add('ville', TextType::class, [
+                'required' => false,
+                'label' => 'Ville'
+            ])
+
+            ->add('description', TextareaType::class, [
+                'label' => 'Description de l\'évènement',
+            ])
+
+            ->add('lien_maps', TextType::class, [
+                'required' => false,
+                'label' => 'Lien maps'
+            ])
 
             ->add('annule', CheckboxType::class, [
                 'required' => false,

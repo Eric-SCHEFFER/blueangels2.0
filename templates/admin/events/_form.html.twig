@@ -34,13 +34,33 @@
 			{% endif %}
 		</div>
 	</div>
-
-
 	<div class="ligne2">
 		<div class="champ">
 			{{ form_row(form.date_event, {'attr':{'class':'date'}}) }}
 		</div>
 	</div>
+	<div class="ligne1">
+		<div class="champ">
+			{{ form_row(form.nom_lieu, {'attr':{'class':'titre'}}) }}
+		</div>
+		<div class="champ">
+			{{ form_row(form.adresse, {'attr':{'class':'titre'}}) }}
+		</div>
+	</div>
+	<div class="ligne1">
+		<div class="champ">
+			{{ form_row(form.code_postal, {'attr':{'class':'titre'}}) }}
+		</div>
+		<div class="champ">
+			{{ form_row(form.ville, {'attr':{'class':'titre'}}) }}
+		</div>
+	</div>
+	<div class="ligne1">
+		<div class="champ">
+			{{ form_row(form.lien_maps, {'attr':{'class':'titre'}}) }}
+		</div>
+	</div>
+	
 	<div class="champ">
 		{{ form_row(form.description, {'attr':{'class':'description'}}) }}
 	</div>
