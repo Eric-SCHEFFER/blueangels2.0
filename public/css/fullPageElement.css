@@ -34,14 +34,15 @@ h2 {
    display: flex;
    align-items: flex-end;
    justify-content: space-between;
-   /* border: solid rebeccapurple 1px; */
    color: rgb(136, 136, 136);
    margin-bottom: 60px;
+   /* border: gray solid 1px; */
 }
 
 .info-bar-left {
    font-size: .9em;
    line-height: 1.4em;
+   /* border: solid red 1px; */
 }
 
 .categorie {
@@ -63,13 +64,15 @@ h2 {
 }
 
 .description a,
-.contenu a {
+.contenu a,
+.info-bar-left a.lieu-event {
    color: #0068d6;
    font-weight: 600;
 }
 
 .description a:hover,
-.contenu a:hover {
+.contenu a:hover,
+.info-bar-left a.lieu-event:hover {
    color: #0054ad;
 }
 
@@ -83,6 +86,35 @@ h2 {
    padding-top: 40px !important;
    position: relative;
    margin-top: 100px;
+}
+
+
+
+/* ======= ÉVÈNEMENT ======= */
+
+.lieu-event {
+   border: green solid 1px;
+   margin: 6px 0;
+   display: flex;
+   flex-direction: column;
+}
+
+.nom-lieu {
+   display: flex;
+   justify-content: left;
+}
+
+.nom-lieu > div {
+   padding-left: 7px;
+}
+
+.adresse, .cp-et-ville {
+   display: flex;
+   padding-left: 18px; 
+}
+
+.code-postal {
+   padding-right: 7px;
 }
 
 .event-blue-angels {

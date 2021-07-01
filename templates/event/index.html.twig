@@ -100,14 +100,37 @@
 							</div>
 
 							
-							{# TODO: Lieu de l'évènement #}
-							<i class="fas fa-map-marker-alt"></i>
-							{{ event.getNomLieu }}
-							<div>{{ event.getAdresse }}</div>  
-							<span>{{ event.getCodePostal }}</span> 
-							<span>{{ event.getVille }}</span>
-
+							{# TODO: Infos lieu et adresse de l'évènement dans un lien pointant sur la page de google maps #}
+							{% if event.getLienMaps %}
+								<a href="{{ event.getLienMaps }}" target="_blank" class="lieu-event" title="Voir sur Google Maps">
+									{% else %}
+										<div class="lieu-event">
+							{% endif %}
+								<div class="nom-lieu">
+									<i class="fas fa-map-marker-alt"></i>
+									<div>
+										{{ event.getNomLieu }}
+									</div>
+								</div>
+								<div class="adresse">
+									{{ event.getAdresse }}
+								</div>
+								<div class="cp-et-ville">
+									<div class="code-postal">
+										{{ event.getCodePostal }}
+									</div> 
+									<div class="ville">
+										{{ event.getVille }}
+									</div>
+								</div>
+								{% if event.getLienMaps %}
+									</a>
+									{% else %}
+										</div>
+								{% endif %}
 							
+							
+
 							{% if event.getDateEvent()|date("Y-m-d") < today|date("Y-m-d") %}
 								<div>
 									Évènement terminé
