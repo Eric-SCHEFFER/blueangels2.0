@@ -19,8 +19,8 @@
 				{% for image in event.getImagesEvents %}
 					<div class="image">
 						{% if event.getAnnule %}
-                  	<div class="tampon-oblique-red">Évènement annulé</div>
-               	{% endif %}
+							<div class="tampon-oblique-red">Évènement annulé</div>
+						{% endif %}
 						<img src="{{ asset('uploads/imagesEvents/' ~ image.nom) }}">
 					</div>
 				{% endfor %}
@@ -50,7 +50,7 @@
 					<div class="textes element-sans-image">
 					{% endif %}
 					{% if event.getAnnule %}
-                  	<div class="tampon-oblique-red">Évènement annulé</div>
+						<div class="tampon-oblique-red">Évènement annulé</div>
 					{% endif %}
 					<h2 class="hook">
 						{{ event.hook }}
@@ -78,10 +78,12 @@
 								{{ event.getDateEvent | format_datetime(pattern="EEEE dd MMMM yyyy", locale="fr") | capitalize }}
 								{# Date, et mentions couleurs du nbr de jours avant l'event #}
 								{# De Jour J à J-N, soit 0..N #}
-								{% for j in 0..20 %}
-									{% if j == 0 %}
-										{% if event.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
-											<span>(<span class="green">Aujourd'hui</span>)</span>
+									{% for j in 0..20 %}
+										{% if j == 0 %}
+											{% if event.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
+												<span>
+												(
+													<span class="green"> Aujourd'hui</span>)</span>
 										{% endif %}
 									{% elseif j == 1 %}
 										{% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
@@ -99,28 +101,34 @@
 								{{ event.getDateEvent | date("H:i") }}
 							</div>
 
-							
-							{# TODO: Infos lieu et adresse de l'évènement dans un lien pointant sur la page de google maps #}
-							{% if event.getLienMaps %}
-								<a href="{{ event.getLienMaps }}" target="_blank" class="lieu-event" title="Voir sur Google Maps">
+							{# Infos lieu et adresse de l'évènement dans un lien pointant sur la page de google maps #}
+							{# Si les champs nomLieu et ville n'existent pas en base, on n'affiche rien #}
+							{% if event.getNomLieu and event.getVille %}
+							{# Si le champ lien n'existe pas en base, on n'affiche rien #}
+								{% if event.getLienMaps %}
+									<a class="lieu-event-container" href="{{ event.getLienMaps }}" target="_blank" title="Voir sur Google Maps">
 									{% else %}
-										<div class="lieu-event">
-							{% endif %}
-								<div class="nom-lieu">
+										<div class="lieu-event-container">
+								{% endif %}
+								<div class="icone-maps-container">
 									<i class="fas fa-map-marker-alt"></i>
-									<div>
+								</div>
+								<div class="infos-lieu">
+									<div class="nom-lieu">
 										{{ event.getNomLieu }}
 									</div>
-								</div>
-								<div class="adresse">
-									{{ event.getAdresse }}
-								</div>
-								<div class="cp-et-ville">
-									<div class="code-postal">
-										{{ event.getCodePostal }}
-									</div> 
-									<div class="ville">
-										{{ event.getVille }}
+									<div class="adresse">
+										{{ event.getAdresse }}
+									</div>
+									<div class="code-postal-et-ville">
+										{% if event.getCodePostal %}
+											<div class="code-postal">
+												{{ event.getCodePostal }}
+											</div>
+										{% endif %}
+										<div class="ville">
+											{{ event.getVille }}
+										</div>
 									</div>
 								</div>
 								{% if event.getLienMaps %}
@@ -128,8 +136,11 @@
 									{% else %}
 										</div>
 								{% endif %}
-							
-							
+							{% endif %}
+
+
+
+
 
 							{% if event.getDateEvent()|date("Y-m-d") < today|date("Y-m-d") %}
 								<div>
@@ -141,7 +152,7 @@
 									Évènement annulé
 								</div>
 							{% endif %}
-							
+
 							<div class="categorie">
 								<a class="bouton bt-extra-small" title="Tous les évènements à venir" href="{{ path('a_venir') }}">
 									Évènements à venir
@@ -162,7 +173,7 @@
 						</div>
 					</div>
 
-					
+
 					<div class="description">
 						{{ event.description | nl2br | auto_link }}
 					</div>
