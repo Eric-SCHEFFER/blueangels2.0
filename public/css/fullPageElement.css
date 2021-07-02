@@ -92,6 +92,10 @@ h2 {
    padding: 12px 0;
 }
 
+.icone-maps-container {
+   color: rgb(136, 136, 136);
+}
+
 .infos-lieu {
    padding-left: 6px;
 }
@@ -102,7 +106,6 @@ h2 {
 
 .code-postal-et-ville {
    display: flex;
-   font-weight: 600;
 }
 
 .event-blue-angels {
