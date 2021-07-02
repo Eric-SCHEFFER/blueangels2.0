@@ -118,7 +118,7 @@
 										{{ event.getNomLieu }}
 									</div>
 									<div class="adresse">
-										{{ event.getAdresse }}
+										{{ event.getAdresse|capitalize }}
 									</div>
 									<div class="code-postal-et-ville">
 										{% if event.getCodePostal %}
@@ -127,7 +127,7 @@
 											</div>
 										{% endif %}
 										<div class="ville">
-											{{ event.getVille }}
+											{{ event.getVille|upper }}
 										</div>
 									</div>
 								</div>
