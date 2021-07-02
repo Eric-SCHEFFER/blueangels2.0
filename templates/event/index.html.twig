@@ -104,7 +104,7 @@
 							{# Infos lieu et adresse de l'évènement dans un lien pointant sur la page de google maps #}
 							{# Si les champs nomLieu et ville n'existent pas en base, on n'affiche rien #}
 							{% if event.getNomLieu and event.getVille %}
-							{# Si le champ lien n'existe pas en base, on n'affiche rien #}
+							{# Si le champ lienMaps n'existe pas en base, on affiche une div simple (pas de lien) #}
 								{% if event.getLienMaps %}
 									<a class="lieu-event-container" href="{{ event.getLienMaps }}" target="_blank" title="Voir sur Google Maps">
 									{% else %}
@@ -137,10 +137,6 @@
 										</div>
 								{% endif %}
 							{% endif %}
-
-
-
-
 
 							{% if event.getDateEvent()|date("Y-m-d") < today|date("Y-m-d") %}
 								<div>
