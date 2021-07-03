@@ -81,9 +81,18 @@
 									{% for j in 0..20 %}
 										{% if j == 0 %}
 											{% if event.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
-												<span>
-												(
-													<span class="green"> Aujourd'hui</span>)</span>
+											{# Si l'event est le matin #}
+											{% if event.getDateEvent()|date("Hi") >= 0 and event.getDateEvent()|date("Hi") < 1200 %}
+												- <span class="green">Ce matin</span>
+											{% endif %}
+											{# Si l'event est l'après-midi' #}
+											{% if event.getDateEvent()|date("Hi") >= 1200 and event.getDateEvent()|date("Hi") < 1800 %}
+												- <span class="green">Cette après-midi</span>
+											{% endif %}
+											{# Si l'event est le soir #}
+											{% if event.getDateEvent()|date("Hi") >= 1800 and event.getDateEvent()|date("Hi") < 2400 %}
+												- <span class="green">Ce soir</span>
+											{% endif %}
 										{% endif %}
 									{% elseif j == 1 %}
 										{% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}

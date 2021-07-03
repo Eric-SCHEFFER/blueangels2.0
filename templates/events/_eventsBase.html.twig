@@ -41,14 +41,28 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 						{% if epoque == 'futur' %}
 							{% for j in 0..9 %}
 								{% if j == 0 %}
+									{# Si l'event est aujourd'hui #}
 									{% if event.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
-										<span class="info-jour green tres-gras">Aujourd'hui</span>
+										{# Si l'event est le matin #}
+										{% if event.getDateEvent()|date("Hi") >= 0 and event.getDateEvent()|date("Hi") < 1200 %}
+											<span class="info-jour green tres-gras">Ce matin</span>
+										{% endif %}
+										{# Si l'event est l'après-midi' #}
+										{% if event.getDateEvent()|date("Hi") >= 1200 and event.getDateEvent()|date("Hi") < 1800 %}
+											<span class="info-jour green tres-gras">Cette après-midi</span>
+										{% endif %}
+										{# Si l'event est le soir #}
+										{% if event.getDateEvent()|date("Hi") >= 1800 and event.getDateEvent()|date("Hi") < 2400 %}
+											<span class="info-jour green tres-gras">Ce soir</span>
+										{% endif %}
 									{% endif %}
 								{% elseif j == 1 %}
+									{# Si l'event est demain #}
 									{% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
 										<span class="info-jour blue tres-gras">Demain</span>
 									{% endif %}
 								{% else %}
+									{# Si l'event est après-demain #}
 									{% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
 										<span class="info-jour blue tres-gras">J-{{ j }}</span>
 									{% endif %}
