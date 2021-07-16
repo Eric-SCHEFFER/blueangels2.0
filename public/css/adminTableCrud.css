@@ -130,7 +130,8 @@ position: relative;
 /* ====== ICONES FONTAWESOME ======= */
 
 .iconeEditer::before,
-.iconeSupprimer::before {
+.iconeSupprimer::before,
+.iconeCloner::before {
    font-family: "Font Awesome 5 Free";
    font-size: 1.6em;
    font-weight: 500;
@@ -146,6 +147,18 @@ position: relative;
 .iconeEditer {
    margin: 8px 12px 8px 12px;
 }
+
+/* TODO: icone cloner */
+
+.iconeCloner::before {
+   color:rgb(255, 217, 0);
+   content: "\f24d";
+}
+
+.iconeCloner {
+   margin: 8px 12px 8px 12px;
+}
+
 
 .iconeSupprimer::before {
    color: #ec1127;

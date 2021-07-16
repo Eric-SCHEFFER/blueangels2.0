@@ -112,6 +112,12 @@
 						<td>
 							<a class="iconeEditer" href="{{ path('admin.events.edit', {id: event.id}) }}" title="Éditer"></a>
 
+							{# TODO: Lien cloner un évènement #}
+							<a class="iconeCloner" href="{{ path('admin.events.clone', {id: event.id}) }}" title="Cloner"></a>
+
+
+
+
 							{# formulaire avec champ caché (passer la valeur delete) pour supprimmer un évènement #}
 							{# Le filtre twig replace supprime l'apostrophe s'il y en a, et d'autres caractères, pour éviter l'absence de confirmation de supression #}
 							{% set nomFiltre = event.nom|replace({"'": "", '"': "", '(': "", ')': "", '{': "", '}': ""}) %}

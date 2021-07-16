@@ -73,13 +73,13 @@
 							<div class="categorie">
 								{% if article.categoriesArticle.nom is defined %}
 									{# Lien vers la page de la catégorie #}
-									<a class="bouton bt-extra-small margin-right-6" title="Tous les articles de la catégorie {{ article.categoriesArticle.nom }}" href="{{ path('categorie.articles', {idCategorie: article.categoriesArticle.id}) }}">
+									<a class="bouton bt-small margin-right-6" title="Tous les articles de la catégorie {{ article.categoriesArticle.nom }}" href="{{ path('categorie.articles', {idCategorie: article.categoriesArticle.id}) }}">
 										{{ article.categoriesArticle.nom }}
 									</a>
 								{% endif %}
 							</div>
 							<div class="categorie">
-								<a class="bouton bt-extra-small" title="Tous les articles, toutes catégories confondues" href="{{ path('articles') }}">
+								<a class="bouton bt-small" title="Tous les articles, toutes catégories confondues" href="{{ path('articles') }}">
 									Tous les articles
 								</a>
 							</div>
@@ -102,7 +102,7 @@
 						{% endif %}
 					</div>
 
-					
+
 					<div class="contenu">
 						{{ article.contenu | nl2br | auto_link}}
 					</div>
