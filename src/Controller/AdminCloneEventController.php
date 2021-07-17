@@ -35,24 +35,26 @@ class AdminCloneEventController extends AbstractController
      */
     public function cloneEvent(Events $event, Request $request, ImagesEventRepository $imagesEventRepository)
     {
-        // On créé une instance clone de event
+        // On créé une instance clonée de event
+        $images = $imagesEventRepository->findBy(['event' => $event->getId()]);
         $eventClone = clone $event;
-        // $images = $imagesEventRepository->findBy(['event' => $eventClone]);
 
         // On rajoute "clone" avant le nom, pour bien différencier lors de la 1ère edition de l'event cloné
         $eventClone->setNom('[clone] ' . $eventClone->getNom());
         $eventClone->setActif(0);
-
-        // TODO: Gestion des images
-
-
-        
-
-
-
         $this->em->persist($eventClone);
         $this->em->flush();
-        $this->addFlash('succes', 'Nouvel évènement cloné avec succès depuis "' . $event->getNom() . '". (Inactif par défaut)');
+
+        // TODO: Gestion des images.
+        foreach ($images as $image) {
+            $imagesEvent = new ImagesEvent;
+            $imagesEvent->setEvent($eventClone);
+            $imagesEvent->setNom($image->getNom());
+            $this->em->persist($imagesEvent);
+        }
+        $this->em->flush();
+
+        $this->addFlash('succes', 'Nouvel évènement créé à partir de "' . $event->getNom() . '".');
         return $this->redirectToRoute('admin.events.edit', ['id' => $eventClone->getId()]);
     }
 }

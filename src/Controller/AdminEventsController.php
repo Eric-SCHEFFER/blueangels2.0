@@ -171,12 +171,22 @@ class AdminEventsController extends AbstractController
             $images = $this->getDoctrine()->getRepository(ImagesEvent::class)->findBy(
                 ['event' => $event->getId()]
             );
-            // On récupére dans une boucle le nom de chaque image, et on la supprime sur le disque
+
+            // On récupére dans une boucle le nom de chaque image
             foreach ($images as $image) {
                 $nom = $image->getNom();
-                unlink($this->getParameter('dossier_images_events') . '/' . $nom);
-                // On supprime également le fichier miniature
-                unlink($this->getParameter('dossier_images_events') . '/min_' . $nom);
+
+                // Tableau contenant toutes les images ayant le même nom (uniqueId)
+                $imagesIdentiques = $this->getDoctrine()->getRepository(ImagesEvent::class)->findBy(
+                    ['nom' => $nom]
+                );
+
+                // S'il y a moins de 2 fois la même image dans la table, on peut la supprimer sur le disque, sinon, c'est qu'elle est encore utilisée par un autre event.
+                if (count($imagesIdentiques) < 2) {
+                    unlink($this->getParameter('dossier_images_events') . '/' . $nom);
+                    // On supprime également le fichier miniature
+                    unlink($this->getParameter('dossier_images_events') . '/min_' . $nom);
+                }
             }
 
             // On supprime l'event, ainsi que toutes ses images (Option orphanRemoval) dans la base
@@ -188,21 +198,30 @@ class AdminEventsController extends AbstractController
         return $this->redirectToRoute('admin');
     }
 
+
     // ======== SUPPRIMER UNE IMAGE ========
     /**
      * @route("/admin/events/image/supprime{id}", name="admin.events.image.delete", methods={"DELETE"})
      */
     public function deleteImage(ImagesEvent $imagesEvent, Request $request)
     {
+        // On récupère le nom de l'image
+        $nom = $imagesEvent->getNom();
+        // Tableau contenant toutes les images ayant le même nom (uniqueId)
+        $imagesIdentiques = $this->getDoctrine()->getRepository(ImagesEvent::class)->findBy(
+            ['nom' => $nom]
+        );
         $data = json_decode($request->getContent(), true);
         // On vérifie si le token est valide
         if ($this->isCsrfTokenValid('delete' . $imagesEvent->getId(), $data['_token'])) {
-            // On récupère le nom de l'image
-            $nom = $imagesEvent->getNom();
-            // On supprime le fichier
-            unlink($this->getParameter('dossier_images_events') . '/' . $nom);
-            // On supprime également le fichier miniature
-            unlink($this->getParameter('dossier_images_events') . '/min_' . $nom);
+            // S'il y a moins de 2 fois la même image dans la table, on peut la supprimer sur le disque, sinon, c'est qu'elle est encore utilisée par un autre event.
+
+            if (count($imagesIdentiques) < 2) {
+                // On supprime le fichier
+                unlink($this->getParameter('dossier_images_events') . '/' . $nom);
+                // On supprime également le fichier miniature
+                unlink($this->getParameter('dossier_images_events') . '/min_' . $nom);
+            }
             // On supprime le nom de l'image de la base de données
             $this->em->remove($imagesEvent);
             $this->em->flush();
@@ -213,6 +232,8 @@ class AdminEventsController extends AbstractController
             return new JsonResponse(['error' => 'Token Invalide'], 400);
         }
     }
+
+
 
     /**
      * Crée une miniature d'une image d'un fichier jpg ou png.
