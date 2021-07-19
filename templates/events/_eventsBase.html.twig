@@ -14,7 +14,7 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 		{% for event in events %}
 			<a class="card-article" href="{{ path('event_', {id: event.id}) }}" title="{{ event.getNom ~ ' | ' ~ event.getHook ~ ' | ' ~ event.getDateEvent | format_datetime(pattern="EEEE dd LLLL yyyy HH:mm", locale="fr") | capitalize }}">
 
-				{# TODO: Info jours avant l'event dans une petite étiquette incrustée en haut à gauche de la carte #}
+				{# Info jours avant l'event dans une petite étiquette incrustée en haut à gauche de la carte #}
 				{% if epoque == 'futur' %}
 					{% for j in 0..20 %}
 							{% if j == 0 %}
