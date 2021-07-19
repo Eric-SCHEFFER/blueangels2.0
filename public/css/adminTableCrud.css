@@ -80,9 +80,12 @@
 }
 
 .titreEtInfos {
-   display: flex;
    flex-direction: column;
    line-height: 1.3em;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   max-width: 215px;
+   white-space: nowrap;
 }
 
 .date,
@@ -111,7 +114,7 @@
 }
 
 .articles-listed-off {
-position: relative;
+   position: relative;
 }
 
 .articles-listed-off::before {
@@ -151,7 +154,7 @@ position: relative;
 /* TODO: icone cloner */
 
 .iconeCloner::before {
-   color:rgb(255, 217, 0);
+   color: rgb(255, 217, 0);
    content: "\f24d";
 }
 
