@@ -13,6 +13,45 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 	<div class="bloc-cards">
 		{% for event in events %}
 			<a class="card-article" href="{{ path('event_', {id: event.id}) }}" title="{{ event.getNom ~ ' | ' ~ event.getHook ~ ' | ' ~ event.getDateEvent | format_datetime(pattern="EEEE dd LLLL yyyy HH:mm", locale="fr") | capitalize }}">
+
+				{# TODO: Info jours avant l'event dans une petite étiquette incrustée en haut à gauche de la carte #}
+				{% if epoque == 'futur' %}
+					{% for j in 0..20 %}
+							{% if j == 0 %}
+								{# Si l'event est aujourd'hui #}
+								{% if event.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
+								<div class="etiquette-decompte-jours-event">
+										<div class="contenu-etiquette-decompte-jours-event">
+											<div class="bloc-milieu aujourdhui green">{{ event.getDateEvent | date("H:i") }}</div>
+										</div>
+									</div>
+								{% endif %}
+							{% elseif j == 1 %}
+								{# Si l'event est demain #}
+								{% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
+									<div class="etiquette-decompte-jours-event">
+										<div class="contenu-etiquette-decompte-jours-event blue">
+											<div class="bloc-haut">Dans</div>
+											<div class="bloc-milieu">{{ j }}</div>
+											<div class="bloc-bas">Jour</div>
+										</div>
+									</div>
+								{% endif %}
+							{% else %}
+								{# Si l'event est plus tard #}
+								{% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
+								<div class="etiquette-decompte-jours-event">
+									<div class="contenu-etiquette-decompte-jours-event">
+										<div class="bloc-haut">Dans</div>
+										<div class="bloc-milieu">{{ j }}</div>
+										<div class="bloc-bas">Jours</div>
+									</div>
+								</div>
+								{% endif %}
+							{% endif %}
+					{% endfor %}
+				{% endif %}
+
 				{% if event.getImagesEvents[0].getNom() is defined %}
 					<div class="image">
 						<img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ event.getImagesEvents[0].Nom) }}" alt="">
@@ -38,37 +77,7 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 								<img src="{{ asset('images/favicon.png') }}" alt='Icone des Blue Angels'>
 							</div>
 						{% endif %}
-						{% if epoque == 'futur' %}
-							{% for j in 0..9 %}
-								{% if j == 0 %}
-									{# Si l'event est aujourd'hui #}
-									{% if event.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
-										{# Si l'event est le matin #}
-										{% if event.getDateEvent()|date("Hi") >= 0 and event.getDateEvent()|date("Hi") < 1200 %}
-											<span class="info-jour green tres-gras">Ce matin</span>
-										{% endif %}
-										{# Si l'event est l'après-midi' #}
-										{% if event.getDateEvent()|date("Hi") >= 1200 and event.getDateEvent()|date("Hi") < 1800 %}
-											<span class="info-jour green tres-gras">Cette après-midi</span>
-										{% endif %}
-										{# Si l'event est le soir #}
-										{% if event.getDateEvent()|date("Hi") >= 1800 and event.getDateEvent()|date("Hi") < 2400 %}
-											<span class="info-jour green tres-gras">Ce soir</span>
-										{% endif %}
-									{% endif %}
-								{% elseif j == 1 %}
-									{# Si l'event est demain #}
-									{% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
-										<span class="info-jour blue tres-gras">Demain</span>
-									{% endif %}
-								{% else %}
-									{# Si l'event est après-demain #}
-									{% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
-										<span class="info-jour blue tres-gras">J-{{ j }}</span>
-									{% endif %}
-								{% endif %}
-							{% endfor %}
-						{% else %}
+						{% if epoque == 'passe' %}
 							<span class="info-jour">Terminé</span>
 						{% endif %}
 

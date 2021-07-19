@@ -189,7 +189,7 @@ class AdminEventsController extends AbstractController
                 }
             }
 
-            // On supprime l'event, ainsi que toutes ses images (Option orphanRemoval) dans la base
+            // On supprime l'event, ainsi que tous les noms des images (Option orphanRemoval) dans la base
             $this->em->remove($event);
             $this->em->flush();
             $this->addFlash('succes', '"' . $event->getNom() . '"' . ' supprimé avec succès');

@@ -6,13 +6,14 @@
 
 .card-article {
    display: flex;
+   position: relative;
    justify-content: left;
    min-width: 270px;
    width: 300px;
    height: 130px;
-   padding: 0;
+   padding: 1px;
    margin: 30px;
-   border: solid 1px rgb(255, 255, 255);
+   /* border: solid 1px rgb(255, 255, 255); */
    background-color: rgb(255, 255, 255);
    border-radius: 4px;
 }
@@ -65,6 +66,55 @@
 
 .infos-article {
    top: 22px;
+}
+
+.etiquette-decompte-jours-event {
+   position: absolute;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   width: 48px;
+   height: 48px;
+   border: 1px solid rgb(172, 172, 172);
+   border-radius: 4px;
+   background-color: white;
+   color: rgb(75, 75, 75);
+   z-index: 2;
+   top: -34px;
+   left: 85px;
+   padding: 2px;
+}
+
+.contenu-etiquette-decompte-jours-event {
+   margin: auto;
+   position: relative;
+   top: -4px;
+}
+
+.etiquette-decompte-jours-event .bloc-haut {
+   font-size: .6em;
+   text-align: center;
+}
+
+.etiquette-decompte-jours-event .bloc-milieu {
+   font-size: 1.4em;
+   font-weight: 600;
+   line-height: 1.1em;
+   text-align: center;
+   position: relative;
+}
+
+.aujourdhui {
+   font-size: 1.1em !important;
+   top: 3px;
+}
+
+
+.etiquette-decompte-jours-event .bloc-bas {
+   font-size: .6em;
+   line-height: .4em;
+   text-align: center;
 }
 
 .info-epoque-event {

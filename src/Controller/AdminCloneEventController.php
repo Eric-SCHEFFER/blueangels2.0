@@ -26,11 +26,8 @@ class AdminCloneEventController extends AbstractController
     }
 
 
-
-
-    // TODO: Méthode pour cloner un évènement
-
     /**
+     * Méthode pour cloner un évènement et leurs images, sans les recréer sur le serveur
      * @Route("/admin/events/clone/{id}", name="admin.events.clone", methods="GET|POST")
      */
     public function cloneEvent(Events $event, Request $request, ImagesEventRepository $imagesEventRepository)
@@ -39,13 +36,14 @@ class AdminCloneEventController extends AbstractController
         $images = $imagesEventRepository->findBy(['event' => $event->getId()]);
         $eventClone = clone $event;
 
-        // On rajoute "clone" avant le nom, pour bien différencier lors de la 1ère edition de l'event cloné
+        // On rajoute "clone" avant le nom, juste différencier lors de la 1ère edition de l'event cloné
         $eventClone->setNom('[clone] ' . $eventClone->getNom());
         $eventClone->setActif(0);
         $this->em->persist($eventClone);
         $this->em->flush();
 
-        // TODO: Gestion des images.
+        // On utilise les mêmes images physiques sur le serveur. On recopie donc les noms des images de l'event d'origine vers le nouveau
+        // On a aussi modifié la logique de suppression des images physiques dans AdminEventsController (Ne supprimer les images physiques que s'il elles ne sont plus utilisées par aucun event)
         foreach ($images as $image) {
             $imagesEvent = new ImagesEvent;
             $imagesEvent->setEvent($eventClone);
