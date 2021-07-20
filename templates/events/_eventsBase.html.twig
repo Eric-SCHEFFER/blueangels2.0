@@ -12,7 +12,7 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 {% if events is not empty %}
 	<div class="bloc-cards">
 		{% for event in events %}
-			<a class="card-article" href="{{ path('event_', {id: event.id}) }}" title="{{ event.getNom ~ ' | ' ~ event.getHook ~ ' | ' ~ event.getDateEvent | format_datetime(pattern="EEEE dd LLLL yyyy HH:mm", locale="fr") | capitalize }}">
+			<a class="card-article" href="{{ path('event_', {id: event.id}) }}" title="{{ event.getNom ~ ' | ' ~ event.getHook ~ ' | ' ~ event.getDateEvent | format_datetime(pattern="EEEE dd LLLL yyyy HH:mm", locale="fr") | capitalize ~ ' | ' ~ event.getVille }}">
 
 				{# Info jours avant l'event dans une petite étiquette incrustée en haut à gauche de la carte #}
 				{% if epoque == 'futur' %}
