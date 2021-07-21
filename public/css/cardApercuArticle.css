@@ -68,6 +68,9 @@
    top: 22px;
 }
 
+
+/* ======= Étiquette carrée jours event ======= */
+
 .etiquette-decompte-jours-event {
    position: absolute;
    display: flex;
@@ -110,12 +113,36 @@
    top: 3px;
 }
 
-
 .etiquette-decompte-jours-event .bloc-bas {
    font-size: .6em;
    line-height: .4em;
    text-align: center;
 }
+
+/* ======== Étiquette rectangulaire ville event ======== */
+/*
+.etiquette-ville {
+   position: absolute;
+   width: max-content;
+   font-size: .7em;
+   font-weight: 500;
+   text-align: center;
+   max-width: 109px;
+   border: 1px solid rgb(172, 172, 172);
+   border-radius: 4px;
+   background-color: #fdfdfd;
+   color: rgb(117, 117, 117);
+   z-index: 2;
+   padding: 5px;
+   bottom: -15px;
+   left: 6px;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+}
+*/
+
+/* =========================== */
 
 .info-epoque-event {
    position: relative;
