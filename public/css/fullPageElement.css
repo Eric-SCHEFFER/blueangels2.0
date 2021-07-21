@@ -102,6 +102,7 @@ h2 {
 
 .code-postal {
    padding-right: 5px;
+   white-space: nowrap;
 }
 
 .code-postal-et-ville {
