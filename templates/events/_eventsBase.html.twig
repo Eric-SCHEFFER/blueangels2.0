@@ -31,9 +31,8 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 								{% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
 									<div class="etiquette-decompte-jours-event">
 										<div class="contenu-etiquette-decompte-jours-event blue">
-											<div class="bloc-haut">Dans</div>
-											<div class="bloc-milieu">{{ j }}</div>
-											<div class="bloc-bas">Jour</div>
+											<div class="bloc-milieu">D</div>
+											<div class="bloc-bas">Demain</div>
 										</div>
 									</div>
 								{% endif %}
