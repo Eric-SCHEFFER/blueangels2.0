@@ -23,8 +23,8 @@
 
 /.env
 /migrations/
-#/public/uploads/
-#/public/images/
+/public/uploads/
+/public/images/
 /exportBdd/
 /.brouillon
 /.notes
