@@ -18,13 +18,18 @@ class OptionsSite
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $nom;
+
+    /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $barre_communique_homepage;
+    private $actif;
 
     public function __construct()
     {
-        $this->barre_communique_homepage = true;
+        $this->actif = true;
     }
 
     public function getId(): ?int
@@ -32,14 +37,26 @@ class OptionsSite
         return $this->id;
     }
 
-    public function getBarreCommuniqueHomepage(): ?bool
+    public function getNom(): ?string
     {
-        return $this->barre_communique_homepage;
+        return $this->nom;
     }
 
-    public function setBarreCommuniqueHomepage(?bool $barre_communique_homepage): self
+    public function setNom(?string $nom): self
     {
-        $this->barre_communique_homepage = $barre_communique_homepage;
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getActif(): ?bool
+    {
+        return $this->actif;
+    }
+
+    public function setActif(?bool $option1): self
+    {
+        $this->option1 = $option1;
 
         return $this;
     }

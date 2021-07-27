@@ -1,0 +1,60 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/adminTableCrud.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+{% endblock %}
+{% block title %}
+	{{ SiteName }}: Gérer les catégories
+{% endblock %}
+
+{% block body %}
+	<div class="wrapper">
+		<h1>
+			Gérer les options du site
+		</h1>
+		<div class="conteneur_table">
+			<div class="table-admin-dashboard">
+				<div>
+					<a class="boutonNew" href="{{ path('admin.optionsSite.nouvelle') }}" title="Créer une nouvelle option">Nouvelle
+					</a>
+				</div>
+			</div>
+			<table class="table_1">
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					{% if optionsSite is not empty %}
+						{% for optionSite in optionsSite %}
+							<tr>
+								<td>
+									<div class="blocTitreImage">
+										<div class="titreEtInfos">
+											{{ optionSite.nom }}
+										</div>
+									</div>
+								</td>
+								<td>
+									<a class="iconeEditer" href="{{ path('admin.optionsSite.edit', {id: optionSite.id}) }}" title="Éditer"></a>
+
+									{# formulaire avec champ caché (passer la valeur delete) pour supprimmer une option #}
+									<form class="deleteForm" method="post" action="{{ path('admin.optionSite.delete', {id: optionSite.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ optionSite.nom }} ?')">
+										<input
+										type="hidden" name="_method" value="DELETE"/>
+										{# On créé un token #}
+										<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ optionSite.id) }}"/>
+										<button class="iconeSupprimer" title="Supprimer"></button>
+									</form>
+								</td>
+							</tr>
+						{% endfor %}
+					{% endif %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}

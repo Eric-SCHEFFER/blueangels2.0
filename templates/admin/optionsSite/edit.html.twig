@@ -1,0 +1,14 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}{% endblock %}
+
+
+{% block title %}
+	{{ SiteName }}: Éditer une option
+{% endblock %}
+
+{% block body %}
+	<div class="wrapper">
+		<h1>Éditer une option</h1>
+		{{ include ('admin/optionsSite/_form.html.twig', {form: form, button: 'Éditer'}) }}
+	</div>
+{% endblock %}
