@@ -11,8 +11,7 @@
 {% block body %}
 	{# =============================================================== #}
 	{# Mini-barre de news qui affiche les 3 derniers communiqués, avec en priorité, ceux épinglés #}
-
-		{% if communiques is not empty %}
+		{% if communiques is not empty and afficherBarreCommunique.actif %}
 			<div class="barre-news-wrapper"> <div class="barre-news">
 				{% for communique in communiques %}
 					<div class="communique">

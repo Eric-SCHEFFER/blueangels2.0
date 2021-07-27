@@ -55,7 +55,7 @@ class AdminOptionsSiteController extends AbstractController
    }
 
    /**
-    * Éditer une catégorie
+    * Éditer une option
     * @Route("/admin/optionsSite/edit/{id}", name="admin.optionsSite.edit", methods="GET|POST")
     * @param OptionsSite $optionsSite
     * @param Request $request

@@ -9,17 +9,20 @@ use App\Repository\EventsRepository;
 use App\Repository\ArticlesRepository;
 use App\Repository\CategoriesArticleRepository;
 use App\Service\TodayGenerator;
+use App\Repository\OptionsSiteRepository;
 
 class HomeController extends AbstractController
 {
     public function __construct(
         EventsRepository $eventsRepository,
         ArticlesRepository $articlesRepository,
-        CategoriesArticleRepository $categoriesArticleRepository
+        CategoriesArticleRepository $categoriesArticleRepository,
+        OptionsSiteRepository $optionsSiteRepository
     ) {
         $this->eventsRepository = $eventsRepository;
         $this->articlesRepository = $articlesRepository;
         $this->categoriesArticleRepository = $categoriesArticleRepository;
+        $this->optionsSiteRepository = $optionsSiteRepository;
     }
 
     /**
@@ -40,6 +43,7 @@ class HomeController extends AbstractController
         $countTotalCompletedEvents = $this->eventsRepository->countTotalActifCompletedEvents($today);
         // Les 3 derniers articles
         $articles = $this->getArticles();
+        $afficherBarreCommunique = $this->optionsSiteRepository->findOneBy(['nom' => 'barre communiqués homepage']);
 
         return $this->render('home.html.twig', [
             'menu_courant' => 'home',
@@ -50,6 +54,7 @@ class HomeController extends AbstractController
             'countTotalEventsToCome' => $countTotalEventsToCome,
             'countTotalCompletedEvents' => $countTotalCompletedEvents,
             'articles' => $articles,
+            'afficherBarreCommunique' => $afficherBarreCommunique,
         ]);
     }
 

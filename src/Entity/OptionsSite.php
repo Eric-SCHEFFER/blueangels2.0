@@ -54,9 +54,9 @@ class OptionsSite
         return $this->actif;
     }
 
-    public function setActif(?bool $option1): self
+    public function setActif(?bool $actif): self
     {
-        $this->option1 = $option1;
+        $this->actif = $actif;
 
         return $this;
     }
