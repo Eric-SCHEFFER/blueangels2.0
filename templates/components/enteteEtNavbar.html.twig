@@ -74,30 +74,39 @@
             </a>
          </li>
 
+
+         {# ======== Sous-menu /ON =========== #}
          <li>
-            <a href="{{ path('danses') }}" class="
-               {% if menu_courant is defined and menu_courant == 'danses' %}
-                  active
-               {% endif %}">
-               Danses
-            </a>
+            <button class="btDropdown">
+               <div>Prestations</div>
+            </button>
+            <ul class="dropdown-content">
+               <li>
+                  <a href="{{ path('danses') }}">
+                     Danses
+                  </a>
+               </li>
+               <li>
+                  <a href="{{ path('cours') }}">
+                     Cours
+                  </a>
+               </li>
+               <li>
+                  <a href="{{ path('stages') }}">
+                     Stages
+                  </a>
+               </li>
+            </ul>
          </li>
-         
-         <li>
-            <a href="{{ path('cours') }}" class="
-               {% if menu_courant is defined and menu_courant == 'cours' %}
-                  active
-               {% endif %}">
-               Cours
-            </a>
-         </li>
+         {# ======== Sous-menu /OFF =========== #}
+
 
          <li>
-            <a href="{{ path('stages') }}" class="
-               {% if menu_courant is defined and menu_courant == 'stages' %}
+            <a href="{{ path('tarifs') }}" class="
+               {% if menu_courant is defined and menu_courant == 'tarifs' %}
                   active
                {% endif %}">
-               Stages
+               Tarifs
             </a>
          </li>
          
@@ -128,15 +137,6 @@
                   active
                {% endif %}">
                Photos
-            </a>
-         </li>
-
-         <li>
-            <a href="{{ path('tarifs') }}" class="
-               {% if menu_courant is defined and menu_courant == 'tarifs' %}
-                  active
-               {% endif %}">
-               Tarifs
             </a>
          </li>
 
