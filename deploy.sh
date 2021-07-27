@@ -29,12 +29,12 @@ GREEN_BG='\033[42m'
 echo -e "${CYAN}Simulation de la synchro:"
 
 # dry run (simule ce qui sera fait dans la commande rsync)
-rsync -avn ./ $utilisateur@$serveur:$racineProjetDistant --exclude-from=.gitignore --exclude=".*"
+rsync -rltDvn ./ $utilisateur@$serveur:$racineProjetDistant --exclude-from=.gitignore --exclude=".*"
 
 echo -e "${BLACK}${GREEN_BG}Démarrer le déploiement pour $racineProjetDistant: Entrée - Ctrl C pour annuler${NONE_BG}${NONE}"
 read
 
 # lance réellement la commande rsync
-rsync -av ./ $utilisateur@$serveur:$racineProjetDistant --exclude-from=.gitignore --exclude=".*"
+rsync -rltDv ./ $utilisateur@$serveur:$racineProjetDistant --exclude-from=.gitignore --exclude=".*"
 # Nettoie le cache de symfony
 ssh $utilisateur@$serveur " cd $racineProjetDistant && $php bin/console cache:clear"
