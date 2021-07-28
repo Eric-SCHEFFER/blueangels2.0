@@ -57,6 +57,7 @@
 .table_1 td {
    padding: 6px 12px 6px 12px;
    color: rgb(255, 255, 255);
+   max-width: 230px;
 }
 
 .table_1 td a i {
@@ -80,11 +81,10 @@
 }
 
 .titreEtInfos {
-   flex-direction: column;
    line-height: 1.3em;
    overflow: hidden;
    text-overflow: ellipsis;
-   max-width: 215px;
+   max-width: 280px;
    white-space: nowrap;
 }
 
