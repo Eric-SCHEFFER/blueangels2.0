@@ -22,13 +22,14 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 								{% if event.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
 								<div class="etiquette-decompte-jours-event">
 									<div class="contenu-etiquette-decompte-jours-event">
-											{# Si l'heure de l'event est <= à l'heure actuelle #}
-											{% if event.getDateEvent | date("H:i") <= today | date("H:i") %}
-												<div class="bloc-haut red">C'était à</div>
-											{% endif %}
-											<div class="bloc-milieu aujourdhui green">{{ event.getDateEvent | date("H:i") }}</div>
-										</div>
+										{# Si l'heure de l'event est <= à l'heure actuelle #}
+										{% if event.getDateEvent | date("H:i") <= today | date("H:i") %}
+											<div class="bloc-milieu aujourdhui red">{{ event.getDateEvent | date("H:i") }}</div>
+											{% else %}
+												<div class="bloc-milieu aujourdhui green">{{ event.getDateEvent | date("H:i") }}</div>
+										{% endif %}
 									</div>
+								</div>
 								{% endif %}
 							{% elseif j == 1 %}
 								{# Si l'event est demain #}
