@@ -24,7 +24,8 @@ class ContactController extends AbstractController
         $champObjetPreRempli = NULL;
         $champMessagePreRempli = NULL;
         // Si la catégorie est vide, on vient soit d'une page event, soit du lien direct contact
-        if (empty($request->attributes->get("categorie"))) {
+        $categorie = $request->attributes->get("categorie");
+        if (empty($categorie)) {
             // Si l'id de l'event existe, c'est qu'on vient d'une page event, alors, on hydrate les variables qui pré-rempliront les champs objet et message
             if (isset($id)) {
                 $nom = $this->getDoctrine()->getRepository(Events::class)->find($id)->getNom();
@@ -41,7 +42,7 @@ class ContactController extends AbstractController
             $urlArticleReferer = $request->headers->get('referer');
             $pos = strrpos($urlArticleReferer, '/', -2);
             $urlArticleReferer = substr($urlArticleReferer, 0, $pos + 1) . 'article/' . $id;
-            $champMessagePreRempli = "Lien de l'article:\n" . $urlArticleReferer . "\n\nBonjour,\n";
+            $champMessagePreRempli = "Lien de l'article (catégorie: " . $categorie . ")\n" . $urlArticleReferer . "\n\nBonjour,\n";
         }
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
