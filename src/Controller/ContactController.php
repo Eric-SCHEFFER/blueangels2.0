@@ -37,10 +37,11 @@ class ContactController extends AbstractController
         // Sinon, c'est qu'on vient d'une page article. on hydrate aussi les variables
         else {
             $titre = $this->getDoctrine()->getRepository(Articles::class)->find($id)->getTitre();
-            // TODO: Utiliser autre chose que le referer pour avoir le lien de l'article ou de l'event qui appelle la page contact
-            $referer = $request->headers->get('referer');
             $champObjetPreRempli = 'A propos: ' . $titre;
-            $champMessagePreRempli = "Lien: " . $referer . "\n\nBonjour,\n";
+            $urlArticleReferer = $request->headers->get('referer');
+            $pos = strrpos($urlArticleReferer, '/', -2);
+            $urlArticleReferer = substr($urlArticleReferer, 0, $pos + 1) . 'article/' . $id;
+            $champMessagePreRempli = "url:\n" . $urlArticleReferer . "\n\nBonjour,\n";
         }
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
