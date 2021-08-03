@@ -42,7 +42,7 @@ class ContactController extends AbstractController
             $urlArticleReferer = $request->headers->get('referer');
             $pos = strrpos($urlArticleReferer, '/', -2);
             $urlArticleReferer = substr($urlArticleReferer, 0, $pos + 1) . 'article/' . $id;
-            $champMessagePreRempli = "Lien de l'article (catégorie: " . $categorie . ")\n" . $urlArticleReferer . "\n\nBonjour,\n";
+            $champMessagePreRempli = "Lien de l'article (catégorie: " . $categorie . "):\n" . $urlArticleReferer . "\n\nBonjour,\n";
         }
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
