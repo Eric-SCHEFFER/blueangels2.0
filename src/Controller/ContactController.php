@@ -31,7 +31,7 @@ class ContactController extends AbstractController
                 // TODO: Utiliser autre chose que le referer pour avoir le lien de l'article ou de l'event qui appelle la page contact
                 $referer = $request->headers->get('referer');
                 $champObjetPreRempli = 'A propos: ' . $nom;
-                $champMessagePreRempli = "Lien: " . $referer . "\n\nBonjour,\n";
+                $champMessagePreRempli = "Lien de l'évènement:\n" . $referer . "\n\nBonjour,\n";
             }
         }
         // Sinon, c'est qu'on vient d'une page article. on hydrate aussi les variables
@@ -41,7 +41,7 @@ class ContactController extends AbstractController
             $urlArticleReferer = $request->headers->get('referer');
             $pos = strrpos($urlArticleReferer, '/', -2);
             $urlArticleReferer = substr($urlArticleReferer, 0, $pos + 1) . 'article/' . $id;
-            $champMessagePreRempli = "url:\n" . $urlArticleReferer . "\n\nBonjour,\n";
+            $champMessagePreRempli = "Lien de l'article:\n" . $urlArticleReferer . "\n\nBonjour,\n";
         }
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
