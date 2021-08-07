@@ -16,7 +16,7 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 
 				{# Info jours avant l'event dans une petite étiquette incrustée en haut à gauche de la carte #}
 				{% if epoque == 'futur' %}
-					{% for j in 0..20 %}
+					{% for j in 0..30 %}
 							{% if j == 0 %}
 								{# Si l'event est aujourd'hui #}
 								{% if event.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
