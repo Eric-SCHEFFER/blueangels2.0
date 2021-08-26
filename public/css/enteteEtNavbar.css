@@ -49,6 +49,7 @@
 
 .logo-panel {
    display: flex;
+   position: relative;
    /* border: 1px rgb(21, 255, 0) solid; */
    align-items: center;
 }

@@ -1,13 +1,28 @@
-{#TODO: Ajout controller pour la logique d'affichage, en fonction du dernier event épinglé #}
-
 <div class="header-wrapper">
    <div class="header-panel">
       <a href="{{ path('home') }}">
          <div class="logo-panel-wrapper">
             <div class="logo-panel">
+               {# TODO: Notification quand on veut mettre en avant le dernier event épinglé #}
                <div class="logo-image">
                   <img src="{{ asset('images/logo_ba_6.png') }}" alt="logo blue angels">
                </div>
+
+               <div class="header-notification-last-pinned-event">
+                  {# On appelle un controller dédié, qui affiche un fragment de twig créé pour cette tâche (_notificationLastPinnedEvent.html.twig) #}
+                  {{ render(controller(
+                  'App\\Controller\\HeaderPinnedEventController::coucou'
+                  )) }}
+               </div>
+
+
+               {# <div class="logo-image-event">
+                  <img src="{{ asset('uploads/imagesEvents/1c62f073a1cc1d5268a007a2f9cc3413.jpg') }}"
+                     alt="Evènement important">
+               </div> #}
+
+
+
                <h1 class="logo-titre">
                   {{ SiteName }}
                </h1>
@@ -30,7 +45,7 @@
    <nav class="theme-menu" id="nav">
       <ul class="ulMenuGeneral">
          {% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
-          {# ======== Sous-menu /ON =========== #}
+         {# ======== Sous-menu /ON =========== #}
          <li>
             <button class="btDropdown" onclick="toggleMenu('user')" title="Paramètres de {{ app.user.username }}">
                <div><i class="fas fa-lg fa-user-cog"></i></div>
@@ -38,7 +53,7 @@
             <ul class="dropdown-content">
                <li>
                   <a href="{{ path('app_logout') }}">
-                     {{ app.user.username }}: Déconnexion 
+                     {{ app.user.username }}: Déconnexion
                      <i class="fas fa-lg fa-sign-out-alt"></i>
                   </a>
                </li>
@@ -111,7 +126,7 @@
                Tarifs
             </a>
          </li>
-         
+
 
          {# ======== Sous-menu /ON =========== #}
          <li>
