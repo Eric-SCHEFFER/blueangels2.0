@@ -14,7 +14,7 @@ twig:
             listed:
                 "Si désactivé, la carte d'aperçu ne s'affichera pas en homePage."
             epingle:
-                "Uniquement pour la catégorie Communiqués: Si activé, la carte d'aperçu sera épinglée pour apparaitre en premier dans la barre infos de la page d'accueil (Catégorie Communiqués), à condition que l'affichage soit activé, et qu'il soit aussi activé pour s'afficher en homepage"
+                "Si activé, la carte d'aperçu sera épinglée pour apparaitre en premier dans la liste."
             categorie:
                 "Catégorie de l'article"
               

@@ -97,7 +97,7 @@ class ArticleType extends AbstractType
 
             ->add('epingle', CheckboxType::class, [
                 'required' => false,
-                'label' => 'Épinglé en page d\'accueil'
+                'label' => 'Épinglé'
             ])
 
             ->add('actif', CheckboxType::class, [

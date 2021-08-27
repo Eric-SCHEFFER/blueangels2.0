@@ -97,16 +97,16 @@ class HomeController extends AbstractController
 
     /**
      * On récupère les 3 derniers events actifs, avec en priorité, ceux épinglés s'il y en a.
-     * On utilise les fonctions find3ActifPinnedEventsToCome et find3ActifNonPinnedEventsToCome depuis le repo.
+     * On utilise les fonctions findActifPinnedEventsToCome et findActifNonPinnedEventsToCome depuis le repo.
      */
     private function get3Events($today)
     {
-        $pinnedEvents = $this->eventsRepository->find3ActifPinnedEventsToCome($today);
+        $pinnedEvents = $this->eventsRepository->findActifPinnedEventsToCome($today, 3);
         $nonPinnedEvents = [];
         if (count($pinnedEvents) < 3) {
             // On complète avec des events non-épinglés
             $combien = 3 - count($pinnedEvents);
-            $nonPinnedEvents = $this->eventsRepository->find3ActifNonPinnedEventsToCome($today, $combien);
+            $nonPinnedEvents = $this->eventsRepository->findActifNonPinnedEventsToCome($today, $combien);
             // dd($nonPinnedEvents);
         }
         // On fusionne $pinnedEvents et $nonPinnedEvents

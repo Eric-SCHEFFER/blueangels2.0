@@ -69,9 +69,10 @@
 }
 
 
-/* ======= Étiquette carrée jours event ======= */
+/* ======= Petites étiquettes carréee d'infos ======= */
 
-.etiquette-decompte-jours-event {
+.etiquette-decompte-jours-event,
+.etiquette-epingle {
    position: absolute;
    display: flex;
    flex-direction: column;
@@ -89,18 +90,29 @@
    padding: 2px;
 }
 
-.contenu-etiquette-decompte-jours-event {
+.etiquette-epingle {
+   left: -10px;
+}
+
+.contenu-etiquette-decompte-jours-event,
+.contenu-etiquette-epingle {
    margin: auto;
    position: relative;
    top: -4px;
 }
 
-.etiquette-decompte-jours-event .bloc-haut {
+.contenu-etiquette-epingle {
+   top: 0;
+}
+
+.etiquette-decompte-jours-event .bloc-haut,
+.contenu-etiquette-epingle .bloc-haut {
    font-size: .6em;
    text-align: center;
 }
 
-.etiquette-decompte-jours-event .bloc-milieu {
+.etiquette-decompte-jours-event .bloc-milieu,
+.contenu-etiquette-epingle .bloc-milieu {
    font-size: 1.4em;
    font-weight: 600;
    line-height: 1.1em;
@@ -108,39 +120,23 @@
    position: relative;
 }
 
+.contenu-etiquette-epingle .bloc-milieu {
+   font-size: 1.2em;
+   line-height: 1.4em;
+}
+
 .aujourdhui {
    font-size: 1.1em !important;
    top: 3px;
 }
 
-.etiquette-decompte-jours-event .bloc-bas {
+.etiquette-decompte-jours-event .bloc-bas,
+.contenu-etiquette-epingle .bloc-bas {
    font-size: .6em;
    line-height: .4em;
    text-align: center;
 }
 
-/* ======== Étiquette rectangulaire ville event ======== */
-/*
-.etiquette-ville {
-   position: absolute;
-   width: max-content;
-   font-size: .7em;
-   font-weight: 500;
-   text-align: center;
-   max-width: 109px;
-   border: 1px solid rgb(172, 172, 172);
-   border-radius: 4px;
-   background-color: #fdfdfd;
-   color: rgb(117, 117, 117);
-   z-index: 2;
-   padding: 5px;
-   bottom: -15px;
-   left: 6px;
-   white-space: nowrap;
-   overflow: hidden;
-   text-overflow: ellipsis;
-}
-*/
 
 /* =========================== */
 
@@ -236,4 +232,3 @@
    color: rgb(221, 0, 0);
    border: 1px rgb(221, 0, 0) solid;
 }
-

@@ -3,26 +3,9 @@
       <a href="{{ path('home') }}">
          <div class="logo-panel-wrapper">
             <div class="logo-panel">
-               {# TODO: Notification quand on veut mettre en avant le dernier event épinglé #}
                <div class="logo-image">
                   <img src="{{ asset('images/logo_ba_6.png') }}" alt="logo blue angels">
                </div>
-
-               <div class="header-notification-last-pinned-event">
-                  {# On appelle un controller dédié, qui affiche un fragment de twig créé pour cette tâche (_notificationLastPinnedEvent.html.twig) #}
-                  {{ render(controller(
-                  'App\\Controller\\HeaderPinnedEventController::coucou'
-                  )) }}
-               </div>
-
-
-               {# <div class="logo-image-event">
-                  <img src="{{ asset('uploads/imagesEvents/1c62f073a1cc1d5268a007a2f9cc3413.jpg') }}"
-                     alt="Evènement important">
-               </div> #}
-
-
-
                <h1 class="logo-titre">
                   {{ SiteName }}
                </h1>

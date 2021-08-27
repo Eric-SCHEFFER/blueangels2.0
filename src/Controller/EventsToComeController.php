@@ -24,12 +24,12 @@ class EventsToComeController extends AbstractController
         // On récupère la date du jour, que l'on peut changer dans cette classe
         $today = $todayGenerator->generateAToday();
         // On récupère tous les events futurs
-        $events = $this->eventsRepository->findAllActifEventsToCome($today);
+        $events = $this->getEvents($today);
         // On récupère le nbre total d'events futurs
         $countTotalEventsToCome = $this->eventsRepository->countTotalActifEventsToCome($today);
         // On récupère le nbre total d'events passés
         $countTotalCompletedEvents = $this->eventsRepository->countTotalActifCompletedEvents($today);
-        
+
         return $this->render('events/eventsToCome.html.twig', [
             'menu_courant' => 'events',
             'events' => $events,
@@ -39,7 +39,20 @@ class EventsToComeController extends AbstractController
             'countTotalEventsToCome' => $countTotalEventsToCome,
         ]);
     }
+
+    /**
+     * On récupère les derniers events actifs, avec en priorité, ceux épinglés s'il y en a.
+     * On utilise les fonctions findActifPinnedEventsToCome et findActifNonPinnedEventsToCome depuis le repo.
+     */
+    private function getEvents($today)
+    {
+        $pinnedEvents = $this->eventsRepository->findActifPinnedEventsToCome($today, null);
+        $nonPinnedEvents = [];
+        // On complète avec des events non-épinglés
+        $nonPinnedEvents = $this->eventsRepository->findActifNonPinnedEventsToCome($today, null);
+        // dd($nonPinnedEvents);
+        // On fusionne $pinnedEvents et $nonPinnedEvents
+        $events = array_merge($pinnedEvents, $nonPinnedEvents);
+        return $events;
+    }
 }
-
-
-

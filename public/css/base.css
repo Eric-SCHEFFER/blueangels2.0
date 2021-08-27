@@ -189,6 +189,18 @@ footer {
    color: rgb(255, 0, 255);
 }
 
+.gold {
+   color: gold;
+}
+
+.goldenrod {
+   color: goldenrod;
+}
+
+.silver {
+   color: silver;
+}
+
 .bg-blue {
    background-color: #2c70b8;
 }

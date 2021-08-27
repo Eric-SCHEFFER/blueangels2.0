@@ -37,8 +37,8 @@ class EventsRepository extends ServiceEntityRepository
     //     return $query;
     // }
 
-    // On recupère jusqu'à 3 events futurs actifs épinglés
-    public function find3ActifPinnedEventsToCome($date)
+    // On recupère des events futurs actifs épinglés
+    public function findActifPinnedEventsToCome($date, $combien)
     {
         $query = $this->createQueryBuilder('e')
             ->select('e')
@@ -49,14 +49,14 @@ class EventsRepository extends ServiceEntityRepository
             ->andWhere('e.epingle = :epingle')
             ->setParameter('epingle', true)
             ->orderBy('e.date_event', 'ASC')
-            ->setMaxResults(3)
+            ->setMaxResults($combien)
             ->getQuery()
             ->getResult();
         return $query;
     }
 
-    // On récupère jusqu'à 3 events futurs non épinglés
-    public function find3ActifNonPinnedEventsToCome($date, $combien)
+    // On récupère des events futurs actifs non épinglés
+    public function findActifNonPinnedEventsToCome($date, $combien)
     {
         $query = $this->createQueryBuilder('e')
             ->select('e')

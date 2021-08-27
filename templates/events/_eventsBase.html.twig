@@ -16,7 +16,19 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 
 				{# Info jours avant l'event dans une petite étiquette incrustée en haut à gauche de la carte #}
 				{% if epoque == 'futur' %}
-					{% for j in 0..30 %}
+					{# TODO: Ajouter petite étiquette évènement épinglé à côté de l'autre étiquette du jour #}
+					{% if event.epingle %}
+						<div class="etiquette-epingle">
+							<div class="contenu-etiquette-epingle">
+								<div class="bloc-milieu">
+									<i class="fas fa-star"></i>
+								</div>
+								<div class="bloc-haut">Épinglé</div>
+							</div>
+						</div>
+					{% endif %}
+
+					{% for j in 0..999 %}
 							{% if j == 0 %}
 								{# Si l'event est aujourd'hui #}
 								{% if event.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
@@ -99,12 +111,6 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 								{{ event.ImagesEvents | length }}
 							</div>
 						{% endif %}
-						{% if event.epingle %}
-							<div class="articles-epingle-on">
-								<i class="fas fa-thumbtack orangered"></i>
-							</div>
-						{% endif %}
-
 					</div>
 				</div>
 			</a>
