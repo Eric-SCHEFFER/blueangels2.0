@@ -19,7 +19,7 @@ class ArticlesRepository extends ServiceEntityRepository
         parent::__construct($registry, Articles::class);
     }
 
-    
+
 
     /**
      * On recupère les articles épinglés, actifs et listés. (Si on récupère tous les articles, $combien doit avoir la valuer null).
@@ -54,6 +54,51 @@ class ArticlesRepository extends ServiceEntityRepository
             ->setParameter('actif', true)
             ->andwhere('a.listed = :listed')
             ->setParameter('listed', true)
+            ->orderBy('a.created_at', 'DESC')
+            ->setMaxResults($combien)
+            ->getQuery()
+            ->getResult();
+        return $query;
+    }
+
+
+
+    // ----- PAR CATÉGORIE -----
+
+    /**
+     * On recupère les articles épinglés, actifs et listés, par catégorie. (Si on récupère tous les articles, $combien doit avoir la valuer null).
+     */
+    public function findPinnedActifsListedArticlesByCategorie($idCategorie, $combien)
+    {
+        $query = $this->createQueryBuilder('a')
+            ->select('a')
+            ->andwhere('a.epingle = :val')
+            ->setParameter('val', true)
+            ->andwhere('a.actif = :actif')
+            ->setParameter('actif', true)
+            ->andwhere('a.categories_article = :cat')
+            ->setParameter('cat', $idCategorie)
+            ->orderBy('a.created_at', 'DESC')
+            ->setMaxResults($combien)
+            ->getQuery()
+            ->getResult();
+        return $query;
+    }
+
+
+    /**
+     * On recupère les articles actifs et listés, par catégorie.
+     */
+    public function findActifsListedArticlesByCategorie($idCategorie, $combien)
+    {
+        $query = $this->createQueryBuilder('a')
+            ->select('a')
+            ->andwhere('a.epingle = :val')
+            ->setParameter('val', false)
+            ->andwhere('a.actif = :actif')
+            ->setParameter('actif', true)
+            ->andwhere('a.categories_article = :cat')
+            ->setParameter('cat', $idCategorie)
             ->orderBy('a.created_at', 'DESC')
             ->setMaxResults($combien)
             ->getQuery()
@@ -99,7 +144,7 @@ class ArticlesRepository extends ServiceEntityRepository
 
 
 
-    
+
 
 
 

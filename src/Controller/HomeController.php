@@ -136,6 +136,8 @@ class HomeController extends AbstractController
             $nonPinnedArticles = $this->articlesRepository->findActifsListedArticles($combien);
             // On fusionne $pinnedArticles et $nonPinnedArticless
             $articles = array_merge($pinnedArticles, $nonPinnedArticles);
+        } else {
+            $articles = $pinnedArticles;
         }
         return
             $articles;
