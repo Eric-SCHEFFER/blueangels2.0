@@ -16,15 +16,10 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 
 				{# Info jours avant l'event dans une petite étiquette incrustée en haut à gauche de la carte #}
 				{% if epoque == 'futur' %}
-					{# TODO: Ajouter petite étiquette évènement épinglé à côté de l'autre étiquette du jour #}
+					{# Petite étiquette épinglé à côté de l'autre étiquette du jour #}
 					{% if event.epingle %}
 						<div class="etiquette-epingle">
-							<div class="contenu-etiquette-epingle">
-								<div class="bloc-milieu">
-									<i class="fas fa-star"></i>
-								</div>
-								<div class="bloc-haut">Épinglé</div>
-							</div>
+							<i class="fas fa-thumbtack orangered"></i>
 						</div>
 					{% endif %}
 

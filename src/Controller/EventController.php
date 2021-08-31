@@ -29,6 +29,13 @@ class EventController extends AbstractController
 
         );
 
+        // On determine si l'event est futur ou passé
+        if ($event->getDateEvent()->format('Y-m-d') >= $today->format('Y-m-d')) {
+            $epoque = "futur";
+        }
+        else
+        $epoque = "passe";
+
         if (empty($event)) {
             // Erreur 404
             throw $this->createNotFoundException('L\'évènement n\'est pas actif');
@@ -39,6 +46,7 @@ class EventController extends AbstractController
             'event' => $event,
             'images' => $images,
             'today' => $today,
+            'epoque' => $epoque,
         ]);
     }
 }

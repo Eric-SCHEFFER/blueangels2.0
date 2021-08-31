@@ -66,10 +66,14 @@
 										<img src="{{ asset('images/favicon.png') }}" alt='Icone des Blue Angels'>
 									</div>
 								{% endif %}
-								{% if event.epingle %}
-									<span class="articles-epingle-on" title="Épinglé en page d'accueil">
-										<i class="fas fa-thumbtack orangered"></i>
-									</span>
+
+								{# On affiche l'épingle uniquement si l'event est futur #}
+								{% if epoque == 'futur' %}
+									{% if event.epingle %}
+										<span class="articles-epingle-on" title="Épinglé">
+											<i class="fas fa-thumbtack orangered"></i>
+										</span>
+									{% endif %}
 								{% endif %}
 							</div>
 							<div class="date">

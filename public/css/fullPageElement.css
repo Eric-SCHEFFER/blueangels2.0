@@ -41,6 +41,12 @@ h2 {
    line-height: 1.4em;
 }
 
+.articles-epingle-on {
+   display: inline-block;
+   position: relative;
+   top: -2px;
+}
+
 .categorie {
    margin-top: 8px;
 }

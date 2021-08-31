@@ -11,6 +11,12 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'article.
 	<div class="bloc-cards">
 		{% for article in articles %}
 			<a class="card-article" href="{{ path('article', {id: article.id}) }}" title="{{ article.getTitre ~ ' | ' ~ article.getHook }}">
+			{# Petite étiquette épinglé #}
+			{% if article.epingle %}
+				<div class="etiquette-epingle">
+					<i class="fas fa-thumbtack orangered"></i>
+				</div>
+			{% endif %}
 				{% if article.getImagesArticles[0].getNom() is defined %}
 					<div class="image">
 						<img src="{{ asset('uploads/imagesArticles/' ~ 'min_' ~ article.getImagesArticles[0].Nom) }}" alt="">
@@ -33,11 +39,6 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'article.
 							<div class="articles-nbr-images">
 								<i class="fas fa-file-image"></i>
 								{{ article.ImagesArticles | length }}
-							</div>
-						{% endif %}
-						{% if article.epingle %}
-							<div class="articles-epingle-on">
-								<i class="fas fa-thumbtack orangered"></i>
 							</div>
 						{% endif %}
 					</div>

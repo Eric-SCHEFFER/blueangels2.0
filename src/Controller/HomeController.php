@@ -36,7 +36,6 @@ class HomeController extends AbstractController
         $communiques = $this->getCommuniques();
         // Les 3 events à venir (dont en priorité, les épinglés)
         $eventsToCome = $this->get3Events($today);
-        // dd($eventsToCome);
         // Nbre total d'events futurs
         $countTotalEventsToCome = $this->eventsRepository->countTotalActifEventsToCome($today);
         // Nbre total d'events passés
@@ -58,6 +57,9 @@ class HomeController extends AbstractController
         ]);
     }
 
+
+
+    // BARRE COMMUNIQUÉS
 
     /**
      * On récupère les 3 derniers articles actifs dans la catégorie Communiqués, dont en priorité les épinglés s'il y en a.
@@ -95,9 +97,12 @@ class HomeController extends AbstractController
     }
 
 
+
+    // ÉVÈNEMENTS
+
     /**
      * On récupère les 3 derniers events actifs, avec en priorité, ceux épinglés s'il y en a.
-     * On utilise les fonctions findActifPinnedEventsToCome et findActifNonPinnedEventsToCome depuis le repo.
+     * On utilise les méthodes findActifPinnedEventsToCome et findActifNonPinnedEventsToCome depuis le repo.
      */
     private function get3Events($today)
     {
@@ -116,20 +121,22 @@ class HomeController extends AbstractController
 
 
 
+    // ARTICLES
+
     /**
-     * On récupère les 3 derniers articles actifs et listés
+     * On récupère les 3 derniers articles avec les épinglés en premier
      */
     private function getArticles()
     {
-
-        $articles = $this->articlesRepository->findBy(
-            [
-                'actif' => true,
-                'listed' => true,
-            ],
-            ['created_at' => "DESC"],
-            3
-        );
+        $pinnedArticles = $this->articlesRepository->findPinnedActifsListedArticles(3);
+        $nonPinnedArticles = [];
+        if (count($pinnedArticles) < 3) {
+            // On complète avec des articles non-épinglés
+            $combien = 3 - count($pinnedArticles);
+            $nonPinnedArticles = $this->articlesRepository->findActifsListedArticles($combien);
+            // On fusionne $pinnedArticles et $nonPinnedArticless
+            $articles = array_merge($pinnedArticles, $nonPinnedArticles);
+        }
         return
             $articles;
     }
