@@ -14,9 +14,16 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 		{% for event in events %}
 			<a class="card-article" href="{{ path('event_', {id: event.id}) }}" title="{{ event.getNom ~ ' | ' ~ event.getHook ~ ' | ' ~ event.getDateEvent | format_datetime(pattern="EEEE dd LLLL yyyy HH:mm", locale="fr") | capitalize ~ ' | ' ~ event.getVille }}">
 
-				{# Info jours avant l'event dans une petite étiquette incrustée en haut à gauche de la carte #}
+				{# TODO: Étiquette logo ba si event blue angles #}
+				
+				{% if event.eventBlueAngels %}
+					<div class="etiquette-event-blue-angels">
+						<img src="/blueangels2.0/projet_blueangels2.0/public/images/favicon.png" alt="Icone des Blue Angels">
+					</div>
+				{% endif %}
 				{% if epoque == 'futur' %}
-					{# Petite étiquette épinglé à côté de l'autre étiquette du jour #}
+					{# Info jours dans une petite étiquette incrustée en haut à gauche de la carte #}
+					{# Petite étiquette "épinglé" à gauche de l'autre étiquette du jour #}
 					{% if event.epingle %}
 						<div class="etiquette-epingle">
 							<i class="fas fa-thumbtack orangered"></i>
@@ -82,12 +89,6 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 					{% endif %}
 
 					<div class="info-epoque-event">
-						{# Quand l'event est organisé par les ba, on met un petit logo des ba #}
-						{% if event.getEventBlueAngels %}
-							<div class="event-blue-angels">
-								<img src="{{ asset('images/favicon.png') }}" alt='Icone des Blue Angels'>
-							</div>
-						{% endif %}
 						{% if epoque == 'passé' %}
 							<span class="info-jour">Terminé</span>
 						{% endif %}
