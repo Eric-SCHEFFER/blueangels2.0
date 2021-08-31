@@ -14,7 +14,7 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'article.
 			{# Petite étiquette épinglé #}
 			{% if article.epingle %}
 				<div class="etiquette-epingle">
-					<i class="fas fa-thumbtack orangered"></i>
+					<img src="{{ asset('images/punaise-rouge.svg') }}" alt="punaise rouge">
 				</div>
 			{% endif %}
 				{% if article.getImagesArticles[0].getNom() is defined %}

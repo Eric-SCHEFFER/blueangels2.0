@@ -25,9 +25,9 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 					{# Info jours dans une petite étiquette incrustée en haut à gauche de la carte #}
 					{# Petite étiquette "épinglé" à gauche de l'autre étiquette du jour #}
 					{% if event.epingle %}
-						<div class="etiquette-epingle">
-							<i class="fas fa-thumbtack orangered"></i>
-						</div>
+					<div class="etiquette-epingle">
+						<img src="{{ asset('images/punaise-rouge.svg') }}" alt="punaise rouge">
+					</div>
 					{% endif %}
 
 					{% for j in 0..999 %}
