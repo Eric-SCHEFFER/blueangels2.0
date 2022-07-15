@@ -26,7 +26,6 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 					{# Petite étiquette "épinglé" à gauche de l'autre étiquette du jour #}
 					{% if event.epingle %}
 					<div class="etiquette-epingle">
-						{# TODO: Changer l'image punaise3d par une punaise de fontawesome #}
 						{# <img src="{{ asset('images/punaise3d.svg') }}" alt="punaise3d"> #}
 						<i class="fas fa-thumbtack blue"></i>
 					</div>
@@ -38,7 +37,6 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 								{% if event.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
 								<div class="etiquette-decompte-jours-event">
 									<div class="contenu-etiquette-decompte-jours-event">
-										{# TODO: Rajouter Aujourd'hui dans la petite étiquette de date #}
 										<div class="bloc-haut green">
 											Aujourd'hui
 										</div>
