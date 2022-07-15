@@ -91,10 +91,10 @@
 
 .etiquette-epingle {
    position: absolute;
-   top: 1px;
-   left: 87px;
-   /* font-size: 1.6em; */
-   width: 12px;
+   top: -22px;
+   left: 153px;
+   font-size: .9em;
+   /* width: 12px; */
    z-index: 3;
 }
 
