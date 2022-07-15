@@ -55,7 +55,7 @@
 						<div class="info-bar-left">
 							<div class="type-vue-and-status">
 								<i class="fas fa-info-circle"></i>
-								Article
+								Article - catégorie {{ article.categoriesArticle.nom }}
 								{% if article.epingle %}
 									<span class="articles-epingle-on" title="Épinglé">
 										<i class="fas fa-thumbtack orangered"></i>
@@ -74,7 +74,7 @@
 								{% if article.categoriesArticle.nom is defined %}
 									{# Lien vers la page de la catégorie #}
 									<a class="bouton bt-small margin-right-6" title="Tous les articles de la catégorie {{ article.categoriesArticle.nom }}" href="{{ path('categorie.articles', {idCategorie: article.categoriesArticle.id}) }}">
-										{{ article.categoriesArticle.nom }}
+										Catégorie {{ article.categoriesArticle.nom }}
 									</a>
 								{% endif %}
 							</div>

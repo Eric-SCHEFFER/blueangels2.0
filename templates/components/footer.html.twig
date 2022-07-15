@@ -9,7 +9,7 @@
 					<a href="{{ path('home') }}">Accueil</a>
 				</div>
 				<div class="itemMention">
-					<a href="{{ path('communiques') }}">Infos</a>
+					<a href="{{ path('communiques') }}">Communiqués</a>
 				</div>
 				<div class="itemMention">
 					<a href="{{ path('danses') }}">Danses</a>
@@ -90,13 +90,16 @@
 
 	{# ====== BLOC DE MENTIONS ====== #}
 	<div class="blocMentions">
-		<h6 class="h6-blocMentions">réalisation du site</h6>
+		<h6 class="h6-blocMentions">Site web</h6>
 		<div class="blocMentionsNiv-1">
 			<div class="blocMentionsNiv-2">
-				<div class="itemMention">Éric SCHEFFER
+				<div class="itemMention">Réalisation: Éric SCHEFFER
 					<a target="_blank" title="Github" href="https://github.com/Eric-SCHEFFER">
 						<i class="fab fa-github"></i>
 					</a>
+				</div>
+				<div class="itemMention">
+					Version: {{ siteVersion }}
 				</div>
 			</div>
 		</div>

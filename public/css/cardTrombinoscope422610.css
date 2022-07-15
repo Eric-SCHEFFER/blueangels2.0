@@ -1,0 +1,91 @@
+.bloc-cards {
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   padding: 0;
+}
+
+.card {
+   position: relative;
+   background-color: rgb(255, 255, 255);
+   width: 220px;
+   height: 220px;
+   border-radius: 6px;
+   margin: 40px;
+   padding: 20px 20px 20px 20px;
+   /* border: 1px rgb(0, 4, 255) solid; */
+   color: #3a3a3a;
+   overflow: hidden;
+   border-radius: 50%;
+   cursor: pointer;
+   transition: all ease 1s;
+}
+
+.card:hover .image {
+   transform: rotate(360deg);
+}
+
+.card:hover .zone-titre {
+   transform: rotate(-360deg);
+}
+
+.card:hover {}
+
+.card-click {
+   position: relative;
+   top: 0;
+   left: 0;
+   height: max-content;
+   width: 600px;
+   max-width: 100vw;
+   border-radius: 6px;
+   transition: all ease 1s;
+}
+
+.image {
+   position: relative;
+   /* height: 100px;
+   width: 100px; */
+   height: 140px;
+   width: 140px;
+   overflow: hidden;
+   border-radius: 50%;
+   border: white 5px solid;
+   display: block;
+   margin: auto;
+   transition: all ease 1s;
+}
+
+.image img {
+   width: 110%;
+   height: 110%;
+}
+
+.zone-titre {
+   padding: 10px 0 10px 0;
+   font-size: 1.4em;
+   font-weight: 100;
+   text-transform: uppercase;
+   text-align: center;
+   transition: all ease 1s;
+}
+
+.fonction {
+   text-transform: uppercase;
+}
+
+.zone-texte {
+   position: relative;
+   background-color: rgb(255, 255, 255);
+   z-index: 6;
+   border-radius: 6px;
+
+}
+
+
+@media screen and (max-width: 560px) {
+   .card {
+      margin-left: 0;
+      margin-right: 0;
+   }
+}
