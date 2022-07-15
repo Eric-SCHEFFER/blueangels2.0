@@ -24,7 +24,7 @@
 /.env
 /migrations/
 /public/uploads/
-/public/images/
+#/public/images/
 /exportBdd/
 /.brouillon
 /.notes
