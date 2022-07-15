@@ -243,3 +243,22 @@
    color: rgb(221, 0, 0);
    border: 1px rgb(221, 0, 0) solid;
 }
+
+.blinking {
+   animation: opacity 4s ease-in-out infinite;
+   opacity: 1;
+}
+
+@keyframes opacity {
+   0% {
+      opacity: 1;
+   }
+
+   50% {
+      opacity: 0
+   }
+
+   100% {
+      opacity: 1;
+   }
+}

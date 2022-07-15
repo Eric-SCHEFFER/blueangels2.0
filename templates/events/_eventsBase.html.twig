@@ -14,7 +14,6 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 		{% for event in events %}
 			<a class="card-article" href="{{ path('event_', {id: event.id}) }}" title="{{ event.getNom ~ ' | ' ~ event.getHook ~ ' | ' ~ event.getDateEvent | format_datetime(pattern="EEEE dd LLLL yyyy HH:mm", locale="fr") | capitalize ~ ' | ' ~ event.getVille }}">
 
-				{# TODO: Étiquette logo ba si event blue angles #}
 				
 				{% if event.eventBlueAngels %}
 					<div class="etiquette-event-blue-angels">
@@ -42,7 +41,7 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 										</div>
 										{# Si l'heure de l'event est <= à l'heure actuelle #}
 										{% if event.getDateEvent | date("H:i") <= today | date("H:i") %}
-											<div class="bloc-milieu aujourdhui red">{{ event.getDateEvent | date("H:i") }}</div>
+											<div class="bloc-milieu aujourdhui red blinking">{{ event.getDateEvent | date("H:i") }}</div>
 											{% else %}
 												<div class="bloc-milieu aujourdhui green">{{ event.getDateEvent | date("H:i") }}</div>
 										{% endif %}
