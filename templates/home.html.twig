@@ -1,106 +1,110 @@
 {% extends 'components/base.html.twig' %}
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('css/home.css') }}">
+<link rel="stylesheet" href="{{ asset('css/home.css') }}">
 {% endblock %}
 
 {% block title %}
-	{{ SiteName }}: Bienvenue
+{{ SiteName }}: Bienvenue
 {% endblock %}
 
 
 {% block body %}
-	{# =============================================================== #}
-	{# Mini-barre de news qui affiche les 3 derniers communiqués, avec en priorité, ceux épinglés #}
-		{% if communiques is not empty and afficherBarreCommunique.actif %}
-			<div class="barre-news-wrapper"> <div class="barre-news">
-				{% for communique in communiques %}
-					<div class="communique">
-						<a href="{{ path('article', {id: communique.id}) }}" title="{{ communique.titre }} | {{ communique.hook }}">
-							<div class="titre-communique">
-								<i class="fas fa-circle icone-titre-communique-calque-0"></i>
-								<i class="fas fa-info icone-titre-communique-calque-1"></i>
-								{{ communique.titre }}
-							</div>
-							<div class="hook-communique">
-								{{ communique.hook }}
-							</div>
-							<div class="footer-communique">
-								<i class="fas fa-calendar-alt"></i>
-								{{ communique.getCreatedAt | date("d-m-Y") }}
-								{% if communique.epingle %}
-									<div class="articles-epingle-on float-right">
-										<i class="fas fa-thumbtack orangered"></i>
-									</div>
-								{% endif %}
-							</div>
-
-						</a>
+{# =============================================================== #}
+{# Mini-barre de news qui affiche les 3 derniers communiqués, avec en priorité, ceux épinglés #}
+{% if communiques is not empty and afficherBarreCommunique.actif %}
+<div class="barre-news-wrapper">
+	<div class="barre-news">
+		{% for communique in communiques %}
+		<div class="communique">
+			<a href="{{ path('article', {id: communique.id}) }}" title="{{ communique.titre }} | {{ communique.hook }}">
+				<div class="titre-communique">
+					<i class="fas fa-circle icone-titre-communique-calque-0"></i>
+					<i class="fas fa-info icone-titre-communique-calque-1"></i>
+					{{ communique.titre }}
+				</div>
+				<div class="hook-communique">
+					{{ communique.hook }}
+				</div>
+				<div class="footer-communique">
+					<i class="fas fa-calendar-alt"></i>
+					{{ communique.getCreatedAt | date("d-m-Y") }}
+					{% if communique.epingle %}
+					<div class="articles-epingle-on float-right">
+						<i class="fas fa-thumbtack orangered"></i>
 					</div>
-				{% endfor %}
-			</div>
+					{% endif %}
+				</div>
+
+			</a>
 		</div>
-		{# <hr class="hr-barre-news"> #}
-	{% endif %}
+		{% endfor %}
+	</div>
+</div>
+{#
+<hr class="hr-barre-news"> #}
+{% endif %}
 
 
-	<div class="wrapper">
+<div class="wrapper">
 
-		<h1 class="bienvenue-panel">
-			Bienvenue
-		</h1>
+	<h1 class="bienvenue-panel">
+		Bienvenue
+	</h1>
 
-		{# ==================== Évènements à venir ============================= #}
+	{# ==================== Évènements à venir ============================= #}
 
-		{% set countAVenir = countTotalEventsToCome[0][1] %}
-		{% set countPasse = countTotalCompletedEvents[0][1] %}
+	{% set countAVenir = countTotalEventsToCome[0][1] %}
+	{% set countPasse = countTotalCompletedEvents[0][1] %}
 
-		<section class="events" id="events">
-			{% if countAVenir > 0 %}
-					<h2>Évènements à venir:</h2>
-				{% else %}
-				<h2>Aucun évènement à venir</h2>
-			{% endif %}
+	<section class="events" id="events">
+		{% if countAVenir > 0 %}
+		<h2>Évènements à venir:</h2>
+		</br>
+		{# {% else %}
+		<h2>Aucun évènement à venir</h2> #}
+		{% endif %}
 
-			{# Provisoire, pour tester les dates #}
-			{# <p>Nous sommes le
+		{# Provisoire, pour tester les dates #}
+		{# <p>Nous sommes le
 			{{ today|date("d-m-Y H:i:s") }}</p> #}
 
-			{{ include ('events/_eventsBase.html.twig') }}
+		{{ include ('events/_eventsBase.html.twig') }}
 
-			<div class="boutonsVoir">
-				{% if (countPasse > 0) and (countAVenir == 0) %}
-					<a class="bouton bt2 boutonFlecheGauche" href="{{ path('completed_events') }}">
-						<i class="fas fa-arrow-left fa-lg flecheGauche"></i>
-						Évènements passés
-					</a>
-				{% endif %}
-				{% if countAVenir > 3 %}
-					<a class="bouton bt2 boutonFlecheDroite" href="{{ path('a_venir') }}">
-						Voir tout ({{ countAVenir }})
-						<i class="fas fa-arrow-right fa-lg flecheDroite"></i>
-					</a>
-				{% endif %}
-			</div>
-		</section>
+		<div class="boutonsVoir">
+			{# {% if (countPasse > 0) and (countAVenir == 0) %}
+			<a class="bouton bt2 boutonFlecheGauche" href="{{ path('completed_events') }}">
+				<i class="fas fa-arrow-left fa-lg flecheGauche"></i>
+				Évènements passés
+			</a>
+			{% endif %} #}
+			{% if countAVenir > 3 %}
+			<a class="bouton bt2 boutonFlecheDroite" href="{{ path('a_venir') }}">
+				Suite ({{ countAVenir }})
+				<i class="fas fa-arrow-right fa-lg flecheDroite"></i>
+			</a>
+			{% endif %}
+		</div>
+	</section>
 
 
-		{# ====================== Articles ======================== #}
+	{# ====================== Articles ======================== #}
 
-		<section class="articles">
-			<h2>Derniers articles</h2>
-			{#
-			On affiche les aperçus des 3 premiers articles, dont en priorité les épinglés s'il y en a, dans des cards.
-			Chaque card est cliquable, et renvoi vers la fullPage de l'article.
-			On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
-			#}
-			{{ include ('articles/_articlesBase.html.twig') }}
+	<section class="articles">
+		<h2>Derniers articles</h2>
+		{#
+		On affiche les aperçus des 3 premiers articles, dont en priorité les épinglés s'il y en a, dans des cards.
+		Chaque card est cliquable, et renvoi vers la fullPage de l'article.
+		On affiche un lien "voir tout" pour renvoyer vers la page de la totalité des aperçus.
+		#}
+		{{ include ('articles/_articlesBase.html.twig') }}
 
-			<div class="boutonsVoir">
-				<a class="bouton boutonFlecheDroite" href="{{ path('articles') }}">
-					Tous les articles
-					<i class="fas fa-arrow-right fa-lg flecheDroite"></i>
-				</a>
-			</div>
-		</section>
-	</div>
+		<div class="boutonsVoir">
+			<a class="bouton boutonFlecheDroite" href="{{ path('articles') }}">
+				Tous les articles
+				<i class="fas fa-arrow-right fa-lg flecheDroite"></i>
+			</a>
+		</div>
+	</section>
+</div>
+{# {{ today|date }} #}
 {% endblock %}

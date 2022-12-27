@@ -78,7 +78,7 @@
    /* border: red 1px solid; */
    padding: 0;
    margin: 5px 0 0 0;
-   font-size: .93em;
+   font-size: .82em;
    color: #fff;
 }
 
@@ -350,7 +350,7 @@ nav li {
       font-size: 1.9em;
    }
    .decription-asso {
-      font-size: .8em;
+      font-size: .65em;
    }
 }
 
@@ -358,6 +358,6 @@ nav li {
 
 @media screen and (max-width: 340px) {
    .decription-asso {
-      font-size: .74em;
+      font-size: .62em;
    }
 }

@@ -1,0 +1,19 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/messagesEtAlertes.css') }}">
+{% endblock %}
+
+{% block title %}
+{{ SiteName }}: Notification envoi email
+{% endblock %}
+
+{# On arrive ici depuis la page admin_change_login/index.html.twig, dès que l'on a cliqué sur envoyé, et qu'il n'y a pas
+d'erreurs, #}
+
+{% block body %}
+<div class="wrapper">
+	<h2>Notification envoi email</h2>
+	<p>Nous venons de vous envoyer un lien de validation à l'adresse {{ emailCandidat }}</p>
+</div>
+
+{% endblock %}

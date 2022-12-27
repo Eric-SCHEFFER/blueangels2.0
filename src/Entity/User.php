@@ -34,6 +34,21 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="string", length=90, nullable=true)
+     */
+    private $reset_email_token;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $email_candidat;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $reset_email_token_created_at;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -110,5 +125,41 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getResetEmailToken(): ?string
+    {
+        return $this->reset_email_token;
+    }
+
+    public function setResetEmailToken(?string $reset_email_token): self
+    {
+        $this->reset_email_token = $reset_email_token;
+
+        return $this;
+    }
+
+    public function getEmailCandidat(): ?string
+    {
+        return $this->email_candidat;
+    }
+
+    public function setEmailCandidat(?string $email_candidat): self
+    {
+        $this->email_candidat = $email_candidat;
+
+        return $this;
+    }
+
+    public function getResetEmailTokenCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->reset_email_token_created_at;
+    }
+
+    public function setResetEmailTokenCreatedAt(?\DateTimeInterface $reset_email_token_created_at): self
+    {
+        $this->reset_email_token_created_at = $reset_email_token_created_at;
+
+        return $this;
     }
 }

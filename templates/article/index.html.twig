@@ -74,7 +74,7 @@
 								{% if article.categoriesArticle.nom is defined %}
 									{# Lien vers la page de la catégorie #}
 									<a class="bouton bt-small margin-right-6" title="Tous les articles de la catégorie {{ article.categoriesArticle.nom }}" href="{{ path('categorie.articles', {idCategorie: article.categoriesArticle.id}) }}">
-										Catégorie {{ article.categoriesArticle.nom }}
+										Articles {{ article.categoriesArticle.nom }}
 									</a>
 								{% endif %}
 							</div>

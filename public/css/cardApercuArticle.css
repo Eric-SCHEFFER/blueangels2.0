@@ -10,7 +10,7 @@
    justify-content: left;
    min-width: 270px;
    width: 300px;
-   height: 130px;
+   height: 148px;
    padding: 1px;
    margin: 30px;
    /* border: solid 1px rgb(255, 255, 255); */
@@ -26,11 +26,20 @@
    color: rgb(255, 255, 255);
 }
 
+.card-article:hover .flecheDroiteCard {
+   left: 5px;
+}
+
+.centerCard {
+   text-align: center;
+   margin: auto;
+}
+
 .image {
    min-width: 130px;
    max-width: 130px;
-   min-height: 130px;
-   max-height: 130px;
+   min-height: 148px;
+   max-height: 148px;
    overflow: hidden;
    border-radius: 4px;
 }
@@ -60,12 +69,12 @@
    display: flex;
    justify-content: space-between;
    position: relative;
-   top: 50px;
+   top: 23px;
    /* border: solid green 1px; */
 }
 
-.infos-article {
-   top: 22px;
+.infos-event {
+   top: 7px;
 }
 
 
@@ -151,13 +160,12 @@
 
 /* =========================== */
 
-.info-epoque-event {
+.info-epoque-event{
    position: relative;
    /* border: solid red 1px; */
    display: flex;
    justify-content: space-between;
-   top: 32px;
-   margin-bottom: -16px;
+   margin-bottom: 0;
    min-height: 16px;
 }
 
@@ -192,6 +200,20 @@
 
 .articles-date {}
 
+.articles-categorie {
+   position: absolute;
+   font-size: .7em;
+   text-transform: uppercase;
+   top: 111px;
+   color: #FFFFFF;
+}
+
+.articles-categorie span {
+   padding:0 4px 0 4px;
+   border-radius: 2px;
+   background-color: dimgray;
+   }
+
 .hook {
    white-space: nowrap;
    overflow: hidden;
@@ -214,7 +236,7 @@
 
 .bloc-text {
    position: relative;
-   padding: 8px 11px 4px 11px;
+   padding: 19px 11px 4px 11px;
    width: 100%;
    color: rgb(68, 68, 68);
    overflow: hidden;

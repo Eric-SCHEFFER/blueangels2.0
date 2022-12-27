@@ -1,0 +1,40 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/formulaireGenerique.css') }}">
+<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+{% endblock %}
+
+{% block title %}
+{{ SiteName }}: Modifier l'identifiant de connexion
+{% endblock %}
+
+{% block body %}
+<div class="wrapper">
+	<h2>Modifier l'identifiant de connexion {{ app.user.email }}</h2>
+
+	<div class="container-form">
+		<form class="form1" method="post">
+
+			<div class="bloc-column">
+				<label for="inputPassword">Mot de passe</label>
+				<input type="password" name="password" id="password" class="" required>
+			</div>
+			<div class="bloc-column">
+				<label for="email">Nouvel identifiant(une adresse email valide)</label>
+				<input type="email" name="newEmail" id="newEmail" class="" required>
+			</div>
+			<div class="bloc-column">
+				<label for="email">Confirmer le nouvel identifiant</label>
+				<input type="email" name="newEmailconfirm" id="newEmailconfirm" class="" required>
+			</div>
+			<div class="bloc-column">
+				<button class="bouton width-100" type="submit">
+					ENVOYER
+				</button>
+			</div>
+		</form>
+	</div>
+</div>
+</div>
+
+{% endblock %}

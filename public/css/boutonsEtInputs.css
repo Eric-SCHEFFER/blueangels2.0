@@ -28,9 +28,25 @@
 }
 
 .flecheDroite {
+
    position: relative;
    left: 6px;
    transition: left .6s;
+}
+
+.backgroundRond {
+   width: 34px;
+   height: 34px;
+   border-radius: 50%;
+   background-color: #225d91;
+}
+
+.flecheDroiteCard {
+   position: relative;
+   left: 0;
+   color: #FFFFFF;
+   transition: left .6s;
+   margin-top: 8px;
 }
 
 .bt2 {

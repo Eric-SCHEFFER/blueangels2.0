@@ -1,0 +1,9 @@
+<h2>identifiant de connexion pour le site {{ SiteName }}</h2>
+<p>
+	Vous avez demandé à modifier votre identifiant de connexion. Veuillez cliquer sur le lien ci-dessous pour valider
+	votre adresse email:
+</p>
+<p>Ce lien est valable {{ validiteTokenEnMn ~ ' mn' }}</p>
+<p>
+	<a href="{{ absolute_url(path('activer_email_candidat', {'token': token})) }}">Valider mon adresse email</a>
+</p>

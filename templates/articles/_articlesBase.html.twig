@@ -1,50 +1,56 @@
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('css/cardApercuArticle.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+<link rel="stylesheet" href="{{ asset('css/cardApercuArticle.css') }}">
+<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
 {% endblock %}
 
 {#
 On affiche les aperçus des articles, s'il y en a, dans des cards.
 Chaque card est cliquable, et renvoi vers la fullPage de l'article.
 #}
+
 {% if articles is not empty %}
-	<div class="bloc-cards">
-		{% for article in articles %}
-			<a class="card-article" href="{{ path('article', {id: article.id}) }}" title="{{ article.getTitre ~ ' | ' ~ article.getHook }}">
-			{# Petite étiquette épinglé #}
-			{% if article.epingle %}
-				<div class="etiquette-epingle">
-					{# <img src="{{ asset('images/punaise-rouge.svg') }}" alt="punaise rouge"> #}
-					<i class="fas fa-thumbtack white"></i>
-				</div>
+<div class="bloc-cards">
+	{% for article in articles %}
+	<a class="card-article" href="{{ path('article', {id: article.id}) }}"
+		title="{{ article.getTitre ~ ' | ' ~ article.getHook }}">
+		{# Petite étiquette épinglé #}
+		{% if article.epingle %}
+		<div class="etiquette-epingle">
+			{# <img src="{{ asset('images/punaise-rouge.svg') }}" alt="punaise rouge"> #}
+			<i class="fas fa-thumbtack white"></i>
+		</div>
+		{% endif %}
+		{% if article.getImagesArticles[0].getNom() is defined %}
+		<div class="image">
+			<img src="{{ asset('uploads/imagesArticles/' ~ 'min_' ~ article.getImagesArticles[0].Nom) }}" alt="">
+		</div>
+		{% endif %}
+		<div class="bloc-text">
+			<h3 class="titre">{{ article.getTitre() }}</h3>
+			<div class="hook">{{ article.getHook() }}</div>
+			<div class="backgroundRond centerCard">
+				<i class="fas fa-arrow-right fa-lg flecheDroiteCard"></i>
+			</div>
+			{# On n'affiche pas la catégorie sur la carte, quand on est déjà sur une page filtrée par une catégorie #}
+			{% if nomCategorie is not defined %}
+			<div class="articles-categorie">
+				<span>{{ article.categoriesArticle.nom }}</span>
+			</div>
 			{% endif %}
-				{% if article.getImagesArticles[0].getNom() is defined %}
-					<div class="image">
-						<img src="{{ asset('uploads/imagesArticles/' ~ 'min_' ~ article.getImagesArticles[0].Nom) }}" alt="">
-					</div>
-				{% endif %}
-				<div class="bloc-text">
-					<h3 class="titre">{{ article.getTitre() }}</h3>
-					<div class="hook">{{ article.getHook() }}</div>
-					<div class="center">
-						<div class="bouton bt-small bt-card-article">
-							Voir
-						</div>
-					</div>
-					<div class="infos infos-article">
-						<div class="articles-date">
-							<i class="fas fa-calendar-alt"></i>
-							{{ article.getCreatedAt()|date("d-m-Y") }}
-						</div>
-						{% if article.ImagesArticles | length > 1 %}
-							<div class="articles-nbr-images">
-								<i class="fas fa-file-image"></i>
-								{{ article.ImagesArticles | length }}
-							</div>
-						{% endif %}
-					</div>
+			<div class="infos">
+				<div class="articles-date">
+					<i class="fas fa-calendar-alt"></i>
+					{{ article.getCreatedAt()|date("d-m-Y") }}
 				</div>
-			</a>
-		{% endfor %}
-	</div>
+				{% if article.ImagesArticles | length > 1 %}
+				<div class="articles-nbr-images">
+					<i class="fas fa-file-image"></i>
+					{{ article.ImagesArticles | length }}
+				</div>
+				{% endif %}
+			</div>
+		</div>
+	</a>
+	{% endfor %}
+</div>
 {% endif %}

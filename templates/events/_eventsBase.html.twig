@@ -1,6 +1,6 @@
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('css/cardApercuArticle.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+<link rel="stylesheet" href="{{ asset('css/cardApercuArticle.css') }}">
+<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
 {% endblock %}
 
 {#
@@ -10,109 +10,114 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'element.
 
 
 {% if events is not empty %}
-	<div class="bloc-cards">
-		{% for event in events %}
-			<a class="card-article" href="{{ path('event_', {id: event.id}) }}" title="{{ event.getNom ~ ' | ' ~ event.getHook ~ ' | ' ~ event.getDateEvent | format_datetime(pattern="EEEE dd LLLL yyyy HH:mm", locale="fr") | capitalize ~ ' | ' ~ event.getVille }}">
+<div class="bloc-cards">
+	{% for event in events %}
+	<a class="card-article" href="{{ path('event_', {id: event.id}) }}"
+		title="{{ event.getNom ~ ' | ' ~ event.getHook ~ ' | ' ~ event.getDateEvent | format_datetime(pattern=" EEEE dd
+		LLLL yyyy HH:mm", locale="fr" ) | capitalize ~ ' | ' ~ event.getVille }}">
 
-				
-				{% if event.eventBlueAngels %}
-					<div class="etiquette-event-blue-angels">
-						<img src="{{ asset('images/favicon.png') }}" alt="Icone des Blue Angels">
-					</div>
-				{% endif %}
-				{% if epoque == 'futur' %}
-					{# Info jours dans une petite étiquette incrustée en haut à gauche de la carte #}
-					{# Petite étiquette "épinglé" à gauche de l'autre étiquette du jour #}
-					{% if event.epingle %}
-					<div class="etiquette-epingle">
-						{# <img src="{{ asset('images/punaise3d.svg') }}" alt="punaise3d"> #}
-						<i class="fas fa-thumbtack white"></i>
-					</div>
-					{% endif %}
 
-					{% for j in 0..999 %}
-							{% if j == 0 %}
-								{# Si l'event est aujourd'hui #}
-								{% if event.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
-								<div class="etiquette-decompte-jours-event">
-									<div class="contenu-etiquette-decompte-jours-event">
-										<div class="bloc-haut green">
-											Aujourd'hui
-										</div>
-										{# Si l'heure de l'event est <= à l'heure actuelle #}
-										{% if event.getDateEvent | date("H:i") <= today | date("H:i") %}
-											<div class="bloc-milieu aujourdhui red blinking">{{ event.getDateEvent | date("H:i") }}</div>
-											{% else %}
-												<div class="bloc-milieu aujourdhui green">{{ event.getDateEvent | date("H:i") }}</div>
-										{% endif %}
-									</div>
-								</div>
-								{% endif %}
-							{% elseif j == 1 %}
-								{# Si l'event est demain #}
-								{% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
-									<div class="etiquette-decompte-jours-event">
-										<div class="contenu-etiquette-decompte-jours-event blue">
-											<div class="bloc-milieu">D</div>
-											<div class="bloc-bas">Demain</div>
-										</div>
-									</div>
-								{% endif %}
-							{% else %}
-								{# Si l'event est plus tard #}
-								{% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
-								<div class="etiquette-decompte-jours-event">
-									<div class="contenu-etiquette-decompte-jours-event">
-										<div class="bloc-haut">Dans</div>
-										<div class="bloc-milieu">{{ j }}</div>
-										<div class="bloc-bas">Jours</div>
-									</div>
-								</div>
-								{% endif %}
-							{% endif %}
-					{% endfor %}
-				{% endif %}
+		{% if event.eventBlueAngels %}
+		<div class="etiquette-event-blue-angels">
+			<img src="{{ asset('images/favicon.png') }}" alt="Icone des Blue Angels">
+		</div>
+		{% endif %}
+		{% if epoque == 'futur' %}
+		{# Info jours dans une petite étiquette incrustée en haut à gauche de la carte #}
+		{# Petite étiquette "épinglé" à gauche de l'autre étiquette du jour #}
+		{% if event.epingle %}
+		<div class="etiquette-epingle">
+			{# <img src="{{ asset('images/punaise3d.svg') }}" alt="punaise3d"> #}
+			<i class="fas fa-thumbtack white"></i>
+		</div>
+		{% endif %}
 
-				{% if event.getImagesEvents[0].getNom() is defined %}
-					<div class="image">
-						<img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ event.getImagesEvents[0].Nom) }}" alt="">
-					</div>
-				{% endif %}
-				<div class="bloc-text">
-               {% if event.getAnnule %}
-                  <div class="tampon-oblique-red">Évènement annulé</div>
-               {% endif %}
-					<h3 class="titre">{{ event.getNom() }}</h3>
-					<div class="hook">{{ event.getHook() }}</div>
-
-					{% if event.getImagesEvents[0].getNom() is defined %}
-						<div class="bouton bt-small bt-card-event">Voir</div>
-						{% else %}
-						<div class="bouton bt-small bt-card-event bt-card-event-sans-image">Voir</div>
-					{% endif %}
-
-					<div class="info-epoque-event">
-						{% if epoque == 'passé' %}
-							<span class="info-jour">Terminé</span>
-						{% endif %}
-
-						
-					</div>
-
-					<div class="infos">
-						<div class="articles-date">
-							<i class="fas fa-calendar-alt"></i>
-							{{ event.getDateEvent()|date("d-m-Y") }}
-						</div>
-						{% if event.ImagesEvents | length > 1 %}
-							<div class="articles-nbr-images">
-								<i class="fas fa-file-image"></i>
-								{{ event.ImagesEvents | length }}
-							</div>
-						{% endif %}
-					</div>
+		{% for j in 0..999 %}
+		{% if j == 0 %}
+		{# Si l'event est aujourd'hui #}
+		{% if event.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
+		<div class="etiquette-decompte-jours-event">
+			<div class="contenu-etiquette-decompte-jours-event">
+				<div class="bloc-haut green">
+					Aujourd'hui
 				</div>
-			</a>
-		{% endfor %}
+				{# Si l'heure de l'event est <= à l'heure actuelle #} {% if event.getDateEvent | date("H:i") <=today |
+					date("H:i") %} <div class="bloc-milieu aujourdhui red blinking">{{ event.getDateEvent | date("H:i") }}
+			</div>
+			{% else %}
+			<div class="bloc-milieu aujourdhui green">{{ event.getDateEvent | date("H:i") }}</div>
+			{% endif %}
+		</div>
+</div>
+{% endif %}
+{% elseif j == 1 %}
+{# Si l'event est demain #}
+{% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
+<div class="etiquette-decompte-jours-event">
+	<div class="contenu-etiquette-decompte-jours-event blue">
+		<div class="bloc-milieu">D</div>
+		<div class="bloc-bas">Demain</div>
 	</div>
+</div>
+{% endif %}
+{% else %}
+{# Si l'event est plus tard #}
+{% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
+<div class="etiquette-decompte-jours-event">
+	<div class="contenu-etiquette-decompte-jours-event">
+		<div class="bloc-haut">Dans</div>
+		<div class="bloc-milieu">{{ j }}</div>
+		<div class="bloc-bas">Jours</div>
+	</div>
+</div>
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if event.getImagesEvents[0].getNom() is defined %}
+<div class="image">
+	<img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ event.getImagesEvents[0].Nom) }}" alt="">
+</div>
+{% endif %}
+<div class="bloc-text">
+	{% if event.getAnnule %}
+	<div class="tampon-oblique-red">Évènement annulé</div>
+	{% endif %}
+	<h3 class="titre">{{ event.getNom() }}</h3>
+	<div class="hook">{{ event.getHook() }}</div>
+	{# TODO: Bouton en forme de flèche comme pour les articles #}
+	{# {% if event.getImagesEvents[0].getNom() is defined %} #}
+	<div class="backgroundRond centerCard">
+		<i class="fas fa-arrow-right fa-lg flecheDroiteCard"></i>
+	</div>
+	{# {% else %} #}
+	{# <div class="backgroundRondSansImage centerCard">
+		<i class="fas fa-arrow-right fa-lg flecheDroiteCard"></i>
+	</div> #}
+	{# {% endif %} #}
+	<div class="info-epoque-event">
+		{% if epoque == 'passé' %}
+		<span class="info-jour">Terminé</span>
+		{% endif %}
+
+
+	</div>
+
+	<div class="infos infos-event">
+		<div class="articles-date">
+			<i class="fas fa-calendar-alt"></i>
+			{{ event.getDateEvent()|date("d-m-Y") }}
+		</div>
+		{% if event.ImagesEvents | length > 1 %}
+		<div class="articles-nbr-images">
+			<i class="fas fa-file-image"></i>
+			{{ event.ImagesEvents | length }}
+		</div>
+		{% endif %}
+	</div>
+</div>
+</a>
+{% endfor %}
+</div>
 {% endif %}
