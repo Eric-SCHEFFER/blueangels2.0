@@ -32,7 +32,7 @@ class AdminArticlesController extends AbstractController
     {
         // On récupère tous les articles, dont en premier les épinglés s'il y en a
         $articles = $this->getArticles();
-        // TODO: Récuper l'id de la catégorie 'Non classé', pour après l'avoir dans le select d'une création d'article (car on est dans l'admin des articles en général)
+        // Récuper l'id de la catégorie 'Non classé', pour après l'avoir dans le select d'une création d'article (car on est dans l'admin des articles en général)
         $repoCat = $this->getDoctrine()->getRepository(CategoriesArticle::class);
         $categorie = $repoCat->findOneBy(array('nom' => 'Non classé'));
         $categorieId = $categorie->getId();

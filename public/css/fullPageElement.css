@@ -11,7 +11,7 @@ h2 {
 }
 
 .image {
-   /* TODO_TEST Switcher la height en auto et 70vh pour tester ce qui est mieux */
+   /* Switcher la height en auto et 70vh pour tester ce qui est mieux */
    /* height: 70vh; */
    height: 70vh;
    background-color: #000000;
