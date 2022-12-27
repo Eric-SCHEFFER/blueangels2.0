@@ -40,11 +40,14 @@ class ContactController extends AbstractController
             $titre = $this->getDoctrine()->getRepository(Articles::class)->find($id)->getTitre();
             $champObjetPreRempli = 'A propos: ' . $titre;
             $urlArticleReferer = $request->headers->get('referer');
-            // TODO: Corriger l'erreur du mot article qui apparait 2x dans l'url
-            $pos = strrpos($urlArticleReferer, '/', -2);
-            $urlArticleReferer = substr($urlArticleReferer, 0, $pos + 1) . 'article/' . $id;
+            // Si on vient d'une page fixe du site (pas d'id dans l'url) qui affiche un article
+            if (substr($urlArticleReferer, -1) == "/") {
+                $pos = strrpos($urlArticleReferer, '/', -2);
+                $urlArticleReferer = substr($urlArticleReferer, 0, $pos + 1) . 'article/' . $id;
+            }
             $champMessagePreRempli = "Lien de l'article (catégorie " . $categorie . "):\n" . $urlArticleReferer . "\n\nBonjour,\n";
         }
+
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
