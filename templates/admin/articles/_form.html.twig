@@ -1,5 +1,5 @@
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('css/formulaireCrud.css') }}">
+<link rel="stylesheet" href="{{ asset('css/formulaireCrud.css') }}">
 {% endblock %}
 
 
@@ -22,16 +22,18 @@
 				{{ form_row(form.imageFile, {'attr':{'class':'image'}}) }}
 			</div>
 			{# On vérifie si la route est "admin.articles.edit", et on affiche les images #}
+			{# TODO: On affiche l'image et à côté, sa légende dans un nouveau champ #}
 			{% if app.request.attributes.get('_route') == 'admin.articles.edit' %}
-				<div class="blocVignettes">
-					{% for image in article.imagesArticles %}
-						<div class="vignette">
-							<img src="{{ asset('uploads/imagesArticles/' ~ 'min_' ~ image.nom) }}" alt="image">
-							<a class="bouton petitBouton" href="{{ path('admin.articles.image.delete', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer
-							</a>
-						</div>
-					{% endfor %}
+			<div class="blocVignettes">
+				{% for image in article.imagesArticles %}
+				<div class="vignette">
+					<img src="{{ asset('uploads/imagesArticles/' ~ 'min_' ~ image.nom) }}" alt="image">
+					<a class="bouton petitBouton" href="{{ path('admin.articles.image.delete', {id: image.id}) }}"
+						data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer
+					</a>
 				</div>
+				{% endfor %}
+			</div>
 			{% endif %}
 		</div>
 	</div>
@@ -45,15 +47,14 @@
 	<div class="champ">
 		{{ form_row(form.contenu, {'attr':{'class':'description'}}) }}
 	</div>
-	
+
 	<div class="ligne1">
-		<div
-			class="champ">
+		<div class="champ">
 			{# Afficher par défaut le nom de la catégorie en cours, avec une son id reçue de nouveau.html.twig #}
 			{% if categorieId is defined %}
-				{{ form_row(form.CategoriesArticle, {'value': categorieId}) }}
+			{{ form_row(form.CategoriesArticle, {'value': categorieId}) }}
 			{% else %}
-				{{ form_row(form.CategoriesArticle) }}
+			{{ form_row(form.CategoriesArticle) }}
 			{% endif %}
 		</div>
 		<div class="champ" title="{{ articleOptionInfo.actif }}">
@@ -67,8 +68,8 @@
 		</div>
 	</div>
 
-	{# Champ caché pour envoyer le referer, et permettre la redirection à la page précédente après la soumission  #}
-	<input type="hidden" name="referer" value="{{app.request.headers.get('referer')}}"/>
+	{# Champ caché pour envoyer le referer, et permettre la redirection à la page précédente après la soumission #}
+	<input type="hidden" name="referer" value="{{app.request.headers.get('referer')}}" />
 
 	<button>{{ button|default('Enregistrer') }}</button>
 	{{ form_end(form) }}
