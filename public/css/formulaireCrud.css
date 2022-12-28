@@ -44,7 +44,11 @@
    justify-content: left;
 }
 
-.images img {
+.images-et-captions {
+
+}
+
+.images img,.images-et-captions img {
    border-radius: 6px 6px 0 0;
    width: 80px;
    height: 60px;
@@ -63,7 +67,7 @@
    margin-left: 10px;
    position: relative;
    top: 10px;
-   border: solid 1px rgb(255, 0, 0);
+   /* border: solid 1px rgb(255, 0, 0); */
 }
 
 .vignette {
@@ -72,6 +76,11 @@
    flex-direction: column;
    margin: 10px;
    bottom: 12px;
+}
+
+.vignette-et-captions {
+   border: solid 1px rgb(255, 0, 0);
+
 }
 
 .ligne1 {

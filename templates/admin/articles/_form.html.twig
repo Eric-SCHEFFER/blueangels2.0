@@ -15,27 +15,29 @@
 	</div>
 
 	<h3>Images</h3>
-	<div class="images">
+	<div class="images-et-captions">
 
 		<div class="ligne1">
 			<div class="champ">
 				{{ form_row(form.imageFile, {'attr':{'class':'image'}}) }}
 			</div>
-			{# On vérifie si la route est "admin.articles.edit", et on affiche les images #}
-			{# TODO: On affiche l'image et à côté, sa légende dans un nouveau champ #}
-			{% if app.request.attributes.get('_route') == 'admin.articles.edit' %}
-			<div class="blocVignettes">
-				{% for image in article.imagesArticles %}
-				<div class="vignette">
+		</div>
+		{# On vérifie si la route est "admin.articles.edit", et on affiche les images #}
+		{# TODO: On affiche l'image et à côté, sa légende dans un nouveau champ #}
+		{% if app.request.attributes.get('_route') == 'admin.articles.edit' %}
+		{% for image in article.imagesArticles %}
+		<div class="ligne2">
+			{# <div class="blocVignettes"> #}
+				<div class="vignette vignette-et-captions">
 					<img src="{{ asset('uploads/imagesArticles/' ~ 'min_' ~ image.nom) }}" alt="image">
 					<a class="bouton petitBouton" href="{{ path('admin.articles.image.delete', {id: image.id}) }}"
 						data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer
 					</a>
 				</div>
-				{% endfor %}
-			</div>
-			{% endif %}
+			{# </div> #}
 		</div>
+		{% endfor %}
+		{% endif %}
 	</div>
 
 
