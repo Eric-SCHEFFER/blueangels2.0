@@ -1,115 +1,127 @@
 {% extends 'components/base.html.twig' %}
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('css/fullPageElement.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/carousel.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+<link rel="stylesheet" href="{{ asset('css/fullPageElement.css') }}">
+<link rel="stylesheet" href="{{ asset('css/carousel.css') }}">
+<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
 
 {% endblock %}
 {% block title %}
-	{{ SiteName }}:
-	{{ article.titre }}
+{{ SiteName }}:
+{{ article.titre }}
 {% endblock %}
 
 {% block body %}
 
-	<div class="wrapper">
-		<h1>{{ article.titre }}</h1>
-		<section class="full-element">
-			{% if article.getImagesArticles is not empty %}
-				{# On affiche les images dispo dans le tableau #}
-				{% for image in article.getImagesArticles %}
-					<div class="image">
-						<img src="{{ asset('uploads/imagesArticles/' ~ image.nom) }}" alt="">
-					</div>
-				{% endfor %}
+<div class="wrapper">
+	<h1>{{ article.titre }}</h1>
+	<section class="full-element">
+		{% if article.getImagesArticles is not empty %}
+		{# On affiche les images dispo dans le tableau #}
+		{% for image in article.getImagesArticles %}
+		<div class="image">
+			<img src="{{ asset('uploads/imagesArticles/' ~ image.nom) }}" alt="">
 
-				{# On affiche les boutons et infos du carousel, sauf s'il n'y a qu'une image #}
-				{% if article.getImagesArticles|length == 1 %}
-					<div class="boutonsAndBulletsWrapper hidden"></div>
-				{% else %}
-					<div class="boutonsAndBulletsWrapper">
-						<div class="boutonsNav">
-							<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-							<a class="next" onclick="plusSlides(1)">&#10095;</a>
-						</div>
-						{% set n = 0 %}
-						<div class="blocBullets">
-							{% for image in article.getImagesArticles %}
-								{% set n = n + 1 %}
-								<div class="bullet" onclick="currentSlide({{ n }})">
-									<p>{{ n }}</p>
-								</div>
-							{% endfor %}
-						</div>
-					</div>
-				{% endif %}
-
-				<div class="textes">
-				{% else %}
-					<div class="textes element-sans-image">
-					{% endif %}
-					<h2 class="hook">
-						{{ article.hook }}
-					</h2>
-					<div class="info-bar">
-						<div class="info-bar-left">
-							<div class="type-vue-and-status">
-								<i class="fas fa-info-circle"></i>
-								Article - catégorie {{ article.categoriesArticle.nom }}
-								{% if article.epingle %}
-									<span class="articles-epingle-on" title="Épinglé">
-										<i class="fas fa-thumbtack silver"></i>
-									</span>
-								{% endif %}
-							</div>
-							<div class="date">
-								<i class="fas fa-calendar-alt"></i>
-								{{ article.getCreatedAt | date("d-m-Y") }}
-							</div>
-							<div class="time">
-								<i class="fas fa-clock"></i>
-								{{ article.getCreatedAt | date("H:i") }}
-							</div>
-							<div class="categorie">
-								{% if article.categoriesArticle.nom is defined %}
-									{# Lien vers la page de la catégorie #}
-									<a class="bouton bt-small margin-right-6" title="Tous les articles de la catégorie {{ article.categoriesArticle.nom }}" href="{{ path('categorie.articles', {idCategorie: article.categoriesArticle.id}) }}">
-										Articles {{ article.categoriesArticle.nom }}
-									</a>
-								{% endif %}
-							</div>
-							<div class="categorie">
-								<a class="bouton bt-small" title="Tous les articles, toutes catégories confondues" href="{{ path('articles') }}">
-									Tous les articles
-								</a>
-							</div>
-						</div>
-						{# On affiche la clé anglaise "gérer", quand on est connecté en admin #}
-						{% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
-							<div class="gerer">
-								<a href="{{ path('admin.articles.edit', {id: article.id}) }}" title="Éditer l'évènement">
-									<i class="fas fa-edit fa-2x blue"></i>
-								</a>
-							</div>
-						{% endif %}
-						{# On n'affiche pas le lien contact quand c'est la catégorie Partenaires ou Mentions légales car ça peut prêter à confusion #}
-						{% if article.categoriesArticle.nom and
-							article.categoriesArticle.nom != "Partenaires" and
-							article.categoriesArticle.nom != "Mentions légales" %}
-							<div class="contact">
-								<a class="bouton bt-small" href="{{ path('contact', {id: article.id, categorie: article.categoriesArticle.nom}) }}" title="Nous contacter à propos de cet article">Contact</a>
-							</div>
-						{% endif %}
-					</div>
-
-
-					<div class="contenu">
-						{{ article.contenu | nl2br | auto_link}}
-					</div>
-				</div>
-			</section>
+			{# TODO: Afficher la légende de chaque image #}
+			{{ image.caption }}
 		</div>
-		{% block javascript %}
-			<script src="{{ asset('js/carousel.js') }}"></script>
-		{% endblock %}
-	{% endblock %}
+
+
+		{% endfor %}
+
+
+		{# On affiche les boutons et infos du carousel, sauf s'il n'y a qu'une image #}
+		{% if article.getImagesArticles|length == 1 %}
+		<div class="boutonsAndBulletsWrapper hidden"></div>
+		{% else %}
+		<div class="boutonsAndBulletsWrapper">
+			<div class="boutonsNav">
+				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+				<a class="next" onclick="plusSlides(1)">&#10095;</a>
+			</div>
+			{% set n = 0 %}
+			<div class="blocBullets">
+				{% for image in article.getImagesArticles %}
+				{% set n = n + 1 %}
+				<div class="bullet" onclick="currentSlide({{ n }})">
+					<p>{{ n }}</p>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+		{% endif %}
+
+		<div class="textes">
+			{% else %}
+			<div class="textes element-sans-image">
+				{% endif %}
+				<h2 class="hook">
+					{{ article.hook }}
+				</h2>
+				<div class="info-bar">
+					<div class="info-bar-left">
+						<div class="type-vue-and-status">
+							<i class="fas fa-info-circle"></i>
+							Article - catégorie {{ article.categoriesArticle.nom }}
+							{% if article.epingle %}
+							<span class="articles-epingle-on" title="Épinglé">
+								<i class="fas fa-thumbtack silver"></i>
+							</span>
+							{% endif %}
+						</div>
+						<div class="date">
+							<i class="fas fa-calendar-alt"></i>
+							{{ article.getCreatedAt | date("d-m-Y") }}
+						</div>
+						<div class="time">
+							<i class="fas fa-clock"></i>
+							{{ article.getCreatedAt | date("H:i") }}
+						</div>
+						<div class="categorie">
+							{% if article.categoriesArticle.nom is defined %}
+							{# Lien vers la page de la catégorie #}
+							<a class="bouton bt-small margin-right-6"
+								title="Tous les articles de la catégorie {{ article.categoriesArticle.nom }}"
+								href="{{ path('categorie.articles', {idCategorie: article.categoriesArticle.id}) }}">
+								Articles {{ article.categoriesArticle.nom }}
+							</a>
+							{% endif %}
+						</div>
+						<div class="categorie">
+							<a class="bouton bt-small" title="Tous les articles, toutes catégories confondues"
+								href="{{ path('articles') }}">
+								Tous les articles
+							</a>
+						</div>
+					</div>
+					{# On affiche la clé anglaise "gérer", quand on est connecté en admin #}
+					{% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
+					<div class="gerer">
+						<a href="{{ path('admin.articles.edit', {id: article.id}) }}" title="Éditer l'évènement">
+							<i class="fas fa-edit fa-2x blue"></i>
+						</a>
+					</div>
+					{% endif %}
+					{# On n'affiche pas le lien contact quand c'est la catégorie Partenaires ou Mentions légales car ça peut
+					prêter à confusion #}
+					{% if article.categoriesArticle.nom and
+					article.categoriesArticle.nom != "Partenaires" and
+					article.categoriesArticle.nom != "Mentions légales" %}
+					<div class="contact">
+						<a class="bouton bt-small"
+							href="{{ path('contact', {id: article.id, categorie: article.categoriesArticle.nom}) }}"
+							title="Nous contacter à propos de cet article">Contact</a>
+					</div>
+					{% endif %}
+				</div>
+
+
+				<div class="contenu">
+					{{ article.contenu | nl2br | auto_link}}
+				</div>
+			</div>
+	</section>
+</div>
+{% block javascript %}
+<script src="{{ asset('js/carousel.js') }}"></script>
+{% endblock %}
+{% endblock %}
