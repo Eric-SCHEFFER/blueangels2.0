@@ -13,7 +13,7 @@
    width: 900px;
 }
 
-.form1 .titre, .form1 .hook, .form1 .image, .form1 .description {
+.form1 .titre, .form1 .hook, .form1 .image, .form1 .description, .form1 .caption {
    width: 100%;
    /* margin: 0 0 20px 0; */
    height: 25px;
@@ -25,9 +25,17 @@
    background-color: #ffffff;
 }
 
+
 .champ {
    margin: 0 20px 20px 20px;
    /* border: solid 1px blue; */
+}
+
+.champ-caption {
+   position: relative;
+   margin: 0 20px 0 20px;
+   top: 23px;
+   right:10px;
 }
 
 .date {
