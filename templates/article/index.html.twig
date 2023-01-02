@@ -22,7 +22,11 @@
 			<img src="{{ asset('uploads/imagesArticles/' ~ image.nom) }}" alt="">
 
 			{# TODO: Afficher la légende de chaque image #}
-			{{ image.caption }}
+			<div class="image-caption">
+				<div class="text-image-caption">
+					{{ image.caption }}
+				</div>
+			</div>
 		</div>
 
 

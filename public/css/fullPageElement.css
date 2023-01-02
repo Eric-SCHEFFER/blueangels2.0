@@ -28,6 +28,24 @@ h2 {
    object-fit: scale-down;
 }
 
+.image-caption {
+   position: relative;
+   top: -70px;
+   /* border: red solid 1px; */
+   width: auto;
+   height: 3.5em;
+   margin: auto;
+   padding: 0 20% 8px 20%;
+   /* filter: blur(9px); */
+   /* opacity: .5; */
+}
+
+.text-image-caption {
+   color: #FFF;
+   text-align: center;
+
+}
+
 .info-bar {
    display: flex;
    align-items: flex-end;
