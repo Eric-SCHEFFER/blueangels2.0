@@ -40,7 +40,6 @@ h2 {
    padding: 4px 20% 4px 20%;
    backdrop-filter: blur(4px);
    background-color: rgba(0, 0, 0, 0.5);
-   /* box-shadow: inset 20px 20px 50px grey; */
 }
 
 .text-image-caption {
@@ -52,6 +51,7 @@ h2 {
    color: #FFF;
    text-shadow: 2px 2px 3px rgb(0, 0, 0);
    font-size: 1.2em;
+   overflow: hidden;
 }
 
 .info-bar {
