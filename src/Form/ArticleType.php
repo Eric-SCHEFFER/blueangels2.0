@@ -71,7 +71,7 @@ class ArticleType extends AbstractType
                 ]
             ])
 
-            // TODO: CHAMP CAPTION POUR CHAQUE IMAGE
+            // CHAMP CAPTION POUR CHAQUE IMAGE
             // Solution 1
             ->add('ImagesArticles', CollectionType::class, [
                 'required' => false,

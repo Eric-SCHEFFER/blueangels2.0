@@ -16,7 +16,7 @@
 utilisateur="u104388791"
 serveur="access867248383.webspace-data.io"
 racineProjetDistant="~/bad"
-php="php7.4-cli"
+php="php8.1-cli"
 
 # Couleur texte et fond
 NONE='\033[00m'
