@@ -20,19 +20,16 @@
 		{% for image in article.getImagesArticles %}
 		<div class="image">
 			<img src="{{ asset('uploads/imagesArticles/' ~ image.nom) }}" alt="">
-
-			{# TODO: Afficher la légende de chaque image #}
+			{# On affiche la légende de chaque image #}
+			{% if image.caption is defined and image.caption != "" %}
 			<div class="image-caption">
 				<div class="text-image-caption">
 					{{ image.caption }}
 				</div>
 			</div>
+			{% endif %}
 		</div>
-
-
 		{% endfor %}
-
-
 		{# On affiche les boutons et infos du carousel, sauf s'il n'y a qu'une image #}
 		{% if article.getImagesArticles|length == 1 %}
 		<div class="boutonsAndBulletsWrapper hidden"></div>
@@ -46,7 +43,7 @@
 			<div class="blocBullets">
 				{% for image in article.getImagesArticles %}
 				{% set n = n + 1 %}
-				<div class="bullet" onclick="currentSlide({{ n }})">
+				<div class="bullet" title="{{ image.caption }}" onclick="currentSlide({{ n }})">
 					<p>{{ n }}</p>
 				</div>
 				{% endfor %}

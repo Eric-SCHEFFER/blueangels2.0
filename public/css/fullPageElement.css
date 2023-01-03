@@ -17,7 +17,7 @@ h2 {
    background-color: #000000;
    border-radius: 12px 12px 0 0;
    position: relative;
-   top: 54px;
+   top: 64px;
 }
 
 .image img {
@@ -29,21 +29,29 @@ h2 {
 }
 
 .image-caption {
+   display: flex;
+   justify-content: center;
    position: relative;
-   top: -70px;
+   top: -73px;
    /* border: red solid 1px; */
    width: auto;
-   height: 3.5em;
+   height: 3.8em;
    margin: auto;
-   padding: 0 20% 8px 20%;
-   /* filter: blur(9px); */
-   /* opacity: .5; */
+   padding: 4px 20% 4px 20%;
+   backdrop-filter: blur(4px);
+   background-color: rgba(0, 0, 0, 0.5);
+   /* box-shadow: inset 20px 20px 50px grey; */
 }
 
 .text-image-caption {
-   color: #FFF;
+   display: flex;
+   justify-content: center;
    text-align: center;
-
+   align-items: center;
+   /* padding: 0 80px 0 80px; */
+   color: #FFF;
+   text-shadow: 2px 2px 3px rgb(0, 0, 0);
+   font-size: 1.2em;
 }
 
 .info-bar {
