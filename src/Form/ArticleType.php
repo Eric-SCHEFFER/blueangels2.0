@@ -21,6 +21,9 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Doctrine\ORM\EntityRepository;
 use App\Entity\CategoriesArticle;
+use App\Entity\ImagesArticle;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+
 
 
 
@@ -68,32 +71,51 @@ class ArticleType extends AbstractType
                 ]
             ])
 
+            // TODO: CHAMP CAPTION POUR CHAQUE IMAGE
+            // Solution 1
+            ->add('ImagesArticles', CollectionType::class, [
+                'required' => false,
+                'entry_type' => ImagesArticleType::class,
+                // 'allow_add' => true,
+                // 'allow_delete' => true,
+
+            ])
+
+            // Solution 2
+            // ->add('ImagesArticles', EntityType::class, [
+            //     'class' => ImagesArticle::class,
+            //     'required' => false,
+            //     'mapped' => false,
+
+            // ])
+
+
             ->add('created_at', DateTimeType::class, [
-                'years' => range(date('Y')-20, date('Y')+20),
+                'years' => range(date('Y') - 20, date('Y') + 20),
                 'label' => 'Date de mise à jour',
                 'required' => true
             ])
 
-            ->add('contenu');
+            ->add('contenu')
 
-        // ->add('CategoriesArticle', EntityType::class, [
-        //     'class' => CategoriesArticle::class,
-        //     'label' => 'Catégorie',
-        //     'required' => false,
-        //     'placeholder' => 'Aucune catégorie choisie',
-        // ])
+            // ->add('CategoriesArticle', EntityType::class, [
+            //     'class' => CategoriesArticle::class,
+            //     'label' => 'Catégorie',
+            //     'required' => false,
+            //     'placeholder' => 'Aucune catégorie choisie',
+            // ])
 
-        // On utilise à la place de ci-dessus, l'option queryBuilder pour trier les choix par nom
-        $builder->add('CategoriesArticle', EntityType::class, [
-            'class' => CategoriesArticle::class,
-            'query_builder' => function (EntityRepository $er) {
-                return $er->createQueryBuilder('c')
-                    ->orderBy('c.nom', 'ASC');
-            },
-            'choice_label' => 'nom',
-            'label' => 'Catégorie',
-            'required' => false,
-        ])
+            // On utilise à la place de ci-dessus, l'option queryBuilder pour trier les choix par nom
+            ->add('CategoriesArticle', EntityType::class, [
+                'class' => CategoriesArticle::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('c')
+                        ->orderBy('c.nom', 'ASC');
+                },
+                'choice_label' => 'nom',
+                'label' => 'Catégorie',
+                'required' => false,
+            ])
 
             ->add('epingle', CheckboxType::class, [
                 'required' => false,

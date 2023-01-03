@@ -13,7 +13,7 @@
    width: 900px;
 }
 
-.form1 .titre, .form1 .hook, .form1 .image, .form1 .description {
+.form1 .titre, .form1 .hook, .form1 .image, .form1 .description, .form1 .caption {
    width: 100%;
    /* margin: 0 0 20px 0; */
    height: 25px;
@@ -25,9 +25,17 @@
    background-color: #ffffff;
 }
 
+
 .champ {
    margin: 0 20px 20px 20px;
    /* border: solid 1px blue; */
+}
+
+.champ-caption {
+   position: relative;
+   margin: 0 20px 0 20px;
+   top: 23px;
+   right:10px;
 }
 
 .date {
@@ -44,7 +52,11 @@
    justify-content: left;
 }
 
-.images img {
+.images-et-captions {
+
+}
+
+.images img,.images-et-captions img {
    border-radius: 6px 6px 0 0;
    width: 80px;
    height: 60px;
@@ -63,6 +75,7 @@
    margin-left: 10px;
    position: relative;
    top: 10px;
+   /* border: solid 1px rgb(255, 0, 0); */
 }
 
 .vignette {
@@ -71,6 +84,11 @@
    flex-direction: column;
    margin: 10px;
    bottom: 12px;
+}
+
+.vignette-et-captions {
+   /* border: solid 1px rgb(255, 0, 0); */
+   margin: 10px 0 0 20px;
 }
 
 .ligne1 {
