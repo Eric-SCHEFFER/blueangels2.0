@@ -48,6 +48,13 @@ if (bullet.length > 0) {
    }
 }
 
+else {
+   if (bullet.length == 0) {
+      // Affichage du caption quand il n'y a qu'une seule image
+      let imagesCaption = document.getElementsByClassName("image-caption");
+      imagesCaption[0].classList.add("visibility-caption-on");
+   }
+}
 
 
 
