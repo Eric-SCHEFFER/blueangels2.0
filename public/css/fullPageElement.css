@@ -18,6 +18,7 @@ h2 {
    border-radius: 12px 12px 0 0;
    position: relative;
    top: 64px;
+   left: 0;
 }
 
 .image img {
@@ -26,6 +27,8 @@ h2 {
    height: 100%;
    border-radius: 12px 12px 0 0;
    object-fit: scale-down;
+   position: relative;
+   left: 0;
 }
 
 .image-caption {
