@@ -36,14 +36,30 @@
 
 .visibility-image-off {
    opacity: 0;
-   animation: transition-out 1s;
+   animation: transition-out 4s;
 }
 
 
 .visibility-image-on {
    opacity: 1;
-   animation: transition-in 1s;
+   animation: transition-in 1.5s;
 }
+
+@keyframes transition-caption-in {
+   from {
+      right: 100vw;
+   }
+
+   to {
+      right: 0;
+   }
+}
+
+.visibility-caption-on {
+   right: 0;
+   animation: transition-caption-in .5s;
+}
+
 
 
 .boutonsNav {

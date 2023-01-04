@@ -17,24 +17,27 @@ if (bullet.length > 0) {
       let i;
       let slides = document.getElementsByClassName("image");
       let bullets = document.getElementsByClassName("bullet");
+      let imagesCaption = document.getElementsByClassName("image-caption");
       if (n > slides.length) { slideIndex = 1 }
       if (n < 1) { slideIndex = slides.length }
       for (i = 0; i < slides.length; i++) {
 
-         // TODO: Transitions pour l'image
+         // Transition pour l'image
          // Ne fonctionne pour l'instant qu'à l'apparition
-
 
          slides[i].classList.add("display-image-off");
          slides[i].classList.add("visibility-image-off");
          slides[i].classList.remove("display-image-on");
          slides[i].classList.remove("visibility-image-on");
-
+         // Transition pour le caption
+         if (typeof imagesCaption[i] !== 'undefined') {
+            imagesCaption[i].classList.add("visibility-caption-on");
+         }
       }
       for (i = 0; i < bullets.length; i++) {
          bullets[i].className = bullets[i].className.replace(" actif", "");
       }
-      // TODO: Transitions pour l'image
+      // Transition pour l'image
 
       slides[slideIndex - 1].classList.remove("display-image-off");
       slides[slideIndex - 1].classList.add("visibility-image-on");

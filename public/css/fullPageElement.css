@@ -36,6 +36,7 @@ h2 {
    justify-content: center;
    position: relative;
    top: -73px;
+   right: 100vw;
    /* border: red solid 1px; */
    width: auto;
    height: 3.8em;
@@ -156,7 +157,7 @@ h2 {
 }
 
 .tampon-oblique-red {
-   z-index: 0;
+   z-index: 1;
    position: relative;
    top: 155px;
    text-align: center;
