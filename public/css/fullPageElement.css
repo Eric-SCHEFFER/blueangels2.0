@@ -17,6 +17,7 @@ h2 {
    background-color: #000000;
    border-radius: 12px 12px 0 0;
    position: relative;
+   /* BUG Affichage des évents avec bullets dans l'image. Voir du côté du tampon rouge "Évènement annulé" */
    top: 64px;
    left: 0;
 }
@@ -158,12 +159,13 @@ h2 {
 
 .tampon-oblique-red {
    z-index: 1;
-   position: relative;
-   top: 155px;
+   position: absolute;
+   top: 70%;
+   right: 10%;
    text-align: center;
    text-transform: uppercase;
    font-size: .8em;
-   width: 50%;
+   width: 83%;
    margin: auto;
    height: auto;
    color: rgb(255, 255, 255);
