@@ -51,8 +51,8 @@ if (bullet.length > 0) {
 else {
    if (bullet.length == 0) {
       // Affichage du caption quand il n'y a qu'une seule image
-      if (typeof imagesCaption !== 'undefined') {
-         let imagesCaption = document.getElementsByClassName("image-caption");
+      let imagesCaption = document.getElementsByClassName("image-caption");
+      if (typeof imagesCaption[0] !== 'undefined') {
          imagesCaption[0].classList.add("visibility-caption-on");
       }
    }
