@@ -17,7 +17,6 @@ h2 {
    background-color: #000000;
    border-radius: 12px 12px 0 0;
    position: relative;
-   /* BUG Affichage des évents avec bullets dans l'image. Voir du côté du tampon rouge "Évènement annulé" */
    top: 64px;
    left: 0;
 }
@@ -180,3 +179,4 @@ h2 {
    color: rgb(221, 0, 0);
    border: 1px rgb(221, 0, 0) solid;
 }
+
