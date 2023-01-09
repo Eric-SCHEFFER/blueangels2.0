@@ -45,6 +45,7 @@ h2 {
    padding: 4px 20% 4px 20%;
    backdrop-filter: blur(4px);
    background-color: rgba(0, 0, 0, 0.5);
+   box-shadow: 0px -5px 16px #28282873;
 }
 
 .text-image-caption {
