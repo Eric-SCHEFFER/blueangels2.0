@@ -19,7 +19,6 @@ h2 {
    position: relative;
    top: 64px;
    left: 0;
-   padding: 0 6%;
 }
 
 .image img {
@@ -39,6 +38,7 @@ h2 {
    top: -73px;
    /* border: red solid 1px; */
    width: fit-content;
+   max-width: 90%;
    margin: auto;
    padding: 4px;
    backdrop-filter: blur(4px);
