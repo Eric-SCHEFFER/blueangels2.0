@@ -67,6 +67,8 @@
    height: auto;
    width: 100%;
    justify-content: space-between;
+   position: relative;
+   top: -11vh;
 }
 
 /* Les boutons précédent et suivant */
@@ -127,3 +129,5 @@
 .actif, .bullet:hover {
    background-color: #000000;
 }
+
+@media screen and (max-width: 1200px) {}
