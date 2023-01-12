@@ -21,11 +21,11 @@ class ImagesArticleType extends AbstractType
                 'caption',
                 TextType::class,
                 [
-                    'label' => 'Légende',
+                    'label' => 'Légende (maxi 120 car)',
                     'constraints' => [
                         new Length([
-                            'max' => 60,
-                            'maxMessage' => 'Maximum 60 caractères'
+                            'max' => 120,
+                            'maxMessage' => 'Maximum 120 caractères'
                         ])
                     ]
                 ]
