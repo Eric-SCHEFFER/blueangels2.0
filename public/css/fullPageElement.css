@@ -19,6 +19,7 @@ h2 {
    position: relative;
    top: 64px;
    left: 0;
+   padding: 0 6%;
 }
 
 .image img {
@@ -39,7 +40,7 @@ h2 {
    /* border: red solid 1px; */
    width: fit-content;
    margin: auto;
-   padding: 4px 8px;
+   padding: 4px;
    backdrop-filter: blur(4px);
    background-color: rgba(0, 0, 0, 0.5);
    box-shadow: 0px -5px 16px #28282873;
