@@ -68,7 +68,7 @@
    width: 100%;
    justify-content: space-between;
    position: relative;
-   top: -32vh;
+   top: -30vh;
 }
 
 /* Les boutons précédent et suivant */
@@ -77,7 +77,7 @@
    cursor: pointer;
    bottom: 0;
    width: 40px;
-   border-radius: 50%;
+   border-radius: 5%;
    padding: 20px 0 20px 24px;
    color: white;
    font-weight: bold;
