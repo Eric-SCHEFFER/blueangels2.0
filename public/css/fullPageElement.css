@@ -41,7 +41,7 @@ h2 {
    margin: auto;
    padding: 4px 8px;
    backdrop-filter: blur(4px);
-   background-color: rgba(0, 0, 0, 0.3);
+   background-color: rgba(0, 0, 0, 0.5);
    box-shadow: 0px -5px 16px #28282873;
    border-radius: 4px;
 }
