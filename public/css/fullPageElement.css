@@ -12,10 +12,8 @@ h2 {
 
 .image {
    /* Switcher la height en auto et 70vh pour tester ce qui est mieux */
-   /* height: 70vh; */
    height: 70vh;
    background-color: #000000;
-   border-radius: 12px 12px 0 0;
    position: relative;
    top: 64px;
    left: 0;
@@ -28,16 +26,18 @@ h2 {
    border-radius: 12px;
    object-fit: scale-down;
    position: relative;
-   left: 0;
-   display: block;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%);
    margin: auto;
 }
 
 .image-caption {
    display: flex;
    justify-content: center;
-   position: relative;
-   top: -73px;
+   position: absolute;
+   bottom: 0;
+   left: 0;
    /* border: red solid 1px; */
    width: fit-content;
    max-width: 90%;
