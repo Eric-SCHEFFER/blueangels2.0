@@ -1,113 +1,119 @@
 {% extends 'components/base.html.twig' %}
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('css/fullPageElement.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/carousel.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+<link rel="stylesheet" href="{{ asset('css/fullPageElement.css') }}">
+<link rel="stylesheet" href="{{ asset('css/carousel.css') }}">
+<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
 
 {% endblock %}
 {% block title %}
-	{{ SiteName }}:
-	{{ event.nom }}
+{{ SiteName }}:
+{{ event.nom }}
 {% endblock %}
 
 {% block body %}
-	<div class="wrapper">
-		<h1>{{ event.nom }}</h1>
-		<section class="full-element">
-			{% if event.getImagesEvents is not empty %}
-				{# On affiche les images dispo dans le tableau #}
+<div class="wrapper">
+	<h1>{{ event.nom }}</h1>
+	<section class="full-element">
+		{% if event.getImagesEvents is not empty %}
+		{# On affiche les images dispo dans le tableau #}
+		{% for image in event.getImagesEvents %}
+		<div class="image">
+			{% if event.getAnnule %}
+			<div class="tampon-oblique-red">Évènement annulé</div>
+			{% endif %}
+			<img src="{{ asset('uploads/imagesEvents/' ~ image.nom) }}">
+		</div>
+		{% endfor %}
+		{# On affiche les boutons et infos du carousel, sauf s'il n'y a qu'une image #}
+		{% if event.getImagesEvents|length == 1 %}
+		<div class="boutonsAndBulletsWrapper">
+			<div class="boutonsNav hidden">
+				<a class="prev">---</a> {# Petit bricolage, sinon, décalage de l'affichage #}
+				<a class="next">---</a>
+			</div>
+		</div>
+		{% else %}
+		<div class="boutonsAndBulletsWrapper">
+			<div class="boutonsNav">
+				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+				<a class="next" onclick="plusSlides(1)">&#10095;</a>
+			</div>
+			{% set n = 0 %}
+			<div class="blocBullets">
 				{% for image in event.getImagesEvents %}
-					<div class="image">
-						{% if event.getAnnule %}
-							<div class="tampon-oblique-red">Évènement annulé</div>
-						{% endif %}
-						<img src="{{ asset('uploads/imagesEvents/' ~ image.nom) }}">
-					</div>
+				{% set n = n + 1 %}
+				<div class="bullet" onclick="currentSlide({{ n }})">
+					<p>{{ n }}</p>
+				</div>
 				{% endfor %}
-				{# On affiche les boutons et infos du carousel, sauf s'il n'y a qu'une image #}
-				{% if event.getImagesEvents|length == 1 %}
-					<div class="boutonsAndBulletsWrapper hidden"></div>
-				{% else %}
-					<div class="boutonsAndBulletsWrapper">
-						<div class="boutonsNav">
-							<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-							<a class="next" onclick="plusSlides(1)">&#10095;</a>
+			</div>
+		</div>
+		{% endif %}
+
+		<div class="textes">
+			{% else %}
+			<div class="textes element-sans-image">
+				{% endif %}
+				<h2 class="hook">
+					{{ event.hook }}
+				</h2>
+				<div class="info-bar">
+					<div class="info-bar-left">
+						<div class="type-vue-and-status">
+							<i class="fas fa-info-circle"></i>
+							Évènement
+							{% if event.getEventBlueAngels %}
+							Blue Angels
+							<div class="event-blue-angels" title="Évènement oganisé par Les Blue Angels">
+								<img src="{{ asset('images/favicon.png') }}" alt='Icone des Blue Angels'>
+							</div>
+							{% endif %}
+
+							{# On affiche l'épingle uniquement si l'event est futur #}
+							{% if epoque == 'futur' %}
+							{% if event.epingle %}
+							<span class="articles-epingle-on" title="Épinglé">
+								<i class="fas fa-thumbtack silver"></i>
+							</span>
+							{% endif %}
+							{% endif %}
 						</div>
-						{% set n = 0 %}
-						<div class="blocBullets">
-							{% for image in event.getImagesEvents %}
-								{% set n = n + 1 %}
-								<div class="bullet" onclick="currentSlide({{ n }})">
-									<p>{{ n }}</p>
-								</div>
+						<div class="date">
+							<i class="fas fa-calendar-alt"></i>
+							{# Date affichant le jour, et le mois en toutes lettres #}
+							{{ event.getDateEvent | format_datetime(pattern="EEEE dd MMMM yyyy", locale="fr") | capitalize }}
+							{# Date, et mentions couleurs du nbr de jours avant l'event #}
+							{# De Jour J à J-N, soit 0..N #}
+							{% for j in 0..20 %}
+							{% if j == 0 %}
+							{% if event.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
+							<span>(<span class="green">Aujourd'hui</span>)</span>
+							{% endif %}
+							{% elseif j == 1 %}
+							{% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
+							<span>(<span class="blue">Demain</span>)</span>
+							{% endif %}
+							{% else %}
+							{% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
+							<span>(<span class="blue">Dans {{ j }} jours</span>)</span>
+							{% endif %}
+							{% endif %}
 							{% endfor %}
 						</div>
-					</div>
-				{% endif %}
+						<div class="time">
+							<i class="fas fa-clock"></i>
+							{{ event.getDateEvent | date("H:i") }}
+						</div>
 
-				<div class="textes">
-				{% else %}
-					<div class="textes element-sans-image">
-					{% endif %}
-					<h2 class="hook">
-						{{ event.hook }}
-					</h2>
-					<div class="info-bar">
-						<div class="info-bar-left">
-							<div class="type-vue-and-status">
-								<i class="fas fa-info-circle"></i>
-								Évènement
-								{% if event.getEventBlueAngels %}
-									Blue Angels
-									<div class="event-blue-angels" title="Évènement oganisé par Les Blue Angels">
-										<img src="{{ asset('images/favicon.png') }}" alt='Icone des Blue Angels'>
-									</div>
-								{% endif %}
-
-								{# On affiche l'épingle uniquement si l'event est futur #}
-								{% if epoque == 'futur' %}
-									{% if event.epingle %}
-										<span class="articles-epingle-on" title="Épinglé">
-											<i class="fas fa-thumbtack silver"></i>
-										</span>
-									{% endif %}
-								{% endif %}
-							</div>
-							<div class="date">
-								<i class="fas fa-calendar-alt"></i>
-								{# Date affichant le jour, et le mois en toutes lettres #}
-								{{ event.getDateEvent | format_datetime(pattern="EEEE dd MMMM yyyy", locale="fr") | capitalize }}
-								{# Date, et mentions couleurs du nbr de jours avant l'event #}
-								{# De Jour J à J-N, soit 0..N #}
-									{% for j in 0..20 %}
-										{% if j == 0 %}
-											{% if event.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
-											<span>(<span class="green">Aujourd'hui</span>)</span>
-											{% endif %}
-										{% elseif j == 1 %}
-										{% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
-											<span>(<span class="blue">Demain</span>)</span>
-										{% endif %}
-										{% else %}
-											{% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
-												<span>(<span class="blue">Dans {{ j }} jours</span>)</span>
-											{% endif %}
-										{% endif %}
-									{% endfor %}
-							</div>
-							<div class="time">
-								<i class="fas fa-clock"></i>
-								{{ event.getDateEvent | date("H:i") }}
-							</div>
-
-							{# Infos lieu et adresse de l'évènement dans un lien pointant sur la page de google maps #}
-							{# Si les champs nomLieu et ville n'existent pas en base, on n'affiche rien #}
-							{% if event.getVille %}
-							{# Si le champ lienMaps n'existe pas en base, on affiche une div simple (pas de lien) #}
-								{% if event.getLienMaps %}
-									<a class="lieu-event-container" href="{{ event.getLienMaps }}" target="_blank" title="Voir sur Google Maps">
-									{% else %}
-										<div class="lieu-event-container">
+						{# Infos lieu et adresse de l'évènement dans un lien pointant sur la page de google maps #}
+						{# Si les champs nomLieu et ville n'existent pas en base, on n'affiche rien #}
+						{% if event.getVille %}
+						{# Si le champ lienMaps n'existe pas en base, on affiche une div simple (pas de lien) #}
+						{% if event.getLienMaps %}
+						<a class="lieu-event-container" href="{{ event.getLienMaps }}" target="_blank"
+							title="Voir sur Google Maps">
+							{% else %}
+							<div class="lieu-event-container">
 								{% endif %}
 								<div class="icone-maps-container">
 									<i class="fas fa-map-marker-alt"></i>
@@ -121,9 +127,9 @@
 									</div>
 									<div class="code-postal-et-ville">
 										{% if event.getCodePostal %}
-											<div class="code-postal">
-												{{ event.getCodePostal }}
-											</div>
+										<div class="code-postal">
+											{{ event.getCodePostal }}
+										</div>
 										{% endif %}
 										<div class="ville">
 											{{ event.getVille|upper }}
@@ -131,52 +137,52 @@
 									</div>
 								</div>
 								{% if event.getLienMaps %}
-									</a>
-									{% else %}
-										</div>
-								{% endif %}
-							{% endif %}
-
-							{% if event.getDateEvent()|date("Y-m-d") < today|date("Y-m-d") %}
-								<div>
-									Évènement terminé
-								</div>
-							{% endif %}
-							{% if event.getAnnule() %}
-								<div class="red">
-									Évènement annulé
-								</div>
-							{% endif %}
-
-							<div class="categorie">
-								<a class="bouton bt-small" title="Tous les évènements à venir" href="{{ path('a_venir') }}">
-									Tous les évènements à venir
-								</a>
-							</div>
-						</div>
-
-						{# On affiche la clé anglaise "gérer", quand on est connecté en admin #}
-						{% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
-							<div class="gerer">
-								<a href="{{ path('admin.events.edit', {id: event.id}) }}" title="Éditer l'évènement">
-									<i class="fas fa-edit fa-2x blue"></i>
-								</a>
-							</div>
-						{% endif %}
-						<div class="contact">
-							<a class="bouton bt-small" href="{{ path('contact', {id: event.id}) }}" title="Nous contacter à propos de cet évènement">Contact</a>
-						</div>
+						</a>
+						{% else %}
 					</div>
+					{% endif %}
+					{% endif %}
 
-
-					<div class="description">
-						{{ event.description | nl2br | auto_link }}
-					</div>
+					{% if event.getDateEvent()|date("Y-m-d") < today|date("Y-m-d") %} <div>
+						Évènement terminé
 				</div>
-			</section>
+				{% endif %}
+				{% if event.getAnnule() %}
+				<div class="red">
+					Évènement annulé
+				</div>
+				{% endif %}
+
+				<div class="categorie">
+					<a class="bouton bt-small" title="Tous les évènements à venir" href="{{ path('a_venir') }}">
+						Tous les évènements à venir
+					</a>
+				</div>
+			</div>
+
+			{# On affiche la clé anglaise "gérer", quand on est connecté en admin #}
+			{% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
+			<div class="gerer">
+				<a href="{{ path('admin.events.edit', {id: event.id}) }}" title="Éditer l'évènement">
+					<i class="fas fa-edit fa-2x blue"></i>
+				</a>
+			</div>
+			{% endif %}
+			<div class="contact">
+				<a class="bouton bt-small" href="{{ path('contact', {id: event.id}) }}"
+					title="Nous contacter à propos de cet évènement">Contact</a>
+			</div>
 		</div>
 
-		{% block javascript %}
-			<script src="{{ asset('js/carousel.js') }}"></script>
-		{% endblock %}
-	{% endblock %}
+
+		<div class="description">
+			{{ event.description | nl2br | auto_link }}
+		</div>
+</div>
+</section>
+</div>
+
+{% block javascript %}
+<script src="{{ asset('js/carousel.js') }}"></script>
+{% endblock %}
+{% endblock %}
