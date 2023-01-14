@@ -50,8 +50,8 @@ h2 {
    color: #FFF;
    text-shadow: 2px 2px 3px rgb(0, 0, 0);
    font-size: 1.2em;
-   overflow: scroll;
-   max-height: 61px;
+   overflow: hidden;
+   max-height: 121px;
 }
 
 .info-bar {
