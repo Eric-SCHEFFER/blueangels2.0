@@ -34,7 +34,12 @@
 		{% endfor %}
 		{# On affiche les boutons et infos du carousel, sauf s'il n'y a qu'une image #}
 		{% if article.getImagesArticles|length == 1 %}
-		<div class="boutonsAndBulletsWrapper hidden"></div>
+		<div class="boutonsAndBulletsWrapper">
+			<div class="boutonsNav hidden">
+				<a class="prev">---</a> {# Petit bricolage, sinon, décalage de l'affichage #}
+				<a class="next">---</a>
+			</div>
+		</div>
 		{% else %}
 		<div class="boutonsAndBulletsWrapper">
 			<div class="boutonsNav">

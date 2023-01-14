@@ -11,16 +11,13 @@ h2 {
 }
 
 .image {
-   /* Switcher la height en auto et 70vh pour tester ce qui est mieux */
    height: 70vh;
-   /* background-color: #000000; */
    position: relative;
    top: 64px;
    left: 0;
 }
 
 .image img {
-   /* background-color: #000000; */
    max-width: 100%;
    max-height: 100%;
    border-radius: 12px;
@@ -36,9 +33,8 @@ h2 {
    display: flex;
    justify-content: center;
    position: absolute;
-   bottom: 1px;
+   bottom: 2px;
    left: 0;
-   /* border: red solid 1px; */
    width: fit-content;
    max-width: 90%;
    margin: auto;
