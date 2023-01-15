@@ -46,7 +46,7 @@
 
 @keyframes transition-caption-in {
    from {
-      right: 100vw;
+      left: -215vw;
    }
 
    to {
