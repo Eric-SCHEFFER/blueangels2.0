@@ -4,10 +4,6 @@
    visibility: hidden;
 }
 
-.display-image-off {
-   display: none;
-}
-
 @keyframes transition-in {
    from {
       opacity: 0;
@@ -18,11 +14,6 @@
    }
 }
 
-.visibility-image-on {
-   opacity: 1;
-   animation: transition-in 1.5s;
-}
-
 @keyframes transition-caption-in {
    from {
       left: -215vw;
@@ -31,6 +22,15 @@
    to {
       right: 0;
    }
+}
+
+.display-image-off {
+   display: none;
+}
+
+.visibility-image-on {
+   opacity: 1;
+   animation: transition-in 1.5s;
 }
 
 .visibility-caption-on {

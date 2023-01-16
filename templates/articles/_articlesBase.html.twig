@@ -31,12 +31,9 @@ Chaque card est cliquable, et renvoi vers la fullPage de l'article.
 			<div class="backgroundRond centerCard">
 				<i class="fas fa-arrow-right fa-lg flecheDroiteCard"></i>
 			</div>
-			{# On n'affiche pas la catégorie sur la carte, quand on est déjà sur une page filtrée par une catégorie #}
-			{% if nomCategorie is not defined %}
 			<div class="articles-categorie">
 				<span>{{ article.categoriesArticle.nom }}</span>
 			</div>
-			{% endif %}
 			<div class="infos">
 				<div class="articles-date">
 					<i class="fas fa-calendar-alt"></i>

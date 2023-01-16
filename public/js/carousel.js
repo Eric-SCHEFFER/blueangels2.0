@@ -20,8 +20,6 @@ if (bullet.length > 0) {
       let imagesCaption = document.getElementsByClassName("image-caption");
       if (n > slides.length) { slideIndex = 1 }
       if (n < 1) { slideIndex = slides.length }
-
-
       for (i = 0; i < slides.length; i++) {
          // Transitions images et caption
          // Ne fonctionne pour l'instant qu'à l'apparition
@@ -42,7 +40,6 @@ if (bullet.length > 0) {
       bullets[slideIndex - 1].className += " actif";
    }
 }
-
 else {
    if (bullet.length == 0) {
       // Affichage du caption quand il n'y a qu'une seule image
