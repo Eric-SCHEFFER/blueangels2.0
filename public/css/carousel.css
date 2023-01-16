@@ -54,12 +54,25 @@
    }
 }
 
+@keyframes transition-caption-out {
+   from {
+      right: 0;
+   }
+
+   to {
+      right: -215vw;
+   }
+}
+
 .visibility-caption-on {
    right: 0;
    animation: transition-caption-in .5s;
 }
 
-
+.visibility-caption-out {
+   right: -215vw;;
+   animation: transition-caption-out .5s;
+}
 
 .boutonsNav {
    display: flex;

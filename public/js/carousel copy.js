@@ -31,7 +31,7 @@ if (bullet.length > 0) {
          slides[i].classList.remove("visibility-image-on");
          // Transition pour le caption
          if (typeof imagesCaption[i] !== 'undefined') {
-            // imagesCaption[i].classList.add("visibility-caption-on");
+            imagesCaption[i].classList.add("visibility-caption-on");
          }
       }
       for (i = 0; i < bullets.length; i++) {
@@ -43,11 +43,6 @@ if (bullet.length > 0) {
       slides[slideIndex - 1].classList.add("visibility-image-on");
       slides[slideIndex - 1].classList.add("display-image-on");
       slides[slideIndex - 1].classList.remove("visibility-image-off");
-
-      if (typeof imagesCaption[i] !== 'undefined') {
-         imagesCaption[i].classList.remove("visibility-caption-on");
-         imagesCaption[i].classList.add("visibility-caption-out");
-      }
 
       bullets[slideIndex - 1].className += " actif";
    }
