@@ -4,11 +4,6 @@
    visibility: hidden;
 }
 
-
-.display-image-on {
-   display: block;
-}
-
 .display-image-off {
    display: none;
 }
@@ -22,22 +17,6 @@
       opacity: 1;
    }
 }
-
-@keyframes transition-out {
-   from {
-      opacity: 1;
-   }
-
-   to {
-      opacity: 0;
-   }
-}
-
-.visibility-image-off {
-   opacity: 0;
-   animation: transition-out 4s;
-}
-
 
 .visibility-image-on {
    opacity: 1;
@@ -54,25 +33,10 @@
    }
 }
 
-/* @keyframes transition-caption-out {
-   from {
-      right: 0;
-   }
-
-   to {
-      right: -215vw;
-   }
-} */
-
 .visibility-caption-on {
    right: 0;
    animation: transition-caption-in .5s;
 }
-
-/* .visibility-caption-off {
-   right: -215vw;;
-   animation: transition-caption-out .5s;
-} */
 
 .boutonsNav {
    display: flex;
