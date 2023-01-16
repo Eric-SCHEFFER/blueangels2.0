@@ -23,9 +23,8 @@ if (bullet.length > 0) {
 
 
       for (i = 0; i < slides.length; i++) {
-         // Transitions image et caption
+         // Transitions images et caption
          // Ne fonctionne pour l'instant qu'à l'apparition
-         slides[i].classList.add("visibility-image-off");
          slides[i].classList.add("display-image-off");
          
          // caption
