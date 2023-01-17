@@ -71,6 +71,17 @@
    border-radius: 4px;
 }
 
+.bt-small-rond {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: white;
+   background-color: #225d91;
+   border-radius: 50%;
+   width: 30px;
+   height: 30px;
+}
+
 .bt-extra-small {
    font-size: .8em;
    padding: 1px 5px 1px 5px;

@@ -57,16 +57,15 @@ h2 {
 }
 
 .info-bar {
-   display: flex;
-   align-items: flex-end;
-   justify-content: space-between;
    color: rgb(136, 136, 136);
    margin-bottom: 60px;
+   /* border: green solid 1px; */
 }
 
 .info-bar-left {
    font-size: .9em;
    line-height: 1.4em;
+   /* border: blue solid 1px; */
 }
 
 .articles-epingle-on {
@@ -75,13 +74,49 @@ h2 {
    top: -2px;
 }
 
-.categorie {
-   margin-top: 8px;
+.ligne-left-items {
+   display: flex;
+   justify-content: flex-start;
+   align-items: end;
+   flex-wrap: wrap;
+   /* border: red solid 1px; */
 }
 
-.contact {
-   font-size: 1.1em;
+.ligne-center-items {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-wrap: wrap;
+   /* border: rgb(106, 0, 255) solid 1px; */
 }
+
+.infos-naviguer {
+   display: block;
+   text-align: center;
+   width: fit-content;
+   max-width: 80px;
+   font-size: .7em;
+   /* border: rgb(106, 0, 255) solid 1px; */
+
+}
+
+.flex {
+   display: flex;
+   align-items: end;
+   justify-content: center;
+   /* border: rgb(255, 0, 0) solid 1px; */
+
+}
+
+.ligne-left-items>*,
+.ligne-center-items>* {
+   margin: 8px 12px 8px 0;
+}
+
+/* .contact {
+   font-size: 1.1em;
+   border: rgb(55, 1, 135) solid 1px;
+} */
 
 .textes {
    background-color: white;

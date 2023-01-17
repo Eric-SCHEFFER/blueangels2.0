@@ -65,61 +65,74 @@
 				<h2 class="hook">
 					{{ article.hook }}
 				</h2>
+
 				<div class="info-bar">
-					<div class="info-bar-left">
-						<div class="type-vue-and-status">
-							<i class="fas fa-info-circle"></i>
-							Article
-							{% if article.epingle %}
-							<span class="articles-epingle-on" title="Épinglé">
-								<i class="fas fa-thumbtack silver"></i>
-							</span>
-							{% endif %}
+					<div class="ligne-left-items">
+
+						<div class="info-bar-left">
+							<div class="type-vue-and-status">
+								<i class="fas fa-info-circle"></i>
+								Article 00/00
+								{% if article.epingle %}
+								<span class="articles-epingle-on" title="Épinglé">
+									<i class="fas fa-thumbtack silver"></i>
+								</span>
+								{% endif %}
+							</div>
+							<div class="date">
+								<i class="fas fa-calendar-alt"></i>
+								{{ article.getCreatedAt | date("d-m-Y") }}
+							</div>
+							<div class="time">
+								<i class="fas fa-clock"></i>
+								{{ article.getCreatedAt | date("H:i") }}
+							</div>
 						</div>
-						<div class="date">
-							<i class="fas fa-calendar-alt"></i>
-							{{ article.getCreatedAt | date("d-m-Y") }}
-						</div>
-						<div class="time">
-							<i class="fas fa-clock"></i>
-							{{ article.getCreatedAt | date("H:i") }}
-						</div>
-						<div class="categorie">
-							{% if article.categoriesArticle.nom is defined %}
-							{# Lien vers la page de la catégorie #}
-							<a class="bouton bt-small margin-right-6"
-								title="Tous les articles de la catégorie {{ article.categoriesArticle.nom }}"
-								href="{{ path('categorie.articles', {idCategorie: article.categoriesArticle.id}) }}">
-								Catégorie {{ article.categoriesArticle.nom }}
-							</a>
-							{% endif %}
-						</div>
-						<div class="categorie">
-							<a class="bouton bt-small" title="Tous les articles, toutes catégories confondues"
-								href="{{ path('articles') }}">
-								Tous les articles
-							</a>
-						</div>
-					</div>
-					{# On affiche la clé anglaise "gérer", quand on est connecté en admin #}
-					{% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
-					<div class="gerer">
-						<a href="{{ path('admin.articles.edit', {id: article.id}) }}" title="Éditer l'évènement">
-							<i class="fas fa-edit fa-2x blue"></i>
+
+						{% if article.categoriesArticle.nom is defined %}
+						{# Lien vers la page de la catégorie #}
+						<a class="bouton bt-small"
+							title="Tous les articles de la catégorie {{ article.categoriesArticle.nom }}"
+							href="{{ path('categorie.articles', {idCategorie: article.categoriesArticle.id}) }}">
+							Catégorie {{ article.categoriesArticle.nom }}
 						</a>
-					</div>
-					{% endif %}
-					{# On n'affiche pas le lien contact quand c'est la catégorie Partenaires ou Mentions légales car ça peut
-					prêter à confusion #}
-					{% if article.categoriesArticle.nom and
-					article.categoriesArticle.nom != "Partenaires" and
-					article.categoriesArticle.nom != "Mentions légales" %}
-					<div class="contact">
+						{% endif %}
+
+						<a class="bouton bt-small" title="Tous les articles, toutes catégories confondues"
+							href="{{ path('articles') }}">
+							Toutes les catégories
+						</a>
+						{# On n'affiche pas le lien contact quand c'est la catégorie Partenaires ou Mentions légales car ça
+						peut
+						prêter à confusion #}
+						{% if article.categoriesArticle.nom and
+						article.categoriesArticle.nom != "Partenaires" and
+						article.categoriesArticle.nom != "Mentions légales" %}
 						<a class="bouton bt-small"
 							href="{{ path('contact', {id: article.id, categorie: article.categoriesArticle.nom}) }}"
 							title="Nous contacter à propos de cet article">Contact</a>
+						{% endif %}
+						<div class="flex">
+							<a class="bt-small-rond"
+								href="{{ path('categorie.articles', {idCategorie: article.categoriesArticle.id}) }}">
+								<i class="fas fa-arrow-left fa-lg"></i>
+							</a>
+							<div class="infos-naviguer">les autres articles de cette catégorie</div>
+							<a class="bt-small-rond"
+								href="{{ path('categorie.articles', {idCategorie: article.categoriesArticle.id}) }}">
+								<i class="fas fa-arrow-right fa-lg"></i>
+							</a>
+						</div>
+
+						{# On affiche la clé anglaise "gérer", quand on est connecté en admin #}
+						{% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
+						<div class="gerer">
+							<a href="{{ path('admin.articles.edit', {id: article.id}) }}" title="Éditer l'évènement">
+								<i class="fas fa-edit fa-2x blue"></i>
+							</a>
+						</div>
+						{% endif %}
 					</div>
-					{% endif %}
 				</div>
 
 
