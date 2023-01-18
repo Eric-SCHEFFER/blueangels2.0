@@ -96,7 +96,16 @@ h2 {
    width: fit-content;
    max-width: 80px;
    font-size: .7em;
+   line-height: 1em;
    /* border: rgb(106, 0, 255) solid 1px; */
+}
+
+.num-article {
+   font-weight: 500;
+   font-size: 1.3em;
+   text-transform: uppercase;
+   color: rgb(118, 118, 118);
+   line-height: initial;
 
 }
 

@@ -71,8 +71,6 @@
 
 						<div class="info-bar-left">
 							<div class="type-vue-and-status">
-								<i class="fas fa-info-circle"></i>
-								Article {{ numArticle }}/{{ nbreArticlesByCat }}
 								{% if article.epingle %}
 								<span class="articles-epingle-on" title="Épinglé">
 									<i class="fas fa-thumbtack silver"></i>
@@ -105,23 +103,45 @@
 						peut
 						prêter à confusion #}
 						{% if article.categoriesArticle.nom and
-						article.categoriesArticle.nom != "Partenaires" and
-						article.categoriesArticle.nom != "Mentions légales" %}
-						<a class="bouton bt-small"
-							href="{{ path('contact', {id: article.id, categorie: article.categoriesArticle.nom}) }}"
-							title="Nous contacter à propos de cet article">Contact</a>
+							article.categoriesArticle.nom != "Partenaires" and
+							article.categoriesArticle.nom != "Mentions légales" %}
+							<a class="bouton bt-small"
+								href="{{ path('contact', {id: article.id, categorie: article.categoriesArticle.nom}) }}"
+								title="Nous contacter à propos de cet article">Contact</a>
 						{% endif %}
+
+						{# TODO: Si variables == null #}
 						<div class="flex">
-							<a class="bt-small-rond"
-								href="{{ path('article', {id: article.id - 1}) }}">
-								<i class="fas fa-arrow-left fa-lg"></i>
-							</a>
-							<div class="infos-naviguer">Autres articles de cette catégorie</div>
-							<a class="bt-small-rond"
-								href="{{ path('categorie.articles', {idCategorie: article.categoriesArticle.id}) }}">
-								<i class="fas fa-arrow-right fa-lg"></i>
-							</a>
+							{% if previousArticleByDateId is not empty %}
+								<a class="bt-small-rond" href="{{ path('article', {id: previousArticleByDateId}) }}">
+									<i class="fas fa-arrow-left fa-lg"></i>
+								</a>
+								{% else %}
+									<div class="bt-small-rond bt-small-rond-desactive">
+										<i class="fas fa-arrow-left fa-lg"></i>
+									</div>
+							{% endif %}
+							
+							<div class="infos-naviguer">
+								<div class="num-article">
+									{{ numArticle }}/{{ nbreArticlesByCat }}
+								</div>
+								Autres articles de cette catégorie
+							</div>
+
+							{% if nextArticleByDateId is not empty %}
+								<a class="bt-small-rond" href="{{ path('article', {id: nextArticleByDateId}) }}">
+									<i class="fas fa-arrow-right fa-lg"></i>
+								</a>
+								{% else %}
+									<div class="bt-small-rond bt-small-rond-desactive">
+										<i class="fas fa-arrow-right fa-lg"></i>
+									</div>
+							{% endif %}
 						</div>
+
+
+
 
 						{# On affiche la clé anglaise "gérer", quand on est connecté en admin #}
 						{% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}

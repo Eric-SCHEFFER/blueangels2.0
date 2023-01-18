@@ -82,6 +82,11 @@
    height: 30px;
 }
 
+.bt-small-rond-desactive {
+   background-color: #5d5d5d;
+   cursor: not-allowed;
+}
+
 .bt-extra-small {
    font-size: .8em;
    padding: 1px 5px 1px 5px;
