@@ -86,42 +86,19 @@
 								{{ article.getCreatedAt | date("H:i") }}
 							</div>
 						</div>
-						{% if article.categoriesArticle.nom is defined %}
-						{# Lien vers la page de la catégorie #}
-						<a class="bouton bt-small"
-							title="Tous les articles de la catégorie {{ article.categoriesArticle.nom }}"
-							href="{{ path('categorie.articles', {idCategorie: article.categoriesArticle.id}) }}">
-							{{ article.categoriesArticle.nom }}
-						</a>
-						{% endif %}
 
-						<a class="bouton bt-small" title="Tous les articles, toutes catégories confondues"
-							href="{{ path('articles') }}">
-							Toutes les catégories
-						</a>
-						{# On n'affiche pas le lien contact quand c'est la catégorie Partenaires ou Mentions légales car ça
-						peut
-						prêter à confusion #}
-						{% if article.categoriesArticle.nom and
-							article.categoriesArticle.nom != "Partenaires" and
-							article.categoriesArticle.nom != "Mentions légales" %}
-							<a class="bouton bt-small"
-								href="{{ path('contact', {id: article.id, categorie: article.categoriesArticle.nom}) }}"
-								title="Nous contacter à propos de cet article">Contact</a>
-						{% endif %}
-
-						{# TODO: Si variables == null #}
-						<div class="flex">
+						<div class="bloc-nav-plus-moins">
 							{% if previousArticleByDateId is not empty %}
-								<a class="bt-small-rond" title="Article précédent" href="{{ path('article', {id: previousArticleByDateId}) }}">
-									<i class="fas fa-arrow-left fa-lg"></i>
-								</a>
-								{% else %}
-									<div class="bt-small-rond bt-small-rond-desactive" title="Article précédent">
-										<i class="fas fa-arrow-left fa-lg"></i>
-									</div>
+							<a class="bt-small-rond" title="Article précédent"
+								href="{{ path('article', {id: previousArticleByDateId}) }}">
+								<i class="fas fa-arrow-left fa-lg"></i>
+							</a>
+							{% else %}
+							<div class="bt-small-rond bt-small-rond-desactive" title="Article précédent">
+								<i class="fas fa-arrow-left fa-lg"></i>
+							</div>
 							{% endif %}
-							
+
 							<div class="infos-naviguer">
 								<div class="num-article">
 									{{ numArticle }}/{{ nbreArticlesByCat }}
@@ -130,27 +107,57 @@
 							</div>
 
 							{% if nextArticleByDateId is not empty %}
-								<a class="bt-small-rond" title="Article suivant" href="{{ path('article', {id: nextArticleByDateId}) }}">
-									<i class="fas fa-arrow-right fa-lg"></i>
-								</a>
-								{% else %}
-									<div class="bt-small-rond bt-small-rond-desactive" title="Article suivant">
-										<i class="fas fa-arrow-right fa-lg"></i>
-									</div>
+							<a class="bt-small-rond" title="Article suivant"
+								href="{{ path('article', {id: nextArticleByDateId}) }}">
+								<i class="fas fa-arrow-right fa-lg"></i>
+							</a>
+							{% else %}
+							<div class="bt-small-rond bt-small-rond-desactive" title="Article suivant">
+								<i class="fas fa-arrow-right fa-lg"></i>
+							</div>
+							{% endif %}
+						</div>
+
+
+						<div class="bloc-boutons">
+							{% if article.categoriesArticle.nom is defined %}
+							{# Lien vers la page de la catégorie #}
+							<a class="bouton bt-small marge-boutons"
+								title="Tous les articles de la catégorie {{ article.categoriesArticle.nom }}"
+								href="{{ path('categorie.articles', {idCategorie: article.categoriesArticle.id}) }}">
+								{{ article.categoriesArticle.nom }}
+							</a>
+							{% endif %}
+
+							<a class="bouton bt-small marge-boutons" title="Tous les articles, toutes catégories confondues"
+								href="{{ path('articles') }}">
+								Toutes les catégories
+							</a>
+							{# On n'affiche pas le lien contact quand c'est la catégorie Partenaires ou Mentions légales car ça
+							peut
+							prêter à confusion #}
+							{% if article.categoriesArticle.nom and
+							article.categoriesArticle.nom != "Partenaires" and
+							article.categoriesArticle.nom != "Mentions légales" %}
+							<a class="bouton bt-small marge-boutons"
+								href="{{ path('contact', {id: article.id, categorie: article.categoriesArticle.nom}) }}"
+								title="Nous contacter à propos de cet article">Contact</a>
 							{% endif %}
 						</div>
 
 
 
-
-						{# On affiche la clé anglaise "gérer", quand on est connecté en admin #}
-						{% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
-						<div class="gerer">
-							<a href="{{ path('admin.articles.edit', {id: article.id}) }}" title="Éditer l'évènement">
-								<i class="fas fa-edit fa-2x blue"></i>
-							</a>
+						<div class="bloc-admin">
+							{# On affiche la clé anglaise "gérer", quand on est connecté en admin #}
+							{% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
+							<div class="gerer">
+								<a href="{{ path('admin.articles.edit', {id: article.id}) }}" title="Éditer l'évènement">
+									<i class="fas fa-edit fa-2x blue"></i>
+								</a>
+							</div>
+							{% endif %}
 						</div>
-						{% endif %}
+
 					</div>
 				</div>
 
