@@ -91,7 +91,7 @@
 						<a class="bouton bt-small"
 							title="Tous les articles de la catégorie {{ article.categoriesArticle.nom }}"
 							href="{{ path('categorie.articles', {idCategorie: article.categoriesArticle.id}) }}">
-							Catégorie {{ article.categoriesArticle.nom }}
+							{{ article.categoriesArticle.nom }}
 						</a>
 						{% endif %}
 
@@ -113,11 +113,11 @@
 						{# TODO: Si variables == null #}
 						<div class="flex">
 							{% if previousArticleByDateId is not empty %}
-								<a class="bt-small-rond" href="{{ path('article', {id: previousArticleByDateId}) }}">
+								<a class="bt-small-rond" title="Article précédent" href="{{ path('article', {id: previousArticleByDateId}) }}">
 									<i class="fas fa-arrow-left fa-lg"></i>
 								</a>
 								{% else %}
-									<div class="bt-small-rond bt-small-rond-desactive">
+									<div class="bt-small-rond bt-small-rond-desactive" title="Article précédent">
 										<i class="fas fa-arrow-left fa-lg"></i>
 									</div>
 							{% endif %}
@@ -130,11 +130,11 @@
 							</div>
 
 							{% if nextArticleByDateId is not empty %}
-								<a class="bt-small-rond" href="{{ path('article', {id: nextArticleByDateId}) }}">
+								<a class="bt-small-rond" title="Article suivant" href="{{ path('article', {id: nextArticleByDateId}) }}">
 									<i class="fas fa-arrow-right fa-lg"></i>
 								</a>
 								{% else %}
-									<div class="bt-small-rond bt-small-rond-desactive">
+									<div class="bt-small-rond bt-small-rond-desactive" title="Article suivant">
 										<i class="fas fa-arrow-right fa-lg"></i>
 									</div>
 							{% endif %}

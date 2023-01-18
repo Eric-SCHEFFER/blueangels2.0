@@ -36,7 +36,7 @@
 			</div>
 			{{ i + 1 }}
 
-			{# TODO: On affiche la légende de l'image, dans un nouveau champ #}
+			{# On affiche la légende de l'image dans un nouveau champ #}
 			{# BUG: Après la suppression d'une ou plusieurs images, il vaut mieux repasser par la page admin, puis relancer l'admin de l'article en question, si on veut rajouter d'autres images.  #}
 			<div class="champ-caption">
 				{{ form_row(form.ImagesArticles[i].caption, {'attr':{'class':'titre'}}) }}
@@ -59,7 +59,7 @@
 
 	<div class="ligne1">
 		<div class="champ">
-			{# Afficher par défaut le nom de la catégorie en cours, avec une son id reçue de nouveau.html.twig #}
+			{# Afficher par défaut le nom de la catégorie en cours, avec son id reçue de nouveau.html.twig #}
 			{% if categorieId is defined %}
 			{{ form_row(form.CategoriesArticle, {'value': categorieId}) }}
 			{% else %}
