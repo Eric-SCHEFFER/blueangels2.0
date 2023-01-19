@@ -56,17 +56,21 @@ h2 {
    max-height: 121px;
 }
 
-.info-bar {
-   display: flex;
-   align-items: flex-end;
-   justify-content: space-between;
+.info-bar-top {
    color: rgb(136, 136, 136);
-   margin-bottom: 60px;
+   margin-top: 33px;
+}
+
+.info-bar-bottom {
+   color: rgb(136, 136, 136);
+   margin-top: 33px;
+   /* border: green solid 1px; */
 }
 
 .info-bar-left {
    font-size: .9em;
    line-height: 1.4em;
+   /* border: blue solid 1px; */
 }
 
 .articles-epingle-on {
@@ -75,20 +79,76 @@ h2 {
    top: -2px;
 }
 
-.categorie {
-   margin-top: 8px;
+.ligne-left-items {
+   display: flex;
+   justify-content: flex-start;
+   align-items: end;
+   flex-wrap: wrap;
+   /* border: red solid 1px; */
 }
 
-.contact {
-   font-size: 1.1em;
+.ligne-center-items {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-wrap: wrap;
+   /* border: rgb(106, 0, 255) solid 1px; */
 }
+
+.infos-naviguer {
+   display: block;
+   text-align: center;
+   width: fit-content;
+   max-width: 80px;
+   font-size: .7em;
+   line-height: 1em;
+   /* border: rgb(106, 0, 255) solid 1px; */
+}
+
+.num-article {
+   font-weight: 500;
+   font-size: 1.3em;
+   text-transform: uppercase;
+   color: rgb(118, 118, 118);
+   line-height: initial;
+
+}
+
+.bloc-boutons {
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   flex-wrap: wrap;
+}
+
+.marge-boutons {
+   margin: 11px 11px 0 0;
+}
+
+.bloc-nav-plus-moins {
+   display: flex;
+   align-items: end;
+   justify-content: center;
+   /* border: rgb(255, 0, 0) solid 1px; */
+}
+
+.bloc-admin {}
+
+.ligne-left-items>*,
+.ligne-center-items>* {
+   margin: 8px 12px 8px 0;
+}
+
+/* .contact {
+   font-size: 1.1em;
+   border: rgb(55, 1, 135) solid 1px;
+} */
 
 .textes {
    background-color: white;
    color: #000000;
    border-radius: 0 0 12px 12px;
    padding: 10px 4% 50px 4%;
-   min-height: 50vh;
    word-break: break-word;
 }
 
@@ -106,7 +166,7 @@ h2 {
 }
 
 .hook {
-   margin-bottom: 30px;
+   margin: 20px 0 50px 0;
 }
 
 /* Met un border radius et rajoute du padding en haut de la zone de textes  */
@@ -175,4 +235,8 @@ h2 {
    transform: rotate(-20deg);
    color: rgb(221, 0, 0);
    border: 1px rgb(221, 0, 0) solid;
+}
+
+@media screen and (max-width: 695px) {
+
 }
