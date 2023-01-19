@@ -56,7 +56,12 @@ h2 {
    max-height: 121px;
 }
 
-.info-bar {
+.info-bar-top {
+   color: rgb(136, 136, 136);
+   margin-top: 33px;
+}
+
+.info-bar-bottom {
    color: rgb(136, 136, 136);
    margin-top: 33px;
    /* border: green solid 1px; */

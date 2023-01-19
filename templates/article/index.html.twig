@@ -71,9 +71,8 @@
 					{{ article.contenu | nl2br | auto_link}}
 				</div>
 
-				<div class="info-bar">
+				<div class="info-bar-bottom">
 					<div class="ligne-left-items">
-
 						<div class="info-bar-left">
 							<div class="type-vue-and-status">
 								{% if article.epingle %}
@@ -123,7 +122,6 @@
 							{% endif %}
 						</div>
 
-
 						<div class="bloc-boutons">
 							{% if article.categoriesArticle.nom is defined %}
 							{# Lien vers la page de la catégorie #}
@@ -150,8 +148,6 @@
 							{% endif %}
 						</div>
 
-
-
 						<div class="bloc-admin">
 							{# On affiche la clé anglaise "gérer", quand on est connecté en admin #}
 							{% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
@@ -162,15 +158,12 @@
 							</div>
 							{% endif %}
 						</div>
-
 					</div>
 				</div>
-
-
-
 			</div>
 	</section>
 </div>
+
 {% block javascript %}
 <script src="{{ asset('js/carousel.js') }}"></script>
 {% endblock %}
