@@ -58,7 +58,7 @@ h2 {
 
 .info-bar {
    color: rgb(136, 136, 136);
-   margin-bottom: 60px;
+   margin-top: 33px;
    /* border: green solid 1px; */
 }
 
@@ -144,7 +144,6 @@ h2 {
    color: #000000;
    border-radius: 0 0 12px 12px;
    padding: 10px 4% 50px 4%;
-   min-height: 50vh;
    word-break: break-word;
 }
 
@@ -162,7 +161,7 @@ h2 {
 }
 
 .hook {
-   margin-bottom: 30px;
+   margin: 20px 0 50px 0;
 }
 
 /* Met un border radius et rajoute du padding en haut de la zone de textes  */
@@ -234,9 +233,5 @@ h2 {
 }
 
 @media screen and (max-width: 695px) {
-   .bloc-nav-plus-moins {}
 
-   .marge-boutons {
-      margin: 0 11px 11px 0;
-   }
 }
