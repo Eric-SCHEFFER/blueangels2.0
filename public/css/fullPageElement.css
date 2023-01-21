@@ -177,6 +177,15 @@ h2 {
    margin-top: 100px;
 }
 
+.liens-full-page-element a{
+   display: inline-block;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   max-width: 200px;
+   white-space: nowrap;
+   position: relative;
+   top: 3px;
+}
 
 
 /* ======= ÉVÈNEMENT ======= */
