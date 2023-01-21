@@ -24,7 +24,7 @@ class AutoLinkTwigExtension extends AbstractExtension
 
         $pattern = "/http[s]?:\/\/[a-zA-Z0-9.@:_%()\-\/?#=&]+/";
         $replacement = "<span class=\"liens-full-page-element\">
-            <a href=\"$0\" target=\"_blank\">
+            <a href=\"$0\" title=\"$0\" target=\"_blank\">
                 $0
             </a>
         </span>";

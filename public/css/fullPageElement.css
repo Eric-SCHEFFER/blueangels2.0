@@ -177,14 +177,21 @@ h2 {
    margin-top: 100px;
 }
 
-.liens-full-page-element a{
+.liens-full-page-element a {
    display: inline-block;
+   position: relative;
+   max-width: 130px;
+   height: 14px;
+   font-size: .7em;
+   border: #999 solid 1px;
    overflow: hidden;
    text-overflow: ellipsis;
-   max-width: 200px;
    white-space: nowrap;
-   position: relative;
-   top: 4px;
+   text-align: center;
+   padding: 7px;
+   top: 7px;
+   border-radius: 7px;
+   background-color: #c6c6c6;
 }
 
 
@@ -246,6 +253,4 @@ h2 {
    border: 1px rgb(221, 0, 0) solid;
 }
 
-@media screen and (max-width: 695px) {
-
-}
+@media screen and (max-width: 695px) {}
