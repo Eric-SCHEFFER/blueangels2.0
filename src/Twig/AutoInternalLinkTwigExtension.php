@@ -31,8 +31,8 @@ class AutoInternalLinkTwigExtension extends AbstractExtension
         // $pattern = "/http[s]?:\/\/[a-zA-Z0-9.@:_%()\-\/?#=&]+/";
         $pattern = "/\*\*baseUrlSite\*\*\/([a-zA-Z0-9().:_\/-]+)/";
 
-        $replacement = "<span class=\"internal-liens-full-page-element\">
-            <a href=\"$baseUrlSite$1\" title=\"$1\" target=\"_blank\">
+        $replacement = "<span class=\"bouton bt-small internal-liens-full-page-element\">
+            <a href=\"$baseUrlSite$1\" title=\"$1\">
                 $1
             </a>
         </span>";

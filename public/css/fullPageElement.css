@@ -178,24 +178,34 @@ h2 {
 }
 
 .liens-full-page-element a {
-   display: inline-block;
+   /* display: inline-block; */
    position: relative;
-   max-width: 130px;
-   height: 15px;
-   font-size: .7em;
-   border: #999 solid 1px;
+   max-width: 38vw;
+   /* height: 15px; */
+   /* font-size: .7em; */
+   /* border: #999 solid 1px; */
    overflow: hidden;
    text-overflow: ellipsis;
    white-space: nowrap;
-   text-align: center;
-   padding: 2px;
-   top: 5px;
-   border-radius: 7px;
+   /* text-align: center; */
+   padding: 0px 3px;
+   /* top: 4px; */
+   border-radius: 4px;
    background-color: #cdcdcd;
+   margin: -4px 0px;
 }
 
-internal-liens-full-page-element {
-   
+.internal-liens-full-page-element {
+   margin: 2px 2px;
+   padding: 2px 6px !important;
+}
+
+.internal-liens-full-page-element a {
+   color: rgb(209, 209, 209);
+}
+
+.internal-liens-full-page-element:hover a {
+   color: #FFF;
 }
 
 /* ======= ÉVÈNEMENT ======= */
