@@ -9,8 +9,10 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class AutoInternalLinkTwigExtension extends AbstractExtension
 {
+    private $baseUrlSite;
+
     public function __construct(
-        UrlGeneratorInterface $urlGeneratorInterface
+        UrlGeneratorInterface $urlGeneratorInterface,
     ) {
         $this->urlGeneratorInterface = $urlGeneratorInterface;
     }
@@ -25,20 +27,36 @@ class AutoInternalLinkTwigExtension extends AbstractExtension
 
     public function autoInternalLink($string)
     {
-        $baseUrlSite = $this->urlGeneratorInterface->generate('home', [], urlGeneratorInterface::ABSOLUTE_URL);
+        $pattern = "/\*\*baseUrlSite\*\*([a-zA-Z0-9().:_\/-]+)/";
 
-        // TODO: reg
-        // $pattern = "/http[s]?:\/\/[a-zA-Z0-9.@:_%()\-\/?#=&]+/";
-        $pattern = "/\*\*baseUrlSite\*\*\/([a-zA-Z0-9().:_\/-]+)/";
+        // $replacement = "<span class=\"bouton bt-small internal-liens-full-page-element\">
+        //     <a href=\"$baseUrlSite$1\" title=\"$1\">
+        //         $1
+        //     </a>
+        // </span>";
 
-        $replacement = "<span class=\"bouton bt-small internal-liens-full-page-element\">
-            <a href=\"$baseUrlSite$1\" title=\"$1\">
-                $1
+        // $string = preg_replace($pattern, $replacement, $string);
+
+        $this->baseUrlSite = $this->urlGeneratorInterface->generate('home', [], urlGeneratorInterface::ABSOLUTE_URL);
+        $this->baseUrlSite = substr_replace($this->baseUrlSite, "", -1, 1);
+        $string = preg_replace_callback($pattern, array($this, 'replace'), $string);
+        return $string;
+    }
+
+    private function replace($match)
+    {
+        $url = $this->baseUrlSite . $match[1];
+        if ($match[1] === "/") {
+            $voir = "accueil";
+        } else {
+            $voir = substr_replace($match[1], "", 0, 1);
+        }
+        $lienCustom =
+            "<span class=\"bouton bt-small internal-liens-full-page-element\">
+            <a href=\"$url\" title=\"$voir\">
+            $voir
             </a>
         </span>";
-
-        $string = preg_replace($pattern, $replacement, $string);
-
-        return $string;
+        return $lienCustom;
     }
 }
