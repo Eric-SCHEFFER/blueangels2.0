@@ -5,6 +5,7 @@ namespace App\Twig;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
+
 class AutoLinkTwigExtension extends AbstractExtension
 {
     public function getFilters()
@@ -29,14 +30,13 @@ class AutoLinkTwigExtension extends AbstractExtension
             </a>
         </span>";
         $string = preg_replace($pattern, $replacement, $string);
-        
+
         // 2e méthode avec preg_replace_callback.
         // $string = preg_replace_callback($pattern, array($this, 'fonction'), $string);
-        
-        return "$string";
+        return $string;
     }
 
-    // // 2e méthode avec preg_replace_callback. On peut acceder au "match" de la reg, pour éventuellement y ajouter des filtres.
+    // // 2e méthode avec preg_replace_callback. On peut acceder au "match" de la reg, pour éventuellement le modifier si besoin (le faire passer au travers de fonctions par ex).
     // private function fonction($url)
     // {
     //     $breakUrl = substr($url[0], 0, 78);

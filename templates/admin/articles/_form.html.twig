@@ -3,7 +3,23 @@
 {% endblock %}
 
 
+<div class="aide">
+	<div>Aide</div>
+	<details>
+		<summary>Detection des liens</summary>
+		<div class="description">
+			Lien externe: La chaine commençant par http(s):// sera transformée en lien cliquable stylé<br><br>
+
+			Lien interne: La chaine commençant par **baseUrlSite**/ sera transformée en bouton cliquable stylé<br>
+			Exemples<br>
+			- Page d'accueil: Taper simplement **baseUrlSite**/<br>
+			- Autre page: Taper **baseUrlSite**/routedelapage<br>
+		</div>
+	</details>
+</div>
+
 <div class="container-form">
+	
 	{{ form_start(form, {'attr':{'class':'form1'}}) }}
 	<div class="ligne1">
 		<div class="champ">
@@ -37,7 +53,8 @@
 			{{ i + 1 }}
 
 			{# On affiche la légende de l'image dans un nouveau champ #}
-			{# BUG: Après la suppression d'une ou plusieurs images, il vaut mieux repasser par la page admin, puis relancer l'admin de l'article en question, si on veut rajouter d'autres images.  #}
+			{# BUG: Après la suppression d'une ou plusieurs images, il vaut mieux repasser par la page admin, puis relancer
+			l'admin de l'article en question, si on veut rajouter d'autres images. #}
 			<div class="champ-caption">
 				{{ form_row(form.ImagesArticles[i].caption, {'attr':{'class':'titre'}}) }}
 			</div>
@@ -76,6 +93,9 @@
 			{{ form_row(form.epingle) }}
 		</div>
 	</div>
+
+	{# BUG: Le texte "Images articles" apparait en bas à gauche du formulaire d'édition et de création d'article (en fait, quand
+	il n'y a pas d'images) #}
 
 	{# Champ caché pour envoyer le referer, et permettre la redirection à la page précédente après la soumission #}
 	<input type="hidden" name="referer" value="{{app.request.headers.get('referer')}}" />

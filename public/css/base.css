@@ -142,7 +142,7 @@ footer {
 /* ================== colors ================ */
 .theme-menu {
    background-color: #233544;
-   color:#dadada;
+   color: #dadada;
 }
 
 .gris1 {
@@ -155,7 +155,7 @@ footer {
 
 .lime {
    color: lime;
-} 
+}
 
 .red {
    color: rgb(189, 1, 1);
@@ -182,7 +182,7 @@ footer {
 }
 
 .brun {
-   color:#cc9900;
+   color: #cc9900;
 }
 
 .violet {
@@ -210,10 +210,35 @@ footer {
 }
 
 .bg-white {
-   background-color: #ffffff ;
+   background-color: #ffffff;
 }
 
 
 .bg-blue-pastel {
    background-color: rgb(31, 163, 252);
+}
+
+/* ============ ACCORDIONS AIDE ========================== */
+.aide {
+   width: fit-content;
+   max-width: 95vw;
+   font-size: .9em;
+   margin: 0px 10vw 0px 10vw;
+}
+
+.aide summary {
+   cursor: pointer;
+   font-weight: 600;
+   margin: 10px 0;
+}
+
+.aide summary:hover {
+   color: white;
+}
+
+.aide .description {
+   background-color: rgb(225, 225, 225);
+   color: rgb(68, 68, 68);
+   padding: 4px;
+   border-radius: 4px;
 }
