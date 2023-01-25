@@ -51,8 +51,8 @@ class AutoInternalLinkTwigExtension extends AbstractExtension
             $voir = "accueil";
         }
         $lienCustom =
-            "<span class=\"bouton bt-small internal-liens-full-page-element\">
-                <a href=\"$url\" title=\"$url\">
+            "<span >
+                <a class=\"bouton bt-small internal-liens-full-page-element\" href=\"$url\" title=\"$url\">
                     $voir
                 </a>
             </span>";
