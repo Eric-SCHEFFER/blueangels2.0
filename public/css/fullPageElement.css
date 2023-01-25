@@ -189,11 +189,11 @@ h2 {
    text-overflow: ellipsis;
    white-space: nowrap;
    /* text-align: center; */
-   padding: 0px 3px;
+   padding: 0px 0 0 0;
    /* top: 4px; */
    border-radius: 4px;
-   background-color: #cdcdcd;
-   margin: 0px 4px -2px 1px;
+   /* background-color: #cdcdcd; */
+   margin: 0px 4px -4px 0;
 }
 
 .internal-liens-full-page-element {

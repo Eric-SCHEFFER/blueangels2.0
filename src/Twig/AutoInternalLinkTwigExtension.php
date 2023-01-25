@@ -46,17 +46,16 @@ class AutoInternalLinkTwigExtension extends AbstractExtension
     private function replace($match)
     {
         $url = $this->baseUrlSite . $match[1];
+        $voir = "ici";
         if ($match[1] === "/") {
             $voir = "accueil";
-        } else {
-            $voir = substr_replace($match[1], "", 0, 1);
         }
         $lienCustom =
             "<span class=\"bouton bt-small internal-liens-full-page-element\">
-            <a href=\"$url\" title=\"$voir\">
-            $voir
-            </a>
-        </span>";
+                <a href=\"$url\" title=\"$url\">
+                    $voir
+                </a>
+            </span>";
         return $lienCustom;
     }
 }
