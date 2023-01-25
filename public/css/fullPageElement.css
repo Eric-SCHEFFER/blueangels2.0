@@ -99,9 +99,10 @@ h2 {
    display: block;
    text-align: center;
    width: fit-content;
-   max-width: 80px;
+   max-width: 90px;
    font-size: .7em;
    line-height: 1em;
+   padding: 0 6px;
    /* border: rgb(106, 0, 255) solid 1px; */
 }
 
