@@ -14,7 +14,7 @@ class AutoInternalLinkTwigExtension extends AbstractExtension
     public function __construct(
         UrlGeneratorInterface $urlGeneratorInterface,
     ) {
-        $this->urlGeneratorInterface = $urlGeneratorInterface;
+        $this->urlGeneratorInterface = $urlGeneratorInterface; 
     }
 
     public function getFilters()
