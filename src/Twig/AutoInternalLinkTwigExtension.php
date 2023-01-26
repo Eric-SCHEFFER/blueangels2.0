@@ -12,7 +12,7 @@ class AutoInternalLinkTwigExtension extends AbstractExtension
     private $baseUrlSite;
 
     public function __construct(
-        UrlGeneratorInterface $urlGeneratorInterface,
+        UrlGeneratorInterface $urlGeneratorInterface
     ) {
         $this->urlGeneratorInterface = $urlGeneratorInterface;
     }
