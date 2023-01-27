@@ -75,6 +75,7 @@ class ArticleType extends AbstractType
             // Solution 1
             ->add('ImagesArticles', CollectionType::class, [
                 'required' => false,
+                'label' => false,
                 'entry_type' => ImagesArticleType::class,
                 // 'allow_add' => true,
                 // 'allow_delete' => true,
