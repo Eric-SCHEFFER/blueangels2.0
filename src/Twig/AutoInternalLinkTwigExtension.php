@@ -43,6 +43,9 @@ class AutoInternalLinkTwigExtension extends AbstractExtension
         return $string;
     }
 
+    /**
+     * 
+     */
     private function replace($match)
     {
         $url = $this->baseUrlSite . $match[1];
