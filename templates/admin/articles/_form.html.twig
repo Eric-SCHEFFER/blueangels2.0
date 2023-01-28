@@ -94,9 +94,6 @@
 		</div>
 	</div>
 
-	{# BUG: Le texte "Images articles" apparait en bas à gauche du formulaire d'édition et de création d'article (en fait, quand
-	il n'y a pas d'images) #}
-
 	{# Champ caché pour envoyer le referer, et permettre la redirection à la page précédente après la soumission #}
 	<input type="hidden" name="referer" value="{{app.request.headers.get('referer')}}" />
 
