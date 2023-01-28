@@ -2,7 +2,6 @@
 
 namespace App\Service;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class GetKernelProjectDir

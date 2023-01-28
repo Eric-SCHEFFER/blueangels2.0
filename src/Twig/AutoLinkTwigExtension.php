@@ -23,7 +23,8 @@ class AutoLinkTwigExtension extends AbstractExtension
         // $replacement de départ
         // $replacement = "<a href=\"$0\" target=\"_blank\">$0</a>";
 
-        $pattern = "/http[s]?:\/\/[a-zA-Z0-9.@:_%()\-\/?#=&]+/";
+        // HACK: J'ai du rajouter un ; dans la classe du pattern, car quand il y avait un & dans l'url, bizarrement, la sortie rajoutait un ; juste avant et du coup, le match s'arrêtait à ce niveau
+        $pattern = "/http[s]?:\/\/[a-zA-Z0-9.@:_%()?#=&;\-\/]+/";
         $replacement = "<span class=\"liens-full-page-element\">
             <a href=\"$0\" title=\"$0\" target=\"_blank\">
                 $0
