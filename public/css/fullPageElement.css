@@ -31,6 +31,29 @@ h2 {
    margin: auto;
 }
 
+.image-toolbar {
+   position: absolute;
+   height: auto;
+   width: 60px;
+   border: red 1px solid;
+   z-index: 1;
+   margin: auto;
+   left: 0px;
+   top: -100px;
+}
+
+.image-toolbar-single-image {
+   top: 37vh;
+}
+
+
+/* Modale image en grand */
+
+
+
+
+
+
 .image-caption {
    display: flex;
    justify-content: center;
@@ -177,6 +200,8 @@ h2 {
    position: relative;
    margin-top: 100px;
 }
+
+/* Liens mis en forme par les filtres twig */
 
 .liens-full-page-element a {
    /* display: inline-block; */

@@ -20,7 +20,9 @@
 		{% if article.getImagesArticles is not empty %}
 		{# On affiche les images dispo dans le tableau #}
 		{% for image in article.getImagesArticles %}
+
 		<div class="image">
+
 			<img src="{{ asset('uploads/imagesArticles/' ~ image.nom) }}" alt="">
 			{# On affiche la légende de chaque image #}
 			{% if image.caption is defined and image.caption != "" %}
@@ -31,9 +33,31 @@
 			</div>
 			{% endif %}
 		</div>
+
+		{# TODO: lightbox #}
+		<div id="modale" class="modale">
+
+
+
+		</div>
+
 		{% endfor %}
 		{# On affiche les boutons et infos du carousel, sauf s'il n'y a qu'une image #}
 		{% if article.getImagesArticles|length == 1 %}
+		<div class="image-toolbar image-toolbar-single-image">
+			<div>
+				BT1
+			</div>
+			<div>
+				BT2
+			</div>
+			<div>
+				BT3
+			</div>
+			<div>
+				BT4
+			</div>
+		</div>
 		<div class="boutonsAndBulletsWrapper">
 			<div class="boutonsNav hidden">
 				<a class="prev">---</a> {# Petit bricolage, sinon, décalage de l'affichage #}
@@ -43,6 +67,20 @@
 		{% else %}
 		<div class="boutonsAndBulletsWrapper">
 			<div class="boutonsNav">
+				<div class="image-toolbar">
+					<div>
+						BT1
+					</div>
+					<div>
+						BT2
+					</div>
+					<div>
+						BT3
+					</div>
+					<div>
+						BT4
+					</div>
+				</div>
 				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 				<a class="next" onclick="plusSlides(1)">&#10095;</a>
 			</div>
@@ -149,8 +187,7 @@
 								href="{{ path('contact', {id: article.id, categorie: article.categoriesArticle.nom}) }}"
 								title="Nous contacter à propos de cet article">Contact</a>
 							{% endif %}
-							<a class="bouton bt-small marge-boutons" title="Accueil"
-								href="{{ path('home') }}">
+							<a class="bouton bt-small marge-boutons" title="Accueil" href="{{ path('home') }}">
 								Accueil
 							</a>
 						</div>
