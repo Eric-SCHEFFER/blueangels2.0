@@ -37,21 +37,21 @@ h2 {
    position: absolute;
    /* border: red 1px solid; */
    width: 36px;
-   z-index: 1;
+   z-index: 0;
    left: 13px;
-   top: -126px;
+   top: 50%;
    display: flex;
    flex-direction: column;
    align-items: center;
-}
-
-.image-toolbar-single-image {
-   top: 34vh;
+   justify-content: space-between;
+   height: 180px;
+   transform: translate(0, -50%);
 }
 
 .full-screen,
 .credit-image {
-   margin: 10px 0 10px 0;
+   /* margin: 10px 0 10px 0; */
+   margin: 0;
    cursor: pointer;
 }
 

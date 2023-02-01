@@ -36,7 +36,7 @@
 
 		{# TODO: lightbox #}
 
-		{# TODO: Crédit image #}
+
 
 		<div id="modale" class="modale">
 
@@ -46,42 +46,46 @@
 
 		{% endfor %}
 		{% if article.getImagesArticles|length == 1 %}
-		<div class="image-toolbar image-toolbar-single-image">
-			<div class="full-screen">
-				<div>
-					<img src="{{ asset('images/svg/fullscreen.svg') }}" alt="">
-				</div>
-			</div>
-			<div class="credit-image">
-				<div>
-					<img src="{{ asset('images/svg/crediter.svg') }}" alt="">
-				</div>
-			</div>
-		</div>
 		{# On affiche les boutons et infos du carousel, sauf s'il n'y a qu'une image #}
 		<div class="boutonsAndBulletsWrapper">
-			<div class="boutonsNav hidden">
-				<a class="prev">---</a> {# Petit bricolage, sinon, décalage de l'affichage #}
-				<a class="next">---</a>
+			<div class="boutonsNav">
+				<div class="image-toolbar">
+					<div class="full-screen" title="Agrandir l'image">
+						<div>
+							<img src="{{ asset('images/svg/fullscreen.svg') }}" alt="Icone image agrandie">
+						</div>
+					</div>
+					{# TODO: On affiche la div de classe credit-image uniquement si la variable crediter est initialisée et
+					non vide #}
+					<div class="credit-image" title="Crédit image">
+						<div>
+							<img src="{{ asset('images/svg/crediter.svg') }}" alt="Icone Crédit image">
+						</div>
+					</div>
+				</div>
+				<a class="prev hidden">---</a> {# Petit bricolage, sinon, décalage de l'affichage #}
+				<a class="next hidden">---</a>
 			</div>
 		</div>
 		{% else %}
 		<div class="boutonsAndBulletsWrapper">
 			<div class="boutonsNav">
 				<div class="image-toolbar">
-					<div class="full-screen">
+					<div class="full-screen" title="Agrandir l'image">
 						<div>
-							<img src="{{ asset('images/svg/fullscreen.svg') }}" alt="">
+							<img src="{{ asset('images/svg/fullscreen.svg') }}" alt="Icone image agrandie">
 						</div>
 					</div>
-					<div class="credit-image">
+					{# TODO: On affiche la div de classe credit-image uniquement si la variable crediter est initialisée et
+					non vide #}
+					<div class="credit-image" title="Crédit image">
 						<div>
-							<img src="{{ asset('images/svg/crediter.svg') }}" alt="">
+							<img src="{{ asset('images/svg/crediter.svg') }}" alt="Icone Crédit image">
 						</div>
 					</div>
 				</div>
-				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-				<a class="next" onclick="plusSlides(1)">&#10095;</a>
+				<a class="prev" title="Image précédente" onclick="plusSlides(-1)">&#10094;</a>
+				<a class="next" title="Image suivante" onclick="plusSlides(1)">&#10095;</a>
 			</div>
 			{% set n = 0 %}
 			<div class="blocBullets">
