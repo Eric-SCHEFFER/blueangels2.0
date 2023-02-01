@@ -36,9 +36,10 @@ h2 {
 .image-toolbar {
    position: absolute;
    /* border: red 1px solid; */
+   width: 36px;
    z-index: 1;
-   left: 6px;
-   top: -134px;
+   left: 13px;
+   top: -126px;
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -51,10 +52,21 @@ h2 {
 .full-screen,
 .credit-image {
    margin: 10px 0 10px 0;
+   cursor: pointer;
 }
 
-.full-screen::before,
-.credit-image::before {
+.full-screen>div>img,
+.credit-image>div>img {
+   width: 100%;
+   filter: drop-shadow(1px 3px 1px rgb(0, 0, 0));
+}
+
+.full-screen>div>img {
+   width: 92%;
+}
+
+/* .full-screen::before,
+   .credit-image::before {
    text-shadow: 2px 2px 3px rgb(0, 0, 0);
    color: #ffffff;
    font-family: "Font Awesome 5 Free";
@@ -70,7 +82,7 @@ h2 {
 .credit-image::before {
    font-weight: 400;
    content: "\f2bb";
-}
+} */
 
 /* ========================== */
 

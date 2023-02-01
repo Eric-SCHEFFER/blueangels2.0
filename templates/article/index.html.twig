@@ -48,10 +48,14 @@
 		{% if article.getImagesArticles|length == 1 %}
 		<div class="image-toolbar image-toolbar-single-image">
 			<div class="full-screen">
-
+				<div>
+					<img src="{{ asset('images/svg/fullscreen.svg') }}" alt="">
+				</div>
 			</div>
 			<div class="credit-image">
-
+				<div>
+					<img src="{{ asset('images/svg/crediter.svg') }}" alt="">
+				</div>
 			</div>
 		</div>
 		{# On affiche les boutons et infos du carousel, sauf s'il n'y a qu'une image #}
@@ -66,10 +70,14 @@
 			<div class="boutonsNav">
 				<div class="image-toolbar">
 					<div class="full-screen">
-
+						<div>
+							<img src="{{ asset('images/svg/fullscreen.svg') }}" alt="">
+						</div>
 					</div>
 					<div class="credit-image">
-
+						<div>
+							<img src="{{ asset('images/svg/crediter.svg') }}" alt="">
+						</div>
 					</div>
 				</div>
 				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
