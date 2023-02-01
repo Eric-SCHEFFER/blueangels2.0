@@ -31,20 +31,48 @@ h2 {
    margin: auto;
 }
 
+/* ========================== */
+
 .image-toolbar {
    position: absolute;
-   height: auto;
-   width: 60px;
-   border: red 1px solid;
+   /* border: red 1px solid; */
    z-index: 1;
-   margin: auto;
-   left: 0px;
-   top: -100px;
+   left: 6px;
+   top: -134px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 }
 
 .image-toolbar-single-image {
-   top: 37vh;
+   top: 34vh;
 }
+
+.full-screen,
+.credit-image {
+   margin: 10px 0 10px 0;
+}
+
+.full-screen::before,
+.credit-image::before {
+   text-shadow: 2px 2px 3px rgb(0, 0, 0);
+   color: #ffffff;
+   font-family: "Font Awesome 5 Free";
+   font-weight: 900;
+   font-size: 2.5em;
+   cursor: pointer;
+}
+
+.full-screen::before {
+   content: "\f31e";
+}
+
+.credit-image::before {
+   font-weight: 400;
+   content: "\f2bb";
+}
+
+/* ========================== */
 
 
 /* Modale image en grand */
@@ -294,3 +322,5 @@ h2 {
 }
 
 @media screen and (max-width: 695px) {}
+
+/* TODO: Affichage de image-tool-bar et des boutons nav de l'image, en dessous de 475px de hauteur d'écran */

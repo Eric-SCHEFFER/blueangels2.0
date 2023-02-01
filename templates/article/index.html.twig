@@ -35,6 +35,9 @@
 		</div>
 
 		{# TODO: lightbox #}
+
+		{# TODO: Crédit image #}
+
 		<div id="modale" class="modale">
 
 
@@ -42,22 +45,16 @@
 		</div>
 
 		{% endfor %}
-		{# On affiche les boutons et infos du carousel, sauf s'il n'y a qu'une image #}
 		{% if article.getImagesArticles|length == 1 %}
 		<div class="image-toolbar image-toolbar-single-image">
-			<div>
-				BT1
+			<div class="full-screen">
+
 			</div>
-			<div>
-				BT2
-			</div>
-			<div>
-				BT3
-			</div>
-			<div>
-				BT4
+			<div class="credit-image">
+
 			</div>
 		</div>
+		{# On affiche les boutons et infos du carousel, sauf s'il n'y a qu'une image #}
 		<div class="boutonsAndBulletsWrapper">
 			<div class="boutonsNav hidden">
 				<a class="prev">---</a> {# Petit bricolage, sinon, décalage de l'affichage #}
@@ -68,17 +65,11 @@
 		<div class="boutonsAndBulletsWrapper">
 			<div class="boutonsNav">
 				<div class="image-toolbar">
-					<div>
-						BT1
+					<div class="full-screen">
+
 					</div>
-					<div>
-						BT2
-					</div>
-					<div>
-						BT3
-					</div>
-					<div>
-						BT4
+					<div class="credit-image">
+
 					</div>
 				</div>
 				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
