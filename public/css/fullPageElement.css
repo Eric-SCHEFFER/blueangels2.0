@@ -19,7 +19,7 @@ h2 {
    border-radius: 12px 12px 0 0;
 }
 
-.image img {
+.image>img {
    max-width: 100%;
    max-height: 100%;
    border-radius: 12px;
@@ -65,33 +65,55 @@ h2 {
    width: 92%;
 }
 
-/* .full-screen::before,
-   .credit-image::before {
-   text-shadow: 2px 2px 3px rgb(0, 0, 0);
-   color: #ffffff;
-   font-family: "Font Awesome 5 Free";
-   font-weight: 900;
-   font-size: 2.5em;
-   cursor: pointer;
-}
-
-.full-screen::before {
-   content: "\f31e";
-}
-
-.credit-image::before {
-   font-weight: 400;
-   content: "\f2bb";
-} */
 
 /* ========================== */
 
 
 /* Modale image en grand */
 
+.modal {
+   display: none;
+   position: fixed;
+   z-index: 1000000;
+   left: 0;
+   top: 0;
+   bottom: 0;
+   right: 0;
+   width: 98vw;
+   /* height: 100vh; */
+   margin: auto;
+   background-color: rgb(0, 0, 0);
+   overflow: scroll;
+   /* backdrop-filter: blur(4px); */
+}
+
+.modal.show {
+   display: initial;
+}
+
+.modal-content {
+   width: max-content;
+   /* height: max-content; */
+   margin: auto;
+}
+
+.modal-content>img {
+   width: 100%;
+}
+
+.modal>.close {
+   position: fixed;
+   font-size: 2.5em;
+   font-weight: 600;
+   color: #fff;
+   text-shadow: 2px 2px 3px rgb(0, 0, 0);
+   left: 5vw;
+   top: 3vh;
+   cursor: pointer;
+}
 
 
-
+/* ========================== */
 
 
 .image-caption {
