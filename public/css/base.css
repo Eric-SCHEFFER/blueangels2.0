@@ -36,6 +36,10 @@ html, body {
    pointer-events: initial;
 }
 
+.restore-scroll {
+   overflow: initial;
+}
+
 a {
    display: inline-block;
    color: inherit;
