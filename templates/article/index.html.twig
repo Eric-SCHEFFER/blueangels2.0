@@ -13,6 +13,11 @@
 
 {% block body %}
 
+{# Variable creditImage pour test avant ajout en bdd #}
+
+{% set creditImage = 'Jacques Ouilles. kjkj kkkkkkokopkoppo kopk pokp pp  k pk pk.
+https://mon-super-depotdimagestresters_long_enfin_jvousdispas-commecest-tres-long_ce_lien_bizare' %}
+
 
 <div class="wrapper">
 	<h1>{{ article.titre }}</h1>
@@ -34,27 +39,27 @@
 			</div>
 			{% endif %}
 
-			{# TODO : Modale lightBox #}
+			{% if creditImage is defined and creditImage is not empty %}
+			{# TODO: Crédit image #}
+			<div class="credit-image-content">
+				<div class="credit-image-titre">Crédit image:</div>
+				{{ creditImage | auto_link }}
+			</div>
+			{% endif %}
 
+
+
+			{# Modale lightBox #}
 			<div class="modal">
-				<span class="close" title="Fermer l'image">X</span>
+				<span class="close" title="Réduire">
+					<img src="{{ asset('images/svg/fullscreen-exit.svg') }}" alt="Icone fullscreen exit">
+				</span>
 				<div class="modal-content">
 					<img src="{{ asset('uploads/imagesArticles/' ~ image.nom) }}" alt="">
 				</div>
 			</div>
-
 		</div>
-
-
-
 		{% endfor %}
-
-		{# TODO: Crédit image #}
-
-
-
-
-
 
 
 		{% if article.getImagesArticles|length == 1 %}
@@ -67,13 +72,16 @@
 							<img src="{{ asset('images/svg/fullscreen.svg') }}" alt="Icone image agrandie">
 						</div>
 					</div>
-					{# TODO: On affiche la div de classe credit-image uniquement si la variable crediter est initialisée et
-					non vide #}
+					{% if creditImage is defined and creditImage is not empty %}
+					{# TODO: Crédit image #}
 					<div class="credit-image" title="Crédit image">
 						<div>
-							<img src="{{ asset('images/svg/crediter.svg') }}" alt="Icone Crédit image">
+							<img src="{{ asset('images/svg/info-circle.svg') }}" alt="Icone Crédit image">
 						</div>
 					</div>
+					{% endif %}
+
+
 				</div>
 				<a class="prev hidden">---</a> {# Petit bricolage, sinon, décalage de l'affichage #}
 				<a class="next hidden">---</a>
@@ -88,13 +96,16 @@
 							<img src="{{ asset('images/svg/fullscreen.svg') }}" alt="Icone image agrandie">
 						</div>
 					</div>
-					{# TODO: On affiche la div de classe credit-image uniquement si la variable crediter est initialisée et
-					non vide #}
+					{% if creditImage is defined and creditImage is not empty %}
+					{# TODO: Crédit image #}
 					<div class="credit-image" title="Crédit image">
 						<div>
-							<img src="{{ asset('images/svg/crediter.svg') }}" alt="Icone Crédit image">
+							<img src="{{ asset('images/svg/info-circle.svg') }}" alt="Icone Crédit image">
 						</div>
 					</div>
+					{% endif %}
+
+
 				</div>
 				<a class="prev" title="Image précédente" onclick="plusSlides(-1)">&#10094;</a>
 				<a class="next" title="Image suivante" onclick="plusSlides(1)">&#10095;</a>
@@ -227,6 +238,7 @@
 {% block javascript %}
 <script src="{{ asset('js/carousel.js') }}"></script>
 <script src="{{ asset('js/lightBox.js') }}"></script>
+{# <script src="{{ asset('js/creditImage.js') }}"></script> #}
 {% endblock %}
 
 {% endblock %}
