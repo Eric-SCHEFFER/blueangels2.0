@@ -1,4 +1,5 @@
 const boutonCredit = document.querySelector(".credit-image");
+const creditImageContents = document.querySelectorAll(".credit-image-content");
 
 
 boutonCredit.addEventListener("click", function (event) {
@@ -13,10 +14,14 @@ oBody.addEventListener("click", function () {
 });
 
 
-// Préserve la fermeture de la fenetre crédit quand on clique dessus.
-const creditImageContents = document.querySelectorAll(".credit-image-content");
 for (let creditImageContent of creditImageContents) {
    creditImageContent.addEventListener("click", function (event) {
+      // Préserve la fermeture de la fenêtre crédit quand on clique dessus.
       event.stopPropagation();
+   });
+   // Ferme la fenêtre crédit quand on appuie sur son bouton close
+   let close = creditImageContent.firstElementChild;
+   close.addEventListener("click", function () {
+      creditImageContent.classList.remove("show");
    });
 }

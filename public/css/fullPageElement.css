@@ -72,6 +72,7 @@ h2 {
    font-size: .8em;
    backdrop-filter: blur(15px);
    text-shadow: 2px 2px 3px rgb(0, 0, 0);
+   z-index: 1;
 }
 
 .credit-image-content a {
@@ -85,7 +86,17 @@ h2 {
 
 .credit-image-titre {
    font-weight: 800;
+   padding: 4px 0 8px 0;
    text-transform: uppercase;
+}
+
+.credit-image-close {
+   position: absolute;
+   right: 7px;
+   top: 4px;
+   color: #fff;
+   font-weight: 600;
+   cursor: pointer;
 }
 
 .full-screen>div>img,
