@@ -60,8 +60,8 @@ h2 {
    position: absolute;
    border: solid 1px #595959;
    bottom: 23%;
-   left: 69px;
-   display: none;
+   left: -60vw;
+   /* display: none; */
    background-color: #0000004d;
    color: #eee;
    border-radius: 5px;
@@ -73,6 +73,13 @@ h2 {
    backdrop-filter: blur(15px);
    text-shadow: 2px 2px 3px rgb(0, 0, 0);
    z-index: 1;
+   transition: all .4s;
+}
+
+
+.show-credit-image {
+   /* display: initial; */
+   left: 69px;
 }
 
 .credit-image-content a {
@@ -116,23 +123,29 @@ h2 {
 /* Modale image en grand */
 
 .modal {
-   display: none;
+   /* display: none; */
    position: fixed;
    z-index: 1000000;
    left: 0;
    top: 0;
    bottom: 0;
    right: 0;
-   width: 100vw;
+   width: 0;
+   visibility: hidden;
+   /* width: 100vw; */
    /* height: 100vh; */
    margin: auto;
    background-color: rgb(0, 0, 0);
    overflow: scroll;
    /* backdrop-filter: blur(4px); */
+   transition: all .4s;
 }
 
 .show {
-   display: initial;
+   /* display: initial; */
+   visibility: visible;
+   width: 100vw;
+   height: initial;
 }
 
 .modal-content {
