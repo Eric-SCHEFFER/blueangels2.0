@@ -12,10 +12,16 @@
 {% endblock %}
 
 {% block body %}
+{% block javascript %}
+<script src="{{ asset('js/carousel.js') }}" defer></script>
+<script src="{{ asset('js/lightBox.js') }}" defer></script>
+<script src="{{ asset('js/creditImage.js') }}" defer></script>
+{% endblock %}
+
 
 {# Variable creditImage pour test avant ajout en bdd #}
 
-{% set creditImage = 'Jacques Ouilles. kjkj kkkkkkokopkoppo kopk pokp pp  k pk pk.
+{% set creditImage = 'Jacques Ouilles. kjkj kkkkkkokopkoppo kopk pokp pp k pk pk.
 https://mon-super-depotdimagestresters_long_enfin_jvousdispas-commecest-tres-long_ce_lien_bizare' %}
 
 
@@ -235,10 +241,6 @@ https://mon-super-depotdimagestresters_long_enfin_jvousdispas-commecest-tres-lon
 </div>
 
 
-{% block javascript %}
-<script src="{{ asset('js/carousel.js') }}"></script>
-<script src="{{ asset('js/lightBox.js') }}"></script>
-{# <script src="{{ asset('js/creditImage.js') }}"></script> #}
-{% endblock %}
+
 
 {% endblock %}

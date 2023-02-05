@@ -61,7 +61,7 @@ h2 {
    border: solid 1px #595959;
    bottom: 23%;
    left: 69px;
-   /* display: none; */
+   display: none;
    background-color: #0000004d;
    color: #eee;
    border-radius: 5px;
@@ -120,7 +120,7 @@ h2 {
    /* backdrop-filter: blur(4px); */
 }
 
-.modal.show {
+.show {
    display: initial;
 }
 
