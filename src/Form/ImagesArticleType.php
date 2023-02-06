@@ -29,6 +29,19 @@ class ImagesArticleType extends AbstractType
                         ])
                     ]
                 ]
+            )
+            ->add(
+                'author',
+                TextType::class,
+                [
+                    'label' => 'Auteur crédité pour l\'image (maxi 455 car)',
+                    'constraints' => [
+                        new Length([
+                            'max' => 455,
+                            'maxMessage' => 'Maximum 455 caractères'
+                        ])
+                    ]
+                ]
             );
     }
 

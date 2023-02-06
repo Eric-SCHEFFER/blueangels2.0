@@ -58,6 +58,9 @@
 			<div class="champ-caption">
 				{{ form_row(form.ImagesArticles[i].caption, {'attr':{'class':'titre'}}) }}
 			</div>
+			<div class="champ-caption">
+				{{ form_row(form.ImagesArticles[i].author, {'attr':{'class':'titre'}}) }}
+			</div>
 		</div>
 		{% set i = i + 1 %}
 		{% endfor %}

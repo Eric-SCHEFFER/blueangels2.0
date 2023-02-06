@@ -32,6 +32,13 @@ class ImagesArticle
      */
     private $caption;
 
+    /**
+     * @ORM\Column(type="string", length=455, nullable=true)
+     */
+    private $author;
+
+   
+
     public function getId(): ?int
     {
         return $this->id;
@@ -76,4 +83,18 @@ class ImagesArticle
     // public function __toString(){
     //     return $this->caption;
     // }
+
+    public function getAuthor(): ?string
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?string $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+   
 }
