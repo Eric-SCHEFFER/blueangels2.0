@@ -147,7 +147,7 @@ h2 {
 }
 
 .modal-content {
-   width: max-content;
+   /* width: max-content; */
    margin: auto;
    max-width: 1500px;
 }
