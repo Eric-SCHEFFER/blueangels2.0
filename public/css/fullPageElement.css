@@ -19,7 +19,7 @@ h2 {
    border-radius: 12px 12px 0 0;
 }
 
-.image img {
+.image>img {
    max-width: 100%;
    max-height: 100%;
    border-radius: 12px;
@@ -30,6 +30,151 @@ h2 {
    transform: translate(-50%, -50%);
    margin: auto;
 }
+
+/* ========================== */
+
+.image-toolbar {
+   position: absolute;
+   /* border: red 1px solid; */
+   width: 36px;
+   z-index: 0;
+   left: 13px;
+   top: 50%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-between;
+   height: 37vh;
+   min-height: 165px;
+   transform: translate(0, -50%);
+}
+
+.full-screen,
+.credit-image {
+   /* margin: 10px 0 10px 0; */
+   margin: 0;
+   cursor: pointer;
+}
+
+.credit-image-content {
+   position: absolute;
+   border: solid 1px #595959;
+   bottom: 23%;
+   left: -60vw;
+   /* display: none; */
+   background-color: #0000004d;
+   color: #eee;
+   border-radius: 5px;
+   width: 344px;
+   max-width: 50vw;
+   word-break: break-word;
+   padding: 8px;
+   font-size: .8em;
+   backdrop-filter: blur(15px);
+   text-shadow: 2px 2px 3px rgb(0, 0, 0);
+   z-index: 1;
+   transition: all .4s;
+}
+
+
+.show-credit-image {
+   /* display: initial; */
+   left: 69px;
+}
+
+.credit-image-content a {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   color: #0068d6;
+   font-weight: 600;
+   width: 344px;
+}
+
+.credit-image-titre {
+   font-weight: 800;
+   padding: 4px 0 8px 0;
+   text-transform: uppercase;
+}
+
+.credit-image-close {
+   position: absolute;
+   right: 7px;
+   top: 4px;
+   color: #fff;
+   font-weight: 600;
+   cursor: pointer;
+}
+
+.full-screen>div>img,
+.credit-image>div>img {
+   width: 100%;
+   filter: drop-shadow(1px 3px 1px rgb(0, 0, 0));
+}
+
+.full-screen>div>img {
+   width: 92%;
+}
+
+
+/* ========================== */
+
+
+/* Modale image en grand */
+
+.modal {
+   /* display: none; */
+   position: fixed;
+   z-index: 1000000;
+   left: 0;
+   top: 0;
+   bottom: 0;
+   right: 0;
+   width: 0;
+   visibility: hidden;
+   margin: auto;
+   background-color: rgb(0, 0, 0);
+   overflow: scroll;
+   /* backdrop-filter: blur(4px); */
+   transition: all .4s;
+}
+
+.show {
+   /* display: initial; */
+   visibility: visible;
+   width: 100vw;
+   /* height: initial; */
+}
+
+.modal-content {
+   width: max-content;
+   margin: auto;
+   max-width: 1500px;
+}
+
+.modal-content>img {
+   width: 100%;
+}
+
+.modal>.close {
+   position: fixed;
+   /* font-size: 2.5em; */
+   /* font-weight: 600; */
+   color: #fff;
+   /* text-shadow: 2px 2px 3px rgb(0, 0, 0); */
+   left: 5vw;
+   top: 3vh;
+   cursor: pointer;
+   width: 42px;
+}
+
+.modal>.close>img {
+   width: 100%;
+   filter: drop-shadow(3px 5px 2px rgb(0, 0, 0));
+}
+
+/* ========================== */
+
 
 .image-caption {
    display: flex;
@@ -178,6 +323,8 @@ h2 {
    margin-top: 100px;
 }
 
+/* Liens mis en forme par les filtres twig */
+
 .liens-full-page-element a {
    /* display: inline-block; */
    position: relative;
@@ -269,3 +416,5 @@ h2 {
 }
 
 @media screen and (max-width: 695px) {}
+
+/* TODO: Affichage de image-tool-bar et des boutons nav de l'image, en dessous de 475px de hauteur d'écran */

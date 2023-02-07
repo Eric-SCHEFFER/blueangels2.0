@@ -49,22 +49,7 @@
 				{{ image.author | auto_link }}
 			</div>
 			{% endif %}
-			
-			{# Boutons fullScreen et Crédit image #}
-			<div class="image-toolbar">
-				<div class="full-screen" title="Image en taille réelle">
-					<div>
-						<img src="{{ asset('images/svg/fullscreen.svg') }}" alt="Icone image agrandie">
-					</div>
-				</div>
-				{% if image.author is defined and image.author is not empty %}
-				<div class="credit-image" title="Crédit image">
-					<div>
-						<img src="{{ asset('images/svg/info-circle.svg') }}" alt="Icone Crédit image">
-					</div>
-				</div>
-				{% endif %}
-			</div>
+
 
 
 			{# Modale lightBox #}
@@ -79,10 +64,30 @@
 		</div>
 		{% endfor %}
 
+
 		{% if article.getImagesArticles|length == 1 %}
 		{# On affiche les boutons et infos du carousel, sauf s'il n'y a qu'une image #}
 		<div class="boutonsAndBulletsWrapper">
 			<div class="boutonsNav">
+				<div class="image-toolbar">
+					<div class="full-screen" title="Image en taille réelle">
+						<div>
+							<img src="{{ asset('images/svg/fullscreen.svg') }}" alt="Icone image agrandie">
+						</div>
+					</div>
+
+					{# Crédit image #}
+					{% if article.getImagesArticles[0].author is defined and article.getImagesArticles[0].author is not empty
+					%}
+					<div class="credit-image" title="Crédit image">
+						<div>
+							<img src="{{ asset('images/svg/info-circle.svg') }}" alt="Icone Crédit image">
+						</div>
+					</div>
+					{% endif %}
+
+
+				</div>
 				<a class="prev hidden">---</a> {# Petit bricolage, sinon, décalage de l'affichage #}
 				<a class="next hidden">---</a>
 			</div>
@@ -90,6 +95,23 @@
 		{% else %}
 		<div class="boutonsAndBulletsWrapper">
 			<div class="boutonsNav">
+				<div class="image-toolbar">
+					<div class="full-screen" title="Image en taille réelle">
+						<div>
+							<img src="{{ asset('images/svg/fullscreen.svg') }}" alt="Icone image agrandie">
+						</div>
+					</div>
+
+
+					{# FIXME: L'ICONE INFO S'AFFICHE MÊME QUAND IL N'Y RIEN DANS LE CRÉDIT IMAGE (UNIQUEMENT EN IMAGES MULTIPLES) #}
+					<div class="credit-image" title="Crédit image">
+						<div>
+							<img src="{{ asset('images/svg/info-circle.svg') }}" alt="Icone Crédit image">
+						</div>
+					</div>
+			
+
+				</div>
 				<a class="prev" title="Image précédente" onclick="plusSlides(-1)">&#10094;</a>
 				<a class="next" title="Image suivante" onclick="plusSlides(1)">&#10095;</a>
 			</div>

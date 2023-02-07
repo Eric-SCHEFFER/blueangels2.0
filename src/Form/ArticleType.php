@@ -71,7 +71,7 @@ class ArticleType extends AbstractType
                 ]
             ])
 
-            // CHAMP CAPTION POUR CHAQUE IMAGE
+            // CHAMPS SUPPLÉMENTAIRES POUR POUR CHAQUE IMAGE (CAPTION, AUTHOR)
             // Solution 1
             ->add('ImagesArticles', CollectionType::class, [
                 'required' => false,
