@@ -26,6 +26,6 @@
 /public/uploads/
 /public/images/
 /exportBdd/
-/.brouillon
-/.notes
+/brouillon/
+/notes/
 /config/secrets/
