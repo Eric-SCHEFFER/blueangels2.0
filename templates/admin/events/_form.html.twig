@@ -1,5 +1,5 @@
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('css/formulaireCrud.css') }}">
+<link rel="stylesheet" href="{{ asset('css/formulaireCrud.css') }}">
 {% endblock %}
 
 <div class="container-form">
@@ -14,74 +14,103 @@
 	</div>
 
 	<h3>Images</h3>
-	<div class="images">
+	<div class="images-et-captions">
 
 		<div class="ligne1">
 			<div class="champ">
 				{{ form_row(form.imageFile, {'attr':{'class':'image'}}) }}
 			</div>
-			{# On vérifie si la route correspond à la variable routeVerif passée depuis l'édition d'un event passé soit futur, et on affiche les images #}
+			{# On vérifie si la route correspond à la variable routeVerif passée depuis l'édition d'un event passé soit
+			futur, et on affiche les images #}
 			{% if app.request.attributes.get('_route') == routeVerif %}
-				<div class="blocVignettes">
-					{% for image in event.imagesEvents %}
-						<div class="vignette">
-							<img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ image.nom) }}" alt="image">
-							<a class="bouton petitBouton" href="{{ path('admin.events.image.delete', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer
-							</a>
-						</div>
-					{% endfor %}
+
+
+
+
+
+
+
+
+			{% set i = 0 %}
+			{% for image in event.imagesEvents %}
+			<div class="ligne2">
+				<div class="vignette vignette-et-captions">
+					<img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ image.nom) }}" alt="image">
+					<a class="bouton petitBouton" href="{{ path('admin.events.image.delete', {id: image.id}) }}" data-delete
+						data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer
+					</a>
 				</div>
+				{{ i + 1 }}
+
+				{# On affiche la légende de l'image dans un nouveau champ #}
+				{# BUG: Après la suppression d'une ou plusieurs images, il vaut mieux repasser par la page admin, puis
+				relancer
+				l'admin de l'article en question, si on veut rajouter d'autres images. #}
+				<div class="champ-caption">
+					{{ form_row(form.ImagesEvents[i].caption, {'attr':{'class':'titre'}}) }}
+				</div>
+				<div class="champ-caption">
+					{{ form_row(form.ImagesEvents[i].author, {'attr':{'class':'titre'}}) }}
+				</div>
+			</div>
+			{% set i = i + 1 %}
+			{% endfor %}
 			{% endif %}
 		</div>
-	</div>
-	<div class="ligne2">
-		<div class="champ">
-			{{ form_row(form.date_event, {'attr':{'class':'date'}}) }}
-		</div>
-	</div>
-	<div class="ligne1">
-		<div class="champ">
-			{{ form_row(form.nom_lieu, {'attr':{'class':'titre'}}) }}
-		</div>
-		<div class="champ">
-			{{ form_row(form.adresse, {'attr':{'class':'titre'}}) }}
-		</div>
-	</div>
-	<div class="ligne1">
-		<div class="champ">
-			{{ form_row(form.code_postal, {'attr':{'class':'titre'}}) }}
-		</div>
-		<div class="champ">
-			{{ form_row(form.ville, {'attr':{'class':'titre'}}) }}
-		</div>
-	</div>
-	<div class="ligne1">
-		<div class="champ">
-			{{ form_row(form.lien_maps, {'attr':{'class':'titre'}}) }}
-		</div>
-	</div>
-	
-	<div class="champ">
-		{{ form_row(form.description, {'attr':{'class':'description'}}) }}
-	</div>
 
-	<div class="ligne1">
-		<div class="champ" title="{{ eventOptionInfo.annule }}">
-			{{ form_row(form.annule) }}
-		</div>
-		<div class="champ" title="{{ articleOptionInfo.actif }}">
-			{{ form_row(form.actif) }}
-		</div>
-		<div class="champ" title="{{ eventOptionInfo.eventBlueAngels }}">
-			{{ form_row(form.event_blue_angels) }}
-		</div>
-		<div class="champ" title="{{ articleOptionInfo.epingle }}">
-			{{ form_row(form.epingle) }}
-		</div>
-	</div>
-	{# Champ caché pour envoyer le referer, et permettre la redirection à la page précédente après la soumission  #}
-	<input type="hidden" name="referer" value="{{app.request.headers.get('referer')}}"/>
 
-	<button>{{ button|default('Enregistrer') }}</button>
-	{{ form_end(form) }}
-</div>
+
+
+
+
+		<div class="ligne2">
+			<div class="champ">
+				{{ form_row(form.date_event, {'attr':{'class':'date'}}) }}
+			</div>
+		</div>
+		<div class="ligne1">
+			<div class="champ">
+				{{ form_row(form.nom_lieu, {'attr':{'class':'titre'}}) }}
+			</div>
+			<div class="champ">
+				{{ form_row(form.adresse, {'attr':{'class':'titre'}}) }}
+			</div>
+		</div>
+		<div class="ligne1">
+			<div class="champ">
+				{{ form_row(form.code_postal, {'attr':{'class':'titre'}}) }}
+			</div>
+			<div class="champ">
+				{{ form_row(form.ville, {'attr':{'class':'titre'}}) }}
+			</div>
+		</div>
+		<div class="ligne1">
+			<div class="champ">
+				{{ form_row(form.lien_maps, {'attr':{'class':'titre'}}) }}
+			</div>
+		</div>
+
+		<div class="champ">
+			{{ form_row(form.description, {'attr':{'class':'description'}}) }}
+		</div>
+
+		<div class="ligne1">
+			<div class="champ" title="{{ eventOptionInfo.annule }}">
+				{{ form_row(form.annule) }}
+			</div>
+			<div class="champ" title="{{ articleOptionInfo.actif }}">
+				{{ form_row(form.actif) }}
+			</div>
+			<div class="champ" title="{{ eventOptionInfo.eventBlueAngels }}">
+				{{ form_row(form.event_blue_angels) }}
+			</div>
+			<div class="champ" title="{{ articleOptionInfo.epingle }}">
+				{{ form_row(form.epingle) }}
+			</div>
+		</div>
+		{# Champ caché pour envoyer le referer, et permettre la redirection à la page précédente après la soumission #}
+		<input type="hidden" name="referer" value="{{app.request.headers.get('referer')}}" />
+
+		<button>{{ button|default('Enregistrer') }}</button>
+		{{ form_end(form) }}
+	</div>

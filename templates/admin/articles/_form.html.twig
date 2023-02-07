@@ -41,6 +41,12 @@
 		{# On vérifie si la route est "admin.articles.edit", et on affiche les images #}
 
 		{% if app.request.attributes.get('_route') == 'admin.articles.edit' %}
+
+
+
+
+
+
 		{% set i = 0 %}
 		{% for image in article.imagesArticles %}
 		<div class="ligne2">
@@ -67,6 +73,8 @@
 		{% endif %}
 	</div>
 
+
+	
 
 	<div class="ligne2">
 		<div class="champ">

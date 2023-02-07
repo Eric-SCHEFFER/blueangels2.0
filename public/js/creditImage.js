@@ -1,9 +1,11 @@
 // Fenêtre popup pour afficher les infos de crédit de l'image
 
+
 const boutonsCredit = document.querySelectorAll(".credit-image");
 const creditImageContents = document.querySelectorAll(".credit-image-content");
 
-// Une seule image
+
+// Quand il n'y a qu'une seule image
 
 if (creditImageContents.length == 1) {
    // Ouvre la fenêtre crédit quand on clique sur son bouton
@@ -29,7 +31,8 @@ if (creditImageContents.length == 1) {
    });
 }
 
-// Plusieurs images
+
+// Quand il y a plusieurs images
 
 else {
    // Ouvre la fenêtre crédit quand on clique sur son bouton

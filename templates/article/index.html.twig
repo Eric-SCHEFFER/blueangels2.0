@@ -69,13 +69,14 @@
 
 			{# Modale lightBox #}
 			<div class="modal">
-				<span class="close" title="Réduire">
-					<img src="{{ asset('images/svg/fullscreen-exit.svg') }}" alt="Icone fullscreen exit">
+				<span class="close" title="Fermer">
+					<img src="{{ asset('images/svg/close.svg') }}" alt="Icone close">
 				</span>
 				<div class="modal-content">
 					<img src="{{ asset('uploads/imagesArticles/' ~ image.nom) }}" alt="">
 				</div>
 			</div>
+			
 		</div>
 		{% endfor %}
 

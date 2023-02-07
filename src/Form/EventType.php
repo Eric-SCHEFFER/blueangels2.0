@@ -14,6 +14,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Validator\Constraints\All;
 use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+
 
 class EventType extends AbstractType
 {
@@ -52,8 +54,18 @@ class EventType extends AbstractType
                 ]
             ])
 
+            // CHAMPS SUPPLÉMENTAIRES POUR POUR CHAQUE IMAGE (CAPTION, AUTHOR)
+            ->add('ImagesEvents', CollectionType::class, [
+                'required' => false,
+                'label' => false,
+                'entry_type' => ImagesEventType::class,
+                // 'allow_add' => true,
+                // 'allow_delete' => true,
+
+            ])
+
             ->add('date_event', DateTimeType::class, [
-                'years' => range(date('Y')-20, date('Y')+20),
+                'years' => range(date('Y') - 20, date('Y') + 20),
                 'required' => true,
                 'label' => 'Date de l\'évènement',
             ])
