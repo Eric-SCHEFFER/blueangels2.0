@@ -32,6 +32,16 @@ class ImagesEvent
      */
     private $categories_image;
 
+    /**
+     * @ORM\Column(type="string", length=300, nullable=true)
+     */
+    private $caption;
+
+    /**
+     * @ORM\Column(type="string", length=455, nullable=true)
+     */
+    private $author;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +79,30 @@ class ImagesEvent
     public function setCategoriesImage(?CategoriesImage $categories_image): self
     {
         $this->categories_image = $categories_image;
+
+        return $this;
+    }
+
+    public function getCaption(): ?string
+    {
+        return $this->caption;
+    }
+
+    public function setCaption(?string $caption): self
+    {
+        $this->caption = $caption;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?string
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?string $author): self
+    {
+        $this->author = $author;
 
         return $this;
     }

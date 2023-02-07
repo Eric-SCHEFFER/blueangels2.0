@@ -148,8 +148,8 @@ h2 {
 
 .modal-content {
    width: max-content;
-   /* height: max-content; */
    margin: auto;
+   max-width: 1500px;
 }
 
 .modal-content>img {
