@@ -1,0 +1,67 @@
+.bloc-cards {
+   position: relative;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-wrap: wrap;
+}
+
+.card {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   position: relative;
+   background-color: #fff;
+   width: 275px;
+   min-width: 275px;
+   height: 124px;
+   min-height: 124px;
+   margin: 20px;
+   border-radius: 6px;
+   cursor: pointer;
+}
+
+.card:hover .prenom-nom {
+   top: 0;
+}
+
+.bloc-image {
+   position: relative;
+   width: 50%;
+   height: 100%;
+   /* border: red 1px solid; */
+}
+
+.image {
+   position: relative;
+   width: 82%;
+   border-radius: 50%;
+   overflow: hidden;
+   /* border: green 1px solid; */
+   margin: auto;
+   top: 6px;
+}
+
+.image>img {
+   display: block;
+   width: 100%;
+   object-fit: cover;
+}
+
+.bloc-text {
+   /* border: blue solid 1px; */
+   position: relative;
+   color: #fff;
+   width: 50%;
+   background-color: rgb(0, 110, 255);
+   height: 100%;
+   padding: 8px 8px 10px 10px ;
+   border-radius: 0 6px 6px 0;
+   box-sizing: border-box;
+}
+
+.prenom-nom {
+   position: relative;
+   top: 26px;
+   transition: top .4s;
+}
