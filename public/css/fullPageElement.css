@@ -66,10 +66,10 @@ h2 {
    color: #eee;
    border-radius: 5px;
    width: 344px;
-   max-width: 50vw;
+   max-width: 54%;
    word-break: break-word;
    padding: 8px;
-   font-size: .8em;
+   font-size: .9em;
    backdrop-filter: blur(15px);
    text-shadow: 2px 2px 3px rgb(0, 0, 0);
    z-index: 1;
@@ -86,7 +86,7 @@ h2 {
    overflow: hidden;
    text-overflow: ellipsis;
    white-space: nowrap;
-   color: #0068d6;
+   color: #2c93ff;
    font-weight: 600;
    width: 344px;
 }
@@ -328,7 +328,7 @@ h2 {
 .liens-full-page-element a {
    /* display: inline-block; */
    position: relative;
-   max-width: 38vw;
+   max-width: 95%;
    min-width: 100px;
    /* height: 15px; */
    /* font-size: .7em; */

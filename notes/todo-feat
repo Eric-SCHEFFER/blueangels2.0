@@ -1,7 +1,5 @@
 FIXME: Back: Clonage d'un event: Les champs captions et crédit image ne sont pas pris en compte.
 
-FEAT: Front: Image taille réelle dans fullPageElement plus adaptée à la taille de l'écran (pas trop grande  tout de suite par ex sur un petit écran, mais peut-être ajouter un bouton pour un zoom par palier)
-
 FEAT: Back: Lors de l'upload d'image pour un article ou un event, possibilité de rechercher une image à uploader sur le web
 
 FEAT: Front: Refaire le trombisnoscope (animations plus jolies)
