@@ -21,16 +21,24 @@
 		- Composition de la carte: Photo, nom du membre (avec un petit effet sympa au survol, mais sans plus)
 
 		Le clic sur chaque carte ouvre une modale en position absolute, dans laquelle s'affiche la description du membre
-
 		#}
 
+		{# Cards #}
 		<div class="bloc-cards">
 			{% for membre in membres %}
 			<div class="card">
+				{# On transmet des variables pour le script js de la modale #}
+				<div class="datas" data-prenom="{{ membre.prenom }}
+				" data-nom="{{ membre.nom }}
+				" data-fonction="{{ membre.fonction }}
+				" data-description="{{ membre.description }}
+				">
+				</div>
+
 				<div class="bloc-image">
 					<div class="image">
 						<img src="{{ asset('uploads/imagesTrombinoscope/' ~ membre.getPhoto()) }}"
-							alt="Photo individuelle membre comité">
+							alt="Photo membre comité">
 					</div>
 				</div>
 				<div class="bloc-text">
@@ -38,13 +46,38 @@
 						<div>{{ membre.prenom }}</div>
 						<div>{{ membre.nom }}</div>
 					</div>
+					<div class="fleche">
+						<i class="fas fa-arrow-right fa-lg"></i>
+					</div>
 				</div>
 			</div>
 			{% endfor %}
+		</div>
 
+		{# Fenêtre Modale #}
 
+		<div id="modal" class="modal">
 
+			<div class="modal-content">
 
+				<div class="close" title="Fermer">
+					<img src="{{ asset('images/svg/close.svg') }}" alt="Icone close">
+				</div>
+
+				<div class="hook">
+					<div class="image">
+						<img src="" alt="Photo membre comité">
+					</div>
+					<div class="nom-prenom">
+						<div class="prenom"></div>
+						<div class="nom"></div>
+					</div>
+					<div class="fonction"></div>
+				</div>
+
+				<div class="details"></div>
+
+			</div>
 		</div>
 
 	</section>

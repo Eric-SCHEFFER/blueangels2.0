@@ -1,6 +1,6 @@
 // Fenêtre modale (lightbox) pour afficher l'image en grand
 
-// oBody existe déjà depuis le script navbar.js
+// La variable oBody existe déjà depuis le script navbar.js
 const boutonsFullScreen = document.querySelectorAll(".full-screen");
 const modale = document.querySelectorAll(".image>.modal");
 

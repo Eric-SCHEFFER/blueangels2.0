@@ -25,6 +25,10 @@
    top: 0;
 }
 
+.card:hover .fleche {
+   left: 13px;
+}
+
 .bloc-image {
    position: relative;
    width: 50%;
@@ -53,15 +57,113 @@
    position: relative;
    color: #fff;
    width: 50%;
-   background-color: rgb(0, 110, 255);
+   background-color: #225d91;
    height: 100%;
-   padding: 8px 8px 10px 10px ;
+   padding: 8px 8px 10px 10px;
    border-radius: 0 6px 6px 0;
    box-sizing: border-box;
+   overflow: hidden;
 }
 
 .prenom-nom {
    position: relative;
    top: 26px;
    transition: top .4s;
+}
+
+.fleche {
+   position: absolute;
+   left: -20px;
+   top: 64px;
+   transition: left .4s;
+}
+
+
+/* ============ MODALE ============= */
+.modal * {
+   box-sizing: border-box;
+}
+
+.modal {
+   position: fixed;
+   width: 100vw;
+   height: 100vh;
+   background-color: #0909098a;
+   z-index: 10000;
+   top: 0;
+   left: 0;
+   /* backdrop-filter: blur(4px); */
+   transition: all .4s;
+   overflow: hidden;
+   opacity: 0;
+   visibility: hidden;
+}
+
+.modal.show {
+   visibility: visible;
+   opacity: 1;
+}
+
+.close {
+   position: absolute;
+   filter: invert(100%);
+   cursor: pointer;
+   width: 32px;
+   top: 10px;
+   left: 10px;
+}
+
+.close>img {
+   width: 100%;
+}
+
+.modal-content {
+   position: absolute;
+   width: 900px;
+   color: rgb(44, 44, 44);
+   max-width: 90vw;
+   min-height: 50vh;
+   background-color: #fff;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%);
+   border-radius: 8px;
+   border: red solid 1px;
+   padding: 10px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+
+.modal .hook {
+   border: blue solid 1px;
+}
+
+.modal .image {
+
+}
+
+.modal .image>img {
+
+}
+
+.modal .nom-prenom {
+
+}
+
+.modal .nom {
+
+}
+
+.modal .prenom {
+
+}
+
+.modal .fonction {
+
+}
+
+.modal .details {
+   border: green solid 1px;
 }
