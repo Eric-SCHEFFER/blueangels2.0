@@ -12,17 +12,23 @@ for (let card of cards) {
       event.stopPropagation();
       datas = this.querySelector(".datas");
       // On ajoute du contenu
-
-      champNom = modalContent.querySelector('.nom');
-      champNom.innerHTML = datas.dataset.prenom;
-
+      modalContent.querySelector('.prenom').innerText = datas.dataset.prenom;
+      modalContent.querySelector('.nom').innerText = datas.dataset.nom;
+      modalContent.querySelector('.fonction').innerText = datas.dataset.fonction;
+      modalContent.querySelector('.description').innerText = datas.dataset.description;
+      modalContent.querySelector('.hook img').src = card.querySelector("img").src;
+      // On affiche la modale
       modal.classList.add("show");
+      modal.classList.add("show", "restore-click", "restore-scroll");
+      oBody.classList.add("no-click-no-scroll");
    });
 }
 
 // Ferme la modale quand on clique n'importe où
 oBody.addEventListener("click", function () {
    modal.classList.remove("show");
+   modal.classList.remove("show", "restore-click", "restore-scroll");
+   oBody.classList.remove("no-click-no-scroll");
 });
 
 modalContent.addEventListener("click", function (event) {
@@ -32,4 +38,16 @@ modalContent.addEventListener("click", function (event) {
 // Ferme la modale quand on clique sur son bouton fermer
 close.addEventListener("click", function () {
    modal.classList.remove("show");
+   modal.classList.remove("show", "restore-click", "restore-scroll");
+   oBody.classList.remove("no-click-no-scroll");
+});
+
+// Fermeture de la modale avec echap
+document.addEventListener("keyup", function (event) {
+   if (modal.classList.contains("show")) {
+      if (event.key == "Escape") {
+         modal.classList.remove("show", "restore-click", "restore-scroll");
+         oBody.classList.remove("no-click-no-scroll");
+      }
+   }
 });

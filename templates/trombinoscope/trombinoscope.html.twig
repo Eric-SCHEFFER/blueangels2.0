@@ -28,17 +28,14 @@
 			{% for membre in membres %}
 			<div class="card">
 				{# On transmet des variables pour le script js de la modale #}
-				<div class="datas" data-prenom="{{ membre.prenom }}
-				" data-nom="{{ membre.nom }}
-				" data-fonction="{{ membre.fonction }}
-				" data-description="{{ membre.description }}
-				">
+				<div class="datas" data-prenom="{{ membre.prenom }}" data-nom="{{ membre.nom }}"
+					data-fonction="{{ membre.fonction }}" data-description="{{ membre.description }}"
+					data-image="{{ membre.getPhoto() }}">
 				</div>
 
 				<div class="bloc-image">
 					<div class="image">
-						<img src="{{ asset('uploads/imagesTrombinoscope/' ~ membre.getPhoto()) }}"
-							alt="Photo membre comité">
+						<img src="{{ asset('uploads/imagesTrombinoscope/' ~ membre.getPhoto()) }}" alt="Photo membre comité">
 					</div>
 				</div>
 				<div class="bloc-text">
@@ -75,7 +72,7 @@
 					<div class="fonction"></div>
 				</div>
 
-				<div class="details"></div>
+				<div class="description">coucou</div>
 
 			</div>
 		</div>

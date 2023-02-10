@@ -36,7 +36,7 @@
    /* border: red 1px solid; */
 }
 
-.image {
+.bloc-image .image {
    position: relative;
    width: 82%;
    border-radius: 50%;
@@ -46,7 +46,7 @@
    top: 6px;
 }
 
-.image>img {
+.bloc-image .image>img {
    display: block;
    width: 100%;
    object-fit: cover;
@@ -80,9 +80,6 @@
 
 
 /* ============ MODALE ============= */
-.modal * {
-   box-sizing: border-box;
-}
 
 .modal {
    position: fixed;
@@ -93,7 +90,7 @@
    top: 0;
    left: 0;
    /* backdrop-filter: blur(4px); */
-   transition: all .4s;
+   transition: all .5s;
    overflow: hidden;
    opacity: 0;
    visibility: hidden;
@@ -104,9 +101,9 @@
    opacity: 1;
 }
 
-.close {
+.modal .close {
    position: absolute;
-   filter: invert(100%);
+   /* filter: invert(100%); */
    cursor: pointer;
    width: 32px;
    top: 10px;
@@ -120,50 +117,59 @@
 .modal-content {
    position: absolute;
    width: 900px;
-   color: rgb(44, 44, 44);
-   max-width: 90vw;
-   min-height: 50vh;
+   color: rgb(49, 49, 49);
+   max-width: 92vw;
+   min-height: 34vh;
+   height: max-content;
+   max-height: 88vh;
    background-color: #fff;
    left: 50%;
    top: 50%;
    transform: translate(-50%, -50%);
    border-radius: 8px;
-   border: red solid 1px;
-   padding: 10px;
+   /* border: red solid 1px; */
    display: flex;
-   justify-content: space-between;
-   align-items: center;
 }
 
 
 .modal .hook {
-   border: blue solid 1px;
+   /* border: blue solid 1px; */
+   width: auto;
+   height: auto;
+   color: #fff;
+   background-color: #225d91;
+   padding: 50px;
+   border-radius: 8px 0 0 8px;
 }
 
 .modal .image {
+   width: 165px;
 
 }
 
 .modal .image>img {
-
+   border-radius: 50%;
+   object-fit: cover;
+   border: #fff solid 5px;
 }
 
 .modal .nom-prenom {
-
+   font-weight: 700;
+   margin-top: 15px;
 }
 
-.modal .nom {
+.modal .nom {}
 
-}
-
-.modal .prenom {
-
-}
+.modal .prenom {}
 
 .modal .fonction {
-
+   margin-top: 30px;
 }
 
-.modal .details {
-   border: green solid 1px;
+.modal .description {
+   height: auto;
+   /* border: green solid 1px; */
+   overflow: scroll;
+   padding: 25px;
+   overflow: scroll;
 }
