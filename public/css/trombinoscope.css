@@ -87,18 +87,18 @@
    height: 100vh;
    background-color: #0909098a;
    z-index: 10000;
+   /* top: -100vh; */
    top: 0;
-   left: 0;
+   left: -100vw;
    /* backdrop-filter: blur(4px); */
-   transition: all .5s;
+   transition: left .2s;
    /* overflow: hidden; */
-   opacity: 0;
-   visibility: hidden;
+   /* opacity: 0;
+   visibility: hidden; */
 }
 
 .modal.show {
-   visibility: visible;
-   opacity: 1;
+   left: 0;
 }
 
 .modal .close {
@@ -148,6 +148,7 @@
 }
 
 .modal .image>img {
+   width: 165px;
    border-radius: 50%;
    object-fit: cover;
    position: relative;
