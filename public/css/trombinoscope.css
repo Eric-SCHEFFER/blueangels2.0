@@ -85,13 +85,13 @@
    position: fixed;
    width: 100vw;
    height: 100vh;
-   background-color: #0909098a;
+   /* background-color: #0909098a; */
    z-index: 10000;
    /* top: -100vh; */
    top: 0;
    left: -100vw;
    /* backdrop-filter: blur(4px); */
-   transition: left .2s;
+   transition: left .2s, background-color 1s;
    /* overflow: hidden; */
    /* opacity: 0;
    visibility: hidden; */
@@ -99,6 +99,7 @@
 
 .modal.show {
    left: 0;
+   background-color: #0909098a;
 }
 
 .modal .close {
