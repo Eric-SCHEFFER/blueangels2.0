@@ -85,7 +85,7 @@
    position: fixed;
    width: 100vw;
    height: 100vh;
-   z-index: 10000;
+   z-index: 10001;
    top: 0;
    left: -100vw;
    /* backdrop-filter: blur(4px); */
@@ -94,6 +94,21 @@
 
 .modal.show {
    left: 0;
+}
+
+.darker-layer {
+   position: fixed;
+   width: 100vw;
+   height: 100vh;
+   top: 0;
+   left: 0;
+   z-index: -1;
+   transition: all 1s;
+}
+
+.to-dark {
+   z-index: 9999;
+   background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal .close {

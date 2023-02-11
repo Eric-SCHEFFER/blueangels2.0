@@ -5,7 +5,7 @@ const cards = document.querySelectorAll(".card");
 const modal = document.querySelector("#modal");
 const modalContent = modal.firstElementChild;
 const close = modalContent.firstElementChild;
-
+const darkerLayer = document.querySelector(".darker-layer");
 
 for (let card of cards) {
    card.addEventListener("click", function (event) {
@@ -19,7 +19,7 @@ for (let card of cards) {
       modalContent.querySelector('.hook img').src = card.querySelector("img").src;
       // On affiche la modale
       modal.classList.add("show", "restore-click", "restore-scroll");
-      bodyDark.classList.add("bgDark");
+      darkerLayer.classList.add("to-dark");
       oBody.classList.add("no-click-no-scroll");
    });
 }
@@ -27,7 +27,7 @@ for (let card of cards) {
 // Ferme la modale quand on clique n'importe où
 oBody.addEventListener("click", function () {
    modal.classList.remove("show", "restore-click", "restore-scroll");
-   bodyDark.classList.remove("bgDark");
+   darkerLayer.classList.remove("to-dark");
    oBody.classList.remove("no-click-no-scroll");
 });
 
@@ -38,7 +38,7 @@ modalContent.addEventListener("click", function (event) {
 // Ferme la modale quand on clique sur son bouton fermer
 close.addEventListener("click", function () {
    modal.classList.remove("show", "restore-click", "restore-scroll");
-   bodyDark.classList.remove("bgDark");
+   darkerLayer.classList.remove("to-dark");
    oBody.classList.remove("no-click-no-scroll");
 });
 
@@ -47,7 +47,7 @@ document.addEventListener("keyup", function (event) {
    if (modal.classList.contains("show")) {
       if (event.key == "Escape") {
          modal.classList.remove("show", "restore-click", "restore-scroll");
-         bodyDark.classList.remove("bgDark");
+         darkerLayer.classList.remove("to-dark");
          oBody.classList.remove("no-click-no-scroll");
       }
    }
