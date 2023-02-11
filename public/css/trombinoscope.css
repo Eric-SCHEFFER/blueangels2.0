@@ -197,8 +197,6 @@
       max-width: 100vw;
       max-height: 100vh;
       flex-direction: column;
-
-
    }
 
    .modal .hook {
@@ -232,15 +230,31 @@
 }
 
 
-/* @media screen and (max-width: 250px) {
+@media screen and (max-height: 570px) {
 
+   .modal .hook {
+      padding: 2vh;
+   }
+
+   .modal .fonction {
+      margin-top: 0;
+   }
+
+   .modal .image {}
+
+   .modal .image>img {}
+
+}
+
+@media screen and (max-height: 480px) {
    .modal .image {
-      width: 120px;
-
+      width: 28vh;
+      min-width: 70px;
    }
 
    .modal .image>img {
-      width: 120px;
+      width: 28vh;
+      min-width: 70px;
    }
 
-} */
+}
