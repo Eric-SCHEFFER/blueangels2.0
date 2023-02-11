@@ -89,7 +89,7 @@
    top: 0;
    left: -100vw;
    /* backdrop-filter: blur(4px); */
-   transition: left .3s;
+   transition: left .2s;
 }
 
 .modal.show {
