@@ -140,6 +140,7 @@
 
 .modal .image {
    width: 165px;
+   margin: auto;
 }
 
 .modal .image>img {
