@@ -114,7 +114,9 @@
 .modal .close {
    position: absolute;
    /* filter: invert(100%); */
+   filter: drop-shadow(2px 3px 1px rgb(0, 0, 0));
    cursor: pointer;
+   z-index: 1;
    width: 32px;
    top: 10px;
    left: 10px;
