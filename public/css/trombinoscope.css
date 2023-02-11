@@ -259,4 +259,9 @@
       min-width: 70px;
    }
 
+   .modal .close {
+      top: 0;
+      left: 0;
+   }
+
 }
