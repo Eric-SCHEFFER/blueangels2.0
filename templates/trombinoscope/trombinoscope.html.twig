@@ -16,11 +16,11 @@
 	<h1>Trombinoscope</h1>
 	<section class="trombinoscope">
 
-		{# TODO:
-		- Affichage par cartes (un peu style articles) pour chaque membre
+		{# 
+		- Affichage par cartes pour chaque membre
 		- Composition de la carte: Photo, nom du membre (avec un petit effet sympa au survol, mais sans plus)
 
-		Le clic sur chaque carte ouvre une modale en position absolute, dans laquelle s'affiche la description du membre
+		Le clic sur chaque carte ouvre une modale en position fixed, dans laquelle s'affiche la description du membre
 		#}
 
 		{# Cards #}
@@ -81,25 +81,3 @@
 <div class="darker-layer"></div>
 
 {% endblock %}
-
-
-
-{# <div class="bloc-cards">
-	{% set n = 1 %}
-	{% for membre in membres %}
-	<div class="card" id="card-{{ n }}" onclick="cardClick('card-{{ n }}')">
-		<div class="image">
-			<img src="{{ asset('uploads/imagesTrombinoscope/' ~ membre.getPhoto()) }}" alt="">
-		</div>
-		<div class="zone-titre">
-			<div>{{ membre.prenom }}</div>
-			<div>{{ membre.nom }}</div>
-		</div>
-		<div class="zone-texte">
-			<p class="fonction">{{ membre.fonction }}</p>
-			<p>{{ membre.description | nl2br }}</p>
-		</div>
-	</div>
-	{% set n = n + 1 %}
-	{% endfor %}
-</div> #}
