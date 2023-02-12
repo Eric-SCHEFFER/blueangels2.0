@@ -250,6 +250,11 @@
 }
 
 @media screen and (max-height: 480px) {
+
+   .modal .hook {
+      padding-bottom: 10px;
+   }
+
    .modal .image {
       width: 28vh;
       min-width: 70px;
