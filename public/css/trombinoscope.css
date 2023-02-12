@@ -236,6 +236,7 @@
 
    .modal .hook {
       padding: 2vh;
+      padding-bottom: 25px;
    }
 
    .modal .fonction {
