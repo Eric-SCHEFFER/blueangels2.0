@@ -99,11 +99,15 @@ h2 {
 
 .credit-image-close {
    position: absolute;
-   right: 7px;
-   top: 4px;
-   color: #fff;
-   font-weight: 600;
+   right: 3px;
    cursor: pointer;
+   width: 16px;
+   top: 5px;
+}
+
+.credit-image-close>img {
+   width: 100%;
+   filter: drop-shadow(3px 5px 2px rgb(0, 0, 0));
 }
 
 .full-screen>div>img,
