@@ -44,7 +44,9 @@
 			{% if image.author is defined and image.author is not empty %}
 			{# Crédit image #}
 			<div class="credit-image-content">
-				<span class="credit-image-close" title="Fermer">X</span>
+				<span class="credit-image-close" title="Fermer">
+					<img src="{{ asset('images/svg/close.svg') }}" alt="Icone close">
+				</span>
 				<div class="credit-image-titre">Crédit image:</div>
 				{{ image.author | auto_link }}
 			</div>
