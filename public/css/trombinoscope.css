@@ -235,8 +235,7 @@
 @media screen and (max-height: 570px) {
 
    .modal .hook {
-      padding: 2vh;
-      padding-bottom: 25px;
+      padding: 6vh;
    }
 
    .modal .fonction {
@@ -252,7 +251,6 @@
 @media screen and (max-height: 480px) {
 
    .modal .hook {
-      padding-bottom: 10px;
    }
 
    .modal .image {
