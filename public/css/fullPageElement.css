@@ -99,10 +99,10 @@ h2 {
 
 .credit-image-close {
    position: absolute;
-   right: 3px;
+   right: 7px;
    cursor: pointer;
    width: 16px;
-   top: 5px;
+   top: 8px;
 }
 
 .credit-image-close>img {
