@@ -47,6 +47,10 @@
    filter: grayscale(1);
 }
 
+.bloc-image .image:hover {
+   filter: grayscale(0);
+}
+
 .bloc-image .image>img {
    display: block;
    width: 100%;
