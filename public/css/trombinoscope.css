@@ -29,10 +29,6 @@
    left: 13px;
 }
 
-.card:hover .bloc-image .image {
-   filter: grayscale(0);
-}
-
 .bloc-image {
    position: relative;
    width: 50%;
@@ -149,10 +145,6 @@
    overflow: hidden;
 }
 
-.modal-content:hover .image {
-   filter: grayscale(0);
-}
-
 .modal .hook {
    /* border: blue solid 1px; */
    width: auto;
@@ -169,6 +161,9 @@
    filter: grayscale(1);
 }
 
+.modal .image:hover {
+   filter: grayscale(0);
+}
 
 .modal .image>img {
    width: 165px;
