@@ -29,6 +29,10 @@
    left: 13px;
 }
 
+.card:hover .bloc-image .image {
+   filter: grayscale(0);
+}
+
 .bloc-image {
    position: relative;
    width: 50%;
@@ -47,9 +51,6 @@
    filter: grayscale(1);
 }
 
-.bloc-image .image:hover {
-   filter: grayscale(0);
-}
 
 .bloc-image .image>img {
    display: block;
