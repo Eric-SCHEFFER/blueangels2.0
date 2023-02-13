@@ -1,103 +1,105 @@
 {% extends 'components/base.html.twig' %}
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('css/blocContenuPageStandard.css') }}">
+<link rel="stylesheet" href="{{ asset('css/blocContenuPageStandard.css') }}">
 {% endblock %}
 
 {% block title %}
-	{{ SiteName }}: Adresse
+{{ SiteName }}: Adresse
 {% endblock %}
 
 
 {% block body %}
 
-	<div class="wrapper">
-		<h1>
-			Adresse
-		</h1>
-		<div class="bloc-contenu-page">
+<div class="wrapper">
+	<h1>
+		Adresse
+	</h1>
+	<div class="bloc-contenu-page">
 
 
-			<h2>Lieu des cours</h2>
-			<div class="bloc-adresse">
-				<div class="tres-gras upper gris1 titre1">
-					{{ infos.lieuCours }}
-				</div>
-				<div>
-					{{ infos.adresseCours }}
-				</div>
-				<div>
-					{{ infos.codePostalCours }}
-					{{ infos.villeCours }}
-				</div>
-				<div>
-					<a href="{{ infos.googleMapsCours }}">Google Maps</a>
-				</div>
+		<h2>Adresse des cours des Blue Angels</h2>
+		<div class="bloc-adresse">
+			<div class="tres-gras upper gris1 titre1">
+				{{ infos.lieuCours }}
 			</div>
-
-
-
-			<h2>Adresse administrative</h2>
-			<div class="bloc-adresse">
-				<div class="tres-gras upper gris1 titre1">
-					{{ infos.nomEntreprise }}
-				</div>
-				<div>
-					{{ infos.adresse }}
-				</div>
-				<div>
-					{{ infos.codePostal }}
-					{{ infos.ville }}
-				</div>
+			<div>
+				{{ infos.adresseCours }}
 			</div>
-
-
-
-         <h2>Contact et réseaux</h2>
-			<div class="bloc-adresse">
-				<dl class="gris1">
-               <div class="dl-sous-groupe">
-						<dt>
-							<i class="fas fa-align-center"></i>
-						</dt>
-						<dd>
-							<a href="{{ path('contact') }}">Formulaire de contact</a>
-						</dd>
-					</div>
-					<div class="dl-sous-groupe">
-						<dt>
-							<i class="fas fa-phone"></i>
-						</dt>
-						<dd>
-							{{ infos.telephone }}
-						</dd>
-					</div>
-					<div class="dl-sous-groupe">
-						<dt>
-							<i class="far fa-envelope"></i>
-						</dt>
-						<dd>
-							<a href="mailto:{{ infos.emailContact }}">{{ infos.emailContact }}</a>
-						</dd>
-					</div>
-					<div class="dl-sous-groupe">
-						<dt>
-							<i class="fab fa-facebook-f"></i>
-						</dt>
-						<dd>
-							<a href="{{ infos.facebook }}">Facebook</a>
-						</dd>
-					</div>
-					<div class="dl-sous-groupe">
-						<dt>
-							<i class="fab fa-youtube"></i>
-						</dt>
-						<dd>
-							<a href="{{ infos.youtube }}">Youtube</a>
-						</dd>
-					</div>
-				</dl>
+			<div>
+				{{ infos.codePostalCours }}
+				{{ infos.villeCours }}
+			</div>
+			<div>
+				<a href="{{ infos.googleMapsCours }}">Google Maps</a>
 			</div>
 		</div>
 
+
+
+
+
+
+		<h2>Contact et réseaux</h2>
+		<div class="bloc-adresse">
+			<dl class="gris1">
+				<div class="dl-sous-groupe">
+					<dt>
+						<i class="fas fa-align-center"></i>
+					</dt>
+					<dd>
+						<a href="{{ path('contact') }}">Formulaire de contact</a>
+					</dd>
+				</div>
+				<div class="dl-sous-groupe">
+					<dt>
+						<i class="fas fa-phone"></i>
+					</dt>
+					<dd>
+						{{ infos.telephone }}
+					</dd>
+				</div>
+				<div class="dl-sous-groupe">
+					<dt>
+						<i class="far fa-envelope"></i>
+					</dt>
+					<dd>
+						<a href="mailto:{{ infos.emailContact }}">{{ infos.emailContact }}</a>
+					</dd>
+				</div>
+				<div class="dl-sous-groupe">
+					<dt>
+						<i class="fab fa-facebook-f"></i>
+					</dt>
+					<dd>
+						<a href="{{ infos.facebook }}">Facebook</a>
+					</dd>
+				</div>
+				<div class="dl-sous-groupe">
+					<dt>
+						<i class="fab fa-youtube"></i>
+					</dt>
+					<dd>
+						<a href="{{ infos.youtube }}">Youtube</a>
+					</dd>
+				</div>
+			</dl>
+		</div>
+
+		<h4 class="titre-siege-administratif">Siège administratif</h4>
+		<div class="bloc-adresse">
+			<div class="tres-gras upper gris1 titre1">
+				{{ infos.nomEntreprise }}
+			</div>
+			<div>
+				{{ infos.adresse }}
+			</div>
+			<div>
+				{{ infos.codePostal }}
+				{{ infos.ville }}
+			</div>
+		</div>
 	</div>
+
+
+</div>
 {% endblock %}
