@@ -29,6 +29,10 @@
    left: 13px;
 }
 
+.card:hover .bloc-image .image {
+   filter: grayscale(0);
+}
+
 .bloc-image {
    position: relative;
    width: 50%;
@@ -44,6 +48,7 @@
    /* border: green 1px solid; */
    margin: auto;
    top: 6px;
+   filter: grayscale(1);
 }
 
 .bloc-image .image>img {
@@ -144,6 +149,9 @@
    overflow: hidden;
 }
 
+.modal-content:hover .image {
+   filter: grayscale(0);
+}
 
 .modal .hook {
    /* border: blue solid 1px; */
@@ -158,7 +166,9 @@
 .modal .image {
    width: 165px;
    margin: auto;
+   filter: grayscale(1);
 }
+
 
 .modal .image>img {
    width: 165px;
@@ -250,8 +260,7 @@
 
 @media screen and (max-height: 480px) {
 
-   .modal .hook {
-   }
+   .modal .hook {}
 
    .modal .image {
       width: 28vh;
