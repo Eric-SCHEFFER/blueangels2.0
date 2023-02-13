@@ -160,13 +160,13 @@
    border-radius: 8px 0 0 8px;
 }
 
-.modal .image {
+.modal.show .image {
    width: 165px;
    margin: auto;
    filter: grayscale(1);
 }
 
-.modal .image:hover {
+.modal.show .modal-content:hover .image {
    filter: grayscale(0);
 }
 
