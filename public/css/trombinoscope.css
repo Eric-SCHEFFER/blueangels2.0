@@ -49,6 +49,7 @@
    margin: auto;
    top: 6px;
    filter: grayscale(1);
+   transition: filter .8s;
 }
 
 
