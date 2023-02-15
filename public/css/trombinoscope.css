@@ -99,7 +99,7 @@
    transition: left .4s;
 }
 
-.show {
+.modal.show {
    left: 0;
 }
 
