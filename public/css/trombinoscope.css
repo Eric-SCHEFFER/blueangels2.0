@@ -99,7 +99,7 @@
    transition: left .4s;
 }
 
-.modal.show {
+.show {
    left: 0;
 }
 
@@ -161,7 +161,7 @@
    border-radius: 8px 0 0 8px;
 }
 
-.modal.show .image {
+.modal .image {
    width: 165px;
    margin: auto;
 }
@@ -258,13 +258,14 @@
 
    .modal .hook {}
 
-   .modal.show .image {
+   .modal .image {
       width: 28vh;
       min-width: 70px;
    }
-
-   .modal.show .image>img {
+   
+   .modal .image>img {
       width: 28vh;
+      /* border: 1px red solid; */
       min-width: 70px;
    }
 
