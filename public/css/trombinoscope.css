@@ -99,7 +99,7 @@
    transition: left .4s;
 }
 
-.show {
+.modal.show {
    left: 0;
 }
 
@@ -118,7 +118,7 @@
    background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal .close {
+.modal.show .close {
    position: absolute;
    /* filter: invert(100%); */
    filter: drop-shadow(2px 3px 1px rgb(0, 0, 0));
@@ -151,7 +151,7 @@
    overflow: hidden;
 }
 
-.modal .hook {
+.modal.show .hook {
    /* border: blue solid 1px; */
    width: auto;
    height: auto;
@@ -161,12 +161,12 @@
    border-radius: 8px 0 0 8px;
 }
 
-.modal .image {
+.modal.show .image {
    width: 165px;
    margin: auto;
 }
 
-.modal .image>img {
+.modal.show .image>img {
    width: 165px;
    border-radius: 50%;
    object-fit: cover;
@@ -175,22 +175,22 @@
    border: #fff solid 5px;
 }
 
-.modal .nom-prenom {
+.modal.show .nom-prenom {
    font-weight: 700;
    margin-top: 15px;
    text-align: center;
 }
 
-.modal .nom {}
+.modal.show .nom {}
 
-.modal .prenom {}
+.modal.show .prenom {}
 
-.modal .fonction {
+.modal.show .fonction {
    margin-top: 30px;
    text-align: center;
 }
 
-.modal .description {
+.modal.show .description {
    height: auto;
    /* border: green solid 1px; */
    overflow: scroll;
@@ -207,7 +207,7 @@
       flex-direction: column;
    }
 
-   .modal .hook {
+   .modal.show .hook {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -215,61 +215,61 @@
       border-radius: 8px 8px 0 0;
    }
 
-   .modal .nom-prenom {
+   .modal.show .nom-prenom {
       /* border: 1px red solid; */
    }
 
-   .modal .fonction {
+   .modal.show .fonction {
       /* border: 1px rgb(255, 200, 0) solid */
    }
 
-   .modal .image {
+   .modal.show .image {
       /* border: 1px green solid; */
       /* width: 120px; */
 
    }
 
-   .modal .image>img {
+   .modal.show .image>img {
       /* width: 120px; */
    }
 
-   .modal .description {}
+   .modal.show .description {}
 
 }
 
 
 @media screen and (max-height: 570px) {
 
-   .modal .hook {
+   .modal.show .hook {
       padding: 6vh;
    }
 
-   .modal .fonction {
+   .modal.show .fonction {
       margin-top: 0;
    }
 
-   .modal .image {}
+   .modal.show .image {}
 
-   .modal .image>img {}
+   .modal.show .image>img {}
 
 }
 
 @media screen and (max-height: 480px) {
 
-   .modal .hook {}
+   .modal.show .hook {}
 
-   .modal .image {
+   .modal.show .image {
       width: 28vh;
       min-width: 70px;
    }
    
-   .modal .image>img {
+   .modal.show .image>img {
       width: 28vh;
       /* border: 1px red solid; */
       min-width: 70px;
    }
 
-   .modal .close {
+   .modal.show .close {
       top: 0;
       left: 0;
    }
