@@ -195,6 +195,7 @@
    /* border: green solid 1px; */
    overflow: scroll;
    padding: 25px;
+   word-break: break-word;
 }
 
 /* ======= Écrans plus petits ====== */
