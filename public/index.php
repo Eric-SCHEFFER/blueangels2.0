@@ -1,4 +1,10 @@
 <?php
+// Mode maintenance
+
+    header("Location: http://127.0.0.1:43115/blueangelsdanse-local/projet_blueangels2.0/public/maintenance/maintenance.html", TRUE, 303);
+    exit();
+ 
+
 
 use App\Kernel;
 use Symfony\Component\Dotenv\Dotenv;

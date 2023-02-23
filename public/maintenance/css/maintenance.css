@@ -14,7 +14,7 @@ header {
    position: relative;
    width: 100%;
    height: auto;
-   background-image: url("/bad/public/maintenance/images/ardian-lumi-6Woj_wozqmA-unsplash.jpg");
+   background-image: url("../images/ardian-lumi-6Woj_wozqmA-unsplash.jpg");
    background-color: rgb(0, 0, 0);
    background-repeat: no-repeat;
    background-attachment: fixed;

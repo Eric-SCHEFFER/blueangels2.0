@@ -13,8 +13,8 @@ RewriteCond %{REQUEST_URI} !^/bad/public/maintenance/maintenance.html
 # Conditions pour les ip;
 # 1. Pour une négation de condition (par ex, on veut que chaque ip listée puisse quand même accéder au site), rajouter ! avant la reg (le ^). Une condition d'ip par ligne, avec un [OR] à la fin de chaque condition.
 # 2. Si pas de négation (par ex, on veut que chaque ip listée n'accède plus au site, mais soit renvoyée vers la page de maintenance - pour tester la page de maintenance par ex)), mettre simplement l'ip avec le ^ devant. Une ip par ligne (and implicite).
-RewriteCond %{REMOTE_ADDR} ^213.166.194.107 [OR]
-RewriteCond %{REMOTE_ADDR} ^2a03:d605:1501:2600:78f7:1b9c:ff27:f397
+RewriteCond %{REMOTE_ADDR} ^xxx.xxx.xxx.xxx [OR]
+RewriteCond %{REMOTE_ADDR} ^xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx
 
 # On redirige tout le reste sur ce fichier
 RewriteRule .* /bad/public/maintenance/maintenance.html [R=503,L]
