@@ -1,23 +1,38 @@
 # MODE MAINTENANCE /ON
-# Oter les doubles diezes
+# Pour mettre en maintenance, en excluant mon ou mes ip qui doivent continuer à voir le site, ôter les doubles diezes (vérifier avant si les ip sont correctes)
 
-Options +FollowSymLinks
-RewriteEngine On
-ErrorDocument 503 /bad/public/maintenance/maintenance.html
-RewriteBase /
+## Options +FollowSymLinks
+## RewriteEngine On
+## ErrorDocument 503 /bad/public/maintenance/maintenance.html
+# RewriteBase /
 # Et à l'exclusion de la page de maintenance elle même
-RewriteCond %{REQUEST_URI} !^/bad/public/maintenance/maintenance.html
+## RewriteCond %{REQUEST_URI} !^/bad/public/maintenance/maintenance.html
 # Et de l'image qui dans la page
-## RewriteCond %{REQUEST_URI} !^/bad/public/maintenance/maintenance.png
+# RewriteCond %{REQUEST_URI} !^/bad/public/maintenance/images/svg/maintenance-repair-service.svg
 
-# Conditions pour les ip;
-# 1. Pour une négation de condition (par ex, on veut que chaque ip listée puisse quand même accéder au site), rajouter ! avant la reg (le ^). Une condition d'ip par ligne, avec un [OR] à la fin de chaque condition.
-# 2. Si pas de négation (par ex, on veut que chaque ip listée n'accède plus au site, mais soit renvoyée vers la page de maintenance - pour tester la page de maintenance par ex)), mettre simplement l'ip avec le ^ devant. Une ip par ligne (and implicite).
-RewriteCond %{REMOTE_ADDR} ^xxx.xxx.xxx.xxx [OR]
-RewriteCond %{REMOTE_ADDR} ^xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx
+# Conditions pour les ip:
+
+# CAS 1 - UTILISATION CLASSIQUE: Pour lister les ip qui n'afficherons pas la page de maintenance, toutes les autres ip non listées afficherons la page de maintenance:
+# On fait des conditions avec négation, s'il y en a plusieurs, c'est une condition par ligne (il y a un and implicite entre chaque condition):
+# Ex pour une seule ip V4:
+# RewriteCond %{REMOTE_ADDR} !^xxx.xxx.xxx.xxx$
+# Ex pour une ip V4 et une ip 6:
+# RewriteCond %{REMOTE_ADDR} !^xxx.xxx.xxx.xxx$
+# RewriteCond %{REMOTE_ADDR} !^xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx$
+
+# CAS 2 - POUR TESTER PAR EX: Pour lister les ip qui afficherons la page de maintenance, toutes les autres ip non listées afficherons normalement le site:
+# On fait des conditions simples (pas de négation), avec un or s'il y en a plusieurs:
+# Ex pour une seule ip V4:
+# RewriteCond %{REMOTE_ADDR} ^xxx.xxx.xxx.xxx$
+# Ex pour une ip V4 et une ip 6:
+# RewriteCond %{REMOTE_ADDR} ^xxx.xxx.xxx.xxx$ [OR]
+# RewriteCond %{REMOTE_ADDR} ^xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx$
+
+## RewriteCond %{REMOTE_ADDR} !^xxx.xxx.xxx.xxx$
+## RewriteCond %{REMOTE_ADDR} !^xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx$
 
 # On redirige tout le reste sur ce fichier
-RewriteRule .* /bad/public/maintenance/maintenance.html [R=503,L]
+## RewriteRule .* /bad/public/maintenance/maintenance.html [R=503,L]
 
 # MODE MAINTENANCE /OFF
 
