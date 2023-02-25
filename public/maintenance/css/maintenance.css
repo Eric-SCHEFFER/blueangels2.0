@@ -122,12 +122,15 @@ h1 {
 
 a {
    text-decoration: none;
-}
-
-main a {
    color: rgb(0, 136, 255);
    text-decoration: none;
 }
+
+a:hover {
+   color: rgb(109, 187, 255);
+}
+
+main a {}
 
 .image-maintenance {
    margin: auto;
@@ -183,6 +186,9 @@ footer p {
 
 .image-inline {
    /* border: solid 1px rgb(221, 0, 255); */
+   display: inline-block;
+   position: relative;
+   top: 2px;
 }
 
 .image-inline>img {
