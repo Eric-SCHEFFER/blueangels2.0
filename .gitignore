@@ -20,6 +20,8 @@
 /composer.lock
 /symfony.lock
 /composer.json
+/composer.phar
+/config/
 
 /.env
 /migrations/
