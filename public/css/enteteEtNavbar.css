@@ -96,19 +96,18 @@ nav {
    font-weight: 500;
    padding: 0 20px 0 20px;
    border-radius: 4px;
-   /* border: solid #4d4d4d 1px; */
 }
 
 nav a, nav .btDropdown {
    position: relative;
-   /* border: solid #ff0000 1px; */
+   border: solid #ffffff62 1px;
    min-width: max-content;
    text-align: center;
-   /* line-height: 36px; */
    padding: 10px;
    color: #fff;
-   background-color: #155186;
-   border-radius: 30px;
+   /* background-color: #155186; */
+   background-color: transparent;
+   border-radius: 36px;
 }
 
 nav .btDropdown {
@@ -117,7 +116,7 @@ nav .btDropdown {
    text-transform: inherit;
    border: inherit;
    bottom: 3px;
-   /* border: solid #40ff00 1px; */
+   border: solid #ffffff62 1px;
 }
 
 button:focus {
@@ -125,11 +124,10 @@ button:focus {
 }
 
 nav a:hover, nav .active, nav .btDropdown:hover, nav ul.dropdown-content a:hover {
-   /* color: rgb(255, 255, 255); */
+   border-color: #ffffff;
 }
 
 nav ul.ulMenuGeneral {
-   /* border: rgb(255, 0, 242) 1px solid; */
    display: flex;
    justify-content: space-between;
    padding: 0;
@@ -141,14 +139,10 @@ nav ul.ulMenuGeneral {
 nav ul.dropdown-content {
    position: absolute;
    display: block;
-   /* opacity: 0; */
    max-height: 0;
-   /* visibility: hidden; */
    overflow: hidden;
    right: 0;
-   padding: 0 12px 0 12px;
    margin-top: -3px;
-   min-width: 100%;
    z-index: -1;
    transition: all .8s;
 }
@@ -156,13 +150,14 @@ nav ul.dropdown-content {
 nav ul.dropdown-content a {
    display: block;
    width: auto;
-   padding: 0;
    font-size: .9em;
    text-align: right;
 }
 
 nav ul.dropdown-content > li {
    width: auto;
+   padding-top: 10px;
+
 }
 
 nav ul {
@@ -170,14 +165,9 @@ nav ul {
 }
 
 nav li {
-   /* background-color: inherit; */
    position: relative;
-   /* padding: 0; */
-   /* margin: 0; */
    height: 100%;
    width: max-content;
-   /* border: rgb(0, 217, 255) solid 1px; */
-   /* min-width: max-content; */
 }
 
 .btDropdown.visible + ul.dropdown-content {
