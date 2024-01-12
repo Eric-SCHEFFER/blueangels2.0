@@ -63,42 +63,31 @@
          </li>
 
          <li>
-            <a href="{{ path('communiques') }}" title="Communiqués" class="
-               {% if menu_courant is defined and menu_courant == 'communiques' %}
+            <a href="{{ path('danses') }}" class="
+               {% if menu_courant is defined and menu_courant == 'danses' %}
                   active
                {% endif %}">
-               Communiqués
-               {# <i class="fas fa-info blue icone-communiques-calque-1"></i> #}
-               {# <i class="fas fa-hand-pointer orange icone-communiques-calque-2"></i> #}
+               Danses
             </a>
          </li>
 
-
-         {# ======== Sous-menu /ON =========== #}
          <li>
-            <button class="btDropdown">
-               <div>Prestations</div>
-            </button>
-            <ul class="dropdown-content">
-               <li>
-                  <a href="{{ path('danses') }}">
-                     Danses
-                  </a>
-               </li>
-               <li>
-                  <a href="{{ path('cours') }}">
-                     Cours
-                  </a>
-               </li>
-               <li>
-                  <a href="{{ path('stages') }}">
-                     Stages
-                  </a>
-               </li>
-            </ul>
+            <a href="{{ path('cours') }}" class="
+               {% if menu_courant is defined and menu_courant == 'cours' %}
+                  active
+               {% endif %}">
+               Cours
+            </a>
          </li>
-         {# ======== Sous-menu /OFF =========== #}
 
+         <li>
+            <a href="{{ path('stages') }}" class="
+               {% if menu_courant is defined and menu_courant == 'stages' %}
+                  active
+               {% endif %}">
+               Stages
+            </a>
+         </li>
 
          <li>
             <a href="{{ path('tarifs') }}" class="
@@ -108,7 +97,6 @@
                Tarifs
             </a>
          </li>
-
 
          {# ======== Sous-menu /ON =========== #}
          <li>
@@ -139,14 +127,27 @@
             </a>
          </li>
 
+         {# ======== Sous-menu /ON =========== #}
          <li>
-            <a href="{{ path('articles') }}" class="
-               {% if menu_courant is defined and menu_courant == 'articles' %}
-                  active
-               {% endif %}">
-               Articles
-            </a>
+            <button class="btDropdown">
+               <div>Réseaux</div>
+            </button>
+            <ul class="dropdown-content">
+               <li>
+                  <a href="https://www.facebook.com/LesBlueAngels/">
+                     <i class="fab fa-lg fa-facebook-f"></i>
+                     Facebook
+                  </a>
+               </li>
+               <li>
+                  <a href="https://www.youtube.com/channel/UCt7qbdHcwJOYEcn2j3ztNGg/">
+                     <i class="fab fa-lg fa-youtube"></i>
+                     Youtube
+                  </a>
+               </li>
+            </ul>
          </li>
+         {# ======== Sous-menu /OFF =========== #}
 
          {# ======== Sous-menu /ON =========== #}
          <li>
@@ -189,18 +190,6 @@
             </button>
             <ul class="dropdown-content">
                <li>
-                  <a href="https://www.facebook.com/LesBlueAngels/">
-                     <i class="fab fa-lg fa-facebook-f"></i>
-                     Facebook
-                  </a>
-               </li>
-               <li>
-                  <a href="https://www.youtube.com/channel/UCt7qbdHcwJOYEcn2j3ztNGg/">
-                     <i class="fab fa-lg fa-youtube"></i>
-                     Youtube
-                  </a>
-               </li>
-               <li>
                   <a href="{{ path('partenaires') }}">
                      Partenaires
                   </a>
@@ -208,6 +197,7 @@
             </ul>
          </li>
          {# ======== Sous-menu /OFF =========== #}
+
       </ul>
    </nav>
 </div>
