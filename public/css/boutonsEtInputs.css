@@ -4,9 +4,9 @@
    padding: 7px 20px 7px 20px;
    width: max-content;
    height: auto;
-   border-radius: 6px;
-   color: rgb(209, 209, 209);
-   background-color: #225d91;
+   border-radius: 36px;
+   color: hsl(0, 0%, 82%);
+   background-color: #155186;
    font-weight: 500;
    text-transform: uppercase;
    border: none;
@@ -38,7 +38,7 @@
    width: 34px;
    height: 34px;
    border-radius: 50%;
-   background-color: #225d91;
+   background-color: #155186;
 }
 
 .flecheDroiteCard {
@@ -68,7 +68,7 @@
    font-size: .8em;
    padding: 6px;
    width: max-content;
-   border-radius: 4px;
+   border-radius: 36px;
 }
 
 .bt-small-rond {
@@ -76,7 +76,7 @@
    justify-content: center;
    align-items: center;
    color: white;
-   background-color: #225d91;
+   background-color: #155186;
    border-radius: 50%;
    width: 30px;
    height: 30px;
@@ -91,7 +91,7 @@
    font-size: .8em;
    padding: 1px 5px 1px 5px;
    width: max-content;
-   border-radius: 4px;
+   border-radius: 36px;
 }
 
 .bt-extra-small-arrow {
@@ -125,7 +125,7 @@
    justify-content: center;
    align-items: center;
    height: 40px;
-   border-radius: 6px;
+   border-radius: 36px;
    font-weight: 600;
    font-size: 1.1em;
    cursor: pointer;
@@ -138,7 +138,7 @@
 }
 
 .buttonEnabled {
-   background-color: #2c70b8;
+   background-color: #155186;
    color: rgb(220, 220, 220);
 }
 
@@ -158,7 +158,7 @@ button:hover {
 /* ============= Colors ================== */
 
 .bt-color {
-   background-color: #225d91;
+   background-color: #155186;
 }
 
 .bt-grise {
