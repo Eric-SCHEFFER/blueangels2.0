@@ -100,31 +100,30 @@ nav {
 
 nav a, nav .btDropdown {
    position: relative;
-   border: solid #ffffff62 1px;
+   /* border: solid transparent 1px; */
    min-width: max-content;
    text-align: center;
    padding: 10px;
    color: #fff;
-   /* background-color: #155186; */
-   background-color: transparent;
+   background-color: #155186;
    border-radius: 36px;
 }
 
 nav .btDropdown {
-   background-color: inherit;
+   /* background-color: inherit; */
    font-size: inherit;
    text-transform: inherit;
    border: inherit;
    bottom: 3px;
-   border: solid #ffffff62 1px;
+   /* border: solid transparent 1px; */
 }
 
 button:focus {
    outline: none;
 }
 
-nav a:hover, nav .active, nav .btDropdown:hover, nav ul.dropdown-content a:hover {
-   border-color: #ffffff;
+nav a:hover, nav .btDropdown:hover, nav ul.dropdown-content a:hover {
+   background-color: #0e395f;
 }
 
 nav ul.ulMenuGeneral {
@@ -156,7 +155,7 @@ nav ul.dropdown-content a {
 
 nav ul.dropdown-content > li {
    width: auto;
-   padding-top: 10px;
+   padding: 5px 0 5px 0;
 
 }
 
@@ -233,6 +232,7 @@ nav li {
       border: none;
       transition: right .3s;
       padding: 34px 0 20px 0;
+      background-color: #155186;
    }
    nav.visible {
       right: 0;
@@ -248,11 +248,18 @@ nav li {
       overflow-y: scroll;
       overflow-x: hidden;
    }
+   
+   nav li {
+      padding: 5px 0 5px 0;
+   }
+
    nav li, nav a, nav .btDropdown {
-      width: inherit;
+      width: inherit; 
       min-width: initial;
       background-color: inherit;
       height: auto;
+      /* border: #000000 solid 1px; */
+
    }
    nav ul {
       background-color: inherit;
@@ -265,14 +272,16 @@ nav li {
       left: 0;
       max-width: 230px !important;
       border: none;
+      background-color: #186eb4;
    }
    nav ul.dropdown-content a {
       min-width: 150px;
       max-width: 220px;
-      padding-left: 50px;
+      /* padding-left: 50px; */
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
+      text-align: left;
    }
    /* ================ Burger ================ */
    #burger {
@@ -284,7 +293,7 @@ nav li {
       width: 50px;
       height: 50px;
       cursor: pointer;
-      background-color: #23354477;
+      background-color: #15518677;
       border-radius: 50%;
       border: solid 1px transparent;
       transition: border .6s;
