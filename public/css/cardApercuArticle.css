@@ -94,7 +94,7 @@
    color: rgb(75, 75, 75);
    z-index: 2;
    top: -34px;
-   left: 85px;
+   left: 265px;
    padding: 2px;
 }
 
@@ -113,8 +113,8 @@
 
 .etiquette-event-blue-angels {
    position: absolute;
-   top: -30px;
-   left: 34px;
+   top: -23px;
+   left: 213px;
    z-index: 1;
    width: 42px;
 }
