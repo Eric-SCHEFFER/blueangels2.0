@@ -12,94 +12,98 @@
 
 	<div class="wrapper">
 
-        <h1>
-            Administration
-        </h1>
+		<h1>
+			Administration
+		</h1>
 
-		<section class = "admin">
-            <div class="container0">
-                <div class="container1">
-                    <ul class="liste">
-                        <li title="Gérer les évènements à venir">
-                            <div class="titre">Évènements à venir</div>
-                            <a class="boutonGo" href="{{ path('admin.events_a_venir') }}">Go</a>
-                        </li>
-                        <li title="Gérer les évènements passés">
-                            <div class="titre">Évènements passés</div>
-                            <a class="boutonGo" href="{{ path('admin.events.passes') }}">Go</a>
-                        </li>
-                        <li title="Gérer tous les articles">
-                            <div class="titre">Tous les articles</div>
-                            <a class="boutonGo" href="{{ path('admin.articles') }}">Go</a>
-                        </li>
-                        <li title="Gérer les tarifs">
-                            <div class="titre">Tarifs</div>
-                            <a class="boutonGo" href="{{ path('admin.tarifs') }}">Go</a>
-                        </li>
-                        <li title="Gérer les danses">
-                            <div class="titre">Danses</div>
-                            <a class="boutonGo" href="{{ path('admin.danses') }}">Go</a>
-                        </li>
-                        <li title="Gérer les photos">
-                            <div class="titre">Photos</div>
-                            <a class="boutonGo" href="{{ path('admin.photos') }}">Go</a>
-                        </li>
-                        <li title="Gérer les cours">
-                            <div class="titre">Cours</div>
-                            <a class="boutonGo" href="{{ path('admin.cours') }}">Go</a>
-                        </li>
-                    </ul>
+		<section class="admin">
+			<div class="container0">
+				<div class="container1">
+					<ul class="liste">
+						<li title="Gérer les évènements à venir">
+							<div class="titre">Évènements à venir</div>
+							<a class="boutonGo" href="{{ path('admin.events_a_venir') }}">Go</a>
+						</li>
+						<li title="Gérer les évènements passés">
+							<div class="titre">Évènements passés</div>
+							<a class="boutonGo" href="{{ path('admin.events.passes') }}">Go</a>
+						</li>
+						<li title="Gérer tous les articles">
+							<div class="titre">Tous les articles</div>
+							<a class="boutonGo" href="{{ path('admin.articles') }}">Go</a>
+						</li>
+						<li title="Gérer les tarifs">
+							<div class="titre">Tarifs</div>
+							<a class="boutonGo" href="{{ path('admin.tarifs') }}">Go</a>
+						</li>
+						<li title="Gérer les danses">
+							<div class="titre">Danses</div>
+							<a class="boutonGo" href="{{ path('admin.danses') }}">Go</a>
+						</li>
+						<li title="Gérer les photos">
+							<div class="titre">Photos</div>
+							<a class="boutonGo" href="{{ path('admin.photos') }}">Go</a>
+						</li>
+						<li title="Gérer les cours">
+							<div class="titre">Cours</div>
+							<a class="boutonGo" href="{{ path('admin.cours') }}">Go</a>
+						</li>
+					</ul>
 
-                    <ul class="liste">
-                        <li title="Gérer les stages">
-                            <div class="titre">Stages</div>
-                            <a class="boutonGo" href="{{ path('admin.stages') }}">Go</a>
-                        </li>
-                        <li title="Gérer les stages">
-                            <div class="titre">Communiqués</div>
-                            <a class="boutonGo" href="{{ path('admin.communiques') }}">Go</a>
-                        </li>
-                        <li title="Gérer les partenaires">
-                            <div class="titre">Partenaires</div>
-                            <a class="boutonGo" href="{{ path('admin.partenaires') }}">Go</a>
-                        </li>
-                        <li title="Gérer Historique asso">
-                            <div class="titre">Historique asso</div>
-                            <a class="boutonGo" href="{{ path('admin.historique.asso') }}">Go</a>
-                        </li>
-                        <li title="Gérer le trombinoscope">
-                            <div class="titre">Trombinoscope</div>
-                            <a class="boutonGo" href="{{ path('admin.trombinoscope') }}">Go</a>
-                        </li>
-                        <li title="Gérer les Infos et adresses">
-                            <div class="titre">Infos et adresses</div>
-                            <a class="boutonGo" href="{{ path('admin.infosEtAdresses') }}">Go</a>
-                        </li>
-                        <li title="Gérer les catégories">
-                            <div class="titre">Gérer les catégories</div>
-                            <a class="boutonGo" href="{{ path('admin.categories') }}">Go</a>
-                        </li>
-                    </ul>
-                    <ul class="liste">
-                        <li title="Mentions légales">
-                            <div class="titre">Mentions légales</div>
-                            <a class="boutonGo" href="{{ path('admin.mentions.legales') }}">Go</a>
-                        </li>
-                        <li title="Options du site">
-                            <div class="titre">Options du site</div>
-                            <a class="boutonGo" href="{{ path('admin.options.site') }}">Go</a>
-                        </li>
-                        <li title="Changer son mot de passe">
-                            <div class="titre">Mot de passe</div>
-                            <a class="boutonGo" href="{{ path('admin.changeMdp') }}">Go</a>
-                        </li>
-                        <li title="Modifier l'adresse email utilisée pour s'authentifier">
-                            <div class="titre">Identifiant de connexion</div>
-                            <a class="boutonGo" href="{{ path('admin.change.login') }}">Go</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-    </div>
+					<ul class="liste">
+						<li title="Gérer les stages">
+							<div class="titre">Stages</div>
+							<a class="boutonGo" href="{{ path('admin.stages') }}">Go</a>
+						</li>
+						<li title="Gérer les stages">
+							<div class="titre">Communiqués</div>
+							<a class="boutonGo" href="{{ path('admin.communiques') }}">Go</a>
+						</li>
+						<li title="Gérer les partenaires">
+							<div class="titre">Partenaires</div>
+							<a class="boutonGo" href="{{ path('admin.partenaires') }}">Go</a>
+						</li>
+						<li title="Gérer Historique asso">
+							<div class="titre">Historique asso</div>
+							<a class="boutonGo" href="{{ path('admin.historique.asso') }}">Go</a>
+						</li>
+						<li title="Gérer le trombinoscope">
+							<div class="titre">Trombinoscope</div>
+							<a class="boutonGo" href="{{ path('admin.trombinoscope') }}">Go</a>
+						</li>
+						<li title="Gérer les Infos et adresses">
+							<div class="titre">Infos et adresses</div>
+							<a class="boutonGo" href="{{ path('admin.infosEtAdresses') }}">Go</a>
+						</li>
+						<li title="Gérer les catégories">
+							<div class="titre">Gérer les catégories</div>
+							<a class="boutonGo" href="{{ path('admin.categories') }}">Go</a>
+						</li>
+					</ul>
+					<ul class="liste">
+						<li title="Mentions légales">
+							<div class="titre">Mentions légales</div>
+							<a class="boutonGo" href="{{ path('admin.mentions.legales') }}">Go</a>
+						</li>
+						<li title="Options du site">
+							<div class="titre">Options du site</div>
+							<a class="boutonGo" href="{{ path('admin.options.site') }}">Go</a>
+						</li>
+						<li title="Changer son mot de passe">
+							<div class="titre">Mot de passe</div>
+							<a class="boutonGo" href="{{ path('admin.changeMdp') }}">Go</a>
+						</li>
+						<li title="Modifier l'adresse email utilisée pour s'authentifier">
+							<div class="titre">Identifiant de connexion</div>
+							<a class="boutonGo" href="{{ path('admin.change.login') }}">Go</a>
+						</li>
+						<li title="Gérer les comptes admnistrateurs">
+							<div class="titre">Administrateurs</div>
+							<a class="boutonGo" href="{{ path('admin') }}">Go</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+	</div>
 {% endblock %}
