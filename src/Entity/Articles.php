@@ -64,6 +64,16 @@ class Articles
      */
     private $listed;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $last_modified_at;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $last_modified_by;
+
 
     public function __construct()
     {
@@ -204,5 +214,27 @@ class Articles
         return $this;
     }
 
-   
+    public function getLastModifiedAt(): ?\DateTimeInterface
+    {
+        return $this->last_modified_at;
+    }
+
+    public function setLastModifiedAt(?\DateTimeInterface $last_modified_at): self
+    {
+        $this->last_modified_at = $last_modified_at;
+
+        return $this;
+    }
+
+    public function getLastModifiedBy(): ?string
+    {
+        return $this->last_modified_by;
+    }
+
+    public function setLastModifiedBy(?string $last_modified_by): self
+    {
+        $this->last_modified_by = $last_modified_by;
+
+        return $this;
+    }
 }
