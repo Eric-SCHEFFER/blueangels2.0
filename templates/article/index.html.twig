@@ -140,17 +140,14 @@
 									<i class="fas fa-clock"></i>
 									{{ article.getCreatedAt | date("H:i") }}
 								</div>
-
-								{# TODO: Affichage en admin de la dernière modif et par qui #}
+								{# Affichage en admin de la dernière modif et par qui #}
 								{% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
-									<i class="fas fa-cog"></i>
+									<i class="fas fa-wrench"></i>
 									Dernière modif:
 									<span class="last-modif-at">{{ article.getLastModifiedAt | date("d-m-Y H:i")}}</span>
 									par
 									<span class="last-modif-by">{{ article.getLastModifiedBy}}</span>
 								{% endif %}
-
-
 							</div>
 
 
@@ -196,8 +193,8 @@
 									Toutes les catégories
 								</a>
 								{# On n'affiche pas le lien contact quand c'est la catégorie Partenaires ou Mentions légales car ça
-																																																																																							peut
-																																																																																							prêter à confusion #}
+																																																																																															peut
+																																																																																															prêter à confusion #}
 								{% if article.categoriesArticle.nom and
 							article.categoriesArticle.nom != "Partenaires" and
 							article.categoriesArticle.nom != "Mentions légales" %}
