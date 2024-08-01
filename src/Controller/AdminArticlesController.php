@@ -122,6 +122,11 @@ class AdminArticlesController extends AbstractController
                 $img->setNom($fichier);
                 $article->addImagesArticle($img);
             }
+
+            // dd ($article);
+            // TODO: On rempli le champ setLastModifiedBy dans la base, avec le nom de l'utilisateur courant
+            $article->setLastModifiedBy('to@to.com');
+            
             $this->em->persist($article);
             $this->em->flush();
             $this->addFlash('succes', '"' . $article->getTitre() . '"' . ' modifié avec succès');
