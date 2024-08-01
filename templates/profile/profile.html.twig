@@ -4,18 +4,24 @@
 	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
 {% endblock %}
 {% block title %}
-	{{ SiteName }}: Profile de {{ app.user.username }}
+	{{ SiteName }}: Profile de
+	{{ app.user.username }}
 {% endblock %}
 
 {% block body %}
 
 
 	<div class="wrapper">
-		<h1>Profile de {{ app.user.username }}</h1>
+		<h1>Profile de
+			{{ app.user.username }}</h1>
 		<section class="admin">
 			<div class="container0">
 				<div class="container1">
 					<ul class="liste">
+						<li>
+							Rôle:
+							{{ app.user.roles[0] }}
+						</li>
 						<li title="Changer son mot de passe">
 							<div class="titre">Mot de passe</div>
 							<a class="boutonGo" href="{{ path('profile.change.mdp') }}">Go</a>
@@ -26,7 +32,6 @@
 						</li>
 					</ul>
 
-					
 
 				</div>
 			</div>
