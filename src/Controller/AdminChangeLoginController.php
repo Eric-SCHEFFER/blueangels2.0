@@ -20,7 +20,7 @@ class AdminChangeLoginController extends AbstractController
     private $validiteTokenEnMn = '60';
 
     /** ======== Envoi par email de la requête de changement d'email de connexion (lien à cliquer) ========
-     * @Route("/admin/changeLogin", name="admin.change.login")
+     * @Route("/profile/changeLogin", name="profile.change.login")
      */
     public function resetAuthenticationEmailRequest(MailerInterface $mailer, Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -51,7 +51,7 @@ class AdminChangeLoginController extends AbstractController
 
             // Si on a au moins une erreur, on retourne la vue de changement d'email, avec les messages d'erreurs
             if ($err) {
-                return $this->render('admin/admin_change_login/index.html.twig');
+                return $this->render('profile/change_login/index.html.twig');
             }
 
             // Si pas d'erreur
@@ -69,19 +69,19 @@ class AdminChangeLoginController extends AbstractController
                 $expediteur = "site.blueangels@email.com";
                 $destinataire = $nouvEmail;
                 $objet = "Validation email de connexion";
-                $templateTwig = "admin/admin_change_login/envoiMailLienValidation.html.twig";
+                $templateTwig = "profile/change_login/envoiMailLienValidation.html.twig";
                 $this->envoiEmail($mailer, $expediteur, $destinataire, $objet, $templateTwig, $token);
                 // On ajoute dans un message flash le succès d'envoi de l'email, et on redirige vers la page d'accueil
                 $this->addFlash('succes', 'Nous venons de vous envoyer un lien de validation à l\'adresse: ' . $nouvEmail . '. Si vous n\'êtes plus connecté quand vous cliquez sur le lien, vous devrez vous reconnecter avec l\'identifiant actuel ' . $user->getEmail() . '. Ce lien est valable ' . $this->getValiditeTokenEnMn() . ' mn.');
-                return $this->redirectToRoute('admin');
+                return $this->redirectToRoute('profile');
             }
         }
 
-        return $this->render('admin/admin_change_login/index.html.twig');
+        return $this->render('profile/change_login/index.html.twig');
     }
 
     /** ======== Récupère le clic du lien de validation de l'email, et sauvegarde l'email candidat dans la base ========
-     * @Route("admin/activerEmailCandidat/{token}", name="activer_email_candidat")
+     * @Route("profile/activerEmailCandidat/{token}", name="activer_email_candidat")
      */
     public function activerEmailCandidatConnexion($token, UserRepository $userRepo)
     {
@@ -106,7 +106,7 @@ class AdminChangeLoginController extends AbstractController
         $em->persist($user);
         $em->flush();
         $this->addFlash('succes', 'L\'identifiant de connexion a été modifié avec succès: ' . $user->getEmail());
-        return $this->redirectToRoute('admin');
+        return $this->redirectToRoute('profile');
     }
 
 

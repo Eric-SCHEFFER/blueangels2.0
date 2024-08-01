@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class AdminChangeMdpController extends AbstractController
 {
     /**
-     * @Route("admin/changeMdp", name="admin.changeMdp")
+     * @Route("profile/changeMdp", name="profile.change.mdp")
      */
     public function ChangeMdp(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -66,7 +66,7 @@ class AdminChangeMdpController extends AbstractController
 
             // ======== En cas d'erreur, on revient vers la page de changement de mot de passe, avec les messages d'erreurs ========
             if ($err) {
-                return $this->render('admin/changeMdp/index.html.twig');
+                return $this->render('profile/change_mdp/index.html.twig');
             }
 
             // ======== Si tout est bon, on enregistre le nouveau mot de passe dans la base ========
@@ -74,9 +74,9 @@ class AdminChangeMdpController extends AbstractController
                 $user->setPassword($passwordEncoder->encodePassword($user, $request->request->get('newPassword')));
                 $em->flush();
                 $this->addFlash('succes', 'Mot de passe modifié avec succès');
-                return $this->redirectToRoute('admin');
+                return $this->redirectToRoute('profile');
             }
         }
-        return $this->render('admin/changeMdp/index.html.twig');
+        return $this->render('profile/change_mdp/index.html.twig');
     }
 }

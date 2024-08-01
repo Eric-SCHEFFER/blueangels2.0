@@ -1,0 +1,35 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+{% endblock %}
+{% block title %}
+	{{ SiteName }}: Profile de {{ app.user.username }}
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="wrapper">
+		<h1>Profile de {{ app.user.username }}</h1>
+		<section class="admin">
+			<div class="container0">
+				<div class="container1">
+					<ul class="liste">
+						<li title="Changer son mot de passe">
+							<div class="titre">Mot de passe</div>
+							<a class="boutonGo" href="{{ path('profile.change.mdp') }}">Go</a>
+						</li>
+						<li title="Modifier l'adresse email utilisée pour s'authentifier">
+							<div class="titre">Identifiant de connexion</div>
+							<a class="boutonGo" href="{{ path('profile.change.login') }}">Go</a>
+						</li>
+					</ul>
+
+					
+
+				</div>
+			</div>
+		</section>
+	</div>
+{% endblock %}

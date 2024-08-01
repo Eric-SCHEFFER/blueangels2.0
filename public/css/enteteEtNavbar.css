@@ -98,7 +98,8 @@ nav {
    border-radius: 4px;
 }
 
-nav a, nav .btDropdown {
+nav a,
+nav .btDropdown {
    position: relative;
    /* border: solid transparent 1px; */
    min-width: max-content;
@@ -122,7 +123,9 @@ button:focus {
    outline: none;
 }
 
-nav a:hover, nav .btDropdown:hover, nav ul.dropdown-content a:hover {
+nav a:hover,
+nav .btDropdown:hover,
+nav ul.dropdown-content a:hover {
    color: #fff;
 }
 
@@ -153,7 +156,7 @@ nav ul.dropdown-content a {
    text-align: right;
 }
 
-nav ul.dropdown-content > li {
+nav ul.dropdown-content>li {
    width: auto;
    padding: 5px 0 5px 0;
 
@@ -163,24 +166,26 @@ nav ul {
    background-color: inherit;
 }
 
+
 nav li {
    position: relative;
    height: 100%;
    width: max-content;
 }
 
-.btDropdown.visible + ul.dropdown-content {
-  /* display: block !important; */
-  /* opacity: 1; */
-  height: auto;
-  max-height: 500px; /* Obligé de mettre une max-height pour que la transition fonctionne */
-  /* visibility: visible; */
+.btDropdown.visible+ul.dropdown-content {
+   /* display: block !important; */
+   /* opacity: 1; */
+   height: auto;
+   max-height: 500px;
+   /* Obligé de mettre une max-height pour que la transition fonctionne */
+   /* visibility: visible; */
 }
 
 
 /* =========== Icones fontawesome =========== */
 
-.btDropdown > div::after {
+.btDropdown>div::after {
    position: relative;
    display: inline-block;
    left: 6px;
@@ -192,7 +197,7 @@ nav li {
    transition: all .6s;
 }
 
-.btDropdown.visible > div::after {
+.btDropdown.visible>div::after {
    transform: rotate(90deg);
    color: rgb(255, 111, 0);
 }
@@ -234,13 +239,17 @@ nav li {
       padding: 34px 0 20px 0;
       background-color: #155186;
    }
+
    nav.visible {
       right: 0;
    }
-   nav a, nav .btDropdown {
+
+   nav a,
+   nav .btDropdown {
       text-align: left;
       padding-left: 40px;
    }
+
    nav ul.ulMenuGeneral {
       display: block;
       width: inherit;
@@ -248,23 +257,27 @@ nav li {
       overflow-y: scroll;
       overflow-x: hidden;
    }
-   
+
    nav li {
       padding: 5px 0 5px 0;
    }
 
-   nav li, nav a, nav .btDropdown {
-      width: inherit; 
+   nav li,
+   nav a,
+   nav .btDropdown {
+      width: inherit;
       min-width: initial;
       background-color: inherit;
       height: auto;
       /* border: #000000 solid 1px; */
 
    }
+
    nav ul {
       background-color: inherit;
       height: auto;
    }
+
    nav ul.dropdown-content {
       z-index: 10;
       padding-left: 0;
@@ -274,6 +287,7 @@ nav li {
       border: none;
       background-color: #10426e;
    }
+
    nav ul.dropdown-content a {
       min-width: 150px;
       max-width: 220px;
@@ -283,6 +297,7 @@ nav li {
       overflow: hidden;
       text-align: left;
    }
+
    /* ================ Burger ================ */
    #burger {
       z-index: 10000;
@@ -298,10 +313,16 @@ nav li {
       border: solid 1px transparent;
       transition: border .6s;
    }
-   #burger:hover #burgerBarre1, #burger:hover #burgerBarre2, #burger:hover #burgerBarre3 {
+
+   #burger:hover #burgerBarre1,
+   #burger:hover #burgerBarre2,
+   #burger:hover #burgerBarre3 {
       background-color: rgb(255, 255, 255);
    }
-   #burgerBarre1, #burgerBarre2, #burgerBarre3 {
+
+   #burgerBarre1,
+   #burgerBarre2,
+   #burgerBarre3 {
       height: 3px;
       width: 30px;
       background-color: rgb(211, 211, 211);
@@ -310,26 +331,33 @@ nav li {
       left: 10px;
       transition: all .3s;
    }
+
    #burgerBarre1 {
       top: 14px;
    }
+
    #burgerBarre2 {
       top: 23px;
    }
+
    #burgerBarre3 {
       top: 32px;
    }
+
    .burgerBarre1-menu-ouvert {
       transform: rotate(45deg) !important;
       top: 22px !important;
    }
+
    .burgerBarre2-menu-ouvert {
       display: none !important;
    }
+
    .burgerBarre3-menu-ouvert {
       transform: rotate(-45deg) !important;
       top: 22px !important;
    }
+
    .burger-menu-ouvert {
       background-color: transparent !important;
    }
@@ -341,10 +369,12 @@ nav li {
    .header-wrapper {
       padding: 20px;
    }
+
    .logo-titre {
       width: 42px;
       font-size: 1.9em;
    }
+
    .decription-asso {
       font-size: .65em;
    }
