@@ -5,95 +5,99 @@
 
 <div class="conteneur_table">
 	<div class="table-admin-dashboard">
-		<div>
-			{# Passer en paramètre l'id de la catégorie #}
+		<div>{# Passer en paramètre l'id de la catégorie #}
 			{# <a class="boutonNew" href="{{ path('admin.articles.nouveau', {categorieId: categorieId}) }}" title="Créer un nouvel article">Nouveau #}
-			</a>
-			<a class="boutonNew" href="{{ path('admin.articles.nouveau', {categorieId: categorieId}) }}" title="Créer un nouvel article">Nouveau
-			</a>
-		</div>
+		</a>
+		<a class="boutonNew" href="{{ path('admin.articles.nouveau', {categorieId: categorieId}) }}" title="Créer un nouvel article">Nouveau
+		</a>
 	</div>
-	<table class="table_1">
-		<thead>
-			<tr>
-				<th>Titre</th>
-				<th>Actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% if articles is not empty %}
-				{% for article in articles %}
-					<tr>
-						<td>
-							<div class="blocTitreImage">
-								<div class="titreEtInfos">
-									{{ article.titre }}
-									<div class="date">
-										{{ article.getCreatedAt()|date("d-m-Y") }}
-									</div>
-									<div
-										class="table-icones-infos">
-										{# ==== On affiche le nbre d'images ==== #}
-
-										<div class="nbreImages" title="Nombre d'images: {{ article.getImagesArticles | length }}">
-											<i class="fas fa-file-image fa-lg"></i>
-											{{ article.getImagesArticles | length }}
-										</div>
-										{% if not article.actif %}
-											{# Variable array globale pour les différentes balises title ci-dessous de cette div (dans twig.yaml) #}
-											<div class="articles-actif-off" title="{{ articleOptionInfo.inactif }}">
-												<i class="fas fa-eye-slash orange"></i>
-											</div>
-										{% else %}
-											<div class="articles-actif-on" title="{{ articleOptionInfo.actif }}">
-												<i class="fas fa-eye lime"></i>
-											</div>
-										{% endif %}
-										{% if not article.listed %}
-											<div class="articles-listed-off" title="{{ articleOptionInfo.listedOff }}">
-												<i class="fas fa-list violet"></i>
-											</div>
-										{% else %}
-											<div class="articles-listed-on" title="{{ articleOptionInfo.listed }}">
-												<i class="fas fa-list lime"></i>
-											</div>
-										{% endif %}
-										{% if article.epingle %}
-											<div class="articles-epingle-on" title="{{ articleOptionInfo.epingle }}">
-												<i class="fas fa-thumbtack orangered"></i>
-											</div>
-										{% endif %}
-										{% if article.categoriesArticle.nom is defined %}
-											<div class="categorie" title="{{ articleOptionInfo.categorie }}">
-												<i class="fas fa-folder-open"></i>
-												{{ article.categoriesArticle.nom }}
-											</div>
-										{% endif %}
-									</div>
-								</div>
-								{% if article.getImagesArticles[0] is defined %}
-									{# On affiche l'image de l'article #}
-									<img src="{{ asset('uploads/imagesArticles/' ~ 'min_' ~ article.getImagesArticles[0].nom) }}">
-								{% endif %}
-							</div>
-						</td>
-						<td>
-							<a class="iconeEditer" href="{{ path('admin.articles.edit', {id: article.id}) }}" title="Éditer"></a>
-
-							{# formulaire avec champ caché (passer la valeur delete) pour supprimmer un article. #}
-							{# Le filtre twig replace supprime l'apostrophe s'il y en a, et d'autres caractères, pour éviter l'absence de confirmation de supression #}
-							{% set titreFiltre = article.titre|replace({"'": "", '"': "", '(': "", ')': "", '{': "", '}': ""}) %}
-							<form class="deleteForm" method="post" action="{{ path('admin.article.delete', {id: article.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ titreFiltre }} ?')">
-								<input
-								type="hidden" name="_method" value="DELETE"/>
-								{# On créé un token #}
-								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}"/>
-								<button class="iconeSupprimer" title="Supprimer"></button>
-							</form>
-						</td>
-					</tr>
-				{% endfor %}
-			{% endif %}
-		</tbody>
-	</table>
 </div>
+<table class="table_1">
+	<thead>
+		<tr>
+			<th>Titre</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% if articles is not empty %}
+			{% for article in articles %}
+				<tr>
+					<td>
+						<div class="blocTitreImage">
+							<div class="titreEtInfos">
+								{{ article.titre }}
+								<div class="date" title="Date de l'article (qui sera affichée dans la carte et la pleine page)">
+									{{ article.getCreatedAt()|date("d-m-Y") }}
+								</div>
+								<div class="date" title="Dernière modification">
+									<i class="fas fa-wrench"></i>
+									{{ article.getLastModifiedAt()|date("d-m-Y H:i") }}
+									par
+									{{ article.getLastModifiedBy() }}
+								</div>
+								<div
+									class="table-icones-infos">
+									{# ==== On affiche le nbre d'images ==== #}
+
+									<div class="nbreImages" title="Nombre d'images: {{ article.getImagesArticles | length }}">
+										<i class="fas fa-file-image fa-lg"></i>
+										{{ article.getImagesArticles | length }}
+									</div>
+									{% if not article.actif %}
+										{# Variable array globale pour les différentes balises title ci-dessous de cette div (dans twig.yaml) #}
+										<div class="articles-actif-off" title="{{ articleOptionInfo.inactif }}">
+											<i class="fas fa-eye-slash orange"></i>
+										</div>
+									{% else %}
+										<div class="articles-actif-on" title="{{ articleOptionInfo.actif }}">
+											<i class="fas fa-eye lime"></i>
+										</div>
+									{% endif %}
+									{% if not article.listed %}
+										<div class="articles-listed-off" title="{{ articleOptionInfo.listedOff }}">
+											<i class="fas fa-list violet"></i>
+										</div>
+									{% else %}
+										<div class="articles-listed-on" title="{{ articleOptionInfo.listed }}">
+											<i class="fas fa-list lime"></i>
+										</div>
+									{% endif %}
+									{% if article.epingle %}
+										<div class="articles-epingle-on" title="{{ articleOptionInfo.epingle }}">
+											<i class="fas fa-thumbtack orangered"></i>
+										</div>
+									{% endif %}
+									{% if article.categoriesArticle.nom is defined %}
+										<div class="categorie" title="{{ articleOptionInfo.categorie }}">
+											<i class="fas fa-folder-open"></i>
+											{{ article.categoriesArticle.nom }}
+										</div>
+									{% endif %}
+								</div>
+							</div>
+							{% if article.getImagesArticles[0] is defined %}
+								{# On affiche l'image de l'article #}
+								<img src="{{ asset('uploads/imagesArticles/' ~ 'min_' ~ article.getImagesArticles[0].nom) }}">
+							{% endif %}
+						</div>
+					</td>
+					<td>
+						<a class="iconeEditer" href="{{ path('admin.articles.edit', {id: article.id}) }}" title="Éditer"></a>
+
+						{# formulaire avec champ caché (passer la valeur delete) pour supprimmer un article. #}
+						{# Le filtre twig replace supprime l'apostrophe s'il y en a, et d'autres caractères, pour éviter l'absence de confirmation de supression #}
+						{% set titreFiltre = article.titre|replace({"'": "", '"': "", '(': "", ')': "", '{': "", '}': ""}) %}
+						<form class="deleteForm" method="post" action="{{ path('admin.article.delete', {id: article.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ titreFiltre }} ?')">
+							<input
+							type="hidden" name="_method" value="DELETE"/>
+							{# On créé un token #}
+							<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}"/>
+							<button class="iconeSupprimer" title="Supprimer"></button>
+						</form>
+					</td>
+				</tr>
+			{% endfor %}
+		{% endif %}
+	</tbody>
+</table></div>

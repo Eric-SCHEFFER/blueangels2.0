@@ -1,8 +1,7 @@
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ asset('css/adminTableCrud.css') }}">
-<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/adminTableCrud.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
 {% endblock %}
-
 
 
 <div class="conteneur_table">
@@ -15,34 +14,33 @@
 				- Uploader la ou les images.<br>
 				- Remplir normalement le champ hook.<br>
 				- Remplir normalement le champ description, mais ajouter au début une ligne par image à valider, de cette
-				façon (quand l'image est validée, on rajoute simplement "Validée"):<br>
+								façon (quand l'image est validée, on rajoute simplement "Validée"):<br>
 				Image 1: Recto V1.1 --> En attente de validation<br>
 				Image 2: Verso v1.1 --> Validée<br>
 				Etc...<br><br>
 				Pour ne pas surcharger, on supprime au fur-et-à-mesure les anciennes images et versions non validées, qui
-				ont été remplacées par de nouvelles.<br><br>
+								ont été remplacées par de nouvelles.<br><br>
 				- Enregistrer le formulaire.<br><br>
 				Le lien à partager sera le lien réel de l'image miniature, moins les caractères min_ qui précèdent le nom de
-				l'image
+								l'image
 			</div>
 		</details>
 		<details>
 			<summary>Image imprimeur</summary>
 			<div class="description">
 				Recréer un évènement inactif de même date que l'original, avec le même titre et [imprimeur] à la suite du
-				titre.<br>
+								titre.<br>
 				(ex: Stage salsa [imprimeur]).<br><br>
 				Copier-coller le mot imprimeur dans les champs Hook et Description.<br><br>
 				Sélectionner la ou les images, enregistrer le formulaire.<br><br>
 				Le lien à partager sera le lien réel de l'image miniature, moins les caractères min_ qui précèdent le nom de
-				l'image
+								l'image
 			</div>
 		</details>
 	</div>
 	<div class="table-admin-dashboard">
 		<div>
-			<a class="boutonNew boutonFlecheGauche" href="{{ path(pathBoutonPasseAvenir) }}"
-				title="{{ titleBoutonPasseAvenir }}">
+			<a class="boutonNew boutonFlecheGauche" href="{{ path(pathBoutonPasseAvenir) }}" title="{{ titleBoutonPasseAvenir }}">
 				<i class="fas fa-arrow-left fa-lg flecheGauche"></i>
 				{{ texteBoutonPasseAvenir }}
 			</a>
@@ -62,83 +60,88 @@
 
 		<tbody>
 			{% if events is not empty %}
-			{% for event in events %}
-			<tr>
-				<td>
-					<div class="blocTitreImage">
-						<div class="titreEtInfos">
-							{% if event.getAnnule() %}
-							<div class="annule" title="Évènement annulé">
-								{{ event.nom }}
-							</div>
-							{% else %}
-							{{ event.nom }}
-							{% endif %}
-							<div class="date">
-								{{ event.getDateEvent()|date("d-m-Y") }}
-							</div>
+				{% for event in events %}
+					<tr>
+						<td>
+							<div class="blocTitreImage">
+								<div class="titreEtInfos">
+									{% if event.getAnnule() %}
+										<div class="annule" title="Évènement annulé">
+											{{ event.nom }}
+										</div>
+									{% else %}
+										{{ event.nom }}
+									{% endif %}
+									<div class="date" title="Date de l'évènement (qui sera affichée dans la carte et la pleine page)">
+										{{ event.getDateEvent()|date("d-m-Y") }}
+									</div>
+									<div class="date" title="Dernière modification">
+										<i class="fas fa-wrench"></i>
+										{{ event.getLastModifiedAt()|date("d-m-Y H:i") }}
+										par
+										{{ event.getLastModifiedBy() }}
+									</div>
 
-							<div class="table-icones-infos">
-								{# ==== On affiche le nbre d'images ==== #}
-								<div class="nbreImages" title="Nombre d'images: {{ event.getImagesEvents | length }}">
-									<i class="fas fa-file-image fa-lg"></i>
-									{{ event.getImagesEvents | length }}
+									<div
+										class="table-icones-infos">
+										{# ==== On affiche le nbre d'images ==== #}
+										<div class="nbreImages" title="Nombre d'images: {{ event.getImagesEvents | length }}">
+											<i class="fas fa-file-image fa-lg"></i>
+											{{ event.getImagesEvents | length }}
+										</div>
+										{% if not event.actif %}
+											{# Variable array globale (commune aux events et articles), pour les différentes balises title
+																			ci-dessous de cette div (dans twig.yaml) #}
+											<div class="articles-actif-off" title="{{ articleOptionInfo.inactif }}">
+												<i class="fas fa-eye-slash orange"></i>
+											</div>
+										{% else %}
+											<div class="articles-actif-on" title="{{ articleOptionInfo.actif }}">
+												<i class="fas fa-eye lime"></i>
+											</div>
+										{% endif %}
+										{# Si l'article est épinglé #}
+										{% if event.epingle %}
+											<div class="articles-epingle-on" title="{{ eventOptionInfo.epingle }}">
+												<i class="fas fa-thumbtack orangered"></i>
+											</div>
+										{% endif %}
+										{# Si organisé par ba, on met l'icone ba #}
+										{% if event.getEventBlueAngels %}
+											<div class="event-blue-angels">
+												<img src="{{ asset('images/favicon.png') }}" alt='Icone des Blue Angels'>
+											</div>
+										{% endif %}
+									</div>
 								</div>
-								{% if not event.actif %}
-								{# Variable array globale (commune aux events et articles), pour les différentes balises title
-								ci-dessous de cette div (dans twig.yaml) #}
-								<div class="articles-actif-off" title="{{ articleOptionInfo.inactif }}">
-									<i class="fas fa-eye-slash orange"></i>
-								</div>
-								{% else %}
-								<div class="articles-actif-on" title="{{ articleOptionInfo.actif }}">
-									<i class="fas fa-eye lime"></i>
-								</div>
+
+								{% if event.getImagesEvents[0] is defined %}
+									{# On affiche l'image de l'event #}
+									<img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ event.getImagesEvents[0].Nom) }}">
 								{% endif %}
-								{# Si l'article est épinglé #}
-								{% if event.epingle %}
-								<div class="articles-epingle-on" title="{{ eventOptionInfo.epingle }}">
-									<i class="fas fa-thumbtack orangered"></i>
-								</div>
-								{% endif %}
-								{# Si organisé par ba, on met l'icone ba #}
-								{% if event.getEventBlueAngels %}
-								<div class="event-blue-angels">
-									<img src="{{ asset('images/favicon.png') }}" alt='Icone des Blue Angels'>
-								</div>
-								{% endif %}
 							</div>
-						</div>
+						</td>
+						<td>
+							<a class="iconeEditer" href="{{ path('admin.events.edit', {id: event.id}) }}" title="Éditer"></a>
 
-						{% if event.getImagesEvents[0] is defined %}
-						{# On affiche l'image de l'event #}
-						<img src="{{ asset('uploads/imagesEvents/' ~ 'min_' ~ event.getImagesEvents[0].Nom) }}">
-						{% endif %}
-					</div>
-				</td>
-				<td>
-					<a class="iconeEditer" href="{{ path('admin.events.edit', {id: event.id}) }}" title="Éditer"></a>
-
-					{# Lien cloner un évènement #}
-					<a class="iconeCloner" href="{{ path('admin.events.clone', {id: event.id}) }}" title="Cloner"></a>
+							{# Lien cloner un évènement #}
+							<a class="iconeCloner" href="{{ path('admin.events.clone', {id: event.id}) }}" title="Cloner"></a>
 
 
-
-
-					{# formulaire avec champ caché (passer la valeur delete) pour supprimmer un évènement #}
-					{# Le filtre twig replace supprime l'apostrophe s'il y en a, et d'autres caractères, pour éviter
-					l'absence de confirmation de supression #}
-					{% set nomFiltre = event.nom|replace({"'": "", '"': "", '(': "", ')': "", '{': "", '}': ""}) %}
-					<form class="deleteForm" method="post" action="{{ path('admin.event.delete', {id: event.id}) }}"
-						onsubmit="return confirm('Voulez-vous vraiment supprimer {{ nomFiltre }} ?')">
-						<input type="hidden" name="_method" value="DELETE" />
-						{# On créé un token #}
-						<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ event.id) }}" />
-						<button class="iconeSupprimer" title="Supprimer"></button>
-					</form>
-				</td>
-			</tr>
-			{% endfor %}
+							{# formulaire avec champ caché (passer la valeur delete) pour supprimmer un évènement #}
+							{# Le filtre twig replace supprime l'apostrophe s'il y en a, et d'autres caractères, pour éviter
+												l'absence de confirmation de supression #}
+							{% set nomFiltre = event.nom|replace({"'": "", '"': "", '(': "", ')': "", '{': "", '}': ""}) %}
+							<form class="deleteForm" method="post" action="{{ path('admin.event.delete', {id: event.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ nomFiltre }} ?')">
+								<input
+								type="hidden" name="_method" value="DELETE"/>
+								{# On créé un token #}
+								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ event.id) }}"/>
+								<button class="iconeSupprimer" title="Supprimer"></button>
+							</form>
+						</td>
+					</tr>
+				{% endfor %}
 			{% endif %}
 		</tbody>
 	</table>
