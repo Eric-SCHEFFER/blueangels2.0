@@ -14,6 +14,7 @@ use App\Form\ArticleType;
 use Attribute;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Service\TodayGenerator;
 
 class AdminArticlesController extends AbstractController
 {
@@ -47,7 +48,7 @@ class AdminArticlesController extends AbstractController
     /**
      * @Route("/admin/articles/nouveau/{categorieId}", name="admin.articles.nouveau", methods="GET|POST")
      */
-    public function new(Request $request)
+    public function new(Request $request, TodayGenerator $todayGenerator)
     {
         $article = new Articles();
         $form = $this->createForm(ArticleType::class, $article);
@@ -75,6 +76,13 @@ class AdminArticlesController extends AbstractController
                 $img->setNom($fichier);
                 $article->addImagesArticle($img);
             }
+
+            // On rempli le champ lastModifiedBy dans la bdd, avec le nom de l'utilisateur courant
+            $article->setLastModifiedBy($this->getUser()->getEmail());
+
+            // On rempli le champ lasModifiedAt dans la bdd, avec la date actuelle
+            $article->setLastModifiedAt($todayGenerator->generateAToday());
+
             $this->em->persist($article);
             $this->em->flush();
             $this->addFlash('succes', 'Article créé avec succès');
@@ -95,7 +103,7 @@ class AdminArticlesController extends AbstractController
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function edit(Articles $article, Request $request)
+    public function edit(Articles $article, Request $request, TodayGenerator $todayGenerator)
     {
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
@@ -123,10 +131,12 @@ class AdminArticlesController extends AbstractController
                 $article->addImagesArticle($img);
             }
 
-            // dd ($article);
-            // TODO: On rempli le champ setLastModifiedBy dans la base, avec le nom de l'utilisateur courant
-            $article->setLastModifiedBy('to@to.com');
-            
+            // On rempli le champ lastModifiedBy dans la bdd, avec le nom de l'utilisateur courant
+            $article->setLastModifiedBy($this->getUser()->getEmail());
+
+            // On rempli le champ lasModifiedAt dans la bdd, avec la date actuelle
+            $article->setLastModifiedAt($todayGenerator->generateAToday());
+
             $this->em->persist($article);
             $this->em->flush();
             $this->addFlash('succes', '"' . $article->getTitre() . '"' . ' modifié avec succès');

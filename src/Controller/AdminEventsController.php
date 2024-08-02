@@ -69,7 +69,7 @@ class AdminEventsController extends AbstractController
     /**
      * @Route("/admin/events/nouveau", name="admin.events.nouveau")
      */
-    public function new(Request $request)
+    public function new(Request $request, TodayGenerator $todayGenerator)
     {
         $event = new Events();
         $form = $this->createForm(EventType::class, $event);
@@ -97,6 +97,13 @@ class AdminEventsController extends AbstractController
                 $img->setNom($fichier);
                 $event->addImagesEvent($img);
             }
+
+            // On rempli le champ lastModifiedBy dans la bdd, avec le nom de l'utilisateur courant
+            $event->setLastModifiedBy($this->getUser()->getEmail());
+
+            // On rempli le champ lasModifiedAt dans la bdd, avec la date actuelle
+            $event->setLastModifiedAt($todayGenerator->generateAToday());
+
             $this->em->persist($event);
             $this->em->flush();
             $this->addFlash('succes', 'Évènement créé avec succès');
@@ -116,7 +123,7 @@ class AdminEventsController extends AbstractController
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function edit(Events $event, Request $request)
+    public function edit(Events $event, Request $request, TodayGenerator $todayGenerator)
     {
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
@@ -143,6 +150,13 @@ class AdminEventsController extends AbstractController
                 $img->setNom($fichier);
                 $event->addImagesEvent($img);
             }
+
+            // On rempli le champ lastModifiedBy dans la bdd, avec le nom de l'utilisateur courant
+            $event->setLastModifiedBy($this->getUser()->getEmail());
+
+            // On rempli le champ lasModifiedAt dans la bdd, avec la date actuelle
+            $event->setLastModifiedAt($todayGenerator->generateAToday());
+
             $this->em->persist($event);
             $this->em->flush();
             $this->addFlash('succes', '"' . $event->getNom() . '"' . ' modifié avec succès');
