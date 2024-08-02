@@ -1,23 +1,37 @@
-<!DOCTYPE html>
-
-<title>Register</title>
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/formulaireGenerique.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+{% endblock %}
+{% block title %}
+	{{ SiteName }}: Inscription
+{% endblock %}
 
 {% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
+	<div class="wrapper">
+		{% for flash_error in app.flashes('verify_email_error') %}
+			<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+		{% endfor %}
 
-    <h1>Register</h1>
+		<h1>Inscription</h1>
+		<div class="container-form">
+			{{ form_errors(registrationForm) }}
 
-    {{ form_errors(registrationForm) }}
+			{{ form_start(registrationForm) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
+			<div class="bloc-column">
+				<div>{{ form_row(registrationForm.email) }}</div>
+			</div>
+			<div class="bloc-column">
+				<div>{{ form_row(registrationForm.plainPassword, {
+            label: 'Mdp'
         }) }}
-        {# {{ form_row(registrationForm.agreeTerms) }} #}
+				</div>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+				{# {{ form_row(registrationForm.agreeTerms) }} #}
+			</div>
+			<button type="submit" class="bouton">Inscription</button>
+			{{ form_end(registrationForm) }}
+		</div>
+	</div>
 {% endblock %}
