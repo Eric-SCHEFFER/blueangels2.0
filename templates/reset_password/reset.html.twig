@@ -11,6 +11,10 @@
 	<div class="wrapper">
 		<h1>Réinitialiser le mot de passe</h1>
 		<div class="container-form">
+			<p>Le mot de passe doit faire 8 caractères minimum, et contenir au moins:
+				1 minuscule, 1 majuscule, 1 chiffre, et au moins 1 caractère spécial: & ) = ( ?
+			</p>
+
 			<div class="bloc-column">
 				{{ form_start(resetForm) }}
 				{{ form_row(resetForm.plainPassword) }}

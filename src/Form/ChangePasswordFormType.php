@@ -23,10 +23,26 @@ class ChangePasswordFormType extends AbstractType
                             'message' => 'Entrez un mot de passe svp',
                         ]),
                         new Length([
-                            'min' => 6,
+                            'min' => 8,
                             'minMessage' => 'Your password should be at least {{ limit }} characters',
                             // max length allowed by Symfony for security reasons
                             'max' => 4096,
+                        ]),
+                        new \Symfony\Component\Validator\Constraints\Regex([
+                            'pattern' => '/[&)=(?]+/',
+                            'message' => 'Doit contenir au moins l\'un de ces caractères: & ) = ( ?\')'
+                        ]),
+                        new \Symfony\Component\Validator\Constraints\Regex([
+                            'pattern' => '/[a-z]+/',
+                            'message' => 'Doit contenir au moins une minuscule'
+                        ]),
+                        new \Symfony\Component\Validator\Constraints\Regex([
+                            'pattern' => '/[A-Z]+/',
+                            'message' => 'Doit contenir au moins une majuscule'
+                        ]),
+                        new \Symfony\Component\Validator\Constraints\Regex([
+                            'pattern' => '/[0-9]+/',
+                            'message' => 'Doit contenir au moins un chiffre'
                         ]),
                     ],
                     'label' => 'Nouveau mot de passe',

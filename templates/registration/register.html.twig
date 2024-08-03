@@ -15,8 +15,11 @@
 
 		<h1>Inscription</h1>
 		<div class="container-form">
-			{{ form_errors(registrationForm) }}
+			<small>Le mot de passe doit faire 8 caractères minimum, et contenir au moins:
+				1 minuscule, 1 majuscule, 1 chiffre, et au moins 1 caractère spécial: & ) = ( ?
+			</small>
 
+			{{ form_errors(registrationForm) }}
 			{{ form_start(registrationForm) }}
 
 			<div class="bloc-column">
@@ -30,7 +33,7 @@
 
 				{# {{ form_row(registrationForm.agreeTerms) }} #}
 			</div>
-			<button type="submit" class="bouton">Inscription</button>
+			<button type="submit" class="bouton">Envoyer</button>
 			{{ form_end(registrationForm) }}
 		</div>
 	</div>
