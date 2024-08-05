@@ -13,5 +13,35 @@
 			Utilisateurs
 		</h1>
 
+		<div class="conteneur_table">
+
+			<table class="table_1">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Email</th>
+						<th>Rôle</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td>01</td>
+						{# TODO: Maximiser la longueur d'affichage du string email à environ 10 caractères pour les très petits écrans #}
+						<td>
+							coucou@coucou.com
+						</td>
+
+						<td>Admin</td>
+						<td>
+							<a class="iconeEditer" href="#" title="Éditer"></a>
+							<button class="iconeSupprimer" title="Supprimer"></button>
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
 	</div>
 {% endblock %}
