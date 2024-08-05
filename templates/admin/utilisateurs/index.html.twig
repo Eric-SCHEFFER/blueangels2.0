@@ -12,7 +12,6 @@
 		<h1>
 			Utilisateurs
 		</h1>
-
 		<div class="conteneur_table">
 
 			<table class="table_1">
@@ -27,19 +26,33 @@
 
 				<tbody>
 					<tr>
-						<td>01</td>
-						{# TODO: Maximiser la longueur d'affichage du string email à environ 10 caractères pour les très petits écrans #}
-						<td>
-							coucou@coucou.com
-						</td>
-
-						<td>Admin</td>
-						<td>
-							<a class="iconeEditer" href="#" title="Éditer"></a>
-							<button class="iconeSupprimer" title="Supprimer"></button>
-						</td>
-					</tr>
-
+						{% for user in users %}
+							<td>
+								{{ user.id }}
+							</td>
+							<td>
+								{# TODO: Maximiser la longueur d'affichage du string email à environ 10 caractères pour les très petits écrans #}
+								{{ user.email }}
+							</td>
+							<td>
+								{% for role in user.roles %}
+									{% if role == "ROLE_USER" %}
+										Utilisateur
+									{% elseif role == "ROLE_ADMIN" %}
+										Administrateur
+									{% endif %}
+								{% endfor %}
+							</td>
+							<td>
+								<a class="iconeEditer" href="#" title="Éditer"></a>
+								<button class="iconeSupprimer" title="Supprimer"></button>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="4">Il n'y a pas d'utilisateur inscrit</td>
+						</tr>
+					{% endfor %}
 				</tbody>
 			</table>
 		</div>
