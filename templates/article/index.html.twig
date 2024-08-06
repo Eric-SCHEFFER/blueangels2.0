@@ -140,13 +140,18 @@
 									<i class="fas fa-clock"></i>
 									{{ article.getCreatedAt | date("H:i") }}
 								</div>
+
 								{# Affichage en admin de la dernière modif et par qui #}
-								{% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
+								{% if app.user %}
+									{% for role in app.user.roles %}
+										{% if role == "ROLE_ADMIN" %}
 									<i class="fas fa-wrench"></i>
 									Dernière modif:
 									<span class="last-modif-at">{{ article.getLastModifiedAt | date("d-m-Y H:i")}}</span>
 									par
 									<span class="last-modif-by">{{ article.getLastModifiedBy}}</span>
+										{% endif %}
+									{% endfor %}
 								{% endif %}
 							</div>
 
@@ -208,12 +213,16 @@
 							<div
 								class="bloc-admin">
 								{# On affiche la clé anglaise "gérer", quand on est connecté en admin #}
-								{% if app.user and app.user.roles[0] == "ROLE_ADMIN" %}
+								{% if app.user %}
+									{% for role in app.user.roles %}
+										{% if role == "ROLE_ADMIN" %}
 									<div class="gerer">
 										<a href="{{ path('admin.articles.edit', {id: article.id}) }}" title="Éditer l'évènement">
 											<i class="fas fa-edit fa-2x blue"></i>
 										</a>
 									</div>
+										{% endif %}
+									{% endfor %}
 								{% endif %}
 							</div>
 						</div>

@@ -52,15 +52,17 @@
 			{% endif %}
 			{# TODO: Adapter la condition pour un array #}
 			{% if app.user %}
-				{% for role in user.roles %}
-					<li>
-						<a href="{{ path('admin') }}" title="Administration" class="
-					{% if menu_courant is defined and menu_courant == 'admin' %}
-					active
-					{% endif %}">
-							<i class="fas fa-lg fa-wrench"></i>
-						</a>
-					</li>
+				{% for role in app.user.roles %}
+					{% if role == "ROLE_ADMIN" %}
+						<li>
+							<a href="{{ path('admin') }}" title="Administration" class="
+						{% if menu_courant is defined and menu_courant == 'admin' %}
+						active
+						{% endif %}">
+								<i class="fas fa-lg fa-wrench"></i>
+							</a>
+						</li>
+					{% endif %}
 				{% endfor %}
 			{% endif %}
 

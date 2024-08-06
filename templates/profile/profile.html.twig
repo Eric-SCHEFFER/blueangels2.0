@@ -10,7 +10,6 @@
 
 {% block body %}
 
-
 	<div class="wrapper">
 		<h1>Profil de
 			{{ app.user.username }}</h1>
@@ -19,8 +18,15 @@
 				<div class="container1">
 					<ul class="liste">
 						<li>
-							Rôle:
-							{{ app.user.roles[0] }}
+							{# On affiche les rôles de l'utilisateur #}
+							Rôles:
+							{% for role in app.user.roles %}
+								{% if role == 'ROLE_USER' %}
+									Utilisateur
+								{% elseif role == 'ROLE_ADMIN' %}
+									Administrateur
+								{% endif %}
+							{% endfor %}
 						</li>
 						<li title="Changer son mot de passe">
 							<div class="titre">Mot de passe</div>
