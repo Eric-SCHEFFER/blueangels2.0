@@ -6,17 +6,17 @@
 
 {% block title %}
 	{{ SiteName }}: Modifier l'utilisateur
+	{{ form.vars.value.email }}
 {% endblock %}
 {% block body %}
 
 	<div class="wrapper">
 		<h1>
-			Modifier l'utilisateur
+			{{ form.vars.value.email }}
 		</h1>
 
 		<div class="container-form">
 			{{ form(form) }}
-
 
 			</div>
 		</div>
