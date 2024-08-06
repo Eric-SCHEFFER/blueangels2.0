@@ -25,6 +25,11 @@ class AdminUtilisateursController extends AbstractController
     #[Route('/admin/utilisateurs/editUserRole/{id}', name: 'admin.utilisateurs.editUserRole')]
     public function editUser(User $user, Request $request)
     {
+        // L'utilisateur connecté ne doit pas pouvoir acceder à cette page pour modifier son propre rôle
+        if ($this->getUser()->getEmail() == $user->getEmail()) {
+            return $this->redirectToRoute('admin.utilisateurs');
+        }
+
         $form = $this->createForm(ModifUtilisateurType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

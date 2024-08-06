@@ -50,7 +50,7 @@
 				</li>
 				{# ======== Sous-menu /OFF =========== #}
 			{% endif %}
-			{# TODO: Adapter la condition pour un array #}
+			
 			{% if app.user %}
 				{% for role in app.user.roles %}
 					{% if role == "ROLE_ADMIN" %}
@@ -98,7 +98,7 @@
 				{% if menu_courant is defined and menu_courant == 'stages' %}
 					active
 				{% endif %}">
-Stages
+					Stages
 				</a>
 			</li>
 

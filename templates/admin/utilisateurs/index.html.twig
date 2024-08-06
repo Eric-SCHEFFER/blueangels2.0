@@ -12,6 +12,8 @@
 		<h1>
 			Utilisateurs
 		</h1>
+		<pre>
+		</pre>
 		<div class="conteneur_table">
 
 			<table class="table_1">
@@ -46,8 +48,11 @@
 								{% endfor %}
 							</td>
 							<td>
-								<a class="iconeEditer" href="{{ path('admin.utilisateurs.editUserRole', {'id': user.id}) }}" title="Éditer"></a>
-								<button class="iconeSupprimer" title="Supprimer"></button>
+								{# On n'affiche pas les actions pour le compte connecté #}
+								{% if app.user.email != user.email %}
+									<a class="iconeEditer" href="{{ path('admin.utilisateurs.editUserRole', {'id': user.id}) }}" title="Éditer"></a>
+									<button class="iconeSupprimer" title="Supprimer"></button>
+								{% endif %}
 							</td>
 						</tr>
 					{% else %}
