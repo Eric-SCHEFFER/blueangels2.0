@@ -111,7 +111,9 @@
 /* ====== ICONES FONTAWESOME ======= */
 
 .iconeEditer::before,
+.iconeEditerGris::before,
 .iconeSupprimer::before,
+.iconeSupprimerGris::before,
 .iconeCloner::before {
    font-family: "Font Awesome 5 Free";
    font-size: 1.6em;
@@ -125,7 +127,13 @@
    content: "\f044";
 }
 
-.iconeEditer {
+.iconeEditerGris::before {
+   content: "\f044";
+   cursor: not-allowed;
+}
+
+.iconeEditer,
+.iconeEditerGris {
    margin: 8px 12px 8px 12px;
 }
 
@@ -148,10 +156,25 @@
    border: none;
 }
 
-.iconeSupprimer {
+.iconeSupprimerGris::before {
+   content: "\f2ed";
+   border: none;
+}
+
+.iconeSupprimer,
+.iconeSupprimerGris {
    background-color: transparent;
    margin: 12px 0 8px 0;
    border: none;
+}
+
+.iconeEditerGris::before,
+.iconeSupprimerGris::before {
+   color:#646464
+}
+
+.iconeSupprimerGris {
+   cursor: not-allowed;
 }
 
 /* ====== ICONE BLUE ANGELS ======= */

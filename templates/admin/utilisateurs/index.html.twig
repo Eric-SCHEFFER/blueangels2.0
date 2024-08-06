@@ -49,9 +49,13 @@
 							</td>
 							<td>
 								{# On n'affiche pas les actions pour le compte connecté #}
-								{% if app.user.email != user.email %}
+								{% if app.user.email == user.email %}
+									<span class="iconeEditerGris" title="Éditer"></span>
+									<button class="iconeSupprimerGris" title="Supprimer"></button>
+								{% else %}
 									<a class="iconeEditer" href="{{ path('admin.utilisateurs.editUserRole', {'id': user.id}) }}" title="Éditer"></a>
 									<button class="iconeSupprimer" title="Supprimer"></button>
+
 								{% endif %}
 							</td>
 						</tr>
