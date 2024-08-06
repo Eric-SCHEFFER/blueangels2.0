@@ -17,34 +17,36 @@
 			<table class="table_1">
 				<thead>
 					<tr>
-						<th>ID</th>
 						<th>Email</th>
+						<th>Vérifié</th>
 						<th>Rôle</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
 
 				<tbody>
-					<tr>
-						{% for user in users %}
-							<td>
-								{{ user.id }}
-							</td>
+					{% for user in users %}
+						<tr>
 							<td>
 								{# TODO: Maximiser la longueur d'affichage du string email à environ 10 caractères pour les très petits écrans #}
 								{{ user.email }}
 							</td>
 							<td>
+								{% if user.verified %}
+									Oui
+								{% endif %}
+							</td>
+							<td>
 								{% for role in user.roles %}
 									{% if role == "ROLE_USER" %}
-										Utilisateur
+										User
 									{% elseif role == "ROLE_ADMIN" %}
-										Administrateur
+										Admin
 									{% endif %}
 								{% endfor %}
 							</td>
 							<td>
-								<a class="iconeEditer" href="#" title="Éditer"></a>
+								<a class="iconeEditer" href="{{ path('admin.utilisateurs.editUserRole', {'id': user.id}) }}" title="Éditer"></a>
 								<button class="iconeSupprimer" title="Supprimer"></button>
 							</td>
 						</tr>
