@@ -14,7 +14,7 @@
 	<div class="wrapper">
 		<h1>
 			Modifier le mot de passe de
-			{{ app.user.email }}
+			{{ app.user.email|u.truncate(15, '...') }}
 
 
 		</h1>

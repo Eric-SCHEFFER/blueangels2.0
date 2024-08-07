@@ -29,7 +29,7 @@
 				<tbody>
 					{% for user in users %}
 						<tr>
-							<td>
+							<td title="{{ user.email }}">
 								{# Filtre twig pour maximiser la longueur d'affichage du string email à environ 15 caractères. J'ai du installer composer require twig/string-extra #}
 								{{ user.email|u.truncate(15, '...') }}
 							</td>

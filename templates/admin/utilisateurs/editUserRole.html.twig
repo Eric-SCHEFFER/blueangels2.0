@@ -5,17 +5,19 @@
 {% endblock %}
 
 {% block title %}
-	{{ SiteName }}: Modifier l'utilisateur
-	{{ form.vars.value.email }}
+	{{ SiteName }}: Éditer un utilisateur
 {% endblock %}
 {% block body %}
 
 	<div class="wrapper">
 		<h1>
-			{{ form.vars.value.email }}
+			Éditer un utilisateur
 		</h1>
 
+
 		<div class="container-form">
+			<div title="{{ form.vars.value.email }}">{{ form.vars.value.email }}</div>
+
 			{{ form(form) }}
 
 			</div>

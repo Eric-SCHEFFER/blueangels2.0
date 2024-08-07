@@ -5,7 +5,7 @@
 {% endblock %}
 {% block title %}
 	{{ SiteName }}: Profil de
-	{{ app.user.username }}
+	{{ app.user.username|u.truncate(15, '...') }}
 {% endblock %}
 
 {% block body %}
@@ -19,6 +19,7 @@
 					<ul class="liste">
 						<li>
 							Email:
+							{# TODO: Faire un troncage de l'email dans le css #}
 							{{ app.user.username }}
 						</li>
 						<li>

@@ -10,7 +10,7 @@
 
 {% block body %}
 <div class="wrapper">
-	<h2>Modifier l'identifiant de connexion {{ app.user.email }}</h2>
+	<h2>Modifier l'identifiant de connexion {{ app.user.email|u.truncate(15, '...') }}</h2>
 
 	<div class="container-form">
 		<form class="form1" method="post">
