@@ -30,8 +30,8 @@
 					{% for user in users %}
 						<tr>
 							<td>
-								{# TODO: Maximiser la longueur d'affichage du string email à environ 10 caractères pour les très petits écrans #}
-								{{ user.email }}
+								{# Filtre twig pour maximiser la longueur d'affichage du string email à environ 15 caractères. J'ai du installer composer require twig/string-extra #}
+								{{ user.email|u.truncate(15, '...') }}
 							</td>
 							<td>
 								{% if user.verified %}
@@ -50,8 +50,8 @@
 							<td>
 								{# On n'affiche pas les actions pour le compte connecté #}
 								{% if app.user.email == user.email %}
-									<span class="iconeEditerGris" title="Éditer"></span>
-									<button class="iconeSupprimerGris" title="Supprimer"></button>
+									<span class="iconeEditerGris" title="Compte protégé en édition, car connecté actuellement"></span>
+									<button class="iconeSupprimerGris" title="Compte protégé en suppression, car connecté actuellement"></button>
 								{% else %}
 									<a class="iconeEditer" href="{{ path('admin.utilisateurs.editUserRole', {'id': user.id}) }}" title="Éditer"></a>
 									<button class="iconeSupprimer" title="Supprimer"></button>

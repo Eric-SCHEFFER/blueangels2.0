@@ -12,11 +12,15 @@
 
 	<div class="wrapper">
 		<h1>Profil de
-			{{ app.user.username }}</h1>
+			{{ app.user.username|u.truncate(15, '...') }}</h1>
 		<section class="admin">
 			<div class="container0">
 				<div class="container1">
 					<ul class="liste">
+						<li>
+							Email:
+							{{ app.user.username }}
+						</li>
 						<li>
 							{# On affiche les rôles de l'utilisateur #}
 							Rôles:
