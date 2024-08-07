@@ -111,7 +111,12 @@ footer {
 
 .center {
    text-align: center;
-   margin: 0 40px 0 40px;
+   margin: 0 16px 0 16px;
+}
+
+.center2 {
+   text-align: center;
+   margin: 10px 16px 10px 16px;
 }
 
 .un-peu-gras {
@@ -141,6 +146,10 @@ footer {
 
 .float-right {
    float: right;
+}
+
+.breakWord {
+   word-break: break-all
 }
 
 /* ================== colors ================ */

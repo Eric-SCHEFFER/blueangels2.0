@@ -10,12 +10,17 @@
 
 {% block body %}
 <div class="wrapper">
-	<h2>Modifier l'identifiant de connexion {{ app.user.email|u.truncate(15, '...') }}</h2>
+	<h2>Modifier mon identifiant de connexion</h2>
 
+		<div class="breakWord center">
+			{{ app.user.username }}
+		</div>
+		
 	<div class="container-form">
 		<form class="form1" method="post">
 
 			<div class="bloc-column">
+
 				<label for="inputPassword">Mot de passe</label>
 				<input type="password" name="password" id="password" class="" required>
 			</div>

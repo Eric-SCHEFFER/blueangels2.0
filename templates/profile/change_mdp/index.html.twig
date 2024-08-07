@@ -13,17 +13,15 @@
 {% block body %}
 	<div class="wrapper">
 		<h1>
-			Modifier le mot de passe de
-			{{ app.user.email|u.truncate(15, '...') }}
-
+			Modifier mon mot de passe
 
 		</h1>
 		<div class="container-form">
 
 			<form method="post">
 
-				<p>Le nouveau mot de passe doit faire 8 caractères minimum, et contenir au moins:
-					1 minuscule, 1 majuscule, 1 chiffre, et au moins 1 caractère spécial: & ) = ( ?
+				<p>Le nouveau mot de passe doit compter au minimum 8 caractères, et contenir au moins:
+					1 minuscule, 1 majuscule, 1 chiffre, et 1 caractère spécial parmi: & ) = ( ?
 				</p>
 				<div class="bloc-column">
 					<label for="inputPassword">Mot de passe actuel</label>

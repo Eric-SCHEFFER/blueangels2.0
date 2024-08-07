@@ -75,7 +75,7 @@
 									<div class="date" title="Date de l'évènement (qui sera affichée dans la carte et la pleine page)">
 										{{ event.getDateEvent()|date("d-m-Y") }}
 									</div>
-									<div class="date" title="Dernière modification">
+									<div class="date" title="Dernière modification: {{ event.getLastModifiedAt()|date("d-m-Y H:i") }} par {{ event.getLastModifiedBy() }}">
 										<i class="fas fa-wrench"></i>
 										{{ event.getLastModifiedAt()|date("d-m-Y H:i") }}
 										par

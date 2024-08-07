@@ -14,12 +14,12 @@
 			Éditer un utilisateur
 		</h1>
 
+		<div title="{{ form.vars.value.email }}" class="breakWord center2">
+			{{ form.vars.value.email }}
+		</div>
 
 		<div class="container-form">
-			<div title="{{ form.vars.value.email }}">{{ form.vars.value.email }}</div>
-
 			{{ form(form) }}
-
-			</div>
 		</div>
+	</div>
 	{% endblock %}

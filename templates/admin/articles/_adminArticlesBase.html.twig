@@ -30,7 +30,7 @@
 								<div class="date" title="Date de l'article (qui sera affichée dans la carte et la pleine page)">
 									{{ article.getCreatedAt()|date("d-m-Y") }}
 								</div>
-								<div class="date" title="Dernière modification">
+								<div class="date" title="Dernière modification: {{ article.getLastModifiedAt()|date("d-m-Y H:i") }} par {{ article.getLastModifiedBy() }}">
 									<i class="fas fa-wrench"></i>
 									{{ article.getLastModifiedAt()|date("d-m-Y H:i") }}
 									par

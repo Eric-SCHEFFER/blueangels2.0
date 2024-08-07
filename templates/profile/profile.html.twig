@@ -5,24 +5,21 @@
 {% endblock %}
 {% block title %}
 	{{ SiteName }}: Profil de
+	{# J'ai utilisé un filtre twig pour maximiser la longueur d'affichage du string email à environ 15 caractères. J'ai du installer composer require twig/string-extra #}
 	{{ app.user.username|u.truncate(15, '...') }}
 {% endblock %}
 
 {% block body %}
 
 	<div class="wrapper">
-		<h1>Profil de
-			{{ app.user.username|u.truncate(15, '...') }}</h1>
+		<h1>Profil</h1>
 		<section class="admin">
 			<div class="container0">
-				<div class="container1">
-					<ul class="liste">
-						<li>
-							Email:
-							{# TODO: Faire un troncage de l'email dans le css #}
+						{# On afficher l'email coupé sur plusieurs lignes quand l'écran devient petit #}
+						<div class="breakWord center2">
 							{{ app.user.username }}
-						</li>
-						<li>
+						</div>
+						<div class="center2">
 							{# On affiche les rôles de l'utilisateur #}
 							Rôles:
 							{% for role in app.user.roles %}
@@ -32,7 +29,9 @@
 									Administrateur
 								{% endif %}
 							{% endfor %}
-						</li>
+						</div>
+				<div class="container1">
+					<ul class="liste">
 						<li title="Changer son mot de passe">
 							<div class="titre">Mot de passe</div>
 							<a class="boutonGo" href="{{ path('profile.change.mdp') }}">Go</a>
