@@ -44,4 +44,24 @@ class AdminUtilisateursController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    // TODO: Suppression d'un user
+    #[Route('/admin/utilisateurs/delete/{id}', name: 'admin.utilisateurs.delete', methods: ['DELETE'])]
+    public function delete(User $user, Request $request)
+    {
+        // L'utilisateur connecté ne doit pas pouvoir acceder à cette page pour modifier son propre rôle
+        if ($this->getUser()->getEmail() == $user->getEmail()) {
+            return $this->redirectToRoute('admin.utilisateurs');
+        }
+
+        // On vérifie le token pour sécuriser la suppression d'un user
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->get('_token'))) {
+            // On supprime l'user
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($user);
+            $entityManager->flush();
+            $this->addFlash('succes', '"' . $user->getEmail() . '"' . ' supprimé avec succès');
+        }
+        return $this->redirectToRoute('admin.utilisateurs');
+    }
 }

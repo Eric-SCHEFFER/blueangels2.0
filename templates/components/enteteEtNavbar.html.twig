@@ -32,7 +32,7 @@
 				<li>
 					<button class="btDropdown" onclick="toggleMenu('user')" title="Paramètres de {{ app.user.username }}">
 						{# Filtre twig pour maximiser la longueur d'affichage du string email à environ 15 caractères. J'ai du installer composer require twig/string-extra #}
-						<div>{{ app.user.username|u.truncate(14, '...') }}</div>
+						<div>{{ app.user.username|u.truncate(12, '...') }}</div>
 					</button>
 					<ul class="dropdown-content">
 						<li>
