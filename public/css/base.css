@@ -162,6 +162,10 @@ footer {
    margin: 0 !important;
 }
 
+.height-25 {
+   height: 25px !important;
+}
+
 /* ================== colors ================ */
 .theme-menu {
    /* background-color: #233544; */

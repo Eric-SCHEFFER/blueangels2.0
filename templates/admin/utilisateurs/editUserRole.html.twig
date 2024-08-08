@@ -17,9 +17,25 @@
 		<div title="{{ form.vars.value.email }}" class="breakWord center2">
 			{{ form.vars.value.email }}
 		</div>
-
+		
 		<div class="container-form">
-			{{ form(form) }}
+			{{ form_start(form) }}
+			<div class="bloc-column">
+				<div class="bloc-ligne">
+					{{ form_row(form.roles) }}
+				</div>
+				<button class="bouton">Valider</button>
+			</div>
+			{{ form_end(form) }}
 		</div>
 	</div>
+
+		{# <div class="container-form">
+					<div class="bloc-column">
+						<div class="bloc-ligne">
+							{{ form(form) }}
+							</div>
+						</div>
+					</div>
+				</div> #}
 	{% endblock %}

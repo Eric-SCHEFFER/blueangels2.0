@@ -23,7 +23,7 @@ class ModifUtilisateurType extends AbstractType
                 'multiple' => true,
                 'label' => 'Rôles'
             ])
-            ->add('Valider', SubmitType::class);
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

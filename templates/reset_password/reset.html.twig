@@ -4,12 +4,12 @@
 	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
 {% endblock %}
 {% block title %}
-	{{ SiteName }}: Réinitialiser le mot de passe
+	{{ SiteName }}: Réinitialiser mon mot de passe
 {% endblock %}
 
 {% block body %}
 	<div class="wrapper">
-		<h1>Réinitialiser le mot de passe</h1>
+		<h1>Réinitialiser mon mot de passe</h1>
 		<div class="container-form">
 			<p>Le mot de passe doit compter 8 caractères minimum, et contenir au moins:
 				1 minuscule, 1 majuscule, 1 chiffre, et 1 caractère spécial parmi: & ) = ( ?
@@ -17,7 +17,7 @@
 
 			<div class="bloc-column">
 				{{ form_start(resetForm) }}
-				{{ form_row(resetForm.plainPassword) }}
+				<div class="bloc-ligne margin-0">{{ form_row(resetForm.plainPassword) }}</div>
 			</div>
 			<button class="bouton">Réinitialiser le mot de passe</button>
 			{{ form_end(resetForm) }}
