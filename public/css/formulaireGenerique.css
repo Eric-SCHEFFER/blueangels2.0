@@ -6,7 +6,7 @@
 }
 
 .bloc-column {
-   margin: 30px 4vw 30px 4vw;
+   margin: 30px 4px 30px 4px;
    display: flex;
    flex-direction: column;
    /* border: solid rgb(255, 0, 0) 1px; */

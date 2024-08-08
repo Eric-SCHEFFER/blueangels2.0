@@ -31,6 +31,7 @@ class RegistrationFormType extends AbstractType
                         'message' => 'L\'adresse email "{{ value }}" n\'est pas une adresse valide.',
                     ]),
                 ],
+                'label' => 'Email',
             ])
 
 

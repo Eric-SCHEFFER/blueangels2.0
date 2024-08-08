@@ -15,19 +15,18 @@
 
 		<h1>Inscription</h1>
 		<div class="container-form">
+
+			{{ form_errors(registrationForm) }}
+			{{ form_start(registrationForm) }}
 			<p>Le mot de passe doit compter 8 caractères minimum, et contenir au moins:
 				1 minuscule, 1 majuscule, 1 chiffre, et au moins 1 caractère spécial parmi: & ) = ( ?
 			</p>
 
-			{{ form_errors(registrationForm) }}
-			{{ form_start(registrationForm) }}
-
 			<div class="bloc-column">
-				<div>{{ form_row(registrationForm.email) }}</div>
+				<div class="bloc-ligne margin-0">{{ form_row(registrationForm.email) }}</div>
 			</div>
 			<div class="bloc-column">
-				<div>{{ form_row(registrationForm.plainPassword, {
-            label: 'Mdp'
+				<div class="bloc-ligne margin-0">{{ form_row(registrationForm.plainPassword, {
         }) }}
 				</div>
 
