@@ -15,14 +15,13 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
 class AdminChangeLoginController extends AbstractController
 {
-
     // Choisir la durée de validité du token (en minutes)
     private $validiteTokenEnMn = '60';
 
     /** ======== Envoi par email de la requête de changement d'email de connexion (lien à cliquer) ========
      * @Route("/profile/changeLogin", name="profile.change.login")
      */
-    public function resetAuthenticationEmailRequest(MailerInterface $mailer, Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function resetAuthenticationEmailRequest(MailerInterface $mailer, Request $request, UserPasswordEncoderInterface $passwordEncoder, UserRepository $userRepo)
     {
         if ($request->isMethod('POST')) {
             $em = $this->getDoctrine()->getManager();
@@ -50,18 +49,16 @@ class AdminChangeLoginController extends AbstractController
                 $this->addFlash('error', 'L\'adresse email n\'est pas une adresse email valide');
                 return $this->render('profile/change_login/index.html.twig');
             }
-
-            // On vérifie si les 2 emails entrés correspondent
+            // On vérifie si nouvEmail n'est pas déjà utilisée dans la base
+            if ($userRepo->findOneBy(['email' => $nouvEmail])) {
+                $this->addFlash('error', 'L\'adresse email existe déjà dans la base');
+                return $this->render('profile/change_login/index.html.twig');
+            };
+            // On vérifie si les 2 emails entrés sont identiques
             if ($nouvEmail !== $nouvEmailConfirm) {
                 $this->addFlash('error', 'Les deux emails ne sont pas identiques');
                 $err = true;
             }
-            // On vérifie que le nouvel email n'est pas le même que l'email actuellement en base
-            elseif ($nouvEmail == $user->getEmail()) {
-                $this->addFlash('error', 'Le nouvel email est le même que l\'email actuel');
-                $err = true;
-            }
-
             // Si on a au moins une erreur, on retourne la vue de changement d'email, avec les messages d'erreurs
             if ($err) {
                 return $this->render('profile/change_login/index.html.twig');
