@@ -24,25 +24,25 @@ class ChangePasswordFormType extends AbstractType
                         ]),
                         new Length([
                             'min' => 8,
-                            'minMessage' => 'Your password should be at least {{ limit }} characters',
+                            'minMessage' => 'Le mot de passe doit compter au moins {{ limit }} caracters',
                             // max length allowed by Symfony for security reasons
                             'max' => 4096,
                         ]),
                         new \Symfony\Component\Validator\Constraints\Regex([
                             'pattern' => '/[&)=(?]+/',
-                            'message' => 'Doit contenir au moins l\'un de ces caractères: & ) = ( ?\')'
+                            'message' => 'Le mot de passe doit contenir au moins l\'un de ces caractères: & ) = ( ?\')'
                         ]),
                         new \Symfony\Component\Validator\Constraints\Regex([
                             'pattern' => '/[a-z]+/',
-                            'message' => 'Doit contenir au moins une minuscule'
+                            'message' => 'Le mot de passe doit contenir au moins une minuscule'
                         ]),
                         new \Symfony\Component\Validator\Constraints\Regex([
                             'pattern' => '/[A-Z]+/',
-                            'message' => 'Doit contenir au moins une majuscule'
+                            'message' => 'Le mot de passe doit contenir au moins une majuscule'
                         ]),
                         new \Symfony\Component\Validator\Constraints\Regex([
                             'pattern' => '/[0-9]+/',
-                            'message' => 'Doit contenir au moins un chiffre'
+                            'message' => 'Le mot de passe doit contenir au moins un chiffre'
                         ]),
                     ],
                     'label' => 'Nouveau mot de passe',
@@ -50,7 +50,7 @@ class ChangePasswordFormType extends AbstractType
                 'second_options' => [
                     'label' => 'Confirmez le mot de passe',
                 ],
-                'invalid_message' => 'The password fields must match.',
+                'invalid_message' => 'Les deux champs ne sont pas identiques.',
                 // Instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,

@@ -4,13 +4,13 @@
 	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
 {% endblock %}
 {% block title %}
-	{{ SiteName }}: Utilisateurs
+	{{ SiteName }}: Gérer les utilisateurs
 {% endblock %}
 
 {% block body %}
 	<div class="wrapper">
 		<h1>
-			Utilisateurs
+			Gérer les utilisateurs
 		</h1>
 		<pre>
 		</pre>
@@ -49,19 +49,19 @@
 								{% endfor %}
 							</td>
 							<td>
-								{# On n'affiche pas les actions pour le compte connecté #}
+								{# On désactive et grise les actions pour le compte connecté (en plus de la protection dans le controller) #}
 								{% if app.user.email == user.email %}
-									<span class="iconeEditerGris" title="Compte protégé en édition, car connecté actuellement"></span>
-									<button class="iconeSupprimerGris" title="Compte protégé en suppression, car connecté actuellement"></button>
+									<span class="iconeEditerGris" title="Ce compte est protégé en édition, car vous l'utilisez pour cette session"></span>
+									<button class="iconeSupprimerGris" title="Ce compte est protégé en suppression, car vous l'utilisez pour cette session"></button>
 								{% else %}
 									<a class="iconeEditer" href="{{ path('admin.utilisateurs.editUserRole', {'id': user.id}) }}" title="Éditer"></a>
 
-									{# TODO: formulaire avec champ caché (passer la valeur delete) pour supprimmer un user #}
+									{# Formulaire avec champ caché (passer la valeur delete) pour supprimmer un user #}
 									<form class="deleteForm" method="post" action="{{ path('admin.utilisateurs.delete', {id: user.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ user.email }} ?')">
 										<input
 										type="hidden" name="_method" value="DELETE"/>
 
-										{# TODO: On créé un token #}
+										{# On créé un token #}
 										<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}"/>
 										<button class="iconeSupprimer" title="Supprimer"></button>
 									</form>

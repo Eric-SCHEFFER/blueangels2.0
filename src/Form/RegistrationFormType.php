@@ -49,25 +49,25 @@ class RegistrationFormType extends AbstractType
                     ]),
                     new Length([
                         'min' => 8,
-                        'minMessage' => 'Le mdp doit avoir au minimum {{ limit }} caractères',
+                        'minMessage' => 'Le mot de passe doit compter au minimum {{ limit }} caractères',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
                     new \Symfony\Component\Validator\Constraints\Regex([
                         'pattern' => '/[&)=(?]+/',
-                        'message' => 'Doit contenir au moins l\'un de ces caractères: & ) = ( ?'
+                        'message' => 'Le mot de passe doit contenir au moins l\'un de ces caractères: & ) = ( ?'
                     ]),
                     new \Symfony\Component\Validator\Constraints\Regex([
                         'pattern' => '/[a-z]+/',
-                        'message' => 'Doit contenir au moins une minuscule'
+                        'message' => 'Le mot de passe doit contenir au moins une minuscule'
                     ]),
                     new \Symfony\Component\Validator\Constraints\Regex([
                         'pattern' => '/[A-Z]+/',
-                        'message' => 'Doit contenir au moins une majuscule'
+                        'message' => 'Le mot de passe doit contenir au moins une majuscule'
                     ]),
                     new \Symfony\Component\Validator\Constraints\Regex([
                         'pattern' => '/[0-9]+/',
-                        'message' => 'Doit contenir au moins un chiffre'
+                        'message' => 'Le mot de passe doit contenir au moins un chiffre'
                     ]),
 
                 ],

@@ -39,27 +39,27 @@ class AdminChangeMdpController extends AbstractController
             // Si le nouveau mdp fait moins de 8 caractères
             $nbrCar = 8;
             if (strlen($nouvMotDePasse) < $nbrCar) {
-                $this->addFlash('error', 'Le nouveau mot de passe doit avoir au moins ' . $nbrCar . ' caractères');
+                $this->addFlash('error', 'Le nouveau mot de passe doit compter au moins ' . $nbrCar . ' caractères');
                 $err = true;
             }
             // Si le nouveau mdp ne contient pas au moins une minuscule
             if (!preg_match('#[a-z]+#', $nouvMotDePasse)) {
-                $this->addFlash('error', 'Doit contenir au moins 1 minuscule');
+                $this->addFlash('error', 'Le nouveau mot de passe doit contenir au moins 1 minuscule');
                 $err = true;
             }
             // Si le nouveau mot de passe ne contient pas au moins une majuscule
             if (!preg_match('#[A-Z]+#', $nouvMotDePasse)) {
-                $this->addFlash('error', 'Doit contenir au moins 1 majuscule');
+                $this->addFlash('error', 'Le nouveau mot de passe doit contenir au moins 1 majuscule');
                 $err = true;
             }
             // Si le nouveau mot de passe ne contient pas au moins un chiffre
             if (!preg_match('#[0-9]+#', $nouvMotDePasse)) {
-                $this->addFlash('error', 'Doit contenir au moins 1 chiffre');
+                $this->addFlash('error', 'Le nouveau mot de passe doit contenir au moins 1 chiffre');
                 $err = true;
             }
             // Si le nouveau mot de passe ne contient pas au moins l'un des caractères spéciaux: & ) = ( ?
             if (!preg_match('#[&)=(?]+#', $nouvMotDePasse)) {
-                $this->addFlash('error', 'Doit contenir au moins l\'un de ces caractères: & ) = ( ?');
+                $this->addFlash('error', 'Le nouveau mot de passe doit contenir au moins l\'un de ces caractères: & ) = ( ?');
                 $err = true;
             }
 

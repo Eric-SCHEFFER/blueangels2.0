@@ -31,13 +31,26 @@ class AdminChangeLoginController extends AbstractController
             $motDePasseAVerifier = $request->request->get('password');
             $nouvEmail = $request->request->get('newEmail');
             $nouvEmailConfirm = $request->request->get('newEmailconfirm');
+
+            // On verifie s'il y a un champ non rempli
+            if ($motDePasseAVerifier == "" || $nouvEmail == "" || $nouvEmailConfirm == "") {
+                $this->addFlash('error', 'Tous les champŝ doivent être remplis');
+                return $this->render('profile/change_login/index.html.twig');
+            }
+
             $passValide = $passwordEncoder->isPasswordValid($user, $motDePasseAVerifier);
 
             // On vérifie si le mot de passe actuel entré est correct
             if (!$passValide) {
                 $this->addFlash('error', 'Le mot de passe n\'est pas valide');
-                $err = true;
+                return $this->render('profile/change_login/index.html.twig');
             }
+            // On vérifie si nouvEmail est une adresse email valide
+            if (!filter_var($nouvEmail, FILTER_VALIDATE_EMAIL)) {
+                $this->addFlash('error', 'L\'adresse email n\'est pas une adresse email valide');
+                return $this->render('profile/change_login/index.html.twig');
+            }
+
             // On vérifie si les 2 emails entrés correspondent
             if ($nouvEmail !== $nouvEmailConfirm) {
                 $this->addFlash('error', 'Les deux emails ne sont pas identiques');

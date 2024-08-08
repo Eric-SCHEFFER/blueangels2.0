@@ -45,7 +45,7 @@ class AdminUtilisateursController extends AbstractController
         ]);
     }
 
-    // TODO: Suppression d'un user
+    // Suppression d'un user
     #[Route('/admin/utilisateurs/delete/{id}', name: 'admin.utilisateurs.delete', methods: ['DELETE'])]
     public function delete(User $user, Request $request)
     {
