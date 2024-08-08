@@ -14,6 +14,8 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 // use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+
 
 class RegistrationFormType extends AbstractType
 {
@@ -30,6 +32,9 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+
+
+            // SSI ON UTILISE UNE CASE À COCHER POUR ACCEPTER DES CONDITIONS
             // ->add('agreeTerms', CheckboxType::class, [
             // 'mapped' => false,
             // 'constraints' => [
@@ -38,39 +43,82 @@ class RegistrationFormType extends AbstractType
             // ]),
             // ],
             // ])
-            ->add('plainPassword', PasswordType::class, [
-                // instead of being set onto the object directly,
+
+            // VIEUX: AVANT D'UTILISER UN 2E CHAMP DE CONFIRM POUR LE MDP
+            // ->add('plainPassword', PasswordType::class, [
+            //     // instead of being set onto the object directly,
+            //     // this is read and encoded in the controller
+            //     'mapped' => false,
+            //     'attr' => ['autocomplete' => 'new-password'],
+            //     'constraints' => [
+            //         new NotBlank([
+            //             'message' => 'Veuillez entrer un mot de passe',
+            //         ]),
+            //         new Length([
+            //             'min' => 8,
+            //             'minMessage' => 'Le mot de passe doit compter au minimum {{ limit }} caractères',
+            //             // max length allowed by Symfony for security reasons
+            //             'max' => 4096,
+            //         ]),
+            //         new \Symfony\Component\Validator\Constraints\Regex([
+            //             'pattern' => '/[&)=(?]+/',
+            //             'message' => 'Le mot de passe doit contenir au moins l\'un de ces caractères: & ) = ( ?'
+            //         ]),
+            //         new \Symfony\Component\Validator\Constraints\Regex([
+            //             'pattern' => '/[a-z]+/',
+            //             'message' => 'Le mot de passe doit contenir au moins une minuscule'
+            //         ]),
+            //         new \Symfony\Component\Validator\Constraints\Regex([
+            //             'pattern' => '/[A-Z]+/',
+            //             'message' => 'Le mot de passe doit contenir au moins une majuscule'
+            //         ]),
+            //         new \Symfony\Component\Validator\Constraints\Regex([
+            //             'pattern' => '/[0-9]+/',
+            //             'message' => 'Le mot de passe doit contenir au moins un chiffre'
+            //         ]),
+
+            //     ],
+            // ])
+
+            ->add('plainPassword', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'first_options' => [
+                    'constraints' => [
+                        new NotBlank([
+                            'message' => 'Entrez un mot de passe svp',
+                        ]),
+                        new Length([
+                            'min' => 8,
+                            'minMessage' => 'Le mot de passe doit compter au moins {{ limit }} caracters',
+                            // max length allowed by Symfony for security reasons
+                            'max' => 4096,
+                        ]),
+                        new \Symfony\Component\Validator\Constraints\Regex([
+                            'pattern' => '/[&)=(?]+/',
+                            'message' => 'Le mot de passe doit contenir au moins l\'un de ces caractères: & ) = ( ?\')'
+                        ]),
+                        new \Symfony\Component\Validator\Constraints\Regex([
+                            'pattern' => '/[a-z]+/',
+                            'message' => 'Le mot de passe doit contenir au moins une minuscule'
+                        ]),
+                        new \Symfony\Component\Validator\Constraints\Regex([
+                            'pattern' => '/[A-Z]+/',
+                            'message' => 'Le mot de passe doit contenir au moins une majuscule'
+                        ]),
+                        new \Symfony\Component\Validator\Constraints\Regex([
+                            'pattern' => '/[0-9]+/',
+                            'message' => 'Le mot de passe doit contenir au moins un chiffre'
+                        ]),
+                    ],
+                    'label' => 'Mot de passe',
+                ],
+                'second_options' => [
+                    'label' => 'Confirmez le mot de passe',
+                ],
+                'invalid_message' => 'Les deux champs ne sont pas identiques.',
+                // Instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Veuillez entrer un mot de passe',
-                    ]),
-                    new Length([
-                        'min' => 8,
-                        'minMessage' => 'Le mot de passe doit compter au minimum {{ limit }} caractères',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 4096,
-                    ]),
-                    new \Symfony\Component\Validator\Constraints\Regex([
-                        'pattern' => '/[&)=(?]+/',
-                        'message' => 'Le mot de passe doit contenir au moins l\'un de ces caractères: & ) = ( ?'
-                    ]),
-                    new \Symfony\Component\Validator\Constraints\Regex([
-                        'pattern' => '/[a-z]+/',
-                        'message' => 'Le mot de passe doit contenir au moins une minuscule'
-                    ]),
-                    new \Symfony\Component\Validator\Constraints\Regex([
-                        'pattern' => '/[A-Z]+/',
-                        'message' => 'Le mot de passe doit contenir au moins une majuscule'
-                    ]),
-                    new \Symfony\Component\Validator\Constraints\Regex([
-                        'pattern' => '/[0-9]+/',
-                        'message' => 'Le mot de passe doit contenir au moins un chiffre'
-                    ]),
-
-                ],
             ]);
     }
 
