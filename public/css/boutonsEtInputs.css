@@ -164,3 +164,18 @@ button:hover {
 .bt-grise {
    background-color: rgb(128, 128, 128);
 }
+
+/* ============= Cibler des elements spécifiques ================== */
+
+/* Cible toutes les checkboxs dans l'élément qui a cette classe, et les agrandies */
+.large-checkbox input[type='checkbox'] {
+   width: 25px;
+   height: 25px;
+   border-radius: 6px;
+}
+
+/* Cible les sous divs dans la 1ère sous-div */
+.large-checkbox div>div {
+   position: relative;
+   text-align: center;
+}
