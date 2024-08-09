@@ -24,16 +24,16 @@
 			</p>
 
 			<div class="bloc-column">
-				<div class="bloc-ligne margin-0">{{ form_row(registrationForm.email) }}</div>
+				<div class="bloc-ligne margin-0 constraints-messages">{{ form_row(registrationForm.email) }}</div>
 			</div>
 			<div class="bloc-column">
-				<div class="bloc-ligne margin-0">{{ form_row(registrationForm.plainPassword, {
+				<div class="bloc-ligne margin-0 constraints-messages">{{ form_row(registrationForm.plainPassword, {
         }) }}
-				</div>
+			</div>
 
 				{# {{ form_row(registrationForm.agreeTerms) }} #}
 			</div>
-			<button type="submit" class="bouton">Envoyer</button>
+			<button type="submit" class="bouton width-100">Envoyer</button>
 			{{ form_end(registrationForm) }}
 		</div>
 	</div>

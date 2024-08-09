@@ -116,7 +116,7 @@ class RegistrationFormType extends AbstractType
                 'second_options' => [
                     'label' => 'Confirmez le mot de passe',
                 ],
-                'invalid_message' => 'Les deux champs ne sont pas identiques.',
+                'invalid_message' => 'Les deux mots de passe ne sont pas identiques.',
                 // Instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,

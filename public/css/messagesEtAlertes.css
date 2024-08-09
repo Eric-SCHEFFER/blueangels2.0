@@ -18,3 +18,23 @@
    background-color: #F8D7DA;
    color: #742028;
 }
+
+/* =========== Messages envoyés depuis les contraintes (form types par ex) ================= */
+
+
+
+.constraints-messages ul {
+   background-color: rgb(175, 14, 14);
+   color: white;
+   position: absolute;
+   height: 34px;
+   margin-top: -31px;
+   overflow: scroll;
+   text-align: left;
+   padding: 0 4px 0 4px;
+}
+
+
+.alert {
+   background-color: rgb(175, 14, 14) !important;
+}

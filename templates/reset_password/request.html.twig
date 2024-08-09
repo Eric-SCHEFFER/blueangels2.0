@@ -2,6 +2,7 @@
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/formulaireGenerique.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/messagesEtAlertes.css') }}">
 {% endblock %}
 {% block title %}
 	{{ SiteName }}: Réinitialiser mon mot de passe
@@ -19,9 +20,11 @@
 				<p>
 					Entrez votre adresse email, et nous vous enverrons un lien pour réinitialiser votre mot de passe.
 				</p>
-				<div class="bloc-ligne margin-0">{{ form_row(requestForm.email) }}</div>
+				<div class="bloc-ligne margin-0 constraints-messages">{{ form_row(requestForm.email) }}</div>
 			</div>
-			<button class="bouton">Envoyer</button>
+			<div class="bloc-column">
+				<button class="bouton width-100">Envoyer</button>
+			</div>
 			{{ form_end(requestForm) }}
 		</div>
 	</div>
