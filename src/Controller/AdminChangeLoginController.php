@@ -76,7 +76,7 @@ class AdminChangeLoginController extends AbstractController
                 $em->flush();
 
                 // On envoie un email contenant le lien de validation de l'email candidat
-                $expediteur = "site.blueangels@email.com";
+                $expediteur = "site-blueangels@blueangelsdanse.org";
                 $destinataire = $nouvEmail;
                 $objet = "Validation email de connexion";
                 $templateTwig = "profile/change_login/envoiMailLienValidation.html.twig";
