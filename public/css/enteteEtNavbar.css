@@ -103,7 +103,6 @@ nav .btDropdown {
    position: relative;
    /* border: solid transparent 1px; */
    min-width: max-content;
-   text-align: center;
    padding: 10px;
    color: rgb(220, 220, 220);
    background-color: #155186;
@@ -153,7 +152,7 @@ nav ul.dropdown-content a {
    display: block;
    width: auto;
    font-size: .9em;
-   text-align: right;
+   text-align: center;
 }
 
 nav ul.dropdown-content>li {
