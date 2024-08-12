@@ -3,20 +3,22 @@ section {
 }
 
 .barre-news-wrapper {
-   /* border: solid 1px yellow; */
-   max-width: 1025px;
-   height: 40px;
-   margin: 3px auto -40px auto;
-   padding: 5px 4vw 20px 4vw;
+   background-color: rgb(64, 124, 255);
+   color: black;
+   /* height: 30px; */
+   /* margin: 3px auto -40px auto; */
+   /* height: 18px; */
+   padding: 6px 0 6px 0;
 }
 
 .barre-news {
-   /* border: solid 1px rgb(255, 0, 0); */
+   /* border: solid 1px rgb(30, 255, 0); */
    font-size: .7em;
    display: flex;
+   flex-wrap: nowrap;
    justify-content: space-around;
-   height: 100%;
-   padding: 0;
+   /* height: 100%; */
+   /* padding: 0; */
 }
 
 .barre-news a {
@@ -25,60 +27,48 @@ section {
 
 .communique {
    display: flex;
-   flex-direction: column;
-   /* justify-content: center; */
-   /* border: solid 1px rgb(0, 47, 255); */
+   flex-wrap: nowrap;
+   flex-direction: row;
+   justify-content: center;
+   /* border: solid 1px rgb(255, 255, 255); */
    overflow: hidden;
-   padding: 0;
-   height: max-content;
-   max-width: 137px;
+   /* text-overflow: ellipsis; */
+   /* padding: 0; */
+   /* height: max-content; */
+   /* max-width: 90vw; */
 }
 
 .titre-communique {
    text-transform: uppercase;
    font-weight: 600;
-   color: rgb(197, 197, 197);
+   max-width: 22vw;
+   color: rgb(210, 221, 255);
 }
 
+.hook-communique {
+   max-width: 6vw;
+   color: rgb(206, 206, 206);
+}
 
-.icone-titre-communique-calque-0 {
+.icone-titre-communique {
    position: relative;
-   font-size: 1.8em;
-   color: #2c70b8;
+   font-size: 1.4em;
+   color: #ffff00;
 }
 
-.icone-titre-communique-calque-1 {
-   position: relative;
-   margin-left: -15px;
-   margin-right: 9px;
-   bottom: 3px;
-}
-
-.communique a:hover div {
-   color: white;
+.barre-news a:hover {
+   color: rgb(255, 255, 255);
 }
 
 .titre-communique,
-.hook-communique,
-.footer-communique {
+.hook-communique {
+   /* border: solid violet 1px; */
+   text-align: center;
    white-space: nowrap;
    overflow: hidden;
    text-overflow: ellipsis;
-   text-align: center;
+   /* max-width: 14vw; */
 }
-
-.footer-communique {
-   color: rgb(106, 106, 106);
-}
-
-/* .hr-barre-news {
-   position: relative;
-   top: 28px;
-   margin: 0;
-   padding: 0;
-   border-top: 0;
-   border-bottom: 1px solid rgb(70, 70, 70);
-} */
 
 @media screen and (max-width: 400px) {
    .communique {

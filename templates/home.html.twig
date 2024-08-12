@@ -12,36 +12,23 @@
 {# =============================================================== #}
 {# Mini-barre de news qui affiche les 3 derniers communiqués, avec en priorité, ceux épinglés #}
 {% if communiques is not empty and afficherBarreCommunique.actif %}
-<div class="barre-news-wrapper">
-	<div class="barre-news">
-		{% for communique in communiques %}
-		<div class="communique">
-			<a href="{{ path('article', {id: communique.id}) }}" title="{{ communique.titre }} | {{ communique.hook }}">
-				<div class="titre-communique">
-					<i class="fas fa-circle icone-titre-communique-calque-0"></i>
-					<i class="fas fa-info icone-titre-communique-calque-1"></i>
-					{{ communique.titre }}
-				</div>
-				<div class="hook-communique">
-					{{ communique.hook }}
-				</div>
-				<div class="footer-communique">
-					<i class="fas fa-calendar-alt"></i>
-					{{ communique.getCreatedAt | date("d-m-Y") }}
-					{% if communique.epingle %}
-					<div class="articles-epingle-on float-right">
-						<i class="fas fa-thumbtack orangered"></i>
+	<div class="barre-news-wrapper">
+		<div class="barre-news">
+			{% for communique in communiques %}
+				<a href="{{ path('article', {id: communique.id}) }}" title="{{ communique.titre }} | {{ communique.hook }}">
+					<div class="communique">
+							<div class="titre-communique">
+								<i class="fas fa-lg fa-triangle-exclamation icone-titre-communique"></i>
+								{{ communique.titre }} &nbsp;
+							</div>
+							<span class="hook-communique">
+								{{ communique.hook }}
+							</span>
 					</div>
-					{% endif %}
-				</div>
-
-			</a>
+				</a>
+			{% endfor %}
 		</div>
-		{% endfor %}
 	</div>
-</div>
-{#
-<hr class="hr-barre-news"> #}
 {% endif %}
 
 
