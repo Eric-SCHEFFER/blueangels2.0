@@ -3,8 +3,9 @@ section {
 }
 
 .barre-news-wrapper {
-   background-color: rgb(64, 124, 255);
-   color: black;
+   position: relative;
+   background-color: rgb(56, 56, 56);
+   color: rgb(196, 196, 196);
    /* height: 30px; */
    /* margin: 3px auto -40px auto; */
    /* height: 18px; */
@@ -41,13 +42,13 @@ section {
 .titre-communique {
    text-transform: uppercase;
    font-weight: 600;
-   max-width: 22vw;
-   color: rgb(210, 221, 255);
+   max-width: 50vw;
+   /* color: rgb(210, 221, 255); */
 }
 
 .hook-communique {
-   max-width: 6vw;
-   color: rgb(206, 206, 206);
+   max-width: 40vw;
+   /* color: rgb(206, 206, 206); */
 }
 
 .icone-titre-communique {
@@ -57,7 +58,7 @@ section {
 }
 
 .barre-news a:hover {
-   color: rgb(255, 255, 255);
+   color: rgb(255, 255, 255) !important;
 }
 
 .titre-communique,
@@ -72,6 +73,6 @@ section {
 
 @media screen and (max-width: 400px) {
    .communique {
-      max-width: 88px;
+      /* max-width: 10vw; */
    }
 }

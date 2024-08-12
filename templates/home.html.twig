@@ -15,15 +15,15 @@
 	<div class="barre-news-wrapper">
 		<div class="barre-news">
 			{% for communique in communiques %}
-				<a href="{{ path('article', {id: communique.id}) }}" title="{{ communique.titre }} | {{ communique.hook }}">
+				<a  href="{{ path('article', {id: communique.id}) }}" title="{{ communique.titre }} | {{ communique.hook }}">
 					<div class="communique">
 							<div class="titre-communique">
 								<i class="fas fa-lg fa-triangle-exclamation icone-titre-communique"></i>
 								{{ communique.titre }} &nbsp;
 							</div>
-							<span class="hook-communique">
+							<div class="hook-communique">
 								{{ communique.hook }}
-							</span>
+							</div>
 					</div>
 				</a>
 			{% endfor %}
