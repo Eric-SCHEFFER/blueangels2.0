@@ -3,10 +3,15 @@ section {
 }
 
 .barre-news-wrapper {
-   position: relative;
-   background-color: rgb(56, 56, 56);
-   color: rgb(196, 196, 196);
-   padding: 6px 0 6px 0;
+   position: absolute;
+   width: 100%;
+   color: rgb(255, 255, 255);
+   /* padding: 6px 0 6px 0; */
+}
+
+.barre-news-wrapper,
+.hook-communique {
+   background-color: rgb(73, 73, 73);
 }
 
 .barre-news {
@@ -19,6 +24,7 @@ section {
 
 .barre-news a {
    z-index: 1;
+   padding: 7px 0 7px 0;
 }
 
 .communique {
@@ -39,13 +45,13 @@ section {
 
 .hook-communique {
    max-width: 40vw;
-   /* color: rgb(206, 206, 206); */
 }
 
 .icone-titre-communique {
    position: relative;
-   font-size: 1.4em;
-   color: #ffff00;
+   font-size: 1.5em;
+   top: 1px;
+   color: rgb(0, 217, 255);
 }
 
 .barre-news a:hover {
