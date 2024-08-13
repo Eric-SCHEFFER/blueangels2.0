@@ -10,8 +10,30 @@
 
 {% block body %}
 {# =============================================================== #}
-{# Mini-barre de news qui affiche les 3 derniers communiqués, avec en priorité, ceux épinglés #}
-{% if communiques is not empty and afficherBarreCommunique.actif %}
+{# Mini-barre de news qui affiche Le dernier article épinglé #}
+{% if articleForBarreNews is not empty and afficherBarrenews.actif %}
+	<div class="barre-news-wrapper">
+		<div class="barre-news">
+			<a  href="{{ path('article', {id: articleForBarreNews.id}) }}" title="{{ articleForBarreNews.titre }} | {{ articleForBarreNews.hook }}">
+				<div class="articleForBarreNews">
+					<div class="titre-articleForBarreNews">
+						<i class="fas fa-lg fa-info-circle icone-titre-articleForBarreNews"></i>
+							{{ articleForBarreNews.titre }}:
+					</div>
+					<div class="hook-articleForBarreNews">
+						{{ articleForBarreNews.hook }}
+					</div>
+				</div>
+			</a>
+		</div>
+
+	</div>
+{% endif %}
+
+
+
+
+{# {% if communiques is not empty and afficherBarreCommunique.actif %}
 	<div class="barre-news-wrapper">
 		<div class="barre-news">
 			{% for communique in communiques %}
@@ -29,7 +51,7 @@
 			{% endfor %}
 		</div>
 	</div>
-{% endif %}
+{% endif %} #}
 
 
 <div class="wrapper">
