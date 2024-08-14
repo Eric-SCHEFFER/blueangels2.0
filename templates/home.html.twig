@@ -10,14 +10,14 @@
 
 {% block body %}
 {# =============================================================== #}
-{# Mini-barre de news qui affiche Le dernier article épinglé #}
+{# Mini-barre de news qui affiche le dernier article épinglé #}
 {% if articleForBarreNews is not empty and afficherBarrenews.actif %}
 	<div class="barre-news-wrapper">
 		<div class="barre-news">
 			<a  href="{{ path('article', {id: articleForBarreNews.id}) }}" title="{{ articleForBarreNews.titre }} | {{ articleForBarreNews.hook }}">
 				<div class="articleForBarreNews">
 					<div class="titre-articleForBarreNews">
-						<i class="fas fa-lg fa-info-circle icone-titre-articleForBarreNews"></i>
+						<i class="fas fa-lg fa-info-circle icone-titre-articleForBarreNews yellow"></i>
 							{{ articleForBarreNews.titre }}:
 					</div>
 					<div class="hook-articleForBarreNews">
@@ -29,29 +29,6 @@
 
 	</div>
 {% endif %}
-
-
-
-
-{# {% if communiques is not empty and afficherBarreCommunique.actif %}
-	<div class="barre-news-wrapper">
-		<div class="barre-news">
-			{% for communique in communiques %}
-				<a  href="{{ path('article', {id: communique.id}) }}" title="{{ communique.titre }} | {{ communique.hook }}">
-					<div class="communique">
-						<div class="titre-communique">
-							<i class="fas fa-lg fa-info-circle icone-titre-communique"></i>
-							{{ communique.titre }}:
-						</div>
-						<div class="hook-communique">
-							{{ communique.hook }}
-						</div>
-					</div>
-				</a>
-			{% endfor %}
-		</div>
-	</div>
-{% endif %} #}
 
 
 <div class="wrapper">

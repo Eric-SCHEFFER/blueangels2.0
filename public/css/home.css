@@ -6,13 +6,14 @@ section {
    /* border: solid goldenrod 1px; */
    position: absolute;
    width: 100%;
+   z-index: 20;
    color: rgb(255, 255, 255);
    /* padding: 6px 0 6px 0; */
 }
 
 .barre-news-wrapper,
 .hook-articleForBarreNews {
-   background-color: rgb(73, 73, 73);
+   background-color: #4e4e4e;
 }
 
 .barre-news {
@@ -54,11 +55,10 @@ section {
    top: 2px;
    left: -4px;
    font-size: 1.8em;
-   color: yellow;
 }
 
 .barre-news a:hover {
-   color: rgb(255, 255, 255) !important;
+   color: rgb(37, 37, 37) !important;
 }
 
 .titre-articleForBarreNews,

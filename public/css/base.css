@@ -172,6 +172,7 @@ footer {
    color: #dadada;
 }
 
+
 .gris1 {
    color: rgb(63, 63, 63);
 }
@@ -194,6 +195,10 @@ footer {
 
 .orange {
    color: #ffb700;
+}
+
+.yellow {
+   color: #ffff00;
 }
 
 .blue {
@@ -228,12 +233,20 @@ footer {
    color: silver;
 }
 
+.white {
+   color: #ffffff;
+}
+
+.black {
+   color: #000000;
+}
+
 .bg-blue {
    background-color: #2c70b8;
 }
 
-.white {
-   color: #ffffff;
+.bg-yellow {
+   background-color: #ffff00;
 }
 
 .bg-white {
