@@ -54,11 +54,11 @@ section {
    position: relative;
    top: 2px;
    left: -4px;
-   font-size: 1.8em;
+   font-size: 1.5em;
 }
 
 .barre-news a:hover {
-   color: rgb(37, 37, 37) !important;
+   color: rgb(218, 218, 218) !important;
 }
 
 .titre-articleForBarreNews,
