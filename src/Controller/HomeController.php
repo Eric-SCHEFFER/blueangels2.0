@@ -140,22 +140,37 @@ class HomeController extends AbstractController
     // ARTICLES
 
     /**
-     * On récupère les 3 derniers articles avec les épinglés en premier
+     * On récupère les 3 derniers articles qui ont le droit de s'afficher (actif = true)
      */
     private function getArticles()
     {
-        $pinnedArticles = $this->articlesRepository->findPinnedActifsListedArticles(3);
-        $nonPinnedArticles = [];
-        if (count($pinnedArticles) < 3) {
-            // On complète avec des articles non-épinglés
-            $combien = 3 - count($pinnedArticles);
-            $nonPinnedArticles = $this->articlesRepository->findActifsListedArticles($combien);
-            // On fusionne $pinnedArticles et $nonPinnedArticless
-            $articles = array_merge($pinnedArticles, $nonPinnedArticles);
-        } else {
-            $articles = $pinnedArticles;
-        }
-        return
-            $articles;
+        $articles = $this->articlesRepository->findBy(
+            [
+                'actif' => true,
+            ],
+            ['created_at' => "DESC"],
+            3,
+        );
+        return $articles;
     }
+
+    // /**
+    //  * On récupère les 3 derniers articles avec les épinglés en premier
+    //  */
+    // private function getArticles()
+    // {
+    //     $pinnedArticles = $this->articlesRepository->findPinnedActifsListedArticles(3);
+    //     $nonPinnedArticles = [];
+    //     if (count($pinnedArticles) < 3) {
+    //         // On complète avec des articles non-épinglés
+    //         $combien = 3 - count($pinnedArticles);
+    //         $nonPinnedArticles = $this->articlesRepository->findActifsListedArticles($combien);
+    //         // On fusionne $pinnedArticles et $nonPinnedArticless
+    //         $articles = array_merge($pinnedArticles, $nonPinnedArticles);
+    //     } else {
+    //         $articles = $pinnedArticles;
+    //     }
+    //     return
+    //         $articles;
+    // }
 }
