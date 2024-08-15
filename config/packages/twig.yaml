@@ -15,7 +15,7 @@ twig:
             listed:
                 "Si désactivé, la carte d'aperçu ne s'affichera pas en homePage."
             epingle:
-                "Si activé, la carte d'aperçu sera épinglée pour apparaitre en premier dans la liste."
+                "Si activé, un lien de l'article sera épinglé dans la barre de news de la homePage."
             categorie:
                 "Catégorie de l'article"
               
