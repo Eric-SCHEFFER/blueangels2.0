@@ -43,6 +43,8 @@
 								{% for role in user.roles %}
 									{% if role == "ROLE_USER" %}
 										Utilisateur
+									{% elseif role == "ROLE_ARTICLE_EDITOR" %}
+										Editeur-articles
 									{% elseif role == "ROLE_ADMIN" %}
 										Admin
 									{% endif %}
