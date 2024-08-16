@@ -5,7 +5,11 @@
 
 {% endblock %}
 {% block title %}
-	{{ SiteName }}: Administration
+	{% if is_granted('ROLE_ADMIN') %}
+		{{ SiteName }}: Administrer le site
+	{% elseif is_granted('ROLE_ARTICLE_EDITOR')%}
+		{{ SiteName }}: Administrer les articles
+	{% endif %}
 {% endblock %}
 
 {% block body %}
@@ -13,7 +17,11 @@
 	<div class="wrapper">
 
 		<h1>
-			Administration du site
+			{% if is_granted('ROLE_ADMIN') %}
+				Administrer le site
+			{% elseif is_granted('ROLE_ARTICLE_EDITOR')%}
+				Administrer les articles
+			{% endif %}
 		</h1>
 
 		<section class="admin">
