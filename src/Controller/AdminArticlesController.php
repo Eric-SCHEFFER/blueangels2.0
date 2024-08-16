@@ -27,7 +27,7 @@ class AdminArticlesController extends AbstractController
     }
 
     /**
-     * @Route("/article_editor/articles", name="article_editor.articles", methods={"GET"})
+     * @Route("/admin/articles", name="admin.articles", methods={"GET"})
      */
     public function index(): Response
     {
