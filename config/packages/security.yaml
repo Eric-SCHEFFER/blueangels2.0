@@ -38,3 +38,7 @@ security:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/article_editor, roles: ROLE_ARTICLE_EDITOR }
+
+    role_hierarchy:
+        ROLE_ARTICLE_EDITOR: ROLE_USER
+        ROLE_ADMIN: ROLE_ARTICLE_EDITOR
