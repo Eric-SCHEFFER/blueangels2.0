@@ -35,17 +35,14 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        - { path: ^/admin/evenements_a_venir, roles: ROLE_ADMIN }
-        - { path: ^/admin/evenements_passes, roles: ROLE_ADMIN }
-        - { path: ^/admin/events, roles: ROLE_ADMIN }
         - { path: ^/admin/trombinoscope, roles: ROLE_ADMIN }
         - { path: ^/admin/infosEtAdresses, roles: ROLE_ADMIN }
         - { path: ^/admin/cadegories, roles: ROLE_ADMIN }
         - { path: ^/admin/optionsSite, roles: ROLE_ADMIN }
         - { path: ^/admin/utilisateurs, roles: ROLE_ADMIN }
-        - { path: ^/admin, roles: ROLE_ARTICLE_EDITOR }
+        - { path: ^/admin, roles: ROLE_EDITOR }
         - { path: ^/profile, roles: ROLE_USER }
 
     role_hierarchy:
-        ROLE_ARTICLE_EDITOR: ROLE_USER
-        ROLE_ADMIN: ROLE_ARTICLE_EDITOR
+        ROLE_EDITOR: ROLE_USER
+        ROLE_ADMIN: ROLE_EDITOR

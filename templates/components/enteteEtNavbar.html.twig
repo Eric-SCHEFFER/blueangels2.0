@@ -64,7 +64,7 @@
 								<i class="fas fa-lg fa-wrench"></i>
 							</a>
 						</li>
-			{% elseif is_granted('ROLE_ARTICLE_EDITOR')%}
+			{% elseif is_granted('ROLE_EDITOR')%}
 						<li>
 							<a href="{{ path('admin') }}" title="Edition des articles" class="
 						{% if menu_courant is defined and menu_courant == 'admin' %}

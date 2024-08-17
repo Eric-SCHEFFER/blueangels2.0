@@ -21,6 +21,10 @@
    /* border: solid rgb(255, 0, 0) 1px; */
 }
 
+/* .flex-direction-column {
+   flex-direction: column;
+} */
+
 .bloc-ligne>div,
 .consentementRgpd {
    display: flex;
@@ -32,6 +36,29 @@
    margin: 15px 3% 15px 3%;
 }
 
+/* Spécifique à la page admin/utilisateurs/edit-user_role ON */
+
+/* #edit-user-role-ligne>div>div>label {
+ color: red;
+ writing-mode: sideways-lr !important;
+ text-orientation: upright !important;
+} */
+
+/* #edit-user-role-column>input[type=button] {
+   background-color: green !important;
+   color: red !important;
+   height: 100px;
+} */
+
+/* .edit-user-role-bouton {
+   display: block !important;
+   position: relative !important;
+   color: red !important;
+   margin-bottom: 0 !important;
+} */
+
+/* OFF */
+
 .consentementRgpd {
    flex-direction: row;
    text-align: left;
@@ -42,7 +69,7 @@
    cursor: pointer;
 }
 
-input[type=checkbox] + label {
+input[type=checkbox]+label {
    cursor: pointer;
 }
 
@@ -71,7 +98,8 @@ input[type=checkbox] + label {
    min-height: 150px;
 }
 
-input, textarea {
+input,
+textarea {
    border-radius: 6px;
    border: none;
    padding: 9px;

@@ -17,7 +17,7 @@ class ModifUtilisateurType extends AbstractType
             ->add('roles', ChoiceType::class, [
                 'choices' => [
                     'Utilisateur' => 'ROLE_USER',
-                    'Article-edit' => 'ROLE_ARTICLE_EDITOR',
+                    'Editeur' => 'ROLE_EDITOR',
                     'Administrateur' => 'ROLE_ADMIN'
                 ],
                 'expanded' => true,
