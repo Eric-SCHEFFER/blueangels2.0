@@ -56,11 +56,11 @@
 									{% endif %}
 									{% if not article.listed %}
 										<div class="articles-listed-off" title="{{ articleOptionInfo.listedOff }}">
-											<i class="fas fa-list violet"></i>
+											<i class="fas fa-house violet"></i>
 										</div>
 									{% else %}
 										<div class="articles-listed-on" title="{{ articleOptionInfo.listed }}">
-											<i class="fas fa-list lime"></i>
+											<i class="fas fa-house lime"></i>
 										</div>
 									{% endif %}
 									{% if article.epingle %}
@@ -69,7 +69,7 @@
 										</div>
 									{% endif %}
 									{% if article.categoriesArticle.nom is defined %}
-										<div class="categorie" title="{{ articleOptionInfo.categorie }}">
+										<div class="categorie" title="Catégorie {{ article.categoriesArticle.nom }}">
 											<i class="fas fa-folder-open"></i>
 											{{ article.categoriesArticle.nom }}
 										</div>
