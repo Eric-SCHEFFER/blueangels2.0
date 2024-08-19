@@ -37,7 +37,7 @@ security:
     access_control:
         - { path: ^/admin/trombinoscope, roles: ROLE_ADMIN }
         - { path: ^/admin/infosEtAdresses, roles: ROLE_ADMIN }
-        - { path: ^/admin/cadegories, roles: ROLE_ADMIN }
+        - { path: ^/admin/categories, roles: ROLE_ADMIN }
         - { path: ^/admin/optionsSite, roles: ROLE_ADMIN }
         - { path: ^/admin/utilisateurs, roles: ROLE_ADMIN }
         - { path: ^/admin, roles: ROLE_EDITOR }

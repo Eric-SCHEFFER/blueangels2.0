@@ -76,7 +76,7 @@
 										{{ event.getDateEvent()|date("d-m-Y") }}
 									</div>
 									<div class="date" title="Dernière modification: {{ event.getLastModifiedAt()|date("d-m-Y H:i") }} par {{ event.getLastModifiedBy() }}">
-										<i class="fas fa-wrench"></i>
+										<i class="fas fa-pen"></i>
 										{{ event.getLastModifiedAt()|date("d-m-Y H:i") }}
 										par
 										{{ event.getLastModifiedBy() }}
@@ -86,7 +86,7 @@
 										class="table-icones-infos">
 										{# ==== On affiche le nbre d'images ==== #}
 										<div class="nbreImages" title="Nombre d'images: {{ event.getImagesEvents | length }}">
-											<i class="fas fa-file-image fa-lg"></i>
+											<i class="fas fa-image fa-lg"></i>
 											{{ event.getImagesEvents | length }}
 										</div>
 										{% if not event.actif %}

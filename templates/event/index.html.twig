@@ -229,23 +229,17 @@
 								</div>
 
 							</div>
-							{# Affichage en admin de la dernière modif et par qui #}
-								{% if app.user %}
-									{% for role in app.user.roles %}
-										{% if role == "ROLE_ADMIN" %}
-											<div class="info-bar-left">
-											<i class="fas fa-wrench"></i>
-											Dernière modif:
-											<span class="last-modif-at">{{ event.getLastModifiedAt | date("d-m-Y H:i")}}</span>
-											par
-											<span class="last-modif-by">{{ event.getLastModifiedBy}}</span>
-											</div>
-										{% endif %}
-									{% endfor %}
+							
+								{% if is_granted('ROLE_EDITOR') %}
+									{# Affichage de la dernière modif et par qui #}
+									<div class="info-bar-left">
+										<i class="fas fa-pen"></i>
+										Dernière modif:
+										<span class="last-modif-at">{{ event.getLastModifiedAt | date("d-m-Y H:i")}}</span>
+										par
+										<span class="last-modif-by">{{ event.getLastModifiedBy}}</span>
+									</div>
 								{% endif %}
-
-
-
 
 							<div class="ligne-left-items">
 								<div class="bloc-boutons">
@@ -261,19 +255,14 @@
 
 								<div
 									class="bloc-admin">
-									{# On affiche la clé anglaise "gérer", quand on est connecté en admin #}
-									{% if app.user %}
-										{% for role in app.user.roles %}
-											{% if role == "ROLE_ADMIN" %}
-											<div class="gerer">
-												<a href="{{ path('admin.events.edit', {id: event.id}) }}" title="Éditer l'évènement">
-													<i class="fas fa-edit fa-2x blue"></i>
-												</a>
-											</div>
-											{% endif %}
-										{% endfor %}
-								{% endif %}
-
+									{# Bouton éditer réservé au ROLE_EDITOR #}
+									{% if is_granted('ROLE_EDITOR') %}
+										<div class="gerer">
+											<a href="{{ path('admin.events.edit', {id: event.id}) }}" title="Éditer">
+												<i class="fas fa-edit fa-2x blue-bouton"></i>
+											</a>
+										</div>
+									{% endif %}
 								</div>
 							</div>
 						</div>

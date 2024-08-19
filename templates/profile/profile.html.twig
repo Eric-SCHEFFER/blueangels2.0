@@ -21,7 +21,7 @@
 						</div>
 						<div class="center2">
 							{# On affiche les rôles de l'utilisateur #}
-							Rôles:
+							<div>Rôles:</div>
 							{% for role in app.user.roles %}
 								{% if role == "ROLE_USER" %}
 									Utilisateur
