@@ -89,30 +89,22 @@
 								<div class="titre">Trombinoscope</div>
 								<a class="boutonGo" href="{{ path('admin.trombinoscope') }}">Go</a>
 							</li>
-						{% endif %}
-						{% if is_granted('ROLE_ADMIN')%}
 							<li title="Gérer les Infos et adresses">
 								<div class="titre">Infos et adresses</div>
 								<a class="boutonGo" href="{{ path('admin.infosEtAdresses') }}">Go</a>
 							</li>
-						{% endif %}
-						{% if is_granted('ROLE_ADMIN')%}
 							<li title="Gérer les catégories">
 								<div class="titre">Gérer les catégories</div>
 								<a class="boutonGo" href="{{ path('admin.categories') }}">Go</a>
 							</li>
-						{% endif %}
-						{% if is_granted('ROLE_ADMIN')%}
-						<li title="Options du site">
-							<div class="titre">Options du site</div>
-							<a class="boutonGo" href="{{ path('admin.options.site') }}">Go</a>
-						</li>
-						{% endif %}
-						{% if is_granted('ROLE_ADMIN')%}
-						<li title="Gérer les utilisateurs">
-							<div class="titre">Utilisateurs</div>
-							<a class="boutonGo" href="{{ path('admin.utilisateurs') }}">Go</a>
-						</li>
+							<li title="Options du site">
+								<div class="titre">Options du site</div>
+								<a class="boutonGo" href="{{ path('admin.options.site') }}">Go</a>
+							</li>
+							<li title="Gérer les utilisateurs">
+								<div class="titre">Utilisateurs</div>
+								<a class="boutonGo" href="{{ path('admin.utilisateurs') }}">Go</a>
+							</li>
 						{% endif %}
 					</ul>
 
