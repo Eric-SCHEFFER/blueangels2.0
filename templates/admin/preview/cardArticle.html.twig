@@ -1,0 +1,20 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}{% endblock %}
+
+{% block title %}
+	{{ SiteName }}: Articles
+{% endblock %}
+
+{% block body %}
+	<div class="wrapper">
+		<h1>
+			Aperçu article
+		</h1>
+		{#
+		On affiche la carte que l'on veut voir en aperçu (depuis la liste des articles en admin)
+		#}
+		<section class="articles">
+			{# {{ include ('articles/_articlesBase.html.twig') }} #}
+		</section>
+	</div>
+{% endblock %}
