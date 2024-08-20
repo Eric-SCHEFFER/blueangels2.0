@@ -83,8 +83,13 @@
 						</div>
 					</td>
 					<td>
+						{# Editer #}
 						<a class="iconeEditer" href="{{ path('admin.articles.edit', {id: article.id}) }}" title="Éditer"></a>
 
+						{# TODO: Aperçu #}
+						<a class="iconePreview" href="{{ path('admin.preview.card.article', {id: article.id}) }}" title="Aperçu"></a>
+
+						{# Supprimer #}
 						{# formulaire avec champ caché (passer la valeur delete) pour supprimmer un article. #}
 						{# Le filtre twig replace supprime l'apostrophe s'il y en a, et d'autres caractères, pour éviter l'absence de confirmation de supression #}
 						{% set titreFiltre = article.titre|replace({"'": "", '"': "", '(': "", ')': "", '{': "", '}': ""}) %}

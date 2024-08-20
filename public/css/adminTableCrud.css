@@ -114,7 +114,8 @@
 .iconeEditerGris::before,
 .iconeSupprimer::before,
 .iconeSupprimerGris::before,
-.iconeCloner::before {
+.iconeCloner::before,
+.iconePreview::before {
    font-family: "Font Awesome 5 Free";
    font-size: 1.6em;
    font-weight: 500;
@@ -176,6 +177,18 @@
 
 .iconeSupprimerGris {
    cursor: not-allowed;
+}
+
+
+/* Icone aperçu */
+
+.iconePreview {
+   margin: 8px 12px 8px 12px;
+}
+
+.iconePreview::before {
+   color: rgb(255, 153, 0);
+   content: "\f06e";
 }
 
 /* ====== ICONE BLUE ANGELS ======= */

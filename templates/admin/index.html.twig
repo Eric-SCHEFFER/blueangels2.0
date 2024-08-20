@@ -8,7 +8,7 @@
 	{% if is_granted('ROLE_ADMIN') %}
 		{{ SiteName }}: Administrer le site
 	{% elseif is_granted('ROLE_EDITOR')%}
-		{{ SiteName }}: Administrer les pulications
+		{{ SiteName }}: Administrer les publications
 	{% endif %}
 {% endblock %}
 
@@ -20,7 +20,7 @@
 			{% if is_granted('ROLE_ADMIN') %}
 				Administrer le site
 			{% elseif is_granted('ROLE_EDITOR')%}
-				Administrer les pulications
+				Administrer les publications
 			{% endif %}
 		</h1>
 
