@@ -1,20 +1,61 @@
 {% extends 'components/base.html.twig' %}
-{% block stylesheets %}{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/cardApercuArticle.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+{% endblock %}
 
 {% block title %}
-	{{ SiteName }}: Articles
+	{{ SiteName }}: Aperçu carte article
 {% endblock %}
 
 {% block body %}
 	<div class="wrapper">
-		<h1>
-			Aperçu article
-		</h1>
-		{#
-		On affiche la carte que l'on veut voir en aperçu (depuis la liste des articles en admin)
-		#}
+		<h1>Aperçu carte article</h1>
+		<p class="center">Cliquez sur la carte pour ouvrir l'aperçu de la pleine page</p>
+
+		{# On affiche la carte que l'on veut voir en aperçu (depuis la liste des articles en admin) #}
 		<section class="articles">
-			{# {{ include ('articles/_articlesBase.html.twig') }} #}
+			<div class="bloc-cards">
+				<a
+					class="card-article" href="{{ path('article', {id: article.id}) }}" title="{{ article.getTitre ~ ' | ' ~ article.getHook }}">
+					{# Petite étiquette épinglé #}
+					{% if article.epingle %}
+						<div
+							class="etiquette-epingle">
+							{# <img src="{{ asset('images/punaise-rouge.svg') }}" alt="punaise rouge"> #}
+							<i class="fas fa-thumbtack yellow"></i>&nbsp;
+							<span>Article épinglé</span>
+						</div>
+					{% endif %}
+					{% if article.getImagesArticles[0].getNom() is defined %}
+						<div class="image">
+							<img src="{{ asset('uploads/imagesArticles/' ~ 'min_' ~ article.getImagesArticles[0].Nom) }}" alt="">
+						</div>
+					{% endif %}
+					<div class="bloc-text">
+						<h3 class="titre">{{ article.getTitre() }}</h3>
+						<div class="hook">{{ article.getHook() }}</div>
+						<div class="backgroundRond centerCard">
+							<i class="fas fa-arrow-right fa-lg flecheDroiteCard"></i>
+						</div>
+						<div class="articles-categorie">
+							<span>{{ article.categoriesArticle.nom }}</span>
+						</div>
+						<div class="infos">
+							<div class="articles-date">
+								<i class="fas fa-calendar-alt"></i>
+								{{ article.getCreatedAt()|date("d-m-Y") }}
+							</div>
+							{% if article.ImagesArticles | length > 1 %}
+								<div class="articles-nbr-images">
+									<i class="fas fa-image"></i>
+									{{ article.ImagesArticles | length }}
+								</div>
+							{% endif %}
+						</div>
+					</div>
+				</a>
+			</div>
 		</section>
 	</div>
 {% endblock %}
