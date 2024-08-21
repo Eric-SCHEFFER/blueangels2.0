@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ArticlesRepository;
 
-class AdminArticlePreviewController extends AbstractController
+class AdminFullPageArticlePreviewController extends AbstractController
 {
     public function __construct(
         ArticlesRepository $articlesRepository
@@ -15,11 +15,11 @@ class AdminArticlePreviewController extends AbstractController
         $this->articlesRepository = $articlesRepository;
     }
 
-    #[Route('admin/preview/card_article/{id}', name: 'admin.preview.card.article')]
+    #[Route('admin/preview/fullPageArticle/{id}', name: 'admin.preview.fullPageArticle')]
     public function loadArticle($id, ArticlesRepository $articlesRepository): Response
     {
         $article = $this->articlesRepository->find($id);
-        return $this->render('admin/preview/cardArticle.html.twig', [
+        return $this->render('admin/preview/fullPageArticle.html.twig', [
             'article' => $article,
         ]);
     }

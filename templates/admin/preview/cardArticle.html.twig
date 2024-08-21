@@ -16,8 +16,7 @@
 		{# On affiche la carte que l'on veut voir en aperçu (depuis la liste des articles en admin) #}
 		<section class="articles">
 			<div class="bloc-cards">
-				<a
-					class="card-article" href="{{ path('article', {id: article.id}) }}" title="{{ article.getTitre ~ ' | ' ~ article.getHook }}">
+				<a class="card-article" href="{{ path('admin.preview.fullPageArticle', {id: article.id}) }}" title="{{ article.getTitre ~ ' | ' ~ article.getHook }}">
 					{# Petite étiquette épinglé #}
 					{% if article.epingle %}
 						<div

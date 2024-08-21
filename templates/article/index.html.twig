@@ -195,9 +195,7 @@
 								<a class="bouton bt-small marge-boutons" title="Tous les articles, toutes catégories confondues" href="{{ path('articles') }}">
 									Toutes les catégories
 								</a>
-								{# On n'affiche pas le lien contact quand c'est la catégorie Partenaires ou Mentions légales car ça
-																																																																																															peut
-																																																																																															prêter à confusion #}
+								{# On n'affiche pas le lien contact quand c'est la catégorie Partenaires ou Mentions légales car ça peut prêter à confusion #}
 								{% if article.categoriesArticle.nom and
 							article.categoriesArticle.nom != "Partenaires" and
 							article.categoriesArticle.nom != "Mentions légales" %}
