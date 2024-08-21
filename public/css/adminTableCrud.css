@@ -96,7 +96,7 @@
 }
 
 .articles-listed-off::before {
-   content: "X";
+   content: "\\";
    font-size: 1.7em;
    position: absolute;
 }
