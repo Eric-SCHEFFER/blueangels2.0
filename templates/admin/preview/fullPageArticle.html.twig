@@ -10,7 +10,189 @@
 {% endblock %}
 
 {% block body %}
+	{% block javascript %}
+			<script src="{{ asset('js/carousel.js') }}" defer></script>
+			<script src="{{ asset('js/lightBox.js') }}" defer></script>
+			<script src="{{ asset('js/creditImage.js') }}" defer></script>
+	{% endblock %}
+
 	<div class="wrapper">
-		<h1>Aperçu article pleine page</h1>
+		<h1>[Aperçu article pleine page]</h1>
+		<h1>{{ article.titre }}</h1>
+
+		<section class="full-element">
+
+			{% if article.getImagesArticles is not empty %}
+				{# On affiche les images dispo dans le tableau #}
+				{% for image in article.getImagesArticles %}
+
+					<div class="image">
+
+						<img
+						src="{{ asset('uploads/imagesArticles/' ~ image.nom) }}" alt="">
+						{# On affiche la légende de chaque image #}
+						{% if image.caption is defined and image.caption != "" %}
+							<div class="image-caption">
+								<div class="text-image-caption">
+									{{ image.caption }}
+								</div>
+							</div>
+						{% endif %}
+
+						{% if image.author is defined and image.author is not empty %}
+							{# Crédit image #}
+							<div class="credit-image-content">
+								<span class="credit-image-close" title="Fermer">
+									<img src="{{ asset('images/svg/close.svg') }}" alt="Icone close">
+								</span>
+								<div class="credit-image-titre">Crédit image:</div>
+								{{ image.author | auto_link }}
+							</div>
+						{% endif %}
+
+						{# Boutons fullScreen et Crédit image #}
+						<div class="image-toolbar">
+							<div class="full-screen" title="Image agrandie">
+								<div>
+									<img src="{{ asset('images/svg/fullscreen.svg') }}" alt="Icone image agrandie">
+								</div>
+							</div>
+							{% if image.author is defined and image.author is not empty %}
+								<div class="credit-image" title="Crédit image">
+									<div>
+										<img src="{{ asset('images/svg/info-circle.svg') }}" alt="Icone Crédit image">
+									</div>
+								</div>
+							{% endif %}
+						</div>
+
+
+						{# Modale lightBox #}
+						<div class="modal">
+							<span class="close" title="Fermer">
+								<img src="{{ asset('images/svg/close.svg') }}" alt="Icone close">
+							</span>
+							<div class="modal-content">
+								<img src="{{ asset('uploads/imagesArticles/' ~ image.nom) }}" alt="">
+							</div>
+						</div>
+
+					</div>
+				{% endfor %}
+
+				{% if article.getImagesArticles|length == 1 %}
+					{# On affiche les boutons et infos du carousel, sauf s'il n'y a qu'une image #}
+					<div class="boutonsAndBulletsWrapper">
+						<div class="boutonsNav">
+							<a class="prev hidden">---</a>
+							{# Petit bricolage, sinon, décalage de l'affichage #}
+							<a class="next hidden">---</a>
+						</div>
+					</div>
+				{% else %}
+					<div class="boutonsAndBulletsWrapper">
+						<div class="boutonsNav">
+							<a class="prev" title="Image précédente" onclick="plusSlides(-1)">&#10094;</a>
+							<a class="next" title="Image suivante" onclick="plusSlides(1)">&#10095;</a>
+						</div>
+						{% set n = 0 %}
+						<div class="blocBullets">
+							{% for image in article.getImagesArticles %}
+								{% set n = n + 1 %}
+								<div class="bullet" title="{{ image.caption }}" onclick="currentSlide({{ n }})">
+									<p>{{ n }}</p>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				{% endif %}
+
+				<div class="textes">
+				{% else %}
+					<div class="textes element-sans-image">
+					{% endif %}
+					<h2 class="hook">
+						{{ article.hook }}
+					</h2>
+
+
+					<div class="contenu">
+						{{ article.contenu | nl2br | auto_link | auto_internal_link }}
+					</div>
+
+					<div class="info-bar-bottom">
+						<div class="ligne-left-items">
+							<div class="info-bar-left">
+								<div class="type-vue-and-status">
+									{% if article.epingle %}
+										<span class="articles-epingle-on" title="Épinglé">
+											<i class="fas fa-thumbtack orange"></i>
+										</span>
+									{% endif %}
+								</div>
+								Date article:
+								<div class="date">
+									<i class="fas fa-calendar-alt"></i>
+									{{ article.getCreatedAt | date("d-m-Y") }}
+								</div>
+								<div class="time">
+									<i class="fas fa-clock"></i>
+									{{ article.getCreatedAt | date("H:i") }}
+								</div>
+
+						
+								{# Affichage de la dernière modif et par qui #}
+								<i class="fas fa-pen"></i>
+								Dernière modif:
+								<span class="last-modif-at">{{ article.getLastModifiedAt | date("d-m-Y H:i")}}</span>
+								par
+								<span class="last-modif-by">{{ article.getLastModifiedBy}}</span>
+						
+							</div>
+
+
+						</div>
+						<div class="ligne-left-items">
+							
+							<div class="bloc-boutons">
+								{% if article.categoriesArticle.nom is defined %}
+									{# Lien vers la page de la catégorie #}
+									<a class="bouton bt-small marge-boutons" title="Tous les articles de la catégorie {{ article.categoriesArticle.nom }}" href="{{ path('categorie.articles', {idCategorie: article.categoriesArticle.id}) }}">
+										{{ article.categoriesArticle.nom }}
+									</a>
+								{% endif %}
+
+								<a class="bouton bt-small marge-boutons" title="Tous les articles, toutes catégories confondues" href="{{ path('articles') }}">
+									Toutes les catégories
+								</a>
+								{# On n'affiche pas le lien contact quand c'est la catégorie Partenaires ou Mentions légales car ça peut prêter à confusion #}
+								{% if article.categoriesArticle.nom and
+							article.categoriesArticle.nom != "Partenaires" and
+							article.categoriesArticle.nom != "Mentions légales" %}
+									<a class="bouton bt-small marge-boutons" href="{{ path('contact', {id: article.id, categorie: article.categoriesArticle.nom}) }}" title="Nous contacter à propos de cet article">Contact</a>
+								{% endif %}
+								<a class="bouton bt-small marge-boutons" title="Accueil" href="{{ path('home') }}">
+									<i class="fas fa-lg fa-home"></i>
+								</a>
+							</div>
+
+							<div
+								class="bloc-admin">
+								{# Bouton éditer #}
+								
+									<div class="gerer">
+										<a href="{{ path('admin.articles.edit', {id: article.id}) }}" title="Éditer">
+											<i class="fas fa-edit fa-2x blue-bouton"></i>
+										</a>
+									</div>
+							
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+	</div>
 		
 {% endblock %}
