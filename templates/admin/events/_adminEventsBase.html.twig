@@ -93,7 +93,7 @@
 											{# Variable array globale (commune aux events et articles), pour les différentes balises title
 																			ci-dessous de cette div (dans twig.yaml) #}
 											<div class="articles-actif-off" title="{{ articleOptionInfo.inactif }}">
-												<i class="fas fa-eye-slash orange"></i>
+												<i class="fas fa-eye-slash red"></i>
 											</div>
 										{% else %}
 											<div class="articles-actif-on" title="{{ articleOptionInfo.actif }}">
@@ -122,7 +122,11 @@
 							</div>
 						</td>
 						<td>
+							{# Lien editer un évènement #}
 							<a class="iconeEditer" href="{{ path('admin.events.edit', {id: event.id}) }}" title="Éditer"></a>
+
+							{# Lien aperçu évènement #}
+							<a class="iconePreview" href="{{ path('admin.preview.card.event', {id: event.id}) }}" title="Aperçu"></a>
 
 							{# Lien cloner un évènement #}
 							<a class="iconeCloner" href="{{ path('admin.events.clone', {id: event.id}) }}" title="Cloner"></a>
