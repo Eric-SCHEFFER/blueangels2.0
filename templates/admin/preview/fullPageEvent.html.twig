@@ -3,33 +3,37 @@
 	<link rel="stylesheet" href="{{ asset('css/fullPageElement.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/carousel.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
-{% endblock %}
 
+{% endblock %}
 {% block title %}
-	{{ SiteName }}: Aperçu article pleine page
+	{{ SiteName }}: Aperçu évènement pleine page
 {% endblock %}
 
 {% block body %}
+
 	{% block javascript %}
-			<script src="{{ asset('js/carousel.js') }}" defer></script>
-			<script src="{{ asset('js/lightBox.js') }}" defer></script>
-			<script src="{{ asset('js/creditImage.js') }}" defer></script>
+		<script src="{{ asset('js/carousel.js') }}" defer></script>
+		<script src="{{ asset('js/lightBox.js') }}" defer></script>
+		<script src="{{ asset('js/creditImage.js') }}" defer></script>
 	{% endblock %}
 
+
 	<div class="wrapper">
-		<h1>[Aperçu article pleine page]</h1>
-		<h1>{{ article.titre }}</h1>
+		<h1>[Aperçu évènement pleine page]</h1>
 
+
+		<h1>{{ event.nom }}</h1>
 		<section class="full-element">
-
-			{% if article.getImagesArticles is not empty %}
+			{% if event.getImagesEvents is not empty %}
 				{# On affiche les images dispo dans le tableau #}
-				{% for image in article.getImagesArticles %}
-
+				{% for image in event.getImagesEvents %}
 					<div class="image">
-
+						{% if event.getAnnule %}
+							<div class="tampon-oblique-red">Évènement annulé</div>
+						{% endif %}
 						<img
-						src="{{ asset('uploads/imagesArticles/' ~ image.nom) }}" alt="">
+						src="{{ asset('uploads/imagesEvents/' ~ image.nom) }}">
+
 						{# On affiche la légende de chaque image #}
 						{% if image.caption is defined and image.caption != "" %}
 							<div class="image-caption">
@@ -73,31 +77,32 @@
 								<img src="{{ asset('images/svg/close.svg') }}" alt="Icone close">
 							</span>
 							<div class="modal-content">
-								<img src="{{ asset('uploads/imagesArticles/' ~ image.nom) }}" alt="">
+								<img src="{{ asset('uploads/imagesEvents/' ~ image.nom) }}" alt="">
 							</div>
 						</div>
 
 					</div>
 				{% endfor %}
 
-				{% if article.getImagesArticles|length == 1 %}
-					{# On affiche les boutons et infos du carousel, sauf s'il n'y a qu'une image #}
+
+				{# On affiche les boutons et infos du carousel, sauf s'il n'y a qu'une image #}
+				{% if event.getImagesEvents|length == 1 %}
 					<div class="boutonsAndBulletsWrapper">
-						<div class="boutonsNav">
-							<a class="prev hidden">---</a>
+						<div class="boutonsNav hidden">
+							<a class="prev">---</a>
 							{# Petit bricolage, sinon, décalage de l'affichage #}
-							<a class="next hidden">---</a>
+							<a class="next">---</a>
 						</div>
 					</div>
 				{% else %}
 					<div class="boutonsAndBulletsWrapper">
 						<div class="boutonsNav">
-							<a class="prev" title="Image précédente" onclick="plusSlides(-1)">&#10094;</a>
-							<a class="next" title="Image suivante" onclick="plusSlides(1)">&#10095;</a>
+							<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+							<a class="next" onclick="plusSlides(1)">&#10095;</a>
 						</div>
 						{% set n = 0 %}
 						<div class="blocBullets">
-							{% for image in article.getImagesArticles %}
+							{% for image in event.getImagesEvents %}
 								{% set n = n + 1 %}
 								<div class="bullet" title="{{ image.caption }}" onclick="currentSlide({{ n }})">
 									<p>{{ n }}</p>
@@ -107,92 +112,160 @@
 					</div>
 				{% endif %}
 
+
 				<div class="textes">
 				{% else %}
 					<div class="textes element-sans-image">
 					{% endif %}
 					<h2 class="hook">
-						{{ article.hook }}
+						{{ event.hook }}
 					</h2>
 
 
-					<div class="contenu">
-						{{ article.contenu | nl2br | auto_link | auto_internal_link }}
+					<div class="description">
+						{{ event.description | nl2br | auto_link | auto_internal_link }}
 					</div>
 
 					<div class="info-bar-bottom">
 						<div class="ligne-left-items">
 							<div class="info-bar-left">
 								<div class="type-vue-and-status">
-									{% if article.epingle %}
-										<span class="articles-epingle-on" title="Épinglé">
-											<i class="fas fa-thumbtack orange"></i>
-										</span>
+									<i class="fas fa-info-circle"></i>
+									Évènement
+									{% if event.getEventBlueAngels %}
+										Blue Angels
+										<div class="event-blue-angels" title="Évènement oganisé par Les Blue Angels">
+											<img src="{{ asset('images/favicon.png') }}" alt='Icone des Blue Angels'>
+										</div>
+									{% endif %}
+
+									{# On affiche l'épingle uniquement si l'event est futur #}
+									{% if epoque == 'futur' %}
+										{% if event.epingle %}
+											<span class="articles-epingle-on" title="Épinglé">
+												<i class="fas fa-thumbtack orange"></i>
+											</span>
+										{% endif %}
 									{% endif %}
 								</div>
-								Date article:
 								<div class="date">
 									<i class="fas fa-calendar-alt"></i>
-									{{ article.getCreatedAt | date("d-m-Y") }}
+									{# Date affichant le jour, et le mois en toutes lettres #}
+									{{ event.getDateEvent | format_datetime(pattern="EEEE dd MMMM yyyy", locale="fr") | capitalize
+								}}
+									{# Date, et mentions couleurs du nbr de jours avant l'event #}
+									{# De Jour J à J-N, soit 0..N #}
+										{% for j in 0..20 %}
+											{% if j == 0 %}
+												{% if event.getDateEvent()|date("Y-m-d") == today|date("Y-m-d")|date("Y-m-d") %}
+													<span>
+													(
+														<span class="green"> Aujourd'hui</span>)</span>
+											{% endif %}
+										{% elseif j == 1 %}
+											{% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
+												<span>(<span class="blue">Demain</span>)</span>
+											{% endif %}
+										{% else %}
+											{% if event.getDateEvent()|date("Y-m-d") == today|date_modify("+"~ j ~" day")|date("Y-m-d") %}
+												<span>(<span class="blue">Dans
+														{{ j }}
+														jours</span>)</span>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
 								</div>
 								<div class="time">
 									<i class="fas fa-clock"></i>
-									{{ article.getCreatedAt | date("H:i") }}
+									{{ event.getDateEvent | date("H:i") }}
 								</div>
 
-						
-								{# Affichage de la dernière modif et par qui #}
+								{# Infos lieu et adresse de l'évènement dans un lien pointant sur la page de google maps #}
+								{# Si les champs nomLieu et ville n'existent pas en base, on n'affiche rien #}
+								{% if event.getVille %}
+									{# Si le champ lienMaps n'existe pas en base, on affiche une div simple (pas de lien) #}
+									{% if event.getLienMaps %}
+										<a class="lieu-event-container" href="{{ event.getLienMaps }}" target="_blank" title="Voir sur Google Maps">
+										{% else %}
+											<div class="lieu-event-container">
+											{% endif %}
+											<div class="icone-maps-container">
+												<i class="fas fa-map-marker-alt"></i>
+											</div>
+											<div class="infos-lieu">
+												<div class="nom-lieu">
+													{{ event.getNomLieu }}
+												</div>
+												<div class="adresse">
+													{{ event.getAdresse }}
+												</div>
+												<div class="code-postal-et-ville">
+													{% if event.getCodePostal %}
+														<div class="code-postal">
+															{{ event.getCodePostal }}
+														</div>
+													{% endif %}
+													<div class="ville">
+														{{ event.getVille|upper }}
+													</div>
+												</div>
+											</div>
+											{% if event.getLienMaps %}
+											</a>
+											{% else %}
+										{% endif %}
+									{% endif %}
+
+									{% if event.getDateEvent()|date("Y-m-d") < today|date("Y-m-d") %}
+										<div>
+											Évènement terminé
+										{% endif %}
+										{% if event.getAnnule() %}
+											<div class="red">
+												Évènement annulé
+											</div>
+										{% endif %}
+
+									</div>
+
+								</div>
+
+							</div>
+
+							{# Affichage de la dernière modif et par qui #}
+							<div class="info-bar-left">
 								<i class="fas fa-pen"></i>
 								Dernière modif:
-								<span class="last-modif-at">{{ article.getLastModifiedAt | date("d-m-Y H:i")}}</span>
+								<span class="last-modif-at">{{ event.getLastModifiedAt | date("d-m-Y H:i")}}</span>
 								par
-								<span class="last-modif-by">{{ article.getLastModifiedBy}}</span>
-						
+								<span class="last-modif-by">{{ event.getLastModifiedBy}}</span>
 							</div>
 
-
-						</div>
-						<div class="ligne-left-items">
-							
-							<div class="bloc-boutons">
-								{% if article.categoriesArticle.nom is defined %}
-									{# Lien vers la page de la catégorie #}
-									<a class="bouton bt-small marge-boutons" title="Tous les articles de la catégorie {{ article.categoriesArticle.nom }}" href="{{ path('categorie.articles', {idCategorie: article.categoriesArticle.id}) }}">
-										{{ article.categoriesArticle.nom }}
+							<div class="ligne-left-items">
+								<div class="bloc-boutons">
+									<a class="bouton bt-small marge-boutons" title="Tous les évènements à venir" href="{{ path('a_venir') }}">
+										Tous les évènements à venir
 									</a>
-								{% endif %}
+									<a class="bouton bt-small marge-boutons" href="{{ path('contact', {id: event.id}) }}" title="Nous contacter à propos de cet évènement">Contact
+									</a>
+									<a class="bouton bt-small marge-boutons" title="Accueil" href="{{ path('home') }}">
+										<i class="fas fa-lg fa-home"></i>
+									</a>
+								</div>
 
-								<a class="bouton bt-small marge-boutons" title="Tous les articles, toutes catégories confondues" href="{{ path('articles') }}">
-									Toutes les catégories
-								</a>
-								{# On n'affiche pas le lien contact quand c'est la catégorie Partenaires ou Mentions légales car ça peut prêter à confusion #}
-								{% if article.categoriesArticle.nom and
-							article.categoriesArticle.nom != "Partenaires" and
-							article.categoriesArticle.nom != "Mentions légales" %}
-									<a class="bouton bt-small marge-boutons" href="{{ path('contact', {id: article.id, categorie: article.categoriesArticle.nom}) }}" title="Nous contacter à propos de cet article">Contact</a>
-								{% endif %}
-								<a class="bouton bt-small marge-boutons" title="Accueil" href="{{ path('home') }}">
-									<i class="fas fa-lg fa-home"></i>
-								</a>
-							</div>
-
-							<div
-								class="bloc-admin">
-								{# Bouton éditer #}
-								
+								<div
+									class="bloc-admin">
+									{# Bouton éditer #}
 									<div class="gerer">
-										<a href="{{ path('admin.articles.edit', {id: article.id}) }}" title="Éditer">
+										<a href="{{ path('admin.events.edit', {id: event.id}) }}" title="Éditer">
 											<i class="fas fa-edit fa-2x blue-bouton"></i>
 										</a>
 									</div>
-							
+								</div>
 							</div>
-
 						</div>
 					</div>
-				</div>
-			</section>
+				</section>
+			</div>
 
-	</div>
-		
-{% endblock %}
+		{% endblock %}
