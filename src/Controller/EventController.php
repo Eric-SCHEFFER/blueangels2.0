@@ -42,7 +42,7 @@ class EventController extends AbstractController
         }
 
         $images = $imagesEventRepository->findBy(['event' => $event]);
-        return $this->render('event/index.html.twig', [
+        return $this->render('event/fullPageEvent.html.twig', [
             'event' => $event,
             'images' => $images,
             'today' => $today,

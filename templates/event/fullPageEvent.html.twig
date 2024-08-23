@@ -1,0 +1,19 @@
+{% extends 'components/base.html.twig' %}
+{% block stylesheets %}{% endblock %}
+{% block title %}
+	{{ SiteName }}: page fullPageEvent.html.twig
+{% endblock %}
+
+{% block body %}
+
+	{% block javascript %}{% endblock %}
+
+	<div class="wrapper">
+		<h1>page fullPageEvent.html.twig</h1>
+		<h1>{{ event.nom }}</h1>
+		<section class="full-element">
+			{{ include ('event/_fullPageEventBase.html.twig') }}
+		</section>
+	</div>
+
+{% endblock %}
