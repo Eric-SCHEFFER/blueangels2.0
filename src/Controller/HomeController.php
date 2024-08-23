@@ -147,6 +147,7 @@ class HomeController extends AbstractController
         $articles = $this->articlesRepository->findBy(
             [
                 'actif' => true,
+                'listed' => true,
             ],
             ['created_at' => "DESC"],
             3,
