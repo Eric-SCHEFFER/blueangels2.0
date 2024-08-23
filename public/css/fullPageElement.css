@@ -332,8 +332,8 @@ h2 {
 .liens-full-page-element a {
    /* display: inline-block; */
    position: relative;
-   max-width: 95%;
-   min-width: 100px;
+   max-width: 31%;
+   min-width: 163px;
    /* height: 15px; */
    /* font-size: .7em; */
    /* border: #999 solid 1px; */
