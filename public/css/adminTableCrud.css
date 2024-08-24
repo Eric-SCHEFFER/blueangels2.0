@@ -74,6 +74,10 @@
 
 .table-icones-infos {
    display: flex;
+   flex: 1;
+   direction: rtl;
+   padding-right: 6px;
+   /* border: yellow 1px solid; */
 }
 
 .articles-epingle-on>i,
