@@ -74,10 +74,12 @@
 
 .table-icones-infos {
    display: flex;
+}
+
+.table-icones-infos-right {
    flex: 1;
    direction: rtl;
    padding-right: 6px;
-   /* border: yellow 1px solid; */
 }
 
 .articles-epingle-on>i,
@@ -176,7 +178,7 @@
 
 .iconeEditerGris::before,
 .iconeSupprimerGris::before {
-   color:rgba(255, 255, 255, 0.3)
+   color: rgba(255, 255, 255, 0.3)
 }
 
 .iconeSupprimerGris {
