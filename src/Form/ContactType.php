@@ -100,7 +100,13 @@ class ContactType extends AbstractType
                 ]
             ])
 
-            ->add('motif', HiddenType::class, [
+            ->add('age', HiddenType::class, [
+                'attr' => []
+            ])
+            ->add('sexe', HiddenType::class, [
+                'attr' => []
+            ])
+            ->add('motivations', HiddenType::class, [
                 'attr' => []
             ])
 

@@ -35,9 +35,11 @@
 				{{ form_row(contactForm.message, {'value': champMessagePreRempli}) }}
 			</div>
 
-			{# Champ caché pôt de miel pour les petits robots #}
-			<div>
-				{{ form_row(contactForm.motif) }}
+			{# Champs cachés pôt de miel pour les robots spameurs #}
+			<div class="bloc-ligne">
+				{{ form_row(contactForm.age) }}
+				{{ form_row(contactForm.sexe) }}
+				{{ form_row(contactForm.motivations) }}
 			</div>
 
 

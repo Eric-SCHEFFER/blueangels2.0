@@ -52,9 +52,9 @@ class ContactController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $contact = $form->getData();
-            // On vérifie si le champ caché "motif" servant de "pôt de miel" aux robots spameurs est vide
+            // On vérifie si les champs cachés "age, sexe et motivations" servant de "pôt de miel" aux robots spameurs sont vides
             // et si on vient d'une des pages du site
-            if (!isset($contact['motif']) && isset($_SERVER['HTTP_ORIGIN'])) {
+            if (!isset($contact['age']) && !isset($contact['sexe']) && (!isset($contact['motivations'])) && isset($_SERVER['HTTP_ORIGIN'])) {
                 $expediteur = $contact['email'];
                 $objet = $contact['objet'];
                 $destinataire = $this->getDoctrine()->getRepository(InfosEtAdresses::class)->findOneBy([])->getEmailEnvoiFormulaire();
