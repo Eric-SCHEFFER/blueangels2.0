@@ -54,7 +54,13 @@ class ContactController extends AbstractController
             $contact = $form->getData();
             // On vérifie si les champs cachés "age, sexe et motivations" servant de "pôt de miel" aux robots spameurs sont vides
             // et si on vient d'une des pages du site
-            if (!isset($contact['age']) && !isset($contact['sexe']) && (!isset($contact['motivations'])) && isset($_SERVER['HTTP_ORIGIN'])) {
+            if (
+                !isset($contact['age']) &&
+                !isset($contact['sexe']) &&
+                (!isset($contact['motivations'])) &&
+                ($contact['question'] == 'mur') &&
+                isset($_SERVER['HTTP_ORIGIN'])
+            ) {
                 $expediteur = $contact['email'];
                 $objet = $contact['objet'];
                 $destinataire = $this->getDoctrine()->getRepository(InfosEtAdresses::class)->findOneBy([])->getEmailEnvoiFormulaire();

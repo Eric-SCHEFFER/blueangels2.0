@@ -1,8 +1,7 @@
 .container-form {
    max-width: 400px;
    margin: 0 auto 60px auto;
-   text-align: center;
-   padding: 0;
+   padding: 15px;
 }
 
 .bloc-column {
@@ -21,9 +20,6 @@
    /* border: solid rgb(255, 0, 0) 1px; */
 }
 
-/* .flex-direction-column {
-   flex-direction: column;
-} */
 
 .bloc-ligne>div,
 .consentementRgpd {
@@ -73,33 +69,35 @@ input[type=checkbox]+label {
    cursor: pointer;
 }
 
-.bloc-ligne-objet-et-message {
-   margin: 30px 0 30px 0;
-   display: flex;
-   flex-wrap: wrap;
+.bloc-ligne-message {
+   margin: auto;
    width: 100%;
-   justify-content: center;
+   max-width: 700px;
+   min-height: 150px;
    /* border: solid rgb(255, 0, 0) 1px; */
 }
 
-.bloc-ligne-objet-et-message>div {
+textarea {
+   font-size: 1.2em;
+   border-radius: 6px;
+   border: none;
+   width: 100%;
+   min-height: 150px;
+   padding: 10px;
+   color: rgb(70, 70, 70);
+}
+
+/* .bloc-ligne-message>div {
    display: flex;
    flex-direction: column;
-   /* border: solid rgb(0, 17, 255) 1px; */
    height: 50px;
    width: 400px;
    font-size: 1em;
    margin: 15px 3% 15px 3%;
-}
+} */
 
-.bloc-ligne-objet-et-message>div:nth-child(2),
-.bloc-ligne-objet-et-message>div:nth-child(2) textarea {
-   height: auto;
-   min-height: 150px;
-}
 
-input,
-textarea {
+input {
    border-radius: 6px;
    border: none;
    padding: 9px;
@@ -108,9 +106,6 @@ textarea {
    max-width: 100%;
 }
 
-textarea {
-   font-size: 1.2em;
-}
 
 label {
    align-self: flex-start;
@@ -123,3 +118,10 @@ label {
 .width-100 {
    width: 100% !important;
 }
+
+/* @media screen and (max-width: 370px) {
+   .bloc-ligne-message textarea {
+      width: 95vw;
+   }
+
+} */

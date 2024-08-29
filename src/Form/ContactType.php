@@ -87,6 +87,24 @@ class ContactType extends AbstractType
                 ]
             ])
 
+            // Champ question challenge anti-spam
+            ->add('question', TextType::class, [
+                'required' => true,
+                'attr' => [],
+                'label' => 'Anti-spam - Complétez: Une poule sur un ...'
+            ])
+
+            // Champs cachés anti-spam pot de miel
+            ->add('age', HiddenType::class, [
+                'attr' => []
+            ])
+            ->add('sexe', HiddenType::class, [
+                'attr' => []
+            ])
+            ->add('motivations', HiddenType::class, [
+                'attr' => []
+            ])
+
             ->add('message', TextareaType::class, [
                 'required' => true,
                 'constraints' => [
@@ -100,15 +118,6 @@ class ContactType extends AbstractType
                 ]
             ])
 
-            ->add('age', HiddenType::class, [
-                'attr' => []
-            ])
-            ->add('sexe', HiddenType::class, [
-                'attr' => []
-            ])
-            ->add('motivations', HiddenType::class, [
-                'attr' => []
-            ])
 
 
             ->add('envoyer', SubmitType::class);
