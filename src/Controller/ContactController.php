@@ -57,8 +57,8 @@ class ContactController extends AbstractController
             if (
                 !isset($contact['age']) &&
                 !isset($contact['sexe']) &&
-                (!isset($contact['motivations'])) &&
-                ($contact['question'] == 'mur') &&
+                !isset($contact['motivations']) &&
+                $contact['question'] == 'mur' &&
                 isset($_SERVER['HTTP_ORIGIN'])
             ) {
                 $expediteur = $contact['email'];
@@ -82,7 +82,7 @@ class ContactController extends AbstractController
                         'champMessagePreRempli' => $champMessagePreRempli,
                     ]);
                 }
-                $this->addFlash('succes', 'Votre message à bien été envoyé. Nous le traiterons dans les plus brefs délais. Merci.');
+                $this->addFlash('succes', 'Votre message à bien été envoyé. Nous le traiterons dans les plus brefs délais.');
                 return $this->redirectToRoute('home');
             }
         }
