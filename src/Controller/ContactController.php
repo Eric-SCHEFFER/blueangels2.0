@@ -58,7 +58,7 @@ class ContactController extends AbstractController
                 !isset($contact['age']) &&
                 !isset($contact['sexe']) &&
                 !isset($contact['motivations']) &&
-                $contact['question'] == 'mur' &&
+                $contact['question'] == 'nez' &&
                 isset($_SERVER['HTTP_ORIGIN'])
             ) {
                 $expediteur = $contact['email'];

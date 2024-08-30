@@ -90,7 +90,7 @@ class ContactType extends AbstractType
             ->add('question', TextType::class, [
                 'required' => true,
                 'attr' => [],
-                'label' => 'Complétez le mot manquant: Une poule sur un ...'
+                'label' => 'Complétez le mot: La moutarde me monte au ...'
             ])
 
             // Champs cachés anti-spam pot de miel
