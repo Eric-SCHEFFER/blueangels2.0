@@ -47,13 +47,14 @@ class ContactController extends AbstractController
             }
             $champMessagePreRempli = "Lien de l'article (catégorie " . $categorie . "):\n" . $urlArticleReferer . "\n\nBonjour,\n";
         }
-
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $contact = $form->getData();
             // On vérifie si les champs cachés "age, sexe et motivations" servant de "pôt de miel" aux robots spameurs sont vides
+            // et si la réponse au challenge anti-spam est correcte
             // et si on vient d'une des pages du site
+            dd($request);
             if (
                 !isset($contact['age']) &&
                 !isset($contact['sexe']) &&
