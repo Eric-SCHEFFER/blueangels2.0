@@ -18,7 +18,6 @@ class ContactType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $coucou ="coucou";
         $builder
             ->add('prenom', TextType::class, [
                 'required' => true,
@@ -91,7 +90,7 @@ class ContactType extends AbstractType
             ->add('question', TextType::class, [
                 'required' => true,
                 'attr' => [],
-                'label' => $coucou
+                'label' => false
             ])
 
             // Champs cachés anti-spam pot de miel

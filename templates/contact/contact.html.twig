@@ -10,7 +10,6 @@
 
 
 {% block body %}
-
 	<div class="wrapper">
 		<h1>
 			Formulaire de contact
@@ -33,6 +32,7 @@
 			<div class="bloc-ligne">
 				{{ form_row(contactForm.objet, {'value':champObjetPreRempli}) }}
 				{{ form_row(contactForm.question) }}
+				<label for="contact_question"><div>Répondez par le mot juste, en minuscules:</div>{{ labelDynamique }}</label>
 			</div>
 
 			{# Champs cachés pôt de miel pour les robots spameurs #}
@@ -64,7 +64,7 @@
                   'id':'contact_envoyer'
                   }}
 				)
-																								}}
+				}}
 			</div>
 
 			{{ form_end(contactForm) }}

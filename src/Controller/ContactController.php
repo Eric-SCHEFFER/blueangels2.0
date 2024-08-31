@@ -47,6 +47,22 @@ class ContactController extends AbstractController
             }
             $champMessagePreRempli = "Lien de l'article (catégorie " . $categorie . "):\n" . $urlArticleReferer . "\n\nBonjour,\n";
         }
+
+        // TODO: Logique de la question anti-spam, avec des questions-réponses dans un array indexé, et à chaque rechargement de la page,
+        // un couple aléatoire de question-réponse est retourné
+
+        $questionsReponsesAntiSpam = [
+            "Un crouton de ..." => "pain",
+            "La flammekueche est faite avec de la pâte à ..." => "pain",
+            "La moutarde de ..." => "dijon",
+            "Miam, de la barbe à ..." => "papa",
+            "Une poule sur un ..." => "mur",
+            "La moutarde me monte au ..." => "nez",
+        ];
+        $randomQuestion = array_rand($questionsReponsesAntiSpam, 1);
+        $reponseToRandomQuestion = $questionsReponsesAntiSpam[$randomQuestion];
+        $labelDynamique = $randomQuestion;
+
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -54,12 +70,15 @@ class ContactController extends AbstractController
             // On vérifie si les champs cachés "age, sexe et motivations" servant de "pôt de miel" aux robots spameurs sont vides
             // et si la réponse au challenge anti-spam est correcte
             // et si on vient d'une des pages du site
-            dd($request);
+
+            dd($randomQuestion, $reponseToRandomQuestion, $contact['question']);
+
+
             if (
                 !isset($contact['age']) &&
                 !isset($contact['sexe']) &&
                 !isset($contact['motivations']) &&
-                $contact['question'] == 'nez' &&
+                $contact['question'] == $reponseToRandomQuestion &&
                 isset($_SERVER['HTTP_ORIGIN'])
             ) {
                 $expediteur = $contact['email'];
@@ -81,6 +100,7 @@ class ContactController extends AbstractController
                         'contactForm' => $form->createView(),
                         'champObjetPreRempli' => $champObjetPreRempli,
                         'champMessagePreRempli' => $champMessagePreRempli,
+                        'labelDynamique' => $labelDynamique,
                     ]);
                 }
                 $this->addFlash('succes', 'Votre message à bien été envoyé. Nous le traiterons dans les plus brefs délais.');
@@ -92,6 +112,7 @@ class ContactController extends AbstractController
             'contactForm' => $form->createView(),
             'champObjetPreRempli' => $champObjetPreRempli,
             'champMessagePreRempli' => $champMessagePreRempli,
+            'labelDynamique' => $labelDynamique,
         ]);
     }
 
@@ -111,4 +132,6 @@ class ContactController extends AbstractController
             ]);
         $mailer->send($email);
     }
+
+    private function getRandomQuestionReponse($questionsReponsesAntiSpam) {}
 }
