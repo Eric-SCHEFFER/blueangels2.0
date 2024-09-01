@@ -85,7 +85,7 @@ class ContactController extends AbstractController
                 $objet = $contact['objet'];
                 $destinataire = $this->getDoctrine()->getRepository(InfosEtAdresses::class)->findOneBy([])->getEmailEnvoiFormulaire();
                 $templateTwig = "emails/contact.html.twig";
-                // Envoi du mail avec gestion d'erreur
+                // Envoi de l'email avec gestion d'erreur
                 try {
                     // [Nouvelle politique de IONOS de 01-2024]: J'ai remplacé $expediteur par une adresse finissant en blueangelsdanse.org ou carrément site-blueangels@blueangelsdanse.org
                     // Ancienne ligne avant modifs
