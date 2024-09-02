@@ -16,6 +16,10 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ContactType extends AbstractType
 {
+    public const NOM_CHAMP_POT_DE_MIEL = 'email';
+    public const NOM_CHAMP_EMAIL = 'information';
+
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -45,6 +49,12 @@ class ContactType extends AbstractType
                 ]
             ])
 
+            // Faux champ email caché en js (anti-spam pot de miel)
+            ->add(self::NOM_CHAMP_POT_DE_MIEL, EmailType::class, [
+                'required' => false,
+                'attr' => []
+            ])
+
             ->add('tel', textType::class, [
                 'required' => true,
                 'constraints' => [
@@ -58,7 +68,7 @@ class ContactType extends AbstractType
                 ]
             ])
 
-            ->add('email', EmailType::class, [
+            ->add(self::NOM_CHAMP_EMAIL, EmailType::class, [
                 'required' => true,
                 'constraints' => [
                     new NotBlank(),
@@ -84,24 +94,6 @@ class ContactType extends AbstractType
                         'maxMessage' => 'Maximum 255 caractères'
                     ])
                 ]
-            ])
-
-            // Champ question challenge anti-spam
-            ->add('question', TextType::class, [
-                'required' => true,
-                'attr' => [],
-                'label' => false
-            ])
-
-            // Champs cachés anti-spam pot de miel
-            ->add('age', HiddenType::class, [
-                'attr' => []
-            ])
-            ->add('sexe', HiddenType::class, [
-                'attr' => []
-            ])
-            ->add('motivations', HiddenType::class, [
-                'attr' => []
             ])
 
             ->add('message', TextareaType::class, [

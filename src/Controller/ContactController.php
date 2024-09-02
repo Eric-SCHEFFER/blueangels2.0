@@ -51,18 +51,19 @@ class ContactController extends AbstractController
         // TODO: Logique de la question anti-spam, avec des questions-réponses dans un array indexé, et à chaque rechargement de la page,
         // un couple aléatoire de question-réponse est retourné
 
-        $questionsReponsesAntiSpam = [
-            "Un crouton de ..." => "pain",
-            "La flammekueche est faite avec de la pâte à ..." => "pain",
-            "La moutarde de ..." => "dijon",
-            "Miam, de la barbe à ..." => "papa",
-            "Une poule sur un ..." => "mur",
-            "La moutarde me monte au ..." => "nez",
-        ];
-        $randomQuestion = array_rand($questionsReponsesAntiSpam, 1);
-        $reponseToRandomQuestion = $questionsReponsesAntiSpam[$randomQuestion];
-        $labelDynamique = $randomQuestion;
-
+        // $questionsReponsesAntiSpam = [
+        //     "Un crouton de ..." => "pain",
+        //     "La flammekueche est faite avec de la pâte à ..." => "pain",
+        //     "La moutarde de ..." => "dijon",
+        //     "De la barbe à ..." => "papa",
+        //     "Une une poule sur un ..." => "mur",
+        //     "La moutarde me monte au ..." => "nez",
+        //     "Les blue ..." => "angels",
+        //     "Une horloge fait tic-..." => "tac",
+        // ];
+        // $question = array_rand($questionsReponsesAntiSpam, 1);
+        // $reponse = $questionsReponsesAntiSpam[$question];
+      
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -71,14 +72,11 @@ class ContactController extends AbstractController
             // et si la réponse au challenge anti-spam est correcte
             // et si on vient d'une des pages du site
 
-            dd($randomQuestion, $reponseToRandomQuestion, $contact['question']);
+            // dd($question, $reponse, $contact['question']);
 
 
             if (
-                !isset($contact['age']) &&
-                !isset($contact['sexe']) &&
-                !isset($contact['motivations']) &&
-                $contact['question'] == $reponseToRandomQuestion &&
+                !isset($contact['information']) &&
                 isset($_SERVER['HTTP_ORIGIN'])
             ) {
                 $expediteur = $contact['email'];
@@ -100,7 +98,6 @@ class ContactController extends AbstractController
                         'contactForm' => $form->createView(),
                         'champObjetPreRempli' => $champObjetPreRempli,
                         'champMessagePreRempli' => $champMessagePreRempli,
-                        'labelDynamique' => $labelDynamique,
                     ]);
                 }
                 $this->addFlash('succes', 'Votre message à bien été envoyé. Nous le traiterons dans les plus brefs délais.');
@@ -112,7 +109,6 @@ class ContactController extends AbstractController
             'contactForm' => $form->createView(),
             'champObjetPreRempli' => $champObjetPreRempli,
             'champMessagePreRempli' => $champMessagePreRempli,
-            'labelDynamique' => $labelDynamique,
         ]);
     }
 

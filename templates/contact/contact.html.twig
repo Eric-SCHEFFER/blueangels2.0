@@ -24,29 +24,22 @@
 				{{ form_row(contactForm.nom) }}
 			</div>
 
-			<div class="bloc-ligne">
-				{{ form_row(contactForm.tel) }}
+			{# Champ caché pôt de miel pour les robots spameurs #}
+			<div "bloc-ligne">
+				{# Champ information #}
+				{# Nom du champ inversé avec le vrai champ email plus haut (stratégie anti-spam) #}
 				{{ form_row(contactForm.email) }}
 			</div>
 
-			<div class="bloc-ligne">
-				{{ form_row(contactForm.objet, {'value':champObjetPreRempli}) }}
-				{{ form_row(contactForm.question) }}
-				<label for="contact_question"><div>Répondez par le mot juste, en minuscules:</div>{{ labelDynamique }}</label>
+			<div class="bloc-ligne"> {{ form_row(contactForm.tel) }}
+				{# Champ email #}
+				{# Nom du champ inversé avec le vrai champ caché information plus bas (stratégie anti-spam) #}
+				{{ form_row(contactForm.information) }}
 			</div>
 
-			{# Champs cachés pôt de miel pour les robots spameurs #}
-			<div class="bloc-ligne">
-				{{ form_row(contactForm.age) }}
-				{{ form_row(contactForm.sexe) }}
-				{{ form_row(contactForm.motivations) }}
-			</div>
-			
-			<div class="bloc-ligne-message">
+				<div class="bloc-ligne-objet-et-message"> {{ form_row(contactForm.objet, {'value':champObjetPreRempli}) }}
 				{{ form_row(contactForm.message, {'value': champMessagePreRempli}) }}
 			</div>
-
-
 
 			<div class="bloc-ligne">
 				<p class="consentementRgpd">
