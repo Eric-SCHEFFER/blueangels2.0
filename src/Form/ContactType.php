@@ -27,7 +27,7 @@ class ContactType extends AbstractType
                 'required' => true,
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Veuillez compléter ce champ'
+                        'message' => 'Veuillez compléter ce champ',
                     ]),
                     new Length([
                         'min' => 3,
@@ -41,7 +41,9 @@ class ContactType extends AbstractType
             ->add('nom', TextType::class, [
                 'required' => true,
                 'constraints' => [
-                    new NotBlank(),
+                    new NotBlank([
+                        'message' => 'Veuillez compléter ce champ',
+                    ]),
                     new Length([
                         'min' => 3,
                         'minMessage' => 'Minimum 3 caractères',
@@ -60,7 +62,9 @@ class ContactType extends AbstractType
             ->add('tel', textType::class, [
                 'required' => true,
                 'constraints' => [
-                    new NotBlank(),
+                    new NotBlank([
+                        'message' => 'Veuillez compléter ce champ',
+                    ]),
                     new Length([
                         'min' => 3,
                         'minMessage' => 'Minimum 3 caractères',
@@ -88,7 +92,9 @@ class ContactType extends AbstractType
             ->add('objet', TextType::class, [
                 'attr' => [],
                 'constraints' => [
-                    new NotBlank(),
+                    new NotBlank([
+                        'message' => 'Veuillez compléter ce champ',
+                    ]),
                     new Length([
                         'min' => 3,
                         'minMessage' => 'Minimum 3 caractères',
@@ -101,7 +107,9 @@ class ContactType extends AbstractType
             ->add('message', TextareaType::class, [
                 'required' => true,
                 'constraints' => [
-                    new NotBlank(),
+                    new NotBlank([
+                        'message' => 'Veuillez compléter ce champ',
+                    ]),
                     new Length([
                         'min' => 3,
                         'minMessage' => 'Minimum 3 caractères',

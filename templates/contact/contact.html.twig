@@ -2,6 +2,7 @@
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/formulaireGenerique.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/boutonsEtInputs.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/messagesEtAlertes.css') }}">
 {% endblock %}
 
 {% block title %}
@@ -18,25 +19,26 @@
 		<div class="container-form big-width">
 			{{ form_start(contactForm) }}
 
-			<div class="bloc-ligne">
+			<div class="bloc-ligne constraints-messages">
+				{# {{ form_errors(contactForm.prenom) }} #}
 				{{ form_row(contactForm.prenom) }}
 				{{ form_row(contactForm.nom) }}
 			</div>
 
 			{# Champ leurre caché pour les robots spameurs (technique du pôt de miel) #}
-			<div "bloc-ligne">
+			<div "bloc-ligne constraints-messages">
 				{# Nom du champ inversé avec le champ adresse_electronique plus bas (stratégie anti-spam) #}
 				{{ form_row(contactForm.email) }}
 			</div>
 
-			<div class="bloc-ligne">
+			<div class="bloc-ligne constraints-messages">
 				{{ form_row(contactForm.tel) }}
 				{# Vrai champ email #}
 				{# Nom du champ inversé avec le champ caché email plus haut (stratégie anti-spam) #}
 				{{ form_row(contactForm.adresse_electronique) }}
 			</div>
 
-				<div class="bloc-ligne-objet-et-message"> {{ form_row(contactForm.objet, {'value':champObjetPreRempli}) }}
+				<div class="bloc-ligne-objet-et-message constraints-messages"> {{ form_row(contactForm.objet, {'value':champObjetPreRempli}) }}
 				{{ form_row(contactForm.message, {'value': champMessagePreRempli}) }}
 			</div>
 
