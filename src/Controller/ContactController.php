@@ -72,14 +72,14 @@ class ContactController extends AbstractController
             // et si la réponse au challenge anti-spam est correcte
             // et si on vient d'une des pages du site
 
-            // dd($question, $reponse, $contact['question']);
+            // dd($contact);
 
 
             if (
-                !isset($contact['information']) &&
+                !isset($contact['email']) &&
                 isset($_SERVER['HTTP_ORIGIN'])
             ) {
-                $expediteur = $contact['email'];
+                $expediteur = $contact['adresse_electronique'];
                 $objet = $contact['objet'];
                 $destinataire = $this->getDoctrine()->getRepository(InfosEtAdresses::class)->findOneBy([])->getEmailEnvoiFormulaire();
                 $templateTwig = "emails/contact.html.twig";

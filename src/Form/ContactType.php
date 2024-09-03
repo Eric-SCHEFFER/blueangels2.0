@@ -17,7 +17,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 class ContactType extends AbstractType
 {
     public const NOM_CHAMP_POT_DE_MIEL = 'email';
-    public const NOM_CHAMP_EMAIL = 'information';
+    public const NOM_CHAMP_EMAIL = 'adresse_electronique';
 
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -26,7 +26,9 @@ class ContactType extends AbstractType
             ->add('prenom', TextType::class, [
                 'required' => true,
                 'constraints' => [
-                    new NotBlank(),
+                    new NotBlank([
+                        'message' => 'Veuillez compléter ce champ'
+                    ]),
                     new Length([
                         'min' => 3,
                         'minMessage' => 'Minimum 3 caractères',
@@ -49,7 +51,7 @@ class ContactType extends AbstractType
                 ]
             ])
 
-            // Faux champ email caché en js (anti-spam pot de miel)
+            // Faux champ email caché (anti-spam pot de miel)
             ->add(self::NOM_CHAMP_POT_DE_MIEL, EmailType::class, [
                 'required' => false,
                 'attr' => []

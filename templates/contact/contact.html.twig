@@ -8,7 +8,6 @@
 	{{ SiteName }}: Contact
 {% endblock %}
 
-
 {% block body %}
 	<div class="wrapper">
 		<h1>
@@ -24,17 +23,17 @@
 				{{ form_row(contactForm.nom) }}
 			</div>
 
-			{# Champ caché pôt de miel pour les robots spameurs #}
+			{# Champ leurre caché pour les robots spameurs (technique du pôt de miel) #}
 			<div "bloc-ligne">
-				{# Champ information #}
-				{# Nom du champ inversé avec le vrai champ email plus haut (stratégie anti-spam) #}
+				{# Nom du champ inversé avec le champ adresse_electronique plus bas (stratégie anti-spam) #}
 				{{ form_row(contactForm.email) }}
 			</div>
 
-			<div class="bloc-ligne"> {{ form_row(contactForm.tel) }}
-				{# Champ email #}
-				{# Nom du champ inversé avec le vrai champ caché information plus bas (stratégie anti-spam) #}
-				{{ form_row(contactForm.information) }}
+			<div class="bloc-ligne">
+				{{ form_row(contactForm.tel) }}
+				{# Vrai champ email #}
+				{# Nom du champ inversé avec le champ caché email plus haut (stratégie anti-spam) #}
+				{{ form_row(contactForm.adresse_electronique) }}
 			</div>
 
 				<div class="bloc-ligne-objet-et-message"> {{ form_row(contactForm.objet, {'value':champObjetPreRempli}) }}
@@ -63,7 +62,8 @@
 			{{ form_end(contactForm) }}
 
 			{% block javascript %}
-				<script src="{{ asset('js/checkBoxRgpdFormulaireContact.js') }}"></script>
+				<script src="{{ asset('js/checkBoxRgpdFormulaireContact.js') }}" defer></script>
+				<script src="{{ asset('js/pot_de_miel.js') }}" defer></script>
 			{% endblock %}
 
 		</div>
