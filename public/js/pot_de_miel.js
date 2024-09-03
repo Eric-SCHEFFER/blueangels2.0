@@ -3,5 +3,7 @@
 let champInput = document.querySelector('#contact_email');
 let blocLigneGrandParent = champInput.parentNode.parentNode;
 
-blocLigneGrandParent.style.display = ("none");
+blocLigneGrandParent.style.visibility = ("hidden");
+blocLigneGrandParent.style.height = ("0");
+blocLigneGrandParent.style.width = ("0");
 
