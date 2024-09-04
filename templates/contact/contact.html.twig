@@ -52,13 +52,24 @@
 			</div>
 
 			<div class="bloc-ligne">
+				<p id="cocherRgpdErrorId" class="cocherRgpdError">
+					Veuillez d'abord cocher la case
+				</p>
+				{# {{ form_row(contactForm.envoyer,
+				{'attr':{'disabled':'disabled',
+				'class':'buttonDisabled',
+				'id':'contact_envoyer'
+				}}
+				)
+				}} #}
+
 				{{ form_row(contactForm.envoyer,
-                  {'attr':{'disabled':'disabled',
-                  'class':'buttonDisabled',
-                  'id':'contact_envoyer'
-                  }}
+				{'attr':{'class':'buttonDisabled',
+				'id':'contact_envoyer'
+				}}
 				)
 				}}
+				
 			</div>
 
 			{{ form_end(contactForm) }}

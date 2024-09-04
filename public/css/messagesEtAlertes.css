@@ -19,6 +19,19 @@
    color: #742028;
 }
 
+.cocherRgpdError {
+   display: none;
+   position: absolute;
+   margin-top: -10px;
+   background-color: rgb(175, 14, 14);
+   color: #FFF;
+   padding: 0 4px;
+}
+
+.displayBlock {
+   display: block;
+}
+
 /* =========== Messages envoyés depuis les contraintes (form types par ex) ================= */
 
 
