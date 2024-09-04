@@ -25,13 +25,14 @@
 
 .constraints-messages ul {
    background-color: rgb(175, 14, 14);
-   color: white;
+   color: #FFF;
    position: absolute;
    height: 34px;
-   margin-top: -31px;
+   margin-top: 49px;
    overflow: scroll;
    text-align: left;
    padding: 0 4px 0 4px;
+   border-radius: 4px;
 }
 
 
