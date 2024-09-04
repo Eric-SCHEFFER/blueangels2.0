@@ -16,24 +16,21 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ContactType extends AbstractType
 {
-    public const NOM_CHAMP_POT_DE_MIEL = 'email';
-    public const NOM_CHAMP_EMAIL = 'adresse_electronique';
-
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('prenom', TextType::class, [
+                'label' => 'Prénom',
                 'required' => true,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez compléter ce champ',
                     ]),
                     new Length([
-                        'min' => 3,
-                        'minMessage' => 'Minimum 3 caractères',
+                        'min' => 2,
+                        'minMessage' => 'Minimum {{ limit }} caractères',
                         'max' => 255,
-                        'maxMessage' => 'Maximum 255 caractères'
+                        'maxMessage' => 'Maximum {{ limit }} caractères'
                     ])
                 ]
             ])
@@ -45,21 +42,22 @@ class ContactType extends AbstractType
                         'message' => 'Veuillez compléter ce champ',
                     ]),
                     new Length([
-                        'min' => 3,
-                        'minMessage' => 'Minimum 3 caractères',
+                        'min' => 2,
+                        'minMessage' => 'Minimum {{ limit }} caractères',
                         'max' => 255,
-                        'maxMessage' => 'Maximum 255 caractères'
+                        'maxMessage' => 'Maximum {{ limit }} caractères'
                     ])
                 ]
             ])
 
             // Faux champ email caché (anti-spam pot de miel)
-            ->add(self::NOM_CHAMP_POT_DE_MIEL, EmailType::class, [
+            ->add('email', EmailType::class, [
                 'required' => false,
                 'attr' => []
             ])
 
             ->add('tel', textType::class, [
+                'label' => 'Téléphone',
                 'required' => true,
                 'constraints' => [
                     new NotBlank([
@@ -67,14 +65,15 @@ class ContactType extends AbstractType
                     ]),
                     new Length([
                         'min' => 3,
-                        'minMessage' => 'Minimum 3 caractères',
+                        'minMessage' => 'Minimum {{ limit }} caractères',
                         'max' => 255,
-                        'maxMessage' => 'Maximum 255 caractères'
+                        'maxMessage' => 'Maximum {{ limit }} caractères'
                     ])
                 ]
             ])
 
-            ->add(self::NOM_CHAMP_EMAIL, EmailType::class, [
+            ->add('informations', EmailType::class, [
+                'label' => 'Adresse électronique',
                 'required' => true,
                 'constraints' => [
                     new NotBlank(),
@@ -83,7 +82,7 @@ class ContactType extends AbstractType
                     ]),
                     new Length([
                         'max' => 255,
-                        'maxMessage' => 'Maximum 255 caractères'
+                        'maxMessage' => 'Maximum {{ limit }} caractères'
                     ])
 
                 ]
@@ -97,9 +96,9 @@ class ContactType extends AbstractType
                     ]),
                     new Length([
                         'min' => 3,
-                        'minMessage' => 'Minimum 3 caractères',
+                        'minMessage' => 'Minimum {{ limit }} caractères',
                         'max' => 255,
-                        'maxMessage' => 'Maximum 255 caractères'
+                        'maxMessage' => 'Maximum {{ limit }} caractères'
                     ])
                 ]
             ])
@@ -112,9 +111,9 @@ class ContactType extends AbstractType
                     ]),
                     new Length([
                         'min' => 3,
-                        'minMessage' => 'Minimum 3 caractères',
+                        'minMessage' => 'Minimum {{ limit }} caractères',
                         'max' => 4096,
-                        'maxMessage' => 'Maximum 4096 caractères'
+                        'maxMessage' => 'Maximum {{ limit }} caractères'
                     ])
                 ]
             ])

@@ -27,7 +27,7 @@
 
 			{# Champ leurre caché pour les robots spameurs (technique du pôt de miel) #}
 			<div "bloc-ligne constraints-messages">
-				{# Nom du champ inversé avec le champ adresse_electronique plus bas (stratégie anti-spam) #}
+				{# Nom du champ inversé avec le champ informations plus bas (stratégie anti-spam) #}
 				{{ form_row(contactForm.email) }}
 			</div>
 
@@ -35,7 +35,7 @@
 				{{ form_row(contactForm.tel) }}
 				{# Vrai champ email #}
 				{# Nom du champ inversé avec le champ caché email plus haut (stratégie anti-spam) #}
-				{{ form_row(contactForm.adresse_electronique) }}
+				{{ form_row(contactForm.informations) }}
 			</div>
 
 				<div class="bloc-ligne-objet-et-message constraints-messages"> {{ form_row(contactForm.objet, {'value':champObjetPreRempli}) }}

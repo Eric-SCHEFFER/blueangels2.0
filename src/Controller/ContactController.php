@@ -79,7 +79,8 @@ class ContactController extends AbstractController
                 !isset($contact['email']) &&
                 isset($_SERVER['HTTP_ORIGIN'])
             ) {
-                $expediteur = $contact['adresse_electronique'];
+                // Champ email. Le nom est pour tromper les robots de spam
+                $expediteur = $contact['informations'];
                 $objet = $contact['objet'];
                 $destinataire = $this->getDoctrine()->getRepository(InfosEtAdresses::class)->findOneBy([])->getEmailEnvoiFormulaire();
                 $templateTwig = "emails/contact.html.twig";
