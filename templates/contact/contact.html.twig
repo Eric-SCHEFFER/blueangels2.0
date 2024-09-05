@@ -38,8 +38,9 @@
 				{{ form_row(contactForm.informations) }}
 			</div>
 
-				<div class="bloc-ligne-objet-et-message constraints-messages"> {{ form_row(contactForm.objet, {'value':champObjetPreRempli}) }}
-				{{ form_row(contactForm.message, {'value': champMessagePreRempli}) }}
+				<div class="bloc-ligne-objet-et-message constraints-messages">
+				{{ form_row(contactForm.objet, {'value':titre}) }}
+				{{ form_row(contactForm.message, {'value': url('home')~endUrl}) }}
 			</div>
 
 			<div class="bloc-ligne">

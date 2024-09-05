@@ -20,66 +20,43 @@ class ContactController extends AbstractController
      */
     public function index($id, Request $request, MailerInterface $mailer)
     {
+        // dd ($request->server->get('REQUEST_URI'), $request->server->get('PHP_SELF'));
+        // dd($request);
+
         $titre = NULL;
-        $champObjetPreRempli = NULL;
-        $champMessagePreRempli = NULL;
+        $nom = NULL;
+        $endUrl = NULL;
         // Si la catégorie est vide, on vient soit d'une page event, soit du lien direct contact
         $categorie = $request->attributes->get("categorie");
         if (empty($categorie)) {
             // Si l'id de l'event existe, c'est qu'on vient d'une page event, alors, on hydrate les variables qui pré-rempliront les champs objet et message
             if (isset($id)) {
-                $nom = $this->getDoctrine()->getRepository(Events::class)->find($id)->getNom();
-                // TODO: Utiliser autre chose que le referer pour avoir le lien de l'article ou de l'event qui appelle la page contact
-                $referer = $request->headers->get('referer');
-                $champObjetPreRempli = 'A propos: ' . $nom;
-                $champMessagePreRempli = "Lien de l'évènement:\n" . $referer . "\n\nBonjour,\n";
+                $titre = $this->getDoctrine()->getRepository(Events::class)->find($id)->getNom();
+                $endUrl = "fin_url_event";
             }
         }
         // Sinon, c'est qu'on vient d'une page article. on hydrate aussi les variables
         else {
             $titre = $this->getDoctrine()->getRepository(Articles::class)->find($id)->getTitre();
-            $champObjetPreRempli = 'A propos: ' . $titre;
-            $urlArticleReferer = $request->headers->get('referer');
             // Si on vient d'une page fixe du site (pas d'id dans l'url) qui affiche un article
-            if (substr($urlArticleReferer, -1) == "/") {
-                $pos = strrpos($urlArticleReferer, '/', -2);
-                $urlArticleReferer = substr($urlArticleReferer, 0, $pos + 1) . 'article/' . $id;
-            }
-            $champMessagePreRempli = "Lien de l'article (catégorie " . $categorie . "):\n" . $urlArticleReferer . "\n\nBonjour,\n";
+            // if (substr($urlArticle, -1) == "/") {
+            //     $pos = strrpos($urlArticle, '/', -2);
+            //     $urlArticle = substr($urlArticle, 0, $pos + 1) . 'article/' . $id;
+            // }
+            $endUrl = "fin_url_article";
         }
 
-        // TODO: Logique de la question anti-spam, avec des questions-réponses dans un array indexé, et à chaque rechargement de la page,
-        // un couple aléatoire de question-réponse est retourné
-
-        // $questionsReponsesAntiSpam = [
-        //     "Un crouton de ..." => "pain",
-        //     "La flammekueche est faite avec de la pâte à ..." => "pain",
-        //     "La moutarde de ..." => "dijon",
-        //     "De la barbe à ..." => "papa",
-        //     "Une une poule sur un ..." => "mur",
-        //     "La moutarde me monte au ..." => "nez",
-        //     "Les blue ..." => "angels",
-        //     "Une horloge fait tic-..." => "tac",
-        // ];
-        // $question = array_rand($questionsReponsesAntiSpam, 1);
-        // $reponse = $questionsReponsesAntiSpam[$question];
-      
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $contact = $form->getData();
-            // On vérifie si les champs cachés "age, sexe et motivations" servant de "pôt de miel" aux robots spameurs sont vides
-            // et si la réponse au challenge anti-spam est correcte
+            // On vérifie si le champ caché email servant de "pôt de miel" aux robots spameurs est vide
             // et si on vient d'une des pages du site
-
-            // dd($contact);
-
-
             if (
                 !isset($contact['email']) &&
                 isset($_SERVER['HTTP_ORIGIN'])
             ) {
-                // Champ email. Le nom est pour tromper les robots de spam
+                // C'est en fait l'email. Le nom est pour tromper les robots de spam
                 $expediteur = $contact['informations'];
                 $objet = $contact['objet'];
                 $destinataire = $this->getDoctrine()->getRepository(InfosEtAdresses::class)->findOneBy([])->getEmailEnvoiFormulaire();
@@ -97,19 +74,20 @@ class ContactController extends AbstractController
                     return $this->render('contact/contact.html.twig', [
                         'menu_courant' => 'contact',
                         'contactForm' => $form->createView(),
-                        'champObjetPreRempli' => $champObjetPreRempli,
-                        'champMessagePreRempli' => $champMessagePreRempli,
+                        'titre' => $titre,
+                        'endUrl' => $endUrl,
                     ]);
                 }
                 $this->addFlash('succes', 'Votre message à bien été envoyé. Nous le traiterons dans les plus brefs délais.');
                 return $this->redirectToRoute('home');
             }
         }
+
         return $this->render('contact/contact.html.twig', [
             'menu_courant' => 'contact',
             'contactForm' => $form->createView(),
-            'champObjetPreRempli' => $champObjetPreRempli,
-            'champMessagePreRempli' => $champMessagePreRempli,
+            'titre' => $titre,
+            'endUrl' => $endUrl,
         ]);
     }
 
@@ -129,6 +107,4 @@ class ContactController extends AbstractController
             ]);
         $mailer->send($email);
     }
-
-    private function getRandomQuestionReponse($questionsReponsesAntiSpam) {}
 }
