@@ -39,9 +39,26 @@
 			</div>
 
 				<div class="bloc-ligne-objet-et-message constraints-messages">
-				{{ form_row(contactForm.objet, {'value':titre}) }}
-				{{ form_row(contactForm.message, {'value': url('home')~endUrl}) }}
-			</div>
+					{# Si on vient d'un article ou d'un event, on prérempli les champs objet et message #}
+					{% if titre is defined and titre is not empty %}
+						{# En cas de recharge de la page (en cas d'erreurs de contrainte) on réaffiche le contenu du champ objet depuis contactForm.objet.vars.value #}
+						{% if contactForm.objet.vars.value is defined and contactForm.objet.vars.value is not empty %}
+							{{ form_row(contactForm.objet, {'value': contactForm.objet.vars.value}) }}
+						{% else %}
+							{{ form_row(contactForm.objet, {'value':titre}) }}
+						{% endif %}
+
+						{# En cas de recharge de la page (en cas d'erreurs de contrainte) on réaffiche le contenu du champ message depuis contactForm.message.vars.value #}
+						{% if contactForm.message.vars.value is defined and contactForm.message.vars.value is not empty %}
+							{{ form_row(contactForm.message, {'value': contactForm.message.vars.value}) }}
+						{% else %}
+							{{ form_row(contactForm.message, {'value': url('home') ~ endUrl}) }}
+						{% endif %}
+					{% else %}
+						{{ form_row(contactForm.objet) }}	
+						{{ form_row(contactForm.message) }}
+					{% endif %}
+				</div>
 
 			<div class="bloc-ligne">
 				<p class="consentementRgpd">

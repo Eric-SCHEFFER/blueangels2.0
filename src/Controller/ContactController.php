@@ -26,8 +26,8 @@ class ContactController extends AbstractController
         $titre = NULL;
         $nom = NULL;
         $endUrl = NULL;
-        // Si la catégorie est vide, on vient soit d'une page event, soit du lien direct contact
         $categorie = $request->attributes->get("categorie");
+        // Si la catégorie est vide, on vient soit d'une page event, soit du lien direct contact
         if (empty($categorie)) {
             // Si l'id de l'event existe, c'est qu'on vient d'une page event, alors, on hydrate les variables qui pré-rempliront les champs objet et message
             if (isset($id)) {
@@ -37,12 +37,12 @@ class ContactController extends AbstractController
         }
         // Sinon, c'est qu'on vient d'une page article. on hydrate aussi les variables
         else {
-            $titre = $this->getDoctrine()->getRepository(Articles::class)->find($id)->getTitre();
             // Si on vient d'une page fixe du site (pas d'id dans l'url) qui affiche un article
             // if (substr($urlArticle, -1) == "/") {
             //     $pos = strrpos($urlArticle, '/', -2);
             //     $urlArticle = substr($urlArticle, 0, $pos + 1) . 'article/' . $id;
             // }
+            $titre = $this->getDoctrine()->getRepository(Articles::class)->find($id)->getTitre();
             $endUrl = "fin_url_article";
         }
 
