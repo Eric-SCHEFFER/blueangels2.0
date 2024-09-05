@@ -20,11 +20,7 @@ class ContactController extends AbstractController
      */
     public function index($id, Request $request, MailerInterface $mailer)
     {
-        // dd ($request->server->get('REQUEST_URI'), $request->server->get('PHP_SELF'));
-        // dd($request);
-
         $titre = NULL;
-        $nom = NULL;
         $endUrl = NULL;
         $categorie = $request->attributes->get("categorie");
         // Si la catégorie est vide, on vient soit d'une page event, soit du lien direct contact
@@ -56,7 +52,7 @@ class ContactController extends AbstractController
                 !isset($contact['email']) &&
                 isset($_SERVER['HTTP_ORIGIN'])
             ) {
-                // C'est en fait l'email. Le nom est pour tromper les robots de spam
+                // C'est le véritable email. Le nom est pour tromper les robots de spam
                 $expediteur = $contact['informations'];
                 $objet = $contact['objet'];
                 $destinataire = $this->getDoctrine()->getRepository(InfosEtAdresses::class)->findOneBy([])->getEmailEnvoiFormulaire();
@@ -70,7 +66,7 @@ class ContactController extends AbstractController
                     // S'il y a une erreur renvoyée par le serveur
                 } catch (\Throwable $th) {
                     $emailContact = $this->getDoctrine()->getRepository(InfosEtAdresses::class)->findOneBy([])->getEmailContact();
-                    $this->addFlash('error', 'Votre message n\'a pas pu être envoyé. Si celà arrive pour la première fois, nous vous invitons à faire une seconde tentative. Si le problème persiste, nous vous invitons à le signaler via notre adresse email de contact: ' . $emailContact . '. Veuillez nous excuser pour la gêne occasionnée.');
+                    $this->addFlash('error', 'Le serveur de messagerie n\'a pas pu envoyer votre message. Si celà arrive pour la première fois, nous vous invitons à faire une seconde tentative. Si le problème persiste, veuillez le signaler à notre adresse email de contact: ' . $emailContact . '. Pardon pour la gêne occasionnée.');
                     return $this->render('contact/contact.html.twig', [
                         'menu_courant' => 'contact',
                         'contactForm' => $form->createView(),
