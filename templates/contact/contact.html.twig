@@ -20,7 +20,7 @@
 			{{ form_start(contactForm) }}
 
 			<div
-				class="bloc-ligne constraints-messages">
+				class="bloc-ligne constraints-messages constraints-messages-cours">
 				{# {{ form_errors(contactForm.prenom) }} #}
 				{{ form_row(contactForm.prenom) }}
 				{{ form_row(contactForm.nom) }}
@@ -28,20 +28,19 @@
 
 			{# Champ leurre caché pour les robots spameurs (technique du pôt de miel) #}
 			<div
-				"bloc-ligne constraints-messages">
+				"bloc-ligne constraints-messages constraints-messages-cours">
 				{# Nom du champ inversé avec le champ informations plus bas (stratégie anti-spam) #}
 				{{ form_row(contactForm.email) }}
 			</div>
 
-			<div class="bloc-ligne constraints-messages">
+			<div class="bloc-ligne constraints-messages constraints-messages-cours">
 				{{ form_row(contactForm.tel) }}
 				{# Vrai champ email #}
 				{# Nom du champ inversé avec le champ caché email plus haut (stratégie anti-spam) #}
 			{{ form_row(contactForm.informations) }}
 			</div>
 
-				<div
-				class="bloc-ligne-objet-et-message constraints-messages"> {# Si on vient d'un article ou d'un event, on prérempli les champs objet et message #}
+			<div class="bloc-ligne-objet-et-message constraints-messages constraints-messages-cours"> {# Si on vient d'un article ou d'un event, on prérempli les champs objet et message #}
 				{% if titre is defined and titre is not empty %}
 					{# En cas de recharge de la page (en cas d'erreurs de contrainte) on réaffiche le contenu du champ objet depuis contactForm.objet.vars.value #}
 					{% if contactForm.objet.vars.value is defined and contactForm.objet.vars.value is not empty %}
@@ -54,7 +53,7 @@
 					{% if contactForm.message.vars.value is defined and contactForm.message.vars.value is not empty %}
 						{{ form_row(contactForm.message, {'value': contactForm.message.vars.value}) }}
 					{% else %}
-						{{ form_row(contactForm.message, {'value': url('home') ~ endUrl}) }}
+						{{ form_row(contactForm.message, {'value': 'Lien de la page:\n' ~ url('home') ~ endUrl ~ "\n\nBonjour,\n"}) }}
 					{% endif %}
 				{% else %}
 					{{ form_row(contactForm.objet) }}

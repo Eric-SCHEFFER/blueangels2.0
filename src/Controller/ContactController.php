@@ -28,7 +28,7 @@ class ContactController extends AbstractController
             // Si l'id de l'event existe, c'est qu'on vient d'une page event, alors, on hydrate les variables qui pré-rempliront les champs objet et message
             if (isset($id)) {
                 $titre = $this->getDoctrine()->getRepository(Events::class)->find($id)->getNom();
-                $endUrl = "fin_url_event";
+                $endUrl = "event/" . $id;
             }
         }
         // Sinon, c'est qu'on vient d'une page article. on hydrate aussi les variables
@@ -39,7 +39,7 @@ class ContactController extends AbstractController
             //     $urlArticle = substr($urlArticle, 0, $pos + 1) . 'article/' . $id;
             // }
             $titre = $this->getDoctrine()->getRepository(Articles::class)->find($id)->getTitre();
-            $endUrl = "fin_url_article";
+            $endUrl = "article/" . $id;
         }
 
         $form = $this->createForm(ContactType::class);
