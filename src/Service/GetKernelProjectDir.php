@@ -18,8 +18,7 @@ class GetKernelProjectDir
     */
    public function foundKernelProjectDir()
    {
-      $sortie = $this->urlGeneratorInterface->generate('home', [], urlGeneratorInterface::ABSOLUTE_URL);
-      dd($sortie);
-      return;
+      $url = $this->urlGeneratorInterface->generate('home', [], urlGeneratorInterface::ABSOLUTE_URL);
+      return $url;
    }
 }

@@ -13,9 +13,18 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use App\Service\TodayGenerator;
+
 
 class ContactType extends AbstractType
 {
+    private $todayGenerator;
+    public function __construct(TodayGenerator $todayGenerator)
+    {
+        $this->todayGenerator = $todayGenerator;
+    }
+
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -116,6 +125,11 @@ class ContactType extends AbstractType
                         'maxMessage' => 'Maximum {{ limit }} caractères'
                     ])
                 ]
+            ])
+
+            // On ajoute la date actuelle (timeStamp unix depuis notre service TodayGenerator) pour la comparer ensuite à la date de soumission du formulaire
+            ->add('beginDate', HiddenType::class, [
+                'data' => $this->todayGenerator->generateAToday()->getTimestamp()
             ])
 
 
