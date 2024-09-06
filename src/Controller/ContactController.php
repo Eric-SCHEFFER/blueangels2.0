@@ -11,6 +11,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use App\Entity\Articles;
 use App\Entity\Events;
 use App\Entity\InfosEtAdresses;
+use App\Service\TodayGenerator;
 
 
 class ContactController extends AbstractController
@@ -18,7 +19,7 @@ class ContactController extends AbstractController
     /**
      * @Route("/contact/{id}/{categorie}", defaults={"id" = NULL, "categorie" = NULL}, name="contact")
      */
-    public function index($id, Request $request, MailerInterface $mailer)
+    public function index($id, Request $request, MailerInterface $mailer, TodayGenerator $todayGenerator)
     {
         $titre = NULL;
         $endUrl = NULL;
@@ -46,10 +47,21 @@ class ContactController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $contact = $form->getData();
-            // On vérifie si le champ caché email servant de "pôt de miel" aux robots spameurs est vide
-            // et si on vient d'une des pages du site
+
+            // UnixTimeStamp de départ d'affichage du formulaire
+            $beginTime = $contact['beginTime'];
+            // UnixTimeStamp de soumission du formulaire
+            $sendTime = $todayGenerator->generateAToday()->getTimestamp();
+            // Durée en secondes pour effectuer la soumission (sans tenir compte de l'envoi par le réseau)
+            $detaTime = $sendTime - $beginTime;
+
+            // On vérifie plusieurs contraintes:
+            // - si le champ caché email servant de "pôt de miel" aux robots spameurs est vide
+            // - Si la durée de soumission du formulaire est > 3 sec (pour les robots spameurs)
+            // - Si on vient d'une des pages du site
             if (
                 !isset($contact['email']) &&
+                $detaTime > 3 &&
                 isset($_SERVER['HTTP_ORIGIN'])
             ) {
                 // C'est le véritable email. Le nom est pour tromper les robots de spam

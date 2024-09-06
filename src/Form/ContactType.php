@@ -127,8 +127,8 @@ class ContactType extends AbstractType
                 ]
             ])
 
-            // On ajoute la date actuelle (timeStamp unix depuis notre service TodayGenerator) pour la comparer ensuite à la date de soumission du formulaire
-            ->add('beginDate', HiddenType::class, [
+            // On ajoute la date actuelle dnas un champ caché (timeStamp unix depuis notre service TodayGenerator) pour la comparer ensuite à la date de soumission du formulaire
+            ->add('beginTime', HiddenType::class, [
                 'data' => $this->todayGenerator->generateAToday()->getTimestamp()
             ])
 
