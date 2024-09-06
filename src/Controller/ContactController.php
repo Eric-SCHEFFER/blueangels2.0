@@ -53,7 +53,7 @@ class ContactController extends AbstractController
             // UnixTimeStamp de soumission du formulaire
             $sendTime = $todayGenerator->generateAToday()->getTimestamp();
             // Durée en secondes pour effectuer la soumission (sans tenir compte de l'envoi par le réseau)
-            $detaTime = $sendTime - $beginTime;
+            $deltaTime = $sendTime - $beginTime;
 
             // On vérifie plusieurs contraintes:
             // - si le champ caché email servant de "pôt de miel" aux robots spameurs est vide
@@ -61,7 +61,7 @@ class ContactController extends AbstractController
             // - Si on vient d'une des pages du site
             if (
                 !isset($contact['email']) &&
-                $detaTime > 3 &&
+                $deltaTime > 3 &&
                 isset($_SERVER['HTTP_ORIGIN'])
             ) {
                 // C'est le véritable email. Le nom est pour tromper les robots de spam
@@ -86,7 +86,7 @@ class ContactController extends AbstractController
                         'endUrl' => $endUrl,
                     ]);
                 }
-                $this->addFlash('succes', 'Votre message à bien été envoyé. Nous le traiterons dans les plus brefs délais.');
+                $this->addFlash('succes', 'Votre message à bien été envoyé. Nous le traiterons dans les plus brefs délais.' . ' (' . $deltaTime . ') ');
                 return $this->redirectToRoute('home');
             }
         }
