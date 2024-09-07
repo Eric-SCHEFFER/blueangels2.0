@@ -59,6 +59,10 @@ class ContactController extends AbstractController
             // - si le champ caché email servant de "pôt de miel" aux robots spameurs est vide
             // - Si la durée de soumission du formulaire est > 3 sec (pour les robots spameurs)
             // - Si on vient d'une des pages du site
+
+            // TODO: Ajouter test durée soumission côté client
+            dd($contact['beginTimeClientSide']);
+
             if (
                 !isset($contact['email']) &&
                 $deltaTime > 3 &&

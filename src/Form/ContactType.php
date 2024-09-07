@@ -132,6 +132,7 @@ class ContactType extends AbstractType
                 'data' => $this->todayGenerator->generateAToday()->getTimestamp()
             ])
 
+            ->add('beginTimeClientSide', HiddenType::class, [])
 
 
             ->add('envoyer', SubmitType::class);
