@@ -132,7 +132,9 @@ class ContactType extends AbstractType
                 'data' => $this->todayGenerator->generateAToday()->getTimestamp()
             ])
 
+            // 2 champs cachés pour tester les durées de soumissions côté client (en js)
             ->add('beginTimeClientSide', HiddenType::class, [])
+            ->add('sendTimeClientSide', HiddenType::class, [])
 
 
             ->add('envoyer', SubmitType::class);

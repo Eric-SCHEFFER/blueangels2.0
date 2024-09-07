@@ -2,6 +2,7 @@ window.onload = () => {
    let caseACocher = document.getElementById("accordDonneesPerso");
    let boutonSubmit = document.getElementById("contact_envoyer");
    let messageCocherRgpd = document.getElementById("cocherRgpdErrorId");
+   let contactForm = document.getElementsByName("contact");
 
    caseACocher.checked = false;
    // boutonSubmit.disabled = true;
@@ -25,17 +26,18 @@ window.onload = () => {
       if (this.classList.contains("buttonDisabled")) {
          e.preventDefault();
          messageCocherRgpd.classList.add("displayBlock");
-         e.stopPropagation
+         e.stopPropagation();
       }
+      // On envoie le timeStamp dans le champ caché
+      document.getElementById('contact_sendTimeClientSide').value = Math.round(Date.now() / 1000);
    });
 
-
-   // TODO: Détecter le premier event d'input sur le formulaire, noter le timeStamp dans une variable.
-   // Détecter l'event du déclenchement du bouton envoyer, noter le timeStamp dans une autre variable, et renvoyer ces 2 valeurs via des champs cachés, sur le serveur pour traitement dans ContactController.
-
-   // alert(Date.now());
-
-   document.getElementById('contact_beginTimeClientSide').value = Date.now();
-
-
+   // On détecte un changement dans le formulaire (début d'écriture, cochage de case)
+   // TODO: Ne détecter que le 1er changement
+   contactForm[0].addEventListener('change', function () {
+      // On envoie le timeStamp dans le champ caché
+      document.getElementById('contact_beginTimeClientSide').value = Math.round(Date.now() / 1000);
+   },
+      { once: true }
+   );
 }

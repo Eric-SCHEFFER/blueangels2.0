@@ -54,14 +54,14 @@ class ContactController extends AbstractController
             $sendTime = $todayGenerator->generateAToday()->getTimestamp();
             // Durée en secondes pour effectuer la soumission (sans tenir compte de l'envoi par le réseau)
             $deltaTime = $sendTime - $beginTime;
+            // Durée en secondes pour effectuer la soumission, données envoyées par champ caché, côté client (en js)
+            $deltaTimeClientSide = $contact['sendTimeClientSide'] - $contact['beginTimeClientSide'];
 
             // On vérifie plusieurs contraintes:
             // - si le champ caché email servant de "pôt de miel" aux robots spameurs est vide
             // - Si la durée de soumission du formulaire est > 3 sec (pour les robots spameurs)
             // - Si on vient d'une des pages du site
 
-            // TODO: Ajouter test durée soumission côté client
-            dd($contact['beginTimeClientSide']);
 
             if (
                 !isset($contact['email']) &&
@@ -90,7 +90,7 @@ class ContactController extends AbstractController
                         'endUrl' => $endUrl,
                     ]);
                 }
-                $this->addFlash('succes', 'Votre message à bien été envoyé. Nous le traiterons dans les plus brefs délais.' . ' (' . $deltaTime . ') ');
+                $this->addFlash('succes', 'Votre message à bien été envoyé. Nous le traiterons dans les plus brefs délais.' . ' (' . $deltaTime . ' - ' . $deltaTimeClientSide . ') ');
                 return $this->redirectToRoute('home');
             }
         }
