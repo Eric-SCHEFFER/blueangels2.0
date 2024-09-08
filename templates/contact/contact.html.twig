@@ -18,6 +18,14 @@
 
 		<div class="container-form big-width">
 			{{ form_start(contactForm) }}
+<pre>
+{% if contactForm is defined and contactForm is not empty %}
+	{{ dump(contactForm.vars.valid) }}
+{% endif %}
+</pre>
+			{# On passe des données au script contactForm.js #}
+			{# Attention: Toujours mettre data-dataformvalid en minuscules, car c'est automatiquement forcé en minuscules dans le fichier js #}
+			<div id="datas" data-dataFormValid="{{ contactForm.vars.valid }}"></div>
 
 			<div
 				class="bloc-ligne constraints-messages constraints-messages-cours">

@@ -3,6 +3,16 @@ window.onload = () => {
    let boutonSubmit = document.getElementById("contact_envoyer");
    let messageCocherRgpd = document.getElementById("cocherRgpdErrorId");
    let contactForm = document.getElementsByName("contact");
+   let datas = document.querySelector("#datas");
+   let isFormValid = datas.dataset.dataformvalid;
+
+ 
+
+   if (isFormValid) {
+      console.log("c'est valide");
+   } else {
+      console.log("c'est pas valide");
+   }
 
    caseACocher.checked = false;
    // boutonSubmit.disabled = true;
@@ -28,14 +38,14 @@ window.onload = () => {
          messageCocherRgpd.classList.add("displayBlock");
          e.stopPropagation();
       }
-      // On envoie le timeStamp dans le champ caché
+      // Antispam robots: On envoie le timeStamp de la date d'envoi du formulaire dans le champ caché
       document.getElementById('contact_sendTimeClientSide').value = Math.round(Date.now() / 1000);
    });
 
-   // On détecte un changement dans le formulaire (début d'écriture, cochage de case)
-   // TODO: Ne détecter que le 1er changement
+   // Antispam robots: On détecte l'event du premier changement dans le formulaire (début d'écriture, cochage de case)
+
    contactForm[0].addEventListener('change', function () {
-      // On envoie le timeStamp dans le champ caché
+      // On envoie le timeStamp de l'event dans le champ caché
       document.getElementById('contact_beginTimeClientSide').value = Math.round(Date.now() / 1000);
    },
       { once: true }

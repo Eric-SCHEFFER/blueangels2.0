@@ -45,15 +45,14 @@ class ContactController extends AbstractController
 
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
+        // dd($form->getErrors(true));
         if ($form->isSubmitted() && $form->isValid()) {
             $contact = $form->getData();
 
-            // UnixTimeStamp de départ d'affichage du formulaire
-            $beginTime = $contact['beginTime'];
             // UnixTimeStamp de soumission du formulaire
             $sendTime = $todayGenerator->generateAToday()->getTimestamp();
             // Durée en secondes pour effectuer la soumission (sans tenir compte de l'envoi par le réseau)
-            $deltaTime = $sendTime - $beginTime;
+            $deltaTime = $sendTime - $contact['beginTime'];
             // Durée en secondes pour effectuer la soumission, données envoyées par champ caché, côté client (en js)
             $deltaTimeClientSide = $contact['sendTimeClientSide'] - $contact['beginTimeClientSide'];
 
@@ -61,7 +60,6 @@ class ContactController extends AbstractController
             // - si le champ caché email servant de "pôt de miel" aux robots spameurs est vide
             // - Si la durée de soumission du formulaire est > 3 sec (pour les robots spameurs)
             // - Si on vient d'une des pages du site
-
 
             if (
                 !isset($contact['email']) &&
@@ -91,6 +89,7 @@ class ContactController extends AbstractController
                     ]);
                 }
                 $this->addFlash('succes', 'Votre message à bien été envoyé. Nous le traiterons dans les plus brefs délais.' . ' (' . $deltaTime . ' - ' . $deltaTimeClientSide . ') ');
+                // $this->addFlash('succes', $contact['beginTimeClientSide'] . ' ' . $contact['sendTimeClientSide']);
                 return $this->redirectToRoute('home');
             }
         }
