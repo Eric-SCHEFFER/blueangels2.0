@@ -45,7 +45,6 @@ class ContactController extends AbstractController
 
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
-        // dd($form->getErrors(true));
         if ($form->isSubmitted() && $form->isValid()) {
             $contact = $form->getData();
 
@@ -58,12 +57,14 @@ class ContactController extends AbstractController
 
             // On vérifie plusieurs contraintes:
             // - si le champ caché email servant de "pôt de miel" aux robots spameurs est vide
-            // - Si la durée de soumission du formulaire est > 3 sec (pour les robots spameurs)
+            // - Si la durée de soumission du formulaire côté serveur est > 3 sec (pour les robots spameurs)
+            // - Si la durée de soumission du formulaire côté client est > 3 sec (pour les robots spameurs)
             // - Si on vient d'une des pages du site
 
             if (
                 !isset($contact['email']) &&
-                $deltaTime > 3 &&
+                $deltaTime > 3 && // côté serveur
+                $deltaTimeClientSide > 3 && // côté client (ôter ce test si celà créé des faux positifs, qui bloquent la soumission du formulaire)
                 isset($_SERVER['HTTP_ORIGIN'])
             ) {
                 // C'est le véritable email. Le nom est pour tromper les robots de spam
@@ -89,7 +90,6 @@ class ContactController extends AbstractController
                     ]);
                 }
                 $this->addFlash('succes', 'Votre message à bien été envoyé. Nous le traiterons dans les plus brefs délais.' . ' (' . $deltaTime . ' - ' . $deltaTimeClientSide . ') ');
-                // $this->addFlash('succes', $contact['beginTimeClientSide'] . ' ' . $contact['sendTimeClientSide']);
                 return $this->redirectToRoute('home');
             }
         }
