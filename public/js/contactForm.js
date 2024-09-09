@@ -65,10 +65,11 @@ window.onload = () => {
          // On cible chaque div dans la ligne
          for (const div of divs) {
             // Si présente, on cible l'ul dans la div, et on créé un écouteur d'event sur la saisie du champ (input ou textarea)
-            if (div.querySelector("ul")) {
-               div.querySelector("ul").nextElementSibling.addEventListener('beforeinput', function () {
+            const ul = div.querySelector("ul");
+            if (ul) {
+               ul.nextElementSibling.addEventListener('beforeinput', function () {
                   // On supprime l'ul (c'est elle qui contenait la li du message d'erreur)
-                  div.querySelector("ul").remove();
+                  ul.remove();
                },
                   { once: true }
                );
