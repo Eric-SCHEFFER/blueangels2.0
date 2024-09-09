@@ -20,7 +20,7 @@
 			{{ form_start(contactForm) }}
 
 			{# On passe des données au script contactForm.js #}
-			{# Attention: Toujours mettre data-dataformvalid en minuscules, car c'est automatiquement forcé en minuscules dans le fichier js #}
+			{# Attention: Toujours mettre data-dataformvalid sans tirets en minuscules, car c'est automatiquement forcé en minuscules dans le fichier js #}
 			<div id="datas" data-dataformvalid="{{ contactForm.vars.valid }}"></div>
 
 			<div
@@ -41,7 +41,7 @@
 				{{ form_row(contactForm.tel) }}
 				{# Vrai champ email #}
 				{# Nom du champ inversé avec le champ caché email plus haut (stratégie anti-spam) #}
-			{{ form_row(contactForm.informations) }}
+				{{ form_row(contactForm.informations) }}
 			</div>
 
 			<div class="bloc-ligne-objet-et-message constraints-messages constraints-messages-cours"> {# Si on vient d'un article ou d'un event, on prérempli les champs objet et message #}
