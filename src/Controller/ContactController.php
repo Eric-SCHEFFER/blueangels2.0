@@ -64,7 +64,7 @@ class ContactController extends AbstractController
             if (
                 !isset($contact['email']) &&
                 $deltaTime > 3 && // côté serveur
-                $deltaTimeClientSide > 3 && // côté client (ôter ce test si celà créé des faux positifs, qui bloquent la soumission du formulaire)
+                // $deltaTimeClientSide > 3 && // côté client (ôter ce test si celà créé des faux positifs, qui bloquent la soumission du formulaire)
                 isset($_SERVER['HTTP_ORIGIN'])
             ) {
                 // C'est le véritable email. Le nom est pour tromper les robots de spam
@@ -89,7 +89,8 @@ class ContactController extends AbstractController
                         'endUrl' => $endUrl,
                     ]);
                 }
-                $this->addFlash('succes', 'Votre message à bien été envoyé. Nous le traiterons dans les plus brefs délais.' . ' (' . $deltaTime . ' - ' . $deltaTimeClientSide . ') ');
+                // $this->addFlash('succes', 'Votre message à bien été envoyé. Nous le traiterons dans les plus brefs délais.' . ' (' . $deltaTime . ' - ' . $deltaTimeClientSide . ') ');
+                $this->addFlash('succes', 'Votre message à bien été envoyé. Nous le traiterons dans les plus brefs délais.');
                 return $this->redirectToRoute('home');
             }
         }

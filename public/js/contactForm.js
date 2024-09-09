@@ -4,7 +4,7 @@ window.onload = () => {
    let messageCocherRgpd = document.getElementById("cocherRgpdErrorId");
    let contactForm = document.getElementsByName("contact");
    let datas = document.querySelector("#datas");
-   let isFormValid = datas.dataset.dataformvalid;
+   let isFormValid = datas.dataset.dataformvalid; // Variable de twig passée par l'attribut de données data-*
 
 
    caseACocher.checked = false;
