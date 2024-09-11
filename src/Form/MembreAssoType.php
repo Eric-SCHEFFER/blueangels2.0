@@ -10,11 +10,21 @@ use Symfony\Component\Validator\Constraints\All;
 use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use App\Repository\MembresAssoRepository;
+
 
 class MembreAssoType extends AbstractType
 {
+    private $membresAssoRepository;
+    public function __construct(MembresAssoRepository $membresAssoRepository)
+    {
+        $this->membresAssoRepository = $membresAssoRepository;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $nom = $this->membresAssoRepository->findOneBy(array('nom' => 'sommer'));
+        dd($nom);
         $builder
             ->add('nom')
             ->add('prenom')
