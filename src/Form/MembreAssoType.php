@@ -27,7 +27,6 @@ class MembreAssoType extends AbstractType
                 'mapped' => false,
                 'constraints' => [
                     new Image([
-                        // maxSize: Par fichier
                         'maxSize' => '8M',
                         'maxSizeMessage' => 'Trop gros: 8M maxi par fichier',
                         'mimeTypes' => [
