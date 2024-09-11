@@ -26,18 +26,22 @@ class MembreAssoType extends AbstractType
                 'label' => false,
                 'mapped' => false,
                 'constraints' => [
-                    // new All([
-                    //     new Image([
-                    //         // maxSize: Par fichier
-                    //         'maxSize' => '8M',
-                    //         'maxSizeMessage' => 'Trop gros: 8M maxi par fichier',
-                    //         'mimeTypes' => [
-                    //             'image/jpeg',
-                    //             'image/png'
-                    //         ],
-                    //         'mimeTypesMessage' => 'Fichier non-valide: Uniquement jpeg et png'
-                    //     ])
-                    // ])
+                    new Image([
+                        // maxSize: Par fichier
+                        'maxSize' => '8M',
+                        'maxSizeMessage' => 'Trop gros: 8M maxi par fichier',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png'
+                        ],
+                        'mimeTypesMessage' => 'Fichier non-valide: Uniquement jpeg et png',
+                        'allowLandscape' => false,
+                        'allowLandscapeMessage' => 'Image carrée uniquement (actuelle fait {{ width }} x {{ height }} px)',
+                        'allowPortrait' => false,
+                        'allowPortraitMessage' => 'Image carrée uniquement (actuelle fait {{ width }} x {{ height }} px)',
+                        'allowSquare' => true,
+                        'allowSquareMessage' => 'Message allowSquare',
+                    ])
                 ]
             ])
 
