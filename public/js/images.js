@@ -23,6 +23,7 @@ window.onload = () => {
                response => response.json()
             ).then(data => {
                if (data.success)
+                  // TODO: Refaire apparaitre le séléctionneur de fichier pour reuploader une image
                   this.parentElement.parentElement.remove()
                else
                   alert(data.error)

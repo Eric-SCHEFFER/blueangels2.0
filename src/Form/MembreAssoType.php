@@ -20,18 +20,17 @@ class MembreAssoType extends AbstractType
     {
         $this->membresAssoRepository = $membresAssoRepository;
     }
-
+    // TODO: Quand on a déjà une image en base, pour le strombinoscopé, on bloque le téléchargement, avec éventuellement un message.
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $nom = $this->membresAssoRepository->findOneBy(array('nom' => 'sommer'));
-        dd($nom);
         $builder
             ->add('nom')
             ->add('prenom')
             ->add('fonction')
-            ->add('description')
+            ->add('description');
 
-            ->add('photo', FileType::class, [
+        if (empty($this->getPhoto($options))) {
+            $builder->add('photo', FileType::class, [
                 'required' => false,
                 'label' => false,
                 'mapped' => false,
@@ -45,17 +44,17 @@ class MembreAssoType extends AbstractType
                         ],
                         'mimeTypesMessage' => 'Fichier non-valide: Uniquement jpeg et png',
                         'allowLandscape' => false,
-                        'allowLandscapeMessage' => 'Image carrée uniquement (actuelle fait {{ width }} x {{ height }} px)',
+                        'allowLandscapeMessage' => 'Image carrée uniquement (celle-ci fait {{ width }} x {{ height }} px)',
                         'allowPortrait' => false,
-                        'allowPortraitMessage' => 'Image carrée uniquement (actuelle fait {{ width }} x {{ height }} px)',
+                        'allowPortraitMessage' => 'Image carrée uniquement (celle-ci fait {{ width }} x {{ height }} px)',
                         'allowSquare' => true,
                         'allowSquareMessage' => 'Message allowSquare',
                     ])
                 ]
-            ])
+            ]);
+        }
 
-
-            ->add('email')
+        $builder->add('email')
             ->add('facebook')
             ->add('telephone')
 
@@ -70,5 +69,17 @@ class MembreAssoType extends AbstractType
         $resolver->setDefaults([
             'data_class' => MembresAsso::class,
         ]);
+    }
+
+    /**
+     * On retourne le nom (string uniqueId) de la photo du trombinoscopé
+     */
+    private function getPhoto($options)
+    {
+        $id = $options["data"]->getId();
+        if (isset($id)) {
+            $photo = $this->membresAssoRepository->find($id)->getphoto();
+            return $photo;
+        }
     }
 }
