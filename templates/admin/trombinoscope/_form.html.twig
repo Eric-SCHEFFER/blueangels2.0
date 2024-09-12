@@ -25,10 +25,9 @@
 					{{ form_row(form.photo, {'attr':{'class':'image'}}) }}
 				</div>
 			{% endif %}
-			{# On vérifie si la route est "admin.trombinoscope.edit", et on affiche les images #}
+			{# On vérifie si la route est "admin.trombinoscope.edit", et on affiche l'image #}
 			{% if app.request.attributes.get('_route') == 'admin.trombinoscope.edit' %}
 				<div
-
 					class="blocVignettes">
 					{# S'il y a une image, on l'affiche #}
 					{% if  membresAsso.photo is not empty %}
