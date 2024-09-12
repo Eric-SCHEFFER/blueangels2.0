@@ -70,10 +70,10 @@ class AdminTrombinoscopeController extends AbstractController
             $this->em->persist($membreAsso);
             $this->em->flush();
             $this->addFlash('succes', 'Article créé avec succès');
-            // return $this->redirectToRoute('admin.articles');
+            // return $this->redirect($request->request->get('referer'));
             // TODO: Sécuriser la redirection en s'assurant surant que le referer vient bien de notre site.
             // Est-ce que ça fonctionne en https ?
-            return $this->redirect($request->request->get('referer'));
+            return $this->redirectToRoute('admin.trombinoscope');
         }
         return $this->render('admin/trombinoscope/nouveau.html.twig', [
             'form' => $form->createView()
@@ -116,10 +116,10 @@ class AdminTrombinoscopeController extends AbstractController
             $this->em->persist($membresAsso);
             $this->em->flush();
             $this->addFlash('succes', '"' . $membresAsso->getPrenom() . '"' . ' modifié avec succès');
-            // return $this->redirectToRoute('admin.articles');
+            // return $this->redirect($request->request->get('referer'));
             // TODO: Sécuriser la redirection en s'assurant surant que le referer vient bien de notre site.
             // Est-ce que ça fonctionne en https ?
-            return $this->redirect($request->request->get('referer'));
+            return $this->redirectToRoute('admin.trombinoscope');
         }
         return $this->render('admin/trombinoscope/edit.html.twig', [
             'membresAsso' => $membresAsso,
@@ -148,7 +148,7 @@ class AdminTrombinoscopeController extends AbstractController
             $this->addFlash('succes', '"' . $membresAsso->getNom() . '"' . ' supprimé avec succès');
             //return new HttpFoundationResponse('Suppression');
         }
-        return $this->redirectToRoute('admin');
+        return $this->redirectToRoute('admin.trombinoscope');
     }
 
     // ======== SUPPRIMER L'IMAGE ========

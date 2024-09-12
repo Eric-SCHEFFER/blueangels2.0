@@ -22,6 +22,18 @@ window.onload = () => {
          ).then(data => {
             if (data.success) {
                this.parentElement.parentElement.remove();
+               // On affiche un message invitant à recharger la page
+               let divDuFileInput = document.querySelector("#divDuFileInput");
+               let divChamp = document.createElement("div");
+               let pMessage = document.createElement("p");
+
+               divChamp.classList.add("champ", "constraints-messages");
+
+
+               divDuFileInput.appendChild(divChamp);
+               divChamp.appendChild(pMessage);
+               pMessage.innerText = "Pour ajouter une image, veuillez recharger la page svp";
+
 
                // On recréé le sélecteur de fichier (inputFile)
                // let divDuFileInput = document.querySelector("#divDuFileInput");
