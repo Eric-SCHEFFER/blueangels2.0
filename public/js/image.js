@@ -20,11 +20,33 @@ window.onload = () => {
             // On récupère la réponse en JSON
             response => response.json()
          ).then(data => {
-            if (data.success)
-               this.parentElement.parentElement.remove()
-            else
+            if (data.success) {
+               this.parentElement.parentElement.remove();
+
+               // On recréé le sélecteur de fichier (inputFile)
+               // let divDuFileInput = document.querySelector("#divDuFileInput");
+               // let divChamp = document.createElement("div");
+               // let divMessage = document.createElement("div");
+               // let divWrapInput = document.createElement("div");
+               // let inputFile = document.createElement("input");
+
+               // divChamp.classList.add("champ", "constraints-messages")
+               // divMessage.title = "Image carrée uniquement";
+               // divMessage.innerHTML = "Image carrée uniquement";
+               // inputFile.classList = "image";
+               // inputFile.type = "file";
+               // inputFile.id = "membre_asso_photo";
+               // inputFile.name = "membre_asso[photo]";
+
+               // divDuFileInput.prepend(divChamp);
+               // divChamp.prepend(divMessage);
+               // divChamp.appendChild(divWrapInput);
+               // divWrapInput.appendChild(inputFile);
+            }
+            else {
                alert(data.error)
+            }
          }).catch(e => alert(e))
       }
-   })
+   });
 }

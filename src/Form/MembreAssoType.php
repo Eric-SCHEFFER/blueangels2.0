@@ -20,7 +20,6 @@ class MembreAssoType extends AbstractType
     {
         $this->membresAssoRepository = $membresAssoRepository;
     }
-    // TODO: Quand on a déjà une image en base, pour le strombinoscopé, on bloque le téléchargement, avec éventuellement un message.
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -29,6 +28,7 @@ class MembreAssoType extends AbstractType
             ->add('fonction')
             ->add('description');
 
+        // Quand il n'y a pas déjà une image en base, on ajoute l'inputFile.
         if (empty($this->getPhoto($options))) {
             $builder->add('photo', FileType::class, [
                 'required' => false,
