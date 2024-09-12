@@ -1,5 +1,5 @@
 window.onload = () => {
-   // Gestion des liens "Supprimer"
+   // Gestion du lien "Supprimer"
 
    let link = document.querySelector("[data-delete]")
    // On écoute le clic
