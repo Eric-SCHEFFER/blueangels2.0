@@ -28,7 +28,7 @@ class MembreAssoType extends AbstractType
             ->add('fonction')
             ->add('description');
 
-        // Quand il n'y a pas déjà une image en base, on ajoute l'inputFile.
+        // On ajoute l'inputFile uniquement s'il n'y a pas déjà une image en base
         if (empty($this->getPhoto($options))) {
             $builder->add('photo', FileType::class, [
                 'required' => false,
@@ -72,7 +72,7 @@ class MembreAssoType extends AbstractType
     }
 
     /**
-     * On retourne le nom (string uniqueId) de la photo du trombinoscopé
+     * On retourne le nom de fichier en bdd de la photo du trombinoscopé
      */
     private function getPhoto($options)
     {

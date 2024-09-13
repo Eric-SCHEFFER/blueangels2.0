@@ -35,6 +35,7 @@ window.onload = () => {
                pMessage.innerText = "Pour ajouter une image, veuillez recharger la page svp";
 
 
+
                // On recréé le sélecteur de fichier (inputFile)
                // let divDuFileInput = document.querySelector("#divDuFileInput");
                // let divChamp = document.createElement("div");
