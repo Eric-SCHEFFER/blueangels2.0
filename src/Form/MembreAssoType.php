@@ -28,7 +28,7 @@ class MembreAssoType extends AbstractType
             ->add('fonction')
             ->add('description');
 
-        // On ajoute l'inputFile uniquement s'il n'y a pas déjà une image en base
+        // On ajoute l'inputFile (photo) uniquement s'il n'y a pas déjà une image en base
         if (empty($this->getPhoto($options))) {
             $builder->add('photo', FileType::class, [
                 'required' => false,
