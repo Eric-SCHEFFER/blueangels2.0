@@ -93,7 +93,8 @@ class AdminTrombinoscopeController extends AbstractController
         $form = $this->createForm(MembreAssoType::class, $membresAsso);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            if (!empty($form->get('photo')->getData())) {
+            // Si le champ "photo" existe dans MembreAssoType, et s'il n'est pas vide
+            if ($form->has('photo') && !empty($form->get('photo')->getData())) {
                 // On récupère l'image transmise
                 $image = $form->get('photo')->getData();
                 // On génère un nouveau nom de fichier
@@ -113,6 +114,7 @@ class AdminTrombinoscopeController extends AbstractController
                 // On stocke le nom de l'image dans la base de données
                 $membresAsso->setPhoto($fichier);
             }
+
             $this->em->persist($membresAsso);
             $this->em->flush();
             $this->addFlash('succes', '"' . $membresAsso->getPrenom() . '"' . ' modifié avec succès');
