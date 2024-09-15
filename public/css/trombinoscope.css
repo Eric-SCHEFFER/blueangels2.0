@@ -190,13 +190,42 @@
    text-align: center;
 }
 
+.modal .bloc-details {
+   padding: 25px;
+   overflow: scroll;
+}
 
 .modal .description {
-   height: auto;
+   /* height: auto; */
    /* border: green solid 1px; */
-   overflow: scroll;
-   padding: 25px;
-   word-break: break-word;
+   /* overflow: scroll; */
+   /* padding: 25px; */
+   /* word-break: break-word; */
+}
+
+.modal .infos-membre {
+   margin-top: 25px;
+   color: rgb(104, 104, 104);
+}
+
+.modal .telephone::before,
+.modal .email::before,
+.modal .facebook::before {
+   font-family: "Font Awesome 6 Free";
+   font-weight: 900;
+   margin-right: 5px;
+}
+
+.modal .telephone::before {
+   content: "\f3cd";
+}
+
+.modal .email::before {
+   content: "\f0e0";
+}
+
+.modal .facebook::before {
+   content: "\f09a";
 }
 
 /* ======= Écrans plus petits ====== */
@@ -264,7 +293,7 @@
       width: 28vh;
       min-width: 70px;
    }
-   
+
    .modal .image>img {
       width: 28vh;
       /* border: 1px red solid; */

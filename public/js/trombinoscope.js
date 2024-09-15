@@ -16,6 +16,9 @@ for (let card of cards) {
       modalContent.querySelector('.nom').innerText = datas.dataset.nom;
       modalContent.querySelector('.fonction').innerText = datas.dataset.fonction;
       modalContent.querySelector('.description').innerText = datas.dataset.description;
+      modalContent.querySelector('.telephone').innerText = datas.dataset.telephone;
+      modalContent.querySelector('.email').innerText = datas.dataset.email;
+      modalContent.querySelector('.facebook').innerText = datas.dataset.facebook;
       modalContent.querySelector('.hook img').src = card.querySelector("img").src;
       // On affiche la modale
       modal.classList.add("show", "restore-click", "restore-scroll");
