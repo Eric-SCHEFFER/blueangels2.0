@@ -28,7 +28,7 @@
 					<div
 						class="card">
 						{# On transmet des variables pour le script js de la modale #}
-						<div class="datas" data-prenom="{{ membre.prenom }}" data-nom="{{ membre.nom | upper }}" data-fonction="{{ membre.fonction }}" data-description="{{ membre.description }}" data-telephone="{{ membre.telephone }}" data-email="{{ membre.email }}" data-description="{{ membre.description }}"  data-facebook="{{ membre.facebook }}"data-image="{{ membre.getPhoto() }}"></div>
+						<div class="datas" data-prenom="{{ membre.prenom }}" data-nom="{{ membre.nom | upper }}" data-fonction="{{ membre.fonction }}" data-description="{{ membre.description }}" data-telephone="{{ membre.telephone }}" data-email="{{ membre.email }}" data-description="{{ membre.description }}" data-facebook="{{ membre.facebook }}" data-image="{{ membre.getPhoto() }}"></div>
 
 						<div class="bloc-image">
 							<div class="image">
@@ -71,9 +71,18 @@
 					<div class="bloc-details">
 						<div class="description"></div>
 						<div class="infos-membre">
-							<div class="telephone"></div>
-							<div class="email"></div>
-							<div class="facebook"></div>
+							<dl class="telephone">
+								<dt></dt>
+								<dd></dd>
+							</dl>
+							<dl class="email">
+								<dt></dt>
+								<dd></dd>
+							</dl>
+							<dl class="facebook">
+								<dt></dt>
+								<dd></dd>
+							</dl>
 						</div>
 					</section>
 				</div>
