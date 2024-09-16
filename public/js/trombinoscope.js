@@ -22,16 +22,17 @@ for (let card of cards) {
       modalContent.querySelector('.fonction').innerText = datas.dataset.fonction;
       modalContent.querySelector('.description').innerText = datas.dataset.description;
 
-      // TODO: On ajoute les balises dl,dt et dd, et leurs contenus avec icônes fontawesome (dans div class infos-membre)
+      // TODO: On ajoute dans div class infos-membre, les balises dl,dt et dd, et leurs contenus avec icônes fontawesome
       if (datas.dataset.telephone !== "") {
          let dlTelephone = document.createElement("dl");
          dlTelephone.classList.add("telephone");
-         let dtTelephone = document.createElement("dt");
+         let dtTelephone = document.createElement("dt"); 
          let ddTelephone = document.createElement("dd");
          let iTelephone = document.createElement("i");
-         iTelephone.classList.add("fa-solid", "fa-phone")
-         infosMembre.appendChild(dtTelephone);
-         infosMembre.appendChild(ddTelephone);
+         iTelephone.classList.add("fa-solid", "fa-phone");
+         infosMembre.appendChild(dlTelephone);
+         dlTelephone.appendChild(dtTelephone);
+         dlTelephone.appendChild(ddTelephone);
          dtTelephone.appendChild(iTelephone);
          ddTelephone.innerText = datas.dataset.telephone;
       }
@@ -41,9 +42,10 @@ for (let card of cards) {
          let dtEmail = document.createElement("dt");
          let ddEmail = document.createElement("dd");
          let iEmail = document.createElement("i");
-         iEmail.classList.add("fa-solid", "fa-envelope")
-         infosMembre.appendChild(dtEmail);
-         infosMembre.appendChild(ddEmail);
+         iEmail.classList.add("fa-solid", "fa-envelope");
+         infosMembre.appendChild(dlEmail);
+         dlEmail.appendChild(dtEmail);
+         dlEmail.appendChild(ddEmail);
          dtEmail.appendChild(iEmail);
          ddEmail.innerText = datas.dataset.email;
       }
@@ -53,9 +55,10 @@ for (let card of cards) {
          let dtFacebook = document.createElement("dt");
          let ddFacebook = document.createElement("dd");
          let iFacebook = document.createElement("i");
-         iFacebook.classList.add("fa-brands", "fa-facebook-f")
-         infosMembre.appendChild(dtFacebook);
-         infosMembre.appendChild(ddFacebook);
+         iFacebook.classList.add("fa-brands", "fa-facebook-f");
+         infosMembre.appendChild(dlFacebook);
+         dlFacebook.appendChild(dtFacebook);
+         dlFacebook.appendChild(ddFacebook);
          dtFacebook.appendChild(iFacebook);
          ddFacebook.innerText = datas.dataset.facebook;
       }

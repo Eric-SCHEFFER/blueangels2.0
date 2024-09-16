@@ -210,12 +210,13 @@
 
 
 .modal .infos-membre dt {
-   margin-bottom: -23px;
+   margin-bottom: -31px;
 }
 
 .modal .infos-membre dd {
    position: relative;
-   top: 2px;
+   top: 10px;
+   left: -10px;
 }
 
 
