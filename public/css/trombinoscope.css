@@ -222,6 +222,10 @@
 .modal .infos-membre dd a {
    color: #0068d6;
    font-weight: 600;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   max-width: 80%;
 }
 
 .modal .infos-membre dd a:hover {
