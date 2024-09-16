@@ -22,45 +22,53 @@ for (let card of cards) {
       modalContent.querySelector('.fonction').innerText = datas.dataset.fonction;
       modalContent.querySelector('.description').innerText = datas.dataset.description;
 
-      // TODO: On ajoute dans div class infos-membre, les balises dl,dt et dd, et leurs contenus avec icônes fontawesome
+      // TODO: On rempli la div class "infos-membre" (Icônes fonawesome, datas, etc...)
+      // Balise dl telephone
       if (datas.dataset.telephone !== "") {
          let dlTelephone = document.createElement("dl");
          dlTelephone.classList.add("telephone");
-         let dtTelephone = document.createElement("dt"); 
+         let dtTelephone = document.createElement("dt");
          let ddTelephone = document.createElement("dd");
          let iTelephone = document.createElement("i");
          iTelephone.classList.add("fa-solid", "fa-phone");
          infosMembre.appendChild(dlTelephone);
-         dlTelephone.appendChild(dtTelephone);
-         dlTelephone.appendChild(ddTelephone);
+         dlTelephone.append(dtTelephone, ddTelephone);
          dtTelephone.appendChild(iTelephone);
          ddTelephone.innerText = datas.dataset.telephone;
       }
+      // Balise dl email
       if (datas.dataset.email !== "") {
          let dlEmail = document.createElement("dl");
          dlEmail.classList.add("email");
          let dtEmail = document.createElement("dt");
          let ddEmail = document.createElement("dd");
+         let aEmail = document.createElement("a");
+         aEmail.href = "mailto:" + datas.dataset.email;
+         aEmail.title = "mailto:" + datas.dataset.email;
          let iEmail = document.createElement("i");
          iEmail.classList.add("fa-solid", "fa-envelope");
          infosMembre.appendChild(dlEmail);
-         dlEmail.appendChild(dtEmail);
-         dlEmail.appendChild(ddEmail);
+         dlEmail.append(dtEmail, ddEmail);
          dtEmail.appendChild(iEmail);
-         ddEmail.innerText = datas.dataset.email;
+         ddEmail.appendChild(aEmail);
+         aEmail.innerText = datas.dataset.email;
       }
+      // Balise dl facebook
       if (datas.dataset.facebook !== "") {
          let dlFacebook = document.createElement("dl");
          dlFacebook.classList.add("telephone");
          let dtFacebook = document.createElement("dt");
          let ddFacebook = document.createElement("dd");
+         let aFacebook = document.createElement("a");
+         aFacebook.href = datas.dataset.facebook;
+         aFacebook.title = datas.dataset.facebook;
          let iFacebook = document.createElement("i");
          iFacebook.classList.add("fa-brands", "fa-facebook-f");
          infosMembre.appendChild(dlFacebook);
-         dlFacebook.appendChild(dtFacebook);
-         dlFacebook.appendChild(ddFacebook);
+         dlFacebook.append(dtFacebook, ddFacebook);
          dtFacebook.appendChild(iFacebook);
-         ddFacebook.innerText = datas.dataset.facebook;
+         ddFacebook.appendChild(aFacebook);
+         aFacebook.innerText = datas.dataset.facebook;
       }
 
       modalContent.querySelector('.hook img').src = card.querySelector("img").src;
@@ -77,7 +85,7 @@ oBody.addEventListener("click", function () {
    modal.classList.remove("show", "restore-click", "restore-scroll");
    darkerLayer.classList.remove("to-dark");
    oBody.classList.remove("no-click-no-scroll");
-   infosMembre.innerHTML = "";
+   infosMembre.innerHTML = ""; // On supprime le contenu de div class "infos-membre"
 });
 
 modalContent.addEventListener("click", function (event) {

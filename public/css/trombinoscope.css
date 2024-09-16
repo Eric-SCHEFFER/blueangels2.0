@@ -210,13 +210,22 @@
 
 
 .modal .infos-membre dt {
-   margin-bottom: -31px;
+   margin-bottom: -34px;
 }
 
 .modal .infos-membre dd {
    position: relative;
-   top: 10px;
-   left: -10px;
+   top: 13px;
+   left: -14px;
+}
+
+.modal .infos-membre dd a {
+   color: #0068d6;
+   font-weight: 600;
+}
+
+.modal .infos-membre dd a:hover {
+   color: #0054ad;
 }
 
 
