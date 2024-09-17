@@ -143,11 +143,25 @@
 				</ul>
 			</li>
 			{# ======== Sous-menu /OFF =========== #}
+			{# ======== Sous-menu /ON =========== #}
 			<li>
-				<a href="{{ path('a_venir') }}">
-					Évènements à venir
-				</a>
+				<button class="btDropdown">
+					<div>Évènements</div>
+				</button>
+				<ul class="dropdown-content">
+					<li>
+						<a href="{{ path('a_venir') }}">
+							À venir
+						</a>
+					</li>
+					<li>
+						<a href="{{ path('completed_events') }}">
+							Passés
+						</a>
+					</li>
+				</ul>
 			</li>
+			{# ======== Sous-menu /OFF =========== #}
 			{# ======== Sous-menu /ON =========== #}
 			<li>
 				<button class="btDropdown">
