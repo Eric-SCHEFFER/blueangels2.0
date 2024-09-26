@@ -293,6 +293,10 @@ class AdminEventsController extends AbstractController
         }
         // On calcule les dimensions de la miniature, et on lance les fonctions php de création de miniature
         $targetHeight = ($targetWidth / $sourceWidth) * $sourceHeight;
+        // ERR Uniquement en prod, si la RAM souscrite est à 0,5GB, pas suffisant pour créer la miniature
+        // sur les images à partir d'une certaine taille (constaté avec une image de 3,4 Mio)
+        // Celà génère une erreur:
+        // warning: imagecreatefromjpeg(): gd-jpeg: jpeg library reports unrecoverable error: insufficient memory (case 4)
         $imgIn = $imagecreatefrom($imageSource);
         // On pivote l'image de 90° dans le sens horaire, si nécéssaire
         if ($portraitMalOriente) {
