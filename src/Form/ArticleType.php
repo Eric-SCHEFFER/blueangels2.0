@@ -115,7 +115,7 @@ class ArticleType extends AbstractType
                 },
                 'choice_label' => 'nom',
                 'label' => 'Catégorie',
-                'required' => false,
+                'required' => true,
             ])
 
             ->add('epingle', CheckboxType::class, [
