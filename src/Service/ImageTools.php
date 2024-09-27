@@ -61,6 +61,6 @@ class ImageTools
       $imgOut = imagecreatetruecolor($targetWidth, $targetHeight);
       imagecopyresampled($imgOut, $imgIn, 0, 0, 0, 0, $targetWidth, $targetHeight, $sourceWidth, $sourceHeight);
       $imageSortie($imgOut, $imageCible);
-      return $imageCible;
+      return;
    }
 }
