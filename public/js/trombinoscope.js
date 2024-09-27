@@ -22,7 +22,7 @@ for (let card of cards) {
       modalContent.querySelector('.fonction').innerText = datas.dataset.fonction;
       modalContent.querySelector('.description').innerText = datas.dataset.description;
 
-      // TODO: On rempli la div class "infos-membre" (Icônes fonawesome, datas, etc...)
+      // On rempli la div class "infos-membre" (Icônes fonawesome, datas, etc...)
       // Balise dl telephone
       if (datas.dataset.telephone !== "") {
          let dlTelephone = document.createElement("dl");
