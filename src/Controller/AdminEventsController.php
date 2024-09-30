@@ -133,7 +133,14 @@ class AdminEventsController extends AbstractController
         //Test
         $variable1 = 1;
         $variable2 = 0;
-        $imageTools->test($variable1, $variable2);
+        try {
+            $imageTools->test($variable1, $variable2);
+        } catch (\Throwable $th) {
+            $this->addFlash('error', 'On a intercepté l\'erreur');
+            return $this->redirectToRoute('admin');
+        }
+        $this->addFlash('succes', 'Pas d\'erreur');
+        return $this->redirectToRoute('admin');
         dd("stop");
 
         $form = $this->createForm(EventType::class, $event);
