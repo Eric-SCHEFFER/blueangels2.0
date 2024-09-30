@@ -129,6 +129,13 @@ class AdminEventsController extends AbstractController
      */
     public function edit(Events $event, Request $request, TodayGenerator $todayGenerator, ImageTools $imageTools)
     {
+
+        //Test
+        $variable1 = 1;
+        $variable2 = 0;
+        $imageTools->test($variable1, $variable2);
+        dd("stop");
+
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

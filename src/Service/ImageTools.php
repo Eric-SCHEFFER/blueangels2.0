@@ -4,6 +4,14 @@ namespace App\Service;
 
 class ImageTools
 {
+
+   // TEST
+   public function test($variable1, $variable2)
+   {
+      $total = $variable1 / $variable2;
+      return;
+   }
+
    /**
     * Crée une miniature d'une image d'un fichier jpg ou png.
     * Paramètres: 1: Chemin complet de l'image source (jpg ou png).
