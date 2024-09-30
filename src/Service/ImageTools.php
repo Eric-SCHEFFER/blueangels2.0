@@ -61,7 +61,7 @@ class ImageTools
       // Celà génère une erreur:
       // warning: imagecreatefromjpeg(): gd-jpeg: jpeg library reports unrecoverable error: insufficient memory (case 4)
       // TODO: Gestion de cette erreur (mettre à la place une miniture par défaut si erreur)
-      $imgIn = $imagecreatefrom($imageSource);
+      $imgIn = $imagecreatefrom('toto');
       // On pivote l'image de 90° dans le sens horaire, si nécéssaire
       if ($portraitMalOriente) {
          $imgIn = imagerotate($imgIn, -90, 0);

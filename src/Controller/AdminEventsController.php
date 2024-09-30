@@ -131,17 +131,17 @@ class AdminEventsController extends AbstractController
     {
 
         //Test
-        $variable1 = 1;
-        $variable2 = 0;
-        try {
-            $imageTools->test($variable1, $variable2);
-        } catch (\Throwable $th) {
-            $this->addFlash('error', 'On a intercepté l\'erreur');
-            return $this->redirectToRoute('admin');
-        }
-        $this->addFlash('succes', 'Pas d\'erreur');
-        return $this->redirectToRoute('admin');
-        dd("stop");
+        // $variable1 = 1;
+        // $variable2 = 0;
+        // try {
+        //     $imageTools->test($variable1, $variable2);
+        // } catch (\Throwable $th) {
+        //     $this->addFlash('error', 'On a intercepté l\'erreur');
+        //     return $this->redirectToRoute('admin');
+        // }
+        // $this->addFlash('succes', 'Pas d\'erreur');
+        // return $this->redirectToRoute('admin');
+        // dd("stop");
 
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
@@ -163,7 +163,22 @@ class AdminEventsController extends AbstractController
                 $imageCible = $dossierImages . "/min_" . $fichier;
                 // On créé une miniature du fichier image avec la methode createMiniature de la class ImageTools créee dans un service.
                 // En 3e paramètre, la largeur souhaitée en px de la miniature
-                $imageTools->createMiniature($imageSource, $imageCible, 270);
+                // TODO: Améliorer le message flash (un message par erreur, avec le nom de l'image en erreur)
+                // dd($image->getClientOriginalName());
+                try {
+                    $imageTools->createMiniature($imageSource, $imageCible, 270);
+                } catch (\Throwable $th) {
+                    if (file_exists($imageSource)) {
+                        unlink($imageSource);
+                    }
+                    if (file_exists($imageCible)) {
+                        unlink($imageCible);
+                    }
+                    $this->addFlash('error', 'La miniature n\'a pas pu être créee');
+                    return $this->redirectToRoute('admin');
+                }
+
+
                 // On stocke le nom de l'image dans la base de données
                 $img = new ImagesEvent();
                 $img->setNom($fichier);
