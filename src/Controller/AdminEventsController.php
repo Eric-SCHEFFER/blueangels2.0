@@ -17,6 +17,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class AdminEventsController extends AbstractController
 {
+    private $eventsRepository;
+    private $em;
+
     public function __construct(
         EventsRepository $eventsRepository,
         EntityManagerInterface $em
@@ -155,7 +158,6 @@ class AdminEventsController extends AbstractController
                     $img = new ImagesEvent();
                     $img->setNom($fichier);
                     $event->addImagesEvent($img);
-                    // $imagesErr = [];
                 } catch (\Throwable $th) {
                     if (file_exists($imageSource)) {
                         unlink($imageSource);
@@ -174,12 +176,12 @@ class AdminEventsController extends AbstractController
 
             $this->em->persist($event);
             $this->em->flush();
-            $this->addFlash('succes', '"' . $event->getNom() . '"' . ' Créé ou mis à jour avec succès');
+            $this->addFlash('succes', '"' . $event->getNom() . '"' . ' Mis à jour');
             // S'il y a au moins une erreur à la création de la ou des miniatures, on on affiche chaque nom de l'image non créee
             if (isset($imagesErr)) {
-                $this->addFlash('error', 'Mais les images suivantes n\'ont pas pu être inserrées:');
+                $this->addFlash('error', 'Les images suivantes n\'ont pas pu être ajoutées:');
                 foreach ($imagesErr as $imageErr) {
-                    $this->addFlash('error', $imageErr);
+                    $this->addFlash('error', $imageErr . ' ' . '[' . substr($th, 0, 95) . '...]');
                 }
             }
             return $this->redirectToRoute('admin');
