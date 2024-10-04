@@ -4,14 +4,6 @@ namespace App\Service;
 
 class ImageTools
 {
-
-   // TEST
-   public function test($variable1, $variable2)
-   {
-      $total = $variable1 / $variable2;
-      return;
-   }
-
    /**
     * Crée une miniature d'une image d'un fichier jpg ou png.
     * Paramètres: 1: Chemin complet de l'image source (jpg ou png).
@@ -56,11 +48,10 @@ class ImageTools
       }
       // On calcule les dimensions de la miniature, et on lance les fonctions php de création de miniature
       $targetHeight = ($targetWidth / $sourceWidth) * $sourceHeight;
-      // ERR Uniquement en prod, si la RAM souscrite est à 0,5GB, pas suffisant pour créer la miniature
-      // sur les images à partir d'une certaine taille (constaté avec une image de 3,4 Mio)
-      // Celà génère une erreur:
+      // ERR Selon la taille de l'image, si la RAM n'est pas pas suffisante pour créer la miniature, celà génère une erreur dans symfony
+      // Constaté sur une image d'environ 3,4 Mio, avec une RAM de 500 Mo (chez Ionos)
       // warning: imagecreatefromjpeg(): gd-jpeg: jpeg library reports unrecoverable error: insufficient memory (case 4)
-      // TODO: Gestion de cette erreur
+      // Mise en place d'un try catch dans le code appelant cette méthode
       $imgIn = $imagecreatefrom($imageSource);
       // On pivote l'image de 90° dans le sens horaire, si nécéssaire
       if ($portraitMalOriente) {

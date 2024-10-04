@@ -185,7 +185,7 @@ class AdminEventsController extends AbstractController
     }
 
     /**
-     * Code commun pour éditer ou pour créer un nouvel event
+     * Code commun pour éditer ou créer un nouvel event
      */
     private function editAndNew($form, $imageTools, $todayGenerator, $event)
     {
@@ -241,7 +241,3 @@ class AdminEventsController extends AbstractController
         }
     }
 }
-
-// VIEUX / ON
-
-// VIEUX / OFF
