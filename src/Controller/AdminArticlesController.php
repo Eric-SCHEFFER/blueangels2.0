@@ -58,43 +58,8 @@ class AdminArticlesController extends AbstractController
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // On récupère les images transmises
-            $images = $form->get('imageFile')->getData();
-            // On boucle sur les images
-            foreach ($images as $image) {
-                // On génère un nouveau nom de fichier
-                $ext = $image->guessExtension();
-                $fichier = md5(uniqid()) . '.' . $ext;
-                // On copie le fichier dans le dossier uploads
-                $dossierImages = $this->getParameter('dossier_images_articles');
-                $image->move(
-                    $dossierImages,
-                    $fichier
-                );
-                $imageSource = $dossierImages . "/" . $fichier;
-                $imageCible = $dossierImages . "/min_" . $fichier;
-                // On créé une miniature du fichier image avec la methode createMiniature de la class ImageTools créee dans un service.
-                // En 3e paramètre, la largeur souhaitée en px de la miniature
-                $imageTools->createMiniature($imageSource, $imageCible, 270);
-                // On stocke le nom de l'image dans la base de données
-                $img = new ImagesArticle();
-                $img->setNom($fichier);
-                $article->addImagesArticle($img);
-            }
-
-            // On rempli le champ lastModifiedBy dans la bdd, avec le nom de l'utilisateur courant
-            $article->setLastModifiedBy($this->getUser()->getEmail());
-
-            // On rempli le champ lasModifiedAt dans la bdd, avec la date actuelle
-            $article->setLastModifiedAt($todayGenerator->generateAToday());
-
-            $this->em->persist($article);
-            $this->em->flush();
-            $this->addFlash('succes', 'Article créé avec succès');
-            // return $this->redirectToRoute('admin.articles');
-            // TODO: Sécuriser la redirection en s'assurant surant que le referer vient bien de notre site.
-            // Est-ce que ça fonctionne en https ?
-            return $this->redirect($request->request->get('referer'));
+            $this->editAndNew($form, $imageTools, $todayGenerator, $article);
+            return $this->redirectToRoute('admin');
         }
         return $this->render('admin/articles/nouveau.html.twig', [
             'form' => $form->createView()
@@ -110,7 +75,6 @@ class AdminArticlesController extends AbstractController
      */
     public function edit(Articles $article, Request $request, TodayGenerator $todayGenerator, ImageTools $imageTools)
     {
-        // TODO: 
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -197,7 +161,6 @@ class AdminArticlesController extends AbstractController
             $articles;
     }
 
-    // TODO
     /**
      * Code commun pour éditer ou créer un nouvel event
      */
@@ -255,9 +218,6 @@ class AdminArticlesController extends AbstractController
         }
     }
 }
-
-
-
 
 // VIEUX / ON
 // public function edit(Articles $article, Request $request, TodayGenerator $todayGenerator, ImageTools $imageTools)
