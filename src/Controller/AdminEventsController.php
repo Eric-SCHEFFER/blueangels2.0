@@ -67,7 +67,7 @@ class AdminEventsController extends AbstractController
         ]);
     }
 
-    
+
     // ======== CRÉER UN ÉVÈNEMENT ========
     /**
      * @Route("/admin/events/nouveau", name="admin.events.nouveau")
@@ -78,56 +78,7 @@ class AdminEventsController extends AbstractController
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // On récupère les images transmises
-            $images = $form->get('imageFile')->getData();
-            // On boucle sur les images
-            foreach ($images as $image) {
-                try {
-                    // On génère un nouveau nom de fichier
-                    $ext = $image->guessExtension();
-                    $fichier = md5(uniqid()) . '.' . $ext;
-                    // On copie le fichier dans le dossier uploads
-                    $dossierImages = $this->getParameter('dossier_images_events');
-                    $image->move(
-                        $dossierImages,
-                        $fichier
-                    );
-                    $imageSource = $dossierImages . "/" . $fichier;
-                    $imageCible = $dossierImages . "/min_" . $fichier;
-                    // On créé une miniature du fichier image avec la methode createMiniature de la class ImageTools créee dans un service.
-                    // En 3e paramètre, la largeur souhaitée en px de la miniature
-                    $imageTools->createMiniature($imageSource, $imageCible, 270);
-
-                    // On stocke le nom de l'image dans la base de données
-                    $img = new ImagesEvent();
-                    $img->setNom($fichier);
-                    $event->addImagesEvent($img);
-                } catch (\Throwable $th) {
-                    if (file_exists($imageSource)) {
-                        unlink($imageSource);
-                    }
-                    if (file_exists($imageCible)) {
-                        unlink($imageCible);
-                    }
-                    // On récupére le nom d'origine de l'image en erreur
-                    $imagesErr[] = $image->getClientOriginalName();
-                }
-            }
-            // On rempli le champ lastModifiedBy dans la bdd, avec le nom de l'utilisateur courant
-            $event->setLastModifiedBy($this->getUser()->getEmail());
-            // On rempli le champ lasModifiedAt dans la bdd, avec la date actuelle
-            $event->setLastModifiedAt($todayGenerator->generateAToday());
-
-            $this->em->persist($event);
-            $this->em->flush();
-            $this->addFlash('succes', '"' . $event->getNom() . '"' . ' Créé');
-            // S'il y a au moins une erreur à la création de la ou des miniatures, on on affiche chaque nom de l'image non créee
-            if (isset($imagesErr)) {
-                $this->addFlash('error', 'Les images suivantes n\'ont pas pu être ajoutées:');
-                foreach ($imagesErr as $imageErr) {
-                    $this->addFlash('error', $imageErr . ' ' . '[' . substr($th, 0, 95) . '...]');
-                }
-            }
+            $this->editAndNew($form, $imageTools, $todayGenerator, $event);
             return $this->redirectToRoute('admin');
         }
         return $this->render('admin/events/nouveau.html.twig', [
@@ -147,59 +98,9 @@ class AdminEventsController extends AbstractController
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // On récupère les images transmises
-            $images = $form->get('imageFile')->getData();
-            // On boucle sur les images
-            foreach ($images as $image) {
-                try {
-                    // On génère un nouveau nom de fichier
-                    $ext = $image->guessExtension();
-                    $fichier = md5(uniqid()) . '.' . $ext;
-                    // On copie le fichier dans le dossier uploads
-                    $dossierImages = $this->getParameter('dossier_images_events');
-                    $image->move(
-                        $dossierImages,
-                        $fichier
-                    );
-                    $imageSource = $dossierImages . "/" . $fichier;
-                    $imageCible = $dossierImages . "/min_" . $fichier;
-                    // On créé une miniature du fichier image avec la methode createMiniature de la class ImageTools créee dans un service.
-                    // En 3e paramètre, la largeur souhaitée en px de la miniature
-                    $imageTools->createMiniature($imageSource, $imageCible, 270);
-
-                    // On stocke le nom de l'image dans la base de données
-                    $img = new ImagesEvent();
-                    $img->setNom($fichier);
-                    $event->addImagesEvent($img);
-                } catch (\Throwable $th) {
-                    if (file_exists($imageSource)) {
-                        unlink($imageSource);
-                    }
-                    if (file_exists($imageCible)) {
-                        unlink($imageCible);
-                    }
-                    // On récupére le nom d'origine de l'image en erreur
-                    $imagesErr[] = $image->getClientOriginalName();
-                }
-            }
-            // On rempli le champ lastModifiedBy dans la bdd, avec le nom de l'utilisateur courant
-            $event->setLastModifiedBy($this->getUser()->getEmail());
-            // On rempli le champ lasModifiedAt dans la bdd, avec la date actuelle
-            $event->setLastModifiedAt($todayGenerator->generateAToday());
-
-            $this->em->persist($event);
-            $this->em->flush();
-            $this->addFlash('succes', '"' . $event->getNom() . '"' . ' Mis à jour');
-            // S'il y a au moins une erreur à la création de la ou des miniatures, on on affiche chaque nom de l'image non créee
-            if (isset($imagesErr)) {
-                $this->addFlash('error', 'Les images suivantes n\'ont pas pu être ajoutées:');
-                foreach ($imagesErr as $imageErr) {
-                    $this->addFlash('error', $imageErr . ' ' . '[' . substr($th, 0, 95) . '...]');
-                }
-            }
+            $this->editAndNew($form, $imageTools, $todayGenerator, $event);
             return $this->redirectToRoute('admin');
         }
-
         return $this->render('admin/events/edit.html.twig', [
             'event' => $event,
             'form' => $form->createView()
@@ -282,4 +183,65 @@ class AdminEventsController extends AbstractController
             return new JsonResponse(['error' => 'Token Invalide'], 400);
         }
     }
+
+    /**
+     * Code commun pour éditer ou pour créer un nouvel event
+     */
+    private function editAndNew($form, $imageTools, $todayGenerator, $event)
+    {
+        // On récupère les images transmises
+        $images = $form->get('imageFile')->getData();
+        // On boucle sur les images
+        foreach ($images as $image) {
+            try {
+                // On génère un nouveau nom de fichier
+                $ext = $image->guessExtension();
+                $fichier = md5(uniqid()) . '.' . $ext;
+                // On copie le fichier dans le dossier uploads
+                $dossierImages = $this->getParameter('dossier_images_events');
+                $image->move(
+                    $dossierImages,
+                    $fichier
+                );
+                $imageSource = $dossierImages . "/" . $fichier;
+                $imageCible = $dossierImages . "/min_" . $fichier;
+                // On créé une miniature du fichier image avec la methode createMiniature de la class ImageTools créee dans un service.
+                // En 3e paramètre, la largeur souhaitée en px de la miniature
+                $imageTools->createMiniature($imageSource, $imageCible, 270);
+
+                // On stocke le nom de l'image dans la base de données
+                $img = new ImagesEvent();
+                $img->setNom($fichier);
+                $event->addImagesEvent($img);
+            } catch (\Throwable $th) {
+                if (file_exists($imageSource)) {
+                    unlink($imageSource);
+                }
+                if (file_exists($imageCible)) {
+                    unlink($imageCible);
+                }
+                // On récupére le nom d'origine de l'image en erreur
+                $imagesErr[] = $image->getClientOriginalName();
+            }
+        }
+        // On rempli le champ lastModifiedBy dans la bdd, avec le nom de l'utilisateur courant
+        $event->setLastModifiedBy($this->getUser()->getEmail());
+        // On rempli le champ lasModifiedAt dans la bdd, avec la date actuelle
+        $event->setLastModifiedAt($todayGenerator->generateAToday());
+
+        $this->em->persist($event);
+        $this->em->flush();
+        $this->addFlash('succes', '"' . $event->getNom() . '"' . ' Créé ou mis à jour');
+        // S'il y a au moins une erreur à la création de la ou des miniatures, on on affiche chaque nom de l'image non créee
+        if (isset($imagesErr)) {
+            $this->addFlash('error', 'Les images suivantes n\'ont pas pu être ajoutées:');
+            foreach ($imagesErr as $imageErr) {
+                $this->addFlash('error', $imageErr . ' ' . '[' . substr($th, 0, 95) . '...]');
+            }
+        }
+    }
 }
+
+// VIEUX / ON
+
+// VIEUX / OFF

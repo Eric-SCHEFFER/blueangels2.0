@@ -19,6 +19,9 @@ use App\Service\ImageTools;
 
 class AdminArticlesController extends AbstractController
 {
+    private $articlesRepository;
+    private $em;
+
     public function __construct(
         ArticlesRepository $articlesRepository,
         EntityManagerInterface $em
@@ -107,6 +110,7 @@ class AdminArticlesController extends AbstractController
      */
     public function edit(Articles $article, Request $request, TodayGenerator $todayGenerator, ImageTools $imageTools)
     {
+        // TODO: 
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -114,41 +118,55 @@ class AdminArticlesController extends AbstractController
             $images = $form->get('imageFile')->getData();
             // On boucle sur les images
             foreach ($images as $image) {
-                // On génère un nouveau nom de fichier
-                $ext = $image->guessExtension();
-                $fichier = md5(uniqid()) . '.' . $ext;
-                // On copie le fichier dans le dossier uploads
-                $dossierImages = $this->getParameter('dossier_images_articles');
-                $image->move(
-                    $dossierImages,
-                    $fichier
-                );
-                $imageSource = $dossierImages . "/" . $fichier;
-                $imageCible = $dossierImages . "/min_" . $fichier;
-                // On créé une miniature du fichier image avec la methode createMiniature de la class ImageTools créee dans un service.
-                // En 3e paramètre, la largeur souhaitée en px de la miniature
-                $imageTools->createMiniature($imageSource, $imageCible, 270);
-                // On stocke le nom de l'image dans la base de données
-                $img = new ImagesArticle();
-                $img->setNom($fichier);
-                $article->addImagesArticle($img);
-            }
+                try {
+                    // On génère un nouveau nom de fichier
+                    $ext = $image->guessExtension();
+                    $fichier = md5(uniqid()) . '.' . $ext;
+                    // On copie le fichier dans le dossier uploads
+                    $dossierImages = $this->getParameter('dossier_images_articles');
+                    $image->move(
+                        $dossierImages,
+                        $fichier
+                    );
+                    $imageSource = $dossierImages . "/" . $fichier;
+                    $imageCible = $dossierImages . "/min_" . $fichier;
+                    // On créé une miniature du fichier image avec la methode createMiniature de la class ImageTools créee dans un service.
+                    // En 3e paramètre, la largeur souhaitée en px de la miniature
+                    $imageTools->createMiniature($imageSource, $imageCible, 270);
 
+                    // On stocke le nom de l'image dans la base de données
+                    $img = new ImagesArticle();
+                    $img->setNom($fichier);
+                    $article->addImagesArticle($img);
+                } catch (\Throwable $th) {
+                    if (file_exists($imageSource)) {
+                        unlink($imageSource);
+                    }
+                    if (file_exists($imageCible)) {
+                        unlink($imageCible);
+                    }
+                    // On récupére le nom d'origine de l'image en erreur
+                    $imagesErr[] = $image->getClientOriginalName();
+                }
+            }
             // On rempli le champ lastModifiedBy dans la bdd, avec le nom de l'utilisateur courant
             $article->setLastModifiedBy($this->getUser()->getEmail());
-
             // On rempli le champ lasModifiedAt dans la bdd, avec la date actuelle
             $article->setLastModifiedAt($todayGenerator->generateAToday());
 
             $this->em->persist($article);
             $this->em->flush();
-            $this->addFlash('succes', '"' . $article->getTitre() . '"' . ' modifié avec succès');
-            // return $this->redirectToRoute('admin.articles');
-
-            // TODO: Sécuriser la redirection en s'assurant que le referer vient bien de notre site.
-            // Est-ce que ça fonctionne en https ?
-            return $this->redirect($request->request->get('referer'));
+            $this->addFlash('succes', '"' . $article->getTitre() . '"' . ' Mis à jour');
+            // S'il y a au moins une erreur à la création de la ou des miniatures, on on affiche chaque nom de l'image non créee
+            if (isset($imagesErr)) {
+                $this->addFlash('error', 'Les images suivantes n\'ont pas pu être ajoutées:');
+                foreach ($imagesErr as $imageErr) {
+                    $this->addFlash('error', $imageErr . ' ' . '[' . substr($th, 0, 95) . '...]');
+                }
+            }
+            return $this->redirectToRoute('admin');
         }
+
         return $this->render('admin/articles/edit.html.twig', [
             'article' => $article,
             'form' => $form->createView()
@@ -229,3 +247,6 @@ class AdminArticlesController extends AbstractController
             $articles;
     }
 }
+// VIEUX / ON
+
+// VIEUX / OFF
